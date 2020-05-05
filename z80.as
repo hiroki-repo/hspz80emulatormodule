@@ -265,6 +265,7 @@ jumplabel=*opcode_fd:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
 jumplabel=*opcode_fe:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
 jumplabel=*opcode_ff:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
 sdim stackformt,64,2,256
+repeat 256:wpeek stackformt(0,cnt),12,0xFF77:loop
 sdim iomemory,256
 return
 #defcfunc isioportcalled
