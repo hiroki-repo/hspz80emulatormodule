@@ -3240,6 +3240,11 @@ iomemorycalled=1
 iomemorycalledid=peek(stack(0),3)
 swbreak
 
+case 0x7B
+wpoke stack(0),12,wpeek(memory,wpeek(stack(0),10))
+wpoke stack(0),10,wpeek(stack(0),10)+2
+swbreak
+
 case 0xA0
 memcpy memory,memory,wpeek(stack(0),2),wpeek(stack(0),4),wpeek(stack(0),6)
 wpoke stack(0),4,wpeek(stack(0),4)+1
