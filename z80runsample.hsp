@@ -1,0 +1,15 @@
+#include "z80.as"
+address=0
+sdim memory,65540
+repeat
+repeat 65536
+z80run address,memory,0
+switch isioportcalled()
+case 0x00
+messagefromioport=""
+lpoke messagefromioport,0,ioportpeek(0)
+mes messagefromioport,1
+swbreak
+swend
+loop
+await 1:awaiti=0:loop
