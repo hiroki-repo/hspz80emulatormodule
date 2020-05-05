@@ -2892,7 +2892,7 @@ swbreak
 default
 opcodeidforddopcodeaddcall=((opcodeidforddopcode-40)/6)
 opcodeidforddopcodeaddcall2=((opcodeidforddopcode-40)-(opcodeidforddopcodeaddcall*6))-4
-if opcodeidforddopcodeaddcall2>=0 and opcodeidforddopcodeaddcall2<=3{
+if opcodeidforddopcode>=0x44 and opcodeidforddopcode<=0x5E{}else{
 opcode=peek(memory,wpeek(stack(0),10))
 lpoke jumplabel,0,opcodeaddr(opcode)
 wpoke stack(0),10,wpeek(stack(0),10)+1
@@ -3413,14 +3413,10 @@ wpoke stack(0),10,wpeek(stack(0),10)-2
 }
 swbreak
 default
-opcodeidforddopcodeaddcall=((opcodeidforddopcode-40)/6)
-opcodeidforddopcodeaddcall2=((opcodeidforddopcode-40)-(opcodeidforddopcodeaddcall*6))-4
-if opcodeidforddopcodeaddcall2>=0 and opcodeidforddopcodeaddcall2<=3{
 opcode=peek(memory,wpeek(stack(0),10))
 lpoke jumplabel,0,opcodeaddr(opcode)
 wpoke stack(0),10,wpeek(stack(0),10)+1
 gosub jumplabel
-}
 swbreak
 swend
 return
@@ -3674,7 +3670,7 @@ swbreak
 default
 opcodeidforddopcodeaddcall=((opcodeidforddopcode-40)/6)
 opcodeidforddopcodeaddcall2=((opcodeidforddopcode-40)-(opcodeidforddopcodeaddcall*6))-4
-if opcodeidforddopcodeaddcall2>=0 and opcodeidforddopcodeaddcall2<=3{
+if opcodeidforddopcode>=0x44 and opcodeidforddopcode<=0x5E{}else{
 opcode=peek(memory,wpeek(stack(0),10))
 lpoke jumplabel,0,opcodeaddr(opcode)
 wpoke stack(0),10,wpeek(stack(0),10)+1
