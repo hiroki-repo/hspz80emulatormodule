@@ -8,6 +8,7 @@ lpoke opcodeaddr(cnt),0,lpeek(jumplabel,0)
 loop
 iomemorycalledid=0
 iomemorycalled=0
+cnt2=-1
 jumplabel=*opcode_00:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
 jumplabel=*opcode_01:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
 jumplabel=*opcode_02:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
@@ -2128,10 +2129,11 @@ wpoke stack(0),10,wpeek(memory,wpeek(stack(0),10))
 }else{wpoke stack(0),10,wpeek(stack(0),10)+2}
 return
 *opcode_cb
-wpoke stack(0),10,wpeek(stack(0),10)+1
 cbopcodecallid=wpeek(stack(0),10)
 cbopcodecallidforbit=(cbopcodecallid-40)/8
-switch peek(stack(0),10)
+opcodeforsubcall=peek(memory,peek(stack(0),10))
+wpoke stack(0),10,wpeek(stack(0),10)+1
+switch opcodeforsubcall
 case 0x00
 changetoforrlc=2
 resforrlc=peek(stack(0),changetoforrlc)
@@ -2665,9 +2667,9 @@ wpoke stack(0),10,wpeek(memory,wpeek(stack(0),10))
 }
 return
 *opcode_d3
-poke iomemory,wpeek(memory,wpeek(stack(0),10)),peek(stack(0),0)
+poke iomemory,peek(memory,wpeek(stack(0),10)),peek(stack(0),0)
 iomemorycalled=1
-iomemorycalledid=wpeek(memory,wpeek(stack(0),10))
+iomemorycalledid=peek(memory,wpeek(stack(0),10))
 wpoke stack(0),10,wpeek(stack(0),10)+1
 return
 *opcode_d4
@@ -2734,7 +2736,7 @@ wpoke stack(0),10,wpeek(memory,wpeek(stack(0),10))
 return
 *opcode_db
 await 100
-poke stack(0),0,peek(iomemory,wpeek(memory,wpeek(stack(0),10)))
+poke stack(0),0,peek(iomemory,peek(memory,wpeek(stack(0),10)))
 wpoke stack(0),10,wpeek(stack(0),10)+1
 return
 *opcode_dc
@@ -2745,9 +2747,10 @@ wpoke stack(0),10,wpeek(memory,wpeek(stack(0),10))
 }else{wpoke stack(0),10,wpeek(stack(0),10)+2}
 return
 *opcode_dd
-wpoke stack(0),10,wpeek(stack(0),10)+1
 opcodeidforddopcode=peek(stack(0),10)
-switch peek(stack(0),10)
+opcodeforsubcall=peek(memory,peek(stack(0),10))
+wpoke stack(0),10,wpeek(stack(0),10)+1
+switch opcodeforsubcall
 case 0x09
 if (peek(stack(stackid),1) ^ (0x02))=0{poke stack(stackid),1,peek(stack(stackid),1) | (0x02)}
 addold=0
@@ -2881,6 +2884,20 @@ if peek(stack(1),addtostack)=0 and addold!0						 {poke stack(stackid),1,peek(st
 
 if peek(stack(1),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(stackid),1,peek(stack(stackid),1) | (0x10):halfcarrychk=0}
 if peek(stack(1),addtostack) | 0x80{poke stack(stackid),1,peek(stack(stackid),1) | (0x80)}
+swbreak
+
+case 0xFF
+z80class@=0
+swbreak
+default
+opcodeidforddopcodeaddcall=((opcodeidforddopcode-40)/6)
+opcodeidforddopcodeaddcall2=((opcodeidforddopcode-40)-(opcodeidforddopcodeaddcall*6))-4
+if opcodeidforddopcodeaddcall2>=0 and opcodeidforddopcodeaddcall2<=3{
+opcode=peek(memory,wpeek(stack(0),10))
+lpoke jumplabel,0,opcodeaddr(opcode)
+wpoke stack(0),10,wpeek(stack(0),10)+1
+gosub jumplabel
+}
 swbreak
 swend
 opcodeidforddopcodeaddcall=((opcodeidforddopcode-40)/6)
@@ -3029,8 +3046,9 @@ wpoke stack(0),10,wpeek(memory,wpeek(stack(0),10))
 return
 
 *opcode_ed
+opcodeforsubcall=peek(memory,peek(stack(0),10))
 wpoke stack(0),10,wpeek(stack(0),10)+1
-switch peek(stack(0),10)
+switch opcodeforsubcall
 case 0x40
 await 100
 if peek(iomemory,peek(stack(0),3))=0{poke stack(stackid),1,peek(stack(stackid),1) ^ (0x40)}
@@ -3394,6 +3412,16 @@ if peek(stack(0),3)=0{}else{
 wpoke stack(0),10,wpeek(stack(0),10)-2
 }
 swbreak
+default
+opcodeidforddopcodeaddcall=((opcodeidforddopcode-40)/6)
+opcodeidforddopcodeaddcall2=((opcodeidforddopcode-40)-(opcodeidforddopcodeaddcall*6))-4
+if opcodeidforddopcodeaddcall2>=0 and opcodeidforddopcodeaddcall2<=3{
+opcode=peek(memory,wpeek(stack(0),10))
+lpoke jumplabel,0,opcodeaddr(opcode)
+wpoke stack(0),10,wpeek(stack(0),10)+1
+gosub jumplabel
+}
+swbreak
 swend
 return
 *opcode_ee
@@ -3505,9 +3533,10 @@ wpoke stack(0),10,wpeek(memory,wpeek(stack(0),10))
 }else{wpoke stack(0),10,wpeek(stack(0),10)+2}
 return
 *opcode_fd
-wpoke stack(0),10,wpeek(stack(0),10)+1
 opcodeidforddopcode=peek(stack(0),10)
-switch peek(stack(0),10)
+opcodeforsubcall=peek(memory,peek(stack(0),10))
+wpoke stack(0),10,wpeek(stack(0),10)+1
+switch opcodeforsubcall
 case 0x09
 if (peek(stack(stackid),1) ^ (0x02))=0{poke stack(stackid),1,peek(stack(stackid),1) | (0x02)}
 addold=0
@@ -3641,6 +3670,16 @@ if peek(stack(1),addtostack)=0 and addold!0						 {poke stack(stackid),1,peek(st
 
 if peek(stack(1),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(stackid),1,peek(stack(stackid),1) | (0x10):halfcarrychk=0}
 if peek(stack(1),addtostack) | 0x80{poke stack(stackid),1,peek(stack(stackid),1) | (0x80)}
+swbreak
+default
+opcodeidforddopcodeaddcall=((opcodeidforddopcode-40)/6)
+opcodeidforddopcodeaddcall2=((opcodeidforddopcode-40)-(opcodeidforddopcodeaddcall*6))-4
+if opcodeidforddopcodeaddcall2>=0 and opcodeidforddopcodeaddcall2<=3{
+opcode=peek(memory,wpeek(stack(0),10))
+lpoke jumplabel,0,opcodeaddr(opcode)
+wpoke stack(0),10,wpeek(stack(0),10)+1
+gosub jumplabel
+}
 swbreak
 swend
 opcodeidforddopcodeaddcall=((opcodeidforddopcode-40)/6)
