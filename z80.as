@@ -2131,7 +2131,7 @@ return
 *opcode_cb
 cbopcodecallid=wpeek(stack(0),10)
 cbopcodecallidforbit=(cbopcodecallid-40)/8
-opcodeforsubcall=peek(memory,peek(stack(0),10))
+opcodeforsubcall=peek(memory,wpeek(stack(0),10))
 wpoke stack(0),10,wpeek(stack(0),10)+1
 switch opcodeforsubcall
 case 0x00
@@ -2748,7 +2748,7 @@ wpoke stack(0),10,wpeek(memory,wpeek(stack(0),10))
 return
 *opcode_dd
 opcodeidforddopcode=peek(stack(0),10)
-opcodeforsubcall=peek(memory,peek(stack(0),10))
+opcodeforsubcall=peek(memory,wpeek(stack(0),10))
 wpoke stack(0),10,wpeek(stack(0),10)+1
 switch opcodeforsubcall
 case 0x09
@@ -3046,7 +3046,7 @@ wpoke stack(0),10,wpeek(memory,wpeek(stack(0),10))
 return
 
 *opcode_ed
-opcodeforsubcall=peek(memory,peek(stack(0),10))
+opcodeforsubcall=peek(memory,wpeek(stack(0),10))
 wpoke stack(0),10,wpeek(stack(0),10)+1
 switch opcodeforsubcall
 case 0x40
@@ -3334,6 +3334,7 @@ memcpy memory,memory,wpeek(stack(0),2),wpeek(stack(0),4),wpeek(stack(0),6)
 wpoke stack(0),4,wpeek(stack(0),4)+wpeek(stack(0),2)
 wpoke stack(0),6,wpeek(stack(0),6)+wpeek(stack(0),2)
 wpoke stack(0),2,0
+//dialog
 //wpoke stack(0),10,wpeek(stack(0),10)+2
 swbreak
 case 0xB1
@@ -3530,7 +3531,7 @@ wpoke stack(0),10,wpeek(memory,wpeek(stack(0),10))
 return
 *opcode_fd
 opcodeidforddopcode=peek(stack(0),10)
-opcodeforsubcall=peek(memory,peek(stack(0),10))
+opcodeforsubcall=peek(memory,wpeek(stack(0),10))
 wpoke stack(0),10,wpeek(stack(0),10)+1
 switch opcodeforsubcall
 case 0x09
