@@ -3268,7 +3268,7 @@ memcpy memory,memory,wpeek(stack(0),2),wpeek(stack(0),4),wpeek(stack(0),6)
 wpoke stack(0),4,wpeek(stack(0),4)+1
 wpoke stack(0),6,wpeek(stack(0),6)+1
 wpoke stack(0),2,wpeek(stack(0),2)-1
-wpoke stack(0),10,wpeek(stack(0),10)+2
+//wpoke stack(0),10,wpeek(stack(0),10)+2
 swbreak
 case 0xA1
 resforcpiis0=0
@@ -3301,7 +3301,7 @@ memcpy memory,memory,wpeek(stack(0),2),wpeek(stack(0),4),wpeek(stack(0),6)
 wpoke stack(0),4,wpeek(stack(0),4)-1
 wpoke stack(0),6,wpeek(stack(0),6)-1
 wpoke stack(0),2,wpeek(stack(0),2)-1
-wpoke stack(0),10,wpeek(stack(0),10)+2
+//wpoke stack(0),10,wpeek(stack(0),10)+2
 swbreak
 case 0xA9
 resforcpiis0=0
