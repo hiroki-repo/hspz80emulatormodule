@@ -16,11 +16,14 @@ dim SZHV_dec,256
 		if(i & 0x20) {p2=p:p=p2+1}
 		if(i & 0x40) {p2=p:p=p2+1}
 		if(i & 0x80) {p2=p:p=p2+1}
+		SZ(i) = i
 		if (i=(i & 0x80)) {SZ(i) = 0x40}
 		SZ(i) |= (i & (0x20 | 0x08))
+		SZ_BIT(i) = i
 		if (i = (i & 0x80)){SZ_BIT(i) = 0x40 | 0x04}
 		SZ_BIT(i) |= (i & (0x20 | 0x08))
-		if ((p & 1) = 0) {SZP(i) = SZ(i) | (0x04)}
+		SZP(i)=SZ(i) | (p & 1)
+		if ((p & 1) = 0) {SZP(i) = SZP(i) | (0x04)}
 		SZHV_inc(i) = SZ(i)
 		if(i == 0x80) {SZHV_inc(i) |= 0x04}
 		if((i & 0x0f) == 0x00) {SZHV_inc(i) |= 0x10}
@@ -4075,15 +4078,27 @@ if peek(stack(1),addtostack)=0 and addold!0						 {poke stack(stackid),1,peek(st
 if peek(stack(1),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(stackid),1,peek(stack(stackid),1) | (0x10):halfcarrychk=0}
 if peek(stack(1),addtostack) | 0x80{poke stack(stackid),1,peek(stack(stackid),1) | (0x80)}
 swbreak
+
+case 0x44
+case 0x45
+case 0x46
+case 0x4c
+case 0x4d
+case 0x4e
+case 0x54
+case 0x55
+case 0x56
+case 0x5c
+case 0x5d
+case 0x5e
+swbreak
 default
 opcodeidforddopcodeaddcall=((opcodeidforddopcode-40)/6)
 opcodeidforddopcodeaddcall2=((opcodeidforddopcode-40)-(opcodeidforddopcodeaddcall*6))-4
-if opcodeidforddopcode>=0x44 and opcodeidforddopcode<=0x5E{}else{
 opcode=peek(memory,wpeek(stack(0),10))
 lpoke jumplabel,0,opcodeaddr(opcode)
 wpoke stack(0),10,wpeek(stack(0),10)+1
 gosub jumplabel
-}
 swbreak
 swend
 opcodeidforddopcodeaddcall=((opcodeidforddopcode-40)/6)
