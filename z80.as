@@ -3591,7 +3591,7 @@ wpoke memory,wpeek(memory,wpeek(stack(0),10)),wpeek(stack(0),4)
 wpoke stack(0),10,wpeek(stack(0),10)+2
 swbreak
 
-case 0x256
+case 0x56
 z80runmode=1
 swbreak
 case 0x57
