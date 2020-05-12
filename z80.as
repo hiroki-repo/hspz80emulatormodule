@@ -297,9 +297,11 @@ jumplabel=*opcode_fc:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
 jumplabel=*opcode_fd:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
 jumplabel=*opcode_fe:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
 jumplabel=*opcode_ff:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-sdim stackformt,64,2,256
+cpuamountmax=256
+sdim stackformt,64,2,cpuamountmax
 //repeat 256:wpoke stackformt(0,cnt),12,0xFF77:loop
-sdim iomemory,256
+sdim iomemory,cpuamountmax
+dim z80runmode,cpuamountmax
 cnt2=0
 return
 #defcfunc isioportcalled
@@ -3335,9 +3337,9 @@ case 7
 regforbit=0
 swbreak
 swend
-if opcodeidforddopcodeaddcall2=0 and regforbit=-1{}else{poke stack(stackid),regforbit,peek(stack(1),10)}
-if opcodeidforddopcodeaddcall2=1 and regforbit=-1{}else{poke stack(stackid),regforbit,peek(stack(1),11)}
-if opcodeidforddopcodeaddcall2=2 and regforbit=-1{}else{poke stack(stackid),regforbit,peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10))):wpoke stack(0),10,wpeek(stack(0),10)+1}
+if opcodeidforddopcodeaddcall2=0 {if regforbit=-1{}else{poke stack(stackid),regforbit,peek(stack(1),10)}}
+if opcodeidforddopcodeaddcall2=1 {if regforbit=-1{}else{poke stack(stackid),regforbit,peek(stack(1),11)}}
+if opcodeidforddopcodeaddcall2=2 {if regforbit=-1{}else{poke stack(stackid),regforbit,peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10))):wpoke stack(0),10,wpeek(stack(0),10)+1}}
 }
 return
 *opcode_de
@@ -3512,7 +3514,7 @@ wpoke stack(0),10,wpeek(memory,wpeek(stack(0),12))
 poke stack(1),14,0,peek(stack(1),15)
 swbreak
 case 0x46
-z80runmode=0
+z80runmode(threadidforrunthez80)=0
 swbreak
 case 0x47
 poke stack(0),14,peek(stack(0),0)
@@ -3595,7 +3597,7 @@ wpoke stack(0),10,wpeek(stack(0),10)+2
 swbreak
 
 case 0x56
-z80runmode=1
+z80runmode(threadidforrunthez80)=1
 swbreak
 case 0x57
 poke stack(0),0,peek(stack(0),14)
@@ -3635,7 +3637,7 @@ wpoke stack(0),10,wpeek(stack(0),10)+2
 swbreak
 
 case 0x5E
-z80runmode=2
+z80runmode(threadidforrunthez80)=2
 swbreak
 case 0x5F
 poke stack(0),0,peek(stack(0),15)
@@ -4130,9 +4132,9 @@ case 7
 regforbit=0
 swbreak
 swend
-if opcodeidforddopcodeaddcall2=0 and regforbit=-1{}else{poke stack(stackid),regforbit,peek(stack(1),12)}
-if opcodeidforddopcodeaddcall2=1 and regforbit=-1{}else{poke stack(stackid),regforbit,peek(stack(1),13)}
-if opcodeidforddopcodeaddcall2=2 and regforbit=-1{}else{poke stack(stackid),regforbit,peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10))):wpoke stack(0),10,wpeek(stack(0),10)+1}
+if opcodeidforddopcodeaddcall2=0 {if regforbit=-1{}else{poke stack(stackid),regforbit,peek(stack(1),12)}}
+if opcodeidforddopcodeaddcall2=1 {if regforbit=-1{}else{poke stack(stackid),regforbit,peek(stack(1),13)}}
+if opcodeidforddopcodeaddcall2=2 {if regforbit=-1{}else{poke stack(stackid),regforbit,peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10))):wpoke stack(0),10,wpeek(stack(0),10)+1}}
 }
 return
 *opcode_fe
