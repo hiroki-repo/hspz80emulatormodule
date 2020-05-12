@@ -39,6 +39,7 @@ repeat 256
 lpoke opcodeaddr(cnt),0,lpeek(jumplabel,0)
 loop
 iomemorycalledid=0
+iomemorycalledid16=0
 iomemorycalled=0
 cnt2=-1
 jumplabel=*opcode_00:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
@@ -306,6 +307,11 @@ cnt2=0
 return
 #defcfunc isioportcalled
 ioportidforreturn=iomemorycalledid
+if iomemorycalled=0{ioportidforreturn=-1}
+iomemorycalled=0
+return ioportidforreturn
+#defcfunc isioportcalled16
+ioportidforreturn=iomemorycalledid16
 if iomemorycalled=0{ioportidforreturn=-1}
 iomemorycalled=0
 return ioportidforreturn
@@ -3062,6 +3068,9 @@ return
 poke iomemory,peek(memory,wpeek(stack(0),10)),peek(stack(0),0)
 iomemorycalled=1
 iomemorycalledid=peek(memory,wpeek(stack(0),10))
+iomemorycalledid16=0
+poke iomemorycalledid16,0,peek(memory,wpeek(stack(0),10))
+poke iomemorycalledid16,1,peek(stack(0),0)
 wpoke stack(0),10,wpeek(stack(0),10)+1
 return
 *opcode_d4
@@ -3129,6 +3138,11 @@ return
 *opcode_db
 await 100
 poke stack(0),0,peek(iomemory,peek(memory,wpeek(stack(0),10)))
+iomemorycalled=2
+iomemorycalledid=peek(memory,wpeek(stack(0),10))
+iomemorycalledid16=0
+poke iomemorycalledid16,0,peek(memory,wpeek(stack(0),10))
+poke iomemorycalledid16,1,peek(stack(0),0)
 wpoke stack(0),10,wpeek(stack(0),10)+1
 return
 *opcode_dc
@@ -3462,11 +3476,15 @@ await 100
 if peek(iomemory,peek(stack(0),3))=0{poke stack(stackid),1,peek(stack(stackid),1) ^ (0x40)}
 if peek(iomemory,peek(stack(0),3))>=128{poke stack(stackid),1,peek(stack(stackid),1) ^ (0x80)}
 poke stack(0),2,peek(iomemory,peek(stack(0),3))
+iomemorycalled=2
+iomemorycalledid=peek(stack(0),3)
+iomemorycalledid16=wpeek(stack(0),2)
 swbreak
 case 0x41
 poke iomemory,peek(stack(0),3),peek(stack(0),2)
 iomemorycalled=1
 iomemorycalledid=peek(stack(0),3)
+iomemorycalledid16=wpeek(stack(0),2)
 swbreak
 case 0x42
 if (peek(stack(stackid),1) & (0x02)){poke stack(stackid),1,peek(stack(stackid),1) ^ (0x02)}
@@ -3524,11 +3542,15 @@ await 100
 if peek(iomemory,peek(stack(0),3))=0{poke stack(stackid),1,peek(stack(stackid),1) ^ (0x40)}
 if peek(iomemory,peek(stack(0),3))>=128{poke stack(stackid),1,peek(stack(stackid),1) ^ (0x80)}
 poke stack(0),3,peek(iomemory,peek(stack(0),3))
+iomemorycalled=2
+iomemorycalledid=peek(stack(0),3)
+iomemorycalledid16=wpeek(stack(0),2)
 swbreak
 case 0x49
 poke iomemory,peek(stack(0),3),peek(stack(0),3)
 iomemorycalled=1
 iomemorycalledid=peek(stack(0),3)
+iomemorycalledid16=wpeek(stack(0),2)
 swbreak
 case 0x4A
 if (peek(stack(stackid),1) ^ (0x02))=0{poke stack(stackid),1,peek(stack(stackid),1) | (0x02)}
@@ -3567,11 +3589,15 @@ await 100
 if peek(iomemory,peek(stack(0),3))=0{poke stack(stackid),1,peek(stack(stackid),1) ^ (0x40)}
 if peek(iomemory,peek(stack(0),3))>=128{poke stack(stackid),1,peek(stack(stackid),1) ^ (0x80)}
 poke stack(0),4,peek(iomemory,peek(stack(0),3))
+iomemorycalled=2
+iomemorycalledid=peek(stack(0),3)
+iomemorycalledid16=wpeek(stack(0),2)
 swbreak
 case 0x51
 poke iomemory,peek(stack(0),3),peek(stack(0),4)
 iomemorycalled=1
 iomemorycalledid=peek(stack(0),3)
+iomemorycalledid16=wpeek(stack(0),2)
 swbreak
 case 0x52
 if (peek(stack(stackid),1) & (0x02)){poke stack(stackid),1,peek(stack(stackid),1) ^ (0x02)}
@@ -3607,11 +3633,15 @@ await 100
 if peek(iomemory,peek(stack(0),3))=0{poke stack(stackid),1,peek(stack(stackid),1) ^ (0x40)}
 if peek(iomemory,peek(stack(0),3))>=128{poke stack(stackid),1,peek(stack(stackid),1) ^ (0x80)}
 poke stack(0),5,peek(iomemory,peek(stack(0),3))
+iomemorycalled=2
+iomemorycalledid=peek(stack(0),3)
+iomemorycalledid16=wpeek(stack(0),2)
 swbreak
 case 0x59
 poke iomemory,peek(stack(0),3),peek(stack(0),5)
 iomemorycalled=1
 iomemorycalledid=peek(stack(0),3)
+iomemorycalledid16=wpeek(stack(0),2)
 swbreak
 case 0x5A
 if (peek(stack(stackid),1) ^ (0x02))=0{poke stack(stackid),1,peek(stack(stackid),1) | (0x02)}
@@ -3647,11 +3677,15 @@ await 100
 if peek(iomemory,peek(stack(0),3))=0{poke stack(stackid),1,peek(stack(stackid),1) ^ (0x40)}
 if peek(iomemory,peek(stack(0),3))>=128{poke stack(stackid),1,peek(stack(stackid),1) ^ (0x80)}
 poke stack(0),6,peek(iomemory,peek(stack(0),3))
+iomemorycalled=2
+iomemorycalledid=peek(stack(0),3)
+iomemorycalledid16=wpeek(stack(0),2)
 swbreak
 case 0x61
 poke iomemory,peek(stack(0),3),peek(stack(0),6)
 iomemorycalled=1
 iomemorycalledid=peek(stack(0),3)
+iomemorycalledid16=wpeek(stack(0),2)
 swbreak
 
 case 0x68
@@ -3659,11 +3693,15 @@ await 100
 if peek(iomemory,peek(stack(0),3))=0{poke stack(stackid),1,peek(stack(stackid),1) ^ (0x40)}
 if peek(iomemory,peek(stack(0),3))>=128{poke stack(stackid),1,peek(stack(stackid),1) ^ (0x80)}
 poke stack(0),7,peek(iomemory,peek(stack(0),3))
+iomemorycalled=2
+iomemorycalledid=peek(stack(0),3)
+iomemorycalledid16=wpeek(stack(0),2)
 swbreak
 case 0x69
 poke iomemory,peek(stack(0),3),peek(stack(0),7)
 iomemorycalled=1
 iomemorycalledid=peek(stack(0),3)
+iomemorycalledid16=wpeek(stack(0),2)
 swbreak
 
 case 0x7B
@@ -3695,6 +3733,11 @@ await 100
 poke memory,wpeek(stack(0),6),peek(iomemory,peek(stack(0),4))
 poke stack(0),3,peek(stack(0),3)-1
 wpoke stack(0),6,wpeek(stack(0),6)+1
+iomemorycalled=2
+iomemorycalledid=peek(stack(0),4)
+iomemorycalledid16=0
+peek iomemorycalledid16,0,wpeek(stack(0),0)
+peek iomemorycalledid16,1,iomemorycalledid
 swbreak
 case 0xA3
 poke iomemory,peek(stack(0),4),peek(memory,wpeek(stack(0),6))
@@ -3702,6 +3745,9 @@ poke stack(0),3,peek(stack(0),3)-1
 wpoke stack(0),6,wpeek(stack(0),6)+1
 iomemorycalled=1
 iomemorycalledid=peek(stack(0),4)
+iomemorycalledid16=0
+peek iomemorycalledid16,0,wpeek(stack(0),0)
+peek iomemorycalledid16,1,iomemorycalledid
 swbreak
 
 case 0xA8
@@ -3728,6 +3774,11 @@ await 100
 poke memory,wpeek(stack(0),6),peek(iomemory,peek(stack(0),4))
 poke stack(0),3,peek(stack(0),3)-1
 wpoke stack(0),6,wpeek(stack(0),6)-1
+iomemorycalled=2
+iomemorycalledid=peek(stack(0),4)
+iomemorycalledid16=0
+peek iomemorycalledid16,0,wpeek(stack(0),0)
+peek iomemorycalledid16,1,iomemorycalledid
 swbreak
 case 0xAB
 poke iomemory,peek(stack(0),4),peek(memory,wpeek(stack(0),6))
@@ -3735,6 +3786,9 @@ poke stack(0),3,peek(stack(0),3)-1
 wpoke stack(0),6,wpeek(stack(0),6)-1
 iomemorycalled=1
 iomemorycalledid=peek(stack(0),4)
+iomemorycalledid16=0
+peek iomemorycalledid16,0,wpeek(stack(0),0)
+peek iomemorycalledid16,1,iomemorycalledid
 swbreak
 
 case 0xB0
@@ -3765,6 +3819,11 @@ await 100
 poke memory,wpeek(stack(0),6),peek(iomemory,peek(stack(0),4))
 poke stack(0),3,peek(stack(0),3)-1
 wpoke stack(0),6,wpeek(stack(0),6)+1
+iomemorycalled=2
+iomemorycalledid=peek(stack(0),4)
+iomemorycalledid16=0
+peek iomemorycalledid16,0,wpeek(stack(0),0)
+peek iomemorycalledid16,1,iomemorycalledid
 if peek(stack(0),3)=0{}else{
 wpoke stack(0),10,wpeek(stack(0),10)-2
 }
@@ -3775,6 +3834,9 @@ poke stack(0),3,peek(stack(0),3)-1
 wpoke stack(0),6,wpeek(stack(0),6)+1
 iomemorycalled=1
 iomemorycalledid=peek(stack(0),4)
+iomemorycalledid16=0
+peek iomemorycalledid16,0,wpeek(stack(0),0)
+peek iomemorycalledid16,1,iomemorycalledid
 if peek(stack(0),3)=0{}else{
 wpoke stack(0),10,wpeek(stack(0),10)-2
 }
@@ -3807,6 +3869,11 @@ await 100
 poke memory,wpeek(stack(0),6),peek(iomemory,peek(stack(0),4))
 poke stack(0),3,peek(stack(0),3)-1
 wpoke stack(0),6,wpeek(stack(0),6)-1
+iomemorycalled=2
+iomemorycalledid=peek(stack(0),4)
+iomemorycalledid16=0
+peek iomemorycalledid16,0,wpeek(stack(0),0)
+peek iomemorycalledid16,1,iomemorycalledid
 if peek(stack(0),3)=0{}else{
 wpoke stack(0),10,wpeek(stack(0),10)-2
 }
@@ -3817,6 +3884,9 @@ poke stack(0),3,peek(stack(0),3)-1
 wpoke stack(0),6,wpeek(stack(0),6)-1
 iomemorycalled=1
 iomemorycalledid=peek(stack(0),4)
+iomemorycalledid16=0
+peek iomemorycalledid16,0,wpeek(stack(0),0)
+peek iomemorycalledid16,1,iomemorycalledid
 if peek(stack(0),3)=0{}else{
 wpoke stack(0),10,wpeek(stack(0),10)-2
 }
