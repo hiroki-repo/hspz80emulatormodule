@@ -314,45 +314,56 @@ poke address,0,peek(memory,wpeek(stack(0),10))
 poke address,1,peek(stack(0),0)
 swbreak
 case 0xED
-address=0
 switch peek(memory,startaddr+1)
 case 0x40
+address=0
 address=wpeek(stack(0),2)
 swbreak
 case 0x48
+address=0
 address=wpeek(stack(0),2)
 swbreak
 case 0x50
+address=0
 address=wpeek(stack(0),2)
 swbreak
 case 0x58
+address=0
 address=wpeek(stack(0),2)
 swbreak
 case 0x60
+address=0
 address=wpeek(stack(0),2)
 swbreak
 case 0x68
+address=0
 address=wpeek(stack(0),2)
 swbreak
 case 0x70
+address=0
 address=wpeek(stack(0),2)
 swbreak
 case 0x78
+address=0
 address=wpeek(stack(0),2)
 swbreak
 case 0xA2
+address=0
 peek address,0,wpeek(stack(0),0)
 peek address,1,iomemorycalledid
 swbreak
 case 0xAA
+address=0
 peek address,0,wpeek(stack(0),0)
 peek address,1,iomemorycalledid
 swbreak
 case 0xB2
+address=0
 peek address,0,wpeek(stack(0),0)
 peek address,1,iomemorycalledid
 swbreak
 case 0xBA
+address=0
 peek address,0,wpeek(stack(0),0)
 peek address,1,iomemorycalledid
 swbreak
