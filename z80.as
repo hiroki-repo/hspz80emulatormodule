@@ -375,7 +375,12 @@ return
 #defcfunc ioportpeek int iomemoryidforz80
 return peek(iomemory,iomemoryidforz80)
 
-//repeat
+#deffunc stackpoke int threadidforrunthez80,int threadidforrunthez80ptrid,int iomemoryidforz80,int iomemorydataforz80
+poke stackformt(threadidforrunthez80ptrid,threadidforrunthez80),iomemoryidforz80,iomemorydataforz80
+
+#defcfunc stackpeek int threadidforrunthez80,int threadidforrunthez80ptrid,int iomemoryidforz80
+return peek(stackformt(threadidforrunthez80ptrid,threadidforrunthez80),iomemoryidforz80)
+
 #defcfunc z80run_c var startaddr, var memory, int threadidforrunthez80
 #deffunc z80run var startaddr, var memory, int threadidforrunthez80
 memcpy stack(0),stackformt(0,threadidforrunthez80),64,0,0
@@ -3778,7 +3783,7 @@ iomemorycalledid=peek(stack(0),3)
 iomemorycalledid16=wpeek(stack(0),2)
 swbreak
 case 0x71
-poke iomemory,peek(stack(0),3),0//peek(stack(0),6)
+poke iomemory,peek(stack(0),3),0
 iomemorycalled=1
 iomemorycalledid=peek(stack(0),3)
 iomemorycalledid16=wpeek(stack(0),2)
