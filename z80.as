@@ -305,6 +305,59 @@ sdim iomemory,cpuamountmax
 dim z80runmode,cpuamountmax
 cnt2=0
 return
+#defcfunc getioportread16bitaddr var startaddr, var memory
+address=0
+switch peek(memory,startaddr)
+case 0xDB
+poke address,0,peek(memory,wpeek(stack(0),10))
+poke address,1,peek(stack(0),0)
+case 0xED
+switch peek(memory,startaddr+1)
+case 0x40
+address=wpeek(stack(0),2)
+swbreak
+case 0x48
+address=wpeek(stack(0),2)
+swbreak
+case 0x50
+address=wpeek(stack(0),2)
+swbreak
+case 0x58
+address=wpeek(stack(0),2)
+swbreak
+case 0x60
+address=wpeek(stack(0),2)
+swbreak
+case 0x68
+address=wpeek(stack(0),2)
+swbreak
+case 0x70
+address=wpeek(stack(0),2)
+swbreak
+case 0x78
+address=wpeek(stack(0),2)
+swbreak
+case 0xA2
+peek address,0,wpeek(stack(0),0)
+peek address,1,iomemorycalledid
+swbreak
+case 0xAA
+peek address,0,wpeek(stack(0),0)
+peek address,1,iomemorycalledid
+swbreak
+case 0xB2
+peek address,0,wpeek(stack(0),0)
+peek address,1,iomemorycalledid
+swbreak
+case 0xBA
+peek address,0,wpeek(stack(0),0)
+peek address,1,iomemorycalledid
+swbreak
+swend
+swbreak
+swend
+return address
+
 #defcfunc isioportcalled
 ioportidforreturn=iomemorycalledid
 if iomemorycalled=0{ioportidforreturn=-1}
@@ -3248,7 +3301,7 @@ if peek(stack(1),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(stackid)
 if peek(stack(1),addtostack) | 0x80{poke stack(stackid),1,peek(stack(stackid),1) | (0x80)}
 swbreak
 case 0x2A
-wpoke stack(1),10,wpeek(memory,wpeek(stack(0),10))
+wpoke stack(1),10,wpeek(memory,wpeek(memory,wpeek(stack(0),10)))
 wpoke stack(0),10,wpeek(stack(0),10)+2
 swbreak
 case 0x2B
@@ -3571,7 +3624,7 @@ if peek(stack(stackid),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(st
 if peek(stack(stackid),addtostack) | 0x80{poke stack(stackid),1,peek(stack(stackid),1) | (0x80)}
 swbreak
 case 0x4B
-wpoke stack(0),2,wpeek(memory,wpeek(stack(0),10))
+wpoke stack(0),2,wpeek(memory,wpeek(memory,wpeek(stack(0),10)))
 wpoke stack(0),10,wpeek(stack(0),10)+2
 swbreak
 
@@ -3662,7 +3715,7 @@ if peek(stack(stackid),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(st
 if peek(stack(stackid),addtostack) | 0x80{poke stack(stackid),1,peek(stack(stackid),1) | (0x80)}
 swbreak
 case 0x5B
-wpoke stack(0),4,wpeek(memory,wpeek(stack(0),10))
+wpoke stack(0),4,wpeek(memory,wpeek(memory,wpeek(stack(0),10)))
 wpoke stack(0),10,wpeek(stack(0),10)+2
 swbreak
 
@@ -3688,6 +3741,11 @@ iomemorycalledid=peek(stack(0),3)
 iomemorycalledid16=wpeek(stack(0),2)
 swbreak
 
+case 0x63
+wpoke memory,wpeek(memory,wpeek(stack(0),10)),wpeek(stack(0),6)
+wpoke stack(0),10,wpeek(stack(0),10)+2
+swbreak
+
 case 0x68
 await 100
 if peek(iomemory,peek(stack(0),3))=0{poke stack(stackid),1,peek(stack(stackid),1) ^ (0x40)}
@@ -3704,8 +3762,45 @@ iomemorycalledid=peek(stack(0),3)
 iomemorycalledid16=wpeek(stack(0),2)
 swbreak
 
+case 0x6B
+wpoke stack(0),6,wpeek(memory,wpeek(memory,wpeek(stack(0),10)))
+wpoke stack(0),10,wpeek(stack(0),10)+2
+swbreak
+
+case 0x70
+await 100
+if peek(iomemory,peek(stack(0),3))=0{poke stack(stackid),1,peek(stack(stackid),1) ^ (0x40)}
+if peek(iomemory,peek(stack(0),3))>=128{poke stack(stackid),1,peek(stack(stackid),1) ^ (0x80)}
+poke stack(0),1,peek(iomemory,peek(stack(0),3))
+iomemorycalled=2
+iomemorycalledid=peek(stack(0),3)
+iomemorycalledid16=wpeek(stack(0),2)
+swbreak
+case 0x71
+poke iomemory,peek(stack(0),3),0//peek(stack(0),6)
+iomemorycalled=1
+iomemorycalledid=peek(stack(0),3)
+iomemorycalledid16=wpeek(stack(0),2)
+swbreak
+
+case 0x78
+await 100
+if peek(iomemory,peek(stack(0),3))=0{poke stack(stackid),1,peek(stack(stackid),1) ^ (0x40)}
+if peek(iomemory,peek(stack(0),3))>=128{poke stack(stackid),1,peek(stack(stackid),1) ^ (0x80)}
+poke stack(0),0,peek(iomemory,peek(stack(0),3))
+iomemorycalled=2
+iomemorycalledid=peek(stack(0),3)
+iomemorycalledid16=wpeek(stack(0),2)
+swbreak
+case 0x79
+poke iomemory,peek(stack(0),3),peek(stack(0),0)
+iomemorycalled=1
+iomemorycalledid=peek(stack(0),3)
+iomemorycalledid16=wpeek(stack(0),2)
+swbreak
+
 case 0x7B
-wpoke stack(0),12,wpeek(memory,wpeek(stack(0),10))
+wpoke stack(0),12,wpeek(memory,wpeek(memory,wpeek(stack(0),10)))
 wpoke stack(0),10,wpeek(stack(0),10)+2
 swbreak
 
@@ -4103,7 +4198,7 @@ if peek(stack(1),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(stackid)
 if peek(stack(1),addtostack) | 0x80{poke stack(stackid),1,peek(stack(stackid),1) | (0x80)}
 swbreak
 case 0x2A
-wpoke stack(1),12,wpeek(memory,wpeek(stack(0),10))
+wpoke stack(1),12,wpeek(memory,wpeek(memory,wpeek(stack(0),10)))
 wpoke stack(0),12,wpeek(stack(0),10)+2
 swbreak
 case 0x2B
