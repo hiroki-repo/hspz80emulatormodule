@@ -306,13 +306,15 @@ dim z80runmode,cpuamountmax
 cnt2=0
 return
 #defcfunc getioportread16bitaddr var startaddr, var memory
-address=0
+address=-1
 switch peek(memory,startaddr)
 case 0xDB
+address=0
 poke address,0,peek(memory,wpeek(stack(0),10))
 poke address,1,peek(stack(0),0)
 swbreak
 case 0xED
+address=0
 switch peek(memory,startaddr+1)
 case 0x40
 address=wpeek(stack(0),2)
