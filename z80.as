@@ -311,6 +311,7 @@ switch peek(memory,startaddr)
 case 0xDB
 poke address,0,peek(memory,wpeek(stack(0),10))
 poke address,1,peek(stack(0),0)
+swbreak
 case 0xED
 switch peek(memory,startaddr+1)
 case 0x40
