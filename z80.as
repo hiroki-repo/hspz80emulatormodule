@@ -2222,7 +2222,7 @@ wpoke stack(0),10,wpeek(memory,wpeek(stack(0),12))
 return
 *opcode_c1
 wpoke stack(0),12,wpeek(stack(0),12)+2
-wpoke stack(0),2,wpeek(stack(0),12)
+wpoke stack(0),2,wpeek(memory,wpeek(stack(0),12))
 return
 *opcode_c2
 if peek(stack(0),1) | (0x40){wpoke stack(0),10,wpeek(stack(0),10)+2}else{
@@ -3130,7 +3130,7 @@ wpoke stack(0),10,wpeek(memory,wpeek(stack(0),12))
 return
 *opcode_d1
 wpoke stack(0),12,wpeek(stack(0),12)+2
-wpoke stack(0),4,wpeek(stack(0),12)
+wpoke stack(0),4,wpeek(memory,wpeek(stack(0),12))
 return
 *opcode_d2
 if peek(stack(0),1) | (0x01){wpoke stack(0),10,wpeek(stack(0),10)+2}else{
@@ -3383,6 +3383,339 @@ case 0x5d
 case 0x5e
 swbreak
 
+case 0x60
+poke stack(1),10,peek(stack(0),2)
+swbreak
+case 0x61
+poke stack(1),10,peek(stack(0),3)
+swbreak
+case 0x62
+poke stack(1),10,peek(stack(0),4)
+swbreak
+case 0x63
+poke stack(1),10,peek(stack(0),5)
+swbreak
+case 0x64
+poke stack(1),10,peek(stack(1),10)
+swbreak
+case 0x65
+poke stack(1),10,peek(stack(1),11)
+swbreak
+case 0x66
+poke stack(0),6,peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
+wpoke stack(0),10,wpeek(stack(0),10)+1
+swbreak
+case 0x67
+poke stack(1),10,peek(stack(0),0)
+swbreak
+case 0x68
+poke stack(1),11,peek(stack(0),2)
+swbreak
+case 0x69
+poke stack(1),11,peek(stack(0),3)
+swbreak
+case 0x6A
+poke stack(1),11,peek(stack(0),4)
+swbreak
+case 0x6B
+poke stack(1),11,peek(stack(0),5)
+swbreak
+case 0x6C
+poke stack(1),11,peek(stack(1),10)
+swbreak
+case 0x6D
+poke stack(1),11,peek(stack(1),11)
+swbreak
+case 0x6E
+poke stack(0),6,peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
+wpoke stack(0),10,wpeek(stack(0),10)+1
+swbreak
+case 0x6F
+poke stack(1),11,peek(stack(0),0)
+swbreak
+case 0x70
+poke memory,(wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10))),peek(stack(0),2)
+swbreak
+case 0x71
+poke memory,(wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10))),peek(stack(0),3)
+swbreak
+case 0x72
+poke memory,(wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10))),peek(stack(0),4)
+swbreak
+case 0x73
+poke memory,(wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10))),peek(stack(0),5)
+swbreak
+case 0x74
+poke memory,(wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10))),peek(stack(0),6)
+swbreak
+case 0x75
+poke memory,(wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10))),peek(stack(0),7)
+swbreak
+
+case 0x77
+poke memory,(wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10))),peek(stack(0),0)
+swbreak
+
+case 0x7C
+poke stack(0),0,peek(stack(1),10)
+swbreak
+case 0x7D
+poke stack(0),0,peek(stack(1),11)
+swbreak
+case 0x7E
+poke stack(0),0,peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
+wpoke stack(0),10,wpeek(stack(0),10)+1
+swbreak
+
+case 0x84
+if (peek(stack(0),1) ^ (0x02))=0{poke stack(0),1,peek(stack(0),1) | (0x02)}
+addold=0
+calculated=0
+halfcarrychk=0
+addtostack=0
+addfromstack=10
+addold=peek(stack(0),addtostack)
+calculated=peek(stack(0),addtostack)+peek(stack(1),addfromstack)
+if peek(stack(0),addtostack) | 0b00001000{halfcarrychk=1}
+poke stack(0),addtostack,calculated
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke stack(0),1,peek(stack(0),1) | (0x01)}
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
+if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
+
+if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+swbreak
+case 0x85
+if (peek(stack(0),1) ^ (0x02))=0{poke stack(0),1,peek(stack(0),1) | (0x02)}
+addold=0
+calculated=0
+halfcarrychk=0
+addtostack=0
+addfromstack=11
+addold=peek(stack(0),addtostack)
+calculated=peek(stack(0),addtostack)+peek(stack(1),addfromstack)
+if peek(stack(0),addtostack) | 0b00001000{halfcarrychk=1}
+poke stack(0),addtostack,calculated
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke stack(0),1,peek(stack(0),1) | (0x01)}
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
+if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
+
+if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+swbreak
+case 0x86
+if (peek(stack(0),1) ^ (0x02))=0{poke stack(0),1,peek(stack(0),1) | (0x02)}
+addold=0
+calculated=0
+halfcarrychk=0
+addtostack=0
+addfromstack=10
+addold=peek(stack(0),addtostack)
+calculated=peek(stack(0),addtostack)+(peek(memory,wpeek(stack(1),addfromstack))+peek(memory,wpeek(stack(0),10)))
+if peek(stack(0),addtostack) | 0b00001000{halfcarrychk=1}
+poke stack(0),addtostack,calculated
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke stack(0),1,peek(stack(0),1) | (0x01)}
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
+if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
+
+if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+wpoke stack(0),10,wpeek(stack(0),10)+1
+swbreak
+
+case 0x8C
+if (peek(stack(0),1) ^ (0x02))=0{poke stack(0),1,peek(stack(0),1) | (0x02)}
+addold=0
+calculated=0
+halfcarrychk=0
+addtostack=0
+addfromstack=10
+addold=peek(stack(0),addtostack)
+calculated=peek(stack(0),addtostack)+peek(stack(1),addfromstack)+(peek(stack(0),1) & (0x01))
+if peek(stack(0),addtostack) | 0b00001000{halfcarrychk=1}
+poke stack(0),addtostack,calculated
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke stack(0),1,peek(stack(0),1) | (0x01)}
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
+if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
+
+if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+swbreak
+case 0x8D
+if (peek(stack(0),1) ^ (0x02))=0{poke stack(0),1,peek(stack(0),1) | (0x02)}
+addold=0
+calculated=0
+halfcarrychk=0
+addtostack=0
+addfromstack=11
+addold=peek(stack(0),addtostack)
+calculated=peek(stack(0),addtostack)+peek(stack(1),addfromstack)+(peek(stack(0),1) & (0x01))
+if peek(stack(0),addtostack) | 0b00001000{halfcarrychk=1}
+poke stack(0),addtostack,calculated
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke stack(0),1,peek(stack(0),1) | (0x01)}
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
+if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
+
+if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+swbreak
+case 0x8E
+if (peek(stack(0),1) ^ (0x02))=0{poke stack(0),1,peek(stack(0),1) | (0x02)}
+addold=0
+calculated=0
+halfcarrychk=0
+addtostack=0
+addfromstack=10
+addold=peek(stack(0),addtostack)
+calculated=peek(stack(0),addtostack)+(peek(memory,wpeek(stack(1),addfromstack))+peek(memory,wpeek(stack(0),10)))+(peek(stack(0),1) & (0x01))
+if peek(stack(0),addtostack) | 0b00001000{halfcarrychk=1}
+poke stack(0),addtostack,calculated
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke stack(0),1,peek(stack(0),1) | (0x01)}
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
+if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
+
+if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+wpoke stack(0),10,wpeek(stack(0),10)+1
+swbreak
+
+case 0x94
+if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
+addold=0
+calculated=0
+halfcarrychk=0
+addtostack=0
+addfromstack=10
+addold=peek(stack(0),addtostack)
+calculated=peek(stack(0),addtostack)-peek(stack(1),addfromstack)
+if peek(stack(0),addtostack) | 0b00001000{halfcarrychk=1}
+poke stack(0),addtostack,calculated
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke stack(0),1,peek(stack(0),1) | (0x01)}
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
+if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
+
+if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+swbreak
+case 0x95
+if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
+addold=0
+calculated=0
+halfcarrychk=0
+addtostack=0
+addfromstack=11
+addold=peek(stack(0),addtostack)
+calculated=peek(stack(0),addtostack)-peek(stack(1),addfromstack)
+if peek(stack(0),addtostack) | 0b00001000{halfcarrychk=1}
+poke stack(0),addtostack,calculated
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke stack(0),1,peek(stack(0),1) | (0x01)}
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
+if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
+
+if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+swbreak
+case 0x96
+if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
+addold=0
+calculated=0
+halfcarrychk=0
+addtostack=0
+addfromstack=11
+addold=peek(stack(0),addtostack)
+calculated=peek(stack(0),addtostack)-(peek(memory,wpeek(stack(1),addfromstack))+peek(memory,wpeek(stack(0),10)))
+if peek(stack(0),addtostack) | 0b00001000{halfcarrychk=1}
+poke stack(0),addtostack,calculated
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke stack(0),1,peek(stack(0),1) | (0x01)}
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
+if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
+
+if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+wpoke stack(0),10,wpeek(stack(0),10)+1
+swbreak
+
+case 0x9C
+if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
+addold=0
+calculated=0
+halfcarrychk=0
+addtostack=0
+addfromstack=10
+addold=peek(stack(0),addtostack)
+calculated=peek(stack(0),addtostack)-peek(stack(1),addfromstack)-(peek(stack(0),1) & (0x01))
+if peek(stack(0),addtostack) | 0b00001000{halfcarrychk=1}
+poke stack(0),addtostack,calculated
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke stack(0),1,peek(stack(0),1) | (0x01)}
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
+if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
+
+if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+swbreak
+case 0x9D
+if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
+addold=0
+calculated=0
+halfcarrychk=0
+addtostack=0
+addfromstack=11
+addold=peek(stack(0),addtostack)
+calculated=peek(stack(0),addtostack)-peek(stack(1),addfromstack)-(peek(stack(0),1) & (0x01))
+if peek(stack(0),addtostack) | 0b00001000{halfcarrychk=1}
+poke stack(0),addtostack,calculated
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke stack(0),1,peek(stack(0),1) | (0x01)}
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
+if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
+
+if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+swbreak
+case 0x9E
+if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
+addold=0
+calculated=0
+halfcarrychk=0
+addtostack=0
+addfromstack=10
+addold=peek(stack(0),addtostack)
+calculated=peek(stack(0),addtostack)-(peek(memory,wpeek(stack(1),addfromstack))+peek(memory,wpeek(stack(0),10)))-(peek(stack(0),1) & (0x01))
+if peek(stack(0),addtostack) | 0b00001000{halfcarrychk=1}
+poke stack(0),addtostack,calculated
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke stack(0),1,peek(stack(0),1) | (0x01)}
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
+if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
+
+if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+wpoke stack(0),10,wpeek(stack(0),10)+1
+swbreak
+
+case 0xE1
+wpoke stack(0),12,wpeek(stack(0),12)+2
+wpoke stack(1),10,wpeek(memory,wpeek(stack(0),12))
+swbreak
+
+case 0xE3
+SP_bak=0
+SP_bak=wpeek(stack(0),12)
+wpoke stack(0),12,wpeek(stack(1),10)
+wpoke stack(1),10,SP_bak
+swbreak
+
+case 0xE5
+wpoke memory,wpeek(stack(0),12),wpeek(stack(1),10)
+wpoke stack(0),12,wpeek(stack(0),12)-2
+swbreak
+
+case 0xE9
+wpoke stack(0),10,wpeek(stack(1),10)
+swbreak
+
+case 0xF9
+wpoke stack(0),12,wpeek(stack(1),10)
+swbreak
+
 case 0xFF
 z80class@=0
 swbreak
@@ -3462,7 +3795,7 @@ wpoke stack(0),10,wpeek(memory,wpeek(stack(0),12))
 return
 *opcode_e1
 wpoke stack(0),12,wpeek(stack(0),12)+2
-wpoke stack(0),6,wpeek(stack(0),12)
+wpoke stack(0),6,wpeek(memory,wpeek(stack(0),12))
 return
 *opcode_e2
 if (peek(stack(0),1) | (0x04)){wpoke stack(0),10,wpeek(stack(0),10)+2}else{
@@ -4048,7 +4381,7 @@ wpoke stack(0),10,wpeek(memory,wpeek(stack(0),12))
 return
 *opcode_f1
 wpoke stack(0),12,wpeek(stack(0),12)+2
-wpoke stack(0),0,wpeek(stack(0),12)
+wpoke stack(0),0,wpeek(memory,wpeek(stack(0),12))
 return
 *opcode_f2
 if (peek(stack(0),1) | (0x80)){wpoke stack(0),10,wpeek(stack(0),10)+2}else{
@@ -4279,6 +4612,340 @@ case 0x5c
 case 0x5d
 case 0x5e
 swbreak
+
+case 0x60
+poke stack(1),12,peek(stack(0),2)
+swbreak
+case 0x61
+poke stack(1),12,peek(stack(0),3)
+swbreak
+case 0x62
+poke stack(1),12,peek(stack(0),4)
+swbreak
+case 0x63
+poke stack(1),12,peek(stack(0),5)
+swbreak
+case 0x64
+poke stack(1),12,peek(stack(1),12)
+swbreak
+case 0x65
+poke stack(1),12,peek(stack(1),13)
+swbreak
+case 0x66
+poke stack(0),6,peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
+wpoke stack(0),10,wpeek(stack(0),10)+1
+swbreak
+case 0x67
+poke stack(1),12,peek(stack(0),0)
+swbreak
+case 0x68
+poke stack(1),13,peek(stack(0),2)
+swbreak
+case 0x69
+poke stack(1),13,peek(stack(0),3)
+swbreak
+case 0x6A
+poke stack(1),13,peek(stack(0),4)
+swbreak
+case 0x6B
+poke stack(1),13,peek(stack(0),5)
+swbreak
+case 0x6C
+poke stack(1),13,peek(stack(1),12)
+swbreak
+case 0x6D
+poke stack(1),13,peek(stack(1),13)
+swbreak
+case 0x6E
+poke stack(0),6,peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
+wpoke stack(0),10,wpeek(stack(0),10)+1
+swbreak
+case 0x6F
+poke stack(1),13,peek(stack(0),0)
+swbreak
+case 0x70
+poke memory,(wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10))),peek(stack(0),2)
+swbreak
+case 0x71
+poke memory,(wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10))),peek(stack(0),3)
+swbreak
+case 0x72
+poke memory,(wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10))),peek(stack(0),4)
+swbreak
+case 0x73
+poke memory,(wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10))),peek(stack(0),5)
+swbreak
+case 0x74
+poke memory,(wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10))),peek(stack(0),6)
+swbreak
+case 0x75
+poke memory,(wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10))),peek(stack(0),7)
+swbreak
+
+case 0x77
+poke memory,(wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10))),peek(stack(0),0)
+swbreak
+
+case 0x7C
+poke stack(0),0,peek(stack(1),12)
+swbreak
+case 0x7D
+poke stack(0),0,peek(stack(1),13)
+swbreak
+case 0x7E
+poke stack(0),0,peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
+wpoke stack(0),10,wpeek(stack(0),10)+1
+swbreak
+
+case 0x84
+if (peek(stack(0),1) ^ (0x02))=0{poke stack(0),1,peek(stack(0),1) | (0x02)}
+addold=0
+calculated=0
+halfcarrychk=0
+addtostack=0
+addfromstack=10
+addold=peek(stack(0),addtostack)
+calculated=peek(stack(0),addtostack)+peek(stack(1),addfromstack)
+if peek(stack(0),addtostack) | 0b00001000{halfcarrychk=1}
+poke stack(0),addtostack,calculated
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke stack(0),1,peek(stack(0),1) | (0x01)}
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
+if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
+
+if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+swbreak
+case 0x85
+if (peek(stack(0),1) ^ (0x02))=0{poke stack(0),1,peek(stack(0),1) | (0x02)}
+addold=0
+calculated=0
+halfcarrychk=0
+addtostack=0
+addfromstack=11
+addold=peek(stack(0),addtostack)
+calculated=peek(stack(0),addtostack)+peek(stack(1),addfromstack)
+if peek(stack(0),addtostack) | 0b00001000{halfcarrychk=1}
+poke stack(0),addtostack,calculated
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke stack(0),1,peek(stack(0),1) | (0x01)}
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
+if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
+
+if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+swbreak
+case 0x86
+if (peek(stack(0),1) ^ (0x02))=0{poke stack(0),1,peek(stack(0),1) | (0x02)}
+addold=0
+calculated=0
+halfcarrychk=0
+addtostack=0
+addfromstack=10
+addold=peek(stack(0),addtostack)
+calculated=peek(stack(0),addtostack)+(peek(memory,wpeek(stack(1),addfromstack))+peek(memory,wpeek(stack(0),10)))
+if peek(stack(0),addtostack) | 0b00001000{halfcarrychk=1}
+poke stack(0),addtostack,calculated
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke stack(0),1,peek(stack(0),1) | (0x01)}
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
+if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
+
+if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+wpoke stack(0),10,wpeek(stack(0),10)+1
+swbreak
+
+case 0x8C
+if (peek(stack(0),1) ^ (0x02))=0{poke stack(0),1,peek(stack(0),1) | (0x02)}
+addold=0
+calculated=0
+halfcarrychk=0
+addtostack=0
+addfromstack=10
+addold=peek(stack(0),addtostack)
+calculated=peek(stack(0),addtostack)+peek(stack(1),addfromstack)+(peek(stack(0),1) & (0x01))
+if peek(stack(0),addtostack) | 0b00001000{halfcarrychk=1}
+poke stack(0),addtostack,calculated
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke stack(0),1,peek(stack(0),1) | (0x01)}
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
+if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
+
+if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+swbreak
+case 0x8D
+if (peek(stack(0),1) ^ (0x02))=0{poke stack(0),1,peek(stack(0),1) | (0x02)}
+addold=0
+calculated=0
+halfcarrychk=0
+addtostack=0
+addfromstack=11
+addold=peek(stack(0),addtostack)
+calculated=peek(stack(0),addtostack)+peek(stack(1),addfromstack)+(peek(stack(0),1) & (0x01))
+if peek(stack(0),addtostack) | 0b00001000{halfcarrychk=1}
+poke stack(0),addtostack,calculated
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke stack(0),1,peek(stack(0),1) | (0x01)}
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
+if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
+
+if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+swbreak
+case 0x8E
+if (peek(stack(0),1) ^ (0x02))=0{poke stack(0),1,peek(stack(0),1) | (0x02)}
+addold=0
+calculated=0
+halfcarrychk=0
+addtostack=0
+addfromstack=10
+addold=peek(stack(0),addtostack)
+calculated=peek(stack(0),addtostack)+(peek(memory,wpeek(stack(1),addfromstack))+peek(memory,wpeek(stack(0),10)))+(peek(stack(0),1) & (0x01))
+if peek(stack(0),addtostack) | 0b00001000{halfcarrychk=1}
+poke stack(0),addtostack,calculated
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke stack(0),1,peek(stack(0),1) | (0x01)}
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
+if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
+
+if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+wpoke stack(0),10,wpeek(stack(0),10)+1
+swbreak
+
+case 0x94
+if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
+addold=0
+calculated=0
+halfcarrychk=0
+addtostack=0
+addfromstack=10
+addold=peek(stack(0),addtostack)
+calculated=peek(stack(0),addtostack)-peek(stack(1),addfromstack)
+if peek(stack(0),addtostack) | 0b00001000{halfcarrychk=1}
+poke stack(0),addtostack,calculated
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke stack(0),1,peek(stack(0),1) | (0x01)}
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
+if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
+
+if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+swbreak
+case 0x95
+if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
+addold=0
+calculated=0
+halfcarrychk=0
+addtostack=0
+addfromstack=11
+addold=peek(stack(0),addtostack)
+calculated=peek(stack(0),addtostack)-peek(stack(1),addfromstack)
+if peek(stack(0),addtostack) | 0b00001000{halfcarrychk=1}
+poke stack(0),addtostack,calculated
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke stack(0),1,peek(stack(0),1) | (0x01)}
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
+if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
+
+if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+swbreak
+case 0x96
+if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
+addold=0
+calculated=0
+halfcarrychk=0
+addtostack=0
+addfromstack=11
+addold=peek(stack(0),addtostack)
+calculated=peek(stack(0),addtostack)-(peek(memory,wpeek(stack(1),addfromstack))+peek(memory,wpeek(stack(0),10)))
+if peek(stack(0),addtostack) | 0b00001000{halfcarrychk=1}
+poke stack(0),addtostack,calculated
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke stack(0),1,peek(stack(0),1) | (0x01)}
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
+if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
+
+if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+wpoke stack(0),10,wpeek(stack(0),10)+1
+swbreak
+
+case 0x9C
+if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
+addold=0
+calculated=0
+halfcarrychk=0
+addtostack=0
+addfromstack=10
+addold=peek(stack(0),addtostack)
+calculated=peek(stack(0),addtostack)-peek(stack(1),addfromstack)-(peek(stack(0),1) & (0x01))
+if peek(stack(0),addtostack) | 0b00001000{halfcarrychk=1}
+poke stack(0),addtostack,calculated
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke stack(0),1,peek(stack(0),1) | (0x01)}
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
+if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
+
+if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+swbreak
+case 0x9D
+if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
+addold=0
+calculated=0
+halfcarrychk=0
+addtostack=0
+addfromstack=11
+addold=peek(stack(0),addtostack)
+calculated=peek(stack(0),addtostack)-peek(stack(1),addfromstack)-(peek(stack(0),1) & (0x01))
+if peek(stack(0),addtostack) | 0b00001000{halfcarrychk=1}
+poke stack(0),addtostack,calculated
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke stack(0),1,peek(stack(0),1) | (0x01)}
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
+if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
+
+if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+swbreak
+case 0x9E
+if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
+addold=0
+calculated=0
+halfcarrychk=0
+addtostack=0
+addfromstack=10
+addold=peek(stack(0),addtostack)
+calculated=peek(stack(0),addtostack)-(peek(memory,wpeek(stack(1),addfromstack))+peek(memory,wpeek(stack(0),10)))-(peek(stack(0),1) & (0x01))
+if peek(stack(0),addtostack) | 0b00001000{halfcarrychk=1}
+poke stack(0),addtostack,calculated
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke stack(0),1,peek(stack(0),1) | (0x01)}
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
+if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
+
+if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+wpoke stack(0),10,wpeek(stack(0),10)+1
+swbreak
+
+case 0xE1
+wpoke stack(0),12,wpeek(stack(0),12)+2
+wpoke stack(1),12,wpeek(memory,wpeek(stack(0),12))
+swbreak
+
+case 0xE3
+SP_bak=0
+SP_bak=wpeek(stack(0),12)
+wpoke stack(0),12,wpeek(stack(1),12)
+wpoke stack(1),12,SP_bak
+swbreak
+
+case 0xE5
+wpoke memory,wpeek(stack(0),12),wpeek(stack(1),12)
+wpoke stack(0),12,wpeek(stack(0),12)-2
+swbreak
+
+case 0xE9
+wpoke stack(0),10,wpeek(stack(1),12)
+swbreak
+
+case 0xF9
+wpoke stack(0),12,wpeek(stack(1),12)
+swbreak
+
 default
 opcodeidforddopcodeaddcall=((opcodeidforddopcode-40)/6)
 opcodeidforddopcodeaddcall2=((opcodeidforddopcode-40)-(opcodeidforddopcodeaddcall*6))-4
