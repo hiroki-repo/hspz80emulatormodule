@@ -4962,7 +4962,24 @@ case 0x4B
 wpoke stack(0),2,wpeek(memory,wpeek(memory,wpeek(stack(0),10)))
 wpoke stack(0),10,wpeek(stack(0),10)+2
 swbreak
+case 0x4C
+if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
+addold=0
+calculated=0
+halfcarrychk=0
+addtostack=0
+addfromstack=0
+addold=peek(stack(0),addtostack)
+calculated=peek(stack(0),addtostack)-peek(stack(0),addfromstack)
+if peek(stack(0),addtostack) | 0b00001000{halfcarrychk=1}
+poke stack(0),addtostack,calculated
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke stack(0),1,peek(stack(0),1) | (0x01)}
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
+if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
+if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+swbreak
 case 0x4D
 wpoke stack(0),12,wpeek(stack(0),12)+2
 wpoke stack(0),10,wpeek(memory,wpeek(stack(0),12))
@@ -5008,6 +5025,24 @@ swbreak
 case 0x53
 wpoke memory,wpeek(memory,wpeek(stack(0),10)),wpeek(stack(0),4)
 wpoke stack(0),10,wpeek(stack(0),10)+2
+swbreak
+case 0x54
+if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
+addold=0
+calculated=0
+halfcarrychk=0
+addtostack=0
+addfromstack=0
+addold=peek(stack(0),addtostack)
+calculated=peek(stack(0),addtostack)-peek(stack(0),addfromstack)
+if peek(stack(0),addtostack) | 0b00001000{halfcarrychk=1}
+poke stack(0),addtostack,calculated
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke stack(0),1,peek(stack(0),1) | (0x01)}
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
+if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
+
+if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 swbreak
 
 case 0x56
@@ -5222,7 +5257,27 @@ peek iomemorycalledid16,1,iomemorycalledid
 swbreak
 
 case 0xB0
+if wpeek(stack(0),4)+wpeek(stack(0),2)>=65536{
+memcpy memory,memory,wpeek(stack(0),2)-((wpeek(stack(0),4)+wpeek(stack(0),2))-65536),wpeek(stack(0),4),wpeek(stack(0),6)
+memcpy memory,memory,((wpeek(stack(0),4)+wpeek(stack(0),2))-65536),0,wpeek(stack(0),6)
+}else{
+if wpeek(stack(0),6)+wpeek(stack(0),2)>=65536{
+memcpy memory,memory,wpeek(stack(0),2)-((wpeek(stack(0),6)+wpeek(stack(0),2))-65536),wpeek(stack(0),4),wpeek(stack(0),6)
+memcpy memory,memory,((wpeek(stack(0),6)+wpeek(stack(0),2))-65536),0,wpeek(stack(0),6)
+}else{
+if wpeek(stack(0),4)+wpeek(stack(0),2)>=65536 and wpeek(stack(0),6)+wpeek(stack(0),2)>=65536{
+copyfromaddr=0
+copytoaddr=0
+repeat wpeek(stack(0),2)
+wpoke copyfromaddr,0,wpeek(stack(0),6)+cnt
+wpoke copytoaddr,0,wpeek(stack(0),4)+cnt
+poke memory,copytoaddr,peek(memory,copyfromaddr)
+loop
+}else{
 memcpy memory,memory,wpeek(stack(0),2),wpeek(stack(0),4),wpeek(stack(0),6)
+}
+}
+}
 wpoke stack(0),4,wpeek(stack(0),4)+wpeek(stack(0),2)
 wpoke stack(0),6,wpeek(stack(0),6)+wpeek(stack(0),2)
 wpoke stack(0),2,0
@@ -5273,7 +5328,22 @@ wpoke stack(0),10,wpeek(stack(0),10)-2
 swbreak
 
 case 0xB8
+if wpeek(stack(0),4)-wpeek(stack(0),2)<=-1{
+memcpy memory,memory,65536-wpeek(stack(0),2),65536+(wpeek(stack(0),4)-wpeek(stack(0),2)),wpeek(stack(0),6)-wpeek(stack(0),2)
+memcpy memory,memory,0,-(wpeek(stack(0),4)-wpeek(stack(0),2)),wpeek(stack(0),6)-wpeek(stack(0),2)
+}else{
+if wpeek(stack(0),6)-wpeek(stack(0),2)<=-1{
+memcpy memory,memory,wpeek(stack(0),2),wpeek(stack(0),4)-wpeek(stack(0),2),65536+(wpeek(stack(0),6)-wpeek(stack(0),2))
+memcpy memory,memory,wpeek(stack(0),2),wpeek(stack(0),4)-wpeek(stack(0),2),-(wpeek(stack(0),6)-wpeek(stack(0),2))
+}else{
+if wpeek(stack(0),4)-wpeek(stack(0),2)<=-1 and wpeek(stack(0),6)-wpeek(stack(0),2)<=-1{
+memcpy memory,memory,65536-wpeek(stack(0),2),65536+(wpeek(stack(0),4)-wpeek(stack(0),2)),65536+(wpeek(stack(0),6)-wpeek(stack(0),2))
+memcpy memory,memory,0,-(wpeek(stack(0),4)-wpeek(stack(0),2)),-(wpeek(stack(0),6)-wpeek(stack(0),2))
+}else{
 memcpy memory,memory,wpeek(stack(0),2),wpeek(stack(0),4)-wpeek(stack(0),2),wpeek(stack(0),6)-wpeek(stack(0),2)
+}
+}
+}
 wpoke stack(0),4,wpeek(stack(0),4)-wpeek(stack(0),2)
 wpoke stack(0),6,wpeek(stack(0),6)-wpeek(stack(0),2)
 wpoke stack(0),2,0
