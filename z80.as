@@ -494,8 +494,8 @@ if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke sta
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 return
 *opcode_0a
 poke stack(0),0,peek(memory,wpeek(stack(0),2))
@@ -595,8 +595,8 @@ if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke sta
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 return
 *opcode_1a
 poke stack(0),0,peek(memory,wpeek(stack(0),4))
@@ -702,8 +702,8 @@ if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke sta
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 return
 *opcode_2a
 wpoke stack(0),6,wpeek(memory,wpeek(stack(0),10))
@@ -801,8 +801,8 @@ if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke sta
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 return
 *opcode_3a
 poke stack(0),0,peek(memory,wpeek(stack(0),10))
@@ -1045,8 +1045,8 @@ if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke sta
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 return
 *opcode_81
 if (peek(stack(0),1) ^ (0x02))=0{poke stack(0),1,peek(stack(0),1) | (0x02)}
@@ -1063,8 +1063,8 @@ if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke sta
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 return
 *opcode_82
 if (peek(stack(0),1) ^ (0x02))=0{poke stack(0),1,peek(stack(0),1) | (0x02)}
@@ -1081,8 +1081,8 @@ if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke sta
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 return
 *opcode_83
 if (peek(stack(0),1) ^ (0x02))=0{poke stack(0),1,peek(stack(0),1) | (0x02)}
@@ -1099,8 +1099,8 @@ if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke sta
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 return
 *opcode_84
 if (peek(stack(0),1) ^ (0x02))=0{poke stack(0),1,peek(stack(0),1) | (0x02)}
@@ -1117,8 +1117,8 @@ if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke sta
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 return
 *opcode_85
 if (peek(stack(0),1) ^ (0x02))=0{poke stack(0),1,peek(stack(0),1) | (0x02)}
@@ -1135,8 +1135,8 @@ if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke sta
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 return
 *opcode_86
 if (peek(stack(0),1) ^ (0x02))=0{poke stack(0),1,peek(stack(0),1) | (0x02)}
@@ -1153,8 +1153,8 @@ if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke sta
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 return
 *opcode_87
 if (peek(stack(0),1) ^ (0x02))=0{poke stack(0),1,peek(stack(0),1) | (0x02)}
@@ -1171,8 +1171,8 @@ if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke sta
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 return
 *opcode_88
 if (peek(stack(0),1) ^ (0x02))=0{poke stack(0),1,peek(stack(0),1) | (0x02)}
@@ -1189,8 +1189,8 @@ if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke sta
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 return
 *opcode_89
 if (peek(stack(0),1) ^ (0x02))=0{poke stack(0),1,peek(stack(0),1) | (0x02)}
@@ -1207,8 +1207,8 @@ if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke sta
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 return
 *opcode_8a
 if (peek(stack(0),1) ^ (0x02))=0{poke stack(0),1,peek(stack(0),1) | (0x02)}
@@ -1225,8 +1225,8 @@ if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke sta
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 return
 *opcode_8b
 if (peek(stack(0),1) ^ (0x02))=0{poke stack(0),1,peek(stack(0),1) | (0x02)}
@@ -1243,8 +1243,8 @@ if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke sta
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 return
 *opcode_8c
 if (peek(stack(0),1) ^ (0x02))=0{poke stack(0),1,peek(stack(0),1) | (0x02)}
@@ -1261,8 +1261,8 @@ if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke sta
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 return
 *opcode_8d
 if (peek(stack(0),1) ^ (0x02))=0{poke stack(0),1,peek(stack(0),1) | (0x02)}
@@ -1279,8 +1279,8 @@ if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke sta
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 return
 *opcode_8e
 if (peek(stack(0),1) ^ (0x02))=0{poke stack(0),1,peek(stack(0),1) | (0x02)}
@@ -1297,8 +1297,8 @@ if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke sta
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 return
 *opcode_8f
 if (peek(stack(0),1) ^ (0x02))=0{poke stack(0),1,peek(stack(0),1) | (0x02)}
@@ -1315,8 +1315,8 @@ if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke sta
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 return
 *opcode_90
 if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
@@ -1333,8 +1333,8 @@ if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke sta
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 return
 *opcode_91
 if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
@@ -1351,8 +1351,8 @@ if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke sta
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 return
 *opcode_92
 if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
@@ -1369,8 +1369,8 @@ if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke sta
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 return
 *opcode_93
 if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
@@ -1387,8 +1387,8 @@ if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke sta
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 return
 *opcode_94
 if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
@@ -1405,8 +1405,8 @@ if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke sta
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 return
 *opcode_95
 if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
@@ -1423,8 +1423,8 @@ if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke sta
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 return
 *opcode_96
 if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
@@ -1441,8 +1441,8 @@ if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke sta
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 return
 *opcode_97
 if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
@@ -1459,8 +1459,8 @@ if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke sta
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 return
 *opcode_98
 if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
@@ -1477,8 +1477,8 @@ if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke sta
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 return
 *opcode_99
 if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
@@ -1495,8 +1495,8 @@ if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke sta
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 return
 *opcode_9a
 if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
@@ -1513,8 +1513,8 @@ if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke sta
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 return
 *opcode_9b
 if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
@@ -1531,8 +1531,8 @@ if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke sta
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 return
 *opcode_9c
 if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
@@ -1549,8 +1549,8 @@ if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke sta
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 return
 *opcode_9d
 if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
@@ -1567,8 +1567,8 @@ if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke sta
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 return
 *opcode_9e
 if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
@@ -1585,8 +1585,8 @@ if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke sta
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 return
 *opcode_9f
 if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
@@ -1603,8 +1603,8 @@ if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke sta
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 return
 *opcode_a0
 /*poke stack(0),1,peek(stack(0),1) ^ (0x01)
@@ -1622,8 +1622,8 @@ poke stack(0),addtostack,calculated
 /*if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}*/
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}*/
 poke stack(0),1,SZP(peek(stack(0),addtostack)) | 0x10
 return
 *opcode_a1
@@ -1642,8 +1642,8 @@ poke stack(0),addtostack,calculated
 /*if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}*/
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}*/
 poke stack(0),1,SZP(peek(stack(0),addtostack)) | 0x10
 return
 *opcode_a2
@@ -1662,8 +1662,8 @@ poke stack(0),addtostack,calculated
 /*if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}*/
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}*/
 poke stack(0),1,SZP(peek(stack(0),addtostack)) | 0x10
 return
 *opcode_a3
@@ -1682,8 +1682,8 @@ poke stack(0),addtostack,calculated
 /*if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}*/
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}*/
 poke stack(0),1,SZP(peek(stack(0),addtostack)) | 0x10
 return
 *opcode_a4
@@ -1702,8 +1702,8 @@ poke stack(0),addtostack,calculated
 /*if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}*/
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}*/
 poke stack(0),1,SZP(peek(stack(0),addtostack)) | 0x10
 return
 *opcode_a5
@@ -1722,8 +1722,8 @@ poke stack(0),addtostack,calculated
 /*if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}*/
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}*/
 poke stack(0),1,SZP(peek(stack(0),addtostack)) | 0x10
 return
 *opcode_a6
@@ -1742,8 +1742,8 @@ poke stack(0),addtostack,calculated
 /*if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}*/
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}*/
 poke stack(0),1,SZP(peek(stack(0),addtostack)) | 0x10
 return
 *opcode_a7
@@ -1762,8 +1762,8 @@ poke stack(0),addtostack,calculated
 /*if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}*/
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}*/
 poke stack(0),1,SZP(peek(stack(0),addtostack)) | 0x10
 return
 *opcode_a8
@@ -1782,8 +1782,8 @@ poke stack(0),addtostack,calculated
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 poke stack(0),1,SZP(peek(stack(0),addtostack))
 return
 *opcode_a9
@@ -1802,8 +1802,8 @@ poke stack(0),addtostack,calculated
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 poke stack(0),1,SZP(peek(stack(0),addtostack))
 return
 *opcode_aa
@@ -1822,8 +1822,8 @@ poke stack(0),addtostack,calculated
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 poke stack(0),1,SZP(peek(stack(0),addtostack))
 return
 *opcode_ab
@@ -1842,8 +1842,8 @@ poke stack(0),addtostack,calculated
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 poke stack(0),1,SZP(peek(stack(0),addtostack))
 return
 *opcode_ac
@@ -1862,8 +1862,8 @@ poke stack(0),addtostack,calculated
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 poke stack(0),1,SZP(peek(stack(0),addtostack))
 return
 *opcode_ad
@@ -1882,8 +1882,8 @@ poke stack(0),addtostack,calculated
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 poke stack(0),1,SZP(peek(stack(0),addtostack))
 return
 *opcode_ae
@@ -1902,8 +1902,8 @@ poke stack(0),addtostack,calculated
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 poke stack(0),1,SZP(peek(stack(0),addtostack))
 return
 *opcode_af
@@ -1922,8 +1922,8 @@ poke stack(0),addtostack,calculated
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 poke stack(0),1,SZP(peek(stack(0),addtostack))
 return
 *opcode_b0
@@ -1942,8 +1942,8 @@ if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke sta
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 poke stack(0),1,SZP(peek(stack(0),addtostack))
 return
 *opcode_b1
@@ -1962,8 +1962,8 @@ if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke sta
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 poke stack(0),1,SZP(peek(stack(0),addtostack))
 return
 *opcode_b2
@@ -1982,8 +1982,8 @@ if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke sta
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 poke stack(0),1,SZP(peek(stack(0),addtostack))
 return
 *opcode_b3
@@ -2002,8 +2002,8 @@ if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke sta
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 poke stack(0),1,SZP(peek(stack(0),addtostack))
 return
 *opcode_b4
@@ -2022,8 +2022,8 @@ if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke sta
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 poke stack(0),1,SZP(peek(stack(0),addtostack))
 return
 *opcode_b5
@@ -2042,8 +2042,8 @@ if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke sta
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 poke stack(0),1,SZP(peek(stack(0),addtostack))
 return
 *opcode_b6
@@ -2062,8 +2062,8 @@ if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke sta
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 poke stack(0),1,SZP(peek(stack(0),addtostack))
 return
 *opcode_b7
@@ -2082,8 +2082,8 @@ if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke sta
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 poke stack(0),1,SZP(peek(stack(0),addtostack))
 return
 *opcode_b8
@@ -2274,8 +2274,8 @@ if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke sta
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 wpoke stack(0),10,wpeek(stack(0),10)+1
 return
 *opcode_c7
@@ -3723,8 +3723,8 @@ poke stack(0),addtostack,calculated
 /*if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}*/
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}*/
 poke stack(0),1,SZP(peek(stack(0),addtostack)) | 0x10
 swbreak
 case 0xA5
@@ -3743,8 +3743,8 @@ poke stack(0),addtostack,calculated
 /*if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}*/
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}*/
 poke stack(0),1,SZP(peek(stack(0),addtostack)) | 0x10
 swbreak
 case 0xA6
@@ -3763,8 +3763,8 @@ poke stack(0),addtostack,calculated
 /*if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}*/
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}*/
 poke stack(0),1,SZP(peek(stack(0),addtostack)) | 0x10
 wpoke stack(0),10,wpeek(stack(0),10)+1
 swbreak
@@ -4774,8 +4774,8 @@ if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke sta
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 wpoke stack(0),10,wpeek(stack(0),10)+1
 return
 *opcode_df
@@ -4832,8 +4832,8 @@ poke stack(0),addtostack,calculated
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 wpoke stack(0),10,wpeek(stack(0),10)+1
 return
 *opcode_e7
@@ -4904,8 +4904,8 @@ if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke sta
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 swbreak
 case 0x43
 wpoke memory,wpeek(memory,wpeek(stack(0),10)),wpeek(stack(0),2)
@@ -4926,8 +4926,8 @@ if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke sta
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 swbreak
 case 0x45
 wpoke stack(0),12,wpeek(stack(0),12)+2
@@ -4970,8 +4970,8 @@ if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke sta
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 swbreak
 case 0x4B
 wpoke stack(0),2,wpeek(memory,wpeek(memory,wpeek(stack(0),10)))
@@ -4992,15 +4992,17 @@ if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke sta
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 swbreak
 case 0x4D
 wpoke stack(0),12,wpeek(stack(0),12)+2
 wpoke stack(0),10,wpeek(memory,wpeek(stack(0),12))
 poke stack(1),14,0,peek(stack(1),15)
 swbreak
-
+case 0x4E
+if z80runmode(threadidforrunthez80)=1{z80runmode(threadidforrunthez80)=0}else{if z80runmode(threadidforrunthez80)=0{z80runmode(threadidforrunthez80)=1}}
+swbreak
 case 0x4F
 poke stack(0),14,peek(stack(0),0)
 swbreak
@@ -5059,12 +5061,16 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 swbreak
-
+case 0x55
+wpoke stack(0),12,wpeek(stack(0),12)+2
+wpoke stack(0),10,wpeek(memory,wpeek(stack(0),12))
+poke stack(1),14,0,peek(stack(1),15)
+swbreak
 case 0x56
 z80runmode(threadidforrunthez80)=1
 swbreak
 case 0x57
-poke stack(0),0,peek(stack(0),14)
+poke stack(0),0,peek(stack(0),15)
 swbreak
 case 0x58
 //await 100
@@ -5096,19 +5102,24 @@ if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke sta
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 swbreak
 case 0x5B
 wpoke stack(0),4,wpeek(memory,wpeek(memory,wpeek(stack(0),10)))
 wpoke stack(0),10,wpeek(stack(0),10)+2
 swbreak
 
+case 0x5D
+wpoke stack(0),12,wpeek(stack(0),12)+2
+wpoke stack(0),10,wpeek(memory,wpeek(stack(0),12))
+poke stack(1),14,0,peek(stack(1),15)
+swbreak
 case 0x5E
 z80runmode(threadidforrunthez80)=2
 swbreak
 case 0x5F
-poke stack(0),0,peek(stack(0),15)
+poke stack(0),0,peek(stack(0),14)
 swbreak
 case 0x60
 //await 100
@@ -5125,10 +5136,53 @@ iomemorycalled=1
 iomemorycalledid=peek(stack(0),2)
 iomemorycalledid16=wpeek(stack(0),2)
 swbreak
+case 0x62
+if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
+addold=0
+calculated=0
+halfcarrychk=0
+addtostack=6
+addfromstack=6
+addold=peek(stack(0),addtostack)
+calculated=wpeek(stack(0),addtostack)-wpeek(stack(0),addfromstack)-(peek(stack(0),1) & (0x01))
+if peek(stack(0),addtostack) & 0b00001000{halfcarrychk=1}
+poke stack(0),addtostack,calculated
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke stack(0),1,peek(stack(0),1) | (0x01)}
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
+if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+swbreak
 case 0x63
 wpoke memory,wpeek(memory,wpeek(stack(0),10)),wpeek(stack(0),6)
 wpoke stack(0),10,wpeek(stack(0),10)+2
+swbreak
+case 0x64
+if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
+addold=0
+calculated=0
+halfcarrychk=0
+addtostack=0
+addfromstack=0
+addold=peek(stack(0),addtostack)
+calculated=peek(stack(0),addtostack)-peek(stack(0),addfromstack)
+if peek(stack(0),addtostack) & 0b00001000{halfcarrychk=1}
+poke stack(0),addtostack,calculated
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke stack(0),1,peek(stack(0),1) | (0x01)}
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
+if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
+
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+swbreak
+case 0x65
+wpoke stack(0),12,wpeek(stack(0),12)+2
+wpoke stack(0),10,wpeek(memory,wpeek(stack(0),12))
+poke stack(1),14,0,peek(stack(1),15)
+swbreak
+case 0x66
+z80runmode(threadidforrunthez80)=0
 swbreak
 
 case 0x68
@@ -5152,6 +5206,15 @@ wpoke stack(0),6,wpeek(memory,wpeek(memory,wpeek(stack(0),10)))
 wpoke stack(0),10,wpeek(stack(0),10)+2
 swbreak
 
+case 0x6D
+wpoke stack(0),12,wpeek(stack(0),12)+2
+wpoke stack(0),10,wpeek(memory,wpeek(stack(0),12))
+poke stack(1),14,0,peek(stack(1),15)
+swbreak
+case 0x6E
+if z80runmode(threadidforrunthez80)=1{z80runmode(threadidforrunthez80)=0}else{if z80runmode(threadidforrunthez80)=0{z80runmode(threadidforrunthez80)=1}}
+swbreak
+
 case 0x70
 //await 100
 if peek(iomemory,peek(stack(0),2))=0{poke stack(0),1,peek(stack(0),1) ^ (0x40)}
@@ -5166,6 +5229,37 @@ poke iomemory,peek(stack(0),2),0
 iomemorycalled=1
 iomemorycalledid=peek(stack(0),2)
 iomemorycalledid16=wpeek(stack(0),2)
+swbreak
+case 0x72
+if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
+addold=0
+calculated=0
+halfcarrychk=0
+addtostack=6
+addfromstack=12
+addold=peek(stack(0),addtostack)
+calculated=wpeek(stack(0),addtostack)-wpeek(stack(0),addfromstack)-(peek(stack(0),1) & (0x01))
+if peek(stack(0),addtostack) & 0b00001000{halfcarrychk=1}
+poke stack(0),addtostack,calculated
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke stack(0),1,peek(stack(0),1) | (0x01)}
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
+if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
+
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+swbreak
+case 0x73
+wpoke memory,wpeek(memory,wpeek(stack(0),10)),wpeek(stack(0),12)
+wpoke stack(0),10,wpeek(stack(0),10)+2
+swbreak
+
+case 0x75
+wpoke stack(0),12,wpeek(stack(0),12)+2
+wpoke stack(0),10,wpeek(memory,wpeek(stack(0),12))
+poke stack(1),14,0,peek(stack(1),15)
+swbreak
+case 0x76
+z80runmode(threadidforrunthez80)=1
 swbreak
 
 case 0x78
@@ -5187,6 +5281,12 @@ swbreak
 case 0x7B
 wpoke stack(0),12,wpeek(memory,wpeek(memory,wpeek(stack(0),10)))
 wpoke stack(0),10,wpeek(stack(0),10)+2
+swbreak
+
+case 0x7D
+wpoke stack(0),12,wpeek(stack(0),12)+2
+wpoke stack(0),10,wpeek(memory,wpeek(stack(0),12))
+poke stack(1),14,0,peek(stack(1),15)
 swbreak
 
 case 0xA0
@@ -5430,8 +5530,8 @@ poke stack(0),addtostack,calculated
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 wpoke stack(0),10,wpeek(stack(0),10)+1
 return
 *opcode_ef
@@ -5486,8 +5586,8 @@ if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke sta
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 wpoke stack(0),10,wpeek(stack(0),10)+1
 return
 *opcode_f7
@@ -6004,8 +6104,8 @@ poke stack(0),addtostack,calculated
 /*if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}*/
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}*/
 poke stack(0),1,SZP(peek(stack(0),addtostack)) | 0x10
 swbreak
 case 0xA5
@@ -6024,8 +6124,8 @@ poke stack(0),addtostack,calculated
 /*if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}*/
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}*/
 poke stack(0),1,SZP(peek(stack(0),addtostack)) | 0x10
 swbreak
 case 0xA6
@@ -6044,8 +6144,8 @@ poke stack(0),addtostack,calculated
 /*if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
-if peek(stack(0),addtostack) | 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) | 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}*/
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}*/
 poke stack(0),1,SZP(peek(stack(0),addtostack)) | 0x10
 wpoke stack(0),10,wpeek(stack(0),10)+1
 swbreak
