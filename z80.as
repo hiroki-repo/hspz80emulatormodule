@@ -643,7 +643,7 @@ wpoke stack(0),6,wpeek(memory,wpeek(stack(0),10))
 wpoke stack(0),10,wpeek(stack(0),10)+2
 return
 *opcode_22
-poke memory,wpeek(memory,wpeek(stack(0),10)),peek(stack(0),6)
+wpoke memory,wpeek(memory,wpeek(stack(0),10)),wpeek(stack(0),6)
 wpoke stack(0),10,wpeek(stack(0),10)+2
 return
 *opcode_23
