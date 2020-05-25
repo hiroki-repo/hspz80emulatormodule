@@ -532,7 +532,7 @@ poke stack(0),1,peek(stack(0),1) | (peek(stack(0),0) & (0x20 | 0x08))
 return
 *opcode_10
 poke stack(0),2,peek(stack(0),2)-1
-address=wpeek(stack(0),10)
+address=peek(memory,wpeek(stack(0),10))
 if address>=128{address=-(256-address)}
 if (peek(stack(0),2)) {wpoke stack(0),10,wpeek(stack(0),10)+address}else{wpoke stack(0),10,wpeek(stack(0),10)+1}
 return
@@ -576,7 +576,7 @@ poke stack(0),1,(peek(stack(0),1) & (0x80 | 0x40 | 0x04)) | rlac | (rlares & (0x
 poke stack(0),0,rlares
 return
 *opcode_18
-address=wpeek(stack(0),10)
+address=peek(memory,wpeek(stack(0),10))
 if address>=128{address=-(256-address)}
 wpoke stack(0),10,wpeek(stack(0),10)+address
 return
@@ -634,7 +634,7 @@ poke stack(0),1,(peek(stack(0),1) & (0x80 | 0x40 | 0x04)) | rlac | (rlares & (0x
 poke stack(0),0,rlares
 return
 *opcode_20
-address=wpeek(stack(0),10)
+address=peek(memory,wpeek(stack(0),10))
 if address>=128{address=-(256-address)}
 if (peek(stack(0),1) & 0x40) {wpoke stack(0),10,wpeek(stack(0),10)+1}else{wpoke stack(0),10,wpeek(stack(0),10)+address}
 return
@@ -683,7 +683,7 @@ return
 	poke stack(0),1,(peek(stack(0),1) & (0x01 | 0x02)) | (peek(stack(0),0) > 0x99) | ((peek(stack(0),0) ^ afordaa) & 0x10) | SZP(afordaa)
 return
 *opcode_28
-address=wpeek(stack(0),10)
+address=peek(memory,wpeek(stack(0),10))
 if address>=128{address=-(256-address)}
 if (peek(stack(0),1) & 0x40) {wpoke stack(0),10,wpeek(stack(0),10)+address}else{wpoke stack(0),10,wpeek(stack(0),10)+1}
 return
@@ -741,7 +741,7 @@ poke stack(0),1,(peek(stack(0),1) & (0x80 | 0x40 | 0x04 | 0x01)) | 0x10 | 0x02 |
 poke stack(0),0,cpla
 return
 *opcode_30
-address=wpeek(stack(0),10)
+address=peek(memory,wpeek(stack(0),10))
 if address>=128{address=-(256-address)}
 if (peek(stack(0),1) & 0x01) {wpoke stack(0),10,wpeek(stack(0),10)+1}else{wpoke stack(0),10,wpeek(stack(0),10)+address}
 return
@@ -782,7 +782,7 @@ return
 poke stack(0),1,(peek(stack(0),1) & (0x80 | 0x40 | 0x20 | 0x08 | 0x04)) | 0x01 | (peek(stack(0),0) & (0x20 | 0x08))
 return
 *opcode_38
-address=wpeek(stack(0),10)
+address=peek(memory,wpeek(stack(0),10))
 if address>=128{address=-(256-address)}
 if (peek(stack(0),1) & 0x01) {wpoke stack(0),10,wpeek(stack(0),10)+address}else{wpoke stack(0),10,wpeek(stack(0),10)+1}
 return
