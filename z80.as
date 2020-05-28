@@ -22,7 +22,10 @@ dim SZHV_dec,257
 		//SZ_BIT(i) = i
 		if (i = (i & 0x80)){SZ_BIT(i) = 0x40 | 0x04}
 		SZ_BIT(i) |= (i & (0x20 | 0x08))
-		SZP(i)=SZ(i) | (p2 & 1)
+		p2xclac=0
+		p2xclac=(p2 & 1)
+		if p2xclac = 0{p2xclac=0x04}else{p2xclac=0}
+		SZP(i)=SZ(i) | p2xclac
 		p2=p
 		if ((p2 & 1) = 0) {SZP(i) = SZP(i) | (0x04)}
 		SZHV_inc(i) = SZ(i)
@@ -4906,6 +4909,9 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+gosub *SZHVCcall
 swbreak
 case 0x43
 wpoke memory,wpeek(memory,wpeek(stack(0),10)),wpeek(stack(0),2)
@@ -4972,6 +4978,9 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+gosub *SZHVCcall
 swbreak
 case 0x4B
 wpoke stack(0),2,wpeek(memory,wpeek(memory,wpeek(stack(0),10)))
@@ -5038,6 +5047,9 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+gosub *SZHVCcall
 swbreak
 case 0x53
 wpoke memory,wpeek(memory,wpeek(stack(0),10)),wpeek(stack(0),4)
@@ -5104,6 +5116,9 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+gosub *SZHVCcall
 swbreak
 case 0x5B
 wpoke stack(0),4,wpeek(memory,wpeek(memory,wpeek(stack(0),10)))
@@ -5153,6 +5168,9 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+gosub *SZHVCcall
 swbreak
 case 0x63
 wpoke memory,wpeek(memory,wpeek(stack(0),10)),wpeek(stack(0),6)
@@ -5247,6 +5265,9 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+gosub *SZHVCcall
 swbreak
 case 0x73
 wpoke memory,wpeek(memory,wpeek(stack(0),10)),wpeek(stack(0),12)
@@ -7165,5 +7186,42 @@ return
 
 //logmes "Unimplemented!"
 return
+*SZHVCcall
+//SZHVC_addvar_37=peek(stack(SZHVC_addvar_37id),SZHVC_addvar_37id2)
+SZHVC_addvar_37=SZHVC_addvar_37id2
+poke SZHVC_addvar_52,0,peek(stack(0),1)
+	SZHVC_addvar_52 ^= 2
+	if ( SZHVC_addvar_37 < 0 ) {
+		SZHVC_addvar_52 |= 1
+	}
+	else {
+		SZHVC_addvar_52 &= 254
+	}
+	if ( SZHVC_addvar_37 & 4 ) {
+		SZHVC_addvar_52 |= 16
+	}
+	else {
+		SZHVC_addvar_52 &= 255 ^ 16
+	}
+	if ( SZHVC_addvar_37 == 0 ) {
+		SZHVC_addvar_52 |= 64
+	}
+	else {
+		SZHVC_addvar_52 &= 255 ^ 64
+	}
+	if ( (SZHVC_addvar_37 & 32768) != (wpeek(stack(0), 6) != 32768) ) {
+		SZHVC_addvar_52 |= 4
+	}
+	else {
+		SZHVC_addvar_52 &= 255 ^ 4
+	}
+	if ( SZHVC_addvar_37 & 32768 ) {
+		SZHVC_addvar_52 |= 128
+	}
+	else {
+		SZHVC_addvar_52 &= 255 ^ 128
+	}
+poke stack(0),1,SZHVC_addvar_52
+	return
 #global
 gocaine_z80init
