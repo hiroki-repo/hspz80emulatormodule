@@ -1338,6 +1338,9 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+gosub *SZHVC2call
 return
 *opcode_91
 if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
@@ -1356,6 +1359,9 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+gosub *SZHVC2call
 return
 *opcode_92
 if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
@@ -1374,6 +1380,9 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+gosub *SZHVC2call
 return
 *opcode_93
 if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
@@ -1392,6 +1401,9 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+gosub *SZHVC2call
 return
 *opcode_94
 if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
@@ -1410,6 +1422,9 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+gosub *SZHVC2call
 return
 *opcode_95
 if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
@@ -1428,6 +1443,9 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+gosub *SZHVC2call
 return
 *opcode_96
 if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
@@ -1446,6 +1464,9 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+gosub *SZHVC2call
 return
 *opcode_97
 if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
@@ -1464,6 +1485,9 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+gosub *SZHVC2call
 return
 *opcode_98
 if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
@@ -1482,6 +1506,9 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+gosub *SZHVC2call
 return
 *opcode_99
 if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
@@ -1500,6 +1527,9 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+gosub *SZHVC2call
 return
 *opcode_9a
 if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
@@ -1518,6 +1548,9 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+gosub *SZHVC2call
 return
 *opcode_9b
 if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
@@ -1536,6 +1569,9 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+gosub *SZHVC2call
 return
 *opcode_9c
 if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
@@ -1554,6 +1590,9 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+gosub *SZHVC2call
 return
 *opcode_9d
 if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
@@ -1572,6 +1611,9 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+gosub *SZHVC2call
 return
 *opcode_9e
 if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
@@ -1590,6 +1632,9 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+gosub *SZHVC2call
 return
 *opcode_9f
 if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
@@ -1608,6 +1653,9 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+gosub *SZHVC2call
 return
 *opcode_a0
 /*poke stack(0),1,peek(stack(0),1) ^ (0x01)
@@ -2106,6 +2154,9 @@ if calculated=0 /*and addold!0*/						 {poke stack(0),1,peek(stack(0),1) | (0x40
 
 if calculated & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if calculated & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+gosub *SZHVC2call
 return
 *opcode_b9
 if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
@@ -2124,6 +2175,9 @@ if calculated=0 /*and addold!0*/						 {poke stack(0),1,peek(stack(0),1) | (0x40
 
 if calculated & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if calculated & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+gosub *SZHVC2call
 return
 *opcode_ba
 if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
@@ -2142,6 +2196,9 @@ if calculated=0 /*and addold!0*/						 {poke stack(0),1,peek(stack(0),1) | (0x40
 
 if calculated & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if calculated & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+gosub *SZHVC2call
 return
 *opcode_bb
 if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
@@ -2160,6 +2217,9 @@ if calculated=0 /*and addold!0*/						 {poke stack(0),1,peek(stack(0),1) | (0x40
 
 if calculated & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if calculated & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+gosub *SZHVC2call
 return
 *opcode_bc
 if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
@@ -2178,6 +2238,9 @@ if calculated=0 /*and addold!0*/						 {poke stack(0),1,peek(stack(0),1) | (0x40
 
 if calculated & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if calculated & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+gosub *SZHVC2call
 return
 *opcode_bd
 if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
@@ -2196,6 +2259,9 @@ if calculated=0 /*and addold!0*/						 {poke stack(0),1,peek(stack(0),1) | (0x40
 
 if calculated & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if calculated & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+gosub *SZHVC2call
 return
 *opcode_be
 if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
@@ -2214,6 +2280,9 @@ if calculated=0 /*and addold!0*/						 {poke stack(0),1,peek(stack(0),1) | (0x40
 
 if calculated & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if calculated & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+gosub *SZHVC2call
 return
 *opcode_bf
 if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
@@ -2232,6 +2301,9 @@ if calculated=0 /*and addold!0*/						 {poke stack(0),1,peek(stack(0),1) | (0x40
 
 if calculated & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if calculated & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+gosub *SZHVC2call
 return
 *opcode_c0
 if peek(stack(0),1) & (0x40){}else{
@@ -3615,6 +3687,9 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+gosub *SZHVC2call
 swbreak
 case 0x95
 if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
@@ -3633,6 +3708,9 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+gosub *SZHVC2call
 swbreak
 case 0x96
 if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
@@ -3651,6 +3729,9 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+gosub *SZHVC2call
 wpoke stack(0),10,wpeek(stack(0),10)+1
 swbreak
 
@@ -3671,6 +3752,9 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+gosub *SZHVC2call
 swbreak
 case 0x9D
 if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
@@ -3689,6 +3773,9 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+gosub *SZHVC2call
 swbreak
 case 0x9E
 if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
@@ -3707,6 +3794,9 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+gosub *SZHVC2call
 wpoke stack(0),10,wpeek(stack(0),10)+1
 swbreak
 
@@ -3911,6 +4001,9 @@ if calculated=0 /*and addold!0*/						 {poke stack(0),1,peek(stack(0),1) | (0x40
 
 if calculated & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if calculated & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+gosub *SZHVC2call
 swbreak
 case 0xBD
 if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
@@ -3929,6 +4022,9 @@ if calculated=0 /*and addold!0*/						 {poke stack(0),1,peek(stack(0),1) | (0x40
 
 if calculated & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if calculated & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+gosub *SZHVC2call
 swbreak
 case 0xBE
 if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
@@ -3947,6 +4043,9 @@ if calculated=0 /*and addold!0*/						 {poke stack(0),1,peek(stack(0),1) | (0x40
 
 if calculated & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if calculated & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+gosub *SZHVC2call
 swbreak
 
 case 0xCB
@@ -6014,6 +6113,9 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+gosub *SZHVC2call
 swbreak
 case 0x95
 if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
@@ -6032,6 +6134,9 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+gosub *SZHVC2call
 swbreak
 case 0x96
 if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
@@ -6050,6 +6155,9 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+gosub *SZHVC2call
 wpoke stack(0),10,wpeek(stack(0),10)+1
 swbreak
 
@@ -6070,6 +6178,9 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+gosub *SZHVC2call
 swbreak
 case 0x9D
 if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
@@ -6088,6 +6199,9 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+gosub *SZHVC2call
 swbreak
 case 0x9E
 if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
@@ -6106,6 +6220,9 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+gosub *SZHVC2call
 wpoke stack(0),10,wpeek(stack(0),10)+1
 swbreak
 
@@ -6310,6 +6427,9 @@ if calculated=0 /*and addold!0*/						 {poke stack(0),1,peek(stack(0),1) | (0x40
 
 if calculated & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if calculated & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+gosub *SZHVC2call
 swbreak
 case 0xBD
 if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
@@ -6328,6 +6448,9 @@ if calculated=0 /*and addold!0*/						 {poke stack(0),1,peek(stack(0),1) | (0x40
 
 if calculated & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if calculated & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+gosub *SZHVC2call
 swbreak
 case 0xBE
 if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
@@ -6346,6 +6469,9 @@ if calculated=0 /*and addold!0*/						 {poke stack(0),1,peek(stack(0),1) | (0x40
 
 if calculated & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if calculated & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+gosub *SZHVC2call
 swbreak
 
 case 0xCB
@@ -7175,6 +7301,9 @@ if calculated=0 /*and addold!0*/						 {poke stack(0),1,peek(stack(0),1) | (0x40
 
 if calculated & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if calculated & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+gosub *SZHVC2call
 wpoke stack(0),10,wpeek(stack(0),10)+1
 return
 *opcode_ff
@@ -7186,6 +7315,43 @@ return
 
 //logmes "Unimplemented!"
 return
+*SZHVC2call
+//SZHVC_addvar_37=peek(stack(SZHVC_addvar_37id),SZHVC_addvar_37id2)
+SZHVC_addvar_37=SZHVC_addvar_37id2
+poke SZHVC_addvar_52,0,peek(stack(0),1)
+	SZHVC_addvar_52 ^= 2
+	if ( SZHVC_addvar_37 < 0 ) {
+		SZHVC_addvar_52 |= 1
+	}
+	else {
+		SZHVC_addvar_52 &= 254
+	}
+	if ( SZHVC_addvar_37 & 4 ) {
+		SZHVC_addvar_52 |= 16
+	}
+	else {
+		SZHVC_addvar_52 &= 255 ^ 16
+	}
+	if ( SZHVC_addvar_37 == 0 ) {
+		SZHVC_addvar_52 |= 64
+	}
+	else {
+		SZHVC_addvar_52 &= 255 ^ 64
+	}
+	if ( (SZHVC_addvar_37 & 128) != (peek(stack(0), 0) != 128) ) {
+		SZHVC_addvar_52 |= 4
+	}
+	else {
+		SZHVC_addvar_52 &= 255 ^ 4
+	}
+	if ( SZHVC_addvar_37 & 128 ) {
+		SZHVC_addvar_52 |= 128
+	}
+	else {
+		SZHVC_addvar_52 &= 255 ^ 128
+	}
+poke stack(0),1,SZHVC_addvar_52
+	return
 *SZHVCcall
 //SZHVC_addvar_37=peek(stack(SZHVC_addvar_37id),SZHVC_addvar_37id2)
 SZHVC_addvar_37=SZHVC_addvar_37id2
