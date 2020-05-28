@@ -537,7 +537,7 @@ return
 poke stack(0),2,peek(stack(0),2)-1
 address=peek(memory,wpeek(stack(0),10))
 if address>=128{address=-(256-address)}
-if (peek(stack(0),2)) {wpoke stack(0),10,wpeek(stack(0),10)+address}else{wpoke stack(0),10,wpeek(stack(0),10)+1}
+if (peek(stack(0),2)) {wpoke stack(0),10,wpeek(stack(0),10)+address+1}else{wpoke stack(0),10,wpeek(stack(0),10)+1}
 return
 *opcode_11
 wpoke stack(0),4,wpeek(memory,wpeek(stack(0),10))
@@ -581,7 +581,7 @@ return
 *opcode_18
 address=peek(memory,wpeek(stack(0),10))
 if address>=128{address=-(256-address)}
-wpoke stack(0),10,wpeek(stack(0),10)+address
+wpoke stack(0),10,wpeek(stack(0),10)+address+1
 return
 *opcode_19
 if (peek(stack(0),1) ^ (0x02))=0{poke stack(0),1,peek(stack(0),1) | (0x02)}
@@ -639,7 +639,7 @@ return
 *opcode_20
 address=peek(memory,wpeek(stack(0),10))
 if address>=128{address=-(256-address)}
-if (peek(stack(0),1) & 0x40) {wpoke stack(0),10,wpeek(stack(0),10)+1}else{wpoke stack(0),10,wpeek(stack(0),10)+address}
+if (peek(stack(0),1) & 0x40) {wpoke stack(0),10,wpeek(stack(0),10)+1}else{wpoke stack(0),10,wpeek(stack(0),10)+address+1}
 return
 *opcode_21
 wpoke stack(0),6,wpeek(memory,wpeek(stack(0),10))
@@ -688,7 +688,7 @@ return
 *opcode_28
 address=peek(memory,wpeek(stack(0),10))
 if address>=128{address=-(256-address)}
-if (peek(stack(0),1) & 0x40) {wpoke stack(0),10,wpeek(stack(0),10)+address}else{wpoke stack(0),10,wpeek(stack(0),10)+1}
+if (peek(stack(0),1) & 0x40) {wpoke stack(0),10,wpeek(stack(0),10)+address+1}else{wpoke stack(0),10,wpeek(stack(0),10)+1}
 return
 *opcode_29
 if (peek(stack(0),1) ^ (0x02))=0{poke stack(0),1,peek(stack(0),1) | (0x02)}
@@ -746,7 +746,7 @@ return
 *opcode_30
 address=peek(memory,wpeek(stack(0),10))
 if address>=128{address=-(256-address)}
-if (peek(stack(0),1) & 0x01) {wpoke stack(0),10,wpeek(stack(0),10)+1}else{wpoke stack(0),10,wpeek(stack(0),10)+address}
+if (peek(stack(0),1) & 0x01) {wpoke stack(0),10,wpeek(stack(0),10)+1}else{wpoke stack(0),10,wpeek(stack(0),10)+address+1}
 return
 *opcode_31
 wpoke stack(0),12,wpeek(memory,wpeek(stack(0),10))
@@ -787,7 +787,7 @@ return
 *opcode_38
 address=peek(memory,wpeek(stack(0),10))
 if address>=128{address=-(256-address)}
-if (peek(stack(0),1) & 0x01) {wpoke stack(0),10,wpeek(stack(0),10)+address}else{wpoke stack(0),10,wpeek(stack(0),10)+1}
+if (peek(stack(0),1) & 0x01) {wpoke stack(0),10,wpeek(stack(0),10)+address+1}else{wpoke stack(0),10,wpeek(stack(0),10)+1}
 return
 *opcode_39
 if (peek(stack(0),1) ^ (0x02))=0{poke stack(0),1,peek(stack(0),1) | (0x02)}
