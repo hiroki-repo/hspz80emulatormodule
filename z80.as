@@ -1675,7 +1675,13 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}*/
-poke stack(0),1,SZP(peek(stack(0),addtostack)) | 0x10
+//poke stack(0),1,SZP(peek(stack(0),addtostack)) | 0x10
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+gosub *SZPCall
+poke stack(0),1,peek(stack(0),1) & 255 ^ 2
+poke stack(0),1,peek(stack(0),1) & 254
+poke stack(0),1,peek(stack(0),1) | 16
 return
 *opcode_a1
 /*poke stack(0),1,peek(stack(0),1) ^ (0x01)
@@ -1695,7 +1701,13 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}*/
-poke stack(0),1,SZP(peek(stack(0),addtostack)) | 0x10
+//poke stack(0),1,SZP(peek(stack(0),addtostack)) | 0x10
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+gosub *SZPCall
+poke stack(0),1,peek(stack(0),1) & 255 ^ 2
+poke stack(0),1,peek(stack(0),1) & 254
+poke stack(0),1,peek(stack(0),1) | 16
 return
 *opcode_a2
 /*poke stack(0),1,peek(stack(0),1) ^ (0x01)
@@ -1715,7 +1727,13 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}*/
-poke stack(0),1,SZP(peek(stack(0),addtostack)) | 0x10
+//poke stack(0),1,SZP(peek(stack(0),addtostack)) | 0x10
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+gosub *SZPCall
+poke stack(0),1,peek(stack(0),1) & 255 ^ 2
+poke stack(0),1,peek(stack(0),1) & 254
+poke stack(0),1,peek(stack(0),1) | 16
 return
 *opcode_a3
 /*poke stack(0),1,peek(stack(0),1) ^ (0x01)
@@ -1735,7 +1753,13 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}*/
-poke stack(0),1,SZP(peek(stack(0),addtostack)) | 0x10
+//poke stack(0),1,SZP(peek(stack(0),addtostack)) | 0x10
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+gosub *SZPCall
+poke stack(0),1,peek(stack(0),1) & 255 ^ 2
+poke stack(0),1,peek(stack(0),1) & 254
+poke stack(0),1,peek(stack(0),1) | 16
 return
 *opcode_a4
 /*poke stack(0),1,peek(stack(0),1) ^ (0x01)
@@ -1755,7 +1779,13 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}*/
-poke stack(0),1,SZP(peek(stack(0),addtostack)) | 0x10
+//poke stack(0),1,SZP(peek(stack(0),addtostack)) | 0x10
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+gosub *SZPCall
+poke stack(0),1,peek(stack(0),1) & 255 ^ 2
+poke stack(0),1,peek(stack(0),1) & 254
+poke stack(0),1,peek(stack(0),1) | 16
 return
 *opcode_a5
 /*poke stack(0),1,peek(stack(0),1) ^ (0x01)
@@ -1775,7 +1805,13 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}*/
-poke stack(0),1,SZP(peek(stack(0),addtostack)) | 0x10
+//poke stack(0),1,SZP(peek(stack(0),addtostack)) | 0x10
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+gosub *SZPCall
+poke stack(0),1,peek(stack(0),1) & 255 ^ 2
+poke stack(0),1,peek(stack(0),1) & 254
+poke stack(0),1,peek(stack(0),1) | 16
 return
 *opcode_a6
 //poke stack(0),1,peek(stack(0),1) ^ (0x01)
@@ -1795,7 +1831,13 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}*/
-poke stack(0),1,SZP(peek(stack(0),addtostack)) | 0x10
+//poke stack(0),1,SZP(peek(stack(0),addtostack)) | 0x10
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+gosub *SZPCall
+poke stack(0),1,peek(stack(0),1) & 255 ^ 2
+poke stack(0),1,peek(stack(0),1) & 254
+poke stack(0),1,peek(stack(0),1) | 16
 return
 *opcode_a7
 /*poke stack(0),1,peek(stack(0),1) ^ (0x01)
@@ -1815,7 +1857,13 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}*/
-poke stack(0),1,SZP(peek(stack(0),addtostack)) | 0x10
+//poke stack(0),1,SZP(peek(stack(0),addtostack)) | 0x10
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+gosub *SZPCall
+poke stack(0),1,peek(stack(0),1) & 255 ^ 2
+poke stack(0),1,peek(stack(0),1) & 254
+poke stack(0),1,peek(stack(0),1) | 16
 return
 *opcode_a8
 poke stack(0),1,peek(stack(0),1) ^ (0x01)
@@ -1835,7 +1883,13 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
-poke stack(0),1,SZP(peek(stack(0),addtostack))
+//poke stack(0),1,SZP(peek(stack(0),addtostack))
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+	poke stack(0),1,peek(stack(0),1) &255 ^ 2
+	poke stack(0),1,peek(stack(0),1) &254
+	poke stack(0),1,peek(stack(0),1) &255 ^ 16
+gosub *SZPCall
 return
 *opcode_a9
 poke stack(0),1,peek(stack(0),1) ^ (0x01)
@@ -1855,7 +1909,13 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
-poke stack(0),1,SZP(peek(stack(0),addtostack))
+//poke stack(0),1,SZP(peek(stack(0),addtostack))
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+	poke stack(0),1,peek(stack(0),1) &255 ^ 2
+	poke stack(0),1,peek(stack(0),1) &254
+	poke stack(0),1,peek(stack(0),1) &255 ^ 16
+gosub *SZPCall
 return
 *opcode_aa
 poke stack(0),1,peek(stack(0),1) ^ (0x01)
@@ -1875,7 +1935,13 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
-poke stack(0),1,SZP(peek(stack(0),addtostack))
+//poke stack(0),1,SZP(peek(stack(0),addtostack))
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+	poke stack(0),1,peek(stack(0),1) &255 ^ 2
+	poke stack(0),1,peek(stack(0),1) &254
+	poke stack(0),1,peek(stack(0),1) &255 ^ 16
+gosub *SZPCall
 return
 *opcode_ab
 poke stack(0),1,peek(stack(0),1) ^ (0x01)
@@ -1895,7 +1961,13 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
-poke stack(0),1,SZP(peek(stack(0),addtostack))
+//poke stack(0),1,SZP(peek(stack(0),addtostack))
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+	poke stack(0),1,peek(stack(0),1) &255 ^ 2
+	poke stack(0),1,peek(stack(0),1) &254
+	poke stack(0),1,peek(stack(0),1) &255 ^ 16
+gosub *SZPCall
 return
 *opcode_ac
 poke stack(0),1,peek(stack(0),1) ^ (0x01)
@@ -1915,7 +1987,13 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
-poke stack(0),1,SZP(peek(stack(0),addtostack))
+//poke stack(0),1,SZP(peek(stack(0),addtostack))
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+	poke stack(0),1,peek(stack(0),1) &255 ^ 2
+	poke stack(0),1,peek(stack(0),1) &254
+	poke stack(0),1,peek(stack(0),1) &255 ^ 16
+gosub *SZPCall
 return
 *opcode_ad
 poke stack(0),1,peek(stack(0),1) ^ (0x01)
@@ -1935,7 +2013,13 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
-poke stack(0),1,SZP(peek(stack(0),addtostack))
+//poke stack(0),1,SZP(peek(stack(0),addtostack))
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+	poke stack(0),1,peek(stack(0),1) &255 ^ 2
+	poke stack(0),1,peek(stack(0),1) &254
+	poke stack(0),1,peek(stack(0),1) &255 ^ 16
+gosub *SZPCall
 return
 *opcode_ae
 poke stack(0),1,peek(stack(0),1) ^ (0x01)
@@ -1955,7 +2039,13 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
-poke stack(0),1,SZP(peek(stack(0),addtostack))
+//poke stack(0),1,SZP(peek(stack(0),addtostack))
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+	poke stack(0),1,peek(stack(0),1) &255 ^ 2
+	poke stack(0),1,peek(stack(0),1) &254
+	poke stack(0),1,peek(stack(0),1) &255 ^ 16
+gosub *SZPCall
 return
 *opcode_af
 poke stack(0),1,peek(stack(0),1) ^ (0x01)
@@ -1975,7 +2065,13 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
-poke stack(0),1,SZP(peek(stack(0),addtostack))
+//poke stack(0),1,SZP(peek(stack(0),addtostack))
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+	poke stack(0),1,peek(stack(0),1) &255 ^ 2
+	poke stack(0),1,peek(stack(0),1) &254
+	poke stack(0),1,peek(stack(0),1) &255 ^ 16
+gosub *SZPCall
 return
 *opcode_b0
 poke stack(0),1,peek(stack(0),1) ^ (0x01)
@@ -1995,7 +2091,13 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
-poke stack(0),1,SZP(peek(stack(0),addtostack))
+//poke stack(0),1,SZP(peek(stack(0),addtostack))
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+	poke stack(0),1,peek(stack(0),1) &255 ^ 2
+	poke stack(0),1,peek(stack(0),1) &254
+	poke stack(0),1,peek(stack(0),1) &255 ^ 16
+gosub *SZPCall
 return
 *opcode_b1
 poke stack(0),1,peek(stack(0),1) ^ (0x01)
@@ -2015,7 +2117,13 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
-poke stack(0),1,SZP(peek(stack(0),addtostack))
+//poke stack(0),1,SZP(peek(stack(0),addtostack))
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+	poke stack(0),1,peek(stack(0),1) &255 ^ 2
+	poke stack(0),1,peek(stack(0),1) &254
+	poke stack(0),1,peek(stack(0),1) &255 ^ 16
+gosub *SZPCall
 return
 *opcode_b2
 poke stack(0),1,peek(stack(0),1) ^ (0x01)
@@ -2035,7 +2143,13 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
-poke stack(0),1,SZP(peek(stack(0),addtostack))
+//poke stack(0),1,SZP(peek(stack(0),addtostack))
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+	poke stack(0),1,peek(stack(0),1) &255 ^ 2
+	poke stack(0),1,peek(stack(0),1) &254
+	poke stack(0),1,peek(stack(0),1) &255 ^ 16
+gosub *SZPCall
 return
 *opcode_b3
 poke stack(0),1,peek(stack(0),1) ^ (0x01)
@@ -2055,7 +2169,13 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
-poke stack(0),1,SZP(peek(stack(0),addtostack))
+//poke stack(0),1,SZP(peek(stack(0),addtostack))
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+	poke stack(0),1,peek(stack(0),1) &255 ^ 2
+	poke stack(0),1,peek(stack(0),1) &254
+	poke stack(0),1,peek(stack(0),1) &255 ^ 16
+gosub *SZPCall
 return
 *opcode_b4
 poke stack(0),1,peek(stack(0),1) ^ (0x01)
@@ -2075,7 +2195,13 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
-poke stack(0),1,SZP(peek(stack(0),addtostack))
+//poke stack(0),1,SZP(peek(stack(0),addtostack))
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+	poke stack(0),1,peek(stack(0),1) &255 ^ 2
+	poke stack(0),1,peek(stack(0),1) &254
+	poke stack(0),1,peek(stack(0),1) &255 ^ 16
+gosub *SZPCall
 return
 *opcode_b5
 poke stack(0),1,peek(stack(0),1) ^ (0x01)
@@ -2095,7 +2221,13 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
-poke stack(0),1,SZP(peek(stack(0),addtostack))
+//poke stack(0),1,SZP(peek(stack(0),addtostack))
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+	poke stack(0),1,peek(stack(0),1) &255 ^ 2
+	poke stack(0),1,peek(stack(0),1) &254
+	poke stack(0),1,peek(stack(0),1) &255 ^ 16
+gosub *SZPCall
 return
 *opcode_b6
 poke stack(0),1,peek(stack(0),1) ^ (0x01)
@@ -2115,7 +2247,13 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
-poke stack(0),1,SZP(peek(stack(0),addtostack))
+//poke stack(0),1,SZP(peek(stack(0),addtostack))
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+	poke stack(0),1,peek(stack(0),1) &255 ^ 2
+	poke stack(0),1,peek(stack(0),1) &254
+	poke stack(0),1,peek(stack(0),1) &255 ^ 16
+gosub *SZPCall
 return
 *opcode_b7
 poke stack(0),1,peek(stack(0),1) ^ (0x01)
@@ -2135,7 +2273,13 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
-poke stack(0),1,SZP(peek(stack(0),addtostack))
+//poke stack(0),1,SZP(peek(stack(0),addtostack))
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+	poke stack(0),1,peek(stack(0),1) &255 ^ 2
+	poke stack(0),1,peek(stack(0),1) &254
+	poke stack(0),1,peek(stack(0),1) &255 ^ 16
+gosub *SZPCall
 return
 *opcode_b8
 if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
@@ -2736,7 +2880,7 @@ case 0x20
 regidforsla=3
 slares=0
 slares=peek(stack(0),regidforsla)
-slac=(slares & 0x80)
+slac=0//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = (slares << 1) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -2746,7 +2890,7 @@ case 0x21
 regidforsla=2
 slares=0
 slares=peek(stack(0),regidforsla)
-slac=(slares & 0x80)
+slac=0//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = (slares << 1) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -2756,7 +2900,7 @@ case 0x22
 regidforsla=5
 slares=0
 slares=peek(stack(0),regidforsla)
-slac=(slares & 0x80)
+slac=0//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = (slares << 1) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -2766,7 +2910,7 @@ case 0x23
 regidforsla=4
 slares=0
 slares=peek(stack(0),regidforsla)
-slac=(slares & 0x80)
+slac=0//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = (slares << 1) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -2776,7 +2920,7 @@ case 0x24
 regidforsla=7
 slares=0
 slares=peek(stack(0),regidforsla)
-slac=(slares & 0x80)
+slac=0//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = (slares << 1) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -2786,7 +2930,7 @@ case 0x25
 regidforsla=6
 slares=0
 slares=peek(stack(0),regidforsla)
-slac=(slares & 0x80)
+slac=0//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = (slares << 1) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -2795,7 +2939,7 @@ swbreak
 case 0x26
 slares=0
 slares=peek(memory,wpeek(stack(0),6))
-slac=(slares & 0x80)
+slac=0//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = (slares << 1) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -2805,7 +2949,7 @@ case 0x27
 regidforsla=0
 slares=0
 slares=peek(stack(0),regidforsla)
-slac=(slares & 0x80)
+slac=0//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = (slares << 1) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -2815,7 +2959,7 @@ case 0x28
 regidforsla=3
 slares=0
 slares=peek(stack(0),regidforsla)
-slac=(slares & 0x01)
+slac=0//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = ((slares >> 1) | (slares & 0x80)) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -2825,7 +2969,7 @@ case 0x29
 regidforsla=2
 slares=0
 slares=peek(stack(0),regidforsla)
-slac=(slares & 0x01)
+slac=0//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = ((slares >> 1) | (slares & 0x80)) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -2835,7 +2979,7 @@ case 0x2A
 regidforsla=5
 slares=0
 slares=peek(stack(0),regidforsla)
-slac=(slares & 0x01)
+slac=0//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = ((slares >> 1) | (slares & 0x80)) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -2845,7 +2989,7 @@ case 0x2B
 regidforsla=4
 slares=0
 slares=peek(stack(0),regidforsla)
-slac=(slares & 0x01)
+slac=0//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = ((slares >> 1) | (slares & 0x80)) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -2855,7 +2999,7 @@ case 0x2C
 regidforsla=7
 slares=0
 slares=peek(stack(0),regidforsla)
-slac=(slares & 0x01)
+slac=0//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = ((slares >> 1) | (slares & 0x80)) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -2865,7 +3009,7 @@ case 0x2D
 regidforsla=6
 slares=0
 slares=peek(stack(0),regidforsla)
-slac=(slares & 0x01)
+slac=0//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = ((slares >> 1) | (slares & 0x80)) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -2874,7 +3018,7 @@ swbreak
 case 0x2E
 slares=0
 slares=peek(memory,wpeek(stack(0),6))
-slac=(slares & 0x01)
+slac=0//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = ((slares >> 1) | (slares & 0x80)) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -2884,7 +3028,7 @@ case 0x2F
 regidforsla=0
 slares=0
 slares=peek(stack(0),regidforsla)
-slac=(slares & 0x01)
+slac=0//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = ((slares >> 1) | (slares & 0x80)) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -2894,7 +3038,7 @@ case 0x30
 regidforsla=3
 slares=0
 slares=peek(stack(0),regidforsla)
-slac=(slares & 0x80)
+slac=0//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = ((slares << 1) | 0x01) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -2904,7 +3048,7 @@ case 0x31
 regidforsla=2
 slares=0
 slares=peek(stack(0),regidforsla)
-slac=(slares & 0x80)
+slac=0//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = ((slares << 1) | 0x01) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -2914,7 +3058,7 @@ case 0x32
 regidforsla=5
 slares=0
 slares=peek(stack(0),regidforsla)
-slac=(slares & 0x80)
+slac=0//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = ((slares << 1) | 0x01) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -2924,7 +3068,7 @@ case 0x33
 regidforsla=4
 slares=0
 slares=peek(stack(0),regidforsla)
-slac=(slares & 0x80)
+slac=0//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = ((slares << 1) | 0x01) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -2934,7 +3078,7 @@ case 0x34
 regidforsla=7
 slares=0
 slares=peek(stack(0),regidforsla)
-slac=(slares & 0x80)
+slac=0//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = ((slares << 1) | 0x01) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -2944,7 +3088,7 @@ case 0x35
 regidforsla=6
 slares=0
 slares=peek(stack(0),regidforsla)
-slac=(slares & 0x80)
+slac=0//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = ((slares << 1) | 0x01) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -2953,7 +3097,7 @@ swbreak
 case 0x36
 slares=0
 slares=peek(memory,wpeek(stack(0),6))
-slac=(slares & 0x80)
+slac=0//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = ((slares << 1) | 0x01) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -2963,7 +3107,7 @@ case 0x37
 regidforsla=0
 slares=0
 slares=peek(stack(0),regidforsla)
-slac=(slares & 0x80)
+slac=0//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = ((slares << 1) | 0x01) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -2973,7 +3117,7 @@ case 0x38
 regidforsla=3
 slares=0
 slares=peek(stack(0),regidforsla)
-slac=(slares & 0x01)
+slac=0//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = (slares >> 1) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -2983,7 +3127,7 @@ case 0x39
 regidforsla=2
 slares=0
 slares=peek(stack(0),regidforsla)
-slac=(slares & 0x01)
+slac=0//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = (slares >> 1) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -2993,7 +3137,7 @@ case 0x3A
 regidforsla=5
 slares=0
 slares=peek(stack(0),regidforsla)
-slac=(slares & 0x01)
+slac=0//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = (slares >> 1) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -3003,7 +3147,7 @@ case 0x3B
 regidforsla=4
 slares=0
 slares=peek(stack(0),regidforsla)
-slac=(slares & 0x01)
+slac=0//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = (slares >> 1) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -3013,7 +3157,7 @@ case 0x3C
 regidforsla=7
 slares=0
 slares=peek(stack(0),regidforsla)
-slac=(slares & 0x01)
+slac=0//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = (slares >> 1) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -3023,7 +3167,7 @@ case 0x3D
 regidforsla=6
 slares=0
 slares=peek(stack(0),regidforsla)
-slac=(slares & 0x01)
+slac=0//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = (slares >> 1) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -3032,7 +3176,7 @@ swbreak
 case 0x3E
 slares=0
 slares=peek(memory,wpeek(stack(0),6))
-slac=(slares & 0x01)
+slac=0//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = (slares >> 1) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -3042,7 +3186,7 @@ case 0x3F
 regidforsla=0
 slares=0
 slares=peek(stack(0),regidforsla)
-slac=(slares & 0x01)
+slac=0//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = (slares >> 1) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -3818,7 +3962,13 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}*/
-poke stack(0),1,SZP(peek(stack(0),addtostack)) | 0x10
+//poke stack(0),1,SZP(peek(stack(0),addtostack)) | 0x10
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+gosub *SZPCall
+poke stack(0),1,peek(stack(0),1) & 255 ^ 2
+poke stack(0),1,peek(stack(0),1) & 254
+poke stack(0),1,peek(stack(0),1) | 16
 swbreak
 case 0xA5
 /*poke stack(0),1,peek(stack(0),1) ^ (0x01)
@@ -3838,7 +3988,13 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}*/
-poke stack(0),1,SZP(peek(stack(0),addtostack)) | 0x10
+//poke stack(0),1,SZP(peek(stack(0),addtostack)) | 0x10
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+gosub *SZPCall
+poke stack(0),1,peek(stack(0),1) & 255 ^ 2
+poke stack(0),1,peek(stack(0),1) & 254
+poke stack(0),1,peek(stack(0),1) | 16
 swbreak
 case 0xA6
 /*poke stack(0),1,peek(stack(0),1) ^ (0x01)
@@ -3858,7 +4014,13 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}*/
-poke stack(0),1,SZP(peek(stack(0),addtostack)) | 0x10
+//poke stack(0),1,SZP(peek(stack(0),addtostack)) | 0x10
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+gosub *SZPCall
+poke stack(0),1,peek(stack(0),1) & 255 ^ 2
+poke stack(0),1,peek(stack(0),1) & 254
+poke stack(0),1,peek(stack(0),1) | 16
 wpoke stack(0),10,wpeek(stack(0),10)+1
 swbreak
 
@@ -3880,7 +4042,13 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
-poke stack(0),1,SZP(peek(stack(0),addtostack))
+//poke stack(0),1,SZP(peek(stack(0),addtostack))
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+	poke stack(0),1,peek(stack(0),1) &255 ^ 2
+	poke stack(0),1,peek(stack(0),1) &254
+	poke stack(0),1,peek(stack(0),1) &255 ^ 16
+gosub *SZPCall
 swbreak
 case 0xAD
 poke stack(0),1,peek(stack(0),1) ^ (0x01)
@@ -3900,7 +4068,13 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
-poke stack(0),1,SZP(peek(stack(0),addtostack))
+//poke stack(0),1,SZP(peek(stack(0),addtostack))
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+	poke stack(0),1,peek(stack(0),1) &255 ^ 2
+	poke stack(0),1,peek(stack(0),1) &254
+	poke stack(0),1,peek(stack(0),1) &255 ^ 16
+gosub *SZPCall
 swbreak
 case 0xAE
 poke stack(0),1,peek(stack(0),1) ^ (0x01)
@@ -3920,7 +4094,13 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
-poke stack(0),1,SZP(peek(stack(0),addtostack))
+//poke stack(0),1,SZP(peek(stack(0),addtostack))
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+	poke stack(0),1,peek(stack(0),1) &255 ^ 2
+	poke stack(0),1,peek(stack(0),1) &254
+	poke stack(0),1,peek(stack(0),1) &255 ^ 16
+gosub *SZPCall
 swbreak
 
 case 0xB4
@@ -3941,7 +4121,13 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
-poke stack(0),1,SZP(peek(stack(0),addtostack))
+//poke stack(0),1,SZP(peek(stack(0),addtostack))
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+	poke stack(0),1,peek(stack(0),1) &255 ^ 2
+	poke stack(0),1,peek(stack(0),1) &254
+	poke stack(0),1,peek(stack(0),1) &255 ^ 16
+gosub *SZPCall
 swbreak
 case 0xB5
 poke stack(0),1,peek(stack(0),1) ^ (0x01)
@@ -3961,7 +4147,13 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
-poke stack(0),1,SZP(peek(stack(0),addtostack))
+//poke stack(0),1,SZP(peek(stack(0),addtostack))
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+	poke stack(0),1,peek(stack(0),1) &255 ^ 2
+	poke stack(0),1,peek(stack(0),1) &254
+	poke stack(0),1,peek(stack(0),1) &255 ^ 16
+gosub *SZPCall
 swbreak
 case 0xB6
 poke stack(0),1,peek(stack(0),1) ^ (0x01)
@@ -3981,7 +4173,13 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
-poke stack(0),1,SZP(peek(stack(0),addtostack))
+//poke stack(0),1,SZP(peek(stack(0),addtostack))
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+	poke stack(0),1,peek(stack(0),1) &255 ^ 2
+	poke stack(0),1,peek(stack(0),1) &254
+	poke stack(0),1,peek(stack(0),1) &255 ^ 16
+gosub *SZPCall
 swbreak
 
 case 0xBC
@@ -4410,7 +4608,7 @@ case 0x20
 regidforsla=3
 slares=0
 slares=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-slac=(slares & 0x80)
+slac=0//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = (slares << 1) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -4420,7 +4618,7 @@ case 0x21
 regidforsla=2
 slares=0
 slares=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-slac=(slares & 0x80)
+slac=0//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = (slares << 1) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -4430,7 +4628,7 @@ case 0x22
 regidforsla=5
 slares=0
 slares=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-slac=(slares & 0x80)
+slac=0//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = (slares << 1) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -4440,7 +4638,7 @@ case 0x23
 regidforsla=4
 slares=0
 slares=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-slac=(slares & 0x80)
+slac=0//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = (slares << 1) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -4450,7 +4648,7 @@ case 0x24
 regidforsla=7
 slares=0
 slares=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-slac=(slares & 0x80)
+slac=0//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = (slares << 1) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -4460,7 +4658,7 @@ case 0x25
 regidforsla=6
 slares=0
 slares=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-slac=(slares & 0x80)
+slac=0//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = (slares << 1) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -4469,7 +4667,7 @@ swbreak
 case 0x26
 slares=0
 slares=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-slac=(slares & 0x80)
+slac=0//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = (slares << 1) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -4479,7 +4677,7 @@ case 0x27
 regidforsla=0
 slares=0
 slares=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-slac=(slares & 0x80)
+slac=0//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = (slares << 1) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -4489,7 +4687,7 @@ case 0x28
 regidforsla=3
 slares=0
 slares=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-slac=(slares & 0x01)
+slac=0//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = ((slares >> 1) | (slares & 0x80)) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -4499,7 +4697,7 @@ case 0x29
 regidforsla=2
 slares=0
 slares=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-slac=(slares & 0x01)
+slac=0//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = ((slares >> 1) | (slares & 0x80)) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -4509,7 +4707,7 @@ case 0x2A
 regidforsla=5
 slares=0
 slares=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-slac=(slares & 0x01)
+slac=0//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = ((slares >> 1) | (slares & 0x80)) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -4519,7 +4717,7 @@ case 0x2B
 regidforsla=4
 slares=0
 slares=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-slac=(slares & 0x01)
+slac=0//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = ((slares >> 1) | (slares & 0x80)) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -4529,7 +4727,7 @@ case 0x2C
 regidforsla=7
 slares=0
 slares=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-slac=(slares & 0x01)
+slac=0//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = ((slares >> 1) | (slares & 0x80)) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -4539,7 +4737,7 @@ case 0x2D
 regidforsla=6
 slares=0
 slares=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-slac=(slares & 0x01)
+slac=0//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = ((slares >> 1) | (slares & 0x80)) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -4548,7 +4746,7 @@ swbreak
 case 0x2E
 slares=0
 slares=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-slac=(slares & 0x01)
+slac=0//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = ((slares >> 1) | (slares & 0x80)) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -4558,7 +4756,7 @@ case 0x2F
 regidforsla=0
 slares=0
 slares=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-slac=(slares & 0x01)
+slac=0//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = ((slares >> 1) | (slares & 0x80)) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -4568,7 +4766,7 @@ case 0x30
 regidforsla=3
 slares=0
 slares=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-slac=(slares & 0x80)
+slac=0//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = ((slares << 1) | 0x01) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -4578,7 +4776,7 @@ case 0x31
 regidforsla=2
 slares=0
 slares=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-slac=(slares & 0x80)
+slac=0//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = ((slares << 1) | 0x01) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -4588,7 +4786,7 @@ case 0x32
 regidforsla=5
 slares=0
 slares=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-slac=(slares & 0x80)
+slac=0//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = ((slares << 1) | 0x01) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -4598,7 +4796,7 @@ case 0x33
 regidforsla=4
 slares=0
 slares=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-slac=(slares & 0x80)
+slac=0//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = ((slares << 1) | 0x01) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -4608,7 +4806,7 @@ case 0x34
 regidforsla=7
 slares=0
 slares=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-slac=(slares & 0x80)
+slac=0//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = ((slares << 1) | 0x01) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -4618,7 +4816,7 @@ case 0x35
 regidforsla=6
 slares=0
 slares=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-slac=(slares & 0x80)
+slac=0//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = ((slares << 1) | 0x01) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -4627,7 +4825,7 @@ swbreak
 case 0x36
 slares=0
 slares=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-slac=(slares & 0x80)
+slac=0//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = ((slares << 1) | 0x01) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -4637,7 +4835,7 @@ case 0x37
 regidforsla=0
 slares=0
 slares=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-slac=(slares & 0x80)
+slac=0//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = ((slares << 1) | 0x01) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -4647,7 +4845,7 @@ case 0x38
 regidforsla=3
 slares=0
 slares=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-slac=(slares & 0x01)
+slac=0//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = (slares >> 1) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -4657,7 +4855,7 @@ case 0x39
 regidforsla=2
 slares=0
 slares=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-slac=(slares & 0x01)
+slac=0//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = (slares >> 1) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -4667,7 +4865,7 @@ case 0x3A
 regidforsla=5
 slares=0
 slares=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-slac=(slares & 0x01)
+slac=0//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = (slares >> 1) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -4677,7 +4875,7 @@ case 0x3B
 regidforsla=4
 slares=0
 slares=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-slac=(slares & 0x01)
+slac=0//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = (slares >> 1) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -4687,7 +4885,7 @@ case 0x3C
 regidforsla=7
 slares=0
 slares=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-slac=(slares & 0x01)
+slac=0//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = (slares >> 1) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -4697,7 +4895,7 @@ case 0x3D
 regidforsla=6
 slares=0
 slares=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-slac=(slares & 0x01)
+slac=0//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = (slares >> 1) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -4706,7 +4904,7 @@ swbreak
 case 0x3E
 slares=0
 slares=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-slac=(slares & 0x01)
+slac=0//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = (slares >> 1) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -4716,7 +4914,7 @@ case 0x3F
 regidforsla=0
 slares=0
 slares=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-slac=(slares & 0x01)
+slac=0//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = (slares >> 1) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -4937,6 +5135,12 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 wpoke stack(0),10,wpeek(stack(0),10)+1
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+gosub *SZPCall
+poke stack(0),1,peek(stack(0),1) & 255 ^ 2
+poke stack(0),1,peek(stack(0),1) & 254
+poke stack(0),1,peek(stack(0),1) | 16
 return
 *opcode_e7
 poke memory,wpeek(stack(0),12)-1,peek(stack(0),10)
@@ -5652,6 +5856,12 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+	poke stack(0),1,peek(stack(0),1) &255 ^ 2
+	poke stack(0),1,peek(stack(0),1) &254
+	poke stack(0),1,peek(stack(0),1) &255 ^ 16
+gosub *SZPCall
 wpoke stack(0),10,wpeek(stack(0),10)+1
 return
 *opcode_ef
@@ -5708,6 +5918,12 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+	poke stack(0),1,peek(stack(0),1) &255 ^ 2
+	poke stack(0),1,peek(stack(0),1) &254
+	poke stack(0),1,peek(stack(0),1) &255 ^ 16
+gosub *SZPCall
 wpoke stack(0),10,wpeek(stack(0),10)+1
 return
 *opcode_f7
@@ -6244,7 +6460,13 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}*/
-poke stack(0),1,SZP(peek(stack(0),addtostack)) | 0x10
+//poke stack(0),1,SZP(peek(stack(0),addtostack)) | 0x10
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+gosub *SZPCall
+poke stack(0),1,peek(stack(0),1) & 255 ^ 2
+poke stack(0),1,peek(stack(0),1) & 254
+poke stack(0),1,peek(stack(0),1) | 16
 swbreak
 case 0xA5
 /*poke stack(0),1,peek(stack(0),1) ^ (0x01)
@@ -6264,7 +6486,13 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}*/
-poke stack(0),1,SZP(peek(stack(0),addtostack)) | 0x10
+//poke stack(0),1,SZP(peek(stack(0),addtostack)) | 0x10
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+gosub *SZPCall
+poke stack(0),1,peek(stack(0),1) & 255 ^ 2
+poke stack(0),1,peek(stack(0),1) & 254
+poke stack(0),1,peek(stack(0),1) | 16
 swbreak
 case 0xA6
 /*poke stack(0),1,peek(stack(0),1) ^ (0x01)
@@ -6284,7 +6512,13 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}*/
-poke stack(0),1,SZP(peek(stack(0),addtostack)) | 0x10
+//poke stack(0),1,SZP(peek(stack(0),addtostack)) | 0x10
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+gosub *SZPCall
+poke stack(0),1,peek(stack(0),1) & 255 ^ 2
+poke stack(0),1,peek(stack(0),1) & 254
+poke stack(0),1,peek(stack(0),1) | 16
 wpoke stack(0),10,wpeek(stack(0),10)+1
 swbreak
 
@@ -6306,7 +6540,13 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
-poke stack(0),1,SZP(peek(stack(0),addtostack))
+//poke stack(0),1,SZP(peek(stack(0),addtostack))
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+	poke stack(0),1,peek(stack(0),1) &255 ^ 2
+	poke stack(0),1,peek(stack(0),1) &254
+	poke stack(0),1,peek(stack(0),1) &255 ^ 16
+gosub *SZPCall
 swbreak
 case 0xAD
 poke stack(0),1,peek(stack(0),1) ^ (0x01)
@@ -6326,7 +6566,13 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
-poke stack(0),1,SZP(peek(stack(0),addtostack))
+//poke stack(0),1,SZP(peek(stack(0),addtostack))
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+	poke stack(0),1,peek(stack(0),1) &255 ^ 2
+	poke stack(0),1,peek(stack(0),1) &254
+	poke stack(0),1,peek(stack(0),1) &255 ^ 16
+gosub *SZPCall
 swbreak
 case 0xAE
 poke stack(0),1,peek(stack(0),1) ^ (0x01)
@@ -6346,7 +6592,13 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
-poke stack(0),1,SZP(peek(stack(0),addtostack))
+//poke stack(0),1,SZP(peek(stack(0),addtostack))
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+	poke stack(0),1,peek(stack(0),1) &255 ^ 2
+	poke stack(0),1,peek(stack(0),1) &254
+	poke stack(0),1,peek(stack(0),1) &255 ^ 16
+gosub *SZPCall
 swbreak
 
 case 0xB4
@@ -6367,7 +6619,13 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
-poke stack(0),1,SZP(peek(stack(0),addtostack))
+//poke stack(0),1,SZP(peek(stack(0),addtostack))
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+	poke stack(0),1,peek(stack(0),1) &255 ^ 2
+	poke stack(0),1,peek(stack(0),1) &254
+	poke stack(0),1,peek(stack(0),1) &255 ^ 16
+gosub *SZPCall
 swbreak
 case 0xB5
 poke stack(0),1,peek(stack(0),1) ^ (0x01)
@@ -6387,7 +6645,13 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
-poke stack(0),1,SZP(peek(stack(0),addtostack))
+//poke stack(0),1,SZP(peek(stack(0),addtostack))
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+	poke stack(0),1,peek(stack(0),1) &255 ^ 2
+	poke stack(0),1,peek(stack(0),1) &254
+	poke stack(0),1,peek(stack(0),1) &255 ^ 16
+gosub *SZPCall
 swbreak
 case 0xB6
 poke stack(0),1,peek(stack(0),1) ^ (0x01)
@@ -6407,7 +6671,13 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
-poke stack(0),1,SZP(peek(stack(0),addtostack))
+//poke stack(0),1,SZP(peek(stack(0),addtostack))
+SZHVC_addvar_37id=0
+SZHVC_addvar_37id2=calculated
+	poke stack(0),1,peek(stack(0),1) &255 ^ 2
+	poke stack(0),1,peek(stack(0),1) &254
+	poke stack(0),1,peek(stack(0),1) &255 ^ 16
+gosub *SZPCall
 swbreak
 
 case 0xBC
@@ -6836,7 +7106,7 @@ case 0x20
 regidforsla=3
 slares=0
 slares=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-slac=(slares & 0x80)
+slac=0//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = (slares << 1) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -6846,7 +7116,7 @@ case 0x21
 regidforsla=2
 slares=0
 slares=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-slac=(slares & 0x80)
+slac=0//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = (slares << 1) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -6856,7 +7126,7 @@ case 0x22
 regidforsla=5
 slares=0
 slares=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-slac=(slares & 0x80)
+slac=0//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = (slares << 1) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -6866,7 +7136,7 @@ case 0x23
 regidforsla=4
 slares=0
 slares=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-slac=(slares & 0x80)
+slac=0//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = (slares << 1) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -6876,7 +7146,7 @@ case 0x24
 regidforsla=7
 slares=0
 slares=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-slac=(slares & 0x80)
+slac=0//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = (slares << 1) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -6886,7 +7156,7 @@ case 0x25
 regidforsla=6
 slares=0
 slares=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-slac=(slares & 0x80)
+slac=0//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = (slares << 1) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -6895,7 +7165,7 @@ swbreak
 case 0x26
 slares=0
 slares=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-slac=(slares & 0x80)
+slac=0//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = (slares << 1) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -6905,7 +7175,7 @@ case 0x27
 regidforsla=0
 slares=0
 slares=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-slac=(slares & 0x80)
+slac=0//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = (slares << 1) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -6915,7 +7185,7 @@ case 0x28
 regidforsla=3
 slares=0
 slares=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-slac=(slares & 0x01)
+slac=0//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = ((slares >> 1) | (slares & 0x80)) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -6925,7 +7195,7 @@ case 0x29
 regidforsla=2
 slares=0
 slares=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-slac=(slares & 0x01)
+slac=0//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = ((slares >> 1) | (slares & 0x80)) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -6935,7 +7205,7 @@ case 0x2A
 regidforsla=5
 slares=0
 slares=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-slac=(slares & 0x01)
+slac=0//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = ((slares >> 1) | (slares & 0x80)) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -6945,7 +7215,7 @@ case 0x2B
 regidforsla=4
 slares=0
 slares=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-slac=(slares & 0x01)
+slac=0//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = ((slares >> 1) | (slares & 0x80)) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -6955,7 +7225,7 @@ case 0x2C
 regidforsla=7
 slares=0
 slares=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-slac=(slares & 0x01)
+slac=0//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = ((slares >> 1) | (slares & 0x80)) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -6965,7 +7235,7 @@ case 0x2D
 regidforsla=6
 slares=0
 slares=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-slac=(slares & 0x01)
+slac=0//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = ((slares >> 1) | (slares & 0x80)) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -6974,7 +7244,7 @@ swbreak
 case 0x2E
 slares=0
 slares=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-slac=(slares & 0x01)
+slac=0//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = ((slares >> 1) | (slares & 0x80)) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -6984,7 +7254,7 @@ case 0x2F
 regidforsla=0
 slares=0
 slares=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-slac=(slares & 0x01)
+slac=0//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = ((slares >> 1) | (slares & 0x80)) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -6994,7 +7264,7 @@ case 0x30
 regidforsla=3
 slares=0
 slares=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-slac=(slares & 0x80)
+slac=0//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = ((slares << 1) | 0x01) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -7004,7 +7274,7 @@ case 0x31
 regidforsla=2
 slares=0
 slares=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-slac=(slares & 0x80)
+slac=0//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = ((slares << 1) | 0x01) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -7014,7 +7284,7 @@ case 0x32
 regidforsla=5
 slares=0
 slares=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-slac=(slares & 0x80)
+slac=0//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = ((slares << 1) | 0x01) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -7024,7 +7294,7 @@ case 0x33
 regidforsla=4
 slares=0
 slares=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-slac=(slares & 0x80)
+slac=0//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = ((slares << 1) | 0x01) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -7034,7 +7304,7 @@ case 0x34
 regidforsla=7
 slares=0
 slares=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-slac=(slares & 0x80)
+slac=0//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = ((slares << 1) | 0x01) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -7044,7 +7314,7 @@ case 0x35
 regidforsla=6
 slares=0
 slares=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-slac=(slares & 0x80)
+slac=0//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = ((slares << 1) | 0x01) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -7053,7 +7323,7 @@ swbreak
 case 0x36
 slares=0
 slares=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-slac=(slares & 0x80)
+slac=0//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = ((slares << 1) | 0x01) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -7063,7 +7333,7 @@ case 0x37
 regidforsla=0
 slares=0
 slares=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-slac=(slares & 0x80)
+slac=0//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = ((slares << 1) | 0x01) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -7073,7 +7343,7 @@ case 0x38
 regidforsla=3
 slares=0
 slares=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-slac=(slares & 0x01)
+slac=0//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = (slares >> 1) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -7083,7 +7353,7 @@ case 0x39
 regidforsla=2
 slares=0
 slares=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-slac=(slares & 0x01)
+slac=0//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = (slares >> 1) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -7093,7 +7363,7 @@ case 0x3A
 regidforsla=5
 slares=0
 slares=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-slac=(slares & 0x01)
+slac=0//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = (slares >> 1) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -7103,7 +7373,7 @@ case 0x3B
 regidforsla=4
 slares=0
 slares=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-slac=(slares & 0x01)
+slac=0//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = (slares >> 1) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -7113,7 +7383,7 @@ case 0x3C
 regidforsla=7
 slares=0
 slares=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-slac=(slares & 0x01)
+slac=0//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = (slares >> 1) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -7123,7 +7393,7 @@ case 0x3D
 regidforsla=6
 slares=0
 slares=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-slac=(slares & 0x01)
+slac=0//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = (slares >> 1) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -7132,7 +7402,7 @@ swbreak
 case 0x3E
 slares=0
 slares=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-slac=(slares & 0x01)
+slac=0//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = (slares >> 1) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -7142,7 +7412,7 @@ case 0x3F
 regidforsla=0
 slares=0
 slares=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-slac=(slares & 0x01)
+slac=0//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = (slares >> 1) & 0xff
 poke stack(0),1,SZP(slares) | slac
@@ -7382,6 +7652,80 @@ poke SZHVC_addvar_52,0,peek(stack(0),1)
 		SZHVC_addvar_52 &= 255 ^ 4
 	}
 	if ( SZHVC_addvar_37 & 32768 ) {
+		SZHVC_addvar_52 |= 128
+	}
+	else {
+		SZHVC_addvar_52 &= 255 ^ 128
+	}
+poke stack(0),1,SZHVC_addvar_52
+	return
+*SZPCall
+//SZHVC_addvar_37=peek(stack(SZHVC_addvar_37id),SZHVC_addvar_37id2)
+SZHVC_addvar_37=SZHVC_addvar_37id2
+poke SZHVC_addvar_52,0,peek(stack(0),1)
+	if ( SZHVC_addvar_37 & 1 ) {
+		SZHVC_addvar_52 |= 4
+	}
+	else {
+		SZHVC_addvar_52 &= 255 ^ 4
+	}
+	if ( SZHVC_addvar_37 == 0 ) {
+		SZHVC_addvar_52 |= 64
+	}
+	else {
+		SZHVC_addvar_52 &= 255 ^ 64
+	}
+	if ( SZHVC_addvar_37 & 128 ) {
+		SZHVC_addvar_52 |= 128
+	}
+	else {
+		SZHVC_addvar_52 &= 255 ^ 128
+	}
+poke stack(0),1,SZHVC_addvar_52
+	return
+*SZHVCall
+//SZHVC_addvar_37=peek(stack(SZHVC_addvar_37id),SZHVC_addvar_37id2)
+SZHVC_addvar_37=SZHVC_addvar_37id2
+poke SZHVC_addvar_52,0,peek(stack(0),1)
+	if ( (SZHVC_addvar_37 & 128) != (peek(SZHVC_addvar_24, var_53) & 128) ) {
+		SZHVC_addvar_52 |= 4
+	}
+	else {
+		SZHVC_addvar_52 &= 255 ^ 4
+	}
+	if ( SZHVC_addvar_37 == 0 ) {
+		SZHVC_addvar_52 |= 64
+	}
+	else {
+		SZHVC_addvar_52 &= 255 ^ 64
+	}
+	if ( SZHVC_addvar_37 & 128 ) {
+		SZHVC_addvar_52 |= 128
+	}
+	else {
+		SZHVC_addvar_52 &= 255 ^ 128
+	}
+poke stack(0),1,SZHVC_addvar_52
+	return
+	if ( SZHVC_addvar_37 & 4 ) {
+		SZHVC_addvar_52 |= 16
+	}
+	else {
+		SZHVC_addvar_52 &= 255 ^ 16
+	}
+	if ( SZHVC_addvar_37 == 0 ) {
+		SZHVC_addvar_52 |= 64
+	}
+	else {
+		SZHVC_addvar_52 &= 255 ^ 64
+	}
+	if ( SZHVC_addvar_37 & 1 ) {
+		SZHVC_addvar_52 |= 4
+	}
+	else {
+		SZHVC_addvar_52 &= 255 ^ 4
+	}
+	if ( SZHVC_addvar_37 & 128 ) {
 		SZHVC_addvar_52 |= 128
 	}
 	else {
