@@ -5155,7 +5155,7 @@ wpoke stack(0),12,wpeek(stack(0),12)+2
 }
 return
 *opcode_e9
-wpoke stack(0),10,wpeek(memory,wpeek(stack(0),6))
+wpoke stack(0),10,wpeek(stack(0),6)
 return
 *opcode_ea
 if (peek(stack(0),1) | (0x04)){
