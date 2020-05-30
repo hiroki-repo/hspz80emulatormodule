@@ -22,6 +22,7 @@ dim SZHV_dec,257
 		//SZ_BIT(i) = i
 		if (i = (i & 0x80)){SZ_BIT(i) = 0x40 | 0x04}
 		SZ_BIT(i) |= (i & (0x20 | 0x08))
+		p2=p
 		p2xclac=0
 		p2xclac=(p2 & 1)
 		if p2xclac = 0{p2xclac=0x04}else{p2xclac=0}
@@ -547,7 +548,7 @@ return
 poke memory,wpeek(stack(0),4),peek(stack(0),0)
 return
 *opcode_13
-wpoke stack(0),4,peek(stack(0),4)+1
+wpoke stack(0),4,wpeek(stack(0),4)+1
 return
 *opcode_14
 calculated=0
@@ -650,7 +651,7 @@ wpoke memory,wpeek(memory,wpeek(stack(0),10)),wpeek(stack(0),6)
 wpoke stack(0),10,wpeek(stack(0),10)+2
 return
 *opcode_23
-wpoke stack(0),6,peek(stack(0),6)+1
+wpoke stack(0),6,wpeek(stack(0),6)+1
 return
 *opcode_24
 calculated=0
@@ -757,7 +758,7 @@ poke memory,wpeek(memory,wpeek(stack(0),10)),peek(stack(0),0)
 wpoke stack(0),10,wpeek(stack(0),10)+2
 return
 *opcode_33
-wpoke stack(0),12,peek(stack(0),12)+1
+wpoke stack(0),12,wpeek(stack(0),12)+1
 return
 *opcode_34
 calculated=0
@@ -7731,6 +7732,32 @@ poke stack(0),1,SZHVC_addvar_52
 	else {
 		SZHVC_addvar_52 &= 255 ^ 128
 	}
+poke stack(0),1,SZHVC_addvar_52
+	return
+*SZPCall2
+//SZHVC_addvar_37=peek(stack(SZHVC_addvar_37id),SZHVC_addvar_37id2)
+SZHVC_addvar_37=SZHVC_addvar_37id2
+poke SZHVC_addvar_52,0,peek(stack(0),1)
+	if ( SZHVC_addvar_37 == 0 ) {
+		SZHVC_addvar_52 |= 64
+	}
+	else {
+		SZHVC_addvar_52 &= 255 ^ 64
+	}
+	if ( SZHVC_addvar_37 & 128 ) {
+		SZHVC_addvar_52 |= 128
+	}
+	else {
+		SZHVC_addvar_52 &= 255 ^ 128
+	}
+	if ( SZHVC_addvar_37 & 1 ) {
+		SZHVC_addvar_52 |= 2
+	}
+	else {
+		SZHVC_addvar_52 &= 255 ^ 2
+	}
+	SZHVC_addvar_52 &= 255 ^ 16
+	SZHVC_addvar_52 &= 255 ^ 2
 poke stack(0),1,SZHVC_addvar_52
 	return
 #global
