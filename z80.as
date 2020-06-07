@@ -309,6 +309,7 @@ jumplabel=*opcode_fd:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
 jumplabel=*opcode_fe:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
 jumplabel=*opcode_ff:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
 cpuamountmax=256
+dim r2forcalc,cpuamountmax
 sdim stackformt,64,2,cpuamountmax
 //repeat 256:wpoke stackformt(0,cnt),12,0xFF77:loop
 sdim iomemory,cpuamountmax
@@ -5352,6 +5353,7 @@ if z80runmode(threadidforrunthez80)=1{z80runmode(threadidforrunthez80)=0}else{if
 swbreak
 case 0x4F
 poke stack(0),14,peek(stack(0),0)
+r2forcalc(threadidforrunthez80)=peek(stack(0),0) & 0x80
 swbreak
 case 0x50
 //await 100
@@ -5421,6 +5423,7 @@ z80runmode(threadidforrunthez80)=1
 swbreak
 case 0x57
 poke stack(0),0,peek(stack(0),15)
+poke stack(0),1,(peek(stack(0),1) & 0x01) | SZ(peek(stack(0),0)) | (peek(stack(1),15) << 2)
 swbreak
 case 0x58
 //await 100
@@ -5473,7 +5476,8 @@ case 0x5E
 z80runmode(threadidforrunthez80)=2
 swbreak
 case 0x5F
-poke stack(0),0,peek(stack(0),14)
+poke stack(0),0,(peek(stack(0),14) & 0x7F) | r2forcalc(threadidforrunthez80)
+poke stack(0),1,(peek(stack(0),1) & 0x01) | SZ(peek(stack(0),0)) | (peek(stack(1),15) << 2)
 swbreak
 case 0x60
 //await 100
