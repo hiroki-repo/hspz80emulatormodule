@@ -1,5 +1,6 @@
 #module
 #deffunc gocaine_z80init 
+resforrlc=0
 dim SZ,257
 dim SZ_BIT,257
 dim SZHV_inc,257
@@ -3219,7 +3220,7 @@ poke stack(0),1,SZP(slares) | slac
 poke stack(0),regidforsla,slares
 swbreak
 swend
-if cbopcodecallid>=40 and cbopcodecallid<=127{
+if cbopcodecallid>=0x40 and cbopcodecallid<=127{
 regfromopcodeforbit=(cbopcodecallid-40)-(8*cbopcodecallidforbit)
 switch regfromopcodeforbit
 case 0
@@ -3256,7 +3257,7 @@ swend
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	if regforbit=-1{
 	poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | ((peek(memory,wpeek(stack(0),10)) & (1 << bit)) & (0x20 | 0x08)) | (peek(memory,wpeek(stack(0),10)) & (0x20 | 0x08))
-	wpoke stack(0),10,wpeek(stack(0),10)+2
+	//wpoke stack(0),10,wpeek(stack(0),10)+2
 	}else{
 	poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | ((peek(stack(0),regforbit) & (1 << bit)) & (0x20 | 0x08)) | (peek(stack(0),regforbit) & (0x20 | 0x08))
 	}
@@ -3298,7 +3299,7 @@ swend
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	if regforbit=-1{
 	poke memory,wpeek(stack(0),10),peek(memory,wpeek(stack(0),10)) & (1<<regfromopcodeforbit)
-	wpoke stack(0),10,wpeek(stack(0),10)+2
+	//wpoke stack(0),10,wpeek(stack(0),10)+2
 	}else{
 	poke stack(0),regforbit,peek(stack(0),regforbit) & (1<<regfromopcodeforbit)
 	}
@@ -3340,7 +3341,7 @@ swend
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	if regforbit=-1{
 	poke memory,wpeek(stack(0),10),peek(memory,wpeek(stack(0),10)) | (1<<regfromopcodeforbit)
-	wpoke stack(0),10,wpeek(stack(0),10)+2
+	//wpoke stack(0),10,wpeek(stack(0),10)+2
 	}else{
 	poke stack(0),regforbit,peek(stack(0),regforbit) | (1<<regfromopcodeforbit)
 	}
@@ -4957,7 +4958,7 @@ poke stack(0),regidforsla,slares
 swbreak
 swend
 regforbit=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-if cbopcodecallid>=40 and cbopcodecallid<=127{
+if cbopcodecallid>=0x40 and cbopcodecallid<=127{
 regfromopcodeforbit=(cbopcodecallid-40)-(8*cbopcodecallidforbit)
 switch regfromopcodeforbit
 case 6
@@ -4973,7 +4974,7 @@ swend
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	if regforbit=-1{
 	poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | ((peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10))) & (1 << bit)) & (0x20 | 0x08)) | (peek(memory,wpeek(stack(0),10)) & (0x20 | 0x08))
-	wpoke stack(0),10,wpeek(stack(0),10)+2
+	//wpoke stack(0),10,wpeek(stack(0),10)+2
 	}else{
 	poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | ((peek(memory,regforbit) & (1 << bit)) & (0x20 | 0x08)) | (peek(stack(0),regforbit) & (0x20 | 0x08))
 	}
@@ -4994,7 +4995,7 @@ swend
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	if regforbit=-1{
 	poke memory,wpeek(stack(0),10),peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10))) & (1<<regfromopcodeforbit)
-	wpoke stack(0),10,wpeek(stack(0),10)+2
+	//wpoke stack(0),10,wpeek(stack(0),10)+2
 	}else{
 	poke stack(0),regforbit,peek(memory,regforbit) & (1<<regfromopcodeforbit)
 	}
@@ -5015,7 +5016,7 @@ swend
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	if regforbit=-1{
 	poke memory,wpeek(stack(0),10),peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10))) | (1<<regfromopcodeforbit)
-	wpoke stack(0),10,wpeek(stack(0),10)+2
+	//wpoke stack(0),10,wpeek(stack(0),10)+2
 	}else{
 	poke stack(0),regforbit,peek(memory,regforbit) | (1<<regfromopcodeforbit)
 	}
@@ -7513,7 +7514,7 @@ poke stack(0),regidforsla,slares
 swbreak
 swend
 regforbit=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-if cbopcodecallid>=40 and cbopcodecallid<=127{
+if cbopcodecallid>=0x40 and cbopcodecallid<=127{
 regfromopcodeforbit=(cbopcodecallid-40)-(8*cbopcodecallidforbit)
 switch regfromopcodeforbit
 case 6
@@ -7529,7 +7530,7 @@ swend
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	if regforbit=-1{
 	poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | ((peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10))) & (1 << bit)) & (0x20 | 0x08)) | (peek(memory,wpeek(stack(0),10)) & (0x20 | 0x08))
-	wpoke stack(0),10,wpeek(stack(0),10)+2
+	//wpoke stack(0),10,wpeek(stack(0),10)+2
 	}else{
 	poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | ((peek(memory,regforbit) & (1 << bit)) & (0x20 | 0x08)) | (peek(stack(0),regforbit) & (0x20 | 0x08))
 	}
@@ -7550,7 +7551,7 @@ swend
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	if regforbit=-1{
 	poke memory,wpeek(stack(0),10),peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10))) & (1<<regfromopcodeforbit)
-	wpoke stack(0),10,wpeek(stack(0),10)+2
+	//wpoke stack(0),10,wpeek(stack(0),10)+2
 	}else{
 	poke stack(0),regforbit,peek(memory,regforbit) & (1<<regfromopcodeforbit)
 	}
@@ -7571,7 +7572,7 @@ swend
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	if regforbit=-1{
 	poke memory,wpeek(stack(0),10),peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10))) | (1<<regfromopcodeforbit)
-	wpoke stack(0),10,wpeek(stack(0),10)+2
+	//wpoke stack(0),10,wpeek(stack(0),10)+2
 	}else{
 	poke stack(0),regforbit,peek(memory,regforbit) | (1<<regfromopcodeforbit)
 	}
