@@ -3542,24 +3542,24 @@ wpoke stack(1),10,wpeek(stack(1),10)+1
 swbreak
 case 0x24
 calculated=0
-calculated=peek(stack(1),10)+1
+calculated=peek(stack(1),11)+1
 /*if calculated=256{poke stack(0),1,(peek(stack(0),1) & 0x01)}
 if calculated=128{poke stack(0),1,(peek(stack(0),1) | 0x04)}
 if (calculated & 0x0F) = 0x00{poke stack(0),1,(peek(stack(0),1) | 0x10)}*/
 poke stack(0),1,(peek(stack(0),1) & 0x01) | SZHV_inc(calculated)
-poke stack(1),10,calculated
+poke stack(1),11,calculated
 swbreak
 case 0x25
 calculated=0
-calculated=peek(stack(1),10)-1
+calculated=peek(stack(1),11)-1
 /*if calculated=-1{poke stack(0),1,(peek(stack(0),1) & 0x01)}
 if calculated=127{poke stack(0),1,(peek(stack(0),1) | 0x04)}
 if (calculated & 0x0F) = 0x0F{poke stack(0),1,(peek(stack(0),1) | 0x10)}*/
 poke stack(0),1,(peek(stack(0),1) & 0x01) | SZHV_inc(calculated)
-poke stack(1),10,calculated
+poke stack(1),11,calculated
 swbreak
 case 0x26
-poke stack(1),10,peek(memory,wpeek(stack(0),10))
+poke stack(1),11,peek(memory,wpeek(stack(0),10))
 wpoke stack(0),10,wpeek(stack(0),10)+1
 swbreak
 
@@ -3590,24 +3590,24 @@ wpoke stack(1),10,wpeek(stack(1),10)-1
 swbreak
 case 0x2C
 calculated=0
-calculated=peek(stack(1),11)+1
+calculated=peek(stack(1),10)+1
 /*if calculated=256{poke stack(0),1,(peek(stack(0),1) & 0x01)}
 if calculated=128{poke stack(0),1,(peek(stack(0),1) | 0x04)}
 if (calculated & 0x0F) = 0x00{poke stack(0),1,(peek(stack(0),1) | 0x10)}*/
 poke stack(0),1,(peek(stack(0),1) & 0x01) | SZHV_inc(calculated)
-poke stack(1),11,calculated
+poke stack(1),10,calculated
 swbreak
 case 0x2D
 calculated=0
-calculated=peek(stack(1),11)-1
+calculated=peek(stack(1),10)-1
 /*if calculated=-1{poke stack(0),1,(peek(stack(0),1) & 0x01)}
 if calculated=127{poke stack(0),1,(peek(stack(0),1) | 0x04)}
 if (calculated & 0x0F) = 0x0F{poke stack(0),1,(peek(stack(0),1) | 0x10)}*/
 poke stack(0),1,(peek(stack(0),1) & 0x01) | SZHV_dec(peek(calculated,0))
-poke stack(1),11,calculated
+poke stack(1),10,calculated
 swbreak
 case 0x2E
-poke stack(1),11,peek(memory,wpeek(stack(0),10))
+poke stack(1),10,peek(memory,wpeek(stack(0),10))
 wpoke stack(0),10,wpeek(stack(0),10)+1
 swbreak
 
@@ -5959,7 +5959,8 @@ wpoke stack(0),12,wpeek(stack(0),12)+2
 }
 return
 *opcode_f1
-wpoke stack(0),0,wpeek(memory,wpeek(stack(0),12))
+poke stack(0),0,peek(memory,wpeek(stack(0),12)+1)
+poke stack(0),1,peek(memory,wpeek(stack(0),12))
 wpoke stack(0),12,wpeek(stack(0),12)+2
 return
 *opcode_f2
@@ -5980,7 +5981,8 @@ wpoke stack(0),10,wpeek(memory,wpeek(stack(0),10))
 return
 *opcode_f5
 wpoke stack(0),12,wpeek(stack(0),12)-2
-wpoke memory,wpeek(stack(0),12),wpeek(stack(0),0)
+poke memory,peek(stack(0),12)+1,peek(stack(0),0)
+poke memory,peek(stack(0),12),peek(stack(0),1)
 return
 *opcode_f6
 /*poke stack(0),1,peek(stack(0),1) ^ (0x01)
@@ -6096,24 +6098,24 @@ wpoke stack(1),12,wpeek(stack(1),12)+1
 swbreak
 case 0x24
 calculated=0
-calculated=peek(stack(1),12)+1
+calculated=peek(stack(1),13)+1
 /*if calculated=256{poke stack(0),1,(peek(stack(0),1) & 0x01)}
 if calculated=128{poke stack(0),1,(peek(stack(0),1) | 0x04)}
 if (calculated & 0x0F) = 0x00{poke stack(0),1,(peek(stack(0),1) | 0x10)}*/
 poke stack(0),1,(peek(stack(0),1) & 0x01) | SZHV_inc(calculated)
-poke stack(1),12,calculated
+poke stack(1),13,calculated
 swbreak
 case 0x25
 calculated=0
-calculated=peek(stack(1),12)-1
+calculated=peek(stack(1),13)-1
 /*if calculated=-1{poke stack(0),1,(peek(stack(0),1) & 0x01)}
 if calculated=127{poke stack(0),1,(peek(stack(0),1) | 0x04)}
 if (calculated & 0x0F) = 0x0F{poke stack(0),1,(peek(stack(0),1) | 0x10)}*/
 poke stack(0),1,(peek(stack(0),1) & 0x01) | SZHV_inc(calculated)
-poke stack(1),12,calculated
+poke stack(1),13,calculated
 swbreak
 case 0x26
-poke stack(1),12,peek(memory,wpeek(stack(0),10))
+poke stack(1),13,peek(memory,wpeek(stack(0),10))
 wpoke stack(0),10,wpeek(stack(0),10)+1
 swbreak
 
@@ -6144,24 +6146,24 @@ wpoke stack(1),12,wpeek(stack(1),12)-1
 swbreak
 case 0x2C
 calculated=0
-calculated=peek(stack(1),13)+1
+calculated=peek(stack(1),12)+1
 /*if calculated=256{poke stack(0),1,(peek(stack(0),1) & 0x01)}
 if calculated=128{poke stack(0),1,(peek(stack(0),1) | 0x04)}
 if (calculated & 0x0F) = 0x00{poke stack(0),1,(peek(stack(0),1) | 0x10)}*/
 poke stack(0),1,(peek(stack(0),1) & 0x01) | SZHV_inc(calculated)
-poke stack(1),13,calculated
+poke stack(1),12,calculated
 swbreak
 case 0x2D
 calculated=0
-calculated=peek(stack(1),13)-1
+calculated=peek(stack(1),12)-1
 /*if calculated=-1{poke stack(0),1,(peek(stack(0),1) & 0x01)}
 if calculated=127{poke stack(0),1,(peek(stack(0),1) | 0x04)}
 if (calculated & 0x0F) = 0x0F{poke stack(0),1,(peek(stack(0),1) | 0x10)}*/
 poke stack(0),1,(peek(stack(0),1) & 0x01) | SZHV_dec(peek(calculated,0))
-poke stack(1),13,calculated
+poke stack(1),12,calculated
 swbreak
 case 0x2E
-poke stack(1),13,peek(memory,wpeek(stack(0),10))
+poke stack(1),12,peek(memory,wpeek(stack(0),10))
 wpoke stack(0),10,wpeek(stack(0),10)+1
 swbreak
 
