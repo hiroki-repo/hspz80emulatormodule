@@ -764,7 +764,7 @@ wpoke stack(0),12,wpeek(stack(0),12)+1
 return
 *opcode_34
 calculated=0
-calculated=wpeek(memory,wpeek(stack(0),6))+1
+calculated=peek(memory,wpeek(stack(0),6))+1
 /*if calculated=256{poke stack(0),1,(peek(stack(0),1) & 0x01)}
 if calculated=128{poke stack(0),1,(peek(stack(0),1) | 0x04)}
 if (calculated & 0x0F) = 0x00{poke stack(0),1,(peek(stack(0),1) | 0x10)}*/
@@ -773,7 +773,7 @@ poke memory,wpeek(stack(0),6),calculated
 return
 *opcode_35
 calculated=0
-calculated=wpeek(memory,wpeek(stack(0),6))-1
+calculated=peek(memory,wpeek(stack(0),6))-1
 /*if calculated=-1{poke stack(0),1,(peek(stack(0),1) & 0x01)}
 if calculated=127{poke stack(0),1,(peek(stack(0),1) | 0x04)}
 if (calculated & 0x0F) = 0x0F{poke stack(0),1,(peek(stack(0),1) | 0x10)}*/
