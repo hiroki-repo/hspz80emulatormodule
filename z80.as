@@ -712,7 +712,7 @@ if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,pee
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 return
 *opcode_2a
-wpoke stack(0),6,wpeek(memory,wpeek(stack(0),10))
+wpoke stack(0),6,wpeek(memory,wpeek(memory,wpeek(stack(0),10)))
 wpoke stack(0),10,wpeek(stack(0),10)+2
 return
 *opcode_2b
@@ -811,7 +811,7 @@ if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,pee
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
 return
 *opcode_3a
-poke stack(0),0,peek(memory,wpeek(stack(0),10))
+poke stack(0),0,peek(memory,wpeek(memory,wpeek(stack(0),10)))
 wpoke stack(0),10,wpeek(stack(0),10)+2
 return
 *opcode_3b
@@ -2497,7 +2497,7 @@ return
 *opcode_c4
 if peek(stack(0),1) & (0x40){wpoke stack(0),10,wpeek(stack(0),10)+2}else{
 wpoke stack(0),12,wpeek(stack(0),12)-2
-wpoke memory,wpeek(stack(0),12),wpeek(stack(0),10)
+wpoke memory,wpeek(stack(0),12),wpeek(stack(0),10)+2
 wpoke stack(0),10,wpeek(memory,wpeek(stack(0),10))
 }
 return
@@ -3350,13 +3350,13 @@ return
 *opcode_cc
 if peek(stack(0),1) & (0x40){
 wpoke stack(0),12,wpeek(stack(0),12)-2
-wpoke memory,wpeek(stack(0),12),wpeek(stack(0),10)
+wpoke memory,wpeek(stack(0),12),wpeek(stack(0),10)+2
 wpoke stack(0),10,wpeek(memory,wpeek(stack(0),10))
 }else{wpoke stack(0),10,wpeek(stack(0),10)+2}
 return
 *opcode_cd
 wpoke stack(0),12,wpeek(stack(0),12)-2
-wpoke memory,wpeek(stack(0),12),wpeek(stack(0),10)
+wpoke memory,wpeek(stack(0),12),wpeek(stack(0),10)+2
 wpoke stack(0),10,wpeek(memory,wpeek(stack(0),10))
 return
 *opcode_ce
@@ -3411,7 +3411,7 @@ return
 *opcode_d4
 if peek(stack(0),1) & (0x01){wpoke stack(0),10,wpeek(stack(0),10)+2}else{
 wpoke stack(0),12,wpeek(stack(0),12)-2
-wpoke memory,wpeek(stack(0),12),wpeek(stack(0),10)
+wpoke memory,wpeek(stack(0),12),wpeek(stack(0),10)+2
 wpoke stack(0),10,wpeek(memory,wpeek(stack(0),10))
 }
 return
@@ -3483,7 +3483,7 @@ return
 *opcode_dc
 if peek(stack(0),1) & (0x01){
 wpoke stack(0),12,wpeek(stack(0),12)-2
-wpoke memory,wpeek(stack(0),12),wpeek(stack(0),10)
+wpoke memory,wpeek(stack(0),12),wpeek(stack(0),10)+2
 wpoke stack(0),10,wpeek(memory,wpeek(stack(0),10))
 }else{wpoke stack(0),10,wpeek(stack(0),10)+2}
 return
@@ -5143,7 +5143,7 @@ return
 *opcode_e4
 if (peek(stack(0),1) | (0x04)){}else{
 wpoke stack(0),12,wpeek(stack(0),12)-2
-wpoke memory,wpeek(stack(0),12),wpeek(stack(0),10)
+wpoke memory,wpeek(stack(0),12),wpeek(stack(0),10)+2
 wpoke stack(0),10,wpeek(memory,wpeek(stack(0),10))
 }else{wpoke stack(0),10,wpeek(stack(0),10)+2}
 return
@@ -5206,7 +5206,7 @@ return
 *opcode_ec
 if (peek(stack(0),1) | (0x04)){
 wpoke stack(0),12,wpeek(stack(0),12)-2
-wpoke memory,wpeek(stack(0),12),wpeek(stack(0),10)
+wpoke memory,wpeek(stack(0),12),wpeek(stack(0),10)+2
 wpoke stack(0),10,wpeek(memory,wpeek(stack(0),10))
 }else{wpoke stack(0),10,wpeek(stack(0),10)+2}
 return
@@ -5975,7 +5975,7 @@ return
 *opcode_f4
 if (peek(stack(0),1) | (0x80)){}else{
 wpoke stack(0),12,wpeek(stack(0),12)-2
-wpoke memory,wpeek(stack(0),12),wpeek(stack(0),10)
+wpoke memory,wpeek(stack(0),12),wpeek(stack(0),10)+2
 wpoke stack(0),10,wpeek(memory,wpeek(stack(0),10))
 }else{wpoke stack(0),10,wpeek(stack(0),10)+2}
 return
@@ -6038,7 +6038,7 @@ return
 *opcode_fc
 if (peek(stack(0),1) | (0x80)){
 wpoke stack(0),12,wpeek(stack(0),12)-2
-wpoke memory,wpeek(stack(0),12),wpeek(stack(0),10)
+wpoke memory,wpeek(stack(0),12),wpeek(stack(0),10)+2
 wpoke stack(0),10,wpeek(memory,wpeek(stack(0),10))
 }else{wpoke stack(0),10,wpeek(stack(0),10)+2}
 return
