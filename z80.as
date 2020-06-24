@@ -841,7 +841,7 @@ wpoke stack(0),10,wpeek(stack(0),10)+1
 return
 *opcode_3f
 poke stack(0),1,((peek(stack(0),1) & (0x80 | 0x40 | 0x20 | 0x08 | 0x04 | 0x01)) | ((peek(stack(0),1) & 0x01) << 4) | (peek(stack(0),0) & (0x20 | 0x08))) ^ 0x01
-wpoke stack(0),10,wpeek(stack(0),10)+1
+//wpoke stack(0),10,wpeek(stack(0),10)+1
 return
 *opcode_40
 poke stack(0),3,peek(stack(0),3)
@@ -3535,7 +3535,7 @@ wpoke stack(1),10,wpeek(memory,wpeek(stack(0),10))
 wpoke stack(0),10,wpeek(stack(0),10)+2
 swbreak
 case 0x22
-wpoke memory,wpeek(stack(0),10),wpeek(stack(1),10)
+wpoke memory,wpeek(memory,wpeek(stack(0),10)),wpeek(stack(1),10)
 wpoke stack(0),10,wpeek(stack(0),10)+2
 swbreak
 case 0x23
@@ -3697,25 +3697,32 @@ poke stack(1),10,peek(stack(0),0)
 swbreak
 case 0x70
 poke memory,(wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10))),peek(stack(0),3)
+wpoke stack(0),10,wpeek(stack(0),10)+1
 swbreak
 case 0x71
 poke memory,(wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10))),peek(stack(0),2)
+wpoke stack(0),10,wpeek(stack(0),10)+1
 swbreak
 case 0x72
 poke memory,(wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10))),peek(stack(0),5)
+wpoke stack(0),10,wpeek(stack(0),10)+1
 swbreak
 case 0x73
 poke memory,(wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10))),peek(stack(0),4)
+wpoke stack(0),10,wpeek(stack(0),10)+1
 swbreak
 case 0x74
 poke memory,(wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10))),peek(stack(0),7)
+wpoke stack(0),10,wpeek(stack(0),10)+1
 swbreak
 case 0x75
 poke memory,(wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10))),peek(stack(0),6)
+wpoke stack(0),10,wpeek(stack(0),10)+1
 swbreak
 
 case 0x77
 poke memory,(wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10))),peek(stack(0),0)
+wpoke stack(0),10,wpeek(stack(0),10)+1
 swbreak
 
 case 0x7C
@@ -6090,7 +6097,7 @@ wpoke stack(1),12,wpeek(memory,wpeek(stack(0),10))
 wpoke stack(0),10,wpeek(stack(0),10)+2
 swbreak
 case 0x22
-wpoke memory,wpeek(stack(0),10),wpeek(stack(1),12)
+wpoke memory,wpeek(memory,wpeek(stack(0),10)),wpeek(stack(1),12)
 wpoke stack(0),10,wpeek(stack(0),10)+2
 swbreak
 case 0x23
@@ -6252,25 +6259,32 @@ poke stack(1),12,peek(stack(0),0)
 swbreak
 case 0x70
 poke memory,(wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10))),peek(stack(0),3)
+wpoke stack(0),10,wpeek(stack(0),10)+1
 swbreak
 case 0x71
 poke memory,(wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10))),peek(stack(0),2)
+wpoke stack(0),10,wpeek(stack(0),10)+1
 swbreak
 case 0x72
 poke memory,(wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10))),peek(stack(0),5)
+wpoke stack(0),10,wpeek(stack(0),10)+1
 swbreak
 case 0x73
 poke memory,(wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10))),peek(stack(0),4)
+wpoke stack(0),10,wpeek(stack(0),10)+1
 swbreak
 case 0x74
 poke memory,(wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10))),peek(stack(0),7)
+wpoke stack(0),10,wpeek(stack(0),10)+1
 swbreak
 case 0x75
 poke memory,(wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10))),peek(stack(0),6)
+wpoke stack(0),10,wpeek(stack(0),10)+1
 swbreak
 
 case 0x77
 poke memory,(wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10))),peek(stack(0),0)
+wpoke stack(0),10,wpeek(stack(0),10)+1
 swbreak
 
 case 0x7C
