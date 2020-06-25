@@ -3612,6 +3612,33 @@ poke stack(1),10,peek(memory,wpeek(stack(0),10))
 wpoke stack(0),10,wpeek(stack(0),10)+1
 swbreak
 
+case 0x34
+calculated=0
+calculated=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))+1
+/*if calculated=256{poke stack(0),1,(peek(stack(0),1) & 0x01)}
+if calculated=128{poke stack(0),1,(peek(stack(0),1) | 0x04)}
+if (calculated & 0x0F) = 0x00{poke stack(0),1,(peek(stack(0),1) | 0x10)}*/
+poke stack(0),1,(peek(stack(0),1) & 0x01) | SZHV_inc(calculated)
+poke memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)),calculated
+wpoke stack(0),10,wpeek(stack(0),10)+1
+swbreak
+
+case 0x35
+calculated=0
+calculated=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))-1
+/*if calculated=256{poke stack(0),1,(peek(stack(0),1) & 0x01)}
+if calculated=128{poke stack(0),1,(peek(stack(0),1) | 0x04)}
+if (calculated & 0x0F) = 0x00{poke stack(0),1,(peek(stack(0),1) | 0x10)}*/
+poke stack(0),1,(peek(stack(0),1) & 0x01) | SZHV_dec(calculated)
+poke memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)),calculated
+wpoke stack(0),10,wpeek(stack(0),10)+1
+swbreak
+
+case 0x36
+poke memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)),peek(memory,wpeek(stack(0),10))
+wpoke stack(0),10,wpeek(stack(0),10)+1
+swbreak
+
 case 0x39
 if (peek(stack(0),1) ^ (0x02))=0{poke stack(0),1,peek(stack(0),1) | (0x02)}
 addold=0
@@ -6171,6 +6198,33 @@ poke stack(1),12,calculated
 swbreak
 case 0x2E
 poke stack(1),12,peek(memory,wpeek(stack(0),10))
+wpoke stack(0),10,wpeek(stack(0),10)+1
+swbreak
+
+case 0x34
+calculated=0
+calculated=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))+1
+/*if calculated=256{poke stack(0),1,(peek(stack(0),1) & 0x01)}
+if calculated=128{poke stack(0),1,(peek(stack(0),1) | 0x04)}
+if (calculated & 0x0F) = 0x00{poke stack(0),1,(peek(stack(0),1) | 0x10)}*/
+poke stack(0),1,(peek(stack(0),1) & 0x01) | SZHV_inc(calculated)
+poke memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)),calculated
+wpoke stack(0),10,wpeek(stack(0),10)+1
+swbreak
+
+case 0x35
+calculated=0
+calculated=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))-1
+/*if calculated=256{poke stack(0),1,(peek(stack(0),1) & 0x01)}
+if calculated=128{poke stack(0),1,(peek(stack(0),1) | 0x04)}
+if (calculated & 0x0F) = 0x00{poke stack(0),1,(peek(stack(0),1) | 0x10)}*/
+poke stack(0),1,(peek(stack(0),1) & 0x01) | SZHV_dec(calculated)
+poke memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)),calculated
+wpoke stack(0),10,wpeek(stack(0),10)+1
+swbreak
+
+case 0x36
+poke memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)),peek(memory,wpeek(stack(0),10))
 wpoke stack(0),10,wpeek(stack(0),10)+1
 swbreak
 
