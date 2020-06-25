@@ -3263,7 +3263,7 @@ swend
 	}
 }
 if cbopcodecallid>=128 and cbopcodecallid<=0xBF{
-regfromopcodeforbit=(cbopcodecallid-128)-(8*cbopcodecallidforbit)
+regfromopcodeforbit=(cbopcodecallid-0x40)-(8*cbopcodecallidforbit)
 switch regfromopcodeforbit
 case 0
 regforbit=3
@@ -3305,7 +3305,7 @@ swend
 	}
 }
 if cbopcodecallid>=0xC0 and cbopcodecallid<=0xFF{
-regfromopcodeforbit=(cbopcodecallid-0xC0)-(8*cbopcodecallidforbit)
+regfromopcodeforbit=(cbopcodecallid-0x40)-(8*cbopcodecallidforbit)
 switch opcodeidforddopcodeaddcall
 case 0
 regforbit=3
@@ -4993,9 +4993,31 @@ swend
 regforbit=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
 if cbopcodecallid>=0x40 and cbopcodecallid<=127{
 regfromopcodeforbit=(cbopcodecallid-0x40)-(8*cbopcodecallidforbit)
+regforbitforssx=0
 switch regfromopcodeforbit
 case 6
 regforbit=-1
+swbreak
+case 0
+regforbitforssx=3
+swbreak
+case 1
+regforbitforssx=2
+swbreak
+case 2
+regforbitforssx=5
+swbreak
+case 3
+regforbitforssx=4
+swbreak
+case 4
+regforbitforssx=7
+swbreak
+case 5
+regforbitforssx=6
+swbreak
+case 7
+regforbitforssx=0
 swbreak
 swend
 /*if regforbit=-1{}else{}*/
@@ -5009,14 +5031,36 @@ swend
 	poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | ((peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10))) & (1 << bit)) & (0x20 | 0x08)) | (peek(memory,wpeek(stack(0),10)) & (0x20 | 0x08))
 	//wpoke stack(0),10,wpeek(stack(0),10)+2
 	}else{
-	poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | ((peek(memory,regforbit) & (1 << bit)) & (0x20 | 0x08)) | (peek(stack(0),regforbit) & (0x20 | 0x08))
+	poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | ((peek(memory,regforbit) & (1 << bit)) & (0x20 | 0x08)) | (peek(stack(0),regforbitforssx) & (0x20 | 0x08))
 	}
 }
 if cbopcodecallid>=128 and cbopcodecallid<=0xBF{
-regfromopcodeforbit=(cbopcodecallid-128)-(8*cbopcodecallidforbit)
+regfromopcodeforbit=(cbopcodecallid-0x40)-(8*cbopcodecallidforbit)
+regforbitforssx=0
 switch regfromopcodeforbit
 case 6
 regforbit=-1
+swbreak
+case 0
+regforbitforssx=3
+swbreak
+case 1
+regforbitforssx=2
+swbreak
+case 2
+regforbitforssx=5
+swbreak
+case 3
+regforbitforssx=4
+swbreak
+case 4
+regforbitforssx=7
+swbreak
+case 5
+regforbitforssx=6
+swbreak
+case 7
+regforbitforssx=0
 swbreak
 swend
 /*if regforbit=-1{}else{}*/
@@ -5030,14 +5074,36 @@ swend
 	poke memory,wpeek(stack(0),10),peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10))) & (1<<regfromopcodeforbit)
 	//wpoke stack(0),10,wpeek(stack(0),10)+2
 	}else{
-	poke stack(0),regforbit,peek(memory,regforbit) & (1<<regfromopcodeforbit)
+	poke stack(0),regforbitforssx,peek(memory,regforbit) & (1<<regfromopcodeforbit)
 	}
 }
 if cbopcodecallid>=0xC0 and cbopcodecallid<=0xFF{
-regfromopcodeforbit=(cbopcodecallid-0xC0)-(8*cbopcodecallidforbit)
+regfromopcodeforbit=(cbopcodecallid-0x40)-(8*cbopcodecallidforbit)
+regforbitforssx=0
 switch regfromopcodeforbit
 case 6
 regforbit=-1
+swbreak
+case 0
+regforbitforssx=3
+swbreak
+case 1
+regforbitforssx=2
+swbreak
+case 2
+regforbitforssx=5
+swbreak
+case 3
+regforbitforssx=4
+swbreak
+case 4
+regforbitforssx=7
+swbreak
+case 5
+regforbitforssx=6
+swbreak
+case 7
+regforbitforssx=0
 swbreak
 swend
 /*if regforbit=-1{}else{}*/
@@ -5051,7 +5117,7 @@ swend
 	poke memory,wpeek(stack(0),10),peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10))) | (1<<regfromopcodeforbit)
 	//wpoke stack(0),10,wpeek(stack(0),10)+2
 	}else{
-	poke stack(0),regforbit,peek(memory,regforbit) | (1<<regfromopcodeforbit)
+	poke stack(0),regforbitforssx,peek(memory,regforbit) | (1<<regfromopcodeforbit)
 	}
 }
 wpoke stack(0),10,wpeek(stack(0),10)+2
@@ -7582,9 +7648,31 @@ swend
 regforbit=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
 if cbopcodecallid>=0x40 and cbopcodecallid<=127{
 regfromopcodeforbit=(cbopcodecallid-0x40)-(8*cbopcodecallidforbit)
+regforbitforssx=0
 switch regfromopcodeforbit
 case 6
 regforbit=-1
+swbreak
+case 0
+regforbitforssx=3
+swbreak
+case 1
+regforbitforssx=2
+swbreak
+case 2
+regforbitforssx=5
+swbreak
+case 3
+regforbitforssx=4
+swbreak
+case 4
+regforbitforssx=7
+swbreak
+case 5
+regforbitforssx=6
+swbreak
+case 7
+regforbitforssx=0
 swbreak
 swend
 /*if regforbit=-1{}else{}*/
@@ -7598,14 +7686,36 @@ swend
 	poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | ((peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10))) & (1 << bit)) & (0x20 | 0x08)) | (peek(memory,wpeek(stack(0),10)) & (0x20 | 0x08))
 	//wpoke stack(0),10,wpeek(stack(0),10)+2
 	}else{
-	poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | ((peek(memory,regforbit) & (1 << bit)) & (0x20 | 0x08)) | (peek(stack(0),regforbit) & (0x20 | 0x08))
+	poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | ((peek(memory,regforbit) & (1 << bit)) & (0x20 | 0x08)) | (peek(stack(0),regforbitforssx) & (0x20 | 0x08))
 	}
 }
 if cbopcodecallid>=128 and cbopcodecallid<=0xBF{
-regfromopcodeforbit=(cbopcodecallid-128)-(8*cbopcodecallidforbit)
+regfromopcodeforbit=(cbopcodecallid-0x40)-(8*cbopcodecallidforbit)
+regforbitforssx=0
 switch regfromopcodeforbit
 case 6
 regforbit=-1
+swbreak
+case 0
+regforbitforssx=3
+swbreak
+case 1
+regforbitforssx=2
+swbreak
+case 2
+regforbitforssx=5
+swbreak
+case 3
+regforbitforssx=4
+swbreak
+case 4
+regforbitforssx=7
+swbreak
+case 5
+regforbitforssx=6
+swbreak
+case 7
+regforbitforssx=0
 swbreak
 swend
 /*if regforbit=-1{}else{}*/
@@ -7619,14 +7729,36 @@ swend
 	poke memory,wpeek(stack(0),10),peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10))) & (1<<regfromopcodeforbit)
 	//wpoke stack(0),10,wpeek(stack(0),10)+2
 	}else{
-	poke stack(0),regforbit,peek(memory,regforbit) & (1<<regfromopcodeforbit)
+	poke stack(0),regforbitforssx,peek(memory,regforbit) & (1<<regfromopcodeforbit)
 	}
 }
 if cbopcodecallid>=0xC0 and cbopcodecallid<=0xFF{
-regfromopcodeforbit=(cbopcodecallid-0xC0)-(8*cbopcodecallidforbit)
+regfromopcodeforbit=(cbopcodecallid-0x40)-(8*cbopcodecallidforbit)
+regforbitforssx=0
 switch regfromopcodeforbit
 case 6
 regforbit=-1
+swbreak
+case 0
+regforbitforssx=3
+swbreak
+case 1
+regforbitforssx=2
+swbreak
+case 2
+regforbitforssx=5
+swbreak
+case 3
+regforbitforssx=4
+swbreak
+case 4
+regforbitforssx=7
+swbreak
+case 5
+regforbitforssx=6
+swbreak
+case 7
+regforbitforssx=0
 swbreak
 swend
 /*if regforbit=-1{}else{}*/
@@ -7640,7 +7772,7 @@ swend
 	poke memory,wpeek(stack(0),10),peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10))) | (1<<regfromopcodeforbit)
 	//wpoke stack(0),10,wpeek(stack(0),10)+2
 	}else{
-	poke stack(0),regforbit,peek(memory,regforbit) | (1<<regfromopcodeforbit)
+	poke stack(0),regforbitforssx,peek(memory,regforbit) | (1<<regfromopcodeforbit)
 	}
 }
 wpoke stack(0),10,wpeek(stack(0),10)+2
