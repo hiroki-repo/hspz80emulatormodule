@@ -1,0 +1,257 @@
+#include "./z80.as"
+#packopt name "picoz80pcemu"
+#pack "z80.as"
+#pack "z80runimplementexample.hsp"
+bgscr 0,ginfo(20),ginfo(21),0,0,0
+oncmd gosub *onkeyforz80pcdown,0x100
+oncmd gosub *onkeyforz80pcup,0x101
+oncmd gosub *onclkforz80pc,0x201
+oncmd gosub *onclkforz80pc,0x202
+	buffer 2, 256, 192, 1, , , 256, 192
+	gsel 2,0
+	mref var_17,66
+	palette 0, 0, 0, 0
+	palette 1, 255, 0, 0
+	palette 2, 0, 255, 0
+	palette 3, 0, 0, 255
+	palette 4, 255, 255, 0
+	palette 5, 0, 255, 255
+	palette 6, 255, 0, 255
+	palette 7, 255, 255, 255, 1
+gsel 0,0
+sdim var_29,65540
+filename=""
+dircmdlines=""
+dircmdlines=dir_cmdline
+repeat:if strmid(dircmdlines,0,1)=" "{dircmdlines=strmid(dircmdlines,1,strlen(dircmdlines))}else{break}:loop
+filename=dircmdlines
+exist filename
+strsize2=strsize
+if strsize2=-1{filename="rom.bin":exist filename:strsize2=strsize}
+if strsize2=-1{}else{
+sdim rom,strsize2
+bload filename,rom
+}
+memcpy var_29,rom,strsize2,256,0
+var_27=256
+var_20=1
+sdim var_30,65536
+z80hltendset 0,1
+repeat
+ioaddr16=getioportread16bitaddr(var_27,var_29):if ioaddr16=-1{}else{if (var_20){ioportpoke peek(ioaddr16,1),peek(var_30,ioaddr16)}else{ioportpoke peek(ioaddr16,1),peek(var_29,peek(ioaddr16,1))}/*:memcpy iomemory@m0(0),var_30,256,0,256*peek(ioaddr16,1)*/}
+if peek(var_29,var_27)=0x76{z80run var_27,var_29,0:break}else{z80run var_27,var_29,0}
+ioaddr16=getioportread16bitaddr(var_27,var_29):if ioaddr16=-1{ioaddr16=isioportcalled16():if ioaddr16=-1{}else{if (var_20){poke var_30,ioaddr16,ioportpeek(peek(ioaddr16,0))}else{poke var_30,peek(ioaddr16,1),ioportpeek(peek(ioaddr16,1))}/*:memcpy var_30,iomemory@m0(0),256,256*peek(ioaddr16,1),0*/}}
+gosub *label_30
+var_22=var_22+1:if var_22=4800{var_22=0:await 1}:loop
+end
+*label_30
+	if ( var_22 == 0 ) {
+		if ( peek(var_30, 49408) == 0 ) {
+			repeat 192
+				var_35 = cnt * 256
+				memcpy var_17, var_30, 256, 48896 - var_35, var_35
+			loop
+				//gsel 1
+				gsel 0
+				pos 0, 0
+				//gzoom 512, 384, 2, 0, 0, 256, 192
+				gxc=ginfo(12)
+				gyc=ginfo(13)
+				if gxc=0{}else{gx=gxc}
+				if gxc=0{}else{gy=gyc}
+				gzoom gx, gy, 2, 0, 0, 256, 192
+				gsel
+		}
+		/*repeat 255
+			getkey var_36, cnt
+			poke var_30, 49152 + cnt, var_36
+		loop*/
+	}
+	if ( wpeek(var_30, 49424) ) {
+		var_37 = wpeek(var_30, 49424) * wpeek(var_30, 49426)
+		wpoke var_30, 49428, var_37 & 65535
+		wpoke var_30, 49430, var_37 >> 16
+	}
+	if ( wpeek(var_30, 49432) ) {
+		wpoke var_30, 49436, int(wpeek(var_30, 49432) / wpeek(var_30, 49434))
+		wpoke var_30, 49438, wpeek(var_30, 49432) \ wpeek(var_30, 49434)
+	}
+	if ( peek(var_30, 49447) ) {
+		repeat 192
+			var_35 = cnt * 256
+			memcpy var_17, var_30, 256, 48896 - var_35, var_35
+		loop
+		var_33 = peek(var_30, 49447)
+		poke var_30, 49447, 0
+		dim var_38, 6
+		var_38 = peek(var_30, 49440), peek(var_30, 49441), peek(var_30, 49442), peek(var_30, 49443), peek(var_30, 49444), peek(var_30, 49445)
+		gsel 2
+		palcolor peek(var_30, 49446)
+		var_39 = var_33
+		if ( 0 ) {
+			var_40++
+		}
+		if ( var_39 == 1 | var_40 ) {
+			var_40 = 0
+			line var_38(0), var_38(1), var_38(2), var_38(3)
+			goto *label_31
+			var_40++
+		}
+		if ( var_39 == 2 | var_40 ) {
+			var_40 = 0
+			boxf var_38(0), var_38(1), var_38(2), var_38(3)
+			goto *label_31
+			var_40++
+		}
+		if ( var_39 == 3 | var_40 ) {
+			var_40 = 0
+			circle var_38(0), var_38(1), var_38(2), var_38(3)
+			goto *label_31
+			var_40++
+		}
+		if ( var_39 == 4 | var_40 ) {
+			var_40 = 0
+			gosub *label_32
+			goto *label_31
+			var_40++
+		}
+		if ( var_39 == 5 | var_40 ) {
+			var_40 = 0
+			pos var_38(0), var_38(1)
+			line var_38(2), var_38(1)
+			line var_38(2), var_38(3)
+			line var_38(1), var_38(3)
+			line var_38(0), var_38(1)
+			goto *label_31
+			var_40++
+		}
+		if ( var_39 == 6 | var_40 ) {
+			var_40 = 0
+			circle var_38(0), var_38(1), var_38(2), var_38(3), 0
+			goto *label_31
+			var_40++
+		}
+		if ( var_39 == 7 | var_40 ) {
+			var_40 = 0
+			pos var_38(0), var_38(1)
+			line var_38(2), var_38(3)
+			line var_38(4), var_38(5)
+			line var_38(0), var_38(1)
+			goto *label_31
+			var_40++
+		}
+		if ( var_39 == 8 | var_40 ) {
+			var_40 = 0
+			pos var_38(2), var_38(3)
+			gcopy 2, var_38(0), var_38(1), var_38(4), var_38(5)
+			goto *label_31
+			var_40++
+		}
+		if ( var_39 == 9 | var_40 ) {
+			var_40 = 0
+			sdim var_41, 1024
+			memcpy var_41, var_30, 463, , 49456
+			pos var_38(0), var_38(1)
+			mes var_41
+			goto *label_31
+		}
+*label_31
+		gsel
+		repeat 192
+			var_35 = cnt * 256
+			memcpy var_30, var_17, 256, 48896 - var_35, var_35
+		loop
+	}
+	return
+*label_32
+	dim var_42, 3
+	dim var_43, 3
+	var_42(0) = var_38(0)
+	var_43(0) = var_38(1)
+	var_42(1) = var_38(2)
+	var_43(1) = var_38(3)
+	var_42(2) = var_38(4)
+	var_43(2) = var_38(5)
+	repeat 3
+		var_35 = cnt
+		repeat 3 - var_35, var_35
+			if ( var_43(var_35) > var_43(cnt) ) {
+				var_42(var_35) ^= var_42(cnt)
+				var_42(cnt) ^= var_42(var_35)
+				var_42(var_35) ^= var_42(cnt)
+				var_43(var_35) ^= var_43(cnt)
+				var_43(cnt) ^= var_43(var_35)
+				var_43(var_35) ^= var_43(cnt)
+			}
+		loop
+	loop
+	dim var_44, 3
+	if ( var_43(1) - var_43(0) != 0 ) {
+		var_44(0) = (var_42(1) - var_42(0) << 8) / (var_43(1) - var_43(0))
+	}
+	else {
+		var_44(0) = 0
+	}
+	if ( var_43(2) - var_43(0) != 0 ) {
+		var_44(1) = (var_42(2) - var_42(0) << 8) / (var_43(2) - var_43(0))
+	}
+	else {
+		var_44(1) = 0
+	}
+	if ( var_43(2) - var_43(1) != 0 ) {
+		var_44(2) = (var_42(2) - var_42(1) << 8) / (var_43(2) - var_43(1))
+	}
+	else {
+		var_44(2) = 0
+	}
+	dim var_45, 2
+	var_45(0) = var_42(0) << 8
+	var_45(1) = var_42(0) << 8
+	var_46 = var_43(0)
+	if ( var_43(1) < var_43(2) ) {
+		var_47 = var_43(2)
+	}
+	else {
+		var_47 = var_43(1)
+	}
+	repeat 192
+		if ( var_46 >= var_47 ) {
+			break
+		}
+		if ( var_46 < var_43(1) ) {
+			var_45(0) += var_44(0)
+		}
+		else {
+			var_45(0) += var_44(2)
+		}
+		if ( var_46 < var_43(2) ) {
+			var_45(1) += var_44(1)
+		}
+		else {
+			var_45(1) += var_44(2)
+		}
+		if ( var_45(1) > var_45(0) ) {
+			var_48 = var_45(0)
+			var_49 = var_45(1)
+		}
+		else {
+			var_48 = var_45(1)
+			var_49 = var_45(0)
+		}
+		var_48 >>= 8
+		var_49 >>= 8
+		if ( var_46 > (-1) ) {
+			line var_48, var_46, var_49, var_46
+		}
+		var_46++
+	loop
+	return
+*onkeyforz80pcup
+poke var_30, 49152 + wparam, 0
+return
+*onkeyforz80pcdown
+poke var_30, 49152 + wparam, 1
+return
+*onclkforz80pc
+poke var_30, 49152 + 1, wparam
+return
