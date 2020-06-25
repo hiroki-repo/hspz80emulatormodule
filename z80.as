@@ -2547,7 +2547,7 @@ wpoke stack(0),10,wpeek(memory,wpeek(stack(0),10))
 return
 *opcode_cb
 cbopcodecallid=peek(memory,wpeek(stack(0),10))
-cbopcodecallidforbit=(cbopcodecallid-40)/8
+cbopcodecallidforbit=(cbopcodecallid-0x40)/8
 opcodeforsubcall=peek(memory,wpeek(stack(0),10))
 wpoke stack(0),10,wpeek(stack(0),10)+1
 switch opcodeforsubcall
@@ -3221,7 +3221,7 @@ poke stack(0),regidforsla,slares
 swbreak
 swend
 if cbopcodecallid>=0x40 and cbopcodecallid<=127{
-regfromopcodeforbit=(cbopcodecallid-40)-(8*cbopcodecallidforbit)
+regfromopcodeforbit=(cbopcodecallid-0x40)-(8*cbopcodecallidforbit)
 switch regfromopcodeforbit
 case 0
 regforbit=3
@@ -3263,7 +3263,7 @@ swend
 	}
 }
 if cbopcodecallid>=128 and cbopcodecallid<=0xBF{
-regfromopcodeforbit=(cbopcodecallid-40)-(8*cbopcodecallidforbit)
+regfromopcodeforbit=(cbopcodecallid-128)-(8*cbopcodecallidforbit)
 switch regfromopcodeforbit
 case 0
 regforbit=3
@@ -3305,7 +3305,7 @@ swend
 	}
 }
 if cbopcodecallid>=0xC0 and cbopcodecallid<=0xFF{
-regfromopcodeforbit=(cbopcodecallid-40)-(8*cbopcodecallidforbit)
+regfromopcodeforbit=(cbopcodecallid-0xC0)-(8*cbopcodecallidforbit)
 switch opcodeidforddopcodeaddcall
 case 0
 regforbit=3
@@ -4318,7 +4318,7 @@ swbreak
 
 case 0xCB
 cbopcodecallid=peek(memory,wpeek(stack(0),10)+1)
-cbopcodecallidforbit=(cbopcodecallid-40)/8
+cbopcodecallidforbit=(cbopcodecallid-0x40)/8
 opcodeforsubcall=peek(memory,wpeek(stack(0),10)+1)
 switch opcodeforsubcall
 case 0x00
@@ -4992,7 +4992,7 @@ swbreak
 swend
 regforbit=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
 if cbopcodecallid>=0x40 and cbopcodecallid<=127{
-regfromopcodeforbit=(cbopcodecallid-40)-(8*cbopcodecallidforbit)
+regfromopcodeforbit=(cbopcodecallid-0x40)-(8*cbopcodecallidforbit)
 switch regfromopcodeforbit
 case 6
 regforbit=-1
@@ -5013,7 +5013,7 @@ swend
 	}
 }
 if cbopcodecallid>=128 and cbopcodecallid<=0xBF{
-regfromopcodeforbit=(cbopcodecallid-40)-(8*cbopcodecallidforbit)
+regfromopcodeforbit=(cbopcodecallid-128)-(8*cbopcodecallidforbit)
 switch regfromopcodeforbit
 case 6
 regforbit=-1
@@ -5034,7 +5034,7 @@ swend
 	}
 }
 if cbopcodecallid>=0xC0 and cbopcodecallid<=0xFF{
-regfromopcodeforbit=(cbopcodecallid-40)-(8*cbopcodecallidforbit)
+regfromopcodeforbit=(cbopcodecallid-0xC0)-(8*cbopcodecallidforbit)
 switch regfromopcodeforbit
 case 6
 regforbit=-1
@@ -5086,16 +5086,16 @@ case 0xFF
 z80class@=0
 swbreak
 default
-opcodeidforddopcodeaddcall=((opcodeidforddopcode-40)/6)
-opcodeidforddopcodeaddcall2=((opcodeidforddopcode-40)-(opcodeidforddopcodeaddcall*6))-4
+opcodeidforddopcodeaddcall=((opcodeidforddopcode-0x40)/6)
+opcodeidforddopcodeaddcall2=((opcodeidforddopcode-0x40)-(opcodeidforddopcodeaddcall*6))-4
 opcode=peek(memory,wpeek(stack(0),10))
 lpoke jumplabel,0,lpeek(opcodeaddr(opcode),0)
 wpoke stack(0),10,wpeek(stack(0),10)+1
 gosub jumplabel
 swbreak
 swend
-opcodeidforddopcodeaddcall=((opcodeidforddopcode-40)/6)
-opcodeidforddopcodeaddcall2=((opcodeidforddopcode-40)-(opcodeidforddopcodeaddcall*6))-4
+opcodeidforddopcodeaddcall=((opcodeidforddopcode-0x40)/6)
+opcodeidforddopcodeaddcall2=((opcodeidforddopcode-0x40)-(opcodeidforddopcodeaddcall*6))-4
 if opcodeidforddopcode>=0x44 and opcodeidforddopcode<=0x5E{
 switch opcodeidforddopcodeaddcall
 case 0
@@ -6907,7 +6907,7 @@ swbreak
 
 case 0xCB
 cbopcodecallid=peek(memory,wpeek(stack(0),10)+1)
-cbopcodecallidforbit=(cbopcodecallid-40)/8
+cbopcodecallidforbit=(cbopcodecallid-0x40)/8
 opcodeforsubcall=peek(memory,wpeek(stack(0),10)+1)
 switch opcodeforsubcall
 case 0x00
@@ -7581,7 +7581,7 @@ swbreak
 swend
 regforbit=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
 if cbopcodecallid>=0x40 and cbopcodecallid<=127{
-regfromopcodeforbit=(cbopcodecallid-40)-(8*cbopcodecallidforbit)
+regfromopcodeforbit=(cbopcodecallid-0x40)-(8*cbopcodecallidforbit)
 switch regfromopcodeforbit
 case 6
 regforbit=-1
@@ -7602,7 +7602,7 @@ swend
 	}
 }
 if cbopcodecallid>=128 and cbopcodecallid<=0xBF{
-regfromopcodeforbit=(cbopcodecallid-40)-(8*cbopcodecallidforbit)
+regfromopcodeforbit=(cbopcodecallid-128)-(8*cbopcodecallidforbit)
 switch regfromopcodeforbit
 case 6
 regforbit=-1
@@ -7623,7 +7623,7 @@ swend
 	}
 }
 if cbopcodecallid>=0xC0 and cbopcodecallid<=0xFF{
-regfromopcodeforbit=(cbopcodecallid-40)-(8*cbopcodecallidforbit)
+regfromopcodeforbit=(cbopcodecallid-0xC0)-(8*cbopcodecallidforbit)
 switch regfromopcodeforbit
 case 6
 regforbit=-1
@@ -7672,16 +7672,16 @@ wpoke stack(0),12,wpeek(stack(1),12)
 swbreak
 
 default
-opcodeidforddopcodeaddcall=((opcodeidforddopcode-40)/6)
-opcodeidforddopcodeaddcall2=((opcodeidforddopcode-40)-(opcodeidforddopcodeaddcall*6))-4
+opcodeidforddopcodeaddcall=((opcodeidforddopcode-0x40)/6)
+opcodeidforddopcodeaddcall2=((opcodeidforddopcode-0x40)-(opcodeidforddopcodeaddcall*6))-4
 opcode=peek(memory,wpeek(stack(0),10))
 lpoke jumplabel,0,lpeek(opcodeaddr(opcode),0)
 wpoke stack(0),10,wpeek(stack(0),10)+1
 gosub jumplabel
 swbreak
 swend
-opcodeidforddopcodeaddcall=((opcodeidforddopcode-40)/6)
-opcodeidforddopcodeaddcall2=((opcodeidforddopcode-40)-(opcodeidforddopcodeaddcall*6))-4
+opcodeidforddopcodeaddcall=((opcodeidforddopcode-0x40)/6)
+opcodeidforddopcodeaddcall2=((opcodeidforddopcode-0x40)-(opcodeidforddopcodeaddcall*6))-4
 if opcodeidforddopcode>=0x44 and opcodeidforddopcode<=0x5E{
 switch opcodeidforddopcodeaddcall
 case 0
