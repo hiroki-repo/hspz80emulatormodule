@@ -5364,7 +5364,7 @@ halfcarrychk=0
 addtostack=0
 addfromstack=0
 addold=peek(stack(0),addtostack)
-calculated=peek(stack(0),addtostack)-peek(stack(0),addfromstack)
+calculated=0-peek(stack(0),addtostack)//-peek(stack(0),addfromstack)
 if peek(stack(0),addtostack) & 0b00001000{halfcarrychk=1}
 poke stack(0),addtostack,calculated
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke stack(0),1,peek(stack(0),1) | (0x01)}
@@ -5435,7 +5435,7 @@ halfcarrychk=0
 addtostack=0
 addfromstack=0
 addold=peek(stack(0),addtostack)
-calculated=peek(stack(0),addtostack)-peek(stack(0),addfromstack)
+calculated=0-peek(stack(0),addtostack)//-peek(stack(0),addfromstack)
 if peek(stack(0),addtostack) & 0b00001000{halfcarrychk=1}
 poke stack(0),addtostack,calculated
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke stack(0),1,peek(stack(0),1) | (0x01)}
@@ -5506,7 +5506,7 @@ halfcarrychk=0
 addtostack=0
 addfromstack=0
 addold=peek(stack(0),addtostack)
-calculated=peek(stack(0),addtostack)-peek(stack(0),addfromstack)
+calculated=0-peek(stack(0),addtostack)//-peek(stack(0),addfromstack)
 if peek(stack(0),addtostack) & 0b00001000{halfcarrychk=1}
 poke stack(0),addtostack,calculated
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke stack(0),1,peek(stack(0),1) | (0x01)}
@@ -5570,7 +5570,24 @@ case 0x5B
 wpoke stack(0),4,wpeek(memory,wpeek(memory,wpeek(stack(0),10)))
 wpoke stack(0),10,wpeek(stack(0),10)+2
 swbreak
+case 0x5C
+if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
+addold=0
+calculated=0
+halfcarrychk=0
+addtostack=0
+addfromstack=0
+addold=peek(stack(0),addtostack)
+calculated=0-peek(stack(0),addtostack)//-peek(stack(0),addfromstack)
+if peek(stack(0),addtostack) & 0b00001000{halfcarrychk=1}
+poke stack(0),addtostack,calculated
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke stack(0),1,peek(stack(0),1) | (0x01)}
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
+if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+swbreak
 case 0x5D
 wpoke stack(0),12,wpeek(stack(0),12)+2
 wpoke stack(0),10,wpeek(memory,wpeek(stack(0),12))
@@ -5632,7 +5649,7 @@ halfcarrychk=0
 addtostack=0
 addfromstack=0
 addold=peek(stack(0),addtostack)
-calculated=peek(stack(0),addtostack)-peek(stack(0),addfromstack)
+calculated=0-peek(stack(0),addtostack)//-peek(stack(0),addfromstack)
 if peek(stack(0),addtostack) & 0b00001000{halfcarrychk=1}
 poke stack(0),addtostack,calculated
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke stack(0),1,peek(stack(0),1) | (0x01)}
@@ -5650,7 +5667,12 @@ swbreak
 case 0x66
 z80runmode(threadidforrunthez80)=0
 swbreak
-
+case 0x67
+rrdn=peek(memory,wpeek(stack(0),6))
+poke memory,wpeek(stack(0),6),(rrdn >> 4) | (peek(stack(0),0) << 4)
+poke stack(0),0,(peek(stack(0),0) & 0xf0) | (rrdn & 0x0f)
+poke stack(0),1,(peek(stack(0),1) & 0x01) | SZP(peek(stack(0),0))
+swbreak
 case 0x68
 //await 100
 /*if peek(iomemory,peek(stack(0),2))=0{poke stack(0),1,peek(stack(0),1) ^ (0x40)}
@@ -5693,7 +5715,24 @@ case 0x6B
 wpoke stack(0),6,wpeek(memory,wpeek(memory,wpeek(stack(0),10)))
 wpoke stack(0),10,wpeek(stack(0),10)+2
 swbreak
+case 0x6C
+if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
+addold=0
+calculated=0
+halfcarrychk=0
+addtostack=0
+addfromstack=0
+addold=peek(stack(0),addtostack)
+calculated=0-peek(stack(0),addtostack)//-peek(stack(0),addfromstack)
+if peek(stack(0),addtostack) & 0b00001000{halfcarrychk=1}
+poke stack(0),addtostack,calculated
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke stack(0),1,peek(stack(0),1) | (0x01)}
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
+if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+swbreak
 case 0x6D
 wpoke stack(0),12,wpeek(stack(0),12)+2
 wpoke stack(0),10,wpeek(memory,wpeek(stack(0),12))
@@ -5702,7 +5741,12 @@ swbreak
 case 0x6E
 if z80runmode(threadidforrunthez80)=1{z80runmode(threadidforrunthez80)=0}else{if z80runmode(threadidforrunthez80)=0{z80runmode(threadidforrunthez80)=1}}
 swbreak
-
+case 0x6F
+rrdn=peek(memory,wpeek(stack(0),6))
+poke memory,wpeek(stack(0),6),(rrdn << 4) | (peek(stack(0),0) & 0x0f)
+poke stack(0),0,(peek(stack(0),0) & 0xf0) | (rrdn >> 4)
+poke stack(0),1,(peek(stack(0),1) & 0x01) | SZP(peek(stack(0),0))
+swbreak
 case 0x70
 //await 100
 /*if peek(iomemory,peek(stack(0),2))=0{poke stack(0),1,peek(stack(0),1) ^ (0x40)}
@@ -5744,7 +5788,24 @@ case 0x73
 wpoke memory,wpeek(memory,wpeek(stack(0),10)),wpeek(stack(0),12)
 wpoke stack(0),10,wpeek(stack(0),10)+2
 swbreak
+case 0x74
+if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
+addold=0
+calculated=0
+halfcarrychk=0
+addtostack=0
+addfromstack=0
+addold=peek(stack(0),addtostack)
+calculated=0-peek(stack(0),addtostack)//-peek(stack(0),addfromstack)
+if peek(stack(0),addtostack) & 0b00001000{halfcarrychk=1}
+poke stack(0),addtostack,calculated
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke stack(0),1,peek(stack(0),1) | (0x01)}
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
+if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+swbreak
 case 0x75
 wpoke stack(0),12,wpeek(stack(0),12)+2
 wpoke stack(0),10,wpeek(memory,wpeek(stack(0),12))
@@ -5796,11 +5857,31 @@ case 0x7B
 wpoke stack(0),12,wpeek(memory,wpeek(memory,wpeek(stack(0),10)))
 wpoke stack(0),10,wpeek(stack(0),10)+2
 swbreak
+case 0x7C
+if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
+addold=0
+calculated=0
+halfcarrychk=0
+addtostack=0
+addfromstack=0
+addold=peek(stack(0),addtostack)
+calculated=0-peek(stack(0),addtostack)//-peek(stack(0),addfromstack)
+if peek(stack(0),addtostack) & 0b00001000{halfcarrychk=1}
+poke stack(0),addtostack,calculated
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke stack(0),1,peek(stack(0),1) | (0x01)}
+if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
+if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
+if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+swbreak
 case 0x7D
 wpoke stack(0),12,wpeek(stack(0),12)+2
 wpoke stack(0),10,wpeek(memory,wpeek(stack(0),12))
 poke stack(1),14,0,peek(stack(1),15)
+swbreak
+case 0x7E
+z80runmode(threadidforrunthez80)=2
 swbreak
 
 case 0xA0
