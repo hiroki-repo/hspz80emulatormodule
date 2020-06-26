@@ -686,7 +686,7 @@ return
 		if((peek(stack(0),1) & 0x10) | ((peek(stack(0),0) & 0xf) > 9)) {afordaa += 6}
 		if((peek(stack(0),1) & 0x01) | (peek(stack(0),0) > 0x99)) {afordaa += 0x60}
 	} 
-	poke stack(0),1,(peek(stack(0),1) & (0x01 | 0x02)) | (peek(stack(0),0) > 0x99) | ((peek(stack(0),0) ^ afordaa) & 0x10) | SZP(afordaa)
+	poke stack(0),1,(peek(stack(0),1) & (0x01 | 0x02)) | (peek(stack(0),0) > 0x99) | ((peek(stack(0),0) ^ afordaa) & 0x10) | SZP(peek(afordaa,0))
 return
 *opcode_28
 address=peek(memory,wpeek(stack(0),10))
@@ -2910,7 +2910,7 @@ slares=peek(stack(0),regidforsla)
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = (slares << 1) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x21
@@ -2920,7 +2920,7 @@ slares=peek(stack(0),regidforsla)
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = (slares << 1) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x22
@@ -2930,7 +2930,7 @@ slares=peek(stack(0),regidforsla)
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = (slares << 1) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x23
@@ -2940,7 +2940,7 @@ slares=peek(stack(0),regidforsla)
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = (slares << 1) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x24
@@ -2950,7 +2950,7 @@ slares=peek(stack(0),regidforsla)
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = (slares << 1) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x25
@@ -2960,7 +2960,7 @@ slares=peek(stack(0),regidforsla)
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = (slares << 1) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x26
@@ -2969,7 +2969,7 @@ slares=peek(memory,wpeek(stack(0),6))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = (slares << 1) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke memory,wpeek(stack(0),6),slares
 swbreak
 case 0x27
@@ -2979,7 +2979,7 @@ slares=peek(stack(0),regidforsla)
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = (slares << 1) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x28
@@ -2989,7 +2989,7 @@ slares=peek(stack(0),regidforsla)
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = ((slares >> 1) | (slares & 0x80)) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x29
@@ -2999,7 +2999,7 @@ slares=peek(stack(0),regidforsla)
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = ((slares >> 1) | (slares & 0x80)) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x2A
@@ -3009,7 +3009,7 @@ slares=peek(stack(0),regidforsla)
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = ((slares >> 1) | (slares & 0x80)) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x2B
@@ -3019,7 +3019,7 @@ slares=peek(stack(0),regidforsla)
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = ((slares >> 1) | (slares & 0x80)) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x2C
@@ -3029,7 +3029,7 @@ slares=peek(stack(0),regidforsla)
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = ((slares >> 1) | (slares & 0x80)) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x2D
@@ -3039,7 +3039,7 @@ slares=peek(stack(0),regidforsla)
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = ((slares >> 1) | (slares & 0x80)) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x2E
@@ -3048,7 +3048,7 @@ slares=peek(memory,wpeek(stack(0),6))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = ((slares >> 1) | (slares & 0x80)) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke memory,wpeek(stack(0),6),slares
 swbreak
 case 0x2F
@@ -3058,7 +3058,7 @@ slares=peek(stack(0),regidforsla)
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = ((slares >> 1) | (slares & 0x80)) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x30
@@ -3068,7 +3068,7 @@ slares=peek(stack(0),regidforsla)
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = ((slares << 1) | 0x01) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x31
@@ -3078,7 +3078,7 @@ slares=peek(stack(0),regidforsla)
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = ((slares << 1) | 0x01) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x32
@@ -3088,7 +3088,7 @@ slares=peek(stack(0),regidforsla)
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = ((slares << 1) | 0x01) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x33
@@ -3098,7 +3098,7 @@ slares=peek(stack(0),regidforsla)
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = ((slares << 1) | 0x01) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x34
@@ -3108,7 +3108,7 @@ slares=peek(stack(0),regidforsla)
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = ((slares << 1) | 0x01) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x35
@@ -3118,7 +3118,7 @@ slares=peek(stack(0),regidforsla)
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = ((slares << 1) | 0x01) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x36
@@ -3127,7 +3127,7 @@ slares=peek(memory,wpeek(stack(0),6))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = ((slares << 1) | 0x01) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke memory,wpeek(stack(0),6),slares
 swbreak
 case 0x37
@@ -3137,7 +3137,7 @@ slares=peek(stack(0),regidforsla)
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = ((slares << 1) | 0x01) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x38
@@ -3147,7 +3147,7 @@ slares=peek(stack(0),regidforsla)
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = (slares >> 1) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x39
@@ -3157,7 +3157,7 @@ slares=peek(stack(0),regidforsla)
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = (slares >> 1) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x3A
@@ -3167,7 +3167,7 @@ slares=peek(stack(0),regidforsla)
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = (slares >> 1) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x3B
@@ -3177,7 +3177,7 @@ slares=peek(stack(0),regidforsla)
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = (slares >> 1) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x3C
@@ -3187,7 +3187,7 @@ slares=peek(stack(0),regidforsla)
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = (slares >> 1) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x3D
@@ -3197,7 +3197,7 @@ slares=peek(stack(0),regidforsla)
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = (slares >> 1) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x3E
@@ -3206,7 +3206,7 @@ slares=peek(memory,wpeek(stack(0),6))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = (slares >> 1) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke memory,wpeek(stack(0),6),slares
 swbreak
 case 0x3F
@@ -3216,7 +3216,7 @@ slares=peek(stack(0),regidforsla)
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = (slares >> 1) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 swend
@@ -4680,7 +4680,7 @@ slares=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = (slares << 1) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x21
@@ -4690,7 +4690,7 @@ slares=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = (slares << 1) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x22
@@ -4700,7 +4700,7 @@ slares=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = (slares << 1) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x23
@@ -4710,7 +4710,7 @@ slares=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = (slares << 1) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x24
@@ -4720,7 +4720,7 @@ slares=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = (slares << 1) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x25
@@ -4730,7 +4730,7 @@ slares=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = (slares << 1) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x26
@@ -4739,7 +4739,7 @@ slares=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = (slares << 1) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)),slares
 swbreak
 case 0x27
@@ -4749,7 +4749,7 @@ slares=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = (slares << 1) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x28
@@ -4759,7 +4759,7 @@ slares=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = ((slares >> 1) | (slares & 0x80)) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x29
@@ -4769,7 +4769,7 @@ slares=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = ((slares >> 1) | (slares & 0x80)) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x2A
@@ -4779,7 +4779,7 @@ slares=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = ((slares >> 1) | (slares & 0x80)) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x2B
@@ -4789,7 +4789,7 @@ slares=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = ((slares >> 1) | (slares & 0x80)) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x2C
@@ -4799,7 +4799,7 @@ slares=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = ((slares >> 1) | (slares & 0x80)) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x2D
@@ -4809,7 +4809,7 @@ slares=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = ((slares >> 1) | (slares & 0x80)) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x2E
@@ -4818,7 +4818,7 @@ slares=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = ((slares >> 1) | (slares & 0x80)) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)),slares
 swbreak
 case 0x2F
@@ -4828,7 +4828,7 @@ slares=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = ((slares >> 1) | (slares & 0x80)) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x30
@@ -4838,7 +4838,7 @@ slares=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = ((slares << 1) | 0x01) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x31
@@ -4848,7 +4848,7 @@ slares=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = ((slares << 1) | 0x01) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x32
@@ -4858,7 +4858,7 @@ slares=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = ((slares << 1) | 0x01) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x33
@@ -4868,7 +4868,7 @@ slares=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = ((slares << 1) | 0x01) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x34
@@ -4878,7 +4878,7 @@ slares=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = ((slares << 1) | 0x01) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x35
@@ -4888,7 +4888,7 @@ slares=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = ((slares << 1) | 0x01) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x36
@@ -4897,7 +4897,7 @@ slares=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = ((slares << 1) | 0x01) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)),slares
 swbreak
 case 0x37
@@ -4907,7 +4907,7 @@ slares=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = ((slares << 1) | 0x01) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x38
@@ -4917,7 +4917,7 @@ slares=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = (slares >> 1) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x39
@@ -4927,7 +4927,7 @@ slares=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = (slares >> 1) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x3A
@@ -4937,7 +4937,7 @@ slares=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = (slares >> 1) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x3B
@@ -4947,7 +4947,7 @@ slares=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = (slares >> 1) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x3C
@@ -4957,7 +4957,7 @@ slares=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = (slares >> 1) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x3D
@@ -4967,7 +4967,7 @@ slares=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = (slares >> 1) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x3E
@@ -4976,7 +4976,7 @@ slares=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = (slares >> 1) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)),slares
 swbreak
 case 0x3F
@@ -4986,7 +4986,7 @@ slares=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = (slares >> 1) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 swend
@@ -7343,7 +7343,7 @@ slares=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = (slares << 1) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x21
@@ -7353,7 +7353,7 @@ slares=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = (slares << 1) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x22
@@ -7363,7 +7363,7 @@ slares=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = (slares << 1) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x23
@@ -7373,7 +7373,7 @@ slares=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = (slares << 1) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x24
@@ -7383,7 +7383,7 @@ slares=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = (slares << 1) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x25
@@ -7393,7 +7393,7 @@ slares=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = (slares << 1) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x26
@@ -7402,7 +7402,7 @@ slares=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = (slares << 1) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)),slares
 swbreak
 case 0x27
@@ -7412,7 +7412,7 @@ slares=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = (slares << 1) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x28
@@ -7422,7 +7422,7 @@ slares=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = ((slares >> 1) | (slares & 0x80)) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x29
@@ -7432,7 +7432,7 @@ slares=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = ((slares >> 1) | (slares & 0x80)) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x2A
@@ -7442,7 +7442,7 @@ slares=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = ((slares >> 1) | (slares & 0x80)) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x2B
@@ -7452,7 +7452,7 @@ slares=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = ((slares >> 1) | (slares & 0x80)) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x2C
@@ -7462,7 +7462,7 @@ slares=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = ((slares >> 1) | (slares & 0x80)) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x2D
@@ -7472,7 +7472,7 @@ slares=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = ((slares >> 1) | (slares & 0x80)) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x2E
@@ -7481,7 +7481,7 @@ slares=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = ((slares >> 1) | (slares & 0x80)) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)),slares
 swbreak
 case 0x2F
@@ -7491,7 +7491,7 @@ slares=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = ((slares >> 1) | (slares & 0x80)) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x30
@@ -7501,7 +7501,7 @@ slares=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = ((slares << 1) | 0x01) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x31
@@ -7511,7 +7511,7 @@ slares=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = ((slares << 1) | 0x01) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x32
@@ -7521,7 +7521,7 @@ slares=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = ((slares << 1) | 0x01) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x33
@@ -7531,7 +7531,7 @@ slares=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = ((slares << 1) | 0x01) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x34
@@ -7541,7 +7541,7 @@ slares=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = ((slares << 1) | 0x01) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x35
@@ -7551,7 +7551,7 @@ slares=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = ((slares << 1) | 0x01) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x36
@@ -7560,7 +7560,7 @@ slares=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = ((slares << 1) | 0x01) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)),slares
 swbreak
 case 0x37
@@ -7570,7 +7570,7 @@ slares=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x80)
 if (slares & 0x80) = 0x01{slac=0}
 slares = ((slares << 1) | 0x01) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x38
@@ -7580,7 +7580,7 @@ slares=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = (slares >> 1) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x39
@@ -7590,7 +7590,7 @@ slares=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = (slares >> 1) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x3A
@@ -7600,7 +7600,7 @@ slares=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = (slares >> 1) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x3B
@@ -7610,7 +7610,7 @@ slares=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = (slares >> 1) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x3C
@@ -7620,7 +7620,7 @@ slares=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = (slares >> 1) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x3D
@@ -7630,7 +7630,7 @@ slares=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = (slares >> 1) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 case 0x3E
@@ -7639,7 +7639,7 @@ slares=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = (slares >> 1) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)),slares
 swbreak
 case 0x3F
@@ -7649,7 +7649,7 @@ slares=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
 slac=(peek(stack(0),1) & 0x01)//(slares & 0x01)
 if (slares & 0x01) = 0x01{slac=0}
 slares = (slares >> 1) & 0xff
-poke stack(0),1,SZP(slares) | slac
+poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 swbreak
 swend
