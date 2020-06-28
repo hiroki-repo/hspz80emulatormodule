@@ -407,6 +407,29 @@ poke stackformt(threadidforrunthez80ptrid,threadidforrunthez80),iomemoryidforz80
 #defcfunc stackpeek int threadidforrunthez80,int threadidforrunthez80ptrid,int iomemoryidforz80
 return peek(stackformt(threadidforrunthez80ptrid,threadidforrunthez80),iomemoryidforz80)
 
+#deffunc z80interrupt var startaddr, var memory,int threadidforrunthez80,int iomemoryidforz80
+if z80runmode(threadidforrunthez80)=0{
+poke memory,wpeek(stackformt(0,threadidforrunthez80),12)-2,peek(stackformt(0,threadidforrunthez80),10)
+poke memory,wpeek(stackformt(0,threadidforrunthez80),12)-1,peek(stackformt(0,threadidforrunthez80),11)
+wpoke stackformt(0,threadidforrunthez80),12,wpeek(stackformt(0,threadidforrunthez80),12)-2
+if iomemoryidforz80>=8{
+wpoke stackformt(0,threadidforrunthez80),10,0x38
+startaddr=0x38
+}else{
+wpoke stackformt(0,threadidforrunthez80),10,iomemoryidforz80*8
+startaddr=iomemoryidforz80*8
+}
+}
+if z80runmode(threadidforrunthez80)=1{
+poke memory,wpeek(stackformt(0,threadidforrunthez80),12)-2,peek(stackformt(0,threadidforrunthez80),10)
+poke memory,wpeek(stackformt(0,threadidforrunthez80),12)-1,peek(stackformt(0,threadidforrunthez80),11)
+wpoke stackformt(0,threadidforrunthez80),12,wpeek(stackformt(0,threadidforrunthez80),12)-2
+wpoke stackformt(0,threadidforrunthez80),10,0x38
+startaddr=0x38
+}
+if z80runmode(threadidforrunthez80)=2{startaddr=wpeek(memory,peek(stackformt(0,threadidforrunthez80),15)+(iomemoryidforz80<<1))}
+return
+
 #deffunc z80stackreset int threadidforrunthez80
 memset stackformt(0,threadidforrunthez80),0,64,0
 memset stackformt(1,threadidforrunthez80),0,64,0
