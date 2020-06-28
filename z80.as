@@ -5468,7 +5468,7 @@ swbreak
 case 0x45
 wpoke stack(0),10,wpeek(memory,wpeek(stack(0),12))
 wpoke stack(0),12,wpeek(stack(0),12)+2
-poke stack(1),14,0,peek(stack(1),15)
+poke stack(1),14,peek(stack(1),15)
 swbreak
 case 0x46
 z80runmode(threadidforrunthez80)=0
@@ -5539,7 +5539,7 @@ swbreak
 case 0x4D
 wpoke stack(0),10,wpeek(memory,wpeek(stack(0),12))
 wpoke stack(0),12,wpeek(stack(0),12)+2
-poke stack(1),14,0,peek(stack(1),15)
+poke stack(1),14,peek(stack(1),15)
 swbreak
 case 0x4E
 if z80runmode(threadidforrunthez80)=1{z80runmode(threadidforrunthez80)=0}else{if z80runmode(threadidforrunthez80)=0{z80runmode(threadidforrunthez80)=1}}
@@ -5610,7 +5610,7 @@ swbreak
 case 0x55
 wpoke stack(0),10,wpeek(memory,wpeek(stack(0),12))
 wpoke stack(0),12,wpeek(stack(0),12)+2
-poke stack(1),14,0,peek(stack(1),15)
+poke stack(1),14,peek(stack(1),15)
 swbreak
 case 0x56
 z80runmode(threadidforrunthez80)=1
@@ -5682,7 +5682,7 @@ swbreak
 case 0x5D
 wpoke stack(0),10,wpeek(memory,wpeek(stack(0),12))
 wpoke stack(0),12,wpeek(stack(0),12)+2
-poke stack(1),14,0,peek(stack(1),15)
+poke stack(1),14,peek(stack(1),15)
 swbreak
 case 0x5E
 z80runmode(threadidforrunthez80)=2
@@ -5753,7 +5753,7 @@ swbreak
 case 0x65
 wpoke stack(0),10,wpeek(memory,wpeek(stack(0),12))
 wpoke stack(0),12,wpeek(stack(0),12)+2
-poke stack(1),14,0,peek(stack(1),15)
+poke stack(1),14,peek(stack(1),15)
 swbreak
 case 0x66
 z80runmode(threadidforrunthez80)=0
@@ -5827,7 +5827,7 @@ swbreak
 case 0x6D
 wpoke stack(0),10,wpeek(memory,wpeek(stack(0),12))
 wpoke stack(0),12,wpeek(stack(0),12)+2
-poke stack(1),14,0,peek(stack(1),15)
+poke stack(1),14,peek(stack(1),15)
 swbreak
 case 0x6E
 if z80runmode(threadidforrunthez80)=1{z80runmode(threadidforrunthez80)=0}else{if z80runmode(threadidforrunthez80)=0{z80runmode(threadidforrunthez80)=1}}
@@ -5900,7 +5900,7 @@ swbreak
 case 0x75
 wpoke stack(0),10,wpeek(memory,wpeek(stack(0),12))
 wpoke stack(0),12,wpeek(stack(0),12)+2
-poke stack(1),14,0,peek(stack(1),15)
+poke stack(1),14,peek(stack(1),15)
 swbreak
 case 0x76
 z80runmode(threadidforrunthez80)=1
@@ -5969,7 +5969,7 @@ swbreak
 case 0x7D
 wpoke stack(0),10,wpeek(memory,wpeek(stack(0),12))
 wpoke stack(0),12,wpeek(stack(0),12)+2
-poke stack(1),14,0,peek(stack(1),15)
+poke stack(1),14,peek(stack(1),15)
 swbreak
 case 0x7E
 z80runmode(threadidforrunthez80)=2
