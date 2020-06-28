@@ -5390,8 +5390,8 @@ wpoke stack(0),10,wpeek(memory,wpeek(stack(0),10))
 return
 *opcode_eb
 bak_sphl1=wpeek(stack(0),6)
-bak_sphl2=wpeek(stack(0),12)
-wpoke stack(0),12,bak_sphl1
+bak_sphl2=wpeek(stack(0),4)
+wpoke stack(0),4,bak_sphl1
 wpoke stack(0),6,bak_sphl2
 return
 *opcode_ec
