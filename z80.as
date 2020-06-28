@@ -408,7 +408,7 @@ poke stackformt(threadidforrunthez80ptrid,threadidforrunthez80),iomemoryidforz80
 return peek(stackformt(threadidforrunthez80ptrid,threadidforrunthez80),iomemoryidforz80)
 
 #deffunc z80interrupt var startaddr, var memory,int threadidforrunthez80,int iomemoryidforz80
-if (peek(stackformt(0,threadidforrunthez80),14) & 0x01){
+if (peek(stackformt(1,threadidforrunthez80),14) & 0x01){
 if z80runmode(threadidforrunthez80)=0{
 poke memory,wpeek(stackformt(0,threadidforrunthez80),12)-2,peek(stackformt(0,threadidforrunthez80),10)
 poke memory,wpeek(stackformt(0,threadidforrunthez80),12)-1,peek(stackformt(0,threadidforrunthez80),11)
@@ -434,7 +434,7 @@ poke memory,wpeek(stackformt(0,threadidforrunthez80),12)-1,peek(stackformt(0,thr
 wpoke stackformt(0,threadidforrunthez80),12,wpeek(stackformt(0,threadidforrunthez80),12)-2
 startaddr=wpeek(memory,(peek(stackformt(0,threadidforrunthez80),15)<<8)+(iomemoryidforz80<<1))
 }
-poke stackformt(0,threadidforrunthez80),15,iomemoryidforz80
+poke stackformt(1,threadidforrunthez80),15,iomemoryidforz80
 }
 return
 
