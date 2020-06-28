@@ -431,7 +431,7 @@ if z80runmode(threadidforrunthez80)=2{
 poke memory,wpeek(stackformt(0,threadidforrunthez80),12)-2,peek(stackformt(0,threadidforrunthez80),10)
 poke memory,wpeek(stackformt(0,threadidforrunthez80),12)-1,peek(stackformt(0,threadidforrunthez80),11)
 wpoke stackformt(0,threadidforrunthez80),12,wpeek(stackformt(0,threadidforrunthez80),12)-2
-startaddr=wpeek(memory,peek(stackformt(0,threadidforrunthez80),15)+(iomemoryidforz80<<1))
+startaddr=wpeek(memory,(peek(stackformt(0,threadidforrunthez80),15)<<8)+(iomemoryidforz80<<1))
 }
 return
 
