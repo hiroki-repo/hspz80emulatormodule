@@ -504,7 +504,7 @@ wpoke var_29,0xF224,0x80
 swbreak
 case 14
 poke var_24,0,0xFF
-if peek(var_24,4)<=16{drive=0:drive=peek(var_24,4):poke var_24,0,0:poke var_24,5,0}else{poke var_24,0,0xFF:poke var_24,5,4}
+if peek(var_24,4)<=16{drive=0:drive=peek(var_24,5):poke var_24,0,0:poke var_24,4,0}else{poke var_24,0,0xFF:poke var_24,4,4}
 swbreak
 case 15
 fcbaddr=0
@@ -750,6 +750,8 @@ swend
 		var_27 = wpeek(var_29, var_28)
 		var_28 += 2
 		var_54 = 10
+		logmes "address:"+strf("%04X",str(var_27))
+		logmes "rtedaddress:"+strf("%04X",str(wpeek(var_29, var_28)))
 if peek(var_30, 49441)>=191{poke var_30, 49441, peek(var_30, 49441)-hleplusysize:nowgsel=ginfo(3):gsel 2:pos 0,0:gcopy 2,0,hleplusysize,256,192-hleplusysize:palcolor 0:boxf 0,192-hleplusysize,256,192:/*sdim var17clr,varsize(var_17)-(256*hleplusysize):memcpy var_17,var17clr,varsize(var_17)-(256*hleplusysize),0,0:memcpy var_30,var17clr,varsize(var_17)-(256*hleplusysize),48896,0*/:/*poke var_30, 49441, peek(var_30, 49441)-hleplusysize*/:gsel nowgsel:gosub *label_31
 nowgsel=ginfo(3)
 gsel 0
