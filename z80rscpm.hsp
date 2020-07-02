@@ -504,7 +504,7 @@ wpoke var_29,0xF224,0x80
 swbreak
 case 14
 poke var_24,0,0xFF
-if peek(var_24,4)<=16{drive=0:drive=peek(var_24,5):poke var_24,0,0:poke var_24,4,0}else{poke var_24,0,0xFF:poke var_24,4,4}
+if peek(var_24,4)<=16{drive=0:drive=peek(var_24,5):poke var_24,0,0:poke var_24,5,0}else{poke var_24,0,0xFF:poke var_24,5,4}
 swbreak
 case 15
 fcbaddr=0
@@ -524,10 +524,15 @@ lpoke var_29,fcbaddr+1+8+3+1+1+1,strsize2
 lpoke var_29,fcbaddr+32,0
 if (block < 0) = 0{
 if (block < 16384) = ((block >> 7) & 0xff){
-lpoke var_29,fcbaddr+32,127
+lpoke var_29,fcbaddr+32,128
+repeat 16
+if (block > cnt*1024) = cnt+1 {
+poke var_29,fcbaddr+cnt,0
+}
+loop
 }
 }
-randomize:poke var_24,0,rnd(4)}
+randomize:poke var_24,0,0}
 
 swbreak
 case 16
@@ -543,7 +548,7 @@ if strsize2=-1{
 poke var_24,0,0xFF
 }else{
 lpoke var_29,fcbaddr+1+8+3+1+1+1,0
-randomize:poke var_24,0,rnd(4)}
+randomize:poke var_24,0,0}
 
 swbreak
 case 17
@@ -584,7 +589,7 @@ if filestatforfsearch=0{
 poke var_24,0,0xFF
 }else{
 lpoke var_29,fcbaddr+1+8+3+1+1+1,0
-randomize:poke var_24,0,rnd(4)}
+randomize:poke var_24,0,0}
 
 swbreak
 case 18
@@ -619,7 +624,7 @@ strsize2=strsize
 if strsize2=-1{poke var_24,0,0xFF}else{
 sdim fcbreaddatastr,256
 delete fcbfnamenameplsformat
-randomize:poke var_24,0,rnd(4)}
+randomize:poke var_24,0,0}
 swbreak
 case 20
 fcbaddr=0
@@ -658,7 +663,7 @@ bsave fcbfnamenameplsformat,fcbreaddatastr
 //poke var_29,fcbaddr+1+8+3+1+1+16+1,peek(var_29,fcbaddr+1+8+3+1+1+16+1)+1
 gosub *hlefcbcrxex
 if strsize2>fcbcrx{poke var_24,0,0x00}else{
-randomize:poke var_24,0,rnd(4)}}
+randomize:poke var_24,0,1}}
 swbreak
 case 22
 fcbaddr=0
@@ -667,7 +672,7 @@ gosub *hlefcb
 sdim fcbreaddatastr,128*fcbcr
 if fcbfnamenameplsformat=""{randomize:poke var_24,0,0xFF}else{
 bsave fcbfnamenameplsformat,fcbreaddatastr
-randomize:poke var_24,0,rnd(4)
+randomize:poke var_24,0,0
 }
 swbreak
 case 23
@@ -684,7 +689,7 @@ fcbaddr=peek(var_24,5)+(peek(var_24,4)<<8)+16
 gosub *hlefcbfileread
 bcopy fcbfnamenameplsformatbak,fcbfnamenameplsformat
 delete fcbfnamenameplsformatbak
-randomize:poke var_24,0,rnd(4)}
+randomize:poke var_24,0,0}
 swbreak
 case 25
 poke var_24,0,drive
