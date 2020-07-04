@@ -506,7 +506,7 @@ wpoke var_29,0xF224,0x80
 swbreak
 case 14
 poke var_24,0,0xFF
-if peek(var_24,4)<=16{drive=0:drive=peek(var_24,5):poke var_24,0,0:poke var_24,5,0}else{poke var_24,0,0xFF:poke var_24,5,4}
+if peek(var_24,4)<=16{drive=0:drive=peek(var_24,5):poke var_24,0,0}else{poke var_24,0,0xFF:poke var_24,6,4}
 swbreak
 case 15
 fcbaddr=0
