@@ -2,6 +2,8 @@
 #packopt name "picoz80pcemu_cpm"
 #pack "z80.as"
 #pack "z80rscpm.hsp"
+#pack "CPM.SYS"
+#pack "HALT.COM"
 sdim dcdcbiosdata,5632
 exist "CPM.SYS"
 if strsize=-1{}else{
@@ -85,7 +87,7 @@ ioaddr16=getioportread16bitaddr(var_27,var_29):if ioaddr16=-1{ioaddr16=isioportc
 			var_27=wpeek(stack@m0(0),10)
 gosub *label_30
 var_22=var_22+1:if var_22=4800{var_22=0:await 1}
-//if var_27>=0x100 and var_27<=0xDC00 and var_27dx=0{var_27dx=1:var_27d=0:var_27d=var_27:logmes "TPA Called!"}else{if var_27>=0xDC00{var_27dx=0}}
+if var_27=wpeek(var_29,0xF224) {var_27d=0:var_27d=var_27:logmes "TPA Called!"}
 	gosub *hle:loop
 end
 *label_30
@@ -517,6 +519,11 @@ exist fcbfnamenameplsformat
 strsize2=strsize
 ex = (peek(var_29,fcbaddr + 12) & 0x1f) | (peek(var_29,fcbaddr + 13) << 5)
 block = strsize2 - ex * 16384
+repeat 16
+if (block > cnt*1024) = cnt+1 {
+poke var_29,fcbaddr+cnt+16,0
+}
+loop
 if strsize2=-1{
 poke var_24,0,0xFF
 }else{
@@ -525,11 +532,6 @@ lpoke var_29,fcbaddr+32,0
 if (block < 0) = 0{
 if (block < 16384) = ((block >> 7) & 0xff){
 lpoke var_29,fcbaddr+32,128
-repeat 16
-if (block > cnt*1024) = cnt+1 {
-poke var_29,fcbaddr+cnt,0
-}
-loop
 }
 }
 randomize:poke var_24,0,0}
@@ -562,6 +564,7 @@ fcbfnamenameplsformattlx=strmid(fcbfnamenameplsformat,cnt,1)
 if fcbfnamenameplsformattlx="?"{fcbfnamenameplsformattlx="*"}
 fcbfnamenameplsformattl=fcbfnamenameplsformattl+fcbfnamenameplsformattlx
 loop
+if fcbfnamenameplsformattl="********.***"{fcbfnamenameplsformattl="*"}
 fcbfnamenameplsformatdirlist="":fcbfnamenameplsformatdirlist2="":fcbfnamenameplsformatdirlistformat=""
 fcbfnamenameplsformatdirlistfname=""
 dirlist fcbfnamenameplsformatdirlist,fcbfnamenameplsformattl,1
@@ -578,10 +581,23 @@ fcbfnamenameplsformatdirlistfname=strmid(fcbfnamenameplsformatdirlist2,0,fcbfnam
 fcbfnamenameplsformatdirlistformat=strmid(fcbfnamenameplsformatdirlist2,fcbfnamenameplsformatdirlistdot+1,3)
 }
 repeat 32
-poke var_29,wpeek(var_29,0xF224)+cnt,32
+poke var_29,wpeek(var_29,0xF224)+cnt,0
 loop
 memcpy var_29,fcbfnamenameplsformatdirlistfname,0x08,wpeek(var_29,0xF224)+1,0
 memcpy var_29,fcbfnamenameplsformatdirlistformat,0x03,wpeek(var_29,0xF224)+1+8,0
+exist fcbfnamenameplsformatdirlist2
+strsize2=strsize
+ex = (peek(var_29,fcbaddr + 12) & 0x1f) | (peek(var_29,fcbaddr + 13) << 5)
+block = strsize2 - ex * 16384
+//block=strsize
+//if block=-1{}else{
+repeat 16
+if (block > cnt*1024) = cnt+1 {
+poke var_29,fcbaddr+cnt+16,0
+}
+loop
+//}
+logmes fcbfnamenameplsformatdirlistfname
 
 /*exist fcbfnamenameplsformat
 strsize2=strsize*/
@@ -609,11 +625,31 @@ fcbfnamenameplsformatdirlistfname=strmid(fcbfnamenameplsformatdirlist2,0,fcbfnam
 fcbfnamenameplsformatdirlistformat=strmid(fcbfnamenameplsformatdirlist2,fcbfnamenameplsformatdirlistdot+1,3)
 }
 repeat 32
-poke var_29,wpeek(var_29,0xF224)+cnt,32
+poke var_29,wpeek(var_29,0xF224)+cnt,0
 loop
 memcpy var_29,fcbfnamenameplsformatdirlistfname,0x08,wpeek(var_29,0xF224)+1,0
 memcpy var_29,fcbfnamenameplsformatdirlistformat,0x03,wpeek(var_29,0xF224)+1+8,0
+exist fcbfnamenameplsformatdirlistdot
+strsize2=strsize
+ex = (peek(var_29,fcbaddr + 12) & 0x1f) | (peek(var_29,fcbaddr + 13) << 5)
+block = strsize2 - ex * 16384
+//block=strsize
+//if block=-1{}else{
+repeat 16
+if (block > cnt*1024) = cnt+1 {
+poke var_29,fcbaddr+cnt+16,0
 }
+loop
+//}
+logmes fcbfnamenameplsformatdirlistfname
+}
+if filestatforfsearchi=filestatforfsearch{
+filestatforfsearchi=0
+filestatforfsearch=0
+poke var_24,0,0xFF
+}else{
+//lpoke var_29,fcbaddr+1+8+3+1+1+1,0
+randomize:poke var_24,0,0}
 swbreak
 case 19
 fcbaddr=0
@@ -633,20 +669,21 @@ gosub *hlefcb
 exist fcbfnamenameplsformat
 strsize2=strsize
 //<fcbcr*128
-if strsize2=-1{poke var_24,0,0xFF}else{
+if strsize2=-1{poke var_24,0,0x01}else{
 sdim fcbreaddatastr,256
 bload fcbfnamenameplsformat,fcbreaddatastr,256,fcbcrx*128
 logmes fcbcrx
 //poke var_29,fcbaddr+1+8+3+1+1+16+1,peek(var_29,fcbaddr+1+8+3+1+1+16+1)+1
 memcpy var_29,fcbreaddatastr,128,wpeek(var_29,0xF224),0
-repeat 128
+/*repeat 128
 poke var_29,wpeek(var_29,0xF224)+cnt,peek(fcbreaddatastr,cnt)
-loop
+loop*/
 gosub *hlefcbcrxex
 //if strsize2>fcbcr*128{poke var_24,0,0x00}else{
 if (strsize2-fcbcrx)<128{memset var_29,0x1a,128-(strsize2-fcbcrx),wpeek(var_29,0xF224)+(strsize2-fcbcrx)}
-if strsize2>fcbcrx{poke var_24,0,0}else{
-poke var_24,0,1}}
+poke var_24,0,1
+/*if strsize2>fcbcrx{poke var_24,0,0}else{
+poke var_24,0,1}*/}
 swbreak
 case 21
 fcbaddr=0
@@ -684,6 +721,13 @@ exist fcbfnamenameplsformat
 strsize2=strsize
 fcbfnamenameplsformatbak=fcbfnamenameplsformat
 if strsize2=-1{poke var_24,0,0xFF}else{
+ex = (peek(var_29,fcbaddr + 12) & 0x1f) | (peek(var_29,fcbaddr + 13) << 5)
+block = strsize2 - ex * 16384
+repeat 16
+if (block > cnt*1024) = cnt+1 {
+poke var_29,fcbaddr+cnt+16,0
+}
+loop
 sdim fcbreaddatastr,256
 fcbaddr=peek(var_24,5)+(peek(var_24,4)<<8)+16
 gosub *hlefcbfileread
@@ -691,11 +735,52 @@ bcopy fcbfnamenameplsformatbak,fcbfnamenameplsformat
 delete fcbfnamenameplsformatbak
 randomize:poke var_24,0,0}
 swbreak
+case 24
+wpoke var_24,6,0
+swbreak
 case 25
 poke var_24,0,drive
 swbreak
+case 26
+logmes "address:"+strf("%04X",str(fcbaddr))
+wpoke var_29,0xF224,peek(var_24,5)+(peek(var_24,4)<<8)
+swbreak
+case 28
+swbreak
+case 29
+wpoke var_24,6,0
+swbreak
+case 30
+fcbaddr=0
+showstr="":chkx0a0d=0:fcbaddr=peek(var_24,5)+(peek(var_24,4)<<8)
+gosub *hlefcb
+//poke var_29,fcbaddr+1+8+3+1+1+16+1,0
+fcbcrx=0
+gosub *hlefcbcrxex
+exist fcbfnamenameplsformat
+strsize2=strsize
+if strsize2=-1{
+poke var_24,0,0xFF
+}else{
+ex = (peek(var_29,fcbaddr + 12) & 0x1f) | (peek(var_29,fcbaddr + 13) << 5)
+block = strsize2 - ex * 16384
+if (block < 0) = 0{
+if (block < 16384) = ((block >> 7) & 0xff){
+lpoke var_29,fcbaddr+32,127
+}
+}
+randomize:poke var_24,0,0}
+
+swbreak
 case 32
 if peek(var_24,5)=0xFF{poke var_24,0,userid}else{userid=peek(var_24,5)}
+swbreak
+case 33
+poke var_24,0,1
+swbreak
+case 34
+case 40
+poke var_24,0,2
 swbreak
 case 35
 fcbaddr=0
@@ -727,7 +812,7 @@ poke var_29,fcbaddr+33,record & 0xff
 poke var_29,fcbaddr+34,(record >> 8) & 0xff
 poke var_29,fcbaddr+35,(record >> 16) & 0xff
 swbreak
-case 75
+case 0
 fcbaddr=0
 showstr="":chkx0a0d=0:fcbaddr=peek(var_24,5)+(peek(var_24,4)<<8)
 gosub *hlefcb
@@ -745,9 +830,14 @@ memcpy var_29,execdataforcpm,0xDB00,0x100,0
 		var_54 = 17
 return}
 swbreak
-case 26
-logmes "address:"+strf("%04X",str(fcbaddr))
-wpoke var_29,0xF224,peek(var_24,5)+(peek(var_24,4)<<8)
+case 110
+if wpeek(var_24,4)=0xffff{
+poke var_24,0,0
+}else{
+}
+swbreak
+default
+logmes "unimplemented"
 swbreak
 swend
 
@@ -844,14 +934,16 @@ gosub *hlefcbfileread
 fcbex=peek(var_29,fcbaddr+1+8+3)
 fcbrc=peek(var_29,fcbaddr+1+8+3+1+1+1+1)
 fcbcr=peek(var_29,fcbaddr+32)
-fcbcrx=(fcbcr & 0x7F)//+((peek(var_29,fcbaddr+1+8+3)&0x1F)<<7)+((peek(var_29,fcbaddr+1+8+3+1))<<12)+((peek(var_29,fcbaddr+1+8+3+1+1))<<20)
+fcbcrx=(fcbcr & 0x7F)+((peek(var_29,fcbaddr+1+8+3)&0x1F)<<7)+((peek(var_29,fcbaddr+1+8+3+1))<<12)+((peek(var_29,fcbaddr+1+8+3+1+1))<<20)
 poke var_29,0x7C,fcbcr
 return
 *hlefcbcrxex
-poke var_29,fcbaddr+32,fcbcrx+1 & 0x7f
+fcbcrx=fcbcrx+1
+poke var_29,fcbaddr+32,fcbcrx & 0x7f
 poke var_29,fcbaddr+1+8+3,(fcbcrx >> 7) & 0x1f
 poke var_29,fcbaddr+1+8+3+1,(fcbcrx >> 12) & 0xff
 poke var_29,fcbaddr+1+8+3+1+1,(fcbcrx >> 20) & 0xff
+fcbcrx=fcbcrx-1
 return
 
 *hlekeyget
