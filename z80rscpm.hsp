@@ -364,6 +364,10 @@ swbreak
 case 3//reader input
 poke var_24,0,0x1A
 swbreak
+case 4
+swbreak
+case 5
+swbreak
 case 5
 stringforvar24=""
 lpoke stringforvar24,0,peek(var_24,5)
@@ -412,6 +416,12 @@ memset var_30,0,463,49456
 }
 }
 }
+swbreak
+case 7
+poke var_24,0,0
+swbreak
+case 8
+poke var_24,0,255
 swbreak
 case 9
 cntix=0:cntixold=2:cntix2=0
@@ -498,8 +508,8 @@ if wparam2=0xFF{poke var_24,0,0}else{poke var_24,0,1}
 await 1
 swbreak
 case 12
-poke var_24,5,0x22
-poke var_24,4,0x22
+poke var_24,0,0x22
+poke var_24,7,0x22
 swbreak
 case 13
 wpoke var_29,0xF224,0x80
@@ -591,9 +601,10 @@ ex = (peek(var_29,fcbaddr + 12) & 0x1f) | (peek(var_29,fcbaddr + 13) << 5)
 block = strsize2 - ex * 16384
 //block=strsize
 //if block=-1{}else{
+	if (strsize2 < 16384) = ((strsize2 >> 7) & 0xff){poke var_29,wpeek(var_29,0xF224)+13,127}
 repeat 16
 if (block > cnt*1024) = cnt+1 {
-poke var_29,fcbaddr+cnt+16,0
+poke var_29,wpeek(var_29,0xF224)+cnt+16,0
 }
 loop
 //}
@@ -635,9 +646,10 @@ ex = (peek(var_29,fcbaddr + 12) & 0x1f) | (peek(var_29,fcbaddr + 13) << 5)
 block = strsize2 - ex * 16384
 //block=strsize
 //if block=-1{}else{
+	if (strsize2 < 16384) = ((strsize2 >> 7) & 0xff){poke var_29,wpeek(var_29,0xF224)+13,127}
 repeat 16
 if (block > cnt*1024) = cnt+1 {
-poke var_29,fcbaddr+cnt+16,0
+poke var_29,wpeek(var_29,0xF224)+cnt+16,0
 }
 loop
 //}
@@ -693,9 +705,9 @@ exist fcbfnamenameplsformat
 strsize2=strsize
 if strsize2=-1{poke var_24,0,0xFF}else{
 //if strsize2<fcbcr*128{poke var_24,0,0xFF}else{
-sdim fcbreaddatastr,fcbcrx+128
+sdim fcbreaddatastr,strsize2+128
 bload fcbfnamenameplsformat,fcbreaddatastr
-memcpy fcbreaddatastr,var_29,128,fcbcrx,wpeek(var_29,0xF224)
+memcpy fcbreaddatastr,var_29,128,fcbcrx*128,wpeek(var_29,0xF224)
 bsave fcbfnamenameplsformat,fcbreaddatastr
 //poke var_29,fcbaddr+1+8+3+1+1+16+1,peek(var_29,fcbaddr+1+8+3+1+1+16+1)+1
 gosub *hlefcbcrxex
@@ -776,11 +788,51 @@ case 32
 if peek(var_24,5)=0xFF{poke var_24,0,userid}else{userid=peek(var_24,5)}
 swbreak
 case 33
-poke var_24,0,1
+fcbaddr=0
+showstr="":chkx0a0d=0:fcbaddr=peek(var_24,5)+(peek(var_24,4)<<8)
+gosub *hlefcb
+exist fcbfnamenameplsformat
+strsize2=strsize
+//<fcbcr*128
+if strsize2=-1{poke var_24,0,0x01}else{
+sdim fcbreaddatastr,256
+fcbcrx=peek(var_29,fcbaddr+33) | (peek(var_29,fcbaddr+34) << 8)
+bload fcbfnamenameplsformat,fcbreaddatastr,256,fcbcrx*128
+logmes fcbcrx
+//poke var_29,fcbaddr+1+8+3+1+1+16+1,peek(var_29,fcbaddr+1+8+3+1+1+16+1)+1
+memcpy var_29,fcbreaddatastr,128,wpeek(var_29,0xF224),0
+/*repeat 128
+poke var_29,wpeek(var_29,0xF224)+cnt,peek(fcbreaddatastr,cnt)
+loop*/
+fcbcrx=fcbcrx-1
+gosub *hlefcbcrxex
+fcbcrx=fcbcrx+1
+//if strsize2>fcbcr*128{poke var_24,0,0x00}else{
+if (strsize2-fcbcrx)<128{memset var_29,0x1a,128-(strsize2-fcbcrx*128),wpeek(var_29,0xF224)+(strsize2-fcbcrx)}
+poke var_24,0,0
+if strsize2>fcbcrx*128{poke var_24,0,0}else{
+poke var_24,0,1}}
 swbreak
 case 34
 case 40
-poke var_24,0,2
+fcbaddr=0
+showstr="":chkx0a0d=0:fcbaddr=peek(var_24,5)+(peek(var_24,4)<<8)
+gosub *hlefcb
+exist fcbfnamenameplsformat
+strsize2=strsize
+if strsize2=-1{poke var_24,0,2}else{
+//if strsize2<fcbcr*128{poke var_24,0,0xFF}else{
+fcbcrx=peek(var_29,fcbaddr+33) | (peek(var_29,fcbaddr+34) << 8)
+sdim fcbreaddatastr,fcbcrx*128+128
+bload fcbfnamenameplsformat,fcbreaddatastr
+memcpy fcbreaddatastr,var_29,128,fcbcrx*128,wpeek(var_29,0xF224)
+bsave fcbfnamenameplsformat,fcbreaddatastr
+//poke var_29,fcbaddr+1+8+3+1+1+16+1,peek(var_29,fcbaddr+1+8+3+1+1+16+1)+1
+fcbcrx=fcbcrx-1
+gosub *hlefcbcrxex
+fcbcrx=fcbcrx+1
+if strsize2>fcbcrx{poke var_24,0,0x00}else{
+randomize:poke var_24,0,1}}
 swbreak
 case 35
 fcbaddr=0
