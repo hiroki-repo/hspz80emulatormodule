@@ -464,7 +464,7 @@ wpoke stack(0),10,startaddr
 //opcode=peek(memory,wpeek(stack(0),10))
 //lpoke jumplabel,0,opcodeaddr(opcode)
 wpoke stack(0),10,wpeek(stack(0),10)+1
-gosub opcodeaddr(peek(memory,startaddr))//opcodeaddr(opcode)//jumplabel
+if z80haltmodesw(threadidforrunthez80)=0{gosub opcodeaddr(peek(memory,startaddr))}//opcodeaddr(opcode)//jumplabel
 lpoke startaddr,0,wpeek(stack(0),10)
 memcpy stackformt(0,threadidforrunthez80),stack(0),64,0,0
 memcpy stackformt(1,threadidforrunthez80),stack(1),64,0,0
