@@ -6065,12 +6065,22 @@ swbreak
 
 case 0xB0
 if wpeek(stack(0),4)+wpeek(stack(0),2)>=65536{
-memcpy memory,memory,wpeek(stack(0),2)-((wpeek(stack(0),4)+wpeek(stack(0),2))-65536),wpeek(stack(0),4),wpeek(stack(0),6)
-memcpy memory,memory,((wpeek(stack(0),4)+wpeek(stack(0),2))-65536),0,wpeek(stack(0),6)
+copyfromaddr=0
+copytoaddr=0
+repeat wpeek(stack(0),2)
+wpoke copyfromaddr,0,wpeek(stack(0),6)+cnt
+wpoke copytoaddr,0,wpeek(stack(0),4)+cnt
+poke memory,copytoaddr,peek(memory,copyfromaddr)
+loop
 }else{
 if wpeek(stack(0),6)+wpeek(stack(0),2)>=65536{
-memcpy memory,memory,wpeek(stack(0),2)-((wpeek(stack(0),6)+wpeek(stack(0),2))-65536),wpeek(stack(0),4),wpeek(stack(0),6)
-memcpy memory,memory,((wpeek(stack(0),6)+wpeek(stack(0),2))-65536),0,wpeek(stack(0),6)
+copyfromaddr=0
+copytoaddr=0
+repeat wpeek(stack(0),2)
+wpoke copyfromaddr,0,wpeek(stack(0),6)+cnt
+wpoke copytoaddr,0,wpeek(stack(0),4)+cnt
+poke memory,copytoaddr,peek(memory,copyfromaddr)
+loop
 }else{
 if wpeek(stack(0),4)+wpeek(stack(0),2)>=65536 and wpeek(stack(0),6)+wpeek(stack(0),2)>=65536{
 copyfromaddr=0
