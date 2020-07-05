@@ -321,6 +321,7 @@ sdim stackformt,64,2,cpuamountmax
 //repeat 256:wpoke stackformt(0,cnt),12,0xFF77:loop
 sdim iomemory,cpuamountmax
 dim z80runmode,cpuamountmax
+dim z80haltmodesw,cpuamountmax
 cnt2=0
 dim z80halt2endmode,cpuamountmax
 return
@@ -414,6 +415,7 @@ poke stackformt(threadidforrunthez80ptrid,threadidforrunthez80),iomemoryidforz80
 return peek(stackformt(threadidforrunthez80ptrid,threadidforrunthez80),iomemoryidforz80)
 
 #deffunc z80interrupt var startaddr, var memory,int threadidforrunthez80,int iomemoryidforz80
+if z80haltmodesw(threadidforrunthez80)=1{z80haltmodesw(threadidforrunthez80)=0}
 if (peek(stackformt(1,threadidforrunthez80),14) & 0x01){
 if z80runmode(threadidforrunthez80)=0{
 /*poke memory,wpeek(stackformt(0,threadidforrunthez80),12)-2,peek(stackformt(0,threadidforrunthez80),10)
@@ -1057,7 +1059,8 @@ poke memory,wpeek(stack(0),6),peek(stack(0),6)
 return
 *opcode_76
 threadidforrunthez80_2=threadidforrunthez80
-if z80halt2endmode=1{z80stackreset threadidforrunthez80_2}else{end}
+if z80halt2endmode=2{z80haltmodesw(threadidforrunthez80_2)=1}else{
+if z80halt2endmode=1{z80stackreset threadidforrunthez80_2}else{end}}
 return
 *opcode_77
 poke memory,wpeek(stack(0),6),peek(stack(0),0)
