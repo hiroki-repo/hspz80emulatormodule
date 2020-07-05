@@ -32,6 +32,7 @@ oncmd gosub *onclkforz80pc,0x202
 	palette 7, 255, 255, 255, 1
 gsel 0,0
 sdim var_29,65540
+poke var_29,0x03,255
 filename=""
 dircmdlines=""
 dircmdlines=dir_cmdline
@@ -574,7 +575,7 @@ fcbfnamenameplsformattlx=strmid(fcbfnamenameplsformat,cnt,1)
 if fcbfnamenameplsformattlx="?"{fcbfnamenameplsformattlx="*"}
 fcbfnamenameplsformattl=fcbfnamenameplsformattl+fcbfnamenameplsformattlx
 loop
-if fcbfnamenameplsformattl="********.***"{fcbfnamenameplsformattl="*"}
+if fcbfnamenameplsformattl="********.***"{fcbfnamenameplsformattl="*.*"}
 fcbfnamenameplsformatdirlist="":fcbfnamenameplsformatdirlist2="":fcbfnamenameplsformatdirlistformat=""
 fcbfnamenameplsformatdirlistfname=""
 dirlist fcbfnamenameplsformatdirlist,fcbfnamenameplsformattl,1
@@ -596,6 +597,7 @@ loop
 memcpy var_29,fcbfnamenameplsformatdirlistfname,0x08,wpeek(var_29,0xF224)+1,0
 memcpy var_29,fcbfnamenameplsformatdirlistformat,0x03,wpeek(var_29,0xF224)+1+8,0
 exist fcbfnamenameplsformatdirlist2
+logmes fcbfnamenameplsformatdirlist2
 strsize2=strsize
 ex = (peek(var_29,fcbaddr + 12) & 0x1f) | (peek(var_29,fcbaddr + 13) << 5)
 block = strsize2 - ex * 16384
@@ -615,11 +617,14 @@ strsize2=strsize*/
 if filestatforfsearch=0{
 poke var_24,0,0xFF
 }else{
-lpoke var_29,fcbaddr+1+8+3+1+1+1,0
+//lpoke var_29,fcbaddr+1+8+3+1+1+1,0
 randomize:poke var_24,0,0}
 
 swbreak
 case 18
+fcbaddr=0
+showstr="":chkx0a0d=0:fcbaddr=peek(var_24,5)+(peek(var_24,4)<<8)
+gosub *hlefcb
 fcbfnamenameplsformatdirlist2="":fcbfnamenameplsformatdirlistformat=""
 fcbfnamenameplsformatdirlistfname=""
 filestatforfsearchi=filestatforfsearchi+1
@@ -711,7 +716,7 @@ memcpy fcbreaddatastr,var_29,128,fcbcrx*128,wpeek(var_29,0xF224)
 bsave fcbfnamenameplsformat,fcbreaddatastr
 //poke var_29,fcbaddr+1+8+3+1+1+16+1,peek(var_29,fcbaddr+1+8+3+1+1+16+1)+1
 gosub *hlefcbcrxex
-if strsize2>fcbcrx{poke var_24,0,0x00}else{
+if strsize2>fcbcrx*128{poke var_24,0,0x00}else{
 randomize:poke var_24,0,1}}
 swbreak
 case 22
@@ -831,8 +836,8 @@ bsave fcbfnamenameplsformat,fcbreaddatastr
 fcbcrx=fcbcrx-1
 gosub *hlefcbcrxex
 fcbcrx=fcbcrx+1
-if strsize2>fcbcrx{poke var_24,0,0x00}else{
-randomize:poke var_24,0,1}}
+if strsize2>fcbcrx*128{poke var_24,0,0x00}else{
+randomize:poke var_24,0,2}}
 swbreak
 case 35
 fcbaddr=0
@@ -1025,7 +1030,7 @@ fcbfnameformat2=strmid(fcbfnameformat,0,instrforfcbfnameformat)
 }
 //dupptr fcbfnameformat,varptr(var_29)+fcbaddr+1+8,3,2
 fcbfnamenameplsformat=""
-if fcbfnameformat="   " or fcbfnameformat=""{
+if fcbfnameformat2="   " or fcbfnameformat2=""{
 fcbfnamenameplsformat=fcbfname2
 }else{
 fcbfnamenameplsformat=fcbfname2+"."+fcbfnameformat2
