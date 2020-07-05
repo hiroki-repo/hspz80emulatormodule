@@ -2624,8 +2624,8 @@ switch opcodeforsubcall
 case 0x00
 changetoforrlc=3
 resforrlc=peek(stack(0),changetoforrlc)
-cforrlc=0
-if (resforrlc & 0x80) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc << 1) | (resforrlc >> 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -2635,8 +2635,8 @@ swbreak
 case 0x01
 changetoforrlc=2
 resforrlc=peek(stack(0),changetoforrlc)
-cforrlc=0
-if (resforrlc & 0x80) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc << 1) | (resforrlc >> 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -2646,8 +2646,8 @@ swbreak
 case 0x02
 changetoforrlc=5
 resforrlc=peek(stack(0),changetoforrlc)
-cforrlc=0
-if (resforrlc & 0x80) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc << 1) | (resforrlc >> 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -2657,8 +2657,8 @@ swbreak
 case 0x03
 changetoforrlc=4
 resforrlc=peek(stack(0),changetoforrlc)
-cforrlc=0
-if (resforrlc & 0x80) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc << 1) | (resforrlc >> 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -2668,8 +2668,8 @@ swbreak
 case 0x04
 changetoforrlc=7
 resforrlc=peek(stack(0),changetoforrlc)
-cforrlc=0
-if (resforrlc & 0x80) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc << 1) | (resforrlc >> 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -2679,8 +2679,8 @@ swbreak
 case 0x05
 changetoforrlc=6
 resforrlc=peek(stack(0),changetoforrlc)
-cforrlc=0
-if (resforrlc & 0x80) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc << 1) | (resforrlc >> 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -2690,8 +2690,8 @@ swbreak
 case 0x06
 changetoforrlc=2
 resforrlc=peek(memory,wpeek(stack(0),6))
-cforrlc=0
-if (resforrlc & 0x80) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc << 1) | (resforrlc >> 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -2701,8 +2701,8 @@ swbreak
 case 0x07
 changetoforrlc=0
 resforrlc=peek(stack(0),changetoforrlc)
-cforrlc=0
-if (resforrlc & 0x80) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc << 1) | (resforrlc >> 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -2712,8 +2712,8 @@ swbreak
 case 0x08
 changetoforrlc=3
 resforrlc=peek(stack(0),changetoforrlc)
-cforrlc=0
-if (resforrlc & 0x01) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc >> 1) | (resforrlc << 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -2723,8 +2723,8 @@ swbreak
 case 0x09
 changetoforrlc=2
 resforrlc=peek(stack(0),changetoforrlc)
-cforrlc=0
-if (resforrlc & 0x01) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc >> 1) | (resforrlc << 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -2734,8 +2734,8 @@ swbreak
 case 0x0A
 changetoforrlc=5
 resforrlc=peek(stack(0),changetoforrlc)
-cforrlc=0
-if (resforrlc & 0x01) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc >> 1) | (resforrlc << 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -2745,8 +2745,8 @@ swbreak
 case 0x0B
 changetoforrlc=4
 resforrlc=peek(stack(0),changetoforrlc)
-cforrlc=0
-if (resforrlc & 0x01) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc >> 1) | (resforrlc << 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -2756,8 +2756,8 @@ swbreak
 case 0x0C
 changetoforrlc=7
 resforrlc=peek(stack(0),changetoforrlc)
-cforrlc=0
-if (resforrlc & 0x01) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc >> 1) | (resforrlc << 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -2767,8 +2767,8 @@ swbreak
 case 0x0D
 changetoforrlc=6
 resforrlc=peek(stack(0),changetoforrlc)
-cforrlc=0
-if (resforrlc & 0x01) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc >> 1) | (resforrlc << 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -2778,8 +2778,8 @@ swbreak
 case 0x0E
 changetoforrlc=2
 resforrlc=peek(memory,wpeek(stack(0),6))
-cforrlc=0
-if (resforrlc & 0x01) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc >> 1) | (resforrlc << 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -2789,8 +2789,8 @@ swbreak
 case 0x0F
 changetoforrlc=0
 resforrlc=peek(stack(0),changetoforrlc)
-cforrlc=0
-if (resforrlc & 0x01) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc >> 1) | (resforrlc << 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -2800,8 +2800,8 @@ swbreak
 case 0x10
 changetoforrlc=3
 resforrlc=peek(stack(0),changetoforrlc)
-cforrlc=0
-if (resforrlc & 0x80) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc << 1) | (peek(stack(0),1) & 0x01)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -2811,8 +2811,8 @@ swbreak
 case 0x11
 changetoforrlc=2
 resforrlc=peek(stack(0),changetoforrlc)
-cforrlc=0
-if (resforrlc & 0x80) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc << 1) | (peek(stack(0),1) & 0x01)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -2822,8 +2822,8 @@ swbreak
 case 0x12
 changetoforrlc=5
 resforrlc=peek(stack(0),changetoforrlc)
-cforrlc=0
-if (resforrlc & 0x80) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc << 1) | (peek(stack(0),1) & 0x01)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -2833,8 +2833,8 @@ swbreak
 case 0x13
 changetoforrlc=4
 resforrlc=peek(stack(0),changetoforrlc)
-cforrlc=0
-if (resforrlc & 0x80) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc << 1) | (peek(stack(0),1) & 0x01)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -2844,8 +2844,8 @@ swbreak
 case 0x14
 changetoforrlc=7
 resforrlc=peek(stack(0),changetoforrlc)
-cforrlc=0
-if (resforrlc & 0x80) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc << 1) | (peek(stack(0),1) & 0x01)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -2855,8 +2855,8 @@ swbreak
 case 0x15
 changetoforrlc=6
 resforrlc=peek(stack(0),changetoforrlc)
-cforrlc=0
-if (resforrlc & 0x80) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc << 1) | (peek(stack(0),1) & 0x01)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -2866,8 +2866,8 @@ swbreak
 case 0x16
 changetoforrlc=2
 resforrlc=peek(memory,wpeek(stack(0),6))
-cforrlc=0
-if (resforrlc & 0x80) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc << 1) | (peek(stack(0),1) & 0x01)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -2877,8 +2877,8 @@ swbreak
 case 0x17
 changetoforrlc=0
 resforrlc=peek(stack(0),changetoforrlc)
-cforrlc=0
-if (resforrlc & 0x80) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc << 1) | (peek(stack(0),1) & 0x01)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -2888,8 +2888,8 @@ swbreak
 case 0x18
 changetoforrlc=3
 resforrlc=peek(stack(0),changetoforrlc)
-cforrlc=0
-if (resforrlc & 0x01) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc >> 1) | (peek(stack(0),1) << 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -2899,8 +2899,8 @@ swbreak
 case 0x19
 changetoforrlc=2
 resforrlc=peek(stack(0),changetoforrlc)
-cforrlc=0
-if (resforrlc & 0x01) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc >> 1) | (peek(stack(0),1) << 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -2910,8 +2910,8 @@ swbreak
 case 0x1A
 changetoforrlc=5
 resforrlc=peek(stack(0),changetoforrlc)
-cforrlc=0
-if (resforrlc & 0x01) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc >> 1) | (peek(stack(0),1) << 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -2921,8 +2921,8 @@ swbreak
 case 0x1B
 changetoforrlc=4
 resforrlc=peek(stack(0),changetoforrlc)
-cforrlc=0
-if (resforrlc & 0x01) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc >> 1) | (peek(stack(0),1) << 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -2932,8 +2932,8 @@ swbreak
 case 0x1C
 changetoforrlc=7
 resforrlc=peek(stack(0),changetoforrlc)
-cforrlc=0
-if (resforrlc & 0x01) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc >> 1) | (peek(stack(0),1) << 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -2943,8 +2943,8 @@ swbreak
 case 0x1D
 changetoforrlc=6
 resforrlc=peek(stack(0),changetoforrlc)
-cforrlc=0
-if (resforrlc & 0x01) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc >> 1) | (peek(stack(0),1) << 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -2954,8 +2954,8 @@ swbreak
 case 0x1E
 changetoforrlc=2
 resforrlc=peek(memory,wpeek(stack(0),6))
-cforrlc=0
-if (resforrlc & 0x01) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc >> 1) | (peek(stack(0),1) << 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -2965,8 +2965,8 @@ swbreak
 case 0x1F
 changetoforrlc=0
 resforrlc=peek(stack(0),changetoforrlc)
-cforrlc=0
-if (resforrlc & 0x01) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc >> 1) | (peek(stack(0),1) << 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -4415,8 +4415,8 @@ switch opcodeforsubcall
 case 0x00
 changetoforrlc=3
 resforrlc=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-cforrlc=0
-if (resforrlc & 0x80) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc << 1) | (resforrlc >> 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -4426,8 +4426,8 @@ swbreak
 case 0x01
 changetoforrlc=2
 resforrlc=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-cforrlc=0
-if (resforrlc & 0x80) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc << 1) | (resforrlc >> 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -4437,8 +4437,8 @@ swbreak
 case 0x02
 changetoforrlc=5
 resforrlc=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-cforrlc=0
-if (resforrlc & 0x80) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc << 1) | (resforrlc >> 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -4448,8 +4448,8 @@ swbreak
 case 0x03
 changetoforrlc=4
 resforrlc=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-cforrlc=0
-if (resforrlc & 0x80) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc << 1) | (resforrlc >> 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -4459,8 +4459,8 @@ swbreak
 case 0x04
 changetoforrlc=7
 resforrlc=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-cforrlc=0
-if (resforrlc & 0x80) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc << 1) | (resforrlc >> 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -4470,8 +4470,8 @@ swbreak
 case 0x05
 changetoforrlc=6
 resforrlc=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-cforrlc=0
-if (resforrlc & 0x80) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc << 1) | (resforrlc >> 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -4481,8 +4481,8 @@ swbreak
 case 0x06
 changetoforrlc=2
 resforrlc=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-cforrlc=0
-if (resforrlc & 0x80) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc << 1) | (resforrlc >> 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -4492,8 +4492,8 @@ swbreak
 case 0x07
 changetoforrlc=0
 resforrlc=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-cforrlc=0
-if (resforrlc & 0x80) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc << 1) | (resforrlc >> 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -4503,8 +4503,8 @@ swbreak
 case 0x08
 changetoforrlc=3
 resforrlc=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-cforrlc=0
-if (resforrlc & 0x01) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc >> 1) | (resforrlc << 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -4514,8 +4514,8 @@ swbreak
 case 0x09
 changetoforrlc=2
 resforrlc=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-cforrlc=0
-if (resforrlc & 0x01) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc >> 1) | (resforrlc << 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -4525,8 +4525,8 @@ swbreak
 case 0x0A
 changetoforrlc=5
 resforrlc=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-cforrlc=0
-if (resforrlc & 0x01) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc >> 1) | (resforrlc << 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -4536,8 +4536,8 @@ swbreak
 case 0x0B
 changetoforrlc=4
 resforrlc=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-cforrlc=0
-if (resforrlc & 0x01) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc >> 1) | (resforrlc << 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -4547,8 +4547,8 @@ swbreak
 case 0x0C
 changetoforrlc=7
 resforrlc=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-cforrlc=0
-if (resforrlc & 0x01) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc >> 1) | (resforrlc << 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -4558,8 +4558,8 @@ swbreak
 case 0x0D
 changetoforrlc=6
 resforrlc=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-cforrlc=0
-if (resforrlc & 0x01) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc >> 1) | (resforrlc << 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -4569,8 +4569,8 @@ swbreak
 case 0x0E
 changetoforrlc=2
 resforrlc=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-cforrlc=0
-if (resforrlc & 0x01) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc >> 1) | (resforrlc << 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -4580,8 +4580,8 @@ swbreak
 case 0x0F
 changetoforrlc=0
 resforrlc=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-cforrlc=0
-if (resforrlc & 0x01) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc >> 1) | (resforrlc << 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -4591,8 +4591,8 @@ swbreak
 case 0x10
 changetoforrlc=3
 resforrlc=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-cforrlc=0
-if (resforrlc & 0x80) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc << 1) | (peek(stack(0),1) & 0x01)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -4602,8 +4602,8 @@ swbreak
 case 0x11
 changetoforrlc=2
 resforrlc=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-cforrlc=0
-if (resforrlc & 0x80) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc << 1) | (peek(stack(0),1) & 0x01)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -4613,8 +4613,8 @@ swbreak
 case 0x12
 changetoforrlc=5
 resforrlc=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-cforrlc=0
-if (resforrlc & 0x80) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc << 1) | (peek(stack(0),1) & 0x01)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -4624,8 +4624,8 @@ swbreak
 case 0x13
 changetoforrlc=4
 resforrlc=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-cforrlc=0
-if (resforrlc & 0x80) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc << 1) | (peek(stack(0),1) & 0x01)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -4635,8 +4635,8 @@ swbreak
 case 0x14
 changetoforrlc=7
 resforrlc=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-cforrlc=0
-if (resforrlc & 0x80) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc << 1) | (peek(stack(0),1) & 0x01)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -4646,8 +4646,8 @@ swbreak
 case 0x15
 changetoforrlc=6
 resforrlc=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-cforrlc=0
-if (resforrlc & 0x80) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc << 1) | (peek(stack(0),1) & 0x01)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -4657,8 +4657,8 @@ swbreak
 case 0x16
 changetoforrlc=2
 resforrlc=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-cforrlc=0
-if (resforrlc & 0x80) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc << 1) | (peek(stack(0),1) & 0x01)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -4668,8 +4668,8 @@ swbreak
 case 0x17
 changetoforrlc=0
 resforrlc=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-cforrlc=0
-if (resforrlc & 0x80) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc << 1) | (peek(stack(0),1) & 0x01)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -4679,8 +4679,8 @@ swbreak
 case 0x18
 changetoforrlc=3
 resforrlc=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-cforrlc=0
-if (resforrlc & 0x01) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc >> 1) | (peek(stack(0),1) << 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -4690,8 +4690,8 @@ swbreak
 case 0x19
 changetoforrlc=2
 resforrlc=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-cforrlc=0
-if (resforrlc & 0x01) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc >> 1) | (peek(stack(0),1) << 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -4701,8 +4701,8 @@ swbreak
 case 0x1A
 changetoforrlc=5
 resforrlc=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-cforrlc=0
-if (resforrlc & 0x01) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc >> 1) | (peek(stack(0),1) << 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -4712,8 +4712,8 @@ swbreak
 case 0x1B
 changetoforrlc=4
 resforrlc=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-cforrlc=0
-if (resforrlc & 0x01) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc >> 1) | (peek(stack(0),1) << 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -4723,8 +4723,8 @@ swbreak
 case 0x1C
 changetoforrlc=7
 resforrlc=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-cforrlc=0
-if (resforrlc & 0x01) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc >> 1) | (peek(stack(0),1) << 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -4734,8 +4734,8 @@ swbreak
 case 0x1D
 changetoforrlc=6
 resforrlc=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-cforrlc=0
-if (resforrlc & 0x01) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc >> 1) | (peek(stack(0),1) << 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -4745,8 +4745,8 @@ swbreak
 case 0x1E
 changetoforrlc=2
 resforrlc=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-cforrlc=0
-if (resforrlc & 0x01) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc >> 1) | (peek(stack(0),1) << 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -4756,8 +4756,8 @@ swbreak
 case 0x1F
 changetoforrlc=0
 resforrlc=peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
-cforrlc=0
-if (resforrlc & 0x01) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc >> 1) | (peek(stack(0),1) << 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -7180,8 +7180,8 @@ switch opcodeforsubcall
 case 0x00
 changetoforrlc=3
 resforrlc=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-cforrlc=0
-if (resforrlc & 0x80) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc << 1) | (resforrlc >> 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -7191,8 +7191,8 @@ swbreak
 case 0x01
 changetoforrlc=2
 resforrlc=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-cforrlc=0
-if (resforrlc & 0x80) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc << 1) | (resforrlc >> 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -7202,8 +7202,8 @@ swbreak
 case 0x02
 changetoforrlc=5
 resforrlc=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-cforrlc=0
-if (resforrlc & 0x80) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc << 1) | (resforrlc >> 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -7213,8 +7213,8 @@ swbreak
 case 0x03
 changetoforrlc=4
 resforrlc=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-cforrlc=0
-if (resforrlc & 0x80) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc << 1) | (resforrlc >> 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -7224,8 +7224,8 @@ swbreak
 case 0x04
 changetoforrlc=7
 resforrlc=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-cforrlc=0
-if (resforrlc & 0x80) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc << 1) | (resforrlc >> 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -7235,8 +7235,8 @@ swbreak
 case 0x05
 changetoforrlc=6
 resforrlc=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-cforrlc=0
-if (resforrlc & 0x80) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc << 1) | (resforrlc >> 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -7246,8 +7246,8 @@ swbreak
 case 0x06
 changetoforrlc=2
 resforrlc=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-cforrlc=0
-if (resforrlc & 0x80) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc << 1) | (resforrlc >> 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -7257,8 +7257,8 @@ swbreak
 case 0x07
 changetoforrlc=0
 resforrlc=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-cforrlc=0
-if (resforrlc & 0x80) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc << 1) | (resforrlc >> 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -7268,8 +7268,8 @@ swbreak
 case 0x08
 changetoforrlc=3
 resforrlc=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-cforrlc=0
-if (resforrlc & 0x01) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc >> 1) | (resforrlc << 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -7279,8 +7279,8 @@ swbreak
 case 0x09
 changetoforrlc=2
 resforrlc=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-cforrlc=0
-if (resforrlc & 0x01) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc >> 1) | (resforrlc << 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -7290,8 +7290,8 @@ swbreak
 case 0x0A
 changetoforrlc=5
 resforrlc=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-cforrlc=0
-if (resforrlc & 0x01) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc >> 1) | (resforrlc << 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -7301,8 +7301,8 @@ swbreak
 case 0x0B
 changetoforrlc=4
 resforrlc=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-cforrlc=0
-if (resforrlc & 0x01) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc >> 1) | (resforrlc << 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -7312,8 +7312,8 @@ swbreak
 case 0x0C
 changetoforrlc=7
 resforrlc=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-cforrlc=0
-if (resforrlc & 0x01) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc >> 1) | (resforrlc << 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -7323,8 +7323,8 @@ swbreak
 case 0x0D
 changetoforrlc=6
 resforrlc=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-cforrlc=0
-if (resforrlc & 0x01) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc >> 1) | (resforrlc << 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -7334,8 +7334,8 @@ swbreak
 case 0x0E
 changetoforrlc=2
 resforrlc=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-cforrlc=0
-if (resforrlc & 0x01) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc >> 1) | (resforrlc << 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -7345,8 +7345,8 @@ swbreak
 case 0x0F
 changetoforrlc=0
 resforrlc=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-cforrlc=0
-if (resforrlc & 0x01) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc >> 1) | (resforrlc << 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -7356,8 +7356,8 @@ swbreak
 case 0x10
 changetoforrlc=3
 resforrlc=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-cforrlc=0
-if (resforrlc & 0x80) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc << 1) | (peek(stack(0),1) & 0x01)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -7367,8 +7367,8 @@ swbreak
 case 0x11
 changetoforrlc=2
 resforrlc=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-cforrlc=0
-if (resforrlc & 0x80) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc << 1) | (peek(stack(0),1) & 0x01)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -7378,8 +7378,8 @@ swbreak
 case 0x12
 changetoforrlc=5
 resforrlc=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-cforrlc=0
-if (resforrlc & 0x80) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc << 1) | (peek(stack(0),1) & 0x01)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -7389,8 +7389,8 @@ swbreak
 case 0x13
 changetoforrlc=4
 resforrlc=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-cforrlc=0
-if (resforrlc & 0x80) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc << 1) | (peek(stack(0),1) & 0x01)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -7400,8 +7400,8 @@ swbreak
 case 0x14
 changetoforrlc=7
 resforrlc=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-cforrlc=0
-if (resforrlc & 0x80) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc << 1) | (peek(stack(0),1) & 0x01)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -7411,8 +7411,8 @@ swbreak
 case 0x15
 changetoforrlc=6
 resforrlc=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-cforrlc=0
-if (resforrlc & 0x80) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc << 1) | (peek(stack(0),1) & 0x01)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -7422,8 +7422,8 @@ swbreak
 case 0x16
 changetoforrlc=2
 resforrlc=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-cforrlc=0
-if (resforrlc & 0x80) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc << 1) | (peek(stack(0),1) & 0x01)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -7433,8 +7433,8 @@ swbreak
 case 0x17
 changetoforrlc=0
 resforrlc=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-cforrlc=0
-if (resforrlc & 0x80) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc << 1) | (peek(stack(0),1) & 0x01)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -7444,8 +7444,8 @@ swbreak
 case 0x18
 changetoforrlc=3
 resforrlc=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-cforrlc=0
-if (resforrlc & 0x01) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc >> 1) | (peek(stack(0),1) << 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -7455,8 +7455,8 @@ swbreak
 case 0x19
 changetoforrlc=2
 resforrlc=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-cforrlc=0
-if (resforrlc & 0x01) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc >> 1) | (peek(stack(0),1) << 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -7466,8 +7466,8 @@ swbreak
 case 0x1A
 changetoforrlc=5
 resforrlc=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-cforrlc=0
-if (resforrlc & 0x01) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc >> 1) | (peek(stack(0),1) << 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -7477,8 +7477,8 @@ swbreak
 case 0x1B
 changetoforrlc=4
 resforrlc=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-cforrlc=0
-if (resforrlc & 0x01) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc >> 1) | (peek(stack(0),1) << 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -7488,8 +7488,8 @@ swbreak
 case 0x1C
 changetoforrlc=7
 resforrlc=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-cforrlc=0
-if (resforrlc & 0x01) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc >> 1) | (peek(stack(0),1) << 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -7499,8 +7499,8 @@ swbreak
 case 0x1D
 changetoforrlc=6
 resforrlc=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-cforrlc=0
-if (resforrlc & 0x01) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc >> 1) | (peek(stack(0),1) << 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -7510,8 +7510,8 @@ swbreak
 case 0x1E
 changetoforrlc=2
 resforrlc=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-cforrlc=0
-if (resforrlc & 0x01) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc >> 1) | (peek(stack(0),1) << 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
@@ -7521,8 +7521,8 @@ swbreak
 case 0x1F
 changetoforrlc=0
 resforrlc=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
-cforrlc=0
-if (resforrlc & 0x01) {cforrlc=1}
+cforrlc=1
+if (resforrlc & 0x80) {cforrlc=0}
 	resforrlc = ((resforrlc >> 1) | (peek(stack(0),1) << 7)) & 0xff
 	if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
