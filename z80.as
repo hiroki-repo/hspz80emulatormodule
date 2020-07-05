@@ -1,3 +1,8 @@
+//Gocaine z80 cpu emulator
+//this software code can be used to any purposes!
+//and this software is unlicenced!
+//Codename KisKan
+
 #module
 #deffunc gocaine_z80init 
 resforrlc=0
@@ -428,7 +433,15 @@ startaddr=0x38
 wpoke stackformt(0,threadidforrunthez80),10,iomemoryidforz80*8
 startaddr=iomemoryidforz80*8
 }*/
-z80run startaddr,memory,threadidforrunthez80
+memcpy stack(0),stackformt(0,threadidforrunthez80),64,0,0
+memcpy stack(1),stackformt(1,threadidforrunthez80),64,0,0
+wpoke stack(0),10,startaddr
+//opcode=peek(memory,wpeek(stack(0),10))
+//lpoke jumplabel,0,opcodeaddr(opcode)
+gosub opcodeaddr(iomemoryidforz80)//opcodeaddr(opcode)//jumplabel
+lpoke startaddr,0,wpeek(stack(0),10)
+memcpy stackformt(0,threadidforrunthez80),stack(0),64,0,0
+memcpy stackformt(1,threadidforrunthez80),stack(1),64,0,0
 }
 if z80runmode(threadidforrunthez80)=1{
 poke memory,wpeek(stackformt(0,threadidforrunthez80),12)-2,peek(stackformt(0,threadidforrunthez80),10)
