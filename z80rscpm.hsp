@@ -308,7 +308,7 @@ return
 
 *hle
 if fontsize=0{
-hleplusxsize=10
+hleplusxsize=8
 hleplusysize=16
 }else{
 hleplusxsize=6
@@ -583,6 +583,7 @@ filestatforfsearchi=0
 filestatforfsearch=stat
 notesel fcbfnamenameplsformatdirlist
 noteget fcbfnamenameplsformatdirlist2,0
+fcbfnamenameplsformatdirlistfname=fcbfnamenameplsformatdirlist2
 fcbfnamenameplsformatdirlistdot=0
 fcbfnamenameplsformatdirlistdot=instr(fcbfnamenameplsformatdirlist2,0,".")
 if fcbfnamenameplsformatdirlistdot=-1{
