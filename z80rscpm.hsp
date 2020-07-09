@@ -517,7 +517,7 @@ wpoke var_29,0xF224,0x80
 swbreak
 case 14
 poke var_24,0,0xFF
-if peek(var_24,4)<=16{drive=0:drive=peek(var_24,5):poke var_24,0,0}else{poke var_24,0,0xFF:poke var_24,6,4}
+if peek(var_24,5)<=15{drive=0:drive=peek(var_24,5):poke var_24,0,0:logmes drive}else{poke var_24,0,0xFF:poke var_24,6,4}
 swbreak
 case 15
 fcbaddr=0
@@ -858,6 +858,9 @@ poke var_29,fcbaddr+33,(strsize3 & 0xff)
 poke var_29,fcbaddr+34,((strsize3 >> 8) & 0xff)
 poke var_29,fcbaddr+35,((strsize3 >> 16) & 0xff)
 randomize:poke var_24,0,0}
+if fcbfnamenameplsformat=""{
+poke var_24,0,0xFF
+poke var_24,6,0x00}
 swbreak
 case 36
 fcbaddr=0
