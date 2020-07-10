@@ -6084,7 +6084,7 @@ resforcpi=wpeek(stack(0),0)-valforcpi
 if resforcpi=0{resforcpiis0=1}
 wpoke stack(0),2,wpeek(stack(0),2)-1
 wpoke stack(0),6,wpeek(stack(0),6)+1
-poke stack(0),1,(peek(stack(0),1) & 0x01) | (SZ(resforcpi) & (0x20 | 0x08)) | ((peek(stack(0),0) ^ valforcpi ^ resforcpi) & 0x10) | 0x02
+poke stack(0),1,(peek(stack(0),1) & 0x01) | (SZ(peek(resforcpi,0)) & (0x20 | 0x08)) | ((peek(stack(0),0) ^ valforcpi ^ resforcpi) & 0x10) | 0x02
 if (peek(stack(0),1) & 0x10) {resforcpi -= 1}
 	if(resforcpi & 0x02) {poke stack(0),1,peek(stack(0),1) | 0x20}
 	if(resforcpi & 0x08) {poke stack(0),1,peek(stack(0),1) | 0x08}
@@ -6125,7 +6125,7 @@ resforcpi=wpeek(stack(0),0)-valforcpi
 if resforcpi=0{resforcpiis0=1}
 wpoke stack(0),2,wpeek(stack(0),2)-1
 wpoke stack(0),6,wpeek(stack(0),6)-1
-poke stack(0),1,(peek(stack(0),1) & 0x01) | (SZ(resforcpi) & (0x20 | 0x08)) | ((peek(stack(0),0) ^ valforcpi ^ resforcpi) & 0x10) | 0x02
+poke stack(0),1,(peek(stack(0),1) & 0x01) | (SZ(peek(resforcpi,0)) & (0x20 | 0x08)) | ((peek(stack(0),0) ^ valforcpi ^ resforcpi) & 0x10) | 0x02
 if (peek(stack(0),1) & 0x10) {resforcpi -= 1}
 	if(resforcpi & 0x02) {poke stack(0),1,peek(stack(0),1) | 0x20}
 	if(resforcpi & 0x08) {poke stack(0),1,peek(stack(0),1) | 0x08}
@@ -6197,7 +6197,7 @@ resforcpi=wpeek(stack(0),0)-valforcpi
 if resforcpi=0{resforcpiis0=1}
 wpoke stack(0),2,wpeek(stack(0),2)-1
 wpoke stack(0),6,wpeek(stack(0),6)+1
-poke stack(0),1,(peek(stack(0),1) & 0x01) | (SZ(resforcpi) & (0x20 | 0x08)) | ((peek(stack(0),0) ^ valforcpi ^ resforcpi) & 0x10) | 0x02
+poke stack(0),1,(peek(stack(0),1) & 0x01) | (SZ(peek(resforcpi,0)) & (0x20 | 0x08)) | ((peek(stack(0),0) ^ valforcpi ^ resforcpi) & 0x10) | 0x02
 if (peek(stack(0),1) & 0x10) {resforcpi -= 1}
 	if(resforcpi & 0x02) {poke stack(0),1,peek(stack(0),1) | 0x20}
 	if(resforcpi & 0x08) {poke stack(0),1,peek(stack(0),1) | 0x08}
@@ -6262,7 +6262,7 @@ resforcpi=wpeek(stack(0),0)-valforcpi
 if resforcpi=0{resforcpiis0=1}
 wpoke stack(0),2,wpeek(stack(0),2)-1
 wpoke stack(0),6,wpeek(stack(0),6)-1
-poke stack(0),1,(peek(stack(0),1) & 0x01) | (SZ(resforcpi) & (0x20 | 0x08)) | ((peek(stack(0),0) ^ valforcpi ^ resforcpi) & 0x10) | 0x02
+poke stack(0),1,(peek(stack(0),1) & 0x01) | (SZ(peek(resforcpi,0)) & (0x20 | 0x08)) | ((peek(stack(0),0) ^ valforcpi ^ resforcpi) & 0x10) | 0x02
 if (peek(stack(0),1) & 0x10) {resforcpi -= 1}
 	if(resforcpi & 0x02) {poke stack(0),1,peek(stack(0),1) | 0x20}
 	if(resforcpi & 0x08) {poke stack(0),1,peek(stack(0),1) | 0x08}
