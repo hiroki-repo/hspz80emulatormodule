@@ -5591,6 +5591,7 @@ addfromstack=2
 addold=peek(stack(0),addtostack)
 calculated=peek(stack(0),addtostack)+peek(stack(0),addfromstack)+(peek(stack(0),1) & (0x01))
 //if peek(stack(0),addtostack) & 0b00001000{halfcarrychk=1}
+calculatedcontext=0:if (calculated & 0xffff) = 0 { calculatedcontext= 0x40}:poke stack(0),1,((((wpeek(stack(0),addtostack) ^ calculated ^ wpeek(stack(0),addfromstack)) >> 8) & 0x10) | ((calculated >> 16) & 0x01) | ((calculated >> 8) & (0x80 | 0x20 | 0x08)) | (calculatedcontext) | (((wpeek(stack(0),addfromstack) ^ wpeek(stack(0),addtostack) ^ 0x8000) & (wpeek(stack(0),addfromstack) ^ calculated) &0x8000) >> 13))
 //poke stack(0),1,SZ(peek(calculated,0) & 0xff) | ((calculated >> 8) & 0x01) | ((peek(stack(0),addtostack) ^ calculated ^ peek(stack(0),addfromstack)) & 0x10) | (((peek(stack(0),addfromstack) ^ peek(stack(0),addtostack) ^ 0x80) & (peek(stack(0),addfromstack) ^ calculated) & 0x80) >> 5)
 poke stack(0),addtostack,calculated
 /*if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke stack(0),1,peek(stack(0),1) | (0x01)}
@@ -5599,10 +5600,10 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}*/
-SZHVC_addvar_37id=0
+/*SZHVC_addvar_37id=0
 SZHVC_addvar_37id2=calculated
 gosub *SZHVCcall
-poke stack(0),1,peek(stack(0),1) & 255 ^ 2
+poke stack(0),1,peek(stack(0),1) & 255 ^ 2*/
 swbreak
 case 0x4B
 wpoke stack(0),2,wpeek(memory,wpeek(memory,wpeek(stack(0),10)))
@@ -5737,6 +5738,7 @@ addfromstack=4
 addold=peek(stack(0),addtostack)
 calculated=peek(stack(0),addtostack)+peek(stack(0),addfromstack)+(peek(stack(0),1) & (0x01))
 //if peek(stack(0),addtostack) & 0b00001000{halfcarrychk=1}
+calculatedcontext=0:if (calculated & 0xffff) = 0 { calculatedcontext= 0x40}:poke stack(0),1,((((wpeek(stack(0),addtostack) ^ calculated ^ wpeek(stack(0),addfromstack)) >> 8) & 0x10) | ((calculated >> 16) & 0x01) | ((calculated >> 8) & (0x80 | 0x20 | 0x08)) | (calculatedcontext) | (((wpeek(stack(0),addfromstack) ^ wpeek(stack(0),addtostack) ^ 0x8000) & (wpeek(stack(0),addfromstack) ^ calculated) &0x8000) >> 13))
 //poke stack(0),1,SZ(peek(calculated,0) & 0xff) | ((calculated >> 8) & 0x01) | ((peek(stack(0),addtostack) ^ calculated ^ peek(stack(0),addfromstack)) & 0x10) | (((peek(stack(0),addfromstack) ^ peek(stack(0),addtostack) ^ 0x80) & (peek(stack(0),addfromstack) ^ calculated) & 0x80) >> 5)
 poke stack(0),addtostack,calculated
 /*if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke stack(0),1,peek(stack(0),1) | (0x01)}
@@ -5745,10 +5747,10 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}*/
-SZHVC_addvar_37id=0
+/*SZHVC_addvar_37id=0
 SZHVC_addvar_37id2=calculated
 gosub *SZHVCcall
-poke stack(0),1,peek(stack(0),1) & 255 ^ 2
+poke stack(0),1,peek(stack(0),1) & 255 ^ 2*/
 swbreak
 case 0x5B
 wpoke stack(0),4,wpeek(memory,wpeek(memory,wpeek(stack(0),10)))
@@ -5885,6 +5887,7 @@ addfromstack=6
 addold=peek(stack(0),addtostack)
 calculated=peek(stack(0),addtostack)+peek(stack(0),addfromstack)+(peek(stack(0),1) & (0x01))
 //if peek(stack(0),addtostack) & 0b00001000{halfcarrychk=1}
+calculatedcontext=0:if (calculated & 0xffff) = 0 { calculatedcontext= 0x40}:poke stack(0),1,((((wpeek(stack(0),addtostack) ^ calculated ^ wpeek(stack(0),addfromstack)) >> 8) & 0x10) | ((calculated >> 16) & 0x01) | ((calculated >> 8) & (0x80 | 0x20 | 0x08)) | (calculatedcontext) | (((wpeek(stack(0),addfromstack) ^ wpeek(stack(0),addtostack) ^ 0x8000) & (wpeek(stack(0),addfromstack) ^ calculated) &0x8000) >> 13))
 //poke stack(0),1,SZ(peek(calculated,0) & 0xff) | ((calculated >> 8) & 0x01) | ((peek(stack(0),addtostack) ^ calculated ^ peek(stack(0),addfromstack)) & 0x10) | (((peek(stack(0),addfromstack) ^ peek(stack(0),addtostack) ^ 0x80) & (peek(stack(0),addfromstack) ^ calculated) & 0x80) >> 5)
 poke stack(0),addtostack,calculated
 /*if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke stack(0),1,peek(stack(0),1) | (0x01)}
@@ -5893,10 +5896,10 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}*/
-SZHVC_addvar_37id=0
+/*SZHVC_addvar_37id=0
 SZHVC_addvar_37id2=calculated
 gosub *SZHVCcall
-poke stack(0),1,peek(stack(0),1) & 255 ^ 2
+poke stack(0),1,peek(stack(0),1) & 255 ^ 2*/
 swbreak
 case 0x6B
 wpoke stack(0),6,wpeek(memory,wpeek(memory,wpeek(stack(0),10)))
@@ -6030,6 +6033,7 @@ addfromstack=12
 addold=peek(stack(0),addtostack)
 calculated=peek(stack(0),addtostack)+peek(stack(0),addfromstack)+(peek(stack(0),1) & (0x01))
 //if peek(stack(0),addtostack) & 0b00001000{halfcarrychk=1}
+calculatedcontext=0:if (calculated & 0xffff) = 0 { calculatedcontext= 0x40}:poke stack(0),1,((((wpeek(stack(0),addtostack) ^ calculated ^ wpeek(stack(0),addfromstack)) >> 8) & 0x10) | ((calculated >> 16) & 0x01) | ((calculated >> 8) & (0x80 | 0x20 | 0x08)) | (calculatedcontext) | (((wpeek(stack(0),addfromstack) ^ wpeek(stack(0),addtostack) ^ 0x8000) & (wpeek(stack(0),addfromstack) ^ calculated) &0x8000) >> 13))
 //poke stack(0),1,SZ(peek(calculated,0) & 0xff) | ((calculated >> 8) & 0x01) | ((peek(stack(0),addtostack) ^ calculated ^ peek(stack(0),addfromstack)) & 0x10) | (((peek(stack(0),addfromstack) ^ peek(stack(0),addtostack) ^ 0x80) & (peek(stack(0),addfromstack) ^ calculated) & 0x80) >> 5)
 poke stack(0),addtostack,calculated
 /*if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke stack(0),1,peek(stack(0),1) | (0x01)}
@@ -6038,10 +6042,10 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}*/
-SZHVC_addvar_37id=0
+/*SZHVC_addvar_37id=0
 SZHVC_addvar_37id2=calculated
 gosub *SZHVCcall
-poke stack(0),1,peek(stack(0),1) & 255 ^ 2
+poke stack(0),1,peek(stack(0),1) & 255 ^ 2*/
 swbreak
 case 0x7B
 wpoke stack(0),12,wpeek(memory,wpeek(memory,wpeek(stack(0),10)))
