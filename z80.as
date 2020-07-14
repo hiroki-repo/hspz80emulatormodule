@@ -595,10 +595,10 @@ poke stack(0),0,(peek(stack(0),0) >> 1) | (peek(stack(0),0) << 7)
 poke stack(0),1,peek(stack(0),1) | (peek(stack(0),0) & (0x20 | 0x08))
 return
 *opcode_10
-poke stack(0),2,peek(stack(0),2)-1
+poke stack(0),3,peek(stack(0),3)-1
 address=peek(memory,wpeek(stack(0),10))
 if address>=128{address=-(256-address)}
-if (peek(stack(0),2)) {wpoke stack(0),10,wpeek(stack(0),10)+address+1}else{wpoke stack(0),10,wpeek(stack(0),10)+1}
+if (peek(stack(0),3)) {wpoke stack(0),10,wpeek(stack(0),10)+address+1}else{wpoke stack(0),10,wpeek(stack(0),10)+1}
 return
 *opcode_11
 wpoke stack(0),4,wpeek(memory,wpeek(stack(0),10))
@@ -5445,14 +5445,15 @@ addtostack=0
 addfromstack=2
 addold=peek(stack(0),addtostack)
 calculated=peek(stack(0),addtostack)-peek(memory,wpeek(stack(0),10))-(peek(stack(0),1) & (0x01))
-if peek(stack(0),addtostack) & 0b00001000{halfcarrychk=1}
+//if peek(stack(0),addtostack) & 0b00001000{halfcarrychk=1}
+poke stack(0),1,SZ(peek(calculated,0) & 0xff) | ((calculated >> 8) & 0x01) | 0x02 | ((peek(stack(0),addtostack) ^ calculated ^ peek(memory,wpeek(stack(0),10))) & 0x10) | (((peek(memory,wpeek(stack(0),10)) ^ peek(stack(0),addtostack)) & (peek(stack(0),addtostack) ^ calculated) & 0x80) >> 5)
 poke stack(0),addtostack,calculated
-if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke stack(0),1,peek(stack(0),1) | (0x01)}
+/*if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke stack(0),1,peek(stack(0),1) | (0x01)}
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
 if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0),1) | (0x40)}
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
-if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}
+if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}*/
 wpoke stack(0),10,wpeek(stack(0),10)+1
 return
 *opcode_df
