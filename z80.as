@@ -637,7 +637,7 @@ return
 *opcode_17
 rlac=1
 rlares = (peek(stack(0),0) << 1) | (peek(stack(0),1) & 0x01)
-if (peek(stack(0),0) & 0x80) = 0x01 {rlac = 0}
+if (peek(stack(0),0) & 0x80) {rlac = 0x01}else{rlac = 0}
 poke stack(0),1,(peek(stack(0),1) & (0x80 | 0x40 | 0x04)) | rlac | (rlares & (0x20 | 0x08))
 poke stack(0),0,rlares
 return
@@ -699,7 +699,7 @@ return
 *opcode_1f
 rlac=1
 rlares = (peek(stack(0),0) >> 1) | (peek(stack(0),1) << 7)
-if (peek(stack(0),0) & 0x01) = 0x01 {rlac = 0}
+if (peek(stack(0),0) & 0x01) {rlac= 0x01}else{rlac = 0}
 poke stack(0),1,(peek(stack(0),1) & (0x80 | 0x40 | 0x04)) | rlac | (rlares & (0x20 | 0x08))
 poke stack(0),0,rlares
 return
