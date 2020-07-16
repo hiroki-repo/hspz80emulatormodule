@@ -7682,7 +7682,6 @@ changetoforrlc=3
 resforrlc=peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10)))
 cforrlc=1
 if (resforrlc & 0x01) {cforrlc=0x01}else{cforrlc=0}
-if (resforrlc & 0x01) {cforrlc=0x01}else{cforrlc=0}
 	resforrlc = ((resforrlc >> 1) | (peek(stack(0),1) << 7)) & 0xff
 	/*if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
