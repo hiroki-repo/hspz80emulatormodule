@@ -1259,7 +1259,7 @@ addfromstack=7
 addold=peek(stack(0),addtostack)
 calculated=peek(stack(0),addtostack)+peek(memory,wpeek(stack(0),6))
 if peek(stack(0),addtostack) & 0b00001000{halfcarrychk=1}
-poke stack(0),1,SZ(peek(calculated,0) & 0xff) | ((calculated >> 8) & 0x01) | ((peek(stack(0),addtostack) ^ calculated ^ peek(stack(0),addfromstack)) & 0x10) | (((peek(stack(0),addfromstack) ^ peek(stack(0),addtostack) ^ 0x80) & (peek(stack(0),addfromstack) ^ calculated) & 0x80) >> 5)
+poke stack(0),1,SZ(peek(calculated,0) & 0xff) | ((calculated >> 8) & 0x01) | ((peek(stack(0),addtostack) ^ calculated ^ peek(memory,wpeek(stack(0),6))) & 0x10) | (((peek(memory,wpeek(stack(0),6)) ^ peek(stack(0),addtostack) ^ 0x80) & (peek(memory,wpeek(stack(0),6)) ^ calculated) & 0x80) >> 5)
 poke stack(0),addtostack,calculated
 /*if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke stack(0),1,peek(stack(0),1) | (0x01)}
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
@@ -1435,7 +1435,7 @@ addfromstack=7
 addold=peek(stack(0),addtostack)
 calculated=peek(stack(0),addtostack)+peek(memory,wpeek(stack(0),6))+(peek(stack(0),1) & (0x01))
 //if peek(stack(0),addtostack) & 0b00001000{halfcarrychk=1}
-poke stack(0),1,SZ(peek(calculated,0) & 0xff) | ((calculated >> 8) & 0x01) | ((peek(stack(0),addtostack) ^ calculated ^ peek(stack(0),addfromstack)) & 0x10) | (((peek(stack(0),addfromstack) ^ peek(stack(0),addtostack) ^ 0x80) & (peek(stack(0),addfromstack) ^ calculated) & 0x80) >> 5)
+poke stack(0),1,SZ(peek(calculated,0) & 0xff) | ((calculated >> 8) & 0x01) | ((peek(stack(0),addtostack) ^ calculated ^ peek(memory,wpeek(stack(0),6))) & 0x10) | (((peek(memory,wpeek(stack(0),6)) ^ peek(stack(0),addtostack) ^ 0x80) & (peek(memory,wpeek(stack(0),6)) ^ calculated) & 0x80) >> 5)
 poke stack(0),addtostack,calculated
 /*if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke stack(0),1,peek(stack(0),1) | (0x01)}
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
@@ -5384,8 +5384,8 @@ swbreak
 
 case 0xE3
 SP_bak=0
-SP_bak=wpeek(stack(0),12)
-wpoke stack(0),12,wpeek(stack(1),10)
+SP_bak=wpeek(memory,wpeek(stack(0),12))
+wpoke memory,wpeek(stack(0),10),wpeek(stack(1),10)
 wpoke stack(1),10,SP_bak
 swbreak
 
@@ -5491,8 +5491,8 @@ wpoke stack(0),10,wpeek(memory,wpeek(stack(0),10))
 return
 *opcode_e3
 bak_sphl1=wpeek(stack(0),6)
-bak_sphl2=wpeek(stack(0),12)
-wpoke stack(0),12,bak_sphl1
+bak_sphl2=wpeek(memory,wpeek(stack(0),12))
+wpoke memory,wpeek(stack(0),12),bak_sphl1
 wpoke stack(0),6,bak_sphl2
 return
 *opcode_e4
@@ -8230,8 +8230,8 @@ swbreak
 
 case 0xE3
 SP_bak=0
-SP_bak=wpeek(stack(0),12)
-wpoke stack(0),12,wpeek(stack(1),12)
+SP_bak=wpeek(memory,wpeek(stack(0),12))
+wpoke memory,wpeek(stack(0),12),wpeek(stack(1),12)
 wpoke stack(1),12,SP_bak
 swbreak
 
