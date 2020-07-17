@@ -670,12 +670,20 @@ fcbfnamenameplsformatdirlistfname=fcbfnamenameplsformatdirlist2
 fcbfnamenameplsformatdirlistfname=strmid(fcbfnamenameplsformatdirlist2,0,fcbfnamenameplsformatdirlistdot)
 fcbfnamenameplsformatdirlistformat=strmid(fcbfnamenameplsformatdirlist2,fcbfnamenameplsformatdirlistdot+1,3)
 }
+fcbfnamenameplsformatdirlistformatlen=0:fcbfnamenameplsformatdirlistfnamelen=0
+fcbfnamenameplsformatdirlistfnamelen=strlen(fcbfnamenameplsformatdirlistfname)
+fcbfnamenameplsformatdirlistformatlen=strlen(fcbfnamenameplsformatdirlistformat)
+if fcbfnamenameplsformatdirlistfnamelen>=9{fcbfnamenameplsformatdirlistfnamelen=8}
+if fcbfnamenameplsformatdirlistformatlen>=4{fcbfnamenameplsformatdirlistformatlen=3}
+/*memset fcbfnamenameplsformatdirlistfname,32,8-fcbfnamenameplsformatdirlistfnamelen,8-fcbfnamenameplsformatdirlistfnamelen
+memset fcbfnamenameplsformatdirlistformat,32,3-fcbfnamenameplsformatdirlistformatlen,3-fcbfnamenameplsformatdirlistformatlen*/
 randomize:poke var_24,0,0
 repeat 32
 poke var_29,wpeek(var_29,0xF224)+cnt,0
 loop
-memcpy var_29,fcbfnamenameplsformatdirlistfname,0x08,wpeek(var_29,0xF224)+1,0
-memcpy var_29,fcbfnamenameplsformatdirlistformat,0x03,wpeek(var_29,0xF224)+1+8,0
+memset var_29,32,11,wpeek(var_29,0xF224)+1
+memcpy var_29,fcbfnamenameplsformatdirlistfname,fcbfnamenameplsformatdirlistfnamelen,wpeek(var_29,0xF224)+1,0
+memcpy var_29,fcbfnamenameplsformatdirlistformat,fcbfnamenameplsformatdirlistformatlen,wpeek(var_29,0xF224)+1+8,0
 exist fcbfnamenameplsformatdirlist2
 logmes fcbfnamenameplsformatdirlist2
 strsize2=strsize
@@ -734,6 +742,14 @@ fcbfnamenameplsformatdirlistfname=fcbfnamenameplsformatdirlist2
 fcbfnamenameplsformatdirlistfname=strmid(fcbfnamenameplsformatdirlist2,0,fcbfnamenameplsformatdirlistdot)
 fcbfnamenameplsformatdirlistformat=strmid(fcbfnamenameplsformatdirlist2,fcbfnamenameplsformatdirlistdot+1,3)
 }
+fcbfnamenameplsformatdirlistformatlen=0:fcbfnamenameplsformatdirlistfnamelen=0
+fcbfnamenameplsformatdirlistfnamelen=strlen(fcbfnamenameplsformatdirlistfname)
+fcbfnamenameplsformatdirlistformatlen=strlen(fcbfnamenameplsformatdirlistformat)
+if fcbfnamenameplsformatdirlistfnamelen>=9{fcbfnamenameplsformatdirlistfnamelen=8}
+if fcbfnamenameplsformatdirlistformatlen>=4{fcbfnamenameplsformatdirlistformatlen=3}
+/*memset fcbfnamenameplsformatdirlistfname,32,8-fcbfnamenameplsformatdirlistfnamelen,8-fcbfnamenameplsformatdirlistfnamelen
+memset fcbfnamenameplsformatdirlistformat,32,3-fcbfnamenameplsformatdirlistformatlen,3-fcbfnamenameplsformatdirlistformatlen
+*/
 if filestatforfsearchi>=filestatforfsearch{
 poke var_24,0,0xFF
 poke var_24,6,0
@@ -744,9 +760,10 @@ randomize:poke var_24,0,0
 repeat 32
 poke var_29,wpeek(var_29,0xF224)+cnt,0
 loop
-memset var_29,0,11,wpeek(var_29,0xF224)+1
-memcpy var_29,fcbfnamenameplsformatdirlistfname,0x08,wpeek(var_29,0xF224)+1,0
-memcpy var_29,fcbfnamenameplsformatdirlistformat,0x03,wpeek(var_29,0xF224)+1+8,0
+memset var_29,32,11,wpeek(var_29,0xF224)+1
+//memset var_29,0,11,wpeek(var_29,0xF224)+1
+memcpy var_29,fcbfnamenameplsformatdirlistfname,fcbfnamenameplsformatdirlistfnamelen,wpeek(var_29,0xF224)+1,0
+memcpy var_29,fcbfnamenameplsformatdirlistformat,fcbfnamenameplsformatdirlistformatlen,wpeek(var_29,0xF224)+1+8,0
 exist fcbfnamenameplsformatdirlist2
 strsize2=strsize
 ex = (peek(var_29,fcbaddr + 12) & 0x1f) | (peek(var_29,fcbaddr + 13) << 5)
