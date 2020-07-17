@@ -2660,6 +2660,7 @@ addfromstack=2
 addold=peek(stack(0),addtostack)
 calculated=peek(stack(0),addtostack)+peek(memory,wpeek(stack(0),10))
 if peek(stack(0),addtostack) & 0b00001000{halfcarrychk=1}
+poke stack(0),1,SZ(peek(calculated,0) & 0xff) | ((calculated >> 8) & 0x01) | ((peek(stack(0),addtostack) ^ calculated ^ peek(memory,wpeek(stack(0),10))) & 0x10) | (((peek(memory,wpeek(stack(0),10)) ^ peek(stack(0),addtostack) ^ 0x80) & (peek(memory,wpeek(stack(0),10)) ^ calculated) & 0x80) >> 5)
 poke stack(0),addtostack,calculated
 /*if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke stack(0),1,peek(stack(0),1) | (0x01)}
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
@@ -2667,9 +2668,9 @@ if peek(stack(0),addtostack)=0 and addold!0						 {poke stack(0),1,peek(stack(0)
 
 if peek(stack(0),addtostack) & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) | (0x10):halfcarrychk=0}
 if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}*/
-SZHVC_addvar_37id=0
+/*SZHVC_addvar_37id=0
 SZHVC_addvar_37id2=calculated
-gosub *SZHVC_addCall
+gosub *SZHVC_addCall*/
 wpoke stack(0),10,wpeek(stack(0),10)+1
 return
 *opcode_c7
