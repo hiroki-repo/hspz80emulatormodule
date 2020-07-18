@@ -2674,8 +2674,8 @@ gosub *SZHVC_addCall*/
 wpoke stack(0),10,wpeek(stack(0),10)+1
 return
 *opcode_c7
-poke memory,wpeek(stack(0),12)-2,peek(stack(0),10)
-poke memory,wpeek(stack(0),12)-1,peek(stack(0),11)
+addressforc7=wpeek(stack(0),12)-2:poke memory,wpeek(addressforc7,0),peek(stack(0),10)
+addressforc7=wpeek(stack(0),12)-1:poke memory,wpeek(addressforc7,0),peek(stack(0),11)
 wpoke stack(0),12,wpeek(stack(0),12)-2
 wpoke stack(0),10,0
 return
@@ -3561,8 +3561,8 @@ if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}*/
 wpoke stack(0),10,wpeek(stack(0),10)+1
 return
 *opcode_cf
-poke memory,wpeek(stack(0),12)-2,peek(stack(0),10)
-poke memory,wpeek(stack(0),12)-1,peek(stack(0),11)
+addressforc7=wpeek(stack(0),12)-2:poke memory,wpeek(addressforc7,0),peek(stack(0),10)
+addressforc7=wpeek(stack(0),12)-1:poke memory,wpeek(addressforc7,0),peek(stack(0),11)
 wpoke stack(0),12,wpeek(stack(0),12)-2
 wpoke stack(0),10,8
 return
@@ -3622,8 +3622,8 @@ if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}*/
 wpoke stack(0),10,wpeek(stack(0),10)+1
 return
 *opcode_d7
-poke memory,wpeek(stack(0),12)-2,peek(stack(0),10)
-poke memory,wpeek(stack(0),12)-1,peek(stack(0),11)
+addressforc7=wpeek(stack(0),12)-2:poke memory,wpeek(addressforc7,0),peek(stack(0),10)
+addressforc7=wpeek(stack(0),12)-1:poke memory,wpeek(addressforc7,0),peek(stack(0),11)
 wpoke stack(0),12,wpeek(stack(0),12)-2
 wpoke stack(0),10,0x10
 return
@@ -5470,8 +5470,8 @@ if peek(stack(0),addtostack) & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}*/
 wpoke stack(0),10,wpeek(stack(0),10)+1
 return
 *opcode_df
-poke memory,wpeek(stack(0),12)-2,peek(stack(0),10)
-poke memory,wpeek(stack(0),12)-1,peek(stack(0),11)
+addressforc7=wpeek(stack(0),12)-2:poke memory,wpeek(addressforc7,0),peek(stack(0),10)
+addressforc7=wpeek(stack(0),12)-1:poke memory,wpeek(addressforc7,0),peek(stack(0),11)
 wpoke stack(0),12,wpeek(stack(0),12)-2
 wpoke stack(0),10,0x18
 return
@@ -5535,8 +5535,8 @@ poke stack(0),1,peek(stack(0),1) & 254
 poke stack(0),1,peek(stack(0),1) | 16*/
 return
 *opcode_e7
-poke memory,wpeek(stack(0),12)-2,peek(stack(0),10)
-poke memory,wpeek(stack(0),12)-1,peek(stack(0),11)
+addressforc7=wpeek(stack(0),12)-2:poke memory,wpeek(addressforc7,0),peek(stack(0),10)
+addressforc7=wpeek(stack(0),12)-1:poke memory,wpeek(addressforc7,0),peek(stack(0),11)
 wpoke stack(0),12,wpeek(stack(0),12)-2
 wpoke stack(0),10,0x20
 return
@@ -6460,8 +6460,8 @@ poke stack(0),1,SZP(peek(stack(0),addtostack))
 wpoke stack(0),10,wpeek(stack(0),10)+1
 return
 *opcode_ef
-poke memory,wpeek(stack(0),12)-2,peek(stack(0),10)
-poke memory,wpeek(stack(0),12)-1,peek(stack(0),11)
+addressforc7=wpeek(stack(0),12)-2:poke memory,wpeek(addressforc7,0),peek(stack(0),10)
+addressforc7=wpeek(stack(0),12)-1:poke memory,wpeek(addressforc7,0),peek(stack(0),11)
 wpoke stack(0),12,wpeek(stack(0),12)-2
 wpoke stack(0),10,0x28
 return
@@ -6525,8 +6525,8 @@ poke stack(0),1,SZP(peek(stack(0),addtostack))
 wpoke stack(0),10,wpeek(stack(0),10)+1
 return
 *opcode_f7
-poke memory,wpeek(stack(0),12)-2,peek(stack(0),10)
-poke memory,wpeek(stack(0),12)-1,peek(stack(0),11)
+addressforc7=wpeek(stack(0),12)-2:poke memory,wpeek(addressforc7,0),peek(stack(0),10)
+addressforc7=wpeek(stack(0),12)-1:poke memory,wpeek(addressforc7,0),peek(stack(0),11)
 wpoke stack(0),12,wpeek(stack(0),12)-2
 wpoke stack(0),10,0x30
 return
@@ -8359,8 +8359,8 @@ poke stack(0),1,(SZ(peek(calculated,0) & 0xff) & (0x80 | 0x40)) | (peek(memory,w
 wpoke stack(0),10,wpeek(stack(0),10)+1
 return
 *opcode_ff
-poke memory,wpeek(stack(0),12)-2,peek(stack(0),10)
-poke memory,wpeek(stack(0),12)-1,peek(stack(0),11)
+addressforc7=wpeek(stack(0),12)-2:poke memory,wpeek(addressforc7,0),peek(stack(0),10)
+addressforc7=wpeek(stack(0),12)-1:poke memory,wpeek(addressforc7,0),peek(stack(0),11)
 wpoke stack(0),12,wpeek(stack(0),12)-2
 wpoke stack(0),10,0x38
 return
