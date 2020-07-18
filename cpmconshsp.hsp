@@ -7,8 +7,8 @@
 #packopt name "hspcpm"
 #pack "z80.as"
 //#pack "z80rscpm.hsp"
-#epack "CPM.SYS"
-#pack "HALT.COM"
+//#epack "CPM.SYS"
+//#pack "HALT.COM"
 sdim dcdcbiosdata,5632
 exist "CPM.SYS"
 if strsize=-1{}else{
@@ -81,7 +81,7 @@ dircmdlines=""
 dircmdlines=dir_cmdline
 repeat:if strmid(dircmdlines,0,1)=" "{dircmdlines=strmid(dircmdlines,1,strlen(dircmdlines))}else{break}:loop
 dircmdlineschkforoptsp=instr(dircmdlines,0," ")
-if dircmdlineschkforoptsp=-1{filename=dircmdlines}else{filename=strmid(dircmdlines,0,dircmdlineschkforoptsp):filenameinfoforcpmapp=strmid(dircmdlines,dircmdlineschkforoptsp+1,256)}
+if dircmdlineschkforoptsp=-1{filename=dircmdlines}else{filename=strmid(dircmdlines,0,dircmdlineschkforoptsp):filenameinfoforcpmapp=strmid(dircmdlines,dircmdlineschkforoptsp,256)}
 
 exist filename
 strsize2=strsize
@@ -391,6 +391,8 @@ onkey 0*/
 hlekeygetenabled=1
 //if peek(var_24,0)=0{}else{wparam2=0}
 //repeat
+wparam2=0
+wparam2=_getch()
 poke var_24,0,wparam2
 //if peek(var_24,0)=0{}else{break}
 //loop
@@ -673,6 +675,9 @@ fcbfnamenameplsformatdirlistformat=strmid(fcbfnamenameplsformatdirlist2,fcbfname
 fcbfnamenameplsformatdirlistformatlen=0:fcbfnamenameplsformatdirlistfnamelen=0
 fcbfnamenameplsformatdirlistfnamelen=strlen(fcbfnamenameplsformatdirlistfname)
 fcbfnamenameplsformatdirlistformatlen=strlen(fcbfnamenameplsformatdirlistformat)
+fcbfnamenameplsformatdirlistffnsliced=0
+repeat fcbfnamenameplsformatdirlistfnamelen:fcbfnamenameplsformatdirlistffnsliced=peek(fcbfnamenameplsformatdirlistfname,cnt):if fcbfnamenameplsformatdirlistffnsliced>=0x61 and fcbfnamenameplsformatdirlistffnsliced<=0x7a{fcbfnamenameplsformatdirlistffnsliced=fcbfnamenameplsformatdirlistffnsliced-0x20}:poke fcbfnamenameplsformatdirlistfname,cnt,fcbfnamenameplsformatdirlistffnsliced:loop
+repeat fcbfnamenameplsformatdirlistformatlen:fcbfnamenameplsformatdirlistffnsliced=peek(fcbfnamenameplsformatdirlistformat,cnt):if fcbfnamenameplsformatdirlistffnsliced>=0x61 and fcbfnamenameplsformatdirlistffnsliced<=0x7a{fcbfnamenameplsformatdirlistffnsliced=fcbfnamenameplsformatdirlistffnsliced-0x20}:poke fcbfnamenameplsformatdirlistformat,cnt,fcbfnamenameplsformatdirlistffnsliced:loop
 if fcbfnamenameplsformatdirlistfnamelen>=9{fcbfnamenameplsformatdirlistfnamelen=8}
 if fcbfnamenameplsformatdirlistformatlen>=4{fcbfnamenameplsformatdirlistformatlen=3}
 /*memset fcbfnamenameplsformatdirlistfname,32,8-fcbfnamenameplsformatdirlistfnamelen,8-fcbfnamenameplsformatdirlistfnamelen
@@ -745,6 +750,8 @@ fcbfnamenameplsformatdirlistformat=strmid(fcbfnamenameplsformatdirlist2,fcbfname
 fcbfnamenameplsformatdirlistformatlen=0:fcbfnamenameplsformatdirlistfnamelen=0
 fcbfnamenameplsformatdirlistfnamelen=strlen(fcbfnamenameplsformatdirlistfname)
 fcbfnamenameplsformatdirlistformatlen=strlen(fcbfnamenameplsformatdirlistformat)
+repeat fcbfnamenameplsformatdirlistfnamelen:fcbfnamenameplsformatdirlistffnsliced=peek(fcbfnamenameplsformatdirlistfname,cnt):if fcbfnamenameplsformatdirlistffnsliced>=0x61 and fcbfnamenameplsformatdirlistffnsliced<=0x7a{fcbfnamenameplsformatdirlistffnsliced=fcbfnamenameplsformatdirlistffnsliced-0x20}:poke fcbfnamenameplsformatdirlistfname,cnt,fcbfnamenameplsformatdirlistffnsliced:loop
+repeat fcbfnamenameplsformatdirlistformatlen:fcbfnamenameplsformatdirlistffnsliced=peek(fcbfnamenameplsformatdirlistformat,cnt):if fcbfnamenameplsformatdirlistffnsliced>=0x61 and fcbfnamenameplsformatdirlistffnsliced<=0x7a{fcbfnamenameplsformatdirlistffnsliced=fcbfnamenameplsformatdirlistffnsliced-0x20}:poke fcbfnamenameplsformatdirlistformat,cnt,fcbfnamenameplsformatdirlistffnsliced:loop
 if fcbfnamenameplsformatdirlistfnamelen>=9{fcbfnamenameplsformatdirlistfnamelen=8}
 if fcbfnamenameplsformatdirlistformatlen>=4{fcbfnamenameplsformatdirlistformatlen=3}
 /*memset fcbfnamenameplsformatdirlistfname,32,8-fcbfnamenameplsformatdirlistfnamelen,8-fcbfnamenameplsformatdirlistfnamelen
