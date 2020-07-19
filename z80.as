@@ -5409,9 +5409,9 @@ swbreak
 default
 opcodeidforddopcodeaddcall=((opcodeidforddopcode-0x40)/6)
 opcodeidforddopcodeaddcall2=((opcodeidforddopcode-0x40)-(opcodeidforddopcodeaddcall*6))-4
-opcode=peek(memory,wpeek(stack(0),10))
+opcode=peek(memory,wpeek(stack(0),10)-1)
 lpoke jumplabel,0,lpeek(opcodeaddr(opcode),0)
-wpoke stack(0),10,wpeek(stack(0),10)+1
+//wpoke stack(0),10,wpeek(stack(0),10)+1
 gosub jumplabel
 swbreak
 swend
@@ -8295,9 +8295,9 @@ swbreak
 default
 opcodeidforddopcodeaddcall=((opcodeidforddopcode-0x40)/6)
 opcodeidforddopcodeaddcall2=((opcodeidforddopcode-0x40)-(opcodeidforddopcodeaddcall*6))-4
-opcode=peek(memory,wpeek(stack(0),10))
+opcode=peek(memory,wpeek(stack(0),10)-1)
 lpoke jumplabel,0,lpeek(opcodeaddr(opcode),0)
-wpoke stack(0),10,wpeek(stack(0),10)+1
+//wpoke stack(0),10,wpeek(stack(0),10)+1
 gosub jumplabel
 swbreak
 swend
