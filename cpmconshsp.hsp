@@ -462,7 +462,7 @@ mes showstr,1
 wparam2=0
 }else{
 if peek(var_24,5)=0xFE{
-if _kbhit(){poke var_24,0,1}else{poke var_24,0,0}
+if _kbhit(){poke var_24,0,0xFF}else{poke var_24,0,0}
 }else{
 /*if peek(var_24,5)=0xC{nowgsel=ginfo(3):gsel 0:cls 4:gsel 2:sdim var17clr,varsize(var_17):memcpy var_17,var17clr,varsize(var_17),0,0:memcpy var_30,var17clr,varsize(var_17),48896,0:gsel nowgsel:poke var_30, 49440, 0:poke var_30, 49441, 0:if ( var_20 ){gosub *label_30}}else{
 poke var_30, 49446,7
@@ -585,7 +585,7 @@ logmes "inputdata:"+messagedatadump
 memset var_30,0,463,49456
 swbreak
 case 11
-if wparam2=0{poke var_24,0,0}else{poke var_24,0,1}
+if _kbhit(){poke var_24,0,0xFF}else{poke var_24,0,0}
 await 1
 swbreak
 case 12
