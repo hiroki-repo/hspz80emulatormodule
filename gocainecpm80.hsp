@@ -1,0 +1,1420 @@
+#include "./z80.as"
+fontsize=1
+#module
+#deffunc mesfromminifont str showmes2,int enteronof
+showmes=""
+showmes=showmes2
+sdim fontdata,40,256
+fontdata(0)="0000000000000000000000000000000000000000"
+fontdata(1)="0000000000000000000000000000000000000000"
+fontdata(2)="0000000000000000000000000000000000000000"
+fontdata(3)="0000000000000000000000000000000000000000"
+fontdata(4)="0000000000000000000000000000000000000000"
+fontdata(5)="0000000000000000000000000000000000000000"
+fontdata(6)="0000000000000000000000000000000000000000"
+fontdata(7)="0000000000000000000000000000000000000000"
+fontdata(8)="0000000000000000000000000000000000000000"
+fontdata(9)="0000000000000000000000000000000000000000"
+fontdata(10)="0000000000000000000000000000000000000000"
+fontdata(11)="0000000000000000000000000000000000000000"
+fontdata(12)="0000000000000000000000000000000000000000"
+fontdata(13)="0000000000000000000000000000000000000000"
+fontdata(14)="0000000000000000000000000000000000000000"
+fontdata(15)="0000000000000000000000000000000000000000"
+fontdata(16)="0000000000000000000000000000000000000000"
+fontdata(17)="0000000000000000000000000000000000000000"
+fontdata(18)="0000000000000000000000000000000000000000"
+fontdata(19)="0000000000000000000000000000000000000000"
+fontdata(20)="0000000000000000000000000000000000000000"
+fontdata(21)="0000000000000000000000000000000000000000"
+fontdata(22)="0000000000000000000000000000000000000000"
+fontdata(23)="0000000000000000000000000000000000000000"
+fontdata(24)="0000000000000000000000000000000000000000"
+fontdata(25)="0000000000000000000000000000000000000000"
+fontdata(26)="0000000000000000000000000000000000000000"
+fontdata(27)="0000000000000000000000000000000000000000"
+fontdata(28)="0000000000000000000000000000000000000000"
+fontdata(29)="0000000000000000000000000000000000000000"
+fontdata(30)="0000000000000000000000000000000000000000"
+fontdata(31)="0000000000000000000000000000000000000000"
+fontdata(32)="0000000000000000000000000000000000000000"
+fontdata(33)="0010001110011100010000100000000010000000"
+fontdata(34)="0100101001100100000000000000000000000000"
+fontdata(35)="0101001010111110101011111010100101000000"
+fontdata(36)="0010001111101000111000101111100010000000"
+fontdata(37)="1100111010000100010001000010111001100000"
+fontdata(38)="0011001001010100010001010100010110100000"
+fontdata(39)="0010000100010000000000000000000000000000"
+fontdata(40)="0001000100010000100001000001000001000000"
+fontdata(41)="0100000100000100001000010001000100000000"
+fontdata(42)="0010010101011100010001110101010010000000"
+fontdata(43)="0010000100001001111100100001000010000000"
+fontdata(44)="0000000000000000000000000001000010001000"
+fontdata(45)="0000000000000001111100000000000000000000"
+fontdata(46)="0000000000000000000000000001000010000000"
+fontdata(47)="0000100010000100010001000010001000000000"
+fontdata(48)="0111010001100111010111001100010111000000"
+fontdata(49)="0010001100001000010000100001000111000000"
+fontdata(50)="0111010001000010001000100010001111100000"
+fontdata(51)="0111010001000010111000001100010111000000"
+fontdata(52)="0001000110010101001011111000100001000000"
+fontdata(53)="1111110000100001111000001100010111000000"
+fontdata(54)="0011001000100001111010001100010111000000"
+fontdata(55)="1111110001100010001000010001000010000000"
+fontdata(56)="0111010001100010111010001100010111000000"
+fontdata(57)="0111010001100010111100001100010111000000"
+fontdata(58)="0000000100001000000000000001000010000000"
+fontdata(59)="0000000100001000000000000001000010001000"
+fontdata(60)="0000100010001000100000100000100000100000"
+fontdata(61)="0000000000111110000011111000000000000000"
+fontdata(62)="1000001000001000001000100010001000000000"
+fontdata(63)="0111010001000010001000100000000010000000"
+fontdata(64)="0111010001101111010110101101111000001110"
+fontdata(65)="0010001010010101000111111100011000100000"
+fontdata(66)="1111010001100011111010001100011111000000"
+fontdata(67)="0111010001100001000010000100010111000000"
+fontdata(68)="1110010010100011000110001100101110000000"
+fontdata(69)="1111110000100001111110000100001111100000"
+fontdata(70)="1111110000100001111110000100001000000000"
+fontdata(71)="0111010001100001011110001100010111000000"
+fontdata(72)="1000110001100011111110001100011000100000"
+fontdata(73)="0111000100001000010000100001000111000000"
+fontdata(74)="0011100010000100001010010100100110000000"
+fontdata(75)="1000110010101001100010100100101000100000"
+fontdata(76)="1000010000100001000010000100001111100000"
+fontdata(77)="1000111011101011010110001100011000100000"
+fontdata(78)="1000110001110011010110011100011000100000"
+fontdata(79)="0111010001100011000110001100010111000000"
+fontdata(80)="1111010001100011111010000100001000000000"
+fontdata(81)="0111010001100011000110101100110111000001"
+fontdata(82)="1111010001100011111010100100101000100000"
+fontdata(83)="0111010001100000111000001100010111000000"
+fontdata(84)="1111100100001000010000100001000010000000"
+fontdata(85)="1000110001100011000110001100010111000000"
+fontdata(86)="1000110001100010101001010010100010000000"
+fontdata(87)="1000110001101011010110101010100101000000"
+fontdata(88)="1000110001010100010001010100011000100000"
+fontdata(89)="1000110001010100101000100001000010000000"
+fontdata(90)="1111100001000100010001000100001111100000"
+fontdata(91)="0111001000010000100001000010000111000000"
+fontdata(92)="1000001000010000010000010000100000100000"
+fontdata(93)="0111000010000100001000010000100111000000"
+fontdata(94)="0010001010100010000000000000000000000000"
+fontdata(95)="0000000000000000000000000000001111100000"
+fontdata(96)="0100000100000100000000000000000000000000"
+fontdata(97)="0000000000011100000101111100010111100000"
+fontdata(98)="1000010000101101100110001110011011000000"
+fontdata(99)="0000000000011101000110000100010111000000"
+fontdata(100)="0001100001011011001110001100110110100000"
+fontdata(101)="0000000000011101000111111100000111000000"
+fontdata(102)="0011001001010001111001000010000100000000"
+fontdata(103)="0000000000011111000101111000011000101110"
+fontdata(104)="1000010000101101100110001100011000100000"
+fontdata(105)="0010000000011000010000100001000111000000"
+fontdata(106)="0001000000001100001000010000101001001100"
+fontdata(107)="1000010000100101010011000101001001100000"
+fontdata(108)="0010000100001000010000100001000001000000"
+fontdata(109)="0000000000110101010110101101011010100000"
+fontdata(110)="0000000000101101100110001100011000100000"
+fontdata(111)="0000000000011101000110001100010111000000"
+fontdata(112)="0000000000111101000110001111101000010000"
+fontdata(113)="0000000000011111000110001011110000100001"
+fontdata(114)="0000000000101101100110000100001000000000"
+fontdata(115)="0000000000011101000001110000011111000000"
+fontdata(116)="0100001000111100100001000010010011000000"
+fontdata(117)="0000000000100011000110001100110110100000"
+fontdata(118)="0000000000100011000101010010100010000000"
+fontdata(119)="0000000000101011010110101101010101100000"
+fontdata(120)="0000000000100010101000100010101000100000"
+fontdata(121)="0000000000100011000101111000011000101110"
+fontdata(122)="0000000000111110001000100010001111100000"
+fontdata(123)="0001100100001001100000100001000001100000"
+fontdata(124)="0010000100001000010000100001000010000000"
+fontdata(125)="1100000100001000001100100001001100000000"
+fontdata(126)="0100110101100100000000000000000000000000"
+fontdata(127)="0000000000000000000000000000000000000000"
+fontdata(128)="0000000000000000000000000000000000000000"
+fontdata(129)="0000000000000000000000000000000000000000"
+fontdata(130)="0000000000000000000000000000000000000000"
+fontdata(131)="0000000000000000000000000000000000000000"
+fontdata(132)="0000000000000000000000000000000000000000"
+fontdata(133)="0000000000000000000000000000000000000000"
+fontdata(134)="0000000000000000000000000000000000000000"
+fontdata(135)="0000000000000000000000000000000000000000"
+fontdata(136)="0000000000000000000000000000000000000000"
+fontdata(137)="0000000000000000000000000000000000000000"
+fontdata(138)="0000000000000000000000000000000000000000"
+fontdata(139)="0000000000000000000000000000000000000000"
+fontdata(140)="0000000000000000000000000000000000000000"
+fontdata(141)="0000000000000000000000000000000000000000"
+fontdata(142)="0000000000000000000000000000000000000000"
+fontdata(143)="0000000000000000000000000000000000000000"
+fontdata(144)="0000000000000000000000000000000000000000"
+fontdata(145)="0000000000000000000000000000000000000000"
+fontdata(146)="0000000000000000000000000000000000000000"
+fontdata(147)="0000000000000000000000000000000000000000"
+fontdata(148)="0000000000000000000000000000000000000000"
+fontdata(149)="0000000000000000000000000000000000000000"
+fontdata(150)="0000000000000000000000000000000000000000"
+fontdata(151)="0000000000000000000000000000000000000000"
+fontdata(152)="0000000000000000000000000000000000000000"
+fontdata(153)="0000000000000000000000000000000000000000"
+fontdata(154)="0000000000000000000000000000000000000000"
+fontdata(155)="0000000000000000000000000000000000000000"
+fontdata(156)="0000000000000000000000000000000000000000"
+fontdata(157)="0000000000000000000000000000000000000000"
+fontdata(158)="0000000000000000000000000000000000000000"
+fontdata(159)="0000000000000000000000000000000000000000"
+fontdata(160)="0000000000000000000000000000000000000000"
+fontdata(161)="0000000000000000000000000000000000000000"
+fontdata(162)="0000000000000000000000000000000000000000"
+fontdata(163)="0000000000000000000000000000000000000000"
+fontdata(164)="0000000000000000000000000000000000000000"
+fontdata(165)="0000000000000000000000000000000000000000"
+fontdata(166)="0000000000000000000000000000000000000000"
+fontdata(167)="0000000000000000000000000000000000000000"
+fontdata(168)="0000000000000000000000000000000000000000"
+fontdata(169)="0000000000000000000000000000000000000000"
+fontdata(170)="0000000000000000000000000000000000000000"
+fontdata(171)="0000000000000000000000000000000000000000"
+fontdata(172)="0000000000000000000000000000000000000000"
+fontdata(173)="0000000000000000000000000000000000000000"
+fontdata(174)="0000000000000000000000000000000000000000"
+fontdata(175)="0000000000000000000000000000000000000000"
+fontdata(176)="0000000000000000000000000000000000000000"
+fontdata(177)="0000000000000000000000000000000000000000"
+fontdata(178)="0000000000000000000000000000000000000000"
+fontdata(179)="0000000000000000000000000000000000000000"
+fontdata(180)="0000000000000000000000000000000000000000"
+fontdata(181)="0000000000000000000000000000000000000000"
+fontdata(182)="0000000000000000000000000000000000000000"
+fontdata(183)="0000000000000000000000000000000000000000"
+fontdata(184)="0000000000000000000000000000000000000000"
+fontdata(185)="0000000000000000000000000000000000000000"
+fontdata(186)="0000000000000000000000000000000000000000"
+fontdata(187)="0000000000000000000000000000000000000000"
+fontdata(188)="0000000000000000000000000000000000000000"
+fontdata(189)="0000000000000000000000000000000000000000"
+fontdata(190)="0000000000000000000000000000000000000000"
+fontdata(191)="0000000000000000000000000000000000000000"
+fontdata(192)="0000000000000000000000000000000000000000"
+fontdata(193)="0000000000000000000000000000000000000000"
+fontdata(194)="0000000000000000000000000000000000000000"
+fontdata(195)="0000000000000000000000000000000000000000"
+fontdata(196)="0000000000000000000000000000000000000000"
+fontdata(197)="0000000000000000000000000000000000000000"
+fontdata(198)="0000000000000000000000000000000000000000"
+fontdata(199)="0000000000000000000000000000000000000000"
+fontdata(200)="0000000000000000000000000000000000000000"
+fontdata(201)="0000000000000000000000000000000000000000"
+fontdata(202)="0000000000000000000000000000000000000000"
+fontdata(203)="0000000000000000000000000000000000000000"
+fontdata(204)="0000000000000000000000000000000000000000"
+fontdata(205)="0000000000000000000000000000000000000000"
+fontdata(206)="0000000000000000000000000000000000000000"
+fontdata(207)="0000000000000000000000000000000000000000"
+fontdata(208)="0000000000000000000000000000000000000000"
+fontdata(209)="0000000000000000000000000000000000000000"
+fontdata(210)="0000000000000000000000000000000000000000"
+fontdata(211)="0000000000000000000000000000000000000000"
+fontdata(212)="0000000000000000000000000000000000000000"
+fontdata(213)="0000000000000000000000000000000000000000"
+fontdata(214)="0000000000000000000000000000000000000000"
+fontdata(215)="0000000000000000000000000000000000000000"
+fontdata(216)="0000000000000000000000000000000000000000"
+fontdata(217)="0000000000000000000000000000000000000000"
+fontdata(218)="0000000000000000000000000000000000000000"
+fontdata(219)="0000000000000000000000000000000000000000"
+fontdata(220)="0000000000000000000000000000000000000000"
+fontdata(221)="0000000000000000000000000000000000000000"
+fontdata(222)="0000000000000000000000000000000000000000"
+fontdata(223)="0000000000000000000000000000000000000000"
+fontdata(224)="0000000000000000000000000000000000000000"
+fontdata(225)="0000000000000000000000000000000000000000"
+fontdata(226)="0000000000000000000000000000000000000000"
+fontdata(227)="0000000000000000000000000000000000000000"
+fontdata(228)="0000000000000000000000000000000000000000"
+fontdata(229)="0000000000000000000000000000000000000000"
+fontdata(230)="0000000000000000000000000000000000000000"
+fontdata(231)="0000000000000000000000000000000000000000"
+fontdata(232)="0000000000000000000000000000000000000000"
+fontdata(233)="0000000000000000000000000000000000000000"
+fontdata(234)="0000000000000000000000000000000000000000"
+fontdata(235)="0000000000000000000000000000000000000000"
+fontdata(236)="0000000000000000000000000000000000000000"
+fontdata(237)="0000000000000000000000000000000000000000"
+fontdata(238)="0000000000000000000000000000000000000000"
+fontdata(239)="0000000000000000000000000000000000000000"
+fontdata(240)="0000000000000000000000000000000000000000"
+fontdata(241)="0000000000000000000000000000000000000000"
+fontdata(242)="0000000000000000000000000000000000000000"
+fontdata(243)="0000000000000000000000000000000000000000"
+fontdata(244)="0000000000000000000000000000000000000000"
+fontdata(245)="0000000000000000000000000000000000000000"
+fontdata(246)="0000000000000000000000000000000000000000"
+fontdata(247)="0000000000000000000000000000000000000000"
+fontdata(248)="0000000000000000000000000000000000000000"
+fontdata(249)="0000000000000000000000000000000000000000"
+fontdata(250)="0000000000000000000000000000000000000000"
+fontdata(251)="0000000000000000000000000000000000000000"
+fontdata(252)="0000000000000000000000000000000000000000"
+fontdata(253)="0000000000000000000000000000000000000000"
+fontdata(254)="0000000000000000000000000000000000000000"
+fontdata(255)="0000000000000000000000000000000000000000"
+repeat strlen(showmes)
+asccode=peek(showmes,cnt)
+repeat 8
+fonty=cnt
+repeat 5
+fontx=cnt
+if strmid(fontdata(asccode),(fonty*5+fontx),1)="1"{
+	logmes asccode
+pset ginfo(22)+fontx,ginfo(23)+fonty
+}
+loop
+loop
+pos ginfo(22)+6,ginfo(23)
+if asccode=0x0a{pos 0,ginfo(23)+8}
+loop
+if enteronof=1{pos 0,ginfo(23)+8}
+return
+#global
+#packopt name "picoz80pcemu_cpm"
+#pack "z80.as"
+#pack "gocainecpm80.hsp"
+//#epack "CPM.SYS"
+//#pack "HALT.COM"
+dirlist x,".\\A",5
+if stat=0{mkdir ".\\A"}
+chdir ".\\A"
+sdim dcdcbiosdata,5632
+exist "CPM.SYS"
+if strsize=-1{}else{
+bload "CPM.SYS",dcdcbiosdata
+cpmwasloaded=1
+}
+var_28=0
+var_27=0
+	sdim var_24, 12
+	sdim var_25, 12
+bgscr 0,ginfo(20),ginfo(21),0,0,0
+oncmd gosub *onkeyforz80pcdown,0x100
+oncmd gosub *onkeyforz80pcup,0x101
+oncmd gosub *onclkforz80pc,0x201
+oncmd gosub *onclkforz80pc,0x202
+	buffer 2, 256, 192, 1, , , 256, 192
+	gsel 2,0
+	mref var_17,66
+	palette 0, 0, 0, 0
+	palette 1, 255, 0, 0
+	palette 2, 0, 255, 0
+	palette 3, 0, 0, 255
+	palette 4, 255, 255, 0
+	palette 5, 0, 255, 255
+	palette 6, 255, 0, 255
+	palette 7, 255, 255, 255, 1
+	
+	repeat 4
+	cnt2=cnt
+	if cnt2=3{
+	palette 0+cnt2+16,255,255,0,1
+	}else{
+	palette 0+cnt2+16,255,(cnt2*64),0,1
+	}
+	loop
+	repeat 4
+	cnt2=cnt
+	if cnt2=3{
+	palette 4+cnt2+16,0,255,255,1
+	}else{
+	palette 4+cnt2+16,0,255,(cnt2*64),1
+	}
+	loop
+	repeat 4
+	cnt2=cnt
+	if cnt2=3{
+	palette 8+cnt2+16,255,0,255,1
+	}else{
+	palette 8+cnt2+16,(cnt2*64),0,255,1
+	}
+	loop
+	repeat 4
+	cnt2=cnt
+	if cnt2=3{
+	palette 12+cnt2+16,255,255,255,1
+	}else{
+	palette 12+cnt2+16,(cnt2*64),(cnt2*64),(cnt2*64),1
+	}
+	loop
+	
+gsel 0,0
+sdim var_29,65540
+poke var_29,0x03,255
+filenameinfoforcpmapp=""
+filename=""
+dircmdlines=""
+dircmdlines=dir_cmdline
+repeat:if strmid(dircmdlines,0,1)=" "{dircmdlines=strmid(dircmdlines,1,strlen(dircmdlines))}else{break}:loop
+dircmdlineschkforoptsp=instr(dircmdlines,0," ")
+if dircmdlineschkforoptsp=-1{filename=dircmdlines}else{filename=strmid(dircmdlines,0,dircmdlineschkforoptsp):filenameinfoforcpmapp=strmid(dircmdlines,dircmdlineschkforoptsp+1,256)}
+
+exist filename
+strsize2=strsize
+if strsize2=-1{filename="rom.bin":exist filename:strsize2=strsize}
+if strsize2=-1{}else{
+sdim rom,strsize2
+bload filename,rom
+}
+memcpy var_29,rom,strsize2,256,0
+filenameinfoforcpmappdot=0
+filenameinfoforcpmappdot=instr(filenameinfoforcpmapp,0,".")
+memset var_29,32,11,0x5C+1
+memcpy var_29,filenameinfoforcpmapp,8,0x5C+1,0
+if filenameinfoforcpmappdot=-1{}else{
+memcpy var_29,filenameinfoforcpmapp,3,0x5C+1+8,filenameinfoforcpmappdot+1
+}
+poke var_29,0x80,strlen(filenameinfoforcpmapp)
+if strlen(filenameinfoforcpmapp)<=0{}else{memcpy var_29,filenameinfoforcpmapp,strlen(filenameinfoforcpmapp),0x81,0}
+	if cpmwasloaded=1{
+	memcpy var_29,dcdcbiosdata,5632,0xDC00,0
+	poke var_29,0,0xC3
+	wpoke var_29,1,0xDC00
+	poke var_29,5,0xC3
+	wpoke var_29,6,0xE400
+	}
+wpoke var_29,0xF224,0x80
+var_27=256
+var_20=1
+sdim var_30,65536
+z80hltendset 0,1
+repeat
+			poke stackformt@m0(0),0,peek(var_24,0)
+			poke stackformt@m0(0),1,peek(var_24,1)
+			poke stackformt@m0(0),2,peek(var_24,3)
+			poke stackformt@m0(0),3,peek(var_24,2)
+			poke stackformt@m0(0),4,peek(var_24,5)
+			poke stackformt@m0(0),5,peek(var_24,4)
+			poke stackformt@m0(0),6,peek(var_24,7)
+			poke stackformt@m0(0),7,peek(var_24,6)
+			poke stackformt@m0(1),10,peek(var_24,8)
+			poke stackformt@m0(1),12,peek(var_24,10)
+			wpoke stackformt@m0(0),12,var_28
+			wpoke stackformt@m0(0),10,var_27
+ioaddr16=getioportread16bitaddr(var_27,var_29):if ioaddr16=-1{}else{if (var_20){ioportpoke peek(ioaddr16,1),peek(var_30,ioaddr16)}else{ioportpoke peek(ioaddr16,1),peek(var_29,peek(ioaddr16,1))}/*:memcpy iomemory@m0(0),var_30,256,0,256*peek(ioaddr16,1)*/}
+if peek(var_29,var_27)=0x76{z80run var_27,var_29,0:break}else{z80run var_27,var_29,0}
+ioaddr16=getioportread16bitaddr(var_27,var_29):if ioaddr16=-1{ioaddr16=isioportcalled16():if ioaddr16=-1{}else{if (var_20){poke var_30,ioaddr16,ioportpeek(peek(ioaddr16,0))}else{poke var_30,peek(ioaddr16,1),ioportpeek(peek(ioaddr16,1))}/*:memcpy var_30,iomemory@m0(0),256,256*peek(ioaddr16,1),0*/}}
+			poke var_24,0,peek(stack@m0(0),0)
+			poke var_24,1,peek(stack@m0(0),1)
+			poke var_24,2,peek(stack@m0(0),3)
+			poke var_24,3,peek(stack@m0(0),2)
+			poke var_24,4,peek(stack@m0(0),5)
+			poke var_24,5,peek(stack@m0(0),4)
+			poke var_24,6,peek(stack@m0(0),7)
+			poke var_24,7,peek(stack@m0(0),6)
+			wpoke var_24,8,wpeek(stack@m0(1),10)
+			wpoke var_24,10,wpeek(stack@m0(1),12)
+			var_28=wpeek(stack@m0(0),12)
+			var_27=wpeek(stack@m0(0),10)
+gosub *label_30
+var_22=var_22+1:if var_22=4800{var_22=0:await 1}
+if var_27=0x100 {var_27d=0:var_27d=var_27:logmes "TPA Called!"}
+	gosub *hle:loop
+end
+*label_30
+	if ( var_22 == 0 ) {
+		if ( peek(var_30, 49408) == 0 ) {
+			repeat 192
+				var_35 = cnt * 256
+				memcpy var_17, var_30, 256, 48896 - var_35, var_35
+			loop
+				//gsel 1
+				gsel 0
+				pos 0, 0
+				//gzoom 512, 384, 2, 0, 0, 256, 192
+				gxc=ginfo(12)
+				gyc=ginfo(13)
+				if gxc=0{}else{gx=gxc}
+				if gxc=0{}else{gy=gyc}
+				gzoom gx, gy, 2, 0, 0, 256, 192
+				gsel
+		}
+		/*repeat 255
+			getkey var_36, cnt
+			poke var_30, 49152 + cnt, var_36
+		loop*/
+	}
+	if ( wpeek(var_30, 49424) ) {
+		var_37 = wpeek(var_30, 49424) * wpeek(var_30, 49426)
+		wpoke var_30, 49428, var_37 & 65535
+		wpoke var_30, 49430, var_37 >> 16
+	}
+	if ( wpeek(var_30, 49432) ) {
+		wpoke var_30, 49436, int(wpeek(var_30, 49432) / wpeek(var_30, 49434))
+		wpoke var_30, 49438, wpeek(var_30, 49432) \ wpeek(var_30, 49434)
+	}
+	if ( peek(var_30, 49447) ) {
+		repeat 192
+			var_35 = cnt * 256
+			memcpy var_17, var_30, 256, 48896 - var_35, var_35
+		loop
+		var_33 = peek(var_30, 49447)
+		poke var_30, 49447, 0
+		dim var_38, 6
+		var_38 = peek(var_30, 49440), peek(var_30, 49441), peek(var_30, 49442), peek(var_30, 49443), peek(var_30, 49444), peek(var_30, 49445)
+		gsel 2
+		palcolor peek(var_30, 49446)
+		var_39 = var_33
+		if ( 0 ) {
+			var_40++
+		}
+		if ( var_39 == 1 | var_40 ) {
+			var_40 = 0
+			line var_38(0), var_38(1), var_38(2), var_38(3)
+			goto *label_31
+			var_40++
+		}
+		if ( var_39 == 2 | var_40 ) {
+			var_40 = 0
+			boxf var_38(0), var_38(1), var_38(2), var_38(3)
+			goto *label_31
+			var_40++
+		}
+		if ( var_39 == 3 | var_40 ) {
+			var_40 = 0
+			circle var_38(0), var_38(1), var_38(2), var_38(3)
+			goto *label_31
+			var_40++
+		}
+		if ( var_39 == 4 | var_40 ) {
+			var_40 = 0
+			gosub *label_32
+			goto *label_31
+			var_40++
+		}
+		if ( var_39 == 5 | var_40 ) {
+			var_40 = 0
+			pos var_38(0), var_38(1)
+			line var_38(2), var_38(1)
+			line var_38(2), var_38(3)
+			line var_38(1), var_38(3)
+			line var_38(0), var_38(1)
+			goto *label_31
+			var_40++
+		}
+		if ( var_39 == 6 | var_40 ) {
+			var_40 = 0
+			circle var_38(0), var_38(1), var_38(2), var_38(3), 0
+			goto *label_31
+			var_40++
+		}
+		if ( var_39 == 7 | var_40 ) {
+			var_40 = 0
+			pos var_38(0), var_38(1)
+			line var_38(2), var_38(3)
+			line var_38(4), var_38(5)
+			line var_38(0), var_38(1)
+			goto *label_31
+			var_40++
+		}
+		if ( var_39 == 8 | var_40 ) {
+			var_40 = 0
+			pos var_38(2), var_38(3)
+			gcopy 2, var_38(0), var_38(1), var_38(4), var_38(5)
+			goto *label_31
+			var_40++
+		}
+		if ( var_39 == 9 | var_40 ) {
+			var_40 = 0
+			sdim var_41, 1024
+			memcpy var_41, var_30, 463, , 49456
+			pos var_38(0), var_38(1)
+			//mes var_41
+			if fontsize=1{mesfromminifont var_41,1}else{
+			mes var_41
+			}
+			goto *label_31
+		}
+*label_31
+		gsel
+		repeat 192
+			var_35 = cnt * 256
+			memcpy var_30, var_17, 256, 48896 - var_35, var_35
+		loop
+	}
+	return
+*label_32
+	dim var_42, 3
+	dim var_43, 3
+	var_42(0) = var_38(0)
+	var_43(0) = var_38(1)
+	var_42(1) = var_38(2)
+	var_43(1) = var_38(3)
+	var_42(2) = var_38(4)
+	var_43(2) = var_38(5)
+	repeat 3
+		var_35 = cnt
+		repeat 3 - var_35, var_35
+			if ( var_43(var_35) > var_43(cnt) ) {
+				var_42(var_35) ^= var_42(cnt)
+				var_42(cnt) ^= var_42(var_35)
+				var_42(var_35) ^= var_42(cnt)
+				var_43(var_35) ^= var_43(cnt)
+				var_43(cnt) ^= var_43(var_35)
+				var_43(var_35) ^= var_43(cnt)
+			}
+		loop
+	loop
+	dim var_44, 3
+	if ( var_43(1) - var_43(0) != 0 ) {
+		var_44(0) = (var_42(1) - var_42(0) << 8) / (var_43(1) - var_43(0))
+	}
+	else {
+		var_44(0) = 0
+	}
+	if ( var_43(2) - var_43(0) != 0 ) {
+		var_44(1) = (var_42(2) - var_42(0) << 8) / (var_43(2) - var_43(0))
+	}
+	else {
+		var_44(1) = 0
+	}
+	if ( var_43(2) - var_43(1) != 0 ) {
+		var_44(2) = (var_42(2) - var_42(1) << 8) / (var_43(2) - var_43(1))
+	}
+	else {
+		var_44(2) = 0
+	}
+	dim var_45, 2
+	var_45(0) = var_42(0) << 8
+	var_45(1) = var_42(0) << 8
+	var_46 = var_43(0)
+	if ( var_43(1) < var_43(2) ) {
+		var_47 = var_43(2)
+	}
+	else {
+		var_47 = var_43(1)
+	}
+	repeat 192
+		if ( var_46 >= var_47 ) {
+			break
+		}
+		if ( var_46 < var_43(1) ) {
+			var_45(0) += var_44(0)
+		}
+		else {
+			var_45(0) += var_44(2)
+		}
+		if ( var_46 < var_43(2) ) {
+			var_45(1) += var_44(1)
+		}
+		else {
+			var_45(1) += var_44(2)
+		}
+		if ( var_45(1) > var_45(0) ) {
+			var_48 = var_45(0)
+			var_49 = var_45(1)
+		}
+		else {
+			var_48 = var_45(1)
+			var_49 = var_45(0)
+		}
+		var_48 >>= 8
+		var_49 >>= 8
+		if ( var_46 > (-1) ) {
+			line var_48, var_46, var_49, var_46
+		}
+		var_46++
+	loop
+	return
+*onkeyforz80pcup
+poke var_30, 49152 + wparam, 0
+return
+*onkeyforz80pcdown
+poke var_30, 49152 + wparam, 1
+wparam2=wparam
+if wparam2=190{wparam2=0x2E}
+if wparam2=186{wparam2=0x3A}
+return
+*onclkforz80pc
+poke var_30, 49152 + 1, wparam
+return
+
+*hle
+if fontsize=0{
+hleplusxsize=8
+hleplusysize=16
+}else{
+hleplusxsize=6
+hleplusysize=8
+}
+//return
+/*	pcaddressstack(cnt)=var_27
+	spaddressstack(cnt)=var_28
+	registerstack(cnt)=var_24*/
+switch var_27
+case 0x0005
+logmes "cpmsyscalled:"+peek(var_24,3)
+
+poke var_24,0,0
+switch peek(var_24,3)
+case 0
+var_27=0
+swbreak
+case 1
+istyped=0
+/*onkey gosub *hlekeyget
+repeat
+if peek(var_24,0)=0{}else{break}
+await:loop
+onkey 0*/
+hlekeygetenabled=1
+//if peek(var_24,0)=0{}else{wparam2=0}
+//repeat
+poke var_24,0,wparam2
+//if peek(var_24,0)=0{}else{break}
+//loop
+wparam2=0
+if peek(var_24,0)=0{hlekeygetenabled=0}else{istyped=1}
+hlekeygetenabled=0
+swbreak
+case 2
+//hleplusysize=0
+if peek(var_24,4)=0xC{nowgsel=ginfo(3):gsel 0:cls 4:gsel 2:sdim var17clr,varsize(var_17)+1:memcpy var_17,var17clr,varsize(var_17),0,0:memcpy var_30,var17clr,varsize(var_17),48896-varsize(var_17)+256,0:gsel nowgsel:poke var_30, 49440, 0:poke var_30, 49441, 0:if ( var_20 ){gosub *label_30}}else{
+poke var_30, 49446,7
+		poke var_30, 49447, 9
+showstr=""
+if peek(var_24,5)=0xA{}else{
+if peek(var_24,5)=0xD{poke var_30, 49441, peek(var_30, 49441)+hleplusysize:poke var_30, 49440, 0:if peek(var_30, 49441)>=191{poke var_30, 49441, peek(var_30, 49441)-hleplusysize:nowgsel=ginfo(3):gsel 2:pos 0,0:gcopy 2,0,hleplusysize,256,192-hleplusysize:palcolor 0:boxf 0,192-hleplusysize,256,192:/*sdim var17clr,varsize(var_17)-(256*hleplusysize):memcpy var_17,var17clr,varsize(var_17)-(256*hleplusysize),0,0:memcpy var_30,var17clr,varsize(var_17)-(256*hleplusysize),48896,0*/:/*poke var_30, 49441, peek(var_30, 49441)-hleplusysize*/:gsel nowgsel:gosub *label_31}:if ( var_20 ){gosub *label_30}}else{
+poke var_30,49456,peek(var_24,5)
+if ( var_20 ){gosub *label_30}
+if ( var_20 ){poke var_30, 49440, peek(var_30, 49440)+hleplusxsize}
+memset var_30,0,463,49456
+}
+}
+}
+//mes showstr,1
+
+swbreak
+case 3//reader input
+poke var_24,0,0x1A
+swbreak
+case 4
+swbreak
+case 5
+stringforvar24=""
+lpoke stringforvar24,0,peek(var_24,5)
+logmes "printer output:"+stringforvar24
+swbreak
+case 6
+//logmes "list output:"+peek(var_24,5)
+if peek(var_24,4)=0xFF{
+istyped=0
+hlekeygetenabled=1
+//repeat
+poke var_24,0,wparam2
+//if peek(var_24,0)=0{}else{break}
+//loop
+wparam2=0
+if peek(var_24,0)=0{hlekeygetenabled=0}else{istyped=1}
+hlekeygetenabled=0
+}else{
+if peek(var_24,4)=0xFD{
+istyped=0
+hlekeygetenabled=1
+repeat
+poke var_24,0,wparam2
+poke var_30,49456,peek(var_24,0)
+if ( var_20 ){gosub *label_30}
+if peek(var_24,0)=0{}else{break}
+loop
+wparam2=0
+}else{
+if peek(var_24,5)=0xFE{
+if wparam2=0xFF{poke var_24,0,0}else{poke var_24,0,1}
+}else{
+if peek(var_24,5)=0xC{nowgsel=ginfo(3):gsel 0:cls 4:gsel 2:sdim var17clr,varsize(var_17):memcpy var_17,var17clr,varsize(var_17),0,0:memcpy var_30,var17clr,varsize(var_17),48896,0:gsel nowgsel:poke var_30, 49440, 0:poke var_30, 49441, 0:if ( var_20 ){gosub *label_30}}else{
+poke var_30, 49446,7
+		poke var_30, 49447, 9
+showstr=""
+if peek(var_24,5)=0xA{}else{
+if peek(var_24,5)=0xD{poke var_30, 49441, peek(var_30, 49441)+hleplusysize:poke var_30, 49440, 0:if peek(var_30, 49441)>=191{poke var_30, 49441, peek(var_30, 49441)-hleplusysize:nowgsel=ginfo(3):gsel 2:pos 0,0:gcopy 2,0,hleplusysize,256,192-hleplusysize:palcolor 0:boxf 0,192-hleplusysize,256,192:/*sdim var17clr,varsize(var_17)-(256*hleplusysize):memcpy var_17,var17clr,varsize(var_17)-(256*hleplusysize),0,0:memcpy var_30,var17clr,varsize(var_17)-(256*hleplusysize),48896,0*/:gsel nowgsel:gosub *label_31}:if ( var_20 ){gosub *label_30}}else{
+poke var_30,49456,peek(var_24,5)
+if ( var_20 ){gosub *label_30}
+if ( var_20 ){poke var_30, 49440, peek(var_30, 49440)+hleplusxsize}
+memset var_30,0,463,49456
+}
+}
+}
+}
+}
+}
+swbreak
+case 7
+poke var_24,0,0
+swbreak
+case 8
+poke var_24,0,255
+swbreak
+case 9
+cntix=0:cntixold=2:cntix2=0
+poke var_30, 49446,7
+		poke var_30, 49447, 9
+showstr="":chkx0a0d=0:mesaddr=peek(var_24,5)+(peek(var_24,4)<<8)
+repeat 463
+if peek(var_29,cnt+mesaddr)=0x24{break}
+if wpeek(var_29,cnt+mesaddr)=0x0A0D{
+cntixold=cntix
+cntix=cnt+2
+if ( var_20 ){gosub *label_30}
+poke var_30, 49447, 9
+repeat cntix-cntixold
+poke var_30,49456+cnt,0
+loop
+if ( var_20 ){poke var_30, 49441, peek(var_30, 49441)+hleplusysize}
+if ( var_20 ){poke var_30, 49440, 0}
+if peek(var_30, 49441)>=191{poke var_30, 49441, peek(var_30, 49441)-hleplusysize:nowgsel=ginfo(3):gsel 2:pos 0,0:gcopy 2,0,hleplusysize,256,192-hleplusysize:palcolor 0:boxf 0,192-hleplusysize,256,192:/*sdim var17clr,varsize(var_17)-(256*hleplusysize):memcpy var_17,var17clr,varsize(var_17)-(256*hleplusysize),0,0:memcpy var_30,var17clr,varsize(var_17)-(256*hleplusysize),48896,0*/:gsel nowgsel:gosub *label_31}
+cntix2=cnt
+continue cntix
+}
+poke var_30,49456+cnt-cntix,wpeek(var_29,cnt+mesaddr)
+//if chkx0a0d=1{break}
+cntix2=cnt
+loop:chkx0a0d=0
+if ( var_20 ){gosub *label_30}
+if ( var_20 ){poke var_30, 49440, peek(var_30, 49440)+((cntix2-(cntix-2))*hleplusxsize)}
+memset var_30,0,463,49456
+//mes showstr,1
+//var_27=var_28
+
+swbreak
+case 10
+stringforinputoutput="":cnt2=0
+repeat// 0x100
+stringforinputoutputx=""
+lpoke stringforinputoutputx,0,wparam2
+if wparam2=0{}else{wparam2=0}
+if lpeek(stringforinputoutputx,0)=13{break}
+if stringforinputoutputx="\n"{break}
+stringforinputoutput=stringforinputoutput+stringforinputoutputx
+//cnt2=cnt
+//mesfromminifont stringforinputoutputx,1
+if stringforinputoutputx=""{}else{
+	//hleplusysize=0
+	if peek(stringforinputoutputx,0)=0xC{nowgsel=ginfo(3):gsel 0:cls 4:gsel 2:sdim var17clr,varsize(var_17)+1:memcpy var_17,var17clr,varsize(var_17),0,0:memcpy var_30,var17clr,varsize(var_17),48896-varsize(var_17)+256,0:gsel nowgsel:poke var_30, 49440, 0:poke var_30, 49441, 0:if ( var_20 ){gosub *label_30}}else{
+	poke var_30, 49446,7
+			poke var_30, 49447, 9
+	showstr=""
+	if peek(stringforinputoutputx,0)=0xA{}else{
+	if peek(stringforinputoutputx,0)=0xD{poke var_30, 49441, peek(var_30, 49441)+hleplusysize:poke var_30, 49440, 0:if peek(var_30, 49441)>=191{poke var_30, 49441, peek(var_30, 49441)-hleplusysize:nowgsel=ginfo(3):gsel 2:pos 0,0:gcopy 2,0,hleplusysize,256,192-hleplusysize:palcolor 0:boxf 0,192-hleplusysize,256,192:/*sdim var17clr,varsize(var_17)-(256*hleplusysize):memcpy var_17,var17clr,varsize(var_17)-(256*hleplusysize),0,0:memcpy var_30,var17clr,varsize(var_17)-(256*hleplusysize),48896,0*/:gsel nowgsel:gosub *label_31}:if ( var_20 ){gosub *label_30}}else{
+	poke var_30,49456,peek(stringforinputoutputx,0)
+	if ( var_20 ){gosub *label_30}
+	if ( var_20 ){poke var_30, 49440, peek(var_30, 49440)+hleplusxsize}
+	}
+	}
+	}
+}
+nowgsel=ginfo(3)
+gsel 0
+			pos 0, 0
+				gxc=ginfo(12)
+				gyc=ginfo(13)
+				if gxc=0{}else{gx=gxc}
+				if gxc=0{}else{gy=gyc}
+				gzoom gx, gy, 2, 0, 0, 256, 192
+gsel nowgsel
+//	if ( var_20 ){nowgsel=ginfo(3):gsel 0:redraw 1:redraw 0:gsel nowgsel}
+await 1:loop:poke var_30, 49441, peek(var_30, 49441)+hleplusysize:poke var_30, 49440, 0:cnt2=strlen(stringforinputoutput)
+if cnt2>peek(var_29,(peek(var_24,5)+(peek(var_24,4)<<8))){cnt2=(peek(var_24,5)+(peek(var_24,4)<<8))}
+poke var_29,peek(var_24,5)+(peek(var_24,4)<<8)+1,cnt2
+memcpy var_29,stringforinputoutput,cnt2,peek(var_24,5)+(peek(var_24,4)<<8)+2,0
+poke var_29,peek(var_24,5)+(peek(var_24,4)<<8)+2+cnt2,0
+logmes "address:"+strf("%04X",str(peek(var_24,5)+(peek(var_24,4)<<8)))
+sdim messagedatadump,cnt2
+memcpy messagedatadump,var_29,cnt2,0,(peek(var_24,5)+(peek(var_24,4)<<8))+2
+stringforinputoutputx=""
+logmes "inputdata:"+messagedatadump
+memset var_30,0,463,49456
+swbreak
+case 11
+if wparam2=0{poke var_24,0,0}else{poke var_24,0,1}
+await 1
+swbreak
+case 12
+poke var_24,0,0x22
+poke var_24,7,0x22
+swbreak
+case 13
+wpoke var_29,0xF224,0x80
+swbreak
+case 14
+poke var_24,0,0xFF
+if peek(var_24,5)<=15{dirstrdatat="":drive=0:drive=peek(var_24,5):poke var_24,0,0:lpoke dirstrdatat,0,drive+65:if drive=0{dirstrdatat="A"}:dirlist x,"..\\"+dirstrdatat,5:if stat=0{mkdir "..\\"+dirstrdatat}:chdir "..\\"+dirstrdatat:logmes "driveletter:"+dirstrdatat}else{poke var_24,0,0xFF:poke var_24,6,4}
+swbreak
+case 15
+fcbaddr=0
+showstr="":chkx0a0d=0:fcbaddr=peek(var_24,5)+(peek(var_24,4)<<8)
+gosub *hlefcb
+//poke var_29,fcbaddr+1+8+3+1+1+16+1,0
+fcbcrx=0
+gosub *hlefcbcrxex
+exist fcbfnamenameplsformat
+strsize2=strsize
+ex = (peek(var_29,fcbaddr + 12) & 0x1f) | (peek(var_29,fcbaddr + 13) << 5)
+block = strsize2 - ex * 16384
+repeat 16
+if (block > cnt*1024) = cnt+1 {
+poke var_29,fcbaddr+cnt+16,0
+}
+loop
+if strsize2=-1{
+poke var_24,0,0xFF
+}else{
+lpoke var_29,fcbaddr+1+8+3+1+1+1,strsize2
+lpoke var_29,fcbaddr+32,0
+if (block < 0) = 0{
+if (block < 16384) = ((block >> 7) & 0xff){
+lpoke var_29,fcbaddr+32,128
+}
+}
+randomize:poke var_24,0,0}
+
+swbreak
+case 16
+fcbaddr=0
+showstr="":chkx0a0d=0:fcbaddr=peek(var_24,5)+(peek(var_24,4)<<8)
+gosub *hlefcb
+//poke var_29,fcbaddr+1+8+3+1+1+16+1,0
+fcbcrx=0
+gosub *hlefcbcrxex
+exist fcbfnamenameplsformat
+strsize2=strsize
+if strsize2=-1{
+poke var_24,0,0xFF
+}else{
+lpoke var_29,fcbaddr+1+8+3+1+1+1,0
+randomize:poke var_24,0,0}
+
+swbreak
+case 17
+fcbaddr=0
+showstr="":chkx0a0d=0:fcbaddr=peek(var_24,5)+(peek(var_24,4)<<8)
+gosub *hlefcb
+//poke var_29,fcbaddr+1+8+3+1+1+16+1,0
+fcbfnamenameplsformattlx="":fcbfnamenameplsformattl=""
+repeat strlen(fcbfnamenameplsformat)
+fcbfnamenameplsformattlx=strmid(fcbfnamenameplsformat,cnt,1)
+if fcbfnamenameplsformattlx="?"{fcbfnamenameplsformattlx="*"}
+fcbfnamenameplsformattl=fcbfnamenameplsformattl+fcbfnamenameplsformattlx
+loop
+if fcbfnamenameplsformattl="********.***"{fcbfnamenameplsformattl="*.*"}
+fcbfnamenameplsformatdirlist="":fcbfnamenameplsformatdirlist2="":fcbfnamenameplsformatdirlistformat=""
+fcbfnamenameplsformatdirlistfname=""
+dirlist fcbfnamenameplsformatdirlist,fcbfnamenameplsformattl,1
+filestatforfsearchi=0
+filestatforfsearch=stat
+notesel fcbfnamenameplsformatdirlist
+noteget fcbfnamenameplsformatdirlist2,0
+fcbfnamenameplsformatdirlistfname=fcbfnamenameplsformatdirlist2
+fcbfnamenameplsformatdirlistdot=0
+fcbfnamenameplsformatdirlistdot=instr(fcbfnamenameplsformatdirlist2,0,".")
+if fcbfnamenameplsformatdirlistdot=-1{
+fcbfnamenameplsformatdirlistfname=fcbfnamenameplsformatdirlist2
+}else{
+fcbfnamenameplsformatdirlistfname=strmid(fcbfnamenameplsformatdirlist2,0,fcbfnamenameplsformatdirlistdot)
+fcbfnamenameplsformatdirlistformat=strmid(fcbfnamenameplsformatdirlist2,fcbfnamenameplsformatdirlistdot+1,3)
+}
+fcbfnamenameplsformatdirlistformatlen=0:fcbfnamenameplsformatdirlistfnamelen=0
+fcbfnamenameplsformatdirlistfnamelen=strlen(fcbfnamenameplsformatdirlistfname)
+fcbfnamenameplsformatdirlistformatlen=strlen(fcbfnamenameplsformatdirlistformat)
+fcbfnamenameplsformatdirlistffnsliced=0
+repeat fcbfnamenameplsformatdirlistfnamelen:fcbfnamenameplsformatdirlistffnsliced=peek(fcbfnamenameplsformatdirlistfname,cnt):if fcbfnamenameplsformatdirlistffnsliced>=0x61 and fcbfnamenameplsformatdirlistffnsliced<=0x7a{fcbfnamenameplsformatdirlistffnsliced=fcbfnamenameplsformatdirlistffnsliced-0x20}:poke fcbfnamenameplsformatdirlistfname,cnt,fcbfnamenameplsformatdirlistffnsliced:loop
+repeat fcbfnamenameplsformatdirlistformatlen:fcbfnamenameplsformatdirlistffnsliced=peek(fcbfnamenameplsformatdirlistformat,cnt):if fcbfnamenameplsformatdirlistffnsliced>=0x61 and fcbfnamenameplsformatdirlistffnsliced<=0x7a{fcbfnamenameplsformatdirlistffnsliced=fcbfnamenameplsformatdirlistffnsliced-0x20}:poke fcbfnamenameplsformatdirlistformat,cnt,fcbfnamenameplsformatdirlistffnsliced:loop
+if fcbfnamenameplsformatdirlistfnamelen>=9{fcbfnamenameplsformatdirlistfnamelen=8}
+if fcbfnamenameplsformatdirlistformatlen>=4{fcbfnamenameplsformatdirlistformatlen=3}
+/*memset fcbfnamenameplsformatdirlistfname,32,8-fcbfnamenameplsformatdirlistfnamelen,8-fcbfnamenameplsformatdirlistfnamelen
+memset fcbfnamenameplsformatdirlistformat,32,3-fcbfnamenameplsformatdirlistformatlen,3-fcbfnamenameplsformatdirlistformatlen*/
+randomize:poke var_24,0,0
+repeat 32
+poke var_29,wpeek(var_29,0xF224)+cnt,0
+loop
+memset var_29,32,11,wpeek(var_29,0xF224)+1
+memcpy var_29,fcbfnamenameplsformatdirlistfname,fcbfnamenameplsformatdirlistfnamelen,wpeek(var_29,0xF224)+1,0
+memcpy var_29,fcbfnamenameplsformatdirlistformat,fcbfnamenameplsformatdirlistformatlen,wpeek(var_29,0xF224)+1+8,0
+exist fcbfnamenameplsformatdirlist2
+logmes fcbfnamenameplsformatdirlist2
+strsize2=strsize
+ex = (peek(var_29,fcbaddr + 12) & 0x1f) | (peek(var_29,fcbaddr + 13) << 5)
+block = strsize2 - ex * 16384
+//block=strsize
+//if block=-1{}else{
+	if (strsize2 < 16384) = ((strsize2 >> 7) & 0xff){poke var_29,wpeek(var_29,0xF224)+13,127}
+repeat 16
+if (strsize2 > cnt*1024) = cnt+1 {
+poke var_29,wpeek(var_29,0xF224)+cnt+16,0
+}
+loop
+//}
+logmes fcbfnamenameplsformatdirlistfname
+
+/*exist fcbfnamenameplsformat
+strsize2=strsize*/
+if filestatforfsearch=0{
+poke var_24,0,0xFF
+poke var_24,6,0
+}else{
+//lpoke var_29,fcbaddr+1+8+3+1+1+1,0
+}
+
+swbreak
+case 18
+fcbaddr=0
+showstr="":chkx0a0d=0:fcbaddr=peek(var_24,5)+(peek(var_24,4)<<8)
+gosub *hlefcb
+fcbfnamenameplsformatdirlist2="":fcbfnamenameplsformatdirlistformat=""
+fcbfnamenameplsformatdirlistfname=""
+filestatforfsearchi=filestatforfsearchi+1
+if filestatforfsearchi=filestatforfsearch{
+poke var_24,0,0xFF
+poke var_24,6,0
+filestatforfsearch=0
+filestatforfsearchi=0
+fcbfnamenameplsformatdirlist="":fcbfnamenameplsformatdirlist2="":fcbfnamenameplsformatdirlistformat=""
+fcbfnamenameplsformatdirlistfname="":filestatforfsearchi=0}else{
+notesel fcbfnamenameplsformatdirlist
+fcbfnamenameplsformatdirlist2=""
+memset fcbfnamenameplsformatdirlist2,0,64,0
+noteget fcbfnamenameplsformatdirlist2,filestatforfsearchi
+fcbfnamenameplsformatdirlistdot=0
+fcbfnamenameplsformatdirlistdot=instr(fcbfnamenameplsformatdirlist2,0,".")
+if fcbfnamenameplsformatdirlistdot=-1{
+	memset fcbfnamenameplsformatdirlistfname,0,64,0
+	memset fcbfnamenameplsformatdirlistformat,0,64,0
+fcbfnamenameplsformatdirlistfname=fcbfnamenameplsformatdirlist2
+}else{
+	fcbfnamenameplsformatdirlistfname=""
+	fcbfnamenameplsformatdirlistformat=""
+	memset fcbfnamenameplsformatdirlistfname,0,64,0
+	memset fcbfnamenameplsformatdirlistformat,0,64,0
+fcbfnamenameplsformatdirlistfname=strmid(fcbfnamenameplsformatdirlist2,0,fcbfnamenameplsformatdirlistdot)
+fcbfnamenameplsformatdirlistformat=strmid(fcbfnamenameplsformatdirlist2,fcbfnamenameplsformatdirlistdot+1,3)
+}
+fcbfnamenameplsformatdirlistformatlen=0:fcbfnamenameplsformatdirlistfnamelen=0
+fcbfnamenameplsformatdirlistfnamelen=strlen(fcbfnamenameplsformatdirlistfname)
+fcbfnamenameplsformatdirlistformatlen=strlen(fcbfnamenameplsformatdirlistformat)
+repeat fcbfnamenameplsformatdirlistfnamelen:fcbfnamenameplsformatdirlistffnsliced=peek(fcbfnamenameplsformatdirlistfname,cnt):if fcbfnamenameplsformatdirlistffnsliced>=0x61 and fcbfnamenameplsformatdirlistffnsliced<=0x7a{fcbfnamenameplsformatdirlistffnsliced=fcbfnamenameplsformatdirlistffnsliced-0x20}:poke fcbfnamenameplsformatdirlistfname,cnt,fcbfnamenameplsformatdirlistffnsliced:loop
+repeat fcbfnamenameplsformatdirlistformatlen:fcbfnamenameplsformatdirlistffnsliced=peek(fcbfnamenameplsformatdirlistformat,cnt):if fcbfnamenameplsformatdirlistffnsliced>=0x61 and fcbfnamenameplsformatdirlistffnsliced<=0x7a{fcbfnamenameplsformatdirlistffnsliced=fcbfnamenameplsformatdirlistffnsliced-0x20}:poke fcbfnamenameplsformatdirlistformat,cnt,fcbfnamenameplsformatdirlistffnsliced:loop
+if fcbfnamenameplsformatdirlistfnamelen>=9{fcbfnamenameplsformatdirlistfnamelen=8}
+if fcbfnamenameplsformatdirlistformatlen>=4{fcbfnamenameplsformatdirlistformatlen=3}
+/*memset fcbfnamenameplsformatdirlistfname,32,8-fcbfnamenameplsformatdirlistfnamelen,8-fcbfnamenameplsformatdirlistfnamelen
+memset fcbfnamenameplsformatdirlistformat,32,3-fcbfnamenameplsformatdirlistformatlen,3-fcbfnamenameplsformatdirlistformatlen
+*/
+if filestatforfsearchi>=filestatforfsearch{
+poke var_24,0,0xFF
+poke var_24,6,0
+filestatforfsearch=0
+filestatforfsearchi=0
+}else{
+randomize:poke var_24,0,0
+repeat 32
+poke var_29,wpeek(var_29,0xF224)+cnt,0
+loop
+memset var_29,32,11,wpeek(var_29,0xF224)+1
+//memset var_29,0,11,wpeek(var_29,0xF224)+1
+memcpy var_29,fcbfnamenameplsformatdirlistfname,fcbfnamenameplsformatdirlistfnamelen,wpeek(var_29,0xF224)+1,0
+memcpy var_29,fcbfnamenameplsformatdirlistformat,fcbfnamenameplsformatdirlistformatlen,wpeek(var_29,0xF224)+1+8,0
+exist fcbfnamenameplsformatdirlist2
+strsize2=strsize
+ex = (peek(var_29,fcbaddr + 12) & 0x1f) | (peek(var_29,fcbaddr + 13) << 5)
+block = strsize2 - ex * 16384
+//block=strsize
+//if block=-1{}else{
+	if (strsize2 < 16384) = ((strsize2 >> 7) & 0xff){poke var_29,wpeek(var_29,0xF224)+13,127}
+repeat 16
+if (strsize2 > cnt*1024) = cnt+1 {
+poke var_29,wpeek(var_29,0xF224)+cnt+16,0
+}
+loop
+//}
+logmes fcbfnamenameplsformatdirlistfname
+}
+//lpoke var_29,fcbaddr+1+8+3+1+1+1,0
+}
+swbreak
+case 19
+fcbaddr=0
+showstr="":chkx0a0d=0:fcbaddr=peek(var_24,5)+(peek(var_24,4)<<8)
+gosub *hlefcb
+exist fcbfnamenameplsformat
+strsize2=strsize
+if strsize2=-1{poke var_24,0,0xFF}else{
+sdim fcbreaddatastr,256
+delete fcbfnamenameplsformat
+randomize:poke var_24,0,0}
+swbreak
+case 20
+fcbaddr=0
+showstr="":chkx0a0d=0:fcbaddr=peek(var_24,5)+(peek(var_24,4)<<8)
+gosub *hlefcb
+exist fcbfnamenameplsformat
+strsize2=strsize
+//<fcbcr*128
+if strsize2=-1{poke var_24,0,0x01}else{
+sdim fcbreaddatastr,256
+bload fcbfnamenameplsformat,fcbreaddatastr,256,fcbcrx*128
+logmes fcbcrx
+//poke var_29,fcbaddr+1+8+3+1+1+16+1,peek(var_29,fcbaddr+1+8+3+1+1+16+1)+1
+memcpy var_29,fcbreaddatastr,128,wpeek(var_29,0xF224),0
+/*repeat 128
+poke var_29,wpeek(var_29,0xF224)+cnt,peek(fcbreaddatastr,cnt)
+loop*/
+gosub *hlefcbcrxex
+//if strsize2>fcbcr*128{poke var_24,0,0x00}else{
+if (strsize2-fcbcrx)<128{memset var_29,0x1a,128-(strsize2-fcbcrx*128),wpeek(var_29,0xF224)+(strsize2-fcbcrx)}
+poke var_24,0,0
+if strsize2>fcbcrx*128{poke var_24,0,0}else{
+poke var_24,0,1}}
+swbreak
+case 21
+fcbaddr=0
+showstr="":chkx0a0d=0:fcbaddr=peek(var_24,5)+(peek(var_24,4)<<8)
+gosub *hlefcb
+exist fcbfnamenameplsformat
+strsize2=strsize
+if strsize2=-1{poke var_24,0,0xFF}else{
+//if strsize2<fcbcr*128{poke var_24,0,0xFF}else{
+sdim fcbreaddatastr,strsize2+128
+bload fcbfnamenameplsformat,fcbreaddatastr
+memcpy fcbreaddatastr,var_29,128,fcbcrx*128,wpeek(var_29,0xF224)
+bsave fcbfnamenameplsformat,fcbreaddatastr
+//poke var_29,fcbaddr+1+8+3+1+1+16+1,peek(var_29,fcbaddr+1+8+3+1+1+16+1)+1
+gosub *hlefcbcrxex
+if strsize2>fcbcrx*128{poke var_24,0,0x00}else{
+randomize:poke var_24,0,1}}
+swbreak
+case 22
+fcbaddr=0
+showstr="":chkx0a0d=0:fcbaddr=peek(var_24,5)+(peek(var_24,4)<<8)
+gosub *hlefcb
+sdim fcbreaddatastr,128*fcbcr
+if fcbfnamenameplsformat=""{randomize:poke var_24,0,0xFF}else{
+bsave fcbfnamenameplsformat,fcbreaddatastr
+randomize:poke var_24,0,0
+}
+swbreak
+case 23
+fcbaddr=0
+showstr="":chkx0a0d=0:fcbaddr=peek(var_24,5)+(peek(var_24,4)<<8)
+gosub *hlefcb
+fcbfnamenameplsformatbak=""
+exist fcbfnamenameplsformat
+strsize2=strsize
+fcbfnamenameplsformatbak=fcbfnamenameplsformat
+if strsize2=-1{poke var_24,0,0xFF}else{
+ex = (peek(var_29,fcbaddr + 12) & 0x1f) | (peek(var_29,fcbaddr + 13) << 5)
+block = strsize2 - ex * 16384
+repeat 16
+if (block > cnt*1024) = cnt+1 {
+poke var_29,fcbaddr+cnt+16,0
+}
+loop
+sdim fcbreaddatastr,256
+fcbaddr=peek(var_24,5)+(peek(var_24,4)<<8)+16
+gosub *hlefcbfileread
+bcopy fcbfnamenameplsformatbak,fcbfnamenameplsformat
+delete fcbfnamenameplsformatbak
+randomize:poke var_24,0,0}
+swbreak
+case 24
+wpoke var_24,6,0
+swbreak
+case 25
+poke var_24,0,drive
+swbreak
+case 26
+logmes "address:"+strf("%04X",str(fcbaddr))
+wpoke var_29,0xF224,peek(var_24,5)+(peek(var_24,4)<<8)
+swbreak
+case 28
+swbreak
+case 29
+wpoke var_24,6,0
+swbreak
+case 30
+fcbaddr=0
+showstr="":chkx0a0d=0:fcbaddr=peek(var_24,5)+(peek(var_24,4)<<8)
+gosub *hlefcb
+//poke var_29,fcbaddr+1+8+3+1+1+16+1,0
+fcbcrx=0
+gosub *hlefcbcrxex
+exist fcbfnamenameplsformat
+strsize2=strsize
+if strsize2=-1{
+poke var_24,0,0xFF
+}else{
+ex = (peek(var_29,fcbaddr + 12) & 0x1f) | (peek(var_29,fcbaddr + 13) << 5)
+block = strsize2 - ex * 16384
+if (block < 0) = 0{
+if (block < 16384) = ((block >> 7) & 0xff){
+lpoke var_29,fcbaddr+32,127
+}
+}
+randomize:poke var_24,0,0}
+
+swbreak
+case 32
+if peek(var_24,5)=0xFF{poke var_24,0,userid}else{userid=peek(var_24,5)}
+swbreak
+case 33
+fcbaddr=0
+showstr="":chkx0a0d=0:fcbaddr=peek(var_24,5)+(peek(var_24,4)<<8)
+gosub *hlefcb
+exist fcbfnamenameplsformat
+strsize2=strsize
+//<fcbcr*128
+if strsize2=-1{poke var_24,0,0x01}else{
+sdim fcbreaddatastr,256
+fcbcrx=peek(var_29,fcbaddr+33) | (peek(var_29,fcbaddr+34) << 8)
+bload fcbfnamenameplsformat,fcbreaddatastr,256,fcbcrx*128
+logmes fcbcrx
+//poke var_29,fcbaddr+1+8+3+1+1+16+1,peek(var_29,fcbaddr+1+8+3+1+1+16+1)+1
+memcpy var_29,fcbreaddatastr,128,wpeek(var_29,0xF224),0
+/*repeat 128
+poke var_29,wpeek(var_29,0xF224)+cnt,peek(fcbreaddatastr,cnt)
+loop*/
+fcbcrx=fcbcrx-1
+gosub *hlefcbcrxex
+fcbcrx=fcbcrx+1
+//if strsize2>fcbcr*128{poke var_24,0,0x00}else{
+if (strsize2-fcbcrx)<128{memset var_29,0x1a,128-(strsize2-fcbcrx*128),wpeek(var_29,0xF224)+(strsize2-fcbcrx)}
+poke var_24,0,0
+if strsize2>fcbcrx*128{poke var_24,0,0}else{
+poke var_24,0,1}}
+swbreak
+case 34
+case 40
+fcbaddr=0
+showstr="":chkx0a0d=0:fcbaddr=peek(var_24,5)+(peek(var_24,4)<<8)
+gosub *hlefcb
+exist fcbfnamenameplsformat
+strsize2=strsize
+if strsize2=-1{poke var_24,0,2}else{
+//if strsize2<fcbcr*128{poke var_24,0,0xFF}else{
+fcbcrx=peek(var_29,fcbaddr+33) | (peek(var_29,fcbaddr+34) << 8)
+sdim fcbreaddatastr,fcbcrx*128+128
+bload fcbfnamenameplsformat,fcbreaddatastr
+memcpy fcbreaddatastr,var_29,128,fcbcrx*128,wpeek(var_29,0xF224)
+bsave fcbfnamenameplsformat,fcbreaddatastr
+//poke var_29,fcbaddr+1+8+3+1+1+16+1,peek(var_29,fcbaddr+1+8+3+1+1+16+1)+1
+fcbcrx=fcbcrx-1
+gosub *hlefcbcrxex
+fcbcrx=fcbcrx+1
+if strsize2>fcbcrx*128{poke var_24,0,0x00}else{
+randomize:poke var_24,0,2}}
+swbreak
+case 35
+fcbaddr=0
+showstr="":chkx0a0d=0:fcbaddr=peek(var_24,5)+(peek(var_24,4)<<8)
+gosub *hlefcb
+//poke var_29,fcbaddr+1+8+3+1+1+16+1,0
+fcbcrx=0
+gosub *hlefcbcrxex
+exist fcbfnamenameplsformat
+strsize2=strsize
+if strsize2=-1{
+poke var_24,0,0xFF
+poke var_24,6,0x00
+}else{
+strsize3=strsize2 >> 7
+poke var_29,fcbaddr+33,(strsize3 & 0xff)
+poke var_29,fcbaddr+34,((strsize3 >> 8) & 0xff)
+poke var_29,fcbaddr+35,((strsize3 >> 16) & 0xff)
+randomize:poke var_24,0,0}
+if fcbfnamenameplsformat=""{
+poke var_24,0,0xFF
+poke var_24,6,0x00}
+swbreak
+case 36
+fcbaddr=0
+showstr="":chkx0a0d=0:fcbaddr=peek(var_24,5)+(peek(var_24,4)<<8)
+record=peek(var_29,fcbaddr+32) & 0x7f
+record=record+(peek(var_29,fcbaddr+1+8+3) & 0x1f) << 7
+record=record+(peek(var_29,fcbaddr+1+8+3+1) << 12)
+record=record+(peek(var_29,fcbaddr+1+8+3+1+1) << 20)
+poke var_29,fcbaddr+33,record & 0xff
+poke var_29,fcbaddr+34,(record >> 8) & 0xff
+poke var_29,fcbaddr+35,(record >> 16) & 0xff
+swbreak
+case 0
+fcbaddr=0
+showstr="":chkx0a0d=0:fcbaddr=peek(var_24,5)+(peek(var_24,4)<<8)
+gosub *hlefcb
+exist fcbfnamenameplsformat
+strsize2=strsize
+if strsize2=-1{poke var_24,0,0xFF}else{
+	sdim execdataforcpm,0xDB00
+bload fcbfnamenameplsformat,execdataforcpm
+memcpy var_29,execdataforcpm,0xDB00,0x100,0
+		var_40 = 0
+		wpoke var_29, var_28, var_27
+		//var_27 = wpeek(var_29, var_27)
+		var_27 = 0x100
+		var_28 -= 2
+		var_54 = 17
+return}
+swbreak
+case 110
+if wpeek(var_24,4)=0xffff{
+poke var_24,0,0
+}else{
+}
+swbreak
+default
+logmes "unimplemented"
+swbreak
+swend
+
+		var_40 = 0
+		var_27 = wpeek(var_29, var_28)
+		var_28 += 2
+		var_54 = 10
+		logmes "address:"+strf("%04X",str(var_27))
+		logmes "rtedaddress:"+strf("%04X",str(wpeek(var_29, var_28)))
+if peek(var_30, 49441)>=191{poke var_30, 49441, peek(var_30, 49441)-hleplusysize:nowgsel=ginfo(3):gsel 2:pos 0,0:gcopy 2,0,hleplusysize,256,192-hleplusysize:palcolor 0:boxf 0,192-hleplusysize,256,192:/*sdim var17clr,varsize(var_17)-(256*hleplusysize):memcpy var_17,var17clr,varsize(var_17)-(256*hleplusysize),0,0:memcpy var_30,var17clr,varsize(var_17)-(256*hleplusysize),48896,0*/:/*poke var_30, 49441, peek(var_30, 49441)-hleplusysize*/:gsel nowgsel:gosub *label_31
+nowgsel=ginfo(3)
+gsel 0
+			pos 0, 0
+				gxc=ginfo(12)
+				gyc=ginfo(13)
+				if gxc=0{}else{gx=gxc}
+				if gxc=0{}else{gy=gyc}
+				gzoom gx, gy, 2, 0, 0, 256, 192
+gsel nowgsel}:if ( var_20 ){gosub *label_30}
+swbreak
+case 0xDC00
+
+swbreak
+swend
+
+if var_27>=0xFF80 and var_27<=0xFFFF{
+logmes "BIOS Called:"+(var_27-0xFF80)
+switch var_27-0xFF80
+case 0
+var_27=0
+swbreak
+case 1
+var_27=0
+swbreak
+case 2
+if wparam2=0xFF{poke var_24,0,0}else{poke var_24,0,1}
+await 1
+swbreak
+case 3
+istyped=0
+/*onkey gosub *hlekeyget
+repeat
+if peek(var_24,0)=0{}else{break}
+await:loop
+onkey 0*/
+hlekeygetenabled=1
+//repeat
+poke var_24,0,wparam2
+poke var_30,49456,peek(var_24,0)
+if ( var_20 ){gosub *label_30}
+memset var_30,0,463,49456
+//if peek(var_24,0)=0{}else{break}
+//loop
+wparam2=0
+if peek(var_24,0)=0{hlekeygetenabled=0}else{istyped=1}
+hlekeygetenabled=0
+swbreak
+case 4
+if peek(var_24,5)=0xC{nowgsel=ginfo(3):gsel 0:cls 4:gsel 2:sdim var17clr,varsize(var_17):memcpy var_17,var17clr,varsize(var_17),0,0:memcpy var_30,var17clr,varsize(var_17),48896,0:gsel nowgsel:poke var_30, 49440, 0:poke var_30, 49441, 0:if ( var_20 ){gosub *label_30}}else{
+poke var_30, 49446,7
+		poke var_30, 49447, 9
+showstr=""
+if peek(var_24,5)=0xA{}else{
+if peek(var_24,5)=0xD{poke var_30, 49441, peek(var_30, 49441)+hleplusysize:poke var_30, 49440, 0:if peek(var_30, 49441)>=191{poke var_30, 49441, peek(var_30, 49441)-hleplusysize:nowgsel=ginfo(3):gsel 2:pos 0,0:gcopy 2,0,hleplusysize,256,192-hleplusysize:palcolor 0:boxf 0,192-hleplusysize,256,192:/*sdim var17clr,varsize(var_17)-(256*hleplusysize):memcpy var_17,var17clr,varsize(var_17)-(256*hleplusysize),0,0:memcpy var_30,var17clr,varsize(var_17)-(256*hleplusysize),48896,0*/:gsel nowgsel:gosub *label_31:gosub *label_31}:if ( var_20 ){gosub *label_30}}else{
+poke var_30,49456,peek(var_24,5)
+if ( var_20 ){gosub *label_30}
+if ( var_20 ){poke var_30, 49440, peek(var_30, 49440)+hleplusxsize}
+memset var_30,0,463,49456
+}
+}
+}
+//mes showstr,1
+
+swbreak
+swend
+}
+/*			poke stack@m0(0),0,peek(var_24,0)
+			poke stack@m0(0),1,peek(var_24,1)
+			poke stack@m0(0),2,peek(var_24,3)
+			poke stack@m0(0),3,peek(var_24,2)
+			poke stack@m0(0),4,peek(var_24,5)
+			poke stack@m0(0),5,peek(var_24,4)
+			poke stack@m0(0),6,peek(var_24,7)
+			poke stack@m0(0),7,peek(var_24,6)
+			poke stack@m0(1),10,peek(var_24,8)
+			poke stack@m0(1),12,peek(var_24,10)*/
+return
+
+*hlefcb
+fcbdrivecode=0
+fcbdrivecode=peek(var_29,fcbaddr) & 0xF
+//dialog fcbdrivecode
+logmes "address:"+strf("%04X",str(fcbaddr))
+gosub *hlefcbfileread
+fcbex=peek(var_29,fcbaddr+1+8+3)
+fcbrc=peek(var_29,fcbaddr+1+8+3+1+1+1+1)
+fcbcr=peek(var_29,fcbaddr+32)
+fcbcrx=(fcbcr & 0x7F)+((peek(var_29,fcbaddr+1+8+3)&0x1F)<<7)+((peek(var_29,fcbaddr+1+8+3+1))<<12)+((peek(var_29,fcbaddr+1+8+3+1+1))<<20)
+poke var_29,0x7C,fcbcr
+return
+*hlefcbcrxex
+fcbcrx=fcbcrx+1
+poke var_29,fcbaddr+32,fcbcrx & 0x7f
+poke var_29,fcbaddr+1+8+3,(fcbcrx >> 7) & 0x1f
+poke var_29,fcbaddr+1+8+3+1,(fcbcrx >> 12) & 0xff
+poke var_29,fcbaddr+1+8+3+1+1,(fcbcrx >> 20) & 0xff
+fcbcrx=fcbcrx-1
+return
+
+*hlekeyget
+wparam2=wparam
+return
+
+*hlefcbfileread
+fcbfname=""
+memcpy fcbfname,var_29,8,0,fcbaddr+1
+//dupptr fcbfname,varptr(var_29)+fcbaddr+1,8,2
+instrforfcbfname=instr(fcbfname,0," ")
+fcbfname2=""
+if instrforfcbfname=-1{
+fcbfname2=fcbfname
+}else{
+fcbfname2=strmid(fcbfname,0,instrforfcbfname)
+}
+fcbfnameformat=""
+memcpy fcbfnameformat,var_29,3,0,fcbaddr+1+8
+instrforfcbfnameformat=0
+instrforfcbfnameformat=instr(fcbfnameformat,0," ")
+fcbfnameformat2=""
+if instrforfcbfnameformat=-1{
+fcbfnameformat2=fcbfnameformat
+}else{
+fcbfnameformat2=strmid(fcbfnameformat,0,instrforfcbfnameformat)
+}
+//dupptr fcbfnameformat,varptr(var_29)+fcbaddr+1+8,3,2
+fcbfnamenameplsformat=""
+if fcbfnameformat2="   " or fcbfnameformat2=""{
+fcbfnamenameplsformat=fcbfname2
+}else{
+fcbfnamenameplsformat=fcbfname2+"."+fcbfnameformat2
+}
+logmes "fname:"+fcbfnamenameplsformat
+if fcbdrivecode=0{}else{
+dirstrdatat="":if drive=0{lpoke dirstrdatat,0,65}else{lpoke dirstrdatat,0,drive+65}
+fcbfnamenameplsformat="..\\"+dirstrdatat+"\\"+fcbfnamenameplsformat
+}
+memcpy var_29,fcbfname,0x08,0x5D,0
+memcpy var_29,fcbfnameformat,0x03,0x65,0
+return
