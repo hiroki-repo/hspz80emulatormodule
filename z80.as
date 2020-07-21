@@ -377,23 +377,23 @@ address=wpeek(stack(0),2)
 swbreak
 case 0xA2
 address=0
-peek address,1,wpeek(stack(0),0)
-peek address,0,iomemorycalledid
+peek address,0,wpeek(stack(0),0)
+peek address,1,peek(stack(0),4)
 swbreak
 case 0xAA
 address=0
-peek address,1,wpeek(stack(0),0)
-peek address,0,iomemorycalledid
+peek address,0,wpeek(stack(0),0)
+peek address,1,peek(stack(0),4)
 swbreak
 case 0xB2
 address=0
-peek address,1,wpeek(stack(0),0)
-peek address,0,iomemorycalledid
+peek address,0,wpeek(stack(0),0)
+peek address,1,peek(stack(0),4)
 swbreak
 case 0xBA
 address=0
-peek address,1,wpeek(stack(0),0)
-peek address,0,iomemorycalledid
+peek address,0,wpeek(stack(0),0)
+peek address,1,iomemorycalledid
 swbreak
 swend
 swbreak
