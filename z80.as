@@ -1125,6 +1125,7 @@ poke memory,wpeek(stack(0),6),peek(stack(0),6)
 return
 *opcode_76
 threadidforrunthez80_2=threadidforrunthez80
+wpoke stack(0),10,wpeek(stack(0),10)-1
 if z80halt2endmode=2{z80haltmodesw(threadidforrunthez80_2)=1}else{
 if z80halt2endmode=1{z80stackreset threadidforrunthez80_2}else{end}}
 return
