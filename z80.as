@@ -6322,7 +6322,7 @@ peek iomemorycalledid16,1,iomemorycalledid*/
 dataofiomemory=peek(iomemory,peek(stack(0),3))
 poke memory,wpeek(stack(0),6),dataofiomemory
 poke stack(0),3,peek(stack(0),3)-1
-wpoke stack(0),6,wpeek(stack(0),6)+1
+wpoke stack(0),6,wpeek(stack(0),6)-1
 poke stack(0),1,SZ(peek(stack(0),3))
 if (dataofiomemory & 0x80){poke stack(0),1,peek(stack(0),1)|0x02}
 if((((peek(stack(0),2) + 1) & 0xff) + dataofiomemory) & 0x100) {poke stack(0),1,peek(stack(0),1)| 0x10 | 0x01}
@@ -6481,7 +6481,7 @@ peek iomemorycalledid16,1,iomemorycalledid*/
 dataofiomemory=peek(iomemory,peek(stack(0),3))
 poke memory,wpeek(stack(0),6),dataofiomemory
 poke stack(0),3,peek(stack(0),3)-1
-wpoke stack(0),6,wpeek(stack(0),6)+1
+wpoke stack(0),6,wpeek(stack(0),6)-1
 poke stack(0),1,SZ(peek(stack(0),3))
 if (dataofiomemory & 0x80){poke stack(0),1,peek(stack(0),1)|0x02}
 if((((peek(stack(0),2) + 1) & 0xff) + dataofiomemory) & 0x100) {poke stack(0),1,peek(stack(0),1)| 0x10 | 0x01}
