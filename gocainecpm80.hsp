@@ -279,7 +279,7 @@ loop
 if enteronof=1{pos 0,ginfo(23)+8}
 return
 #global
-#packopt name "picoz80pcemu_cpm"
+#packopt name "gocainecpmpc"
 #pack "z80.as"
 #pack "gocainecpm80.hsp"
 //#epack "CPM.SYS"
