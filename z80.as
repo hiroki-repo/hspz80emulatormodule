@@ -6270,6 +6270,8 @@ poke stack(0),3,peek(stack(0),3)-1
 wpoke stack(0),6,wpeek(stack(0),6)+1
 poke stack(0),1,SZ(peek(stack(0),3))
 if (dataofiomemory & 0x80){poke stack(0),1,peek(stack(0),1)|0x02}
+if((((peek(stack(0),2) + 1) & 0xff) + dataofiomemory) & 0x100) {poke stack(0),1,peek(stack(0),1)| 0x10 | 0x01}
+		if((irep_tmp((peek(stack(0),2) & 3),(dataofiomemory & 3)) ^ breg_tmp(peek(stack(0),3)) ^ (peek(stack(0),2) >> 2) ^ (dataofiomemory >> 2)) & 1) {poke stack(0),1,peek(stack(0),1)|0x04}
 iomemorycalled=2
 iomemorycalledid=peek(stack(0),3)
 iomemorycalledid16=0
@@ -6383,15 +6385,20 @@ wpoke stack(0),10,wpeek(stack(0),10)-2
 swbreak
 case 0xB2
 //await 100
-poke memory,wpeek(stack(0),6),peek(iomemory,peek(stack(0),4))
+dataofiomemory=peek(iomemory,peek(stack(0),3))
+poke memory,wpeek(stack(0),6),dataofiomemory
 poke stack(0),3,peek(stack(0),3)-1
 wpoke stack(0),6,wpeek(stack(0),6)+1
+poke stack(0),1,SZ(peek(stack(0),3))
+if (dataofiomemory & 0x80){poke stack(0),1,peek(stack(0),1)|0x02}
+if((((peek(stack(0),2) + 1) & 0xff) + dataofiomemory) & 0x100) {poke stack(0),1,peek(stack(0),1)| 0x10 | 0x01}
+		if((irep_tmp((peek(stack(0),2) & 3),(dataofiomemory & 3)) ^ breg_tmp(peek(stack(0),3)) ^ (peek(stack(0),2) >> 2) ^ (dataofiomemory >> 2)) & 1) {poke stack(0),1,peek(stack(0),1)|0x04}
 iomemorycalled=2
 iomemorycalledid=peek(stack(0),3)
 iomemorycalledid16=0
 wpeek iomemorycalledid16,0,wpeek(stack(0),2)
 //peek iomemorycalledid16,1,iomemorycalledid
-if peek(stack(0),3)=0{}else{
+if wpeek(stack(0),2)=0{}else{
 wpoke stack(0),10,wpeek(stack(0),10)-2
 }
 swbreak
