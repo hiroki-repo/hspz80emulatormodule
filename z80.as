@@ -6579,8 +6579,8 @@ wpoke stack(0),10,wpeek(memory,wpeek(stack(0),10))
 return
 *opcode_f5
 wpoke stack(0),12,wpeek(stack(0),12)-2
-poke memory,peek(stack(0),12)+1,peek(stack(0),0)
-poke memory,peek(stack(0),12),peek(stack(0),1)
+poke memory,wpeek(stack(0),12)+1,peek(stack(0),0)
+poke memory,wpeek(stack(0),12),peek(stack(0),1)
 return
 *opcode_f6
 /*poke stack(0),1,peek(stack(0),1) ^ (0x01)
