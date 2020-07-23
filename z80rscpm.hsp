@@ -282,8 +282,11 @@ return
 #packopt name "picoz80pcemu_cpm"
 #pack "z80.as"
 #pack "z80rscpm.hsp"
-#epack "CPM.SYS"
-#pack "HALT.COM"
+//#epack "CPM.SYS"
+//#pack "HALT.COM"
+/*dirlist x,".\\A",5
+if stat=0{mkdir ".\\A"}
+chdir ".\\A"*/
 sdim dcdcbiosdata,5632
 exist "CPM.SYS"
 if strsize=-1{}else{
@@ -844,7 +847,7 @@ wpoke var_29,0xF224,0x80
 swbreak
 case 14
 poke var_24,0,0xFF
-if peek(var_24,5)<=15{drive=0:drive=peek(var_24,5):poke var_24,0,0:logmes drive}else{poke var_24,0,0xFF:poke var_24,6,4}
+if peek(var_24,5)<=15{dirstrdatat="":drive=0:drive=peek(var_24,5):poke var_24,0,0:lpoke dirstrdatat,0,drive}else{poke var_24,0,0xFF:poke var_24,6,4}
 swbreak
 case 15
 fcbaddr=0
@@ -1407,6 +1410,4 @@ fcbfnamenameplsformat=fcbfname2
 fcbfnamenameplsformat=fcbfname2+"."+fcbfnameformat2
 }
 logmes "fname:"+fcbfnamenameplsformat
-memcpy var_29,fcbfname,0x08,0x5D,0
-memcpy var_29,fcbfnameformat,0x03,0x65,0
 return
