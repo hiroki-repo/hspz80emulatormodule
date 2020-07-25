@@ -377,7 +377,7 @@ address=-1
 switch peek(memory,startaddr)
 case 0xDB
 address=0
-poke address,1,peek(memory,wpeek(stack(0),10))
+poke address,1,peek(memory,startaddr+1)
 poke address,0,peek(stack(0),0)
 swbreak
 case 0xED
