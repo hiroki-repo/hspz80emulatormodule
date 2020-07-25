@@ -685,6 +685,7 @@ showstr=""
 if peek(var_24,5)=0xA{}else{
 if peek(var_24,5)=0xD{poke var_30, 49441, peek(var_30, 49441)+hleplusysize:poke var_30, 49440, 0:if peek(var_30, 49441)>=191{poke var_30, 49441, peek(var_30, 49441)-hleplusysize:nowgsel=ginfo(3):gsel 2:pos 0,0:gcopy 2,0,hleplusysize,256,192-hleplusysize:palcolor 0:boxf 0,192-hleplusysize,256,192:/*sdim var17clr,varsize(var_17)-(256*hleplusysize):memcpy var_17,var17clr,varsize(var_17)-(256*hleplusysize),0,0:memcpy var_30,var17clr,varsize(var_17)-(256*hleplusysize),48896,0*/:/*poke var_30, 49441, peek(var_30, 49441)-hleplusysize*/:gsel nowgsel:gosub *label_31}:if ( var_20 ){gosub *label_30}}else{
 poke var_30,49456,peek(var_24,5)
+	if peek(var_30, 49440)+hleplusxsize>=256{poke var_30, 49440, 0:poke var_30, 49441, peek(var_30, 49441)+hleplusysize}
 if ( var_20 ){gosub *label_30}
 if ( var_20 ){poke var_30, 49440, peek(var_30, 49440)+hleplusxsize}
 memset var_30,0,463,49456
@@ -738,6 +739,7 @@ showstr=""
 if peek(var_24,5)=0xA{}else{
 if peek(var_24,5)=0xD{poke var_30, 49441, peek(var_30, 49441)+hleplusysize:poke var_30, 49440, 0:if peek(var_30, 49441)>=191{poke var_30, 49441, peek(var_30, 49441)-hleplusysize:nowgsel=ginfo(3):gsel 2:pos 0,0:gcopy 2,0,hleplusysize,256,192-hleplusysize:palcolor 0:boxf 0,192-hleplusysize,256,192:/*sdim var17clr,varsize(var_17)-(256*hleplusysize):memcpy var_17,var17clr,varsize(var_17)-(256*hleplusysize),0,0:memcpy var_30,var17clr,varsize(var_17)-(256*hleplusysize),48896,0*/:gsel nowgsel:gosub *label_31}:if ( var_20 ){gosub *label_30}}else{
 poke var_30,49456,peek(var_24,5)
+	if peek(var_30, 49440)+hleplusxsize>=256{poke var_30, 49440, 0:poke var_30, 49441, peek(var_30, 49441)+hleplusysize}
 if ( var_20 ){gosub *label_30}
 if ( var_20 ){poke var_30, 49440, peek(var_30, 49440)+hleplusxsize}
 memset var_30,0,463,49456
@@ -759,6 +761,27 @@ cntix=0:cntixold=2:cntix2=0
 poke var_30, 49446,7
 		poke var_30, 49447, 9
 showstr="":chkx0a0d=0:mesaddr=peek(var_24,5)+(peek(var_24,4)<<8)
+repeat
+//hleplusysize=0
+if peek(var_24,4)=0xC{nowgsel=ginfo(3):gsel 1:cls 4:gsel 2:sdim var17clr,varsize(var_17)+1:memcpy var_17,var17clr,varsize(var_17),0,0:memcpy var_30,var17clr,varsize(var_17),48896-varsize(var_17)+256,0:gsel nowgsel:poke var_30, 49440, 0:poke var_30, 49441, 0:if ( var_20 ){gosub *label_30}}else{
+poke var_30, 49446,7
+		poke var_30, 49447, 9
+showstr=""
+poke showstr,0,peek(var_29,mesaddr+cnt)
+if showstr="$"{break}
+if peek(showstr,0)=0xA{}else{
+if peek(showstr,0)=0xD{poke var_30, 49441, peek(var_30, 49441)+hleplusysize:poke var_30, 49440, 0:if peek(var_30, 49441)>=191{poke var_30, 49441, peek(var_30, 49441)-hleplusysize:nowgsel=ginfo(3):gsel 2:pos 0,0:gcopy 2,0,hleplusysize,256,192-hleplusysize:palcolor 0:boxf 0,192-hleplusysize,256,192:/*sdim var17clr,varsize(var_17)-(256*hleplusysize):memcpy var_17,var17clr,varsize(var_17)-(256*hleplusysize),0,0:memcpy var_30,var17clr,varsize(var_17)-(256*hleplusysize),48896,0*/:/*poke var_30, 49441, peek(var_30, 49441)-hleplusysize*/:gsel nowgsel:gosub *label_31}:if ( var_20 ){gosub *label_30}}else{
+poke var_30,49456,peek(showstr,0)
+	if peek(var_30, 49440)+hleplusxsize>=256{poke var_30, 49440, 0:poke var_30, 49441, peek(var_30, 49441)+hleplusysize}
+if ( var_20 ){gosub *label_30}
+if ( var_20 ){poke var_30, 49440, peek(var_30, 49440)+hleplusxsize}
+memset var_30,0,463,49456
+}
+}
+}
+//mes showstr,1
+loop
+/*
 repeat 463
 if peek(var_29,cnt+mesaddr)=0x24{break}
 if wpeek(var_29,cnt+mesaddr)=0x0A0D{
@@ -771,11 +794,12 @@ poke var_30,49456+cnt,0
 loop
 if ( var_20 ){poke var_30, 49441, peek(var_30, 49441)+hleplusysize}
 if ( var_20 ){poke var_30, 49440, 0}
-if peek(var_30, 49441)>=191{poke var_30, 49441, peek(var_30, 49441)-hleplusysize:nowgsel=ginfo(3):gsel 2:pos 0,0:gcopy 2,0,hleplusysize,256,192-hleplusysize:palcolor 0:boxf 0,192-hleplusysize,256,192:/*sdim var17clr,varsize(var_17)-(256*hleplusysize):memcpy var_17,var17clr,varsize(var_17)-(256*hleplusysize),0,0:memcpy var_30,var17clr,varsize(var_17)-(256*hleplusysize),48896,0*/:gsel nowgsel:gosub *label_31}
+if peek(var_30, 49440)>=191{poke var_30, 49441, peek(var_30, 49441)-hleplusysize:nowgsel=ginfo(3):gsel 2:pos 0,0:gcopy 2,0,hleplusysize,256,192-hleplusysize:palcolor 0:boxf 0,192-hleplusysize,256,192:/*sdim var17clr,varsize(var_17)-(256*hleplusysize):memcpy var_17,var17clr,varsize(var_17)-(256*hleplusysize),0,0:memcpy var_30,var17clr,varsize(var_17)-(256*hleplusysize),48896,0*//*:gsel nowgsel:gosub *label_31}
 cntix2=cnt
 continue cntix
 }
-poke var_30,49456+cnt-cntix,wpeek(var_29,cnt+mesaddr)
+if (cnt*hleplusxsize)+hleplusxsize-(256*(addedhledspsize/2))>=256{wpoke var_30,49456+cnt-cntix+addedhledspsize,0x0a0d:addedhledspsize=addedhledspsize+2}
+poke var_30,49456+cnt-cntix+addedhledspsize,wpeek(var_29,cnt+mesaddr)
 //if chkx0a0d=1{break}
 cntix2=cnt
 loop:chkx0a0d=0
@@ -783,7 +807,7 @@ if ( var_20 ){gosub *label_30}
 if ( var_20 ){poke var_30, 49440, peek(var_30, 49440)+((cntix2-(cntix-2))*hleplusxsize)}
 memset var_30,0,463,49456
 //mes showstr,1
-//var_27=var_28
+//var_27=var_28*/
 
 swbreak
 case 10
@@ -806,6 +830,7 @@ if stringforinputoutputx=""{}else{
 	if peek(stringforinputoutputx,0)=0xA{}else{
 	if peek(stringforinputoutputx,0)=0xD{poke var_30, 49441, peek(var_30, 49441)+hleplusysize:poke var_30, 49440, 0:if peek(var_30, 49441)>=191{poke var_30, 49441, peek(var_30, 49441)-hleplusysize:nowgsel=ginfo(3):gsel 2:pos 0,0:gcopy 2,0,hleplusysize,256,192-hleplusysize:palcolor 0:boxf 0,192-hleplusysize,256,192:/*sdim var17clr,varsize(var_17)-(256*hleplusysize):memcpy var_17,var17clr,varsize(var_17)-(256*hleplusysize),0,0:memcpy var_30,var17clr,varsize(var_17)-(256*hleplusysize),48896,0*/:gsel nowgsel:gosub *label_31}:if ( var_20 ){gosub *label_30}}else{
 	poke var_30,49456,peek(stringforinputoutputx,0)
+	if peek(var_30, 49440)+hleplusxsize>=256{poke var_30, 49440, 0:poke var_30, 49441, peek(var_30, 49441)+hleplusysize}
 	if ( var_20 ){gosub *label_30}
 	if ( var_20 ){poke var_30, 49440, peek(var_30, 49440)+hleplusxsize}
 	}
@@ -1334,6 +1359,7 @@ showstr=""
 if peek(var_24,5)=0xA{}else{
 if peek(var_24,5)=0xD{poke var_30, 49441, peek(var_30, 49441)+hleplusysize:poke var_30, 49440, 0:if peek(var_30, 49441)>=191{poke var_30, 49441, peek(var_30, 49441)-hleplusysize:nowgsel=ginfo(3):gsel 2:pos 0,0:gcopy 2,0,hleplusysize,256,192-hleplusysize:palcolor 0:boxf 0,192-hleplusysize,256,192:/*sdim var17clr,varsize(var_17)-(256*hleplusysize):memcpy var_17,var17clr,varsize(var_17)-(256*hleplusysize),0,0:memcpy var_30,var17clr,varsize(var_17)-(256*hleplusysize),48896,0*/:gsel nowgsel:gosub *label_31:gosub *label_31}:if ( var_20 ){gosub *label_30}}else{
 poke var_30,49456,peek(var_24,5)
+	if peek(var_30, 49440)+hleplusxsize>=256{poke var_30, 49440, 0:poke var_30, 49441, peek(var_30, 49441)+hleplusysize}
 if ( var_20 ){gosub *label_30}
 if ( var_20 ){poke var_30, 49440, peek(var_30, 49440)+hleplusxsize}
 memset var_30,0,463,49456
