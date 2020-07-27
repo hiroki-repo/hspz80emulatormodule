@@ -442,12 +442,14 @@ return address
 #defcfunc isioportcalled
 ioportidforreturn=iomemorycalledid
 if iomemorycalled=0{ioportidforreturn=-1}
-iomemorycalled=0
+if iomemorycalled=2{ioportidforreturn=-1}
+if iomemorycalled=1{iomemorycalled=0}
 return ioportidforreturn
 #defcfunc isioportcalled16
 ioportidforreturn=iomemorycalledid16
 if iomemorycalled=0{ioportidforreturn=-1}
-iomemorycalled=0
+if iomemorycalled=2{ioportidforreturn=-1}
+if iomemorycalled=1{iomemorycalled=0}
 return ioportidforreturn
 #deffunc ioportpoke int iomemoryidforz80,int iomemorydataforz80
 poke iomemory,iomemoryidforz80,iomemorydataforz80
@@ -462,7 +464,7 @@ poke stackformt(threadidforrunthez80ptrid,threadidforrunthez80),iomemoryidforz80
 return peek(stackformt(threadidforrunthez80ptrid,threadidforrunthez80),iomemoryidforz80)
 
 #deffunc z80interrupt var startaddr, var memory,int threadidforrunthez80,int iomemoryidforz80
-if z80haltmodesw(threadidforrunthez80)=1{z80haltmodesw(threadidforrunthez80)=0}
+if z80haltmodesw(threadidforrunthez80)=1{z80haltmodesw(threadidforrunthez80)=0:startaddr=startaddr+1}
 if (peek(stackformt(1,threadidforrunthez80),14) & 0x01){
 if z80runmode(threadidforrunthez80)=0{
 /*poke memory,wpeek(stackformt(0,threadidforrunthez80),12)-2,peek(stackformt(0,threadidforrunthez80),10)
