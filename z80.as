@@ -5489,11 +5489,11 @@ wpoke memory,wpeek(stack(0),12),bak_sphl1
 wpoke stack(0),6,bak_sphl2
 return
 *opcode_e4
-if (peek(stack(0),1) & (0x04)){}else{
+if (peek(stack(0),1) & (0x04)){wpoke stack(0),10,wpeek(stack(0),10)+2}else{
 wpoke stack(0),12,wpeek(stack(0),12)-2
 wpoke memory,wpeek(stack(0),12),wpeek(stack(0),10)+2
 wpoke stack(0),10,wpeek(memory,wpeek(stack(0),10))
-}else{wpoke stack(0),10,wpeek(stack(0),10)+2}
+}
 return
 *opcode_e5
 wpoke stack(0),12,wpeek(stack(0),12)-2
