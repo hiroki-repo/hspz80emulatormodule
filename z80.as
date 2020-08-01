@@ -415,22 +415,22 @@ address=wpeek(stack(0),2)
 swbreak
 case 0xA2
 address=0
-wpeek address,0,wpeek(stack(0),2)
+wpoke address,0,wpeek(stack(0),2)
 //peek address,1,peek(stack(0),4)
 swbreak
 case 0xAA
 address=0
-wpeek address,0,wpeek(stack(0),2)
+wpoke address,0,wpeek(stack(0),2)
 //peek address,1,peek(stack(0),4)
 swbreak
 case 0xB2
 address=0
-wpeek address,0,wpeek(stack(0),2)
+wpoke address,0,wpeek(stack(0),2)
 //peek address,1,peek(stack(0),4)
 swbreak
 case 0xBA
 address=0
-wpeek address,0,wpeek(stack(0),2)
+wpoke address,0,wpeek(stack(0),2)
 //peek address,1,peek(stack(0),4)
 swbreak
 swend
@@ -3217,7 +3217,7 @@ swend
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	if regforbit=-1{
 	poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | ((peek(memory,wpeek(stack(0),10)) & (1 << bit)) & (0x20 | 0x08)) | (peek(memory,wpeek(stack(0),10)) & (0x20 | 0x08))
-	//wpoke stack(0),10,wpeek(stack(0),10)+2
+	wpoke stack(0),10,wpeek(stack(0),10)+1
 	}else{
 	poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | ((peek(stack(0),regforbit) & (1 << bit)) & (0x20 | 0x08)) | (peek(stack(0),regforbit) & (0x20 | 0x08))
 	}
@@ -3259,7 +3259,7 @@ swend
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	if regforbit=-1{
 	poke memory,wpeek(stack(0),10),peek(memory,wpeek(stack(0),10)) & (1<<regfromopcodeforbit)
-	//wpoke stack(0),10,wpeek(stack(0),10)+2
+	wpoke stack(0),10,wpeek(stack(0),10)+1
 	}else{
 	poke stack(0),regforbit,peek(stack(0),regforbit) & (1<<regfromopcodeforbit)
 	}
@@ -3301,7 +3301,7 @@ swend
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	if regforbit=-1{
 	poke memory,wpeek(stack(0),10),peek(memory,wpeek(stack(0),10)) | (1<<regfromopcodeforbit)
-	//wpoke stack(0),10,wpeek(stack(0),10)+2
+	wpoke stack(0),10,wpeek(stack(0),10)+1
 	}else{
 	poke stack(0),regforbit,peek(stack(0),regforbit) | (1<<regfromopcodeforbit)
 	}
@@ -5063,7 +5063,7 @@ swend
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	if regforbit=-1{
 	poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | ((peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10))) & (1 << bit)) & (0x20 | 0x08)) | (peek(memory,wpeek(stack(0),10)) & (0x20 | 0x08))
-	//wpoke stack(0),10,wpeek(stack(0),10)+2
+	wpoke stack(0),10,wpeek(stack(0),10)+1
 	}else{
 	poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | ((peek(memory,regforbit) & (1 << bit)) & (0x20 | 0x08)) | (peek(stack(0),regforbitforssx) & (0x20 | 0x08))
 	}
@@ -5106,7 +5106,7 @@ swend
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	if regforbit=-1{
 	poke memory,wpeek(stack(0),10),peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10))) & (1<<regfromopcodeforbit)
-	//wpoke stack(0),10,wpeek(stack(0),10)+2
+	wpoke stack(0),10,wpeek(stack(0),10)+1
 	}else{
 	poke stack(0),regforbitforssx,peek(memory,regforbit) & (1<<regfromopcodeforbit)
 	}
@@ -5149,7 +5149,7 @@ swend
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	if regforbit=-1{
 	poke memory,wpeek(stack(0),10),peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10))) | (1<<regfromopcodeforbit)
-	//wpoke stack(0),10,wpeek(stack(0),10)+2
+	wpoke stack(0),10,wpeek(stack(0),10)+1
 	}else{
 	poke stack(0),regforbitforssx,peek(memory,regforbit) | (1<<regfromopcodeforbit)
 	}
@@ -5999,7 +5999,7 @@ case 0xA2
 iomemorycalled=2
 iomemorycalledid=peek(stack(0),3)
 iomemorycalledid16=0
-wpeek iomemorycalledid16,0,wpeek(stack(0),2)
+wpoke iomemorycalledid16,0,wpeek(stack(0),2)
 //await 100
 dataofiomemory=peek(iomemory,peek(stack(0),3))
 poke memory,wpeek(stack(0),6),dataofiomemory
@@ -6015,7 +6015,7 @@ case 0xA3
 iomemorycalled=1
 iomemorycalledid=peek(stack(0),3)
 iomemorycalledid16=0
-wpeek iomemorycalledid16,0,wpeek(stack(0),2)
+wpoke iomemorycalledid16,0,wpeek(stack(0),2)
 //peek iomemorycalledid16,1,iomemorycalledid
 poke iomemory,peek(stack(0),3),peek(memory,wpeek(stack(0),6))
 poke stack(0),3,peek(stack(0),3)-1
@@ -6054,7 +6054,7 @@ peek iomemorycalledid16,1,iomemorycalledid*/
 iomemorycalled=2
 iomemorycalledid=peek(stack(0),3)
 iomemorycalledid16=0
-wpeek iomemorycalledid16,0,wpeek(stack(0),2)
+wpoke iomemorycalledid16,0,wpeek(stack(0),2)
 //await 100
 dataofiomemory=peek(iomemory,peek(stack(0),3))
 poke memory,wpeek(stack(0),6),dataofiomemory
@@ -6071,7 +6071,7 @@ poke iomemory,peek(stack(0),3),peek(memory,wpeek(stack(0),6))
 iomemorycalled=1
 iomemorycalledid=peek(stack(0),3)
 iomemorycalledid16=0
-wpeek iomemorycalledid16,0,wpeek(stack(0),2)
+wpoke iomemorycalledid16,0,wpeek(stack(0),2)
 //peek iomemorycalledid16,1,iomemorycalledid
 poke stack(0),3,peek(stack(0),3)-1
 wpoke stack(0),6,wpeek(stack(0),6)-1
@@ -6134,7 +6134,7 @@ case 0xB2
 iomemorycalled=2
 iomemorycalledid=peek(stack(0),3)
 iomemorycalledid16=0
-wpeek iomemorycalledid16,0,wpeek(stack(0),2)
+wpoke iomemorycalledid16,0,wpeek(stack(0),2)
 //await 100
 dataofiomemory=peek(iomemory,peek(stack(0),3))
 poke memory,wpeek(stack(0),6),dataofiomemory
@@ -6154,7 +6154,7 @@ poke iomemory,peek(stack(0),3),peek(memory,wpeek(stack(0),6))
 iomemorycalled=1
 iomemorycalledid=peek(stack(0),3)
 iomemorycalledid16=0
-wpeek iomemorycalledid16,0,wpeek(stack(0),2)
+wpoke iomemorycalledid16,0,wpeek(stack(0),2)
 poke stack(0),3,peek(stack(0),3)-1
 wpoke stack(0),6,wpeek(stack(0),6)+1
 if peek(stack(0),3)=0{}else{
@@ -6212,7 +6212,7 @@ peek iomemorycalledid16,1,iomemorycalledid*/
 iomemorycalled=2
 iomemorycalledid=peek(stack(0),3)
 iomemorycalledid16=0
-wpeek iomemorycalledid16,0,wpeek(stack(0),2)
+wpoke iomemorycalledid16,0,wpeek(stack(0),2)
 //await 100
 dataofiomemory=peek(iomemory,peek(stack(0),3))
 poke memory,wpeek(stack(0),6),dataofiomemory
@@ -6232,7 +6232,7 @@ poke iomemory,peek(stack(0),3),peek(memory,wpeek(stack(0),6))
 iomemorycalled=1
 iomemorycalledid=peek(stack(0),3)
 iomemorycalledid16=0
-wpeek iomemorycalledid16,0,wpeek(stack(0),2)
+wpoke iomemorycalledid16,0,wpeek(stack(0),2)
 poke stack(0),3,peek(stack(0),3)-1
 wpoke stack(0),6,wpeek(stack(0),6)-1
 //peek iomemorycalledid16,1,iomemorycalledid
@@ -7989,7 +7989,7 @@ swend
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	if regforbit=-1{
 	poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | ((peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10))) & (1 << bit)) & (0x20 | 0x08)) | (peek(memory,wpeek(stack(0),10)) & (0x20 | 0x08))
-	//wpoke stack(0),10,wpeek(stack(0),10)+2
+	wpoke stack(0),10,wpeek(stack(0),10)+1
 	}else{
 	poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | ((peek(memory,regforbit) & (1 << bit)) & (0x20 | 0x08)) | (peek(stack(0),regforbitforssx) & (0x20 | 0x08))
 	}
@@ -8032,7 +8032,7 @@ swend
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	if regforbit=-1{
 	poke memory,wpeek(stack(0),10),peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10))) & (1<<regfromopcodeforbit)
-	//wpoke stack(0),10,wpeek(stack(0),10)+2
+	wpoke stack(0),10,wpeek(stack(0),10)+1
 	}else{
 	poke stack(0),regforbitforssx,peek(memory,regforbit) & (1<<regfromopcodeforbit)
 	}
@@ -8075,7 +8075,7 @@ swend
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	if regforbit=-1{
 	poke memory,wpeek(stack(0),10),peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10))) | (1<<regfromopcodeforbit)
-	//wpoke stack(0),10,wpeek(stack(0),10)+2
+	wpoke stack(0),10,wpeek(stack(0),10)+1
 	}else{
 	poke stack(0),regforbitforssx,peek(memory,regforbit) | (1<<regfromopcodeforbit)
 	}
