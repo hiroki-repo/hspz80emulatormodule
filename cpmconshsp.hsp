@@ -143,6 +143,7 @@ ioaddr16=getioportread16bitaddr(var_27,var_29):if ioaddr16=-1{ioaddr16=isioportc
 //gosub *label_30
 var_22=var_22+1:if var_22=4800{var_22=0:await 1}
 if var_27=0x100 {var_27d=0:var_27d=var_27:logmes "TPA Called!"}
+//if var_27>=57158 and var_27<=57170{bsave "ram.raw",var_29}
 	gosub *hle:loop
 end
 *label_30
@@ -432,7 +433,7 @@ logmes "printer output:"+stringforvar24
 swbreak
 case 6
 //logmes "list output:"+peek(var_24,5)
-if peek(var_24,4)=0xFF{
+if peek(var_24,5)=0xFF{
 istyped=0
 hlekeygetenabled=1
 //repeat
@@ -445,12 +446,12 @@ wparam2=0
 if peek(var_24,0)=0{hlekeygetenabled=0}else{istyped=1}
 hlekeygetenabled=0
 }else{
-if peek(var_24,4)=0xFD{
+if peek(var_24,5)=0xFD{
 istyped=0
 hlekeygetenabled=1
 //repeat
 wparam2=0
-wparam2=_getch()
+if _kbhit(){wparam2=_getch()}
 poke var_24,0,wparam2
 /*poke var_30,49456,peek(var_24,0)
 if ( var_20 ){gosub *label_30}
@@ -576,8 +577,10 @@ memcpy messagedatadump,var_29,cnt2,0,(peek(var_24,5)+(peek(var_24,4)<<8))+2
 stringforinputoutputx=""*/
 messagedatadump=""
 input messagedatadump,(peek(var_24,5)+(peek(var_24,4)<<8)),2
-poke var_29,peek(var_24,5)+(peek(var_24,4)<<8)+1,strlen(messagedatadump)
+if strlen(messagedatadump)>peek(var_29,peek(var_24,5)+(peek(var_24,4)<<8)){poke var_29,peek(var_24,5)+(peek(var_24,4)<<8)+1,peek(var_29,peek(var_24,5)+(peek(var_24,4)<<8))}else{
+poke var_29,peek(var_24,5)+(peek(var_24,4)<<8)+1,strlen(messagedatadump)}
 memcpy var_29,messagedatadump,strlen(messagedatadump),(peek(var_24,5)+(peek(var_24,4)<<8))+2,0
+poke var_29,peek(var_24,5)+(peek(var_24,4)<<8)+2+strlen(messagedatadump),0
 /*showstr=""
 poke showstr,0,peek(var_24,5)
 mes showstr,1*/
