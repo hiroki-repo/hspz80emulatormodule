@@ -735,7 +735,8 @@ return
 		if((peek(stack(0),1) & 0x10) | ((peek(stack(0),0) & 0xf) > 9)) {afordaa += 6}
 		if((peek(stack(0),1) & 0x01) | (peek(stack(0),0) > 0x99)) {afordaa += 0x60}
 	} 
-	poke stack(0),1,(peek(stack(0),1) & (0x01 | 0x02)) | (peek(stack(0),0) > 0x99) | ((peek(stack(0),0) ^ afordaa) & 0x10) | SZP(peek(afordaa,0))*/
+	poke stack(0),1,(peek(stack(0),1) & (0x01 | 0x02)) | (peek(stack(0),0) > 0x99) | ((peek(stack(0),0) ^ afordaa) & 0x10) | SZP(peek(afordaa,0))
+	poke stack(0),0,afordaa*/
 return
 *opcode_28
 address=peek(memory,wpeek(stack(0),10))
@@ -780,8 +781,8 @@ return
 *opcode_2f
 cpla=peek(stack(0),0)
 cpla ^=0xFF
-poke stack(0),1,(peek(stack(0),1) & (0x80 | 0x40 | 0x04 | 0x01)) | 0x10 | 0x02 | (peek(stack(0),0) & (0x20 | 0x08))
 poke stack(0),0,cpla
+poke stack(0),1,(peek(stack(0),1) & (0x80 | 0x40 | 0x04 | 0x01)) | 0x10 | 0x02 | (peek(stack(0),0) & (0x20 | 0x08))
 return
 *opcode_30
 address=peek(memory,wpeek(stack(0),10))
@@ -6361,7 +6362,7 @@ wpoke stack(0),10,wpeek(memory,wpeek(stack(0),10))
 }else{wpoke stack(0),10,wpeek(stack(0),10)+2}
 return
 *opcode_fb
-poke stack(1),14,1
+poke stack(1),14,3
 poke stack(1),15,1
 z80afterei=1
 return
