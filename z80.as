@@ -3320,7 +3320,7 @@ wpoke memory,wpeek(stack(0),12),wpeek(stack(0),10)+2
 wpoke stack(0),10,wpeek(memory,wpeek(stack(0),10))
 return
 *opcode_ce
-if (peek(stack(0),1) ^ (0x02))=0{poke stack(0),1,peek(stack(0),1) | (0x02)}
+//if (peek(stack(0),1) ^ (0x02))=0{poke stack(0),1,peek(stack(0),1) | (0x02)}
 addold=0
 calculated=0
 halfcarrychk=0
@@ -5229,7 +5229,7 @@ if opcodeidforddopcodeaddcall2=2 {if regforbit=-1{}else{poke stack(0),regforbit,
 }
 return
 *opcode_de
-if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
+//if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
 addold=0
 calculated=0
 halfcarrychk=0
