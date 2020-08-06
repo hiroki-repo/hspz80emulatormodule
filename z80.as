@@ -458,7 +458,7 @@ return peek(iomemory,iomemoryidforz80)
 
 #deffunc stackpoke int threadidforrunthez80,int threadidforrunthez80ptrid,int iomemoryidforz80,int iomemorydataforz80
 poke stackformt(threadidforrunthez80ptrid,threadidforrunthez80),iomemoryidforz80,iomemorydataforz80
-
+return
 #defcfunc stackpeek int threadidforrunthez80,int threadidforrunthez80ptrid,int iomemoryidforz80
 return peek(stackformt(threadidforrunthez80ptrid,threadidforrunthez80),iomemoryidforz80)
 
