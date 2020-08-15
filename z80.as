@@ -3607,7 +3607,8 @@ wpoke stack(0),10,wpeek(stack(0),10)+1
 swbreak
 
 case 0x36
-poke memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)),peek(memory,wpeek(stack(0),10))
+addressforixiyvar=0:addressforixiyvar=wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10))
+poke memory,wpeek(addressforixiyvar,0),peek(memory,wpeek(stack(0),10))
 wpoke stack(0),10,wpeek(stack(0),10)+1
 swbreak
 
@@ -3719,12 +3720,14 @@ poke memory,(wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10))),peek(stack(0),7
 wpoke stack(0),10,wpeek(stack(0),10)+1
 swbreak
 case 0x75
-poke memory,(wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10))),peek(stack(0),6)
+addressforixiyvar=0:addressforixiyvar=(wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
+poke memory,wpeek(addressforixiyvar,0),peek(stack(0),6)
 wpoke stack(0),10,wpeek(stack(0),10)+1
 swbreak
 
 case 0x77
-poke memory,(wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10))),peek(stack(0),0)
+addressforixiyvar=0:addressforixiyvar=(wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
+poke memory,wpeek(addressforixiyvar,0),peek(stack(0),0)
 wpoke stack(0),10,wpeek(stack(0),10)+1
 swbreak
 
@@ -5102,9 +5105,9 @@ swend
 	if (peek(stack(0),1) & 0x40){poke stack(0),1,peek(stack(0),1)^0x40}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	if regforbit=-1{
-	poke memory,peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10))),peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10))) & (1<<(cbopcodecallidforbit-8))
+	poke memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)),peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10))) & (1<<(cbopcodecallidforbit-8))
 	}else{
-	poke memory,peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10))),peek(memory,regforbit) & (1<<(cbopcodecallidforbit-8))
+	poke memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)),peek(memory,regforbit) & (1<<(cbopcodecallidforbit-8))
 	}
 }
 if cbopcodecallid>=0xC0 and cbopcodecallid<=0xFF{
@@ -5144,9 +5147,9 @@ swend
 	if (peek(stack(0),1) & 0x40){poke stack(0),1,peek(stack(0),1)^0x40}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	if regforbit=-1{
-	poke memory,peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10))),peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10))) | (1<<(cbopcodecallidforbit-16))
+	poke memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)),peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10))) | (1<<(cbopcodecallidforbit-16))
 	}else{
-	poke memory,peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10))),peek(memory,regforbit) | (1<<(cbopcodecallidforbit-16))
+	poke memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)),peek(memory,regforbit) | (1<<(cbopcodecallidforbit-16))
 	}
 }
 wpoke stack(0),10,wpeek(stack(0),10)+2
@@ -8025,9 +8028,9 @@ swend
 	if (peek(stack(0),1) & 0x40){poke stack(0),1,peek(stack(0),1)^0x40}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	if regforbit=-1{
-	poke memory,peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10))),peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10))) & (1<<(cbopcodecallidforbit-8))
+	poke memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)),peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10))) & (1<<(cbopcodecallidforbit-8))
 	}else{
-	poke memory,peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10))),peek(memory,regforbit) & (1<<(cbopcodecallidforbit-8))
+	poke memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)),peek(memory,regforbit) & (1<<(cbopcodecallidforbit-8))
 	}
 }
 if cbopcodecallid>=0xC0 and cbopcodecallid<=0xFF{
@@ -8067,9 +8070,9 @@ swend
 	if (peek(stack(0),1) & 0x40){poke stack(0),1,peek(stack(0),1)^0x40}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	if regforbit=-1{
-	poke memory,peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10))),peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10))) | (1<<(cbopcodecallidforbit-16))
+	poke memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)),peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10))) | (1<<(cbopcodecallidforbit-16))
 	}else{
-	poke memory,peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10))),peek(memory,regforbit) | (1<<(cbopcodecallidforbit-16))
+	poke memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)),peek(memory,regforbit) | (1<<(cbopcodecallidforbit-16))
 	}
 }
 wpoke stack(0),10,wpeek(stack(0),10)+2
