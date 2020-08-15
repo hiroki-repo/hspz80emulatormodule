@@ -3258,7 +3258,7 @@ swend
 	if (peek(stack(0),1) & 0x40){poke stack(0),1,peek(stack(0),1)^0x40}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	if regforbit=-1{
-	poke memory,wpeek(stack(0),10),peek(memory,wpeek(stack(0),6)) & (1<<(cbopcodecallidforbit-8))
+	poke memory,wpeek(stack(0),6),peek(memory,wpeek(stack(0),6)) & (1<<(cbopcodecallidforbit-8))
 	}else{
 	poke stack(0),regforbit,peek(stack(0),regforbit) & (1<<(cbopcodecallidforbit-8))
 	}
@@ -3299,7 +3299,7 @@ swend
 	if (peek(stack(0),1) & 0x40){poke stack(0),1,peek(stack(0),1)^0x40}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	if regforbit=-1{
-	poke memory,wpeek(stack(0),10),peek(memory,wpeek(stack(0),6)) | (1<<(cbopcodecallidforbit-16))
+	poke memory,wpeek(stack(0),6),peek(memory,wpeek(stack(0),6)) | (1<<(cbopcodecallidforbit-16))
 	}else{
 	poke stack(0),regforbit,peek(stack(0),regforbit) | (1<<(cbopcodecallidforbit-16))
 	}
