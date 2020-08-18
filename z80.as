@@ -5975,10 +5975,14 @@ z80runmode(threadidforrunthez80)=2
 swbreak
 
 case 0xA0
-memcpy memory,memory,wpeek(stack(0),2),wpeek(stack(0),4),wpeek(stack(0),6)
+poke memory,wpeek(stack(0),4),peek(memory,wpeek(stack(0),6))
+poke stack(0),1,peek(stack(0),1) & 0x80 | 0x40 | 0x01
+if((peek(stack(0),0)+peek(memory,wpeek(stack(0),6))) & 0x02) {poke stack(0),1,peek(stack(0),1) | 0x20}
+if((peek(stack(0),0)+peek(memory,wpeek(stack(0),6))) & 0x08) {poke stack(0),1,peek(stack(0),1) | 0x08}
 wpoke stack(0),4,wpeek(stack(0),4)+1
 wpoke stack(0),6,wpeek(stack(0),6)+1
 wpoke stack(0),2,wpeek(stack(0),2)-1
+if (wpeek(stack(0),2)){poke stack(0),1,peek(stack(0),1) | 0x04}
 //wpoke stack(0),10,wpeek(stack(0),10)+2
 swbreak
 case 0xA1
@@ -5992,6 +5996,7 @@ poke stack(0),1,(peek(stack(0),1) & 0x01) | (SZ(peek(resforcpi,0)) & (0x20 | 0x0
 if (peek(stack(0),1) & 0x10) {resforcpi -= 1}
 	if(resforcpi & 0x02) {poke stack(0),1,peek(stack(0),1) | 0x20}
 	if(resforcpi & 0x08) {poke stack(0),1,peek(stack(0),1) | 0x08}
+if (wpeek(stack(0),2)){poke stack(0),1,peek(stack(0),1) | 0x04}
 swbreak
 case 0xA2
 iomemorycalled=2
@@ -6021,10 +6026,14 @@ wpoke stack(0),6,wpeek(stack(0),6)+1
 swbreak
 
 case 0xA8
-memcpy memory,memory,wpeek(stack(0),2),wpeek(stack(0),4),wpeek(stack(0),6)
+poke memory,wpeek(stack(0),4),peek(memory,wpeek(stack(0),6))
+poke stack(0),1,peek(stack(0),1) & 0x80 | 0x40 | 0x01
+if((peek(stack(0),0)+peek(memory,wpeek(stack(0),6))) & 0x02) {poke stack(0),1,peek(stack(0),1) | 0x20}
+if((peek(stack(0),0)+peek(memory,wpeek(stack(0),6))) & 0x08) {poke stack(0),1,peek(stack(0),1) | 0x08}
 wpoke stack(0),4,wpeek(stack(0),4)-1
 wpoke stack(0),6,wpeek(stack(0),6)-1
 wpoke stack(0),2,wpeek(stack(0),2)-1
+if (wpeek(stack(0),2)){poke stack(0),1,peek(stack(0),1) | 0x04}
 //wpoke stack(0),10,wpeek(stack(0),10)+2
 swbreak
 case 0xA9
@@ -6038,6 +6047,7 @@ poke stack(0),1,(peek(stack(0),1) & 0x01) | (SZ(peek(resforcpi,0)) & (0x20 | 0x0
 if (peek(stack(0),1) & 0x10) {resforcpi -= 1}
 	if(resforcpi & 0x02) {poke stack(0),1,peek(stack(0),1) | 0x20}
 	if(resforcpi & 0x08) {poke stack(0),1,peek(stack(0),1) | 0x08}
+if (wpeek(stack(0),2)){poke stack(0),1,peek(stack(0),1) | 0x04}
 swbreak
 case 0xAA
 /*//await 100
@@ -6076,41 +6086,17 @@ wpoke stack(0),6,wpeek(stack(0),6)-1
 swbreak
 
 case 0xB0
-if wpeek(stack(0),4)+wpeek(stack(0),2)>=65536{
-copyfromaddr=0
-copytoaddr=0
-repeat wpeek(stack(0),2)
-wpoke copyfromaddr,0,wpeek(stack(0),6)+cnt
-wpoke copytoaddr,0,wpeek(stack(0),4)+cnt
-poke memory,copytoaddr,peek(memory,copyfromaddr)
-loop
-}else{
-if wpeek(stack(0),6)+wpeek(stack(0),2)>=65536{
-copyfromaddr=0
-copytoaddr=0
-repeat wpeek(stack(0),2)
-wpoke copyfromaddr,0,wpeek(stack(0),6)+cnt
-wpoke copytoaddr,0,wpeek(stack(0),4)+cnt
-poke memory,copytoaddr,peek(memory,copyfromaddr)
-loop
-}else{
-if wpeek(stack(0),4)+wpeek(stack(0),2)>=65536 and wpeek(stack(0),6)+wpeek(stack(0),2)>=65536{
-copyfromaddr=0
-copytoaddr=0
-repeat wpeek(stack(0),2)
-wpoke copyfromaddr,0,wpeek(stack(0),6)+cnt
-wpoke copytoaddr,0,wpeek(stack(0),4)+cnt
-poke memory,copytoaddr,peek(memory,copyfromaddr)
-loop
-}else{
-memcpy memory,memory,wpeek(stack(0),2),wpeek(stack(0),4),wpeek(stack(0),6)
+poke memory,wpeek(stack(0),4),peek(memory,wpeek(stack(0),6))
+poke stack(0),1,peek(stack(0),1) & 0x80 | 0x40 | 0x01
+if((peek(stack(0),0)+peek(memory,wpeek(stack(0),6))) & 0x02) {poke stack(0),1,peek(stack(0),1) | 0x20}
+if((peek(stack(0),0)+peek(memory,wpeek(stack(0),6))) & 0x08) {poke stack(0),1,peek(stack(0),1) | 0x08}
+wpoke stack(0),4,wpeek(stack(0),4)+1
+wpoke stack(0),6,wpeek(stack(0),6)+1
+wpoke stack(0),2,wpeek(stack(0),2)-1
+if (wpeek(stack(0),2)){poke stack(0),1,peek(stack(0),1) | 0x04}
+if wpeek(stack(0),2)=0{}else{
+wpoke stack(0),10,wpeek(stack(0),10)-2
 }
-}
-}
-wpoke stack(0),4,wpeek(stack(0),4)+wpeek(stack(0),2)
-wpoke stack(0),6,wpeek(stack(0),6)+wpeek(stack(0),2)
-wpoke stack(0),2,0
-//dialog
 //wpoke stack(0),10,wpeek(stack(0),10)+2
 swbreak
 case 0xB1
@@ -6124,9 +6110,9 @@ poke stack(0),1,(peek(stack(0),1) & 0x01) | (SZ(peek(resforcpi,0)) & (0x20 | 0x0
 if (peek(stack(0),1) & 0x10) {resforcpi -= 1}
 	if(resforcpi & 0x02) {poke stack(0),1,peek(stack(0),1) | 0x20}
 	if(resforcpi & 0x08) {poke stack(0),1,peek(stack(0),1) | 0x08}
-if peek(stack(0),3)=0{}else{
+if wpeek(stack(0),2)=0{}else{if (peek(stack(0),1) & 0x40){}else{
 wpoke stack(0),10,wpeek(stack(0),10)-2
-}
+}}
 swbreak
 case 0xB2
 iomemorycalled=2
@@ -6161,25 +6147,17 @@ wpoke stack(0),10,wpeek(stack(0),10)-2
 swbreak
 
 case 0xB8
-if wpeek(stack(0),4)-wpeek(stack(0),2)<=-1{
-memcpy memory,memory,65536-wpeek(stack(0),2),65536+(wpeek(stack(0),4)-wpeek(stack(0),2)),wpeek(stack(0),6)-wpeek(stack(0),2)
-memcpy memory,memory,0,-(wpeek(stack(0),4)-wpeek(stack(0),2)),wpeek(stack(0),6)-wpeek(stack(0),2)
-}else{
-if wpeek(stack(0),6)-wpeek(stack(0),2)<=-1{
-memcpy memory,memory,wpeek(stack(0),2),wpeek(stack(0),4)-wpeek(stack(0),2),65536+(wpeek(stack(0),6)-wpeek(stack(0),2))
-memcpy memory,memory,wpeek(stack(0),2),wpeek(stack(0),4)-wpeek(stack(0),2),-(wpeek(stack(0),6)-wpeek(stack(0),2))
-}else{
-if wpeek(stack(0),4)-wpeek(stack(0),2)<=-1 and wpeek(stack(0),6)-wpeek(stack(0),2)<=-1{
-memcpy memory,memory,65536-wpeek(stack(0),2),65536+(wpeek(stack(0),4)-wpeek(stack(0),2)),65536+(wpeek(stack(0),6)-wpeek(stack(0),2))
-memcpy memory,memory,0,-(wpeek(stack(0),4)-wpeek(stack(0),2)),-(wpeek(stack(0),6)-wpeek(stack(0),2))
-}else{
-memcpy memory,memory,wpeek(stack(0),2),wpeek(stack(0),4)-wpeek(stack(0),2),wpeek(stack(0),6)-wpeek(stack(0),2)
+poke memory,wpeek(stack(0),4),peek(memory,wpeek(stack(0),6))
+poke stack(0),1,peek(stack(0),1) & 0x80 | 0x40 | 0x01
+if((peek(stack(0),0)+peek(memory,wpeek(stack(0),6))) & 0x02) {poke stack(0),1,peek(stack(0),1) | 0x20}
+if((peek(stack(0),0)+peek(memory,wpeek(stack(0),6))) & 0x08) {poke stack(0),1,peek(stack(0),1) | 0x08}
+wpoke stack(0),4,wpeek(stack(0),4)-1
+wpoke stack(0),6,wpeek(stack(0),6)-1
+wpoke stack(0),2,wpeek(stack(0),2)-1
+if (wpeek(stack(0),2)){poke stack(0),1,peek(stack(0),1) | 0x04}
+if wpeek(stack(0),2)=0{}else{
+wpoke stack(0),10,wpeek(stack(0),10)-2
 }
-}
-}
-wpoke stack(0),4,wpeek(stack(0),4)-wpeek(stack(0),2)
-wpoke stack(0),6,wpeek(stack(0),6)-wpeek(stack(0),2)
-wpoke stack(0),2,0
 //wpoke stack(0),10,wpeek(stack(0),10)+2
 swbreak
 case 0xB9
@@ -6193,9 +6171,9 @@ poke stack(0),1,(peek(stack(0),1) & 0x01) | (SZ(peek(resforcpi,0)) & (0x20 | 0x0
 if (peek(stack(0),1) & 0x10) {resforcpi -= 1}
 	if(resforcpi & 0x02) {poke stack(0),1,peek(stack(0),1) | 0x20}
 	if(resforcpi & 0x08) {poke stack(0),1,peek(stack(0),1) | 0x08}
-if peek(stack(0),3)=0{}else{
+if wpeek(stack(0),2)=0{}else{if (peek(stack(0),1) & 0x40){}else{
 wpoke stack(0),10,wpeek(stack(0),10)-2
-}
+}}
 swbreak
 case 0xBA
 /*//await 100
