@@ -3668,7 +3668,7 @@ case 0x65
 poke stack(1),11,peek(stack(1),10)
 swbreak
 case 0x66
-poke stack(0),6,peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
+poke stack(0),7,peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10)))
 wpoke stack(0),10,wpeek(stack(0),10)+1
 swbreak
 case 0x67
