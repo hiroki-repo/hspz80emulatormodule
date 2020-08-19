@@ -5184,16 +5184,16 @@ case 0xFF
 z80class@=0
 swbreak
 default
-opcodeidforddopcodeaddcall=((opcodeidforddopcode-0x40)/6)
-opcodeidforddopcodeaddcall2=((opcodeidforddopcode-0x40)-(opcodeidforddopcodeaddcall*6))-4
+opcodeidforddopcodeaddcall=((opcodeidforddopcode-0x40)/8)
+opcodeidforddopcodeaddcall2=((opcodeidforddopcode-0x40)-(opcodeidforddopcodeaddcall*8))-4
 opcode=peek(memory,wpeek(stack(0),10)-1)
 lpoke jumplabel,0,lpeek(opcodeaddr(opcode),0)
 //wpoke stack(0),10,wpeek(stack(0),10)+1
 gosub jumplabel
 swbreak
 swend
-opcodeidforddopcodeaddcall=((opcodeidforddopcode-0x40)/6)
-opcodeidforddopcodeaddcall2=((opcodeidforddopcode-0x40)-(opcodeidforddopcodeaddcall*6))-4
+opcodeidforddopcodeaddcall=((opcodeidforddopcode-0x40)/8)
+opcodeidforddopcodeaddcall2=((opcodeidforddopcode-0x40)-(opcodeidforddopcodeaddcall*8))-4
 if opcodeidforddopcode>=0x44 and opcodeidforddopcode<=0x5E{
 switch opcodeidforddopcodeaddcall
 case 0
@@ -8082,16 +8082,16 @@ wpoke stack(0),12,wpeek(stack(1),12)
 swbreak
 
 default
-opcodeidforddopcodeaddcall=((opcodeidforddopcode-0x40)/6)
-opcodeidforddopcodeaddcall2=((opcodeidforddopcode-0x40)-(opcodeidforddopcodeaddcall*6))-4
+opcodeidforddopcodeaddcall=((opcodeidforddopcode-0x40)/8)
+opcodeidforddopcodeaddcall2=((opcodeidforddopcode-0x40)-(opcodeidforddopcodeaddcall*8))-4
 opcode=peek(memory,wpeek(stack(0),10)-1)
 lpoke jumplabel,0,lpeek(opcodeaddr(opcode),0)
 //wpoke stack(0),10,wpeek(stack(0),10)+1
 gosub jumplabel
 swbreak
 swend
-opcodeidforddopcodeaddcall=((opcodeidforddopcode-0x40)/6)
-opcodeidforddopcodeaddcall2=((opcodeidforddopcode-0x40)-(opcodeidforddopcodeaddcall*6))-4
+opcodeidforddopcodeaddcall=((opcodeidforddopcode-0x40)/8)
+opcodeidforddopcodeaddcall2=((opcodeidforddopcode-0x40)-(opcodeidforddopcodeaddcall*8))-4
 if opcodeidforddopcode>=0x44 and opcodeidforddopcode<=0x5E{
 switch opcodeidforddopcodeaddcall
 case 0
