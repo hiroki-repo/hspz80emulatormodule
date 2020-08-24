@@ -817,7 +817,8 @@ poke memory,wpeek(stack(0),6),peek(memory,wpeek(stack(0),10))
 wpoke stack(0),10,wpeek(stack(0),10)+1
 return
 *opcode_37
-poke stack(0),1,(peek(stack(0),1) & (0x80 | 0x40 | 0x20 | 0x08 | 0x04)) | 0x01 | (peek(stack(0),0) & (0x20 | 0x08))
+poke stack(0),1,(peek(stack(0),1) & (0x80 | 0x40 | 0x04)) | 0x01 | (peek(stack(0),0) & (0x20 | 0x08));
+//poke stack(0),1,(peek(stack(0),1) & (0x80 | 0x40 | 0x20 | 0x08 | 0x04)) | 0x01 | (peek(stack(0),0) & (0x20 | 0x08))
 return
 *opcode_38
 address=peek(memory,wpeek(stack(0),10))
@@ -860,7 +861,8 @@ poke stack(0),0,peek(memory,wpeek(stack(0),10))
 wpoke stack(0),10,wpeek(stack(0),10)+1
 return
 *opcode_3f
-poke stack(0),1,((peek(stack(0),1) & (0x80 | 0x40 | 0x20 | 0x08 | 0x04 | 0x01)) | ((peek(stack(0),1) & 0x01) << 4) | (peek(stack(0),0) & (0x20 | 0x08))) ^ 0x01
+poke stack(0),1,((peek(stack(0),1) & (0x80 | 0x40 | 0x04 | 0x01)) | ((peek(stack(0),1) & 0x01) << 4) | (peek(stack(0),0) & (0x20 | 0x08))) ^ 0x01
+//poke stack(0),1,((peek(stack(0),1) & (0x80 | 0x40 | 0x20 | 0x08 | 0x04 | 0x01)) | ((peek(stack(0),1) & 0x01) << 4) | (peek(stack(0),0) & (0x20 | 0x08))) ^ 0x01
 return
 *opcode_40
 poke stack(0),3,peek(stack(0),3)
