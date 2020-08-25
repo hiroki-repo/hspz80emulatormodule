@@ -3678,8 +3678,8 @@ case 7
 regforbit=0
 swbreak
 swend
-if opcodeidforddopcodeaddcall2=0 {if regforbit=-1{}else{poke stack(0),regforbit,peek(stack(1),10)}}
-if opcodeidforddopcodeaddcall2=1 {if regforbit=-1{}else{poke stack(0),regforbit,peek(stack(1),11)}}
+if opcodeidforddopcodeaddcall2=0 {if regforbit=-1{}else{poke stack(0),regforbit,peek(stack(1),11)}}
+if opcodeidforddopcodeaddcall2=1 {if regforbit=-1{}else{poke stack(0),regforbit,peek(stack(1),10)}}
 if opcodeidforddopcodeaddcall2=2 {if regforbit=-1{}else{poke stack(0),regforbit,peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10))):wpoke stack(0),10,wpeek(stack(0),10)+1}}
 }
 swbreak
@@ -6578,8 +6578,8 @@ case 7
 regforbit=0
 swbreak
 swend
-if opcodeidforddopcodeaddcall2=0 {if regforbit=-1{}else{poke stack(0),regforbit,peek(stack(1),12)}}
-if opcodeidforddopcodeaddcall2=1 {if regforbit=-1{}else{poke stack(0),regforbit,peek(stack(1),13)}}
+if opcodeidforddopcodeaddcall2=0 {if regforbit=-1{}else{poke stack(0),regforbit,peek(stack(1),13)}}
+if opcodeidforddopcodeaddcall2=1 {if regforbit=-1{}else{poke stack(0),regforbit,peek(stack(1),12)}}
 if opcodeidforddopcodeaddcall2=2 {if regforbit=-1{}else{poke stack(0),regforbit,peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10))):wpoke stack(0),10,wpeek(stack(0),10)+1}}
 }
 swbreak
