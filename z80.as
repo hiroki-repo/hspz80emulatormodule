@@ -3649,6 +3649,39 @@ case 0x56
 case 0x5c
 case 0x5d
 case 0x5e
+opcodeidforddopcodeaddcall=((opcodeidforddopcode-0x40)/8)
+opcodeidforddopcodeaddcall2=((opcodeidforddopcode-0x40)-(opcodeidforddopcodeaddcall*8))-4
+if opcodeidforddopcode>=0x44 and opcodeidforddopcode<=0x5E{
+switch opcodeidforddopcodeaddcall
+case 0
+regforbit=3
+swbreak
+case 1
+regforbit=2
+swbreak
+case 2
+regforbit=5
+swbreak
+case 3
+regforbit=4
+swbreak
+case 4
+regforbit=7
+swbreak
+case 5
+regforbit=6
+swbreak
+case 6
+regforbit=-1
+swbreak
+case 7
+regforbit=0
+swbreak
+swend
+if opcodeidforddopcodeaddcall2=0 {if regforbit=-1{}else{poke stack(0),regforbit,peek(stack(1),10)}}
+if opcodeidforddopcodeaddcall2=1 {if regforbit=-1{}else{poke stack(0),regforbit,peek(stack(1),11)}}
+if opcodeidforddopcodeaddcall2=2 {if regforbit=-1{}else{poke stack(0),regforbit,peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10))):wpoke stack(0),10,wpeek(stack(0),10)+1}}
+}
 swbreak
 
 case 0x60
@@ -5194,39 +5227,6 @@ lpoke jumplabel,0,lpeek(opcodeaddr(opcode),0)
 gosub jumplabel
 swbreak
 swend
-opcodeidforddopcodeaddcall=((opcodeidforddopcode-0x40)/8)
-opcodeidforddopcodeaddcall2=((opcodeidforddopcode-0x40)-(opcodeidforddopcodeaddcall*8))-4
-if opcodeidforddopcode>=0x44 and opcodeidforddopcode<=0x5E{
-switch opcodeidforddopcodeaddcall
-case 0
-regforbit=3
-swbreak
-case 1
-regforbit=2
-swbreak
-case 2
-regforbit=5
-swbreak
-case 3
-regforbit=4
-swbreak
-case 4
-regforbit=7
-swbreak
-case 5
-regforbit=6
-swbreak
-case 6
-regforbit=-1
-swbreak
-case 7
-regforbit=0
-swbreak
-swend
-if opcodeidforddopcodeaddcall2=0 {if regforbit=-1{}else{poke stack(0),regforbit,peek(stack(1),10)}}
-if opcodeidforddopcodeaddcall2=1 {if regforbit=-1{}else{poke stack(0),regforbit,peek(stack(1),11)}}
-if opcodeidforddopcodeaddcall2=2 {if regforbit=-1{}else{poke stack(0),regforbit,peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10))):wpoke stack(0),10,wpeek(stack(0),10)+1}}
-}
 return
 *opcode_de
 //if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
@@ -6549,6 +6549,39 @@ case 0x56
 case 0x5c
 case 0x5d
 case 0x5e
+opcodeidforddopcodeaddcall=((opcodeidforddopcode-0x40)/8)
+opcodeidforddopcodeaddcall2=((opcodeidforddopcode-0x40)-(opcodeidforddopcodeaddcall*8))-4
+if opcodeidforddopcode>=0x44 and opcodeidforddopcode<=0x5E{
+switch opcodeidforddopcodeaddcall
+case 0
+regforbit=3
+swbreak
+case 1
+regforbit=2
+swbreak
+case 2
+regforbit=5
+swbreak
+case 3
+regforbit=4
+swbreak
+case 4
+regforbit=7
+swbreak
+case 5
+regforbit=6
+swbreak
+case 6
+regforbit=-1
+swbreak
+case 7
+regforbit=0
+swbreak
+swend
+if opcodeidforddopcodeaddcall2=0 {if regforbit=-1{}else{poke stack(0),regforbit,peek(stack(1),12)}}
+if opcodeidforddopcodeaddcall2=1 {if regforbit=-1{}else{poke stack(0),regforbit,peek(stack(1),13)}}
+if opcodeidforddopcodeaddcall2=2 {if regforbit=-1{}else{poke stack(0),regforbit,peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10))):wpoke stack(0),10,wpeek(stack(0),10)+1}}
+}
 swbreak
 
 case 0x60
@@ -8092,39 +8125,6 @@ lpoke jumplabel,0,lpeek(opcodeaddr(opcode),0)
 gosub jumplabel
 swbreak
 swend
-opcodeidforddopcodeaddcall=((opcodeidforddopcode-0x40)/8)
-opcodeidforddopcodeaddcall2=((opcodeidforddopcode-0x40)-(opcodeidforddopcodeaddcall*8))-4
-if opcodeidforddopcode>=0x44 and opcodeidforddopcode<=0x5E{
-switch opcodeidforddopcodeaddcall
-case 0
-regforbit=3
-swbreak
-case 1
-regforbit=2
-swbreak
-case 2
-regforbit=5
-swbreak
-case 3
-regforbit=4
-swbreak
-case 4
-regforbit=7
-swbreak
-case 5
-regforbit=6
-swbreak
-case 6
-regforbit=-1
-swbreak
-case 7
-regforbit=0
-swbreak
-swend
-if opcodeidforddopcodeaddcall2=0 {if regforbit=-1{}else{poke stack(0),regforbit,peek(stack(1),12)}}
-if opcodeidforddopcodeaddcall2=1 {if regforbit=-1{}else{poke stack(0),regforbit,peek(stack(1),13)}}
-if opcodeidforddopcodeaddcall2=2 {if regforbit=-1{}else{poke stack(0),regforbit,peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10))):wpoke stack(0),10,wpeek(stack(0),10)+1}}
-}
 return
 *opcode_fe
 //if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
