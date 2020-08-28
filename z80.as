@@ -5198,7 +5198,7 @@ swbreak
 case 0xE3
 SP_bak=0
 SP_bak=wpeek(memory,wpeek(stack(0),12))
-wpoke memory,wpeek(stack(0),10),wpeek(stack(1),10)
+wpoke memory,wpeek(stack(0),12),wpeek(stack(1),10)
 wpoke stack(1),10,SP_bak
 swbreak
 
