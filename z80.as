@@ -2462,7 +2462,7 @@ wpoke stack(0),12,wpeek(stack(0),12)-2
 wpoke stack(0),10,0
 return
 *opcode_c8
-if peek(stack(0),1) | (0x40){
+if peek(stack(0),1) & (0x40){
 wpoke stack(0),10,wpeek(memory,wpeek(stack(0),12))
 wpoke stack(0),12,wpeek(stack(0),12)+2
 }
