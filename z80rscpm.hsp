@@ -631,6 +631,8 @@ return
 *onkeyforz80pcdown
 poke var_30, 49152 + wparam, 1
 wparam2=wparam
+if wparam2=17{wparam2gkflg=1:wparam2=0}
+if wparam2gkflg=1{poke wparam2,0,wparam2-64}
 if wparam2=190{wparam2=0x2E}
 if wparam2=186{wparam2=0x3A}
 return
@@ -669,12 +671,33 @@ onkey 0*/
 hlekeygetenabled=1
 //if peek(var_24,0)=0{}else{wparam2=0}
 //repeat
+//repeat
 poke var_24,0,wparam2
+//await 1:if wparam2=0{}else{break}:loop
 //if peek(var_24,0)=0{}else{break}
 //loop
-wparam2=0
 if peek(var_24,0)=0{hlekeygetenabled=0}else{istyped=1}
 hlekeygetenabled=0
+//hleplusysize=0
+if wparam2=0{}else{
+	
+if peek(var_24,0)=0xC{nowgsel=ginfo(3):gsel 0:cls 4:gsel 2:sdim var17clr,varsize(var_17)+1:memcpy var_17,var17clr,varsize(var_17),0,0:memcpy var_30,var17clr,varsize(var_17),48896-varsize(var_17)+256,0:gsel nowgsel:poke var_30, 49440, 0:poke var_30, 49441, 0:if ( var_20 ){gosub *label_30}}else{
+poke var_30, 49446,7
+		poke var_30, 49447, 9
+showstr=""
+if peek(var_24,0)=0xA{}else{
+if peek(var_24,0)=0xD{poke var_30, 49441, peek(var_30, 49441)+hleplusysize:poke var_30, 49440, 0:if peek(var_30, 49441)>=191{poke var_30, 49441, peek(var_30, 49441)-hleplusysize:nowgsel=ginfo(3):gsel 2:pos 0,0:gcopy 2,0,hleplusysize,256,192-hleplusysize:palcolor 0:boxf 0,192-hleplusysize,256,192:/*sdim var17clr,varsize(var_17)-(256*hleplusysize):memcpy var_17,var17clr,varsize(var_17)-(256*hleplusysize),0,0:memcpy var_30,var17clr,varsize(var_17)-(256*hleplusysize),48896,0*/:/*poke var_30, 49441, peek(var_30, 49441)-hleplusysize*/:gsel nowgsel:gosub *label_31}:if ( var_20 ){gosub *label_30}}else{
+poke var_30,49456,peek(var_24,0)
+	if peek(var_30, 49440)+hleplusxsize>=256{poke var_30, 49440, 0:poke var_30, 49441, peek(var_30, 49441)+hleplusysize}
+if ( var_20 ){gosub *label_30}
+if ( var_20 ){poke var_30, 49440, peek(var_30, 49440)+hleplusxsize}
+memset var_30,0,463,49456
+}
+}
+}
+
+}
+wparam2=0
 swbreak
 case 2
 //hleplusysize=0
