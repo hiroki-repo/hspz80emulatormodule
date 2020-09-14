@@ -632,7 +632,7 @@ return
 poke var_30, 49152 + wparam, 1
 wparam2=wparam
 if wparam2=17{wparam2gkflg=1:wparam2=0}
-if wparam2gkflg=1{poke wparam2,0,wparam2-64}
+if wparam2gkflg=1{if wparam2>='A' and wparam2<='Z'{wparam2gkflg=0}:poke wparam2,0,wparam2-64}
 if wparam2=190{wparam2=0x2E}
 if wparam2=186{wparam2=0x3A}
 return
