@@ -415,8 +415,8 @@ ioaddr16=getioportread16bitaddr(var_27,var_29):if ioaddr16=-1{ioaddr16=isioportc
 			wpoke var_24,10,wpeek(stack@m0(1),12)
 			var_28=wpeek(stack@m0(0),12)
 			var_27=wpeek(stack@m0(0),10)
-gosub *label_30
-var_22=var_22+1:if var_22=4800{var_22=0:await 1}
+if ioaddr16!=-1 or var_22=0{gosub *label_30}
+var_22=var_22+1:if var_22=4800{var_22=0:await}
 if var_27=0x100 {var_27d=0:var_27d=var_27:logmes "TPA Called!"}
 	gosub *hle:loop
 end
@@ -707,7 +707,7 @@ logmes "printer output:"+stringforvar24
 swbreak
 case 6
 //logmes "list output:"+peek(var_24,5)
-if peek(var_24,4)=0xFF{
+if peek(var_24,5)=0xFF{
 istyped=0
 hlekeygetenabled=1
 //repeat
@@ -718,7 +718,7 @@ wparam2=0
 if peek(var_24,0)=0{hlekeygetenabled=0}else{istyped=1}
 hlekeygetenabled=0
 }else{
-if peek(var_24,4)=0xFD{
+if peek(var_24,5)=0xFD{
 istyped=0
 hlekeygetenabled=1
 repeat
@@ -1106,7 +1106,9 @@ exist fcbfnamenameplsformat
 strsize2=strsize
 if strsize2=-1{poke var_24,0,0xFF}else{
 //if strsize2<fcbcr*128{poke var_24,0,0xFF}else{
-sdim fcbreaddatastr,strsize2+128
+asxxxxxxx=((fcbcrx*128)-strsize2)
+if asxxxxxxx<=-1{asxxxxxxx=0}
+sdim fcbreaddatastr,strsize2+128+asxxxxxxx
 bload fcbfnamenameplsformat,fcbreaddatastr
 memcpy fcbreaddatastr,var_29,128,fcbcrx*128,wpeek(var_29,0xF224)
 bsave fcbfnamenameplsformat,fcbreaddatastr
@@ -1119,7 +1121,7 @@ case 22
 fcbaddr=0
 showstr="":chkx0a0d=0:fcbaddr=peek(var_24,5)+(peek(var_24,4)<<8)
 gosub *hlefcb
-sdim fcbreaddatastr,128*fcbcr
+sdim fcbreaddatastr,128//*fcbcr
 if fcbfnamenameplsformat=""{randomize:poke var_24,0,0xFF}else{
 bsave fcbfnamenameplsformat,fcbreaddatastr
 randomize:poke var_24,0,0
@@ -1224,7 +1226,9 @@ strsize2=strsize
 if strsize2=-1{poke var_24,0,2}else{
 //if strsize2<fcbcr*128{poke var_24,0,0xFF}else{
 fcbcrx=peek(var_29,fcbaddr+33) | (peek(var_29,fcbaddr+34) << 8)
-sdim fcbreaddatastr,fcbcrx*128+128
+asxxxxxxx=((fcbcrx*128)-strsize2)
+if asxxxxxxx<=-1{asxxxxxxx=0}
+sdim fcbreaddatastr,fcbcrx*128+128+asxxxxxxx
 bload fcbfnamenameplsformat,fcbreaddatastr
 memcpy fcbreaddatastr,var_29,128,fcbcrx*128,wpeek(var_29,0xF224)
 bsave fcbfnamenameplsformat,fcbreaddatastr
@@ -1385,14 +1389,15 @@ return
 
 *hlefcb
 fcbdrivecode=0
-fcbdrivecode=peek(var_29,fcbaddr)
+fcbdrivecode=peek(var_29,fcbaddr) & 0xF
+//dialog fcbdrivecode
 logmes "address:"+strf("%04X",str(fcbaddr))
 gosub *hlefcbfileread
 fcbex=peek(var_29,fcbaddr+1+8+3)
 fcbrc=peek(var_29,fcbaddr+1+8+3+1+1+1+1)
 fcbcr=peek(var_29,fcbaddr+32)
 fcbcrx=(fcbcr & 0x7F)+((peek(var_29,fcbaddr+1+8+3)&0x1F)<<7)+((peek(var_29,fcbaddr+1+8+3+1))<<12)+((peek(var_29,fcbaddr+1+8+3+1+1))<<20)
-poke var_29,0x7C,fcbcr
+//poke var_29,0x7C,fcbcr
 return
 *hlefcbcrxex
 fcbcrx=fcbcrx+1
@@ -1436,4 +1441,10 @@ fcbfnamenameplsformat=fcbfname2
 fcbfnamenameplsformat=fcbfname2+"."+fcbfnameformat2
 }
 logmes "fname:"+fcbfnamenameplsformat
+if fcbdrivecode=0{}else{
+dirstrdatat="":if drive=0{lpoke dirstrdatat,0,65}else{lpoke dirstrdatat,0,drive+65}
+fcbfnamenameplsformat="..\\"+dirstrdatat+"\\"+fcbfnamenameplsformat
+}
+memcpy var_29,fcbfname,0x08,0x5D,0
+memcpy var_29,fcbfnameformat,0x03,0x65,0
 return
