@@ -3219,9 +3219,9 @@ swend
 	if (peek(stack(0),1) & 0x40){poke stack(0),1,peek(stack(0),1)^0x40}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	if regforbit=-1{
-	poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | ((peek(memory,wpeek(stack(0),6)) & (1 << cbopcodecallidforbit)) & (0x20 | 0x08)) | (peek(memory,wpeek(stack(0),6)) & (0x20 | 0x08))
+	poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | SZ_BIT((peek(memory,wpeek(stack(0),6)) & (1 << cbopcodecallidforbit)) & (0x20 | 0x08))
 	}else{
-	poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | ((peek(stack(0),regforbit) & (1 << cbopcodecallidforbit)) & (0x20 | 0x08)) | (peek(stack(0),regforbit) & (0x20 | 0x08))
+	poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | SZ_BIT((peek(stack(0),regforbit) & (1 << cbopcodecallidforbit)) & (0x20 | 0x08))
 	}
 }
 if cbopcodecallid>=128 and cbopcodecallid<=0xBF{
@@ -5098,9 +5098,11 @@ swend
 	if (peek(stack(0),1) & 0x40){poke stack(0),1,peek(stack(0),1)^0x40}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	if regforbit=-1{
-	poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | ((peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10))) & (1 << cbopcodecallidforbit)) & (0x20 | 0x08)) | (peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10))) & (0x20 | 0x08))
+	z80eaddr=peek(memory,wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+	poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(peek(memory,wpeek(stack(1),10)+peek(memory,wpeek(stack(0),10))) & (1 << cbopcodecallidforbit)) & (0xFF - (0x20 | 0x08))) | ((peek(memory,wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
 	}else{
-	poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | ((peek(memory,regforbit) & (1 << cbopcodecallidforbit)) & (0x20 | 0x08)) | (peek(stack(0),regforbitforssx) & (0x20 | 0x08))
+	z80eaddr=peek(stack(0),regforbitforssx):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+	poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(peek(memory,regforbit) & (1 << cbopcodecallidforbit)) & (0xFF - (0x20 | 0x08))) | ((z80eaddr >> 8) & (0x20 | 0x08))
 	}
 }
 if cbopcodecallid>=128 and cbopcodecallid<=0xBF{
@@ -7999,9 +8001,11 @@ swend
 	if (peek(stack(0),1) & 0x40){poke stack(0),1,peek(stack(0),1)^0x40}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	if regforbit=-1{
-	poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | ((peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10))) & (1 << cbopcodecallidforbit)) & (0x20 | 0x08)) | (peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10))) & (0x20 | 0x08))
+	z80eaddr=peek(memory,wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+	poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(peek(memory,wpeek(stack(1),12)+peek(memory,wpeek(stack(0),10))) & (1 << cbopcodecallidforbit)) & (0xFF - (0x20 | 0x08))) | ((peek(memory,wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
 	}else{
-	poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | ((peek(memory,regforbit) & (1 << cbopcodecallidforbit)) & (0x20 | 0x08)) | (peek(stack(0),regforbitforssx) & (0x20 | 0x08))
+	z80eaddr=peek(stack(0),regforbitforssx):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+	poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(peek(memory,regforbit) & (1 << cbopcodecallidforbit)) & (0xFF - (0x20 | 0x08))) | ((z80eaddr >> 8) & (0x20 | 0x08))
 	}
 }
 if cbopcodecallid>=128 and cbopcodecallid<=0xBF{
