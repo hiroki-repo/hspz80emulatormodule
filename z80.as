@@ -3267,7 +3267,7 @@ swend
 }
 if cbopcodecallid>=0xC0 and cbopcodecallid<=0xFF{
 regfromopcodeforbit=(cbopcodecallid-0x40)-(8*cbopcodecallidforbit)
-switch opcodeidforddopcodeaddcall
+switch regfromopcodeforbit
 case 0
 regforbit=3
 swbreak
