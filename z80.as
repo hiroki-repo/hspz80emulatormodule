@@ -376,8 +376,8 @@ address=-1
 switch peek(memory,startaddr)
 case 0xDB
 address=0
-poke address,1,peek(memory,startaddr+1)
-poke address,0,peek(stack(0),0)
+poke address,0,peek(memory,startaddr+1)
+poke address,1,peek(stack(0),0)
 swbreak
 case 0xED
 switch peek(memory,startaddr+1)
@@ -3365,8 +3365,8 @@ poke iomemory,peek(memory,wpeek(stack(0),10)),peek(stack(0),0)
 iomemorycalled=1
 iomemorycalledid=peek(memory,wpeek(stack(0),10))
 iomemorycalledid16=0
-poke iomemorycalledid16,1,peek(memory,wpeek(stack(0),10))
-poke iomemorycalledid16,0,peek(stack(0),0)
+poke iomemorycalledid16,0,peek(memory,wpeek(stack(0),10))
+poke iomemorycalledid16,1,peek(stack(0),0)
 wpoke stack(0),10,wpeek(stack(0),10)+1
 return
 *opcode_d4
@@ -3438,8 +3438,8 @@ poke stack(0),0,peek(iomemory,peek(memory,wpeek(stack(0),10)))
 iomemorycalled=2
 iomemorycalledid=peek(memory,wpeek(stack(0),10))
 iomemorycalledid16=0
-poke iomemorycalledid16,1,peek(memory,wpeek(stack(0),10))
-poke iomemorycalledid16,0,peek(stack(0),0)
+poke iomemorycalledid16,0,peek(memory,wpeek(stack(0),10))
+poke iomemorycalledid16,1,peek(stack(0),0)
 wpoke stack(0),10,wpeek(stack(0),10)+1
 return
 *opcode_dc
