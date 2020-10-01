@@ -5496,7 +5496,7 @@ calculated=0
 halfcarrychk=0
 addtostack=0
 addfromstack=0
-addold=peek(stack(0),addtostack)
+addold=0
 poke stack(0),addtostack,0
 calculated=addold-peek(stack(0),addfromstack)
 //if peek(stack(0),addtostack) & 0b00001000{halfcarrychk=1}
@@ -5574,7 +5574,7 @@ calculated=0
 halfcarrychk=0
 addtostack=0
 addfromstack=0
-addold=peek(stack(0),addtostack)
+addold=0
 poke stack(0),addtostack,0
 calculated=addold-peek(stack(0),addfromstack)
 //if peek(stack(0),addtostack) & 0b00001000{halfcarrychk=1}
@@ -5652,7 +5652,7 @@ calculated=0
 halfcarrychk=0
 addtostack=0
 addfromstack=0
-addold=peek(stack(0),addtostack)
+addold=0
 poke stack(0),addtostack,0
 calculated=addold-peek(stack(0),addfromstack)
 //if peek(stack(0),addtostack) & 0b00001000{halfcarrychk=1}
@@ -5731,7 +5731,7 @@ calculated=0
 halfcarrychk=0
 addtostack=0
 addfromstack=0
-addold=peek(stack(0),addtostack)
+addold=0
 poke stack(0),addtostack,0
 calculated=addold-peek(stack(0),addfromstack)
 //if peek(stack(0),addtostack) & 0b00001000{halfcarrychk=1}
@@ -5809,7 +5809,7 @@ calculated=0
 halfcarrychk=0
 addtostack=0
 addfromstack=0
-addold=peek(stack(0),addtostack)
+addold=0
 poke stack(0),addtostack,0
 calculated=addold-peek(stack(0),addfromstack)
 //if peek(stack(0),addtostack) & 0b00001000{halfcarrychk=1}
@@ -5890,7 +5890,7 @@ calculated=0
 halfcarrychk=0
 addtostack=0
 addfromstack=0
-addold=peek(stack(0),addtostack)
+addold=0
 poke stack(0),addtostack,0
 calculated=addold-peek(stack(0),addfromstack)
 //if peek(stack(0),addtostack) & 0b00001000{halfcarrychk=1}
@@ -5970,7 +5970,7 @@ calculated=0
 halfcarrychk=0
 addtostack=0
 addfromstack=0
-addold=peek(stack(0),addtostack)
+addold=0
 poke stack(0),addtostack,0
 calculated=addold-peek(stack(0),addfromstack)
 //if peek(stack(0),addtostack) & 0b00001000{halfcarrychk=1}
@@ -6046,7 +6046,7 @@ calculated=0
 halfcarrychk=0
 addtostack=0
 addfromstack=0
-addold=peek(stack(0),addtostack)
+addold=0
 poke stack(0),addtostack,0
 calculated=addold-peek(stack(0),addfromstack)
 //if peek(stack(0),addtostack) & 0b00001000{halfcarrychk=1}
