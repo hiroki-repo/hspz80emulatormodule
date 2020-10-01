@@ -489,7 +489,7 @@ poke memory,wpeek(stackformt(0,threadidforrunthez80),12)-1,peek(stackformt(0,thr
 wpoke stackformt(0,threadidforrunthez80),12,wpeek(stackformt(0,threadidforrunthez80),12)-2
 startaddr=wpeek(memory,(peek(stackformt(0,threadidforrunthez80),15)<<8)+(iomemoryidforz80))
 }
-//poke stackformt(1,threadidforrunthez80),14,0
+poke stackformt(1,threadidforrunthez80),14,0
 poke stackformt(1,threadidforrunthez80),15,0
 }
 return
@@ -501,7 +501,7 @@ poke memory,wpeek(stackformt(0,threadidforrunthez80),12)-2,peek(stackformt(0,thr
 poke memory,wpeek(stackformt(0,threadidforrunthez80),12)-1,peek(stackformt(0,threadidforrunthez80),11)
 wpoke stackformt(0,threadidforrunthez80),12,wpeek(stackformt(0,threadidforrunthez80),12)-2
 wpoke stackformt(0,threadidforrunthez80),10,0x66
-//poke stackformt(1,threadidforrunthez80),14,0
+poke stackformt(1,threadidforrunthez80),14,0
 startaddr=0x66
 }
 return
