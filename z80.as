@@ -3539,7 +3539,7 @@ calculated=peek(stack(1),11)-1
 /*if calculated=-1{poke stack(0),1,(peek(stack(0),1) & 0x01)}
 if calculated=127{poke stack(0),1,(peek(stack(0),1) | 0x04)}
 if (calculated & 0x0F) = 0x0F{poke stack(0),1,(peek(stack(0),1) | 0x10)}*/
-poke stack(0),1,(peek(stack(0),1) & 0x01) | SZHV_inc(peek(calculated,0))
+poke stack(0),1,(peek(stack(0),1) & 0x01) | SZHV_dec(peek(calculated,0))
 poke stack(1),11,calculated
 swbreak
 case 0x26
@@ -6535,7 +6535,7 @@ calculated=peek(stack(1),13)-1
 /*if calculated=-1{poke stack(0),1,(peek(stack(0),1) & 0x01)}
 if calculated=127{poke stack(0),1,(peek(stack(0),1) | 0x04)}
 if (calculated & 0x0F) = 0x0F{poke stack(0),1,(peek(stack(0),1) | 0x10)}*/
-poke stack(0),1,(peek(stack(0),1) & 0x01) | SZHV_inc(peek(calculated,0))
+poke stack(0),1,(peek(stack(0),1) & 0x01) | SZHV_dec(peek(calculated,0))
 poke stack(1),13,calculated
 swbreak
 case 0x26
