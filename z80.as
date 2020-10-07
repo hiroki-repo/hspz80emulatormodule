@@ -6108,11 +6108,11 @@ if (wpeek(stack(0),2)){poke stack(0),1,peek(stack(0),1) | 0x04}
 swbreak
 case 0xA2
 iomemorycalled=2
-iomemorycalledid=peek(stack(0),3)
+iomemorycalledid=peek(stack(0),2)
 iomemorycalledid16=0
 wpoke iomemorycalledid16,0,wpeek(stack(0),2)
 //await 100
-dataofiomemory=peek(iomemory,peek(stack(0),3))
+dataofiomemory=peek(iomemory,peek(stack(0),2))
 poke memory,wpeek(stack(0),6),dataofiomemory
 poke stack(0),3,peek(stack(0),3)-1
 wpoke stack(0),6,wpeek(stack(0),6)+1
@@ -6124,11 +6124,11 @@ if((((peek(stack(0),2) + 1) & 0xff) + dataofiomemory) & 0x100) {poke stack(0),1,
 swbreak
 case 0xA3
 iomemorycalled=1
-iomemorycalledid=peek(stack(0),3)
+iomemorycalledid=peek(stack(0),2)
 iomemorycalledid16=0
 wpoke iomemorycalledid16,0,wpeek(stack(0),2)
 //peek iomemorycalledid16,1,iomemorycalledid
-poke iomemory,peek(stack(0),3),peek(memory,wpeek(stack(0),6))
+poke iomemory,peek(stack(0),2),peek(memory,wpeek(stack(0),6))
 poke stack(0),3,peek(stack(0),3)-1
 wpoke stack(0),6,wpeek(stack(0),6)+1
 swbreak
@@ -6168,11 +6168,11 @@ iomemorycalledid16=0
 peek iomemorycalledid16,0,wpeek(stack(0),0)
 peek iomemorycalledid16,1,iomemorycalledid*/
 iomemorycalled=2
-iomemorycalledid=peek(stack(0),3)
+iomemorycalledid=peek(stack(0),2)
 iomemorycalledid16=0
 wpoke iomemorycalledid16,0,wpeek(stack(0),2)
 //await 100
-dataofiomemory=peek(iomemory,peek(stack(0),3))
+dataofiomemory=peek(iomemory,peek(stack(0),2))
 poke memory,wpeek(stack(0),6),dataofiomemory
 poke stack(0),3,peek(stack(0),3)-1
 wpoke stack(0),6,wpeek(stack(0),6)-1
@@ -6183,9 +6183,9 @@ if((((peek(stack(0),2) + 1) & 0xff) + dataofiomemory) & 0x100) {poke stack(0),1,
 //peek iomemorycalledid16,1,iomemorycalledid
 swbreak
 case 0xAB
-poke iomemory,peek(stack(0),3),peek(memory,wpeek(stack(0),6))
+poke iomemory,peek(stack(0),2),peek(memory,wpeek(stack(0),6))
 iomemorycalled=1
-iomemorycalledid=peek(stack(0),3)
+iomemorycalledid=peek(stack(0),2)
 iomemorycalledid16=0
 wpoke iomemorycalledid16,0,wpeek(stack(0),2)
 //peek iomemorycalledid16,1,iomemorycalledid
@@ -6224,11 +6224,11 @@ wpoke stack(0),10,wpeek(stack(0),10)-2
 swbreak
 case 0xB2
 iomemorycalled=2
-iomemorycalledid=peek(stack(0),3)
+iomemorycalledid=peek(stack(0),2)
 iomemorycalledid16=0
 wpoke iomemorycalledid16,0,wpeek(stack(0),2)
 //await 100
-dataofiomemory=peek(iomemory,peek(stack(0),3))
+dataofiomemory=peek(iomemory,peek(stack(0),2))
 poke memory,wpeek(stack(0),6),dataofiomemory
 poke stack(0),3,peek(stack(0),3)-1
 wpoke stack(0),6,wpeek(stack(0),6)+1
@@ -6242,9 +6242,9 @@ wpoke stack(0),10,wpeek(stack(0),10)-2
 }
 swbreak
 case 0xB3
-poke iomemory,peek(stack(0),3),peek(memory,wpeek(stack(0),6))
+poke iomemory,peek(stack(0),2),peek(memory,wpeek(stack(0),6))
 iomemorycalled=1
-iomemorycalledid=peek(stack(0),3)
+iomemorycalledid=peek(stack(0),2)
 iomemorycalledid16=0
 wpoke iomemorycalledid16,0,wpeek(stack(0),2)
 poke stack(0),3,peek(stack(0),3)-1
@@ -6294,11 +6294,11 @@ iomemorycalledid16=0
 peek iomemorycalledid16,0,wpeek(stack(0),0)
 peek iomemorycalledid16,1,iomemorycalledid*/
 iomemorycalled=2
-iomemorycalledid=peek(stack(0),3)
+iomemorycalledid=peek(stack(0),2)
 iomemorycalledid16=0
 wpoke iomemorycalledid16,0,wpeek(stack(0),2)
 //await 100
-dataofiomemory=peek(iomemory,peek(stack(0),3))
+dataofiomemory=peek(iomemory,peek(stack(0),2))
 poke memory,wpeek(stack(0),6),dataofiomemory
 poke stack(0),3,peek(stack(0),3)-1
 wpoke stack(0),6,wpeek(stack(0),6)-1
@@ -6312,9 +6312,9 @@ wpoke stack(0),10,wpeek(stack(0),10)-2
 }
 swbreak
 case 0xBB
-poke iomemory,peek(stack(0),3),peek(memory,wpeek(stack(0),6))
+poke iomemory,peek(stack(0),2),peek(memory,wpeek(stack(0),6))
 iomemorycalled=1
-iomemorycalledid=peek(stack(0),3)
+iomemorycalledid=peek(stack(0),2)
 iomemorycalledid16=0
 wpoke iomemorycalledid16,0,wpeek(stack(0),2)
 poke stack(0),3,peek(stack(0),3)-1
