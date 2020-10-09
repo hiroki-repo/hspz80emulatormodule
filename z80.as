@@ -362,7 +362,7 @@ jumplabel=*opcode_fc:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
 jumplabel=*opcode_fd:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
 jumplabel=*opcode_fe:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
 jumplabel=*opcode_ff:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-z80rwmemflag=0:z80rwmemaddr=0
+z80rwmemflag=0:z80rwmemaddr=0:z80iochecklabel=*null
 cpuamountmax=256
 dim r2forcalc,cpuamountmax
 sdim stackformt,64,2,cpuamountmax
@@ -373,14 +373,24 @@ cnt2=0
 dim z80halt2endmode,cpuamountmax
 return
 
+#deffunc z80iomappedjump label z80iocheck
+z80iochecklabel=z80iocheck
+return
+
 #deffunc z80writemem int addressforz80rwm,int z80pokedata
 z80rwmemflag=1
 z80rwmemaddr=addressforz80rwm
+_z80rwmemflag@=z80rwmemflag
+_z80rwmemaddr@=z80rwmemaddr
+gosub z80iochecklabel
 poke memoryn,addressforz80rwm,z80pokedata
 return
 #defcfunc z80readmem int addressforz80rwm
 z80rwmemflag=2
 z80rwmemaddr=addressforz80rwm
+_z80rwmemflag@=z80rwmemflag
+_z80rwmemaddr@=z80rwmemaddr
+gosub z80iochecklabel
 return peek(memoryn,addressforz80rwm)
 #deffunc z80writemem16 int addressforz80rwm16,int z80pokedata16
 z80pokedata16i=z80pokedata16
