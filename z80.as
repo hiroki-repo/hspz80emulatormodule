@@ -380,10 +380,10 @@ return
 #deffunc z80writemem int addressforz80rwm,int z80pokedata
 z80rwmemflag=1
 z80rwmemaddr=addressforz80rwm
+poke memoryn,addressforz80rwm,z80pokedata
 _z80rwmemflag@=z80rwmemflag
 _z80rwmemaddr@=z80rwmemaddr
 gosub z80iochecklabel
-poke memoryn,addressforz80rwm,z80pokedata
 return
 #defcfunc z80readmem int addressforz80rwm
 z80rwmemflag=2
