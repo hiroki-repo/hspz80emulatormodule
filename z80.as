@@ -362,7 +362,7 @@ jumplabel=*opcode_fc:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
 jumplabel=*opcode_fd:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
 jumplabel=*opcode_fe:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
 jumplabel=*opcode_ff:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-z80rwmemflag=0:z80rwmemaddr=0:z80iochecklabel=*null
+z80rwmemflag=0:z80rwmemaddr=0:z80iochecklabel=*null:z80iochecklabel2=*null
 cpuamountmax=256
 dim r2forcalc,cpuamountmax
 sdim stackformt,64,2,cpuamountmax
@@ -375,6 +375,12 @@ return
 
 #deffunc z80iomappedjump label z80iocheck
 z80iochecklabel=z80iocheck
+return
+#deffunc z80ioportcalljump label z80iocheck
+z80iochecklabel2=z80iocheck
+return
+#deffunc z80iochkclear
+z80iochecklabel=*null:z80iochecklabel2=*null
 return
 
 #deffunc z80writemem int addressforz80rwm,int z80pokedata
@@ -400,11 +406,16 @@ z80rwmemflag=1
 z80rwmemaddr=addressforz80rwm16
 return
 #defcfunc z80readmem16 int addressforz80rwm16
-z80readmem16readmemforcv=z80readmem((addressforz80rwm16) & 0xFFFF) + (z80readmem((addressforz80rwm16+1) & 0xFFFF) << 8)
+z80readmem16readmemforcv=0
+poke z80readmem16readmemforcv,0,z80readmem((addressforz80rwm16) & 0xFFFF)
+poke z80readmem16readmemforcv,1,z80readmem((addressforz80rwm16+1) & 0xFFFF)
 z80rwmemflag=2
 z80rwmemaddr=addressforz80rwm16
 return z80readmem16readmemforcv
 
+#defcfunc getioportread16bitaddrwithcpuno var startaddr, var memory, int threadidforrunthez80
+memcpy stack(0),stackformt(0,threadidforrunthez80),64,0,0
+memcpy stack(1),stackformt(1,threadidforrunthez80),64,0,0
 #defcfunc getioportread16bitaddr var startaddr, var memory
 dup memoryn,memory
 address=-1
@@ -3416,6 +3427,7 @@ iomemorycalledid=z80readmem(wpeek(stack(0),10))
 iomemorycalledid16=0
 poke iomemorycalledid16,0,z80readmem(wpeek(stack(0),10))
 poke iomemorycalledid16,1,peek(stack(0),0)
+_z80iomemorycalledid@=iomemorycalledid16:_z80iomemorycalled@=iomemorycalled:gosub z80iochecklabel2
 wpoke stack(0),10,wpeek(stack(0),10)+1
 return
 *opcode_d4
@@ -3483,12 +3495,13 @@ wpoke stack(0),10,z80readmem16(wpeek(stack(0),10))
 return
 *opcode_db
 //await 100
-poke stack(0),0,peek(iomemory,z80readmem(wpeek(stack(0),10)))
 iomemorycalled=2
 iomemorycalledid=z80readmem(wpeek(stack(0),10))
 iomemorycalledid16=0
 poke iomemorycalledid16,0,z80readmem(wpeek(stack(0),10))
 poke iomemorycalledid16,1,peek(stack(0),0)
+_z80iomemorycalledid@=iomemorycalledid16:_z80iomemorycalled@=iomemorycalled:gosub z80iochecklabel2
+poke stack(0),0,peek(iomemory,z80readmem(wpeek(stack(0),10)))
 wpoke stack(0),10,wpeek(stack(0),10)+1
 return
 *opcode_dc
@@ -5201,31 +5214,31 @@ swend
 regforbit=z80readmem(wpeek(stack(1),10)+z80readmem(wpeek(stack(0),10)))
 if cbopcodecallid>=0x40 and cbopcodecallid<=127{
 regfromopcodeforbit=(cbopcodecallid-0x40)-(8*cbopcodecallidforbit)
-regforbitforssx=0
+regforbit=0
 switch regfromopcodeforbit
 case 6
 regforbit=-1
 swbreak
 case 0
-regforbitforssx=3
+regforbit=3
 swbreak
 case 1
-regforbitforssx=2
+regforbit=2
 swbreak
 case 2
-regforbitforssx=5
+regforbit=5
 swbreak
 case 3
-regforbitforssx=4
+regforbit=4
 swbreak
 case 4
-regforbitforssx=7
+regforbit=7
 swbreak
 case 5
-regforbitforssx=6
+regforbit=6
 swbreak
 case 7
-regforbitforssx=0
+regforbit=0
 swbreak
 swend
 /*if regforbit=-1{}else{}*/
@@ -5237,39 +5250,39 @@ swend
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	if regforbit=-1{
 	z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
-	poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << cbopcodecallidforbit)) & (0xFF - (0x20 | 0x08))) | ((z80readmem(wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+	poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << cbopcodecallidforbit)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
 	}else{
-	z80eaddr=peek(stack(0),regforbitforssx):if z80eaddr>=128{z80eaddr=z80eaddr-256}
-	poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(regforbit) & (1 << cbopcodecallidforbit)) & (0xFF - (0x20 | 0x08))) | ((z80eaddr >> 8) & (0x20 | 0x08))
+	z80eaddr=peek(stack(0),regforbit):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+	poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(peek(stack(0),regforbit) & (1 << cbopcodecallidforbit)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
 	}
 }
 if cbopcodecallid>=128 and cbopcodecallid<=0xBF{
 regfromopcodeforbit=(cbopcodecallid-0x40)-(8*cbopcodecallidforbit)
-regforbitforssx=0
+regforbit=0
 switch regfromopcodeforbit
 case 6
 regforbit=-1
 swbreak
 case 0
-regforbitforssx=3
+regforbit=3
 swbreak
 case 1
-regforbitforssx=2
+regforbit=2
 swbreak
 case 2
-regforbitforssx=5
+regforbit=5
 swbreak
 case 3
-regforbitforssx=4
+regforbit=4
 swbreak
 case 4
-regforbitforssx=7
+regforbit=7
 swbreak
 case 5
-regforbitforssx=6
+regforbit=6
 swbreak
 case 7
-regforbitforssx=0
+regforbit=0
 swbreak
 swend
 /*if regforbit=-1{}else{}*/
@@ -5284,36 +5297,36 @@ swend
 	z80writemem wpeek(stack(1),10)+z80eaddr,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(cbopcodecallidforbit-8))
 	}else{
 	z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
-	z80writemem wpeek(stack(1),10)+z80eaddr,z80readmem(regforbit) & 0xFF - (1<<(cbopcodecallidforbit-8))
+	z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),regforbit) & 0xFF - (1<<(cbopcodecallidforbit-8))
 	}
 }
 if cbopcodecallid>=0xC0 and cbopcodecallid<=0xFF{
 regfromopcodeforbit=(cbopcodecallid-0x40)-(8*cbopcodecallidforbit)
-regforbitforssx=0
+regforbit=0
 switch regfromopcodeforbit
 case 6
 regforbit=-1
 swbreak
 case 0
-regforbitforssx=3
+regforbit=3
 swbreak
 case 1
-regforbitforssx=2
+regforbit=2
 swbreak
 case 2
-regforbitforssx=5
+regforbit=5
 swbreak
 case 3
-regforbitforssx=4
+regforbit=4
 swbreak
 case 4
-regforbitforssx=7
+regforbit=7
 swbreak
 case 5
-regforbitforssx=6
+regforbit=6
 swbreak
 case 7
-regforbitforssx=0
+regforbit=0
 swbreak
 swend
 /*if regforbit=-1{}else{}*/
@@ -5328,7 +5341,7 @@ swend
 	z80writemem wpeek(stack(1),10)+z80eaddr,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(cbopcodecallidforbit-16))
 	}else{
 	z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
-	z80writemem wpeek(stack(1),10)+z80eaddr,z80readmem(regforbit) | (1<<(cbopcodecallidforbit-16))
+	z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),regforbit) | (1<<(cbopcodecallidforbit-16))
 	}
 }
 wpoke stack(0),10,wpeek(stack(0),10)+2
@@ -5502,6 +5515,7 @@ iomemorycalledid16=wpeek(stack(0),2)
 //await 100
 /*if peek(iomemory,peek(stack(0),2))=0{poke stack(0),1,peek(stack(0),1) ^ (0x40)}
 if peek(iomemory,peek(stack(0),2))>=128{poke stack(0),1,peek(stack(0),1) ^ (0x80)}*/
+_z80iomemorycalledid@=iomemorycalledid16:_z80iomemorycalled@=iomemorycalled:gosub z80iochecklabel2
 poke stack(0),1,(peek(stack(0),1) & 0x01) | SZP(peek(iomemory,peek(stack(0),2)))
 poke stack(0),3,peek(iomemory,peek(stack(0),2))
 swbreak
@@ -5510,6 +5524,7 @@ poke iomemory,peek(stack(0),2),peek(stack(0),3)
 iomemorycalled=1
 iomemorycalledid=peek(stack(0),2)
 iomemorycalledid16=wpeek(stack(0),2)
+_z80iomemorycalledid@=iomemorycalledid16:_z80iomemorycalled@=iomemorycalled:gosub z80iochecklabel2
 swbreak
 case 0x42
 //if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
@@ -5579,6 +5594,7 @@ iomemorycalledid16=wpeek(stack(0),2)
 //await 100
 /*if peek(iomemory,peek(stack(0),2))=0{poke stack(0),1,peek(stack(0),1) ^ (0x40)}
 if peek(iomemory,peek(stack(0),2))>=128{poke stack(0),1,peek(stack(0),1) ^ (0x80)}*/
+_z80iomemorycalledid@=iomemorycalledid16:_z80iomemorycalled@=iomemorycalled:gosub z80iochecklabel2
 poke stack(0),1,(peek(stack(0),1) & 0x01) | SZP(peek(iomemory,peek(stack(0),2)))
 poke stack(0),2,peek(iomemory,peek(stack(0),2))
 swbreak
@@ -5587,6 +5603,7 @@ poke iomemory,peek(stack(0),2),peek(stack(0),2)
 iomemorycalled=1
 iomemorycalledid=peek(stack(0),2)
 iomemorycalledid16=wpeek(stack(0),2)
+_z80iomemorycalledid@=iomemorycalledid16:_z80iomemorycalled@=iomemorycalled:gosub z80iochecklabel2
 swbreak
 case 0x4A
 //if (peek(stack(0),1) ^ (0x02))=0{poke stack(0),1,peek(stack(0),1) | (0x02)}
@@ -5658,6 +5675,7 @@ iomemorycalledid16=wpeek(stack(0),2)
 //await 100
 /*if peek(iomemory,peek(stack(0),2))=0{poke stack(0),1,peek(stack(0),1) ^ (0x40)}
 if peek(iomemory,peek(stack(0),2))>=128{poke stack(0),1,peek(stack(0),1) ^ (0x80)}*/
+_z80iomemorycalledid@=iomemorycalledid16:_z80iomemorycalled@=iomemorycalled:gosub z80iochecklabel2
 poke stack(0),1,(peek(stack(0),1) & 0x01) | SZP(peek(iomemory,peek(stack(0),2)))
 poke stack(0),5,peek(iomemory,peek(stack(0),2))
 swbreak
@@ -5666,6 +5684,7 @@ poke iomemory,peek(stack(0),2),peek(stack(0),5)
 iomemorycalled=1
 iomemorycalledid=peek(stack(0),2)
 iomemorycalledid16=wpeek(stack(0),2)
+_z80iomemorycalledid@=iomemorycalledid16:_z80iomemorycalled@=iomemorycalled:gosub z80iochecklabel2
 swbreak
 case 0x52
 //if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
@@ -5736,6 +5755,7 @@ iomemorycalledid16=wpeek(stack(0),2)
 //await 100
 /*if peek(iomemory,peek(stack(0),2))=0{poke stack(0),1,peek(stack(0),1) ^ (0x40)}
 if peek(iomemory,peek(stack(0),2))>=128{poke stack(0),1,peek(stack(0),1) ^ (0x80)}*/
+_z80iomemorycalledid@=iomemorycalledid16:_z80iomemorycalled@=iomemorycalled:gosub z80iochecklabel2
 poke stack(0),1,(peek(stack(0),1) & 0x01) | SZP(peek(iomemory,peek(stack(0),2)))
 poke stack(0),4,peek(iomemory,peek(stack(0),2))
 swbreak
@@ -5744,6 +5764,7 @@ poke iomemory,peek(stack(0),2),peek(stack(0),4)
 iomemorycalled=1
 iomemorycalledid=peek(stack(0),2)
 iomemorycalledid16=wpeek(stack(0),2)
+_z80iomemorycalledid@=iomemorycalledid16:_z80iomemorycalled@=iomemorycalled:gosub z80iochecklabel2
 swbreak
 case 0x5A
 //if (peek(stack(0),1) ^ (0x02))=0{poke stack(0),1,peek(stack(0),1) | (0x02)}
@@ -5815,6 +5836,7 @@ iomemorycalledid16=wpeek(stack(0),2)
 //await 100
 /*if peek(iomemory,peek(stack(0),2))=0{poke stack(0),1,peek(stack(0),1) ^ (0x40)}
 if peek(iomemory,peek(stack(0),2))>=128{poke stack(0),1,peek(stack(0),1) ^ (0x80)}*/
+_z80iomemorycalledid@=iomemorycalledid16:_z80iomemorycalled@=iomemorycalled:gosub z80iochecklabel2
 poke stack(0),1,(peek(stack(0),1) & 0x01) | SZP(peek(iomemory,peek(stack(0),2)))
 poke stack(0),7,peek(iomemory,peek(stack(0),2))
 swbreak
@@ -5823,6 +5845,7 @@ poke iomemory,peek(stack(0),2),peek(stack(0),7)
 iomemorycalled=1
 iomemorycalledid=peek(stack(0),2)
 iomemorycalledid16=wpeek(stack(0),2)
+_z80iomemorycalledid@=iomemorycalledid16:_z80iomemorycalled@=iomemorycalled:gosub z80iochecklabel2
 swbreak
 case 0x62
 //if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
@@ -5895,6 +5918,7 @@ iomemorycalledid16=wpeek(stack(0),2)
 //await 100
 /*if peek(iomemory,peek(stack(0),2))=0{poke stack(0),1,peek(stack(0),1) ^ (0x40)}
 if peek(iomemory,peek(stack(0),2))>=128{poke stack(0),1,peek(stack(0),1) ^ (0x80)}*/
+_z80iomemorycalledid@=iomemorycalledid16:_z80iomemorycalled@=iomemorycalled:gosub z80iochecklabel2
 poke stack(0),1,(peek(stack(0),1) & 0x01) | SZP(peek(iomemory,peek(stack(0),2)))
 poke stack(0),6,peek(iomemory,peek(stack(0),2))
 swbreak
@@ -5903,6 +5927,7 @@ poke iomemory,peek(stack(0),2),peek(stack(0),6)
 iomemorycalled=1
 iomemorycalledid=peek(stack(0),2)
 iomemorycalledid16=wpeek(stack(0),2)
+_z80iomemorycalledid@=iomemorycalledid16:_z80iomemorycalled@=iomemorycalled:gosub z80iochecklabel2
 swbreak
 case 0x6A
 //if (peek(stack(0),1) ^ (0x02))=0{poke stack(0),1,peek(stack(0),1) | (0x02)}
@@ -5976,6 +6001,7 @@ iomemorycalledid16=wpeek(stack(0),2)
 //await 100
 /*if peek(iomemory,peek(stack(0),2))=0{poke stack(0),1,peek(stack(0),1) ^ (0x40)}
 if peek(iomemory,peek(stack(0),2))>=128{poke stack(0),1,peek(stack(0),1) ^ (0x80)}*/
+_z80iomemorycalledid@=iomemorycalledid16:_z80iomemorycalled@=iomemorycalled:gosub z80iochecklabel2
 poke stack(0),1,(peek(stack(0),1) & 0x01) | SZP(peek(iomemory,peek(stack(0),2)))
 poke stack(0),1,peek(iomemory,peek(stack(0),2))
 swbreak
@@ -5984,6 +6010,7 @@ poke iomemory,peek(stack(0),2),0
 iomemorycalled=1
 iomemorycalledid=peek(stack(0),2)
 iomemorycalledid16=wpeek(stack(0),2)
+_z80iomemorycalledid@=iomemorycalledid16:_z80iomemorycalled@=iomemorycalled:gosub z80iochecklabel2
 swbreak
 case 0x72
 //if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
@@ -6051,6 +6078,7 @@ iomemorycalledid16=wpeek(stack(0),2)
 //await 100
 /*if peek(iomemory,peek(stack(0),2))=0{poke stack(0),1,peek(stack(0),1) ^ (0x40)}
 if peek(iomemory,peek(stack(0),2))>=128{poke stack(0),1,peek(stack(0),1) ^ (0x80)}*/
+_z80iomemorycalledid@=iomemorycalledid16:_z80iomemorycalled@=iomemorycalled:gosub z80iochecklabel2
 poke stack(0),1,(peek(stack(0),1) & 0x01) | SZP(peek(iomemory,peek(stack(0),2)))
 poke stack(0),0,peek(iomemory,peek(stack(0),2))
 swbreak
@@ -6059,6 +6087,7 @@ poke iomemory,peek(stack(0),2),peek(stack(0),0)
 iomemorycalled=1
 iomemorycalledid=peek(stack(0),2)
 iomemorycalledid16=wpeek(stack(0),2)
+_z80iomemorycalledid@=iomemorycalledid16:_z80iomemorycalled@=iomemorycalled:gosub z80iochecklabel2
 swbreak
 case 0x7A
 //if (peek(stack(0),1) ^ (0x02))=0{poke stack(0),1,peek(stack(0),1) | (0x02)}
@@ -6149,6 +6178,7 @@ iomemorycalled=2
 iomemorycalledid=peek(stack(0),2)
 iomemorycalledid16=0
 wpoke iomemorycalledid16,0,wpeek(stack(0),2)
+_z80iomemorycalledid@=iomemorycalledid16:_z80iomemorycalled@=iomemorycalled:gosub z80iochecklabel2
 //await 100
 dataofiomemory=peek(iomemory,peek(stack(0),2))
 z80writemem wpeek(stack(0),6),dataofiomemory
@@ -6167,6 +6197,7 @@ iomemorycalledid16=0
 wpoke iomemorycalledid16,0,wpeek(stack(0),2)
 //peek iomemorycalledid16,1,iomemorycalledid
 poke iomemory,peek(stack(0),2),z80readmem(wpeek(stack(0),6))
+_z80iomemorycalledid@=iomemorycalledid16:_z80iomemorycalled@=iomemorycalled:gosub z80iochecklabel2
 poke stack(0),3,peek(stack(0),3)-1
 wpoke stack(0),6,wpeek(stack(0),6)+1
 swbreak
@@ -6209,6 +6240,7 @@ iomemorycalled=2
 iomemorycalledid=peek(stack(0),2)
 iomemorycalledid16=0
 wpoke iomemorycalledid16,0,wpeek(stack(0),2)
+_z80iomemorycalledid@=iomemorycalledid16:_z80iomemorycalled@=iomemorycalled:gosub z80iochecklabel2
 //await 100
 dataofiomemory=peek(iomemory,peek(stack(0),2))
 z80writemem wpeek(stack(0),6),dataofiomemory
@@ -6226,6 +6258,7 @@ iomemorycalled=1
 iomemorycalledid=peek(stack(0),2)
 iomemorycalledid16=0
 wpoke iomemorycalledid16,0,wpeek(stack(0),2)
+_z80iomemorycalledid@=iomemorycalledid16:_z80iomemorycalled@=iomemorycalled:gosub z80iochecklabel2
 //peek iomemorycalledid16,1,iomemorycalledid
 poke stack(0),3,peek(stack(0),3)-1
 wpoke stack(0),6,wpeek(stack(0),6)-1
@@ -6265,6 +6298,7 @@ iomemorycalled=2
 iomemorycalledid=peek(stack(0),2)
 iomemorycalledid16=0
 wpoke iomemorycalledid16,0,wpeek(stack(0),2)
+_z80iomemorycalledid@=iomemorycalledid16:_z80iomemorycalled@=iomemorycalled:gosub z80iochecklabel2
 //await 100
 dataofiomemory=peek(iomemory,peek(stack(0),2))
 z80writemem wpeek(stack(0),6),dataofiomemory
@@ -6285,6 +6319,7 @@ iomemorycalled=1
 iomemorycalledid=peek(stack(0),2)
 iomemorycalledid16=0
 wpoke iomemorycalledid16,0,wpeek(stack(0),2)
+_z80iomemorycalledid@=iomemorycalledid16:_z80iomemorycalled@=iomemorycalled:gosub z80iochecklabel2
 poke stack(0),3,peek(stack(0),3)-1
 wpoke stack(0),6,wpeek(stack(0),6)+1
 if peek(stack(0),3)=0{}else{
@@ -6335,6 +6370,7 @@ iomemorycalled=2
 iomemorycalledid=peek(stack(0),2)
 iomemorycalledid16=0
 wpoke iomemorycalledid16,0,wpeek(stack(0),2)
+_z80iomemorycalledid@=iomemorycalledid16:_z80iomemorycalled@=iomemorycalled:gosub z80iochecklabel2
 //await 100
 dataofiomemory=peek(iomemory,peek(stack(0),2))
 z80writemem wpeek(stack(0),6),dataofiomemory
@@ -6355,6 +6391,7 @@ iomemorycalled=1
 iomemorycalledid=peek(stack(0),2)
 iomemorycalledid16=0
 wpoke iomemorycalledid16,0,wpeek(stack(0),2)
+_z80iomemorycalledid@=iomemorycalledid16:_z80iomemorycalled@=iomemorycalled:gosub z80iochecklabel2
 poke stack(0),3,peek(stack(0),3)-1
 wpoke stack(0),6,wpeek(stack(0),6)-1
 //peek iomemorycalledid16,1,iomemorycalledid
@@ -8197,31 +8234,31 @@ swend
 regforbit=z80readmem(wpeek(stack(1),12)+z80readmem(wpeek(stack(0),10)))
 if cbopcodecallid>=0x40 and cbopcodecallid<=127{
 regfromopcodeforbit=(cbopcodecallid-0x40)-(8*cbopcodecallidforbit)
-regforbitforssx=0
+regforbit=0
 switch regfromopcodeforbit
 case 6
 regforbit=-1
 swbreak
 case 0
-regforbitforssx=3
+regforbit=3
 swbreak
 case 1
-regforbitforssx=2
+regforbit=2
 swbreak
 case 2
-regforbitforssx=5
+regforbit=5
 swbreak
 case 3
-regforbitforssx=4
+regforbit=4
 swbreak
 case 4
-regforbitforssx=7
+regforbit=7
 swbreak
 case 5
-regforbitforssx=6
+regforbit=6
 swbreak
 case 7
-regforbitforssx=0
+regforbit=0
 swbreak
 swend
 /*if regforbit=-1{}else{}*/
@@ -8233,39 +8270,39 @@ swend
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	if regforbit=-1{
 	z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
-	poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << cbopcodecallidforbit)) & (0xFF - (0x20 | 0x08))) | ((z80readmem(wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+	poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << cbopcodecallidforbit)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
 	}else{
-	z80eaddr=peek(stack(0),regforbitforssx):if z80eaddr>=128{z80eaddr=z80eaddr-256}
-	poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(regforbit) & (1 << cbopcodecallidforbit)) & (0xFF - (0x20 | 0x08))) | ((z80eaddr >> 8) & (0x20 | 0x08))
+	z80eaddr=peek(stack(0),regforbit):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+	poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(peek(stack(0),regforbit) & (1 << cbopcodecallidforbit)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
 	}
 }
 if cbopcodecallid>=128 and cbopcodecallid<=0xBF{
 regfromopcodeforbit=(cbopcodecallid-0x40)-(8*cbopcodecallidforbit)
-regforbitforssx=0
+regforbit=0
 switch regfromopcodeforbit
 case 6
 regforbit=-1
 swbreak
 case 0
-regforbitforssx=3
+regforbit=3
 swbreak
 case 1
-regforbitforssx=2
+regforbit=2
 swbreak
 case 2
-regforbitforssx=5
+regforbit=5
 swbreak
 case 3
-regforbitforssx=4
+regforbit=4
 swbreak
 case 4
-regforbitforssx=7
+regforbit=7
 swbreak
 case 5
-regforbitforssx=6
+regforbit=6
 swbreak
 case 7
-regforbitforssx=0
+regforbit=0
 swbreak
 swend
 /*if regforbit=-1{}else{}*/
@@ -8280,36 +8317,36 @@ swend
 	z80writemem wpeek(stack(1),12)+z80eaddr,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(cbopcodecallidforbit-8))
 	}else{
 	z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
-	z80writemem wpeek(stack(1),12)+z80eaddr,z80readmem(regforbit) & 0xFF - (1<<(cbopcodecallidforbit-8))
+	z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),regforbit) & 0xFF - (1<<(cbopcodecallidforbit-8))
 	}
 }
 if cbopcodecallid>=0xC0 and cbopcodecallid<=0xFF{
 regfromopcodeforbit=(cbopcodecallid-0x40)-(8*cbopcodecallidforbit)
-regforbitforssx=0
+regforbit=0
 switch regfromopcodeforbit
 case 6
 regforbit=-1
 swbreak
 case 0
-regforbitforssx=3
+regforbit=3
 swbreak
 case 1
-regforbitforssx=2
+regforbit=2
 swbreak
 case 2
-regforbitforssx=5
+regforbit=5
 swbreak
 case 3
-regforbitforssx=4
+regforbit=4
 swbreak
 case 4
-regforbitforssx=7
+regforbit=7
 swbreak
 case 5
-regforbitforssx=6
+regforbit=6
 swbreak
 case 7
-regforbitforssx=0
+regforbit=0
 swbreak
 swend
 /*if regforbit=-1{}else{}*/
@@ -8324,7 +8361,7 @@ swend
 	z80writemem wpeek(stack(1),12)+z80eaddr,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(cbopcodecallidforbit-16))
 	}else{
 	z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
-	z80writemem wpeek(stack(1),12)+z80eaddr,z80readmem(regforbit) | (1<<(cbopcodecallidforbit-16))
+	z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),regforbit) | (1<<(cbopcodecallidforbit-16))
 	}
 }
 wpoke stack(0),10,wpeek(stack(0),10)+2
