@@ -5,6 +5,20 @@
 
 #module
 #deffunc gocaine_z80init 
+dim opcodex,256
+dim opcodex_dd,256
+dim opcodex_dd_cb,256
+dim opcodex_fd,256
+dim opcodex_fd_cb,256
+dim opcodex_cb,256
+dim opcodex_ed,256
+opcodex(0) = 1,3,1,1,1,1,2,1,1,1,1,1,1,1,2,1,2,3,1,1,1,1,2,1,2,1,1,1,1,1,2,1,2,3,3,1,1,1,2,1,2,1,3,1,1,1,2,1,2,3,3,1,1,1,2,1,2,1,3,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,3,3,3,1,2,1,1,1,3,0,3,3,2,1,1,1,3,2,3,1,2,1,1,1,3,2,3,0,2,1,1,1,3,1,3,1,2,1,1,1,3,1,3,0,2,1,1,1,3,1,3,1,2,1,1,1,3,1,3,0,2,1
+opcodex_dd(0) = 0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,4,4,2,2,2,3,0,0,2,4,2,2,2,3,0,0,0,0,0,3,3,4,0,0,2,0,0,0,0,0,0,0,0,0,0,2,2,3,0,0,0,0,0,2,2,3,0,0,0,0,0,2,2,3,0,0,0,0,0,2,2,3,0,2,2,2,2,2,2,3,2,2,2,2,2,2,2,3,2,3,3,3,3,3,3,0,3,0,0,0,0,2,2,3,0,0,0,0,0,2,2,3,0,0,0,0,0,2,2,3,0,0,0,0,0,2,2,3,0,0,0,0,0,2,2,3,0,0,0,0,0,2,2,3,0,0,0,0,0,2,2,3,0,0,0,0,0,2,2,3,0,0,0,0,0,2,2,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,2,0,2,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0
+opcodex_dd_cb(0) = 4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,0,0,0,0,0,0,4,0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,4,0,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4
+opcodex_fd(0) = 0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,4,4,2,2,2,3,0,0,2,4,2,2,2,3,0,0,0,0,0,3,3,4,0,0,2,0,0,0,0,0,0,0,0,0,0,2,2,3,0,0,0,0,0,2,2,3,0,0,0,0,0,2,2,3,0,0,0,0,0,2,2,3,0,2,2,2,2,2,2,3,2,2,2,2,2,2,2,3,2,3,3,3,3,3,3,0,3,0,0,0,0,2,2,3,0,0,0,0,0,2,2,3,0,0,0,0,0,2,2,3,0,0,0,0,0,2,2,3,0,0,0,0,0,2,2,3,0,0,0,0,0,2,2,3,0,0,0,0,0,2,2,3,0,0,0,0,0,2,2,3,0,0,0,0,0,2,2,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,2,0,2,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0
+opcodex_fd_cb(0) = 4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4
+opcodex_cb(0) = 2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2
+opcodex_ed(0) = 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,4,2,2,2,2,2,2,2,4,0,2,0,2,2,2,2,4,0,0,2,2,2,2,2,4,0,0,2,2,2,2,2,0,0,0,0,2,2,2,2,0,0,0,0,2,2,2,2,4,0,0,0,0,2,2,2,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,0,0,0,0,2,2,2,2,0,0,0,0,2,2,2,2,0,0,0,0,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 resforrlc=0
 dim SZ,257
 dim SZ_BIT,257
@@ -386,7 +400,7 @@ return
 #deffunc z80writemem int addressforz80rwm,int z80pokedata
 z80rwmemflag=1
 z80rwmemaddr=addressforz80rwm
-poke memoryn,addressforz80rwm,z80pokedata
+poke memoryn,(addressforz80rwm & 0xFFFF),z80pokedata
 _z80rwmemflag@=z80rwmemflag
 _z80rwmemaddr@=z80rwmemaddr
 gosub z80iochecklabel
@@ -397,7 +411,7 @@ z80rwmemaddr=addressforz80rwm
 _z80rwmemflag@=z80rwmemflag
 _z80rwmemaddr@=z80rwmemaddr
 gosub z80iochecklabel
-return peek(memoryn,addressforz80rwm)
+return peek(memoryn,(addressforz80rwm & 0xFFFF))
 #deffunc z80writemem16 int addressforz80rwm16,int z80pokedata16
 z80pokedata16i=z80pokedata16
 z80writemem (addressforz80rwm16) & 0xFFFF,peek(z80pokedata16i,0)
@@ -4391,7 +4405,7 @@ if calculated & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) |
 if calculated & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}*/
 SZHVC_addvar_37id=0
 SZHVC_addvar_37id2=calculated
-gosub *SZHVC2call
+//gosub *SZHVC2call
 poke stack(0),1,(SZ(peek(calculated,0) & 0xff) & (0x80 | 0x40)) | (peek(stack(1),addfromstack) & (0x20 | 0x08)) | ((calculated >> 8) & 0x01) | 0x02 | ((peek(stack(0),addtostack) ^ calculated ^ peek(stack(1),addfromstack)) & 0x10) | ((((peek(stack(1),addfromstack) ^ peek(stack(0),addtostack)) & (peek(stack(0),addtostack) ^ calculated)) >> 5) & 0x04)
 swbreak
 case 0xBD
@@ -4413,7 +4427,7 @@ if calculated & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) |
 if calculated & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}*/
 SZHVC_addvar_37id=0
 SZHVC_addvar_37id2=calculated
-gosub *SZHVC2call
+//gosub *SZHVC2call
 poke stack(0),1,(SZ(peek(calculated,0) & 0xff) & (0x80 | 0x40)) | (peek(stack(1),addfromstack) & (0x20 | 0x08)) | ((calculated >> 8) & 0x01) | 0x02 | ((peek(stack(0),addtostack) ^ calculated ^ peek(stack(1),addfromstack)) & 0x10) | ((((peek(stack(1),addfromstack) ^ peek(stack(0),addtostack)) & (peek(stack(0),addtostack) ^ calculated)) >> 5) & 0x04)
 swbreak
 case 0xBE
@@ -4436,7 +4450,7 @@ if calculated & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) |
 if calculated & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}*/
 SZHVC_addvar_37id=0
 SZHVC_addvar_37id2=calculated
-gosub *SZHVC2call
+//gosub *SZHVC2call
 poke stack(0),1,(SZ(peek(calculated,0) & 0xff) & (0x80 | 0x40)) | (z80readmem(wpeek(stack(1),addfromstack)) & (0x20 | 0x08)) | ((calculated >> 8) & 0x01) | 0x02 | ((peek(stack(0),addtostack) ^ calculated ^ z80readmem(wpeek(stack(1),addfromstack))) & 0x10) | ((((z80readmem(wpeek(stack(1),addfromstack)) ^ peek(stack(0),addtostack)) & (peek(stack(0),addtostack) ^ calculated)) >> 5) & 0x04)
 wpoke stack(0),10,wpeek(stack(0),10)+1
 swbreak
@@ -7411,7 +7425,7 @@ if calculated & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) |
 if calculated & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}*/
 SZHVC_addvar_37id=0
 SZHVC_addvar_37id2=calculated
-gosub *SZHVC2call
+//gosub *SZHVC2call
 poke stack(0),1,(SZ(peek(calculated,0) & 0xff) & (0x80 | 0x40)) | (peek(stack(1),addfromstack) & (0x20 | 0x08)) | ((calculated >> 8) & 0x01) | 0x02 | ((peek(stack(0),addtostack) ^ calculated ^ peek(stack(1),addfromstack)) & 0x10) | ((((peek(stack(1),addfromstack) ^ peek(stack(0),addtostack)) & (peek(stack(0),addtostack) ^ calculated)) >> 5) & 0x04)
 swbreak
 case 0xBD
@@ -7433,7 +7447,7 @@ if calculated & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) |
 if calculated & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}*/
 SZHVC_addvar_37id=0
 SZHVC_addvar_37id2=calculated
-gosub *SZHVC2call
+//gosub *SZHVC2call
 poke stack(0),1,(SZ(peek(calculated,0) & 0xff) & (0x80 | 0x40)) | (peek(stack(1),addfromstack) & (0x20 | 0x08)) | ((calculated >> 8) & 0x01) | 0x02 | ((peek(stack(0),addtostack) ^ calculated ^ peek(stack(1),addfromstack)) & 0x10) | ((((peek(stack(1),addfromstack) ^ peek(stack(0),addtostack)) & (peek(stack(0),addtostack) ^ calculated)) >> 5) & 0x04)
 swbreak
 case 0xBE
@@ -7456,7 +7470,7 @@ if calculated & 0b00010000 and halfcarrychk=1{poke stack(0),1,peek(stack(0),1) |
 if calculated & 0x80{poke stack(0),1,peek(stack(0),1) | (0x80)}*/
 SZHVC_addvar_37id=0
 SZHVC_addvar_37id2=calculated
-gosub *SZHVC2call
+//gosub *SZHVC2call
 poke stack(0),1,(SZ(peek(calculated,0) & 0xff) & (0x80 | 0x40)) | (z80readmem(wpeek(stack(1),addfromstack)) & (0x20 | 0x08)) | ((calculated >> 8) & 0x01) | 0x02 | ((peek(stack(0),addtostack) ^ calculated ^ z80readmem(wpeek(stack(1),addfromstack))) & 0x10) | ((((z80readmem(wpeek(stack(1),addfromstack)) ^ peek(stack(0),addtostack)) & (peek(stack(0),addtostack) ^ calculated)) >> 5) & 0x04)
 wpoke stack(0),10,wpeek(stack(0),10)+1
 swbreak
