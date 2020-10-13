@@ -532,7 +532,7 @@ memcpy stack(1),stackformt(1,threadidforrunthez80),64,0,0
 wpoke stack(0),10,startaddr
 //opcode=z80readmem(wpeek(stack(0),10))
 //lpoke jumplabel,0,opcodeaddr(opcode)
-gosub opcodeaddr(iomemoryidforz80)//opcodeaddr(opcode)//jumplabel
+gosub opcodeaddr(iomemoryidforz80 & 0xff)//opcodeaddr(opcode)//jumplabel
 lpoke startaddr,0,wpeek(stack(0),10)
 memcpy stackformt(0,threadidforrunthez80),stack(0),64,0,0
 memcpy stackformt(1,threadidforrunthez80),stack(1),64,0,0
@@ -548,7 +548,7 @@ if z80runmode(threadidforrunthez80)=2{
 z80writemem wpeek(stackformt(0,threadidforrunthez80),12)-2,peek(stackformt(0,threadidforrunthez80),10)
 z80writemem wpeek(stackformt(0,threadidforrunthez80),12)-1,peek(stackformt(0,threadidforrunthez80),11)
 wpoke stackformt(0,threadidforrunthez80),12,wpeek(stackformt(0,threadidforrunthez80),12)-2
-startaddr=z80readmem16((peek(stackformt(0,threadidforrunthez80),15)<<8)+(iomemoryidforz80))
+startaddr=z80readmem16((peek(stackformt(0,threadidforrunthez80),15)<<8)+(iomemoryidforz80 & 0xff))
 }
 poke stackformt(1,threadidforrunthez80),14,0
 poke stackformt(1,threadidforrunthez80),15,0
@@ -6177,11 +6177,11 @@ swbreak
 case 0xA1
 resforcpiis0=0
 valforcpi=z80readmem(wpeek(stack(0),6))
-resforcpi=wpeek(stack(0),0)-valforcpi
+resforcpi=peek(stack(0),0)-valforcpi
 if resforcpi=0{resforcpiis0=1}
 wpoke stack(0),2,wpeek(stack(0),2)-1
 wpoke stack(0),6,wpeek(stack(0),6)+1
-poke stack(0),1,(peek(stack(0),1) & 0x01) | (SZ(peek(resforcpi,0)) & (0x20 | 0x08)) | ((peek(stack(0),0) ^ valforcpi ^ resforcpi) & 0x10) | 0x02
+poke stack(0),1,(peek(stack(0),1) & 0x01) | (SZ(peek(resforcpi,0)) & (0xFF - (0x20 | 0x08))) | ((peek(stack(0),0) ^ valforcpi ^ resforcpi) & 0x10) | 0x02
 if (peek(stack(0),1) & 0x10) {resforcpi -= 1}
 	if(resforcpi & 0x02) {poke stack(0),1,peek(stack(0),1) | 0x20}
 	if(resforcpi & 0x08) {poke stack(0),1,peek(stack(0),1) | 0x08}
@@ -6230,11 +6230,11 @@ swbreak
 case 0xA9
 resforcpiis0=0
 valforcpi=z80readmem(wpeek(stack(0),6))
-resforcpi=wpeek(stack(0),0)-valforcpi
+resforcpi=peek(stack(0),0)-valforcpi
 if resforcpi=0{resforcpiis0=1}
 wpoke stack(0),2,wpeek(stack(0),2)-1
 wpoke stack(0),6,wpeek(stack(0),6)-1
-poke stack(0),1,(peek(stack(0),1) & 0x01) | (SZ(peek(resforcpi,0)) & (0x20 | 0x08)) | ((peek(stack(0),0) ^ valforcpi ^ resforcpi) & 0x10) | 0x02
+poke stack(0),1,(peek(stack(0),1) & 0x01) | (SZ(peek(resforcpi,0)) & ( 0xFF - (0x20 | 0x08))) | ((peek(stack(0),0) ^ valforcpi ^ resforcpi) & 0x10) | 0x02
 if (peek(stack(0),1) & 0x10) {resforcpi -= 1}
 	if(resforcpi & 0x02) {poke stack(0),1,peek(stack(0),1) | 0x20}
 	if(resforcpi & 0x08) {poke stack(0),1,peek(stack(0),1) | 0x08}
@@ -6295,11 +6295,11 @@ swbreak
 case 0xB1
 resforcpiis0=0
 valforcpi=z80readmem(wpeek(stack(0),6))
-resforcpi=wpeek(stack(0),0)-valforcpi
+resforcpi=peek(stack(0),0)-valforcpi
 if resforcpi=0{resforcpiis0=1}
 wpoke stack(0),2,wpeek(stack(0),2)-1
 wpoke stack(0),6,wpeek(stack(0),6)+1
-poke stack(0),1,(peek(stack(0),1) & 0x01) | (SZ(peek(resforcpi,0)) & (0x20 | 0x08)) | ((peek(stack(0),0) ^ valforcpi ^ resforcpi) & 0x10) | 0x02
+poke stack(0),1,(peek(stack(0),1) & 0x01) | (SZ(peek(resforcpi,0)) & (0xFF - (0x20 | 0x08))) | ((peek(stack(0),0) ^ valforcpi ^ resforcpi) & 0x10) | 0x02
 if (peek(stack(0),1) & 0x10) {resforcpi -= 1}
 	if(resforcpi & 0x02) {poke stack(0),1,peek(stack(0),1) | 0x20}
 	if(resforcpi & 0x08) {poke stack(0),1,peek(stack(0),1) | 0x08}
@@ -6358,11 +6358,11 @@ swbreak
 case 0xB9
 resforcpiis0=0
 valforcpi=z80readmem(wpeek(stack(0),6))
-resforcpi=wpeek(stack(0),0)-valforcpi
+resforcpi=peek(stack(0),0)-valforcpi
 if resforcpi=0{resforcpiis0=1}
 wpoke stack(0),2,wpeek(stack(0),2)-1
 wpoke stack(0),6,wpeek(stack(0),6)-1
-poke stack(0),1,(peek(stack(0),1) & 0x01) | (SZ(peek(resforcpi,0)) & (0x20 | 0x08)) | ((peek(stack(0),0) ^ valforcpi ^ resforcpi) & 0x10) | 0x02
+poke stack(0),1,(peek(stack(0),1) & 0x01) | (SZ(peek(resforcpi,0)) & ( 0xFF - (0x20 | 0x08))) | ((peek(stack(0),0) ^ valforcpi ^ resforcpi) & 0x10) | 0x02
 if (peek(stack(0),1) & 0x10) {resforcpi -= 1}
 	if(resforcpi & 0x02) {poke stack(0),1,peek(stack(0),1) | 0x20}
 	if(resforcpi & 0x08) {poke stack(0),1,peek(stack(0),1) | 0x08}
