@@ -891,8 +891,8 @@ z80writemem wpeek(stack(0),6),z80readmem(wpeek(stack(0),10))
 wpoke stack(0),10,wpeek(stack(0),10)+1
 return
 *opcode_37
-poke stack(0),1,(peek(stack(0),1) & (0x80 | 0x40 | 0x04)) | 0x01 | (peek(stack(0),0) & (0x20 | 0x08));
-//poke stack(0),1,(peek(stack(0),1) & (0x80 | 0x40 | 0x20 | 0x08 | 0x04)) | 0x01 | (peek(stack(0),0) & (0x20 | 0x08))
+//poke stack(0),1,(peek(stack(0),1) & (0x80 | 0x40 | 0x04)) | 0x01 | (peek(stack(0),0) & (0x20 | 0x08));
+poke stack(0),1,(peek(stack(0),1) & (0x80 | 0x40 | 0x20 | 0x08 | 0x04)) | 0x01 | (peek(stack(0),0) & (0x20 | 0x08))
 return
 *opcode_38
 address=z80readmem(wpeek(stack(0),10))
@@ -935,8 +935,8 @@ poke stack(0),0,z80readmem(wpeek(stack(0),10))
 wpoke stack(0),10,wpeek(stack(0),10)+1
 return
 *opcode_3f
-poke stack(0),1,((peek(stack(0),1) & (0x80 | 0x40 | 0x04 | 0x01)) | ((peek(stack(0),1) & 0x01) << 4) | (peek(stack(0),0) & (0x20 | 0x08))) ^ 0x01
-//poke stack(0),1,((peek(stack(0),1) & (0x80 | 0x40 | 0x20 | 0x08 | 0x04 | 0x01)) | ((peek(stack(0),1) & 0x01) << 4) | (peek(stack(0),0) & (0x20 | 0x08))) ^ 0x01
+//poke stack(0),1,((peek(stack(0),1) & (0x80 | 0x40 | 0x04 | 0x01)) | ((peek(stack(0),1) & 0x01) << 4) | (peek(stack(0),0) & (0x20 | 0x08))) ^ 0x01
+poke stack(0),1,((peek(stack(0),1) & (0x80 | 0x40 | 0x20 | 0x08 | 0x04 | 0x01)) | ((peek(stack(0),1) & 0x01) << 4) | (peek(stack(0),0) & (0x20 | 0x08))) ^ 0x01
 return
 *opcode_40
 poke stack(0),3,peek(stack(0),3)
@@ -3293,9 +3293,9 @@ swend
 	if (peek(stack(0),1) & 0x40){poke stack(0),1,peek(stack(0),1)^0x40}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	if regforbit=-1{
-	poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | SZ_BIT((z80readmem(wpeek(stack(0),6)) & (1 << cbopcodecallidforbit)))
+	poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | SZ_BIT((z80readmem(wpeek(stack(0),6)) & (1 << cbopcodecallidforbit))) & (0xFF - (0x20 | 0x08)) | ((wpeek(stack(0),10) >> 8) & (0x20 | 0x08))
 	}else{
-	poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | SZ_BIT((peek(stack(0),regforbit) & (1 << cbopcodecallidforbit)))
+	poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | SZ_BIT((peek(stack(0),regforbit) & (1 << cbopcodecallidforbit))) & (0xFF - (0x20 | 0x08)) | ((peek(stack(0),regforbit)) & (0x20 | 0x08))
 	}
 }
 if cbopcodecallid>=128 and cbopcodecallid<=0xBF{
