@@ -378,6 +378,7 @@ jumplabel=*opcode_fe:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
 jumplabel=*opcode_ff:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
 z80rwmemflag=0:z80rwmemaddr=0:z80iochecklabel=*null:z80iochecklabel2=*null
 cpuamountmax=256
+dim z80scfccfflag,cpuamountmax
 dim r2forcalc,cpuamountmax
 sdim stackformt,64,2,cpuamountmax
 sdim iomemory,cpuamountmax
@@ -567,6 +568,7 @@ startaddr=0x66
 return
 
 #deffunc z80stackreset int threadidforrunthez80
+z80scfccfflag(threadidforrunthez80)=0
 memset stackformt(0,threadidforrunthez80),0,64,0
 memset stackformt(1,threadidforrunthez80),0,64,0
 return
@@ -584,7 +586,7 @@ wpoke stack(0),10,startaddr
 //opcode=z80readmem(wpeek(stack(0),10))
 //lpoke jumplabel,0,opcodeaddr(opcode)
 wpoke stack(0),10,wpeek(stack(0),10)+1
-if z80haltmodesw(threadidforrunthez80)=0{gosub opcodeaddr(z80readmem(startaddr))}//opcodeaddr(opcode)//jumplabel
+if z80haltmodesw(threadidforrunthez80)=0{/*z80opcodeforrunattheaddr=z80readmem(startaddr):if (z80opcodeforrunattheaddr=0x37 or z80opcodeforrunattheaddr=0x3f)=0{z80scfccfflag(threadidforrunthez80)=0}:*/gosub opcodeaddr(z80readmem(startaddr))}//opcodeaddr(opcode)//jumplabel
 lpoke startaddr,0,wpeek(stack(0),10)
 memcpy stackformt(0,threadidforrunthez80),stack(0),64,0,0
 memcpy stackformt(1,threadidforrunthez80),stack(1),64,0,0
@@ -891,8 +893,13 @@ z80writemem wpeek(stack(0),6),z80readmem(wpeek(stack(0),10))
 wpoke stack(0),10,wpeek(stack(0),10)+1
 return
 *opcode_37
-//poke stack(0),1,(peek(stack(0),1) & (0x80 | 0x40 | 0x04)) | 0x01 | (peek(stack(0),0) & (0x20 | 0x08));
+if z80scfccfflag(threadidforrunthez80)=1{
+poke stack(0),1,(peek(stack(0),1) & (0x80 | 0x40 | 0x04)) | 0x01 | (peek(stack(0),0) & (0x20 | 0x08));
+z80scfccfflag(threadidforrunthez80)=0
+}else{
 poke stack(0),1,(peek(stack(0),1) & (0x80 | 0x40 | 0x20 | 0x08 | 0x04)) | 0x01 | (peek(stack(0),0) & (0x20 | 0x08))
+z80scfccfflag(threadidforrunthez80)=2
+}
 return
 *opcode_38
 address=z80readmem(wpeek(stack(0),10))
@@ -935,8 +942,13 @@ poke stack(0),0,z80readmem(wpeek(stack(0),10))
 wpoke stack(0),10,wpeek(stack(0),10)+1
 return
 *opcode_3f
-//poke stack(0),1,((peek(stack(0),1) & (0x80 | 0x40 | 0x04 | 0x01)) | ((peek(stack(0),1) & 0x01) << 4) | (peek(stack(0),0) & (0x20 | 0x08))) ^ 0x01
+if z80scfccfflag(threadidforrunthez80)=2{
+poke stack(0),1,((peek(stack(0),1) & (0x80 | 0x40 | 0x04 | 0x01)) | ((peek(stack(0),1) & 0x01) << 4) | (peek(stack(0),0) & (0x20 | 0x08))) ^ 0x01
+z80scfccfflag(threadidforrunthez80)=0
+}else{
 poke stack(0),1,((peek(stack(0),1) & (0x80 | 0x40 | 0x20 | 0x08 | 0x04 | 0x01)) | ((peek(stack(0),1) & 0x01) << 4) | (peek(stack(0),0) & (0x20 | 0x08))) ^ 0x01
+z80scfccfflag(threadidforrunthez80)=1
+}
 return
 *opcode_40
 poke stack(0),3,peek(stack(0),3)
