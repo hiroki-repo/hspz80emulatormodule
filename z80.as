@@ -3958,7 +3958,7 @@ addfromstack=11
 addold=peek(stack(0),addtostack)
 calculated=peek(stack(0),addtostack)+peek(stack(1),addfromstack)+(peek(stack(0),1) & (0x01))
 //if peek(stack(0),addtostack) & 0b00001000{halfcarrychk=1}
-poke stack(0),1,SZ(peek(calculated,0) & 0xff) | ((calculated >> 8) & 0x01) | ((peek(stack(0),addtostack) ^ calculated ^ z80readmem(wpeek(stack(1),addfromstack))) & 0x10) | (((z80readmem(wpeek(stack(1),addfromstack)) ^ peek(stack(0),addtostack) ^ 0x80) & (z80readmem(wpeek(stack(1),addfromstack)) ^ calculated) & 0x80) >> 5)
+poke stack(0),1,SZ(peek(calculated,0) & 0xff) | ((calculated >> 8) & 0x01) | ((peek(stack(0),addtostack) ^ calculated ^ peek(stack(1),addfromstack)) & 0x10) | (((peek(stack(1),addfromstack) ^ peek(stack(0),addtostack) ^ 0x80) & (peek(stack(1),addfromstack) ^ calculated) & 0x80) >> 5)
 poke stack(0),addtostack,calculated
 /*if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke stack(0),1,peek(stack(0),1) | (0x01)}
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
@@ -3980,7 +3980,7 @@ addfromstack=10
 addold=peek(stack(0),addtostack)
 calculated=peek(stack(0),addtostack)+peek(stack(1),addfromstack)+(peek(stack(0),1) & (0x01))
 //if peek(stack(0),addtostack) & 0b00001000{halfcarrychk=1}
-poke stack(0),1,SZ(peek(calculated,0) & 0xff) | ((calculated >> 8) & 0x01) | ((peek(stack(0),addtostack) ^ calculated ^ z80readmem(wpeek(stack(1),addfromstack))) & 0x10) | (((z80readmem(wpeek(stack(1),addfromstack)) ^ peek(stack(0),addtostack) ^ 0x80) & (z80readmem(wpeek(stack(1),addfromstack)) ^ calculated) & 0x80) >> 5)
+poke stack(0),1,SZ(peek(calculated,0) & 0xff) | ((calculated >> 8) & 0x01) | ((peek(stack(0),addtostack) ^ calculated ^ peek(stack(1),addfromstack)) & 0x10) | (((peek(stack(1),addfromstack) ^ peek(stack(0),addtostack) ^ 0x80) & (peek(stack(1),addfromstack) ^ calculated) & 0x80) >> 5)
 poke stack(0),addtostack,calculated
 /*if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke stack(0),1,peek(stack(0),1) | (0x01)}
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
@@ -6978,7 +6978,7 @@ addfromstack=13
 addold=peek(stack(0),addtostack)
 calculated=peek(stack(0),addtostack)+peek(stack(1),addfromstack)+(peek(stack(0),1) & (0x01))
 //if peek(stack(0),addtostack) & 0b00001000{halfcarrychk=1}
-poke stack(0),1,SZ(peek(calculated,0) & 0xff) | ((calculated >> 8) & 0x01) | ((peek(stack(0),addtostack) ^ calculated ^ z80readmem(wpeek(stack(1),addfromstack))) & 0x10) | (((z80readmem(wpeek(stack(1),addfromstack)) ^ peek(stack(0),addtostack) ^ 0x80) & (z80readmem(wpeek(stack(1),addfromstack)) ^ calculated) & 0x80) >> 5)
+poke stack(0),1,SZ(peek(calculated,0) & 0xff) | ((calculated >> 8) & 0x01) | ((peek(stack(0),addtostack) ^ calculated ^ peek(stack(1),addfromstack)) & 0x10) | (((peek(stack(1),addfromstack) ^ peek(stack(0),addtostack) ^ 0x80) & (peek(stack(1),addfromstack) ^ calculated) & 0x80) >> 5)
 poke stack(0),addtostack,calculated
 /*if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke stack(0),1,peek(stack(0),1) | (0x01)}
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
@@ -7000,7 +7000,7 @@ addfromstack=12
 addold=peek(stack(0),addtostack)
 calculated=peek(stack(0),addtostack)+peek(stack(1),addfromstack)+(peek(stack(0),1) & (0x01))
 //if peek(stack(0),addtostack) & 0b00001000{halfcarrychk=1}
-poke stack(0),1,SZ(peek(calculated,0) & 0xff) | ((calculated >> 8) & 0x01) | ((peek(stack(0),addtostack) ^ calculated ^ z80readmem(wpeek(stack(1),addfromstack))) & 0x10) | (((z80readmem(wpeek(stack(1),addfromstack)) ^ peek(stack(0),addtostack) ^ 0x80) & (z80readmem(wpeek(stack(1),addfromstack)) ^ calculated) & 0x80) >> 5)
+poke stack(0),1,SZ(peek(calculated,0) & 0xff) | ((calculated >> 8) & 0x01) | ((peek(stack(0),addtostack) ^ calculated ^ peek(stack(1),addfromstack)) & 0x10) | (((peek(stack(1),addfromstack) ^ peek(stack(0),addtostack) ^ 0x80) & (peek(stack(1),addfromstack) ^ calculated) & 0x80) >> 5)
 poke stack(0),addtostack,calculated
 /*if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)=calculated{poke stack(0),1,peek(stack(0),1) | (0x01)}
 if peek(stack(0),addtostack)=0 and peek(stack(0),addtostack)!calculated{poke stack(0),1,peek(stack(0),1) | (0x04)}
