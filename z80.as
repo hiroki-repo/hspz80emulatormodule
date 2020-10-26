@@ -6322,9 +6322,12 @@ poke stack(0),1,(peek(stack(0),1) & 0x01) | (SZ(peek(resforcpi,0)) & (0xFF - (0x
 if (peek(stack(0),1) & 0x10) {resforcpi -= 1}
 	if(resforcpi & 0x02) {poke stack(0),1,peek(stack(0),1) | 0x20}
 	if(resforcpi & 0x08) {poke stack(0),1,peek(stack(0),1) | 0x08}
-if wpeek(stack(0),2)=0{}else{if (peek(stack(0),1) & 0x40){}else{
+if wpeek(stack(0),2)!=0 and (peek(stack(0),1) & 0x40)!=0x40{
 wpoke stack(0),10,wpeek(stack(0),10)-2
-}}
+}
+/*if wpeek(stack(0),2)=0{}else{if (peek(stack(0),1) & 0x40){}else{
+wpoke stack(0),10,wpeek(stack(0),10)-2
+}}*/
 swbreak
 case 0xB2
 iomemorycalled=2
@@ -6388,9 +6391,12 @@ poke stack(0),1,(peek(stack(0),1) & 0x01) | (SZ(peek(resforcpi,0)) & ( 0xFF - (0
 if (peek(stack(0),1) & 0x10) {resforcpi -= 1}
 	if(resforcpi & 0x02) {poke stack(0),1,peek(stack(0),1) | 0x20}
 	if(resforcpi & 0x08) {poke stack(0),1,peek(stack(0),1) | 0x08}
-if wpeek(stack(0),2)=0{}else{if (peek(stack(0),1) & 0x40){}else{
+if wpeek(stack(0),2)!=0 and (peek(stack(0),1) & 0x40)!=0x40{
 wpoke stack(0),10,wpeek(stack(0),10)-2
-}}
+}
+/*if wpeek(stack(0),2)=0{}else{if (peek(stack(0),1) & 0x40){}else{
+wpoke stack(0),10,wpeek(stack(0),10)-2
+}}*/
 swbreak
 case 0xBA
 /*//await 100
