@@ -6226,7 +6226,8 @@ iomemorycalledid16=0
 wpoke iomemorycalledid16,0,wpeek(stack(0),2)
 //peek iomemorycalledid16,1,iomemorycalledid
 poke stack(0),3,peek(stack(0),3)-1
-poke iomemory,peek(stack(0),2),z80readmem(wpeek(stack(0),6))
+dataofiomemory=0:dataofiomemory=z80readmem(wpeek(stack(0),6))
+poke iomemory,peek(stack(0),2),dataofiomemory
 _z80iomemorycalledid@=iomemorycalledid16:_z80iomemorycalled@=iomemorycalled:gosub z80iochecklabel2
 wpoke stack(0),6,wpeek(stack(0),6)+1
 poke stack(0),1,SZ(peek(stack(0),3))
@@ -6292,7 +6293,8 @@ poke stack(0),1,peek(stack(0),1)|SZP((tforz80outi & 0x07) ^ peek(stack(0),3)) & 
 swbreak
 case 0xAB
 poke stack(0),3,peek(stack(0),3)-1
-poke iomemory,peek(stack(0),2),z80readmem(wpeek(stack(0),6))
+dataofiomemory=0:dataofiomemory=z80readmem(wpeek(stack(0),6))
+poke iomemory,peek(stack(0),2),dataofiomemory
 iomemorycalled=1
 iomemorycalledid=peek(stack(0),2)
 iomemorycalledid16=0
@@ -6370,7 +6372,8 @@ iomemorycalledid16=0
 wpoke iomemorycalledid16,0,wpeek(stack(0),2)
 //peek iomemorycalledid16,1,iomemorycalledid
 poke stack(0),3,peek(stack(0),3)-1
-poke iomemory,peek(stack(0),2),z80readmem(wpeek(stack(0),6))
+dataofiomemory=0:dataofiomemory=z80readmem(wpeek(stack(0),6))
+poke iomemory,peek(stack(0),2),dataofiomemory
 _z80iomemorycalledid@=iomemorycalledid16:_z80iomemorycalled@=iomemorycalled:gosub z80iochecklabel2
 wpoke stack(0),6,wpeek(stack(0),6)+1
 poke stack(0),1,SZ(peek(stack(0),3))
@@ -6451,7 +6454,8 @@ wpoke stack(0),10,wpeek(stack(0),10)-2
 swbreak
 case 0xBB
 poke stack(0),3,peek(stack(0),3)-1
-poke iomemory,peek(stack(0),2),z80readmem(wpeek(stack(0),6))
+dataofiomemory=0:dataofiomemory=z80readmem(wpeek(stack(0),6))
+poke iomemory,peek(stack(0),2),dataofiomemory
 iomemorycalled=1
 iomemorycalledid=peek(stack(0),2)
 iomemorycalledid16=0
