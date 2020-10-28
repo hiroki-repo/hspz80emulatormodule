@@ -586,8 +586,9 @@ wpoke stack(0),10,startaddr
 //opcode=z80readmem(wpeek(stack(0),10))
 //lpoke jumplabel,0,opcodeaddr(opcode)
 wpoke stack(0),10,wpeek(stack(0),10)+1
-if z80haltmodesw(threadidforrunthez80)=0{/*z80opcodeforrunattheaddr=z80readmem(startaddr):if (z80opcodeforrunattheaddr=0x37 or z80opcodeforrunattheaddr=0x3f)=0{z80scfccfflag(threadidforrunthez80)=0}:*/gosub opcodeaddr(z80readmem(startaddr))}//opcodeaddr(opcode)//jumplabel
+if z80haltmodesw(threadidforrunthez80)=0{gosub opcodeaddr(z80readmem(startaddr))}//opcodeaddr(opcode)//jumplabel
 lpoke startaddr,0,wpeek(stack(0),10)
+poke stack(0),14,peek(stack(0),14)+1
 memcpy stackformt(0,threadidforrunthez80),stack(0),64,0,0
 memcpy stackformt(1,threadidforrunthez80),stack(1),64,0,0
 return peek(stack(0),1)
@@ -3392,6 +3393,7 @@ swend
 	poke stack(0),regforbit,peek(stack(0),regforbit) | (1<<(cbopcodecallidforbit-16))
 	}
 }
+poke stack(0),14,peek(stack(0),14)+1
 return
 *opcode_cc
 if peek(stack(0),1) & (0x40){
@@ -5410,6 +5412,7 @@ lpoke jumplabel,0,lpeek(opcodeaddr(opcode),0)
 gosub jumplabel
 swbreak
 swend
+poke stack(0),14,peek(stack(0),14)+1
 return
 *opcode_de
 //if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
@@ -6491,6 +6494,7 @@ lpoke jumplabel,0,lpeek(opcodeaddr(opcode),0)
 gosub jumplabel
 swbreak
 swend
+poke stack(0),14,peek(stack(0),14)+1
 return
 *opcode_ee
 /*poke stack(0),1,peek(stack(0),1) ^ (0x01)
@@ -8486,6 +8490,7 @@ lpoke jumplabel,0,lpeek(opcodeaddr(opcode),0)
 gosub jumplabel
 swbreak
 swend
+poke stack(0),14,peek(stack(0),14)+1
 return
 *opcode_fe
 //if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
