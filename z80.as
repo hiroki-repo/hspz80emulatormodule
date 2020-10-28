@@ -6211,12 +6211,13 @@ poke stack(0),3,peek(stack(0),3)-1
 z80writemem wpeek(stack(0),6),dataofiomemory
 wpoke stack(0),6,wpeek(stack(0),6)+1
 poke stack(0),1,SZ(peek(stack(0),3))
-tforz80outi=((peek(stack(0),2)+1)&0xFF)+dataofiomemory
+/*tforz80outi=((peek(stack(0),2)+1)&0xFF)+dataofiomemory
 if (dataofiomemory & 0x80){poke stack(0),1,peek(stack(0),1)|0x02}
 	if(tforz80outi & 0x100) {poke stack(0),1,peek(stack(0),1)| (0x10 | 0x01)}
-poke stack(0),1,peek(stack(0),1)|SZP((tforz80outi & 0x07) ^ peek(stack(0),3)) & 0x04
-//if((((peek(stack(0),2) + 1) & 0xff) + dataofiomemory) & 0x100) {poke stack(0),1,peek(stack(0),1)| 0x10 | 0x01}
-//		if((irep_tmp((peek(stack(0),2) & 3),(dataofiomemory & 3)) ^ breg_tmp(peek(stack(0),3)) ^ (peek(stack(0),2) >> 2) ^ (dataofiomemory >> 2)) & 1) {poke stack(0),1,peek(stack(0),1)|0x04}
+poke stack(0),1,peek(stack(0),1)|SZP((tforz80outi & 0x07) ^ peek(stack(0),3)) & 0x04*/
+if (dataofiomemory & 0x80){poke stack(0),1,peek(stack(0),1)|0x02}
+if((((peek(stack(0),2) + 1) & 0xff) + dataofiomemory) & 0x100) {poke stack(0),1,peek(stack(0),1)| 0x10 | 0x01}
+		if((irep_tmp((peek(stack(0),2) & 3),(dataofiomemory & 3)) ^ breg_tmp(peek(stack(0),3)) ^ (peek(stack(0),2) >> 2) ^ (dataofiomemory >> 2)) & 1) {poke stack(0),1,peek(stack(0),1)|0x04}
 //peek iomemorycalledid16,1,iomemorycalledid
 swbreak
 case 0xA3
@@ -6231,10 +6232,13 @@ poke iomemory,peek(stack(0),2),dataofiomemory
 _z80iomemorycalledid@=iomemorycalledid16:_z80iomemorycalled@=iomemorycalled:gosub z80iochecklabel2
 wpoke stack(0),6,wpeek(stack(0),6)+1
 poke stack(0),1,SZ(peek(stack(0),3))
-tforz80outi=peek(stack(0),6)+dataofiomemory
+/*tforz80outi=peek(stack(0),6)+dataofiomemory
 if (dataofiomemory & 0x80){poke stack(0),1,peek(stack(0),1)|0x02}
 	if(tforz80outi & 0x100) {poke stack(0),1,peek(stack(0),1)| (0x10 | 0x01)}
-poke stack(0),1,peek(stack(0),1)|SZP((tforz80outi & 0x07) ^ peek(stack(0),3)) & 0x04
+poke stack(0),1,peek(stack(0),1)|SZP(((tforz80outi & 0x07) & 0xFF) ^ peek(stack(0),3)) & 0x04*/
+if (dataofiomemory & 0x80){poke stack(0),1,peek(stack(0),1)|0x02}
+if((((peek(stack(0),2) + 1) & 0xff) + dataofiomemory) & 0x100) {poke stack(0),1,peek(stack(0),1)| 0x10 | 0x01}
+		if((irep_tmp((peek(stack(0),2) & 3),(dataofiomemory & 3)) ^ breg_tmp(peek(stack(0),3)) ^ (peek(stack(0),2) >> 2) ^ (dataofiomemory >> 2)) & 1) {poke stack(0),1,peek(stack(0),1)|0x04}
 swbreak
 
 case 0xA8
@@ -6282,14 +6286,13 @@ z80writemem wpeek(stack(0),6),dataofiomemory
 poke stack(0),3,peek(stack(0),3)-1
 wpoke stack(0),6,wpeek(stack(0),6)-1
 poke stack(0),1,SZ(peek(stack(0),3))
-tforz80outi=((peek(stack(0),2)-1)&0xFF)+dataofiomemory
+/*tforz80outi=((peek(stack(0),2)-1)&0xFF)+dataofiomemory
 if (dataofiomemory & 0x80){poke stack(0),1,peek(stack(0),1)|0x02}
 	if(tforz80outi & 0x100) {poke stack(0),1,peek(stack(0),1)| (0x10 | 0x01)}
-poke stack(0),1,peek(stack(0),1)|SZP((tforz80outi & 0x07) ^ peek(stack(0),3)) & 0x04
-//if (dataofiomemory & 0x80){poke stack(0),1,peek(stack(0),1)|0x02}
-//if((((peek(stack(0),2) + 1) & 0xff) + dataofiomemory) & 0x100) {poke stack(0),1,peek(stack(0),1)| 0x10 | 0x01}
-//		if((irep_tmp((peek(stack(0),2) & 3),(dataofiomemory & 3)) ^ breg_tmp(peek(stack(0),3)) ^ (peek(stack(0),2) >> 2) ^ (dataofiomemory >> 2)) & 1) {poke stack(0),1,peek(stack(0),1)|0x04}
-//peek iomemorycalledid16,1,iomemorycalledid
+poke stack(0),1,peek(stack(0),1)|SZP((tforz80outi & 0x07) ^ peek(stack(0),3)) & 0x04*/
+if (dataofiomemory & 0x80){poke stack(0),1,peek(stack(0),1)|0x02}
+if((((peek(stack(0),2) - 1) & 0xff) + dataofiomemory) & 0x100) {poke stack(0),1,peek(stack(0),1)| 0x10 | 0x01}
+		if((drep_tmp((peek(stack(0),2) & 3),(dataofiomemory & 3)) ^ breg_tmp(peek(stack(0),3)) ^ (peek(stack(0),2) >> 2) ^ (dataofiomemory >> 2)) & 1) {poke stack(0),1,peek(stack(0),1)|0x04}
 swbreak
 case 0xAB
 poke stack(0),3,peek(stack(0),3)-1
@@ -6303,10 +6306,13 @@ _z80iomemorycalledid@=iomemorycalledid16:_z80iomemorycalled@=iomemorycalled:gosu
 //peek iomemorycalledid16,1,iomemorycalledid
 wpoke stack(0),6,wpeek(stack(0),6)-1
 poke stack(0),1,SZ(peek(stack(0),3))
-tforz80outi=peek(stack(0),6)+dataofiomemory
+/*tforz80outi=peek(stack(0),6)+dataofiomemory
 if (dataofiomemory & 0x80){poke stack(0),1,peek(stack(0),1)|0x02}
 	if(tforz80outi & 0x100) {poke stack(0),1,peek(stack(0),1)| (0x10 | 0x01)}
-poke stack(0),1,peek(stack(0),1)|SZP((tforz80outi & 0x07) ^ peek(stack(0),3)) & 0x04
+poke stack(0),1,peek(stack(0),1)|SZP(((tforz80outi & 0x07) & 0xFF) ^ peek(stack(0),3)) & 0x04*/
+if (dataofiomemory & 0x80){poke stack(0),1,peek(stack(0),1)|0x02}
+if((((peek(stack(0),2) - 1) & 0xff) + dataofiomemory) & 0x100) {poke stack(0),1,peek(stack(0),1)| 0x10 | 0x01}
+		if((drep_tmp((peek(stack(0),2) & 3),(dataofiomemory & 3)) ^ breg_tmp(peek(stack(0),3)) ^ (peek(stack(0),2) >> 2) ^ (dataofiomemory >> 2)) & 1) {poke stack(0),1,peek(stack(0),1)|0x04}
 swbreak
 
 case 0xB0
@@ -6354,12 +6360,13 @@ poke stack(0),3,peek(stack(0),3)-1
 z80writemem wpeek(stack(0),6),dataofiomemory
 wpoke stack(0),6,wpeek(stack(0),6)+1
 poke stack(0),1,SZ(peek(stack(0),3))
-tforz80outi=((peek(stack(0),2)+1)&0xFF)+dataofiomemory
+/*tforz80outi=((peek(stack(0),2)+1)&0xFF)+dataofiomemory
 if (dataofiomemory & 0x80){poke stack(0),1,peek(stack(0),1)|0x02}
 	if(tforz80outi & 0x100) {poke stack(0),1,peek(stack(0),1)| (0x10 | 0x01)}
-poke stack(0),1,peek(stack(0),1)|SZP((tforz80outi & 0x07) ^ peek(stack(0),3)) & 0x04
-//if((((peek(stack(0),2) + 1) & 0xff) + dataofiomemory) & 0x100) {poke stack(0),1,peek(stack(0),1)| 0x10 | 0x01}
-//		if((irep_tmp((peek(stack(0),2) & 3),(dataofiomemory & 3)) ^ breg_tmp(peek(stack(0),3)) ^ (peek(stack(0),2) >> 2) ^ (dataofiomemory >> 2)) & 1) {poke stack(0),1,peek(stack(0),1)|0x04}
+poke stack(0),1,peek(stack(0),1)|SZP((tforz80outi & 0x07) ^ peek(stack(0),3)) & 0x04*/
+if (dataofiomemory & 0x80){poke stack(0),1,peek(stack(0),1)|0x02}
+if((((peek(stack(0),2) + 1) & 0xff) + dataofiomemory) & 0x100) {poke stack(0),1,peek(stack(0),1)| 0x10 | 0x01}
+		if((irep_tmp((peek(stack(0),2) & 3),(dataofiomemory & 3)) ^ breg_tmp(peek(stack(0),3)) ^ (peek(stack(0),2) >> 2) ^ (dataofiomemory >> 2)) & 1) {poke stack(0),1,peek(stack(0),1)|0x04}
 //peek iomemorycalledid16,1,iomemorycalledid
 if peek(stack(0),3)=0{}else{
 wpoke stack(0),10,wpeek(stack(0),10)-2
@@ -6377,10 +6384,13 @@ poke iomemory,peek(stack(0),2),dataofiomemory
 _z80iomemorycalledid@=iomemorycalledid16:_z80iomemorycalled@=iomemorycalled:gosub z80iochecklabel2
 wpoke stack(0),6,wpeek(stack(0),6)+1
 poke stack(0),1,SZ(peek(stack(0),3))
-tforz80outi=peek(stack(0),6)+dataofiomemory
+/*tforz80outi=peek(stack(0),6)+dataofiomemory
 if (dataofiomemory & 0x80){poke stack(0),1,peek(stack(0),1)|0x02}
 	if(tforz80outi & 0x100) {poke stack(0),1,peek(stack(0),1)| (0x10 | 0x01)}
-poke stack(0),1,peek(stack(0),1)|SZP((tforz80outi & 0x07) ^ peek(stack(0),3)) & 0x04
+poke stack(0),1,peek(stack(0),1)|SZP(((tforz80outi & 0x07) & 0xFF) ^ peek(stack(0),3)) & 0x04*/
+if (dataofiomemory & 0x80){poke stack(0),1,peek(stack(0),1)|0x02}
+if((((peek(stack(0),2) + 1) & 0xff) + dataofiomemory) & 0x100) {poke stack(0),1,peek(stack(0),1)| 0x10 | 0x01}
+		if((irep_tmp((peek(stack(0),2) & 3),(dataofiomemory & 3)) ^ breg_tmp(peek(stack(0),3)) ^ (peek(stack(0),2) >> 2) ^ (dataofiomemory >> 2)) & 1) {poke stack(0),1,peek(stack(0),1)|0x04}
 if peek(stack(0),3)=0{}else{
 wpoke stack(0),10,wpeek(stack(0),10)-2
 }
@@ -6440,14 +6450,13 @@ z80writemem wpeek(stack(0),6),dataofiomemory
 poke stack(0),3,peek(stack(0),3)-1
 wpoke stack(0),6,wpeek(stack(0),6)-1
 poke stack(0),1,SZ(peek(stack(0),3))
-tforz80outi=((peek(stack(0),2)-1)&0xFF)+dataofiomemory
+/*tforz80outi=((peek(stack(0),2)-1)&0xFF)+dataofiomemory
 if (dataofiomemory & 0x80){poke stack(0),1,peek(stack(0),1)|0x02}
 	if(tforz80outi & 0x100) {poke stack(0),1,peek(stack(0),1)| (0x10 | 0x01)}
-poke stack(0),1,peek(stack(0),1)|SZP((tforz80outi & 0x07) ^ peek(stack(0),3)) & 0x04
-//if (dataofiomemory & 0x80){poke stack(0),1,peek(stack(0),1)|0x02}
-//if((((peek(stack(0),2) + 1) & 0xff) + dataofiomemory) & 0x100) {poke stack(0),1,peek(stack(0),1)| 0x10 | 0x01}
-//		if((irep_tmp((peek(stack(0),2) & 3),(dataofiomemory & 3)) ^ breg_tmp(peek(stack(0),3)) ^ (peek(stack(0),2) >> 2) ^ (dataofiomemory >> 2)) & 1) {poke stack(0),1,peek(stack(0),1)|0x04}
-//peek iomemorycalledid16,1,iomemorycalledid
+poke stack(0),1,peek(stack(0),1)|SZP((tforz80outi & 0x07) ^ peek(stack(0),3)) & 0x04*/
+if (dataofiomemory & 0x80){poke stack(0),1,peek(stack(0),1)|0x02}
+if((((peek(stack(0),2) - 1) & 0xff) + dataofiomemory) & 0x100) {poke stack(0),1,peek(stack(0),1)| 0x10 | 0x01}
+		if((drep_tmp((peek(stack(0),2) & 3),(dataofiomemory & 3)) ^ breg_tmp(peek(stack(0),3)) ^ (peek(stack(0),2) >> 2) ^ (dataofiomemory >> 2)) & 1) {poke stack(0),1,peek(stack(0),1)|0x04}
 if peek(stack(0),3)=0{}else{
 wpoke stack(0),10,wpeek(stack(0),10)-2
 }
@@ -6464,10 +6473,13 @@ _z80iomemorycalledid@=iomemorycalledid16:_z80iomemorycalled@=iomemorycalled:gosu
 //peek iomemorycalledid16,1,iomemorycalledid
 wpoke stack(0),6,wpeek(stack(0),6)-1
 poke stack(0),1,SZ(peek(stack(0),3))
-tforz80outi=peek(stack(0),6)+dataofiomemory
+/*tforz80outi=peek(stack(0),6)+dataofiomemory
 if (dataofiomemory & 0x80){poke stack(0),1,peek(stack(0),1)|0x02}
 	if(tforz80outi & 0x100) {poke stack(0),1,peek(stack(0),1)| (0x10 | 0x01)}
-poke stack(0),1,peek(stack(0),1)|SZP((tforz80outi & 0x07) ^ peek(stack(0),3)) & 0x04
+poke stack(0),1,peek(stack(0),1)|SZP(((tforz80outi & 0x07) & 0xFF) ^ peek(stack(0),3)) & 0x04*/
+if (dataofiomemory & 0x80){poke stack(0),1,peek(stack(0),1)|0x02}
+if((((peek(stack(0),2) - 1) & 0xff) + dataofiomemory) & 0x100) {poke stack(0),1,peek(stack(0),1)| 0x10 | 0x01}
+		if((drep_tmp((peek(stack(0),2) & 3),(dataofiomemory & 3)) ^ breg_tmp(peek(stack(0),3)) ^ (peek(stack(0),2) >> 2) ^ (dataofiomemory >> 2)) & 1) {poke stack(0),1,peek(stack(0),1)|0x04}
 if peek(stack(0),3)=0{}else{
 wpoke stack(0),10,wpeek(stack(0),10)-2
 }
