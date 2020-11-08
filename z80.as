@@ -4486,6 +4486,7 @@ if (resforrlc & 0x80) {cforrlc=0x01}else{cforrlc=0}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	poke stack(0),1,SZP(resforrlc) | cforrlc
 poke stack(0),changetoforrlc,resforrlc
+z80writemem wpeek(stack(1),10)+z80eaddr,resforrlc
 swbreak
 case 0x01
 changetoforrlc=2
@@ -4499,6 +4500,7 @@ if (resforrlc & 0x80) {cforrlc=0x01}else{cforrlc=0}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	poke stack(0),1,SZP(resforrlc) | cforrlc
 poke stack(0),changetoforrlc,resforrlc
+z80writemem wpeek(stack(1),10)+z80eaddr,resforrlc
 swbreak
 case 0x02
 changetoforrlc=5
@@ -4512,6 +4514,7 @@ if (resforrlc & 0x80) {cforrlc=0x01}else{cforrlc=0}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	poke stack(0),1,SZP(resforrlc) | cforrlc
 poke stack(0),changetoforrlc,resforrlc
+z80writemem wpeek(stack(1),10)+z80eaddr,resforrlc
 swbreak
 case 0x03
 changetoforrlc=4
@@ -4525,6 +4528,7 @@ if (resforrlc & 0x80) {cforrlc=0x01}else{cforrlc=0}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	poke stack(0),1,SZP(resforrlc) | cforrlc
 poke stack(0),changetoforrlc,resforrlc
+z80writemem wpeek(stack(1),10)+z80eaddr,resforrlc
 swbreak
 case 0x04
 changetoforrlc=7
@@ -4538,6 +4542,7 @@ if (resforrlc & 0x80) {cforrlc=0x01}else{cforrlc=0}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	poke stack(0),1,SZP(resforrlc) | cforrlc
 poke stack(0),changetoforrlc,resforrlc
+z80writemem wpeek(stack(1),10)+z80eaddr,resforrlc
 swbreak
 case 0x05
 changetoforrlc=6
@@ -4551,6 +4556,7 @@ if (resforrlc & 0x80) {cforrlc=0x01}else{cforrlc=0}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	poke stack(0),1,SZP(resforrlc) | cforrlc
 poke stack(0),changetoforrlc,resforrlc
+z80writemem wpeek(stack(1),10)+z80eaddr,resforrlc
 swbreak
 case 0x06
 changetoforrlc=2
@@ -4577,6 +4583,7 @@ if (resforrlc & 0x80) {cforrlc=0x01}else{cforrlc=0}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	poke stack(0),1,SZP(resforrlc) | cforrlc
 poke stack(0),changetoforrlc,resforrlc
+z80writemem wpeek(stack(1),10)+z80eaddr,resforrlc
 swbreak
 case 0x08
 changetoforrlc=3
@@ -4590,6 +4597,7 @@ if (resforrlc & 0x01) {cforrlc=0x01}else{cforrlc=0}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	poke stack(0),1,SZP(resforrlc) | cforrlc
 poke stack(0),changetoforrlc,resforrlc
+z80writemem wpeek(stack(1),10)+z80eaddr,resforrlc
 swbreak
 case 0x09
 changetoforrlc=2
@@ -4603,6 +4611,7 @@ if (resforrlc & 0x01) {cforrlc=0x01}else{cforrlc=0}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	poke stack(0),1,SZP(resforrlc) | cforrlc
 poke stack(0),changetoforrlc,resforrlc
+z80writemem wpeek(stack(1),10)+z80eaddr,resforrlc
 swbreak
 case 0x0A
 changetoforrlc=5
@@ -4616,6 +4625,7 @@ if (resforrlc & 0x01) {cforrlc=0x01}else{cforrlc=0}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	poke stack(0),1,SZP(resforrlc) | cforrlc
 poke stack(0),changetoforrlc,resforrlc
+z80writemem wpeek(stack(1),10)+z80eaddr,resforrlc
 swbreak
 case 0x0B
 changetoforrlc=4
@@ -4629,6 +4639,7 @@ if (resforrlc & 0x01) {cforrlc=0x01}else{cforrlc=0}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	poke stack(0),1,SZP(resforrlc) | cforrlc
 poke stack(0),changetoforrlc,resforrlc
+z80writemem wpeek(stack(1),10)+z80eaddr,resforrlc
 swbreak
 case 0x0C
 changetoforrlc=7
@@ -4642,6 +4653,7 @@ if (resforrlc & 0x01) {cforrlc=0x01}else{cforrlc=0}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	poke stack(0),1,SZP(resforrlc) | cforrlc
 poke stack(0),changetoforrlc,resforrlc
+z80writemem wpeek(stack(1),10)+z80eaddr,resforrlc
 swbreak
 case 0x0D
 changetoforrlc=6
@@ -4655,6 +4667,7 @@ if (resforrlc & 0x01) {cforrlc=0x01}else{cforrlc=0}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	poke stack(0),1,SZP(resforrlc) | cforrlc
 poke stack(0),changetoforrlc,resforrlc
+z80writemem wpeek(stack(1),10)+z80eaddr,resforrlc
 swbreak
 case 0x0E
 changetoforrlc=2
@@ -4681,6 +4694,7 @@ if (resforrlc & 0x01) {cforrlc=0x01}else{cforrlc=0}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	poke stack(0),1,SZP(resforrlc) | cforrlc
 poke stack(0),changetoforrlc,resforrlc
+z80writemem wpeek(stack(1),10)+z80eaddr,resforrlc
 swbreak
 case 0x10
 changetoforrlc=3
@@ -4694,6 +4708,7 @@ if (resforrlc & 0x80) {cforrlc=0x01}else{cforrlc=0}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	poke stack(0),1,SZP(resforrlc) | cforrlc
 poke stack(0),changetoforrlc,resforrlc
+z80writemem wpeek(stack(1),10)+z80eaddr,resforrlc
 swbreak
 case 0x11
 changetoforrlc=2
@@ -4707,6 +4722,7 @@ if (resforrlc & 0x80) {cforrlc=0x01}else{cforrlc=0}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	poke stack(0),1,SZP(resforrlc) | cforrlc
 poke stack(0),changetoforrlc,resforrlc
+z80writemem wpeek(stack(1),10)+z80eaddr,resforrlc
 swbreak
 case 0x12
 changetoforrlc=5
@@ -4720,6 +4736,7 @@ if (resforrlc & 0x80) {cforrlc=0x01}else{cforrlc=0}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	poke stack(0),1,SZP(resforrlc) | cforrlc
 poke stack(0),changetoforrlc,resforrlc
+z80writemem wpeek(stack(1),10)+z80eaddr,resforrlc
 swbreak
 case 0x13
 changetoforrlc=4
@@ -4733,6 +4750,7 @@ if (resforrlc & 0x80) {cforrlc=0x01}else{cforrlc=0}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	poke stack(0),1,SZP(resforrlc) | cforrlc
 poke stack(0),changetoforrlc,resforrlc
+z80writemem wpeek(stack(1),10)+z80eaddr,resforrlc
 swbreak
 case 0x14
 changetoforrlc=7
@@ -4746,6 +4764,7 @@ if (resforrlc & 0x80) {cforrlc=0x01}else{cforrlc=0}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	poke stack(0),1,SZP(resforrlc) | cforrlc
 poke stack(0),changetoforrlc,resforrlc
+z80writemem wpeek(stack(1),10)+z80eaddr,resforrlc
 swbreak
 case 0x15
 changetoforrlc=6
@@ -4759,6 +4778,7 @@ if (resforrlc & 0x80) {cforrlc=0x01}else{cforrlc=0}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	poke stack(0),1,SZP(resforrlc) | cforrlc
 poke stack(0),changetoforrlc,resforrlc
+z80writemem wpeek(stack(1),10)+z80eaddr,resforrlc
 swbreak
 case 0x16
 changetoforrlc=2
@@ -4785,6 +4805,7 @@ if (resforrlc & 0x80) {cforrlc=0x01}else{cforrlc=0}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	poke stack(0),1,SZP(resforrlc) | cforrlc
 poke stack(0),changetoforrlc,resforrlc
+z80writemem wpeek(stack(1),10)+z80eaddr,resforrlc
 swbreak
 case 0x18
 changetoforrlc=3
@@ -4798,6 +4819,7 @@ if (resforrlc & 0x01) {cforrlc=0x01}else{cforrlc=0}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	poke stack(0),1,SZP(resforrlc) | cforrlc
 poke stack(0),changetoforrlc,resforrlc
+z80writemem wpeek(stack(1),10)+z80eaddr,resforrlc
 swbreak
 case 0x19
 changetoforrlc=2
@@ -4811,6 +4833,7 @@ if (resforrlc & 0x01) {cforrlc=0x01}else{cforrlc=0}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	poke stack(0),1,SZP(resforrlc) | cforrlc
 poke stack(0),changetoforrlc,resforrlc
+z80writemem wpeek(stack(1),10)+z80eaddr,resforrlc
 swbreak
 case 0x1A
 changetoforrlc=5
@@ -4824,6 +4847,7 @@ if (resforrlc & 0x01) {cforrlc=0x01}else{cforrlc=0}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	poke stack(0),1,SZP(resforrlc) | cforrlc
 poke stack(0),changetoforrlc,resforrlc
+z80writemem wpeek(stack(1),10)+z80eaddr,resforrlc
 swbreak
 case 0x1B
 changetoforrlc=4
@@ -4837,6 +4861,7 @@ if (resforrlc & 0x01) {cforrlc=0x01}else{cforrlc=0}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	poke stack(0),1,SZP(resforrlc) | cforrlc
 poke stack(0),changetoforrlc,resforrlc
+z80writemem wpeek(stack(1),10)+z80eaddr,resforrlc
 swbreak
 case 0x1C
 changetoforrlc=7
@@ -4850,6 +4875,7 @@ if (resforrlc & 0x01) {cforrlc=0x01}else{cforrlc=0}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	poke stack(0),1,SZP(resforrlc) | cforrlc
 poke stack(0),changetoforrlc,resforrlc
+z80writemem wpeek(stack(1),10)+z80eaddr,resforrlc
 swbreak
 case 0x1D
 changetoforrlc=6
@@ -4863,6 +4889,7 @@ if (resforrlc & 0x01) {cforrlc=0x01}else{cforrlc=0}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	poke stack(0),1,SZP(resforrlc) | cforrlc
 poke stack(0),changetoforrlc,resforrlc
+z80writemem wpeek(stack(1),10)+z80eaddr,resforrlc
 swbreak
 case 0x1E
 changetoforrlc=2
@@ -4889,6 +4916,7 @@ if (resforrlc & 0x01) {cforrlc=0x01}else{cforrlc=0}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	poke stack(0),1,SZP(resforrlc) | cforrlc
 poke stack(0),changetoforrlc,resforrlc
+z80writemem wpeek(stack(1),10)+z80eaddr,resforrlc
 swbreak
 case 0x20
 regidforsla=3
@@ -4900,6 +4928,7 @@ if (slares & 0x80) {slac=0x01}else{slac=0}
 slares = (slares << 1) & 0xff
 poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
+z80writemem wpeek(stack(1),10)+z80eaddr,slares
 swbreak
 case 0x21
 regidforsla=2
@@ -4911,6 +4940,7 @@ if (slares & 0x80) {slac=0x01}else{slac=0}
 slares = (slares << 1) & 0xff
 poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
+z80writemem wpeek(stack(1),10)+z80eaddr,slares
 swbreak
 case 0x22
 regidforsla=5
@@ -4922,6 +4952,7 @@ if (slares & 0x80) {slac=0x01}else{slac=0}
 slares = (slares << 1) & 0xff
 poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
+z80writemem wpeek(stack(1),10)+z80eaddr,slares
 swbreak
 case 0x23
 regidforsla=4
@@ -4933,6 +4964,7 @@ if (slares & 0x80) {slac=0x01}else{slac=0}
 slares = (slares << 1) & 0xff
 poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
+z80writemem wpeek(stack(1),10)+z80eaddr,slares
 swbreak
 case 0x24
 regidforsla=7
@@ -4944,6 +4976,7 @@ if (slares & 0x80) {slac=0x01}else{slac=0}
 slares = (slares << 1) & 0xff
 poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
+z80writemem wpeek(stack(1),10)+z80eaddr,slares
 swbreak
 case 0x25
 regidforsla=6
@@ -4955,6 +4988,7 @@ if (slares & 0x80) {slac=0x01}else{slac=0}
 slares = (slares << 1) & 0xff
 poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
+z80writemem wpeek(stack(1),10)+z80eaddr,slares
 swbreak
 case 0x26
 slares=0
@@ -4976,6 +5010,7 @@ if (slares & 0x80) {slac=0x01}else{slac=0}
 slares = (slares << 1) & 0xff
 poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
+z80writemem wpeek(stack(1),10)+z80eaddr,slares
 swbreak
 case 0x28
 regidforsla=3
@@ -4987,6 +5022,7 @@ if (slares & 0x01) {slac=0x01}else{slac=0}
 slares = ((slares >> 1) | (slares & 0x80)) & 0xff
 poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
+z80writemem wpeek(stack(1),10)+z80eaddr,slares
 swbreak
 case 0x29
 regidforsla=2
@@ -4998,6 +5034,7 @@ if (slares & 0x01) {slac=0x01}else{slac=0}
 slares = ((slares >> 1) | (slares & 0x80)) & 0xff
 poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
+z80writemem wpeek(stack(1),10)+z80eaddr,slares
 swbreak
 case 0x2A
 regidforsla=5
@@ -5009,6 +5046,7 @@ if (slares & 0x01) {slac=0x01}else{slac=0}
 slares = ((slares >> 1) | (slares & 0x80)) & 0xff
 poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
+z80writemem wpeek(stack(1),10)+z80eaddr,slares
 swbreak
 case 0x2B
 regidforsla=4
@@ -5020,6 +5058,7 @@ if (slares & 0x01) {slac=0x01}else{slac=0}
 slares = ((slares >> 1) | (slares & 0x80)) & 0xff
 poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
+z80writemem wpeek(stack(1),10)+z80eaddr,slares
 swbreak
 case 0x2C
 regidforsla=7
@@ -5031,6 +5070,7 @@ if (slares & 0x01) {slac=0x01}else{slac=0}
 slares = ((slares >> 1) | (slares & 0x80)) & 0xff
 poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
+z80writemem wpeek(stack(1),10)+z80eaddr,slares
 swbreak
 case 0x2D
 regidforsla=6
@@ -5042,6 +5082,7 @@ if (slares & 0x01) {slac=0x01}else{slac=0}
 slares = ((slares >> 1) | (slares & 0x80)) & 0xff
 poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
+z80writemem wpeek(stack(1),10)+z80eaddr,slares
 swbreak
 case 0x2E
 slares=0
@@ -5063,6 +5104,7 @@ if (slares & 0x01) {slac=0x01}else{slac=0}
 slares = ((slares >> 1) | (slares & 0x80)) & 0xff
 poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
+z80writemem wpeek(stack(1),10)+z80eaddr,slares
 swbreak
 case 0x30
 regidforsla=3
@@ -5074,6 +5116,7 @@ if (slares & 0x80) {slac=0x01}else{slac=0}
 slares = ((slares << 1) | 0x01) & 0xff
 poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
+z80writemem wpeek(stack(1),10)+z80eaddr,slares
 swbreak
 case 0x31
 regidforsla=2
@@ -5085,6 +5128,7 @@ if (slares & 0x80) {slac=0x01}else{slac=0}
 slares = ((slares << 1) | 0x01) & 0xff
 poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
+z80writemem wpeek(stack(1),10)+z80eaddr,slares
 swbreak
 case 0x32
 regidforsla=5
@@ -5096,6 +5140,7 @@ if (slares & 0x80) {slac=0x01}else{slac=0}
 slares = ((slares << 1) | 0x01) & 0xff
 poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
+z80writemem wpeek(stack(1),10)+z80eaddr,slares
 swbreak
 case 0x33
 regidforsla=4
@@ -5107,6 +5152,7 @@ if (slares & 0x80) {slac=0x01}else{slac=0}
 slares = ((slares << 1) | 0x01) & 0xff
 poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
+z80writemem wpeek(stack(1),10)+z80eaddr,slares
 swbreak
 case 0x34
 regidforsla=7
@@ -5118,6 +5164,7 @@ if (slares & 0x80) {slac=0x01}else{slac=0}
 slares = ((slares << 1) | 0x01) & 0xff
 poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
+z80writemem wpeek(stack(1),10)+z80eaddr,slares
 swbreak
 case 0x35
 regidforsla=6
@@ -5129,6 +5176,7 @@ if (slares & 0x80) {slac=0x01}else{slac=0}
 slares = ((slares << 1) | 0x01) & 0xff
 poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
+z80writemem wpeek(stack(1),10)+z80eaddr,slares
 swbreak
 case 0x36
 slares=0
@@ -5150,6 +5198,7 @@ if (slares & 0x80) {slac=0x01}else{slac=0}
 slares = ((slares << 1) | 0x01) & 0xff
 poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
+z80writemem wpeek(stack(1),10)+z80eaddr,slares
 swbreak
 case 0x38
 regidforsla=3
@@ -5161,6 +5210,7 @@ if (slares & 0x01) {slac=0x01}else{slac=0}
 slares = (slares >> 1) & 0xff
 poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
+z80writemem wpeek(stack(1),10)+z80eaddr,slares
 swbreak
 case 0x39
 regidforsla=2
@@ -5172,6 +5222,7 @@ if (slares & 0x01) {slac=0x01}else{slac=0}
 slares = (slares >> 1) & 0xff
 poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
+z80writemem wpeek(stack(1),10)+z80eaddr,slares
 swbreak
 case 0x3A
 regidforsla=5
@@ -5183,6 +5234,7 @@ if (slares & 0x01) {slac=0x01}else{slac=0}
 slares = (slares >> 1) & 0xff
 poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
+z80writemem wpeek(stack(1),10)+z80eaddr,slares
 swbreak
 case 0x3B
 regidforsla=4
@@ -5194,6 +5246,7 @@ if (slares & 0x01) {slac=0x01}else{slac=0}
 slares = (slares >> 1) & 0xff
 poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
+z80writemem wpeek(stack(1),10)+z80eaddr,slares
 swbreak
 case 0x3C
 regidforsla=7
@@ -5205,6 +5258,7 @@ if (slares & 0x01) {slac=0x01}else{slac=0}
 slares = (slares >> 1) & 0xff
 poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
+z80writemem wpeek(stack(1),10)+z80eaddr,slares
 swbreak
 case 0x3D
 regidforsla=6
@@ -5216,6 +5270,7 @@ if (slares & 0x01) {slac=0x01}else{slac=0}
 slares = (slares >> 1) & 0xff
 poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
+z80writemem wpeek(stack(1),10)+z80eaddr,slares
 swbreak
 case 0x3E
 slares=0
@@ -5237,13 +5292,14 @@ if (slares & 0x01) {slac=0x01}else{slac=0}
 slares = (slares >> 1) & 0xff
 poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
+z80writemem wpeek(stack(1),10)+z80eaddr,slares
 swbreak
 swend
 regforbit=z80readmem(wpeek(stack(1),10)+z80readmem(wpeek(stack(0),10)))
 if cbopcodecallid>=0x40 and cbopcodecallid<=127{
 regfromopcodeforbit=(cbopcodecallid-0x40)-(8*cbopcodecallidforbit)
 regforbit=0
-switch regfromopcodeforbit
+/*switch regfromopcodeforbit
 case 6
 regforbit=-1
 swbreak
@@ -5268,7 +5324,7 @@ swbreak
 case 7
 regforbit=0
 swbreak
-swend
+swend*/
 /*if regforbit=-1{}else{}*/
 	//if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	/*if peek(stack(0),regforbit) & (1<<regfromopcodeforbit){
@@ -5276,13 +5332,13 @@ swend
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
 	if (peek(stack(0),1) & 0x40){poke stack(0),1,peek(stack(0),1)^0x40}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
-	if regforbit=-1{
+	//if regforbit=-1{
 	z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
 	poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << cbopcodecallidforbit)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
-	}else{
+	/*}else{
 	z80eaddr=peek(stack(0),regforbit):if z80eaddr>=128{z80eaddr=z80eaddr-256}
 	poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(peek(stack(0),regforbit) & (1 << cbopcodecallidforbit)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
-	}
+	}*/
 }
 if cbopcodecallid>=128 and cbopcodecallid<=0xBF{
 regfromopcodeforbit=(cbopcodecallid-0x40)-(8*cbopcodecallidforbit)
@@ -5325,7 +5381,9 @@ swend
 	z80writemem wpeek(stack(1),10)+z80eaddr,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(cbopcodecallidforbit-8))
 	}else{
 	z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
-	z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),regforbit) & 0xFF - (1<<(cbopcodecallidforbit-8))
+	poke stack(0),regforbit,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(cbopcodecallidforbit-8))
+	z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),regforbit)
+	//z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),regforbit) & 0xFF - (1<<(cbopcodecallidforbit-8))
 	}
 }
 if cbopcodecallid>=0xC0 and cbopcodecallid<=0xFF{
@@ -5369,7 +5427,9 @@ swend
 	z80writemem wpeek(stack(1),10)+z80eaddr,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(cbopcodecallidforbit-16))
 	}else{
 	z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
-	z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),regforbit) | (1<<(cbopcodecallidforbit-16))
+	poke stack(0),regforbit,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(cbopcodecallidforbit-16))
+	z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),regforbit)
+	//z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),regforbit) | (1<<(cbopcodecallidforbit-16))
 	}
 }
 wpoke stack(0),10,wpeek(stack(0),10)+2
@@ -7567,6 +7627,7 @@ if (resforrlc & 0x80) {cforrlc=0x01}else{cforrlc=0}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	poke stack(0),1,SZP(resforrlc) | cforrlc
 poke stack(0),changetoforrlc,resforrlc
+z80writemem wpeek(stack(1),12)+z80eaddr,resforrlc
 swbreak
 case 0x01
 changetoforrlc=2
@@ -7580,6 +7641,7 @@ if (resforrlc & 0x80) {cforrlc=0x01}else{cforrlc=0}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	poke stack(0),1,SZP(resforrlc) | cforrlc
 poke stack(0),changetoforrlc,resforrlc
+z80writemem wpeek(stack(1),12)+z80eaddr,resforrlc
 swbreak
 case 0x02
 changetoforrlc=5
@@ -7593,6 +7655,7 @@ if (resforrlc & 0x80) {cforrlc=0x01}else{cforrlc=0}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	poke stack(0),1,SZP(resforrlc) | cforrlc
 poke stack(0),changetoforrlc,resforrlc
+z80writemem wpeek(stack(1),12)+z80eaddr,resforrlc
 swbreak
 case 0x03
 changetoforrlc=4
@@ -7606,6 +7669,7 @@ if (resforrlc & 0x80) {cforrlc=0x01}else{cforrlc=0}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	poke stack(0),1,SZP(resforrlc) | cforrlc
 poke stack(0),changetoforrlc,resforrlc
+z80writemem wpeek(stack(1),12)+z80eaddr,resforrlc
 swbreak
 case 0x04
 changetoforrlc=7
@@ -7619,6 +7683,7 @@ if (resforrlc & 0x80) {cforrlc=0x01}else{cforrlc=0}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	poke stack(0),1,SZP(resforrlc) | cforrlc
 poke stack(0),changetoforrlc,resforrlc
+z80writemem wpeek(stack(1),12)+z80eaddr,resforrlc
 swbreak
 case 0x05
 changetoforrlc=6
@@ -7632,6 +7697,7 @@ if (resforrlc & 0x80) {cforrlc=0x01}else{cforrlc=0}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	poke stack(0),1,SZP(resforrlc) | cforrlc
 poke stack(0),changetoforrlc,resforrlc
+z80writemem wpeek(stack(1),12)+z80eaddr,resforrlc
 swbreak
 case 0x06
 changetoforrlc=2
@@ -7658,6 +7724,7 @@ if (resforrlc & 0x80) {cforrlc=0x01}else{cforrlc=0}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	poke stack(0),1,SZP(resforrlc) | cforrlc
 poke stack(0),changetoforrlc,resforrlc
+z80writemem wpeek(stack(1),12)+z80eaddr,resforrlc
 swbreak
 case 0x08
 changetoforrlc=3
@@ -7671,6 +7738,7 @@ if (resforrlc & 0x01) {cforrlc=0x01}else{cforrlc=0}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	poke stack(0),1,SZP(resforrlc) | cforrlc
 poke stack(0),changetoforrlc,resforrlc
+z80writemem wpeek(stack(1),12)+z80eaddr,resforrlc
 swbreak
 case 0x09
 changetoforrlc=2
@@ -7684,6 +7752,7 @@ if (resforrlc & 0x01) {cforrlc=0x01}else{cforrlc=0}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	poke stack(0),1,SZP(resforrlc) | cforrlc
 poke stack(0),changetoforrlc,resforrlc
+z80writemem wpeek(stack(1),12)+z80eaddr,resforrlc
 swbreak
 case 0x0A
 changetoforrlc=5
@@ -7697,6 +7766,7 @@ if (resforrlc & 0x01) {cforrlc=0x01}else{cforrlc=0}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	poke stack(0),1,SZP(resforrlc) | cforrlc
 poke stack(0),changetoforrlc,resforrlc
+z80writemem wpeek(stack(1),12)+z80eaddr,resforrlc
 swbreak
 case 0x0B
 changetoforrlc=4
@@ -7710,6 +7780,7 @@ if (resforrlc & 0x01) {cforrlc=0x01}else{cforrlc=0}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	poke stack(0),1,SZP(resforrlc) | cforrlc
 poke stack(0),changetoforrlc,resforrlc
+z80writemem wpeek(stack(1),12)+z80eaddr,resforrlc
 swbreak
 case 0x0C
 changetoforrlc=7
@@ -7723,6 +7794,7 @@ if (resforrlc & 0x01) {cforrlc=0x01}else{cforrlc=0}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	poke stack(0),1,SZP(resforrlc) | cforrlc
 poke stack(0),changetoforrlc,resforrlc
+z80writemem wpeek(stack(1),12)+z80eaddr,resforrlc
 swbreak
 case 0x0D
 changetoforrlc=6
@@ -7736,6 +7808,7 @@ if (resforrlc & 0x01) {cforrlc=0x01}else{cforrlc=0}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	poke stack(0),1,SZP(resforrlc) | cforrlc
 poke stack(0),changetoforrlc,resforrlc
+z80writemem wpeek(stack(1),12)+z80eaddr,resforrlc
 swbreak
 case 0x0E
 changetoforrlc=2
@@ -7762,6 +7835,7 @@ if (resforrlc & 0x01) {cforrlc=0x01}else{cforrlc=0}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	poke stack(0),1,SZP(resforrlc) | cforrlc
 poke stack(0),changetoforrlc,resforrlc
+z80writemem wpeek(stack(1),12)+z80eaddr,resforrlc
 swbreak
 case 0x10
 changetoforrlc=3
@@ -7775,6 +7849,7 @@ if (resforrlc & 0x80) {cforrlc=0x01}else{cforrlc=0}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	poke stack(0),1,SZP(resforrlc) | cforrlc
 poke stack(0),changetoforrlc,resforrlc
+z80writemem wpeek(stack(1),12)+z80eaddr,resforrlc
 swbreak
 case 0x11
 changetoforrlc=2
@@ -7788,6 +7863,7 @@ if (resforrlc & 0x80) {cforrlc=0x01}else{cforrlc=0}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	poke stack(0),1,SZP(resforrlc) | cforrlc
 poke stack(0),changetoforrlc,resforrlc
+z80writemem wpeek(stack(1),12)+z80eaddr,resforrlc
 swbreak
 case 0x12
 changetoforrlc=5
@@ -7801,6 +7877,7 @@ if (resforrlc & 0x80) {cforrlc=0x01}else{cforrlc=0}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	poke stack(0),1,SZP(resforrlc) | cforrlc
 poke stack(0),changetoforrlc,resforrlc
+z80writemem wpeek(stack(1),12)+z80eaddr,resforrlc
 swbreak
 case 0x13
 changetoforrlc=4
@@ -7814,6 +7891,7 @@ if (resforrlc & 0x80) {cforrlc=0x01}else{cforrlc=0}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	poke stack(0),1,SZP(resforrlc) | cforrlc
 poke stack(0),changetoforrlc,resforrlc
+z80writemem wpeek(stack(1),12)+z80eaddr,resforrlc
 swbreak
 case 0x14
 changetoforrlc=7
@@ -7827,6 +7905,7 @@ if (resforrlc & 0x80) {cforrlc=0x01}else{cforrlc=0}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	poke stack(0),1,SZP(resforrlc) | cforrlc
 poke stack(0),changetoforrlc,resforrlc
+z80writemem wpeek(stack(1),12)+z80eaddr,resforrlc
 swbreak
 case 0x15
 changetoforrlc=6
@@ -7840,6 +7919,7 @@ if (resforrlc & 0x80) {cforrlc=0x01}else{cforrlc=0}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	poke stack(0),1,SZP(resforrlc) | cforrlc
 poke stack(0),changetoforrlc,resforrlc
+z80writemem wpeek(stack(1),12)+z80eaddr,resforrlc
 swbreak
 case 0x16
 changetoforrlc=2
@@ -7866,6 +7946,7 @@ if (resforrlc & 0x80) {cforrlc=0x01}else{cforrlc=0}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	poke stack(0),1,SZP(resforrlc) | cforrlc
 poke stack(0),changetoforrlc,resforrlc
+z80writemem wpeek(stack(1),12)+z80eaddr,resforrlc
 swbreak
 case 0x18
 changetoforrlc=3
@@ -7879,6 +7960,7 @@ if (resforrlc & 0x01) {cforrlc=0x01}else{cforrlc=0}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	poke stack(0),1,SZP(resforrlc) | cforrlc
 poke stack(0),changetoforrlc,resforrlc
+z80writemem wpeek(stack(1),12)+z80eaddr,resforrlc
 swbreak
 case 0x19
 changetoforrlc=2
@@ -7892,6 +7974,7 @@ if (resforrlc & 0x01) {cforrlc=0x01}else{cforrlc=0}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	poke stack(0),1,SZP(resforrlc) | cforrlc
 poke stack(0),changetoforrlc,resforrlc
+z80writemem wpeek(stack(1),12)+z80eaddr,resforrlc
 swbreak
 case 0x1A
 changetoforrlc=5
@@ -7905,6 +7988,7 @@ if (resforrlc & 0x01) {cforrlc=0x01}else{cforrlc=0}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	poke stack(0),1,SZP(resforrlc) | cforrlc
 poke stack(0),changetoforrlc,resforrlc
+z80writemem wpeek(stack(1),12)+z80eaddr,resforrlc
 swbreak
 case 0x1B
 changetoforrlc=4
@@ -7918,6 +8002,7 @@ if (resforrlc & 0x01) {cforrlc=0x01}else{cforrlc=0}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	poke stack(0),1,SZP(resforrlc) | cforrlc
 poke stack(0),changetoforrlc,resforrlc
+z80writemem wpeek(stack(1),12)+z80eaddr,resforrlc
 swbreak
 case 0x1C
 changetoforrlc=7
@@ -7931,6 +8016,7 @@ if (resforrlc & 0x01) {cforrlc=0x01}else{cforrlc=0}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	poke stack(0),1,SZP(resforrlc) | cforrlc
 poke stack(0),changetoforrlc,resforrlc
+z80writemem wpeek(stack(1),12)+z80eaddr,resforrlc
 swbreak
 case 0x1D
 changetoforrlc=6
@@ -7944,6 +8030,7 @@ if (resforrlc & 0x01) {cforrlc=0x01}else{cforrlc=0}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	poke stack(0),1,SZP(resforrlc) | cforrlc
 poke stack(0),changetoforrlc,resforrlc
+z80writemem wpeek(stack(1),12)+z80eaddr,resforrlc
 swbreak
 case 0x1E
 changetoforrlc=2
@@ -7970,6 +8057,7 @@ if (resforrlc & 0x01) {cforrlc=0x01}else{cforrlc=0}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	poke stack(0),1,SZP(resforrlc) | cforrlc
 poke stack(0),changetoforrlc,resforrlc
+z80writemem wpeek(stack(1),12)+z80eaddr,resforrlc
 swbreak
 case 0x20
 regidforsla=3
@@ -7981,6 +8069,7 @@ if (slares & 0x80) {slac=0x01}else{slac=0}
 slares = (slares << 1) & 0xff
 poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
+z80writemem wpeek(stack(1),12)+z80eaddr,slares
 swbreak
 case 0x21
 regidforsla=2
@@ -7992,6 +8081,7 @@ if (slares & 0x80) {slac=0x01}else{slac=0}
 slares = (slares << 1) & 0xff
 poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
+z80writemem wpeek(stack(1),12)+z80eaddr,slares
 swbreak
 case 0x22
 regidforsla=5
@@ -8003,6 +8093,7 @@ if (slares & 0x80) {slac=0x01}else{slac=0}
 slares = (slares << 1) & 0xff
 poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
+z80writemem wpeek(stack(1),12)+z80eaddr,slares
 swbreak
 case 0x23
 regidforsla=4
@@ -8014,6 +8105,7 @@ if (slares & 0x80) {slac=0x01}else{slac=0}
 slares = (slares << 1) & 0xff
 poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
+z80writemem wpeek(stack(1),12)+z80eaddr,slares
 swbreak
 case 0x24
 regidforsla=7
@@ -8025,6 +8117,7 @@ if (slares & 0x80) {slac=0x01}else{slac=0}
 slares = (slares << 1) & 0xff
 poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
+z80writemem wpeek(stack(1),12)+z80eaddr,slares
 swbreak
 case 0x25
 regidforsla=6
@@ -8036,6 +8129,7 @@ if (slares & 0x80) {slac=0x01}else{slac=0}
 slares = (slares << 1) & 0xff
 poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
+z80writemem wpeek(stack(1),12)+z80eaddr,slares
 swbreak
 case 0x26
 slares=0
@@ -8057,6 +8151,7 @@ if (slares & 0x80) {slac=0x01}else{slac=0}
 slares = (slares << 1) & 0xff
 poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
+z80writemem wpeek(stack(1),12)+z80eaddr,slares
 swbreak
 case 0x28
 regidforsla=3
@@ -8068,6 +8163,7 @@ if (slares & 0x01) {slac=0x01}else{slac=0}
 slares = ((slares >> 1) | (slares & 0x80)) & 0xff
 poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
+z80writemem wpeek(stack(1),12)+z80eaddr,slares
 swbreak
 case 0x29
 regidforsla=2
@@ -8079,6 +8175,7 @@ if (slares & 0x01) {slac=0x01}else{slac=0}
 slares = ((slares >> 1) | (slares & 0x80)) & 0xff
 poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
+z80writemem wpeek(stack(1),12)+z80eaddr,slares
 swbreak
 case 0x2A
 regidforsla=5
@@ -8090,6 +8187,7 @@ if (slares & 0x01) {slac=0x01}else{slac=0}
 slares = ((slares >> 1) | (slares & 0x80)) & 0xff
 poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
+z80writemem wpeek(stack(1),12)+z80eaddr,slares
 swbreak
 case 0x2B
 regidforsla=4
@@ -8101,6 +8199,7 @@ if (slares & 0x01) {slac=0x01}else{slac=0}
 slares = ((slares >> 1) | (slares & 0x80)) & 0xff
 poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
+z80writemem wpeek(stack(1),12)+z80eaddr,slares
 swbreak
 case 0x2C
 regidforsla=7
@@ -8112,6 +8211,7 @@ if (slares & 0x01) {slac=0x01}else{slac=0}
 slares = ((slares >> 1) | (slares & 0x80)) & 0xff
 poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
+z80writemem wpeek(stack(1),12)+z80eaddr,slares
 swbreak
 case 0x2D
 regidforsla=6
@@ -8123,6 +8223,7 @@ if (slares & 0x01) {slac=0x01}else{slac=0}
 slares = ((slares >> 1) | (slares & 0x80)) & 0xff
 poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
+z80writemem wpeek(stack(1),12)+z80eaddr,slares
 swbreak
 case 0x2E
 slares=0
@@ -8144,6 +8245,7 @@ if (slares & 0x01) {slac=0x01}else{slac=0}
 slares = ((slares >> 1) | (slares & 0x80)) & 0xff
 poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
+z80writemem wpeek(stack(1),12)+z80eaddr,slares
 swbreak
 case 0x30
 regidforsla=3
@@ -8155,6 +8257,7 @@ if (slares & 0x80) {slac=0x01}else{slac=0}
 slares = ((slares << 1) | 0x01) & 0xff
 poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
+z80writemem wpeek(stack(1),12)+z80eaddr,slares
 swbreak
 case 0x31
 regidforsla=2
@@ -8166,6 +8269,7 @@ if (slares & 0x80) {slac=0x01}else{slac=0}
 slares = ((slares << 1) | 0x01) & 0xff
 poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
+z80writemem wpeek(stack(1),12)+z80eaddr,slares
 swbreak
 case 0x32
 regidforsla=5
@@ -8177,6 +8281,7 @@ if (slares & 0x80) {slac=0x01}else{slac=0}
 slares = ((slares << 1) | 0x01) & 0xff
 poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
+z80writemem wpeek(stack(1),12)+z80eaddr,slares
 swbreak
 case 0x33
 regidforsla=4
@@ -8188,6 +8293,7 @@ if (slares & 0x80) {slac=0x01}else{slac=0}
 slares = ((slares << 1) | 0x01) & 0xff
 poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
+z80writemem wpeek(stack(1),12)+z80eaddr,slares
 swbreak
 case 0x34
 regidforsla=7
@@ -8199,6 +8305,7 @@ if (slares & 0x80) {slac=0x01}else{slac=0}
 slares = ((slares << 1) | 0x01) & 0xff
 poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
+z80writemem wpeek(stack(1),12)+z80eaddr,slares
 swbreak
 case 0x35
 regidforsla=6
@@ -8210,6 +8317,7 @@ if (slares & 0x80) {slac=0x01}else{slac=0}
 slares = ((slares << 1) | 0x01) & 0xff
 poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
+z80writemem wpeek(stack(1),12)+z80eaddr,slares
 swbreak
 case 0x36
 slares=0
@@ -8231,6 +8339,7 @@ if (slares & 0x80) {slac=0x01}else{slac=0}
 slares = ((slares << 1) | 0x01) & 0xff
 poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
+z80writemem wpeek(stack(1),12)+z80eaddr,slares
 swbreak
 case 0x38
 regidforsla=3
@@ -8242,6 +8351,7 @@ if (slares & 0x01) {slac=0x01}else{slac=0}
 slares = (slares >> 1) & 0xff
 poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
+z80writemem wpeek(stack(1),12)+z80eaddr,slares
 swbreak
 case 0x39
 regidforsla=2
@@ -8253,6 +8363,7 @@ if (slares & 0x01) {slac=0x01}else{slac=0}
 slares = (slares >> 1) & 0xff
 poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
+z80writemem wpeek(stack(1),12)+z80eaddr,slares
 swbreak
 case 0x3A
 regidforsla=5
@@ -8264,6 +8375,7 @@ if (slares & 0x01) {slac=0x01}else{slac=0}
 slares = (slares >> 1) & 0xff
 poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
+z80writemem wpeek(stack(1),12)+z80eaddr,slares
 swbreak
 case 0x3B
 regidforsla=4
@@ -8275,6 +8387,7 @@ if (slares & 0x01) {slac=0x01}else{slac=0}
 slares = (slares >> 1) & 0xff
 poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
+z80writemem wpeek(stack(1),12)+z80eaddr,slares
 swbreak
 case 0x3C
 regidforsla=7
@@ -8286,6 +8399,7 @@ if (slares & 0x01) {slac=0x01}else{slac=0}
 slares = (slares >> 1) & 0xff
 poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
+z80writemem wpeek(stack(1),12)+z80eaddr,slares
 swbreak
 case 0x3D
 regidforsla=6
@@ -8297,6 +8411,7 @@ if (slares & 0x01) {slac=0x01}else{slac=0}
 slares = (slares >> 1) & 0xff
 poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
+z80writemem wpeek(stack(1),12)+z80eaddr,slares
 swbreak
 case 0x3E
 slares=0
@@ -8318,13 +8433,14 @@ if (slares & 0x01) {slac=0x01}else{slac=0}
 slares = (slares >> 1) & 0xff
 poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
+z80writemem wpeek(stack(1),12)+z80eaddr,slares
 swbreak
 swend
 regforbit=z80readmem(wpeek(stack(1),12)+z80readmem(wpeek(stack(0),10)))
 if cbopcodecallid>=0x40 and cbopcodecallid<=127{
 regfromopcodeforbit=(cbopcodecallid-0x40)-(8*cbopcodecallidforbit)
 regforbit=0
-switch regfromopcodeforbit
+/*switch regfromopcodeforbit
 case 6
 regforbit=-1
 swbreak
@@ -8349,7 +8465,7 @@ swbreak
 case 7
 regforbit=0
 swbreak
-swend
+swend*/
 /*if regforbit=-1{}else{}*/
 	//if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
 	/*if peek(stack(0),regforbit) & (1<<regfromopcodeforbit){
@@ -8357,13 +8473,13 @@ swend
 	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
 	if (peek(stack(0),1) & 0x40){poke stack(0),1,peek(stack(0),1)^0x40}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
-	if regforbit=-1{
+	//if regforbit=-1{
 	z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
 	poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << cbopcodecallidforbit)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
-	}else{
+	/*}else{
 	z80eaddr=peek(stack(0),regforbit):if z80eaddr>=128{z80eaddr=z80eaddr-256}
 	poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(peek(stack(0),regforbit) & (1 << cbopcodecallidforbit)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
-	}
+	}*/
 }
 if cbopcodecallid>=128 and cbopcodecallid<=0xBF{
 regfromopcodeforbit=(cbopcodecallid-0x40)-(8*cbopcodecallidforbit)
@@ -8406,7 +8522,9 @@ swend
 	z80writemem wpeek(stack(1),12)+z80eaddr,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(cbopcodecallidforbit-8))
 	}else{
 	z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
-	z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),regforbit) & 0xFF - (1<<(cbopcodecallidforbit-8))
+	poke stack(0),regforbit,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(cbopcodecallidforbit-8))
+	z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),regforbit)
+	//z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),regforbit) & 0xFF - (1<<(cbopcodecallidforbit-8))
 	}
 }
 if cbopcodecallid>=0xC0 and cbopcodecallid<=0xFF{
@@ -8450,7 +8568,9 @@ swend
 	z80writemem wpeek(stack(1),12)+z80eaddr,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(cbopcodecallidforbit-16))
 	}else{
 	z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
-	z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),regforbit) | (1<<(cbopcodecallidforbit-16))
+	poke stack(0),regforbit,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(cbopcodecallidforbit-16))
+	z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),regforbit)
+	//z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),regforbit) | (1<<(cbopcodecallidforbit-16))
 	}
 }
 wpoke stack(0),10,wpeek(stack(0),10)+2
