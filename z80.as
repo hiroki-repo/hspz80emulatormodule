@@ -3306,9 +3306,9 @@ swend
 	if (peek(stack(0),1) & 0x40){poke stack(0),1,peek(stack(0),1)^0x40}
 	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
 	if regforbit=-1{
-	poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | SZ_BIT((z80readmem(wpeek(stack(0),6)) & (1 << cbopcodecallidforbit))) & (0xFF - (0x20 | 0x08)) | ((wpeek(stack(0),10) >> 8) & (0x20 | 0x08))
+	poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((z80readmem(wpeek(stack(0),6)) & (1 << cbopcodecallidforbit))) & (0xFF - (0x20 | 0x08))) | ((wpeek(stack(0),6) >> 8) & (0x20 | 0x08))
 	}else{
-	poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | SZ_BIT((peek(stack(0),regforbit) & (1 << cbopcodecallidforbit))) & (0xFF - (0x20 | 0x08)) | ((peek(stack(0),regforbit)) & (0x20 | 0x08))
+	poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((peek(stack(0),regforbit) & (1 << cbopcodecallidforbit))) & (0xFF - (0x20 | 0x08))) | ((peek(stack(0),regforbit)) & (0x20 | 0x08))
 	}
 }
 if cbopcodecallid>=128 and cbopcodecallid<=0xBF{
