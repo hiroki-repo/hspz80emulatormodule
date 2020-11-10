@@ -556,7 +556,7 @@ poke stackformt(1,threadidforrunthez80),15,0
 }
 return
 
-#deffunc z80getwhatishalt int threadidforrunthez80
+#defcfunc z80getwhatishalt int threadidforrunthez80
 return z80haltmodesw(threadidforrunthez80)
 
 #deffunc z80nminterrupt var startaddr, var memory,int threadidforrunthez80
