@@ -556,6 +556,9 @@ poke stackformt(1,threadidforrunthez80),15,0
 }
 return
 
+#deffunc z80getwhatishalt int threadidforrunthez80
+return z80haltmodesw(threadidforrunthez80)
+
 #deffunc z80nminterrupt var startaddr, var memory,int threadidforrunthez80
 dup memoryn,memory
 if z80haltmodesw(threadidforrunthez80)=1{z80haltmodesw(threadidforrunthez80)=0:startaddr=startaddr+1}
@@ -569,6 +572,7 @@ return
 
 #deffunc z80stackreset int threadidforrunthez80
 z80scfccfflag(threadidforrunthez80)=0
+z80haltmodesw(threadidforrunthez80)=0
 memset stackformt(0,threadidforrunthez80),0,64,0
 memset stackformt(1,threadidforrunthez80),0,64,0
 return
