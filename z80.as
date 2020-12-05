@@ -6096,7 +6096,7 @@ iomemorycalledid16=wpeek(stack(0),2)
 if peek(iomemory,peek(stack(0),2))>=128{poke stack(0),1,peek(stack(0),1) ^ (0x80)}*/
 _z80iomemorycalledid@=iomemorycalledid16:_z80iomemorycalled@=iomemorycalled:gosub z80iochecklabel2
 poke stack(0),1,(peek(stack(0),1) & 0x01) | SZP(peek(iomemory,peek(stack(0),2)))
-poke stack(0),1,peek(iomemory,peek(stack(0),2))
+//poke stack(0),1,peek(iomemory,peek(stack(0),2))
 swbreak
 case 0x71
 poke iomemory,peek(stack(0),2),0
