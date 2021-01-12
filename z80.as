@@ -427,11 +427,18 @@ poke z80readmem16readmemforcv,1,z80readmem((addressforz80rwm16+1) & 0xFFFF)
 z80rwmemflag=2
 z80rwmemaddr=addressforz80rwm16
 return z80readmem16readmemforcv
-
+#ifdef getioportread16bitaddrwithcpuno
+#defcfunc z80getioportread16bitaddrwithcpuno var startaddr, var memory, int threadidforrunthez80
+#else
 #defcfunc getioportread16bitaddrwithcpuno var startaddr, var memory, int threadidforrunthez80
+#endif
 memcpy stack(0),stackformt(0,threadidforrunthez80),64,0,0
 memcpy stack(1),stackformt(1,threadidforrunthez80),64,0,0
+#ifdef getioportread16bitaddr
+#defcfunc z80getioportread16bitaddr var startaddr, var memory
+#else
 #defcfunc getioportread16bitaddr var startaddr, var memory
+#endif
 dup memoryn,memory
 address=-1
 switch z80readmem(startaddr)
@@ -511,16 +518,32 @@ if iomemorycalled=0{ioportidforreturn=-1}
 if iomemorycalled=2{ioportidforreturn=-1}
 if iomemorycalled=1{iomemorycalled=0}
 return ioportidforreturn
+#ifdef ioportpoke
+#deffunc z80ioportpoke int iomemoryidforz80,int iomemorydataforz80
+#else
 #deffunc ioportpoke int iomemoryidforz80,int iomemorydataforz80
+#endif
 poke iomemory,iomemoryidforz80,iomemorydataforz80
 return
+#ifdef ioportpeek
+#defcfunc z80ioportpeek int iomemoryidforz80
+#else
 #defcfunc ioportpeek int iomemoryidforz80
+#endif
 return peek(iomemory,iomemoryidforz80)
 
+#ifdef stackpoke
+#deffunc z80stackpoke int threadidforrunthez80,int threadidforrunthez80ptrid,int iomemoryidforz80,int iomemorydataforz80
+#else
 #deffunc stackpoke int threadidforrunthez80,int threadidforrunthez80ptrid,int iomemoryidforz80,int iomemorydataforz80
+#endif
 poke stackformt(threadidforrunthez80ptrid,threadidforrunthez80),iomemoryidforz80,iomemorydataforz80
 return
+#ifdef stackpeek
+#defcfunc z80stackpeek int threadidforrunthez80,int threadidforrunthez80ptrid,int iomemoryidforz80
+#else
 #defcfunc stackpeek int threadidforrunthez80,int threadidforrunthez80ptrid,int iomemoryidforz80
+#endif
 return peek(stackformt(threadidforrunthez80ptrid,threadidforrunthez80),iomemoryidforz80)
 
 #deffunc z80interrupt var startaddr, var memory,int threadidforrunthez80,int iomemoryidforz80
@@ -6096,7 +6119,7 @@ iomemorycalledid16=wpeek(stack(0),2)
 if peek(iomemory,peek(stack(0),2))>=128{poke stack(0),1,peek(stack(0),1) ^ (0x80)}*/
 _z80iomemorycalledid@=iomemorycalledid16:_z80iomemorycalled@=iomemorycalled:gosub z80iochecklabel2
 poke stack(0),1,(peek(stack(0),1) & 0x01) | SZP(peek(iomemory,peek(stack(0),2)))
-//poke stack(0),1,peek(iomemory,peek(stack(0),2))
+poke stack(0),1,peek(iomemory,peek(stack(0),2))
 swbreak
 case 0x71
 poke iomemory,peek(stack(0),2),0
