@@ -562,8 +562,8 @@ return peek(stackformt(threadidforrunthez80ptrid,threadidforrunthez80),iomemoryi
 #deffunc z80interrupt var startaddr, int threadidforrunthez80,int iomemoryidforz80
 #else
 #deffunc z80interrupt var startaddr, var memory,int threadidforrunthez80,int iomemoryidforz80
-#endif
 dup memoryn,memory
+#endif
 if z80haltmodesw(threadidforrunthez80)=1{z80haltmodesw(threadidforrunthez80)=0:startaddr=startaddr+1}
 if (peek(stackformt(1,threadidforrunthez80),14) & 0x01){
 if z80runmode(threadidforrunthez80)=0{
@@ -572,7 +572,22 @@ memcpy stack(1),stackformt(1,threadidforrunthez80),64,0,0
 wpoke stack(0),10,startaddr
 //opcode=z80readmem(wpeek(stack(0),10))
 //lpoke jumplabel,0,opcodeaddr(opcode)
+#ifdef __hsp64__
+opcode=(iomemoryidforz80 & 0xff)
+gosub *z80opcodeinterpretsw
+#else
+#ifdef  __hsp3dish__
+opcode=(iomemoryidforz80 & 0xff)
+gosub *z80opcodeinterpretsw
+#else
+#ifdef __useslowz80emulation_flag__
+opcode=(iomemoryidforz80 & 0xff)
+gosub *z80opcodeinterpretsw
+#else
 gosub opcodeaddr(iomemoryidforz80 & 0xff)//opcodeaddr(opcode)//jumplabel
+#endif
+#endif
+#endif
 lpoke startaddr,0,wpeek(stack(0),10)
 memcpy stackformt(0,threadidforrunthez80),stack(0),64,0,0
 memcpy stackformt(1,threadidforrunthez80),stack(1),64,0,0
@@ -602,8 +617,8 @@ return z80haltmodesw(threadidforrunthez80)
 #deffunc z80nminterrupt var startaddr, int threadidforrunthez80
 #else
 #deffunc z80nminterrupt var startaddr, var memory,int threadidforrunthez80
-#endif
 dup memoryn,memory
+#endif
 if z80haltmodesw(threadidforrunthez80)=1{z80haltmodesw(threadidforrunthez80)=0:startaddr=startaddr+1}
 z80writemem wpeek(stackformt(0,threadidforrunthez80),12)-2,peek(stackformt(0,threadidforrunthez80),10)
 z80writemem wpeek(stackformt(0,threadidforrunthez80),12)-1,peek(stackformt(0,threadidforrunthez80),11)
