@@ -397,7 +397,18 @@ return
 #deffunc z80iochkclear
 z80iochecklabel=*null:z80iochecklabel2=*null
 return
-
+#ifdef z80memaccess
+#deffunc z80writemem int addressforz80rwm,int z80pokedata
+addressforz80rwmads=addressforz80rwm
+z80pokedataads=z80pokedata
+z80memaccess addressforz80rwmads,z80pokedataads,0
+return
+#defcfunc z80readmem int addressforz80rwm
+addressforz80rwmads=addressforz80rwm
+z80memaccess addressforz80rwmads,0,1
+stat2z80pokedataads=stat
+return stat2z80pokedataads
+#else
 #deffunc z80writemem int addressforz80rwm,int z80pokedata
 z80rwmemflag=1
 z80rwmemaddr=addressforz80rwm
@@ -413,6 +424,7 @@ _z80rwmemflag@=z80rwmemflag
 _z80rwmemaddr@=z80rwmemaddr
 gosub z80iochecklabel
 return peek(memoryn,(addressforz80rwm & 0xFFFF))
+#endif
 #deffunc z80writemem16 int addressforz80rwm16,int z80pokedata16
 z80pokedata16i=z80pokedata16
 z80writemem (addressforz80rwm16) & 0xFFFF,peek(z80pokedata16i,0)
@@ -546,7 +558,11 @@ return
 #endif
 return peek(stackformt(threadidforrunthez80ptrid,threadidforrunthez80),iomemoryidforz80)
 
+#ifdef z80memaccess
+#deffunc z80interrupt var startaddr, int threadidforrunthez80,int iomemoryidforz80
+#else
 #deffunc z80interrupt var startaddr, var memory,int threadidforrunthez80,int iomemoryidforz80
+#endif
 dup memoryn,memory
 if z80haltmodesw(threadidforrunthez80)=1{z80haltmodesw(threadidforrunthez80)=0:startaddr=startaddr+1}
 if (peek(stackformt(1,threadidforrunthez80),14) & 0x01){
@@ -582,7 +598,11 @@ return
 #defcfunc z80getwhatishalt int threadidforrunthez80
 return z80haltmodesw(threadidforrunthez80)
 
+#ifdef z80memaccess
+#deffunc z80nminterrupt var startaddr, int threadidforrunthez80
+#else
 #deffunc z80nminterrupt var startaddr, var memory,int threadidforrunthez80
+#endif
 dup memoryn,memory
 if z80haltmodesw(threadidforrunthez80)=1{z80haltmodesw(threadidforrunthez80)=0:startaddr=startaddr+1}
 z80writemem wpeek(stackformt(0,threadidforrunthez80),12)-2,peek(stackformt(0,threadidforrunthez80),10)
@@ -604,16 +624,38 @@ return
 z80halt2endmode(threadidforrunthez80)=threadidforrunthez80ptrid
 return
 
+#ifdef z80memaccess
+#defcfunc z80run_c var startaddr, int threadidforrunthez80
+#deffunc z80run var startaddr, int threadidforrunthez80
+#else
 #defcfunc z80run_c var startaddr, var memory, int threadidforrunthez80
 #deffunc z80run var startaddr, var memory, int threadidforrunthez80
 dup memoryn,memory
+#endif
 memcpy stack(0),stackformt(0,threadidforrunthez80),64,0,0
 memcpy stack(1),stackformt(1,threadidforrunthez80),64,0,0
 wpoke stack(0),10,startaddr
 //opcode=z80readmem(wpeek(stack(0),10))
 //lpoke jumplabel,0,opcodeaddr(opcode)
 wpoke stack(0),10,wpeek(stack(0),10)+1
-if z80haltmodesw(threadidforrunthez80)=0{gosub opcodeaddr(z80readmem(startaddr))}//opcodeaddr(opcode)//jumplabel
+if z80haltmodesw(threadidforrunthez80)=0{
+#ifdef __hsp64__
+opcode=z80readmem(startaddr)
+gosub *z80opcodeinterpretsw
+#else
+#ifdef  __hsp3dish__
+opcode=z80readmem(startaddr)
+gosub *z80opcodeinterpretsw
+#else
+#ifdef __useslowz80emulation_flag__
+opcode=z80readmem(startaddr)
+gosub *z80opcodeinterpretsw
+#else
+gosub opcodeaddr(z80readmem(startaddr))
+#endif
+#endif
+#endif
+}//opcodeaddr(opcode)//jumplabel
 lpoke startaddr,0,wpeek(stack(0),10)
 poke stack(0),14,peek(stack(0),14)+1
 memcpy stackformt(0,threadidforrunthez80),stack(0),64,0,0
@@ -3476,6 +3518,11 @@ wpoke stack(0),10,z80readmem16(wpeek(stack(0),10))
 }
 return
 *opcode_d3
+#ifdef z80memaccess
+poke addressforz80rwmads,0,z80readmem(wpeek(stack(0),10))
+poke addressforz80rwmads,1,peek(stack(0),0)
+z80memaccess (addressforz80rwmads & 0xFFFF),peek(stack(0),0),2
+#else
 poke iomemory,z80readmem(wpeek(stack(0),10)),peek(stack(0),0)
 iomemorycalled=1
 iomemorycalledid=z80readmem(wpeek(stack(0),10))
@@ -3483,6 +3530,7 @@ iomemorycalledid16=0
 poke iomemorycalledid16,0,z80readmem(wpeek(stack(0),10))
 poke iomemorycalledid16,1,peek(stack(0),0)
 _z80iomemorycalledid@=iomemorycalledid16:_z80iomemorycalled@=iomemorycalled:gosub z80iochecklabel2
+#endif
 wpoke stack(0),10,wpeek(stack(0),10)+1
 return
 *opcode_d4
@@ -3549,6 +3597,12 @@ wpoke stack(0),10,z80readmem16(wpeek(stack(0),10))
 }else{wpoke stack(0),10,wpeek(stack(0),10)+2}
 return
 *opcode_db
+#ifdef z80memaccess
+poke addressforz80rwmads,0,z80readmem(wpeek(stack(0),10))
+poke addressforz80rwmads,1,peek(stack(0),0)
+z80memaccess (addressforz80rwmads & 0xFFFF),0,3
+poke stack(0),0,stat
+#else
 //await 100
 iomemorycalled=2
 iomemorycalledid=z80readmem(wpeek(stack(0),10))
@@ -3557,6 +3611,7 @@ poke iomemorycalledid16,0,z80readmem(wpeek(stack(0),10))
 poke iomemorycalledid16,1,peek(stack(0),0)
 _z80iomemorycalledid@=iomemorycalledid16:_z80iomemorycalled@=iomemorycalled:gosub z80iochecklabel2
 poke stack(0),0,peek(iomemory,z80readmem(wpeek(stack(0),10)))
+#endif
 wpoke stack(0),10,wpeek(stack(0),10)+1
 return
 *opcode_dc
@@ -5493,10 +5548,25 @@ swbreak
 default
 opcodeidforddopcodeaddcall=((opcodeidforddopcode-0x40)/8)
 opcodeidforddopcodeaddcall2=((opcodeidforddopcode-0x40)-(opcodeidforddopcodeaddcall*8))-4
+#ifdef __hsp64__
+opcode=z80readmem(startaddr)
+gosub *z80opcodeinterpretsw
+#else
+#ifdef  __hsp3dish__
+opcode=z80readmem(startaddr)
+gosub *z80opcodeinterpretsw
+#else
+#ifdef __useslowz80emulation_flag__
+opcode=z80readmem(startaddr)
+gosub *z80opcodeinterpretsw
+#else
 opcode=z80readmem(wpeek(stack(0),10)-1)
 lpoke jumplabel,0,lpeek(opcodeaddr(opcode),0)
 //wpoke stack(0),10,wpeek(stack(0),10)+1
 gosub jumplabel
+#endif
+#endif
+#endif
 swbreak
 swend
 poke stack(0),14,peek(stack(0),14)+1
@@ -5625,6 +5695,13 @@ opcodeforsubcall=z80readmem(wpeek(stack(0),10))
 wpoke stack(0),10,wpeek(stack(0),10)+1
 switch opcodeforsubcall
 case 0x40
+#ifdef z80memaccess
+addressforz80rwmads=wpeek(stack(0),2)
+z80memaccess (addressforz80rwmads & 0xFFFF),0,3
+z80stature=stat
+poke stack(0),3,z80stature
+poke stack(0),1,(peek(stack(0),1) & 0x01) | SZP(z80stature)
+#else
 iomemorycalled=2
 iomemorycalledid=peek(stack(0),2)
 iomemorycalledid16=wpeek(stack(0),2)
@@ -5634,13 +5711,19 @@ if peek(iomemory,peek(stack(0),2))>=128{poke stack(0),1,peek(stack(0),1) ^ (0x80
 _z80iomemorycalledid@=iomemorycalledid16:_z80iomemorycalled@=iomemorycalled:gosub z80iochecklabel2
 poke stack(0),1,(peek(stack(0),1) & 0x01) | SZP(peek(iomemory,peek(stack(0),2)))
 poke stack(0),3,peek(iomemory,peek(stack(0),2))
+#endif
 swbreak
 case 0x41
+#ifdef z80memaccess
+addressforz80rwmads=wpeek(stack(0),2)
+z80memaccess (addressforz80rwmads & 0xFFFF),peek(stack(0),3),2
+#else
 poke iomemory,peek(stack(0),2),peek(stack(0),3)
 iomemorycalled=1
 iomemorycalledid=peek(stack(0),2)
 iomemorycalledid16=wpeek(stack(0),2)
 _z80iomemorycalledid@=iomemorycalledid16:_z80iomemorycalled@=iomemorycalled:gosub z80iochecklabel2
+#endif
 swbreak
 case 0x42
 //if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
@@ -5704,6 +5787,13 @@ case 0x47
 poke stack(0),15,peek(stack(0),0)
 swbreak
 case 0x48
+#ifdef z80memaccess
+addressforz80rwmads=wpeek(stack(0),2)
+z80memaccess (addressforz80rwmads & 0xFFFF),0,3
+z80stature=stat
+poke stack(0),2,z80stature
+poke stack(0),1,(peek(stack(0),1) & 0x01) | SZP(z80stature)
+#else
 iomemorycalled=2
 iomemorycalledid=peek(stack(0),2)
 iomemorycalledid16=wpeek(stack(0),2)
@@ -5713,13 +5803,19 @@ if peek(iomemory,peek(stack(0),2))>=128{poke stack(0),1,peek(stack(0),1) ^ (0x80
 _z80iomemorycalledid@=iomemorycalledid16:_z80iomemorycalled@=iomemorycalled:gosub z80iochecklabel2
 poke stack(0),1,(peek(stack(0),1) & 0x01) | SZP(peek(iomemory,peek(stack(0),2)))
 poke stack(0),2,peek(iomemory,peek(stack(0),2))
+#endif
 swbreak
 case 0x49
+#ifdef z80memaccess
+addressforz80rwmads=wpeek(stack(0),2)
+z80memaccess (addressforz80rwmads & 0xFFFF),peek(stack(0),2),2
+#else
 poke iomemory,peek(stack(0),2),peek(stack(0),2)
 iomemorycalled=1
 iomemorycalledid=peek(stack(0),2)
 iomemorycalledid16=wpeek(stack(0),2)
 _z80iomemorycalledid@=iomemorycalledid16:_z80iomemorycalled@=iomemorycalled:gosub z80iochecklabel2
+#endif
 swbreak
 case 0x4A
 //if (peek(stack(0),1) ^ (0x02))=0{poke stack(0),1,peek(stack(0),1) | (0x02)}
@@ -5785,6 +5881,13 @@ poke stack(0),14,peek(stack(0),0)
 r2forcalc(threadidforrunthez80)=peek(stack(0),0) & 0x80
 swbreak
 case 0x50
+#ifdef z80memaccess
+addressforz80rwmads=wpeek(stack(0),2)
+z80memaccess (addressforz80rwmads & 0xFFFF),0,3
+z80stature=stat
+poke stack(0),5,z80stature
+poke stack(0),1,(peek(stack(0),1) & 0x01) | SZP(z80stature)
+#else
 iomemorycalled=2
 iomemorycalledid=peek(stack(0),2)
 iomemorycalledid16=wpeek(stack(0),2)
@@ -5794,13 +5897,19 @@ if peek(iomemory,peek(stack(0),2))>=128{poke stack(0),1,peek(stack(0),1) ^ (0x80
 _z80iomemorycalledid@=iomemorycalledid16:_z80iomemorycalled@=iomemorycalled:gosub z80iochecklabel2
 poke stack(0),1,(peek(stack(0),1) & 0x01) | SZP(peek(iomemory,peek(stack(0),2)))
 poke stack(0),5,peek(iomemory,peek(stack(0),2))
+#endif
 swbreak
 case 0x51
+#ifdef z80memaccess
+addressforz80rwmads=wpeek(stack(0),2)
+z80memaccess (addressforz80rwmads & 0xFFFF),peek(stack(0),5),2
+#else
 poke iomemory,peek(stack(0),2),peek(stack(0),5)
 iomemorycalled=1
 iomemorycalledid=peek(stack(0),2)
 iomemorycalledid16=wpeek(stack(0),2)
 _z80iomemorycalledid@=iomemorycalledid16:_z80iomemorycalled@=iomemorycalled:gosub z80iochecklabel2
+#endif
 swbreak
 case 0x52
 //if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
@@ -5865,6 +5974,13 @@ poke stack(0),0,peek(stack(0),15)
 poke stack(0),1,(peek(stack(0),1) & 0x01) | SZ(peek(stack(0),0)) | (peek(stack(1),15) << 2)
 swbreak
 case 0x58
+#ifdef z80memaccess
+addressforz80rwmads=wpeek(stack(0),2)
+z80memaccess (addressforz80rwmads & 0xFFFF),0,3
+z80stature=stat
+poke stack(0),4,z80stature
+poke stack(0),1,(peek(stack(0),1) & 0x01) | SZP(z80stature)
+#else
 iomemorycalled=2
 iomemorycalledid=peek(stack(0),2)
 iomemorycalledid16=wpeek(stack(0),2)
@@ -5874,13 +5990,19 @@ if peek(iomemory,peek(stack(0),2))>=128{poke stack(0),1,peek(stack(0),1) ^ (0x80
 _z80iomemorycalledid@=iomemorycalledid16:_z80iomemorycalled@=iomemorycalled:gosub z80iochecklabel2
 poke stack(0),1,(peek(stack(0),1) & 0x01) | SZP(peek(iomemory,peek(stack(0),2)))
 poke stack(0),4,peek(iomemory,peek(stack(0),2))
+#endif
 swbreak
 case 0x59
+#ifdef z80memaccess
+addressforz80rwmads=wpeek(stack(0),2)
+z80memaccess (addressforz80rwmads & 0xFFFF),peek(stack(0),4),2
+#else
 poke iomemory,peek(stack(0),2),peek(stack(0),4)
 iomemorycalled=1
 iomemorycalledid=peek(stack(0),2)
 iomemorycalledid16=wpeek(stack(0),2)
 _z80iomemorycalledid@=iomemorycalledid16:_z80iomemorycalled@=iomemorycalled:gosub z80iochecklabel2
+#endif
 swbreak
 case 0x5A
 //if (peek(stack(0),1) ^ (0x02))=0{poke stack(0),1,peek(stack(0),1) | (0x02)}
@@ -5946,6 +6068,13 @@ poke stack(0),0,(peek(stack(0),14) & 0x7F) | r2forcalc(threadidforrunthez80)
 poke stack(0),1,(peek(stack(0),1) & 0x01) | SZ(peek(stack(0),0)) | (peek(stack(1),15) << 2)
 swbreak
 case 0x60
+#ifdef z80memaccess
+addressforz80rwmads=wpeek(stack(0),2)
+z80memaccess (addressforz80rwmads & 0xFFFF),0,3
+z80stature=stat
+poke stack(0),7,z80stature
+poke stack(0),1,(peek(stack(0),1) & 0x01) | SZP(z80stature)
+#else
 iomemorycalled=2
 iomemorycalledid=peek(stack(0),2)
 iomemorycalledid16=wpeek(stack(0),2)
@@ -5955,13 +6084,19 @@ if peek(iomemory,peek(stack(0),2))>=128{poke stack(0),1,peek(stack(0),1) ^ (0x80
 _z80iomemorycalledid@=iomemorycalledid16:_z80iomemorycalled@=iomemorycalled:gosub z80iochecklabel2
 poke stack(0),1,(peek(stack(0),1) & 0x01) | SZP(peek(iomemory,peek(stack(0),2)))
 poke stack(0),7,peek(iomemory,peek(stack(0),2))
+#endif
 swbreak
 case 0x61
+#ifdef z80memaccess
+addressforz80rwmads=wpeek(stack(0),2)
+z80memaccess (addressforz80rwmads & 0xFFFF),peek(stack(0),7),2
+#else
 poke iomemory,peek(stack(0),2),peek(stack(0),7)
 iomemorycalled=1
 iomemorycalledid=peek(stack(0),2)
 iomemorycalledid16=wpeek(stack(0),2)
 _z80iomemorycalledid@=iomemorycalledid16:_z80iomemorycalled@=iomemorycalled:gosub z80iochecklabel2
+#endif
 swbreak
 case 0x62
 //if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
@@ -6028,6 +6163,13 @@ poke stack(0),0,(peek(stack(0),0) & 0xf0) | (rrdn & 0x0f)
 poke stack(0),1,(peek(stack(0),1) & 0x01) | SZP(peek(stack(0),0))
 swbreak
 case 0x68
+#ifdef z80memaccess
+addressforz80rwmads=wpeek(stack(0),2)
+z80memaccess (addressforz80rwmads & 0xFFFF),0,3
+z80stature=stat
+poke stack(0),6,z80stature
+poke stack(0),1,(peek(stack(0),1) & 0x01) | SZP(z80stature)
+#else
 iomemorycalled=2
 iomemorycalledid=peek(stack(0),2)
 iomemorycalledid16=wpeek(stack(0),2)
@@ -6037,13 +6179,19 @@ if peek(iomemory,peek(stack(0),2))>=128{poke stack(0),1,peek(stack(0),1) ^ (0x80
 _z80iomemorycalledid@=iomemorycalledid16:_z80iomemorycalled@=iomemorycalled:gosub z80iochecklabel2
 poke stack(0),1,(peek(stack(0),1) & 0x01) | SZP(peek(iomemory,peek(stack(0),2)))
 poke stack(0),6,peek(iomemory,peek(stack(0),2))
+#endif
 swbreak
 case 0x69
+#ifdef z80memaccess
+addressforz80rwmads=wpeek(stack(0),2)
+z80memaccess (addressforz80rwmads & 0xFFFF),peek(stack(0),6),2
+#else
 poke iomemory,peek(stack(0),2),peek(stack(0),6)
 iomemorycalled=1
 iomemorycalledid=peek(stack(0),2)
 iomemorycalledid16=wpeek(stack(0),2)
 _z80iomemorycalledid@=iomemorycalledid16:_z80iomemorycalled@=iomemorycalled:gosub z80iochecklabel2
+#endif
 swbreak
 case 0x6A
 //if (peek(stack(0),1) ^ (0x02))=0{poke stack(0),1,peek(stack(0),1) | (0x02)}
@@ -6111,6 +6259,13 @@ poke stack(0),0,(peek(stack(0),0) & 0xf0) | (rrdn >> 4)
 poke stack(0),1,(peek(stack(0),1) & 0x01) | SZP(peek(stack(0),0))
 swbreak
 case 0x70
+#ifdef z80memaccess
+addressforz80rwmads=wpeek(stack(0),2)
+z80memaccess (addressforz80rwmads & 0xFFFF),0,3
+z80stature=stat
+//poke stack(0),1,z80stature
+poke stack(0),1,(peek(stack(0),1) & 0x01) | SZP(z80stature)
+#else
 iomemorycalled=2
 iomemorycalledid=peek(stack(0),2)
 iomemorycalledid16=wpeek(stack(0),2)
@@ -6120,13 +6275,19 @@ if peek(iomemory,peek(stack(0),2))>=128{poke stack(0),1,peek(stack(0),1) ^ (0x80
 _z80iomemorycalledid@=iomemorycalledid16:_z80iomemorycalled@=iomemorycalled:gosub z80iochecklabel2
 poke stack(0),1,(peek(stack(0),1) & 0x01) | SZP(peek(iomemory,peek(stack(0),2)))
 //poke stack(0),1,peek(iomemory,peek(stack(0),2))
+#endif
 swbreak
 case 0x71
+#ifdef z80memaccess
+addressforz80rwmads=wpeek(stack(0),2)
+z80memaccess (addressforz80rwmads & 0xFFFF),0,2
+#else
 poke iomemory,peek(stack(0),2),0
 iomemorycalled=1
 iomemorycalledid=peek(stack(0),2)
 iomemorycalledid16=wpeek(stack(0),2)
 _z80iomemorycalledid@=iomemorycalledid16:_z80iomemorycalled@=iomemorycalled:gosub z80iochecklabel2
+#endif
 swbreak
 case 0x72
 //if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
@@ -6188,6 +6349,13 @@ z80runmode(threadidforrunthez80)=1
 swbreak
 
 case 0x78
+#ifdef z80memaccess
+addressforz80rwmads=wpeek(stack(0),2)
+z80memaccess (addressforz80rwmads & 0xFFFF),0,3
+z80stature=stat
+poke stack(0),0,z80stature
+poke stack(0),1,(peek(stack(0),1) & 0x01) | SZP(z80stature)
+#else
 iomemorycalled=2
 iomemorycalledid=peek(stack(0),2)
 iomemorycalledid16=wpeek(stack(0),2)
@@ -6197,13 +6365,19 @@ if peek(iomemory,peek(stack(0),2))>=128{poke stack(0),1,peek(stack(0),1) ^ (0x80
 _z80iomemorycalledid@=iomemorycalledid16:_z80iomemorycalled@=iomemorycalled:gosub z80iochecklabel2
 poke stack(0),1,(peek(stack(0),1) & 0x01) | SZP(peek(iomemory,peek(stack(0),2)))
 poke stack(0),0,peek(iomemory,peek(stack(0),2))
+#endif
 swbreak
 case 0x79
+#ifdef z80memaccess
+addressforz80rwmads=wpeek(stack(0),2)
+z80memaccess (addressforz80rwmads & 0xFFFF),peek(stack(0),0),2
+#else
 poke iomemory,peek(stack(0),2),peek(stack(0),0)
 iomemorycalled=1
 iomemorycalledid=peek(stack(0),2)
 iomemorycalledid16=wpeek(stack(0),2)
 _z80iomemorycalledid@=iomemorycalledid16:_z80iomemorycalled@=iomemorycalled:gosub z80iochecklabel2
+#endif
 swbreak
 case 0x7A
 //if (peek(stack(0),1) ^ (0x02))=0{poke stack(0),1,peek(stack(0),1) | (0x02)}
@@ -6294,9 +6468,14 @@ iomemorycalled=2
 iomemorycalledid=peek(stack(0),2)
 iomemorycalledid16=0
 wpoke iomemorycalledid16,0,wpeek(stack(0),2)
+#ifdef z80memaccess
+z80memaccess (iomemorycalledid16 & 0xFFFF),0,3
+dataofiomemory=stat
+#else
 _z80iomemorycalledid@=iomemorycalledid16:_z80iomemorycalled@=iomemorycalled:gosub z80iochecklabel2
 //await 100
 dataofiomemory=peek(iomemory,peek(stack(0),2))
+#endif
 poke stack(0),3,peek(stack(0),3)-1
 z80writemem wpeek(stack(0),6),dataofiomemory
 wpoke stack(0),6,wpeek(stack(0),6)+1
@@ -6318,8 +6497,12 @@ wpoke iomemorycalledid16,0,wpeek(stack(0),2)
 //peek iomemorycalledid16,1,iomemorycalledid
 poke stack(0),3,peek(stack(0),3)-1
 dataofiomemory=0:dataofiomemory=z80readmem(wpeek(stack(0),6))
+#ifdef z80memaccess
+z80memaccess (iomemorycalledid16 & 0xFFFF),dataofiomemory,2
+#else
 poke iomemory,peek(stack(0),2),dataofiomemory
 _z80iomemorycalledid@=iomemorycalledid16:_z80iomemorycalled@=iomemorycalled:gosub z80iochecklabel2
+#endif
 wpoke stack(0),6,wpeek(stack(0),6)+1
 poke stack(0),1,SZ(peek(stack(0),3))
 /*tforz80outi=peek(stack(0),6)+dataofiomemory
@@ -6369,9 +6552,14 @@ iomemorycalled=2
 iomemorycalledid=peek(stack(0),2)
 iomemorycalledid16=0
 wpoke iomemorycalledid16,0,wpeek(stack(0),2)
+#ifdef z80memaccess
+z80memaccess (iomemorycalledid16 & 0xFFFF),0,3
+dataofiomemory=stat
+#else
 _z80iomemorycalledid@=iomemorycalledid16:_z80iomemorycalled@=iomemorycalled:gosub z80iochecklabel2
 //await 100
 dataofiomemory=peek(iomemory,peek(stack(0),2))
+#endif
 z80writemem wpeek(stack(0),6),dataofiomemory
 poke stack(0),3,peek(stack(0),3)-1
 wpoke stack(0),6,wpeek(stack(0),6)-1
@@ -6387,12 +6575,16 @@ swbreak
 case 0xAB
 poke stack(0),3,peek(stack(0),3)-1
 dataofiomemory=0:dataofiomemory=z80readmem(wpeek(stack(0),6))
-poke iomemory,peek(stack(0),2),dataofiomemory
+//poke iomemory,peek(stack(0),2),dataofiomemory
 iomemorycalled=1
 iomemorycalledid=peek(stack(0),2)
 iomemorycalledid16=0
-wpoke iomemorycalledid16,0,wpeek(stack(0),2)
+#ifdef z80memaccess
+z80memaccess (iomemorycalledid16 & 0xFFFF),dataofiomemory,2
+#else
+poke iomemory,peek(stack(0),2),dataofiomemory
 _z80iomemorycalledid@=iomemorycalledid16:_z80iomemorycalled@=iomemorycalled:gosub z80iochecklabel2
+#endif
 //peek iomemorycalledid16,1,iomemorycalledid
 wpoke stack(0),6,wpeek(stack(0),6)-1
 poke stack(0),1,SZ(peek(stack(0),3))
@@ -6443,9 +6635,14 @@ iomemorycalled=2
 iomemorycalledid=peek(stack(0),2)
 iomemorycalledid16=0
 wpoke iomemorycalledid16,0,wpeek(stack(0),2)
+#ifdef z80memaccess
+z80memaccess (iomemorycalledid16 & 0xFFFF),0,3
+dataofiomemory=stat
+#else
 _z80iomemorycalledid@=iomemorycalledid16:_z80iomemorycalled@=iomemorycalled:gosub z80iochecklabel2
 //await 100
 dataofiomemory=peek(iomemory,peek(stack(0),2))
+#endif
 poke stack(0),3,peek(stack(0),3)-1
 z80writemem wpeek(stack(0),6),dataofiomemory
 wpoke stack(0),6,wpeek(stack(0),6)+1
@@ -6470,8 +6667,12 @@ wpoke iomemorycalledid16,0,wpeek(stack(0),2)
 //peek iomemorycalledid16,1,iomemorycalledid
 poke stack(0),3,peek(stack(0),3)-1
 dataofiomemory=0:dataofiomemory=z80readmem(wpeek(stack(0),6))
+#ifdef z80memaccess
+z80memaccess (iomemorycalledid16 & 0xFFFF),dataofiomemory,2
+#else
 poke iomemory,peek(stack(0),2),dataofiomemory
 _z80iomemorycalledid@=iomemorycalledid16:_z80iomemorycalled@=iomemorycalled:gosub z80iochecklabel2
+#endif
 wpoke stack(0),6,wpeek(stack(0),6)+1
 poke stack(0),1,SZ(peek(stack(0),3))
 /*tforz80outi=peek(stack(0),6)+dataofiomemory
@@ -6533,9 +6734,14 @@ iomemorycalled=2
 iomemorycalledid=peek(stack(0),2)
 iomemorycalledid16=0
 wpoke iomemorycalledid16,0,wpeek(stack(0),2)
+#ifdef z80memaccess
+z80memaccess (iomemorycalledid16 & 0xFFFF),0,3
+dataofiomemory=stat
+#else
 _z80iomemorycalledid@=iomemorycalledid16:_z80iomemorycalled@=iomemorycalled:gosub z80iochecklabel2
 //await 100
 dataofiomemory=peek(iomemory,peek(stack(0),2))
+#endif
 z80writemem wpeek(stack(0),6),dataofiomemory
 poke stack(0),3,peek(stack(0),3)-1
 wpoke stack(0),6,wpeek(stack(0),6)-1
@@ -6554,12 +6760,17 @@ swbreak
 case 0xBB
 poke stack(0),3,peek(stack(0),3)-1
 dataofiomemory=0:dataofiomemory=z80readmem(wpeek(stack(0),6))
-poke iomemory,peek(stack(0),2),dataofiomemory
+//poke iomemory,peek(stack(0),2),dataofiomemory
 iomemorycalled=1
 iomemorycalledid=peek(stack(0),2)
 iomemorycalledid16=0
 wpoke iomemorycalledid16,0,wpeek(stack(0),2)
+#ifdef z80memaccess
+z80memaccess (iomemorycalledid16 & 0xFFFF),dataofiomemory,2
+#else
+poke iomemory,peek(stack(0),2),dataofiomemory
 _z80iomemorycalledid@=iomemorycalledid16:_z80iomemorycalled@=iomemorycalled:gosub z80iochecklabel2
+#endif
 //peek iomemorycalledid16,1,iomemorycalledid
 wpoke stack(0),6,wpeek(stack(0),6)-1
 poke stack(0),1,SZ(peek(stack(0),3))
@@ -6575,10 +6786,25 @@ wpoke stack(0),10,wpeek(stack(0),10)-2
 }
 swbreak
 default
+#ifdef __hsp64__
+opcode=z80readmem(startaddr)
+gosub *z80opcodeinterpretsw
+#else
+#ifdef  __hsp3dish__
+opcode=z80readmem(startaddr)
+gosub *z80opcodeinterpretsw
+#else
+#ifdef __useslowz80emulation_flag__
+opcode=z80readmem(startaddr)
+gosub *z80opcodeinterpretsw
+#else
 opcode=z80readmem(wpeek(stack(0),10)-1)
 lpoke jumplabel,0,lpeek(opcodeaddr(opcode),0)
 //wpoke stack(0),10,wpeek(stack(0),10)+1
 gosub jumplabel
+#endif
+#endif
+#endif
 swbreak
 swend
 poke stack(0),14,peek(stack(0),14)+1
@@ -8631,10 +8857,25 @@ swbreak
 default
 opcodeidforddopcodeaddcall=((opcodeidforddopcode-0x40)/8)
 opcodeidforddopcodeaddcall2=((opcodeidforddopcode-0x40)-(opcodeidforddopcodeaddcall*8))-4
+#ifdef __hsp64__
+opcode=z80readmem(startaddr)
+gosub *z80opcodeinterpretsw
+#else
+#ifdef  __hsp3dish__
+opcode=z80readmem(startaddr)
+gosub *z80opcodeinterpretsw
+#else
+#ifdef __useslowz80emulation_flag__
+opcode=z80readmem(startaddr)
+gosub *z80opcodeinterpretsw
+#else
 opcode=z80readmem(wpeek(stack(0),10)-1)
 lpoke jumplabel,0,lpeek(opcodeaddr(opcode),0)
 //wpoke stack(0),10,wpeek(stack(0),10)+1
 gosub jumplabel
+#endif
+#endif
+#endif
 swbreak
 swend
 poke stack(0),14,peek(stack(0),14)+1
@@ -8883,5 +9124,777 @@ poke SZHVC_addvar_52,0,peek(stack(0),1)
 	}
 poke stack(0),1,SZHVC_addvar_52
 	return
+*z80opcodeinterpretsw
+switch opcode
+case 0
+gosub *opcode_00
+swbreak
+case 1
+gosub *opcode_01
+swbreak
+case 2
+gosub *opcode_02
+swbreak
+case 3
+gosub *opcode_03
+swbreak
+case 4
+gosub *opcode_04
+swbreak
+case 5
+gosub *opcode_05
+swbreak
+case 6
+gosub *opcode_06
+swbreak
+case 7
+gosub *opcode_07
+swbreak
+case 8
+gosub *opcode_08
+swbreak
+case 9
+gosub *opcode_09
+swbreak
+case 10
+gosub *opcode_0A
+swbreak
+case 11
+gosub *opcode_0B
+swbreak
+case 12
+gosub *opcode_0C
+swbreak
+case 13
+gosub *opcode_0D
+swbreak
+case 14
+gosub *opcode_0E
+swbreak
+case 15
+gosub *opcode_0F
+swbreak
+case 16
+gosub *opcode_10
+swbreak
+case 17
+gosub *opcode_11
+swbreak
+case 18
+gosub *opcode_12
+swbreak
+case 19
+gosub *opcode_13
+swbreak
+case 20
+gosub *opcode_14
+swbreak
+case 21
+gosub *opcode_15
+swbreak
+case 22
+gosub *opcode_16
+swbreak
+case 23
+gosub *opcode_17
+swbreak
+case 24
+gosub *opcode_18
+swbreak
+case 25
+gosub *opcode_19
+swbreak
+case 26
+gosub *opcode_1A
+swbreak
+case 27
+gosub *opcode_1B
+swbreak
+case 28
+gosub *opcode_1C
+swbreak
+case 29
+gosub *opcode_1D
+swbreak
+case 30
+gosub *opcode_1E
+swbreak
+case 31
+gosub *opcode_1F
+swbreak
+case 32
+gosub *opcode_20
+swbreak
+case 33
+gosub *opcode_21
+swbreak
+case 34
+gosub *opcode_22
+swbreak
+case 35
+gosub *opcode_23
+swbreak
+case 36
+gosub *opcode_24
+swbreak
+case 37
+gosub *opcode_25
+swbreak
+case 38
+gosub *opcode_26
+swbreak
+case 39
+gosub *opcode_27
+swbreak
+case 40
+gosub *opcode_28
+swbreak
+case 41
+gosub *opcode_29
+swbreak
+case 42
+gosub *opcode_2A
+swbreak
+case 43
+gosub *opcode_2B
+swbreak
+case 44
+gosub *opcode_2C
+swbreak
+case 45
+gosub *opcode_2D
+swbreak
+case 46
+gosub *opcode_2E
+swbreak
+case 47
+gosub *opcode_2F
+swbreak
+case 48
+gosub *opcode_30
+swbreak
+case 49
+gosub *opcode_31
+swbreak
+case 50
+gosub *opcode_32
+swbreak
+case 51
+gosub *opcode_33
+swbreak
+case 52
+gosub *opcode_34
+swbreak
+case 53
+gosub *opcode_35
+swbreak
+case 54
+gosub *opcode_36
+swbreak
+case 55
+gosub *opcode_37
+swbreak
+case 56
+gosub *opcode_38
+swbreak
+case 57
+gosub *opcode_39
+swbreak
+case 58
+gosub *opcode_3A
+swbreak
+case 59
+gosub *opcode_3B
+swbreak
+case 60
+gosub *opcode_3C
+swbreak
+case 61
+gosub *opcode_3D
+swbreak
+case 62
+gosub *opcode_3E
+swbreak
+case 63
+gosub *opcode_3F
+swbreak
+case 64
+gosub *opcode_40
+swbreak
+case 65
+gosub *opcode_41
+swbreak
+case 66
+gosub *opcode_42
+swbreak
+case 67
+gosub *opcode_43
+swbreak
+case 68
+gosub *opcode_44
+swbreak
+case 69
+gosub *opcode_45
+swbreak
+case 70
+gosub *opcode_46
+swbreak
+case 71
+gosub *opcode_47
+swbreak
+case 72
+gosub *opcode_48
+swbreak
+case 73
+gosub *opcode_49
+swbreak
+case 74
+gosub *opcode_4A
+swbreak
+case 75
+gosub *opcode_4B
+swbreak
+case 76
+gosub *opcode_4C
+swbreak
+case 77
+gosub *opcode_4D
+swbreak
+case 78
+gosub *opcode_4E
+swbreak
+case 79
+gosub *opcode_4F
+swbreak
+case 80
+gosub *opcode_50
+swbreak
+case 81
+gosub *opcode_51
+swbreak
+case 82
+gosub *opcode_52
+swbreak
+case 83
+gosub *opcode_53
+swbreak
+case 84
+gosub *opcode_54
+swbreak
+case 85
+gosub *opcode_55
+swbreak
+case 86
+gosub *opcode_56
+swbreak
+case 87
+gosub *opcode_57
+swbreak
+case 88
+gosub *opcode_58
+swbreak
+case 89
+gosub *opcode_59
+swbreak
+case 90
+gosub *opcode_5A
+swbreak
+case 91
+gosub *opcode_5B
+swbreak
+case 92
+gosub *opcode_5C
+swbreak
+case 93
+gosub *opcode_5D
+swbreak
+case 94
+gosub *opcode_5E
+swbreak
+case 95
+gosub *opcode_5F
+swbreak
+case 96
+gosub *opcode_60
+swbreak
+case 97
+gosub *opcode_61
+swbreak
+case 98
+gosub *opcode_62
+swbreak
+case 99
+gosub *opcode_63
+swbreak
+case 100
+gosub *opcode_64
+swbreak
+case 101
+gosub *opcode_65
+swbreak
+case 102
+gosub *opcode_66
+swbreak
+case 103
+gosub *opcode_67
+swbreak
+case 104
+gosub *opcode_68
+swbreak
+case 105
+gosub *opcode_69
+swbreak
+case 106
+gosub *opcode_6A
+swbreak
+case 107
+gosub *opcode_6B
+swbreak
+case 108
+gosub *opcode_6C
+swbreak
+case 109
+gosub *opcode_6D
+swbreak
+case 110
+gosub *opcode_6E
+swbreak
+case 111
+gosub *opcode_6F
+swbreak
+case 112
+gosub *opcode_70
+swbreak
+case 113
+gosub *opcode_71
+swbreak
+case 114
+gosub *opcode_72
+swbreak
+case 115
+gosub *opcode_73
+swbreak
+case 116
+gosub *opcode_74
+swbreak
+case 117
+gosub *opcode_75
+swbreak
+case 118
+gosub *opcode_76
+swbreak
+case 119
+gosub *opcode_77
+swbreak
+case 120
+gosub *opcode_78
+swbreak
+case 121
+gosub *opcode_79
+swbreak
+case 122
+gosub *opcode_7A
+swbreak
+case 123
+gosub *opcode_7B
+swbreak
+case 124
+gosub *opcode_7C
+swbreak
+case 125
+gosub *opcode_7D
+swbreak
+case 126
+gosub *opcode_7E
+swbreak
+case 127
+gosub *opcode_7F
+swbreak
+case 128
+gosub *opcode_80
+swbreak
+case 129
+gosub *opcode_81
+swbreak
+case 130
+gosub *opcode_82
+swbreak
+case 131
+gosub *opcode_83
+swbreak
+case 132
+gosub *opcode_84
+swbreak
+case 133
+gosub *opcode_85
+swbreak
+case 134
+gosub *opcode_86
+swbreak
+case 135
+gosub *opcode_87
+swbreak
+case 136
+gosub *opcode_88
+swbreak
+case 137
+gosub *opcode_89
+swbreak
+case 138
+gosub *opcode_8A
+swbreak
+case 139
+gosub *opcode_8B
+swbreak
+case 140
+gosub *opcode_8C
+swbreak
+case 141
+gosub *opcode_8D
+swbreak
+case 142
+gosub *opcode_8E
+swbreak
+case 143
+gosub *opcode_8F
+swbreak
+case 144
+gosub *opcode_90
+swbreak
+case 145
+gosub *opcode_91
+swbreak
+case 146
+gosub *opcode_92
+swbreak
+case 147
+gosub *opcode_93
+swbreak
+case 148
+gosub *opcode_94
+swbreak
+case 149
+gosub *opcode_95
+swbreak
+case 150
+gosub *opcode_96
+swbreak
+case 151
+gosub *opcode_97
+swbreak
+case 152
+gosub *opcode_98
+swbreak
+case 153
+gosub *opcode_99
+swbreak
+case 154
+gosub *opcode_9A
+swbreak
+case 155
+gosub *opcode_9B
+swbreak
+case 156
+gosub *opcode_9C
+swbreak
+case 157
+gosub *opcode_9D
+swbreak
+case 158
+gosub *opcode_9E
+swbreak
+case 159
+gosub *opcode_9F
+swbreak
+case 160
+gosub *opcode_A0
+swbreak
+case 161
+gosub *opcode_A1
+swbreak
+case 162
+gosub *opcode_A2
+swbreak
+case 163
+gosub *opcode_A3
+swbreak
+case 164
+gosub *opcode_A4
+swbreak
+case 165
+gosub *opcode_A5
+swbreak
+case 166
+gosub *opcode_A6
+swbreak
+case 167
+gosub *opcode_A7
+swbreak
+case 168
+gosub *opcode_A8
+swbreak
+case 169
+gosub *opcode_A9
+swbreak
+case 170
+gosub *opcode_AA
+swbreak
+case 171
+gosub *opcode_AB
+swbreak
+case 172
+gosub *opcode_AC
+swbreak
+case 173
+gosub *opcode_AD
+swbreak
+case 174
+gosub *opcode_AE
+swbreak
+case 175
+gosub *opcode_AF
+swbreak
+case 176
+gosub *opcode_B0
+swbreak
+case 177
+gosub *opcode_B1
+swbreak
+case 178
+gosub *opcode_B2
+swbreak
+case 179
+gosub *opcode_B3
+swbreak
+case 180
+gosub *opcode_B4
+swbreak
+case 181
+gosub *opcode_B5
+swbreak
+case 182
+gosub *opcode_B6
+swbreak
+case 183
+gosub *opcode_B7
+swbreak
+case 184
+gosub *opcode_B8
+swbreak
+case 185
+gosub *opcode_B9
+swbreak
+case 186
+gosub *opcode_BA
+swbreak
+case 187
+gosub *opcode_BB
+swbreak
+case 188
+gosub *opcode_BC
+swbreak
+case 189
+gosub *opcode_BD
+swbreak
+case 190
+gosub *opcode_BE
+swbreak
+case 191
+gosub *opcode_BF
+swbreak
+case 192
+gosub *opcode_C0
+swbreak
+case 193
+gosub *opcode_C1
+swbreak
+case 194
+gosub *opcode_C2
+swbreak
+case 195
+gosub *opcode_C3
+swbreak
+case 196
+gosub *opcode_C4
+swbreak
+case 197
+gosub *opcode_C5
+swbreak
+case 198
+gosub *opcode_C6
+swbreak
+case 199
+gosub *opcode_C7
+swbreak
+case 200
+gosub *opcode_C8
+swbreak
+case 201
+gosub *opcode_C9
+swbreak
+case 202
+gosub *opcode_CA
+swbreak
+case 203
+gosub *opcode_CB
+swbreak
+case 204
+gosub *opcode_CC
+swbreak
+case 205
+gosub *opcode_CD
+swbreak
+case 206
+gosub *opcode_CE
+swbreak
+case 207
+gosub *opcode_CF
+swbreak
+case 208
+gosub *opcode_D0
+swbreak
+case 209
+gosub *opcode_D1
+swbreak
+case 210
+gosub *opcode_D2
+swbreak
+case 211
+gosub *opcode_D3
+swbreak
+case 212
+gosub *opcode_D4
+swbreak
+case 213
+gosub *opcode_D5
+swbreak
+case 214
+gosub *opcode_D6
+swbreak
+case 215
+gosub *opcode_D7
+swbreak
+case 216
+gosub *opcode_D8
+swbreak
+case 217
+gosub *opcode_D9
+swbreak
+case 218
+gosub *opcode_DA
+swbreak
+case 219
+gosub *opcode_DB
+swbreak
+case 220
+gosub *opcode_DC
+swbreak
+case 221
+gosub *opcode_DD
+swbreak
+case 222
+gosub *opcode_DE
+swbreak
+case 223
+gosub *opcode_DF
+swbreak
+case 224
+gosub *opcode_E0
+swbreak
+case 225
+gosub *opcode_E1
+swbreak
+case 226
+gosub *opcode_E2
+swbreak
+case 227
+gosub *opcode_E3
+swbreak
+case 228
+gosub *opcode_E4
+swbreak
+case 229
+gosub *opcode_E5
+swbreak
+case 230
+gosub *opcode_E6
+swbreak
+case 231
+gosub *opcode_E7
+swbreak
+case 232
+gosub *opcode_E8
+swbreak
+case 233
+gosub *opcode_E9
+swbreak
+case 234
+gosub *opcode_EA
+swbreak
+case 235
+gosub *opcode_EB
+swbreak
+case 236
+gosub *opcode_EC
+swbreak
+case 237
+gosub *opcode_ED
+swbreak
+case 238
+gosub *opcode_EE
+swbreak
+case 239
+gosub *opcode_EF
+swbreak
+case 240
+gosub *opcode_F0
+swbreak
+case 241
+gosub *opcode_F1
+swbreak
+case 242
+gosub *opcode_F2
+swbreak
+case 243
+gosub *opcode_F3
+swbreak
+case 244
+gosub *opcode_F4
+swbreak
+case 245
+gosub *opcode_F5
+swbreak
+case 246
+gosub *opcode_F6
+swbreak
+case 247
+gosub *opcode_F7
+swbreak
+case 248
+gosub *opcode_F8
+swbreak
+case 249
+gosub *opcode_F9
+swbreak
+case 250
+gosub *opcode_FA
+swbreak
+case 251
+gosub *opcode_FB
+swbreak
+case 252
+gosub *opcode_FC
+swbreak
+case 253
+gosub *opcode_FD
+swbreak
+case 254
+gosub *opcode_FE
+swbreak
+case 255
+gosub *opcode_FF
+swbreak
+swend
+return
 #global
 gocaine_z80init
