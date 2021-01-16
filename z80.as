@@ -401,11 +401,11 @@ return
 #deffunc z80writemem int addressforz80rwm,int z80pokedata
 addressforz80rwmads=addressforz80rwm
 z80pokedataads=z80pokedata
-z80memaccess addressforz80rwmads,z80pokedataads,0
+z80memaccess addressforz80rwmads&0xFFFF,z80pokedataads,0
 return
 #defcfunc z80readmem int addressforz80rwm
 addressforz80rwmads=addressforz80rwm
-z80memaccess addressforz80rwmads,0,1
+z80memaccess addressforz80rwmads&0xFFFF,0,1
 stat2z80pokedataads=stat
 return stat2z80pokedataads
 #else
