@@ -6800,7 +6800,7 @@ if peek(stack(0),3)=0{}else{
 wpoke stack(0),10,wpeek(stack(0),10)-2
 }
 swbreak
-default
+/*default
 #ifdef __hsp64__
 opcode=z80readmem(startaddr)
 gosub *z80opcodeinterpretsw
@@ -6820,7 +6820,7 @@ gosub jumplabel
 #endif
 #endif
 #endif
-swbreak
+swbreak*/
 swend
 poke stack(0),14,peek(stack(0),14)+1
 return
