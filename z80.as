@@ -673,6 +673,9 @@ gosub opcodeaddr(z80readmem(startaddr))
 }//opcodeaddr(opcode)//jumplabel
 lpoke startaddr,0,wpeek(stack(0),10)
 poke stack(0),14,peek(stack(0),14)+1
+#ifdef z80memaccess
+z80memaccess peek(stack(0),14)&0x7F,0,4
+#endif
 memcpy stackformt(0,threadidforrunthez80),stack(0),64,0,0
 memcpy stackformt(1,threadidforrunthez80),stack(1),64,0,0
 return peek(stack(0),1)
