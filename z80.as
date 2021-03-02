@@ -3,8 +3,26 @@
 //and this software is unlicenced!
 //Codename KisKan
 
+#ifndef z80moduledefined
+#define global z80moduledefined
 #module
 #deffunc gocaine_z80init 
+dim opcodecc_op,256
+dim opcodecc_cb,256
+dim opcodecc_dd,256
+dim opcodecc_ddcb,256
+dim opcodecc_ed,256
+dim opcodecc_fd,256
+dim opcodecc_fdcb,256
+dim opcodecc_ex,256
+opcodecc_op = 4,10, 7, 6, 4, 4, 7, 4, 4,11, 7, 6, 4, 4, 7, 4, 8,10, 7, 6, 4, 4, 7, 4,12,11, 7, 6, 4, 4, 7, 4, 7,10,16, 6, 4, 4, 7, 4, 7,11,16, 6, 4, 4, 7, 4, 7,10,13, 6,11,11,10, 4, 7,11,13, 6, 4, 4, 7, 4, 4, 4, 4, 4, 4, 4, 7, 4, 4, 4, 4, 4, 4, 4, 7, 4, 4, 4, 4, 4, 4, 4, 7, 4, 4, 4, 4, 4, 4, 4, 7, 4, 4, 4, 4, 4, 4, 4, 7, 4, 4, 4, 4, 4, 4, 4, 7, 4, 7, 7, 7, 7, 7, 7, 4, 7, 4, 4, 4, 4, 4, 4, 7, 4, 4, 4, 4, 4, 4, 4, 7, 4, 4, 4, 4, 4, 4, 4, 7, 4, 4, 4, 4, 4, 4, 4, 7, 4, 4, 4, 4, 4, 4, 4, 7, 4, 4, 4, 4, 4, 4, 4, 7, 4, 4, 4, 4, 4, 4, 4, 7, 4, 4, 4, 4, 4, 4, 4, 7, 4, 4, 4, 4, 4, 4, 4, 7, 4, 5,10,10,10,10,11, 7,11, 5,10,10, 0,10,17, 7,11, 5,10,10,11,10,11, 7,11, 5, 4,10,11,10, 0, 7,11, 5,10,10,19,10,11, 7,11, 5, 4,10, 4,10, 0, 7,11, 5,10,10, 4,10,11, 7,11, 5, 6,10, 4,10, 0, 7,11
+opcodecc_cb = 8, 8, 8, 8, 8, 8,15, 8, 8, 8, 8, 8, 8, 8,15, 8, 8, 8, 8, 8, 8, 8,15, 8, 8, 8, 8, 8, 8, 8,15, 8, 8, 8, 8, 8, 8, 8,15, 8, 8, 8, 8, 8, 8, 8,15, 8, 8, 8, 8, 8, 8, 8,15, 8, 8, 8, 8, 8, 8, 8,15, 8, 8, 8, 8, 8, 8, 8,12, 8, 8, 8, 8, 8, 8, 8,12, 8, 8, 8, 8, 8, 8, 8,12, 8, 8, 8, 8, 8, 8, 8,12, 8, 8, 8, 8, 8, 8, 8,12, 8, 8, 8, 8, 8, 8, 8,12, 8, 8, 8, 8, 8, 8, 8,12, 8, 8, 8, 8, 8, 8, 8,12, 8, 8, 8, 8, 8, 8, 8,15, 8, 8, 8, 8, 8, 8, 8,15, 8, 8, 8, 8, 8, 8, 8,15, 8, 8, 8, 8, 8, 8, 8,15, 8, 8, 8, 8, 8, 8, 8,15, 8, 8, 8, 8, 8, 8, 8,15, 8, 8, 8, 8, 8, 8, 8,15, 8, 8, 8, 8, 8, 8, 8,15, 8, 8, 8, 8, 8, 8, 8,15, 8, 8, 8, 8, 8, 8, 8,15, 8, 8, 8, 8, 8, 8, 8,15, 8, 8, 8, 8, 8, 8, 8,15, 8, 8, 8, 8, 8, 8, 8,15, 8, 8, 8, 8, 8, 8, 8,15, 8, 8, 8, 8, 8, 8, 8,15, 8, 8, 8, 8, 8, 8, 8,15, 8
+opcodecc_dd = 4, 4, 4, 4, 4, 4, 4, 4, 4,15, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,15, 4, 4, 4, 4, 4, 4, 4,14,20,10, 9, 9, 9, 4, 4,15,20,10, 9, 9, 9, 4, 4, 4, 4, 4,23,23,19, 4, 4,15, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 9, 9,19, 4, 4, 4, 4, 4, 9, 9,19, 4, 4, 4, 4, 4, 9, 9,19, 4, 4, 4, 4, 4, 9, 9,19, 4, 9, 9, 9, 9, 9, 9,19, 9, 9, 9, 9, 9, 9, 9,19, 9,19,19,19,19,19,19, 4,19, 4, 4, 4, 4, 9, 9,19, 4, 4, 4, 4, 4, 9, 9,19, 4, 4, 4, 4, 4, 9, 9,19, 4, 4, 4, 4, 4, 9, 9,19, 4, 4, 4, 4, 4, 9, 9,19, 4, 4, 4, 4, 4, 9, 9,19, 4, 4, 4, 4, 4, 9, 9,19, 4, 4, 4, 4, 4, 9, 9,19, 4, 4, 4, 4, 4, 9, 9,19, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,14, 4,23, 4,15, 4, 4, 4, 8, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,10, 4, 4, 4, 4, 4, 4
+opcodecc_ddcb = 23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23
+opcodecc_ed = 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8,12,12,15,20, 8, 8, 8, 9,12,12,15,20, 8, 8, 8, 9,12,12,15,20, 8, 8, 8, 9,12,12,15,20, 8, 8, 8, 9,12,12,15,20, 8, 8, 8,18,12,12,15,20, 8, 8, 8,18,12,12,15,20, 8, 8, 8, 8,12,12,15,20, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8,16,16,16,16, 8, 8, 8, 8,16,16,16,16, 8, 8, 8, 8,16,16,16,16, 8, 8, 8, 8,16,16,16,16, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8
+opcodecc_fd = 4, 4, 4, 4, 4, 4, 4, 4, 4,15, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,15, 4, 4, 4, 4, 4, 4, 4,14,20,10, 9, 9, 9, 4, 4,15,20,10, 9, 9, 9, 4, 4, 4, 4, 4,23,23,19, 4, 4,15, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 9, 9,19, 4, 4, 4, 4, 4, 9, 9,19, 4, 4, 4, 4, 4, 9, 9,19, 4, 4, 4, 4, 4, 9, 9,19, 4, 9, 9, 9, 9, 9, 9,19, 9, 9, 9, 9, 9, 9, 9,19, 9,19,19,19,19,19,19, 4,19, 4, 4, 4, 4, 9, 9,19, 4, 4, 4, 4, 4, 9, 9,19, 4, 4, 4, 4, 4, 9, 9,19, 4, 4, 4, 4, 4, 9, 9,19, 4, 4, 4, 4, 4, 9, 9,19, 4, 4, 4, 4, 4, 9, 9,19, 4, 4, 4, 4, 4, 9, 9,19, 4, 4, 4, 4, 4, 9, 9,19, 4, 4, 4, 4, 4, 9, 9,19, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,14, 4,23, 4,15, 4, 4, 4, 8, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,10, 4, 4, 4, 4, 4, 4
+opcodecc_fdcb = 23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23
+opcodecc_ex = 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 5, 5, 5, 0, 0, 0, 0, 5, 5, 5, 5, 0, 0, 0, 0, 6, 0, 0, 0, 7, 0, 0, 2, 6, 0, 0, 0, 7, 0, 0, 2, 6, 0, 0, 0, 7, 0, 0, 2, 6, 0, 0, 0, 7, 0, 0, 2, 6, 0, 0, 0, 7, 0, 0, 2, 6, 0, 0, 0, 7, 0, 0, 2, 6, 0, 0, 0, 7, 0, 0, 2, 6, 0, 0, 0, 7, 0, 0, 2
 dim opcodex,256
 dim opcodex_dd,256
 dim opcodex_dd_cb,256
@@ -119,263 +137,263 @@ loop
 iomemorycalledid=0
 iomemorycalledid16=0
 iomemorycalled=0
-cnt2=-1
-jumplabel=*opcode_00:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_01:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_02:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_03:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_04:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_05:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_06:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_07:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_08:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_09:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_0a:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_0b:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_0c:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_0d:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_0e:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_0f:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_10:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_11:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_12:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_13:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_14:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_15:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_16:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_17:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_18:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_19:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_1a:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_1b:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_1c:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_1d:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_1e:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_1f:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_20:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_21:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_22:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_23:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_24:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_25:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_26:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_27:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_28:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_29:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_2a:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_2b:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_2c:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_2d:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_2e:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_2f:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_30:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_31:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_32:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_33:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_34:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_35:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_36:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_37:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_38:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_39:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_3a:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_3b:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_3c:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_3d:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_3e:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_3f:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_40:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_41:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_42:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_43:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_44:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_45:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_46:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_47:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_48:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_49:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_4a:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_4b:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_4c:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_4d:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_4e:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_4f:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_50:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_51:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_52:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_53:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_54:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_55:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_56:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_57:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_58:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_59:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_5a:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_5b:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_5c:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_5d:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_5e:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_5f:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_60:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_61:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_62:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_63:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_64:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_65:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_66:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_67:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_68:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_69:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_6a:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_6b:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_6c:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_6d:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_6e:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_6f:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_70:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_71:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_72:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_73:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_74:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_75:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_76:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_77:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_78:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_79:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_7a:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_7b:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_7c:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_7d:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_7e:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_7f:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_80:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_81:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_82:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_83:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_84:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_85:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_86:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_87:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_88:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_89:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_8a:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_8b:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_8c:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_8d:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_8e:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_8f:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_90:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_91:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_92:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_93:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_94:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_95:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_96:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_97:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_98:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_99:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_9a:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_9b:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_9c:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_9d:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_9e:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_9f:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_a0:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_a1:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_a2:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_a3:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_a4:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_a5:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_a6:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_a7:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_a8:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_a9:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_aa:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_ab:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_ac:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_ad:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_ae:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_af:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_b0:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_b1:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_b2:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_b3:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_b4:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_b5:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_b6:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_b7:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_b8:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_b9:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_ba:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_bb:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_bc:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_bd:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_be:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_bf:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_c0:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_c1:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_c2:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_c3:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_c4:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_c5:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_c6:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_c7:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_c8:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_c9:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_ca:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_cb:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_cc:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_cd:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_ce:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_cf:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_d0:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_d1:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_d2:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_d3:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_d4:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_d5:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_d6:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_d7:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_d8:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_d9:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_da:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_db:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_dc:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_dd:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_de:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_df:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_e0:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_e1:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_e2:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_e3:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_e4:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_e5:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_e6:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_e7:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_e8:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_e9:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_ea:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_eb:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_ec:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_ed:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_ee:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_ef:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_f0:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_f1:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_f2:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_f3:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_f4:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_f5:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_f6:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_f7:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_f8:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_f9:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_fa:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_fb:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_fc:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_fd:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_fe:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
-jumplabel=*opcode_ff:cnt2=cnt2+1:lpoke opcodeaddr(cnt2),0,lpeek(jumplabel,0)
+cnt2=0
+opcodeaddr(cnt2)=*opcode_00:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_01:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_02:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_03:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_04:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_05:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_06:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_07:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_08:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_09:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_0a:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_0b:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_0c:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_0d:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_0e:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_0f:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_10:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_11:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_12:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_13:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_14:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_15:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_16:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_17:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_18:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_19:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_1a:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_1b:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_1c:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_1d:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_1e:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_1f:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_20:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_21:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_22:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_23:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_24:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_25:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_26:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_27:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_28:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_29:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_2a:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_2b:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_2c:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_2d:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_2e:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_2f:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_30:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_31:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_32:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_33:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_34:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_35:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_36:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_37:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_38:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_39:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_3a:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_3b:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_3c:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_3d:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_3e:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_3f:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_40:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_41:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_42:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_43:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_44:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_45:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_46:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_47:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_48:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_49:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_4a:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_4b:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_4c:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_4d:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_4e:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_4f:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_50:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_51:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_52:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_53:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_54:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_55:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_56:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_57:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_58:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_59:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_5a:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_5b:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_5c:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_5d:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_5e:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_5f:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_60:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_61:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_62:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_63:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_64:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_65:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_66:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_67:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_68:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_69:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_6a:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_6b:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_6c:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_6d:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_6e:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_6f:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_70:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_71:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_72:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_73:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_74:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_75:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_76:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_77:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_78:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_79:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_7a:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_7b:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_7c:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_7d:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_7e:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_7f:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_80:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_81:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_82:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_83:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_84:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_85:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_86:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_87:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_88:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_89:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_8a:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_8b:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_8c:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_8d:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_8e:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_8f:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_90:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_91:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_92:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_93:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_94:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_95:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_96:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_97:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_98:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_99:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_9a:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_9b:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_9c:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_9d:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_9e:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_9f:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_a0:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_a1:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_a2:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_a3:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_a4:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_a5:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_a6:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_a7:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_a8:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_a9:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_aa:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_ab:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_ac:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_ad:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_ae:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_af:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_b0:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_b1:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_b2:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_b3:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_b4:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_b5:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_b6:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_b7:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_b8:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_b9:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_ba:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_bb:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_bc:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_bd:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_be:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_bf:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_c0:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_c1:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_c2:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_c3:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_c4:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_c5:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_c6:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_c7:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_c8:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_c9:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_ca:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_cb:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_cc:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_cd:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_ce:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_cf:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_d0:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_d1:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_d2:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_d3:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_d4:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_d5:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_d6:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_d7:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_d8:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_d9:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_da:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_db:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_dc:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_dd:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_de:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_df:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_e0:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_e1:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_e2:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_e3:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_e4:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_e5:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_e6:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_e7:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_e8:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_e9:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_ea:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_eb:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_ec:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_ed:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_ee:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_ef:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_f0:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_f1:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_f2:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_f3:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_f4:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_f5:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_f6:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_f7:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_f8:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_f9:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_fa:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_fb:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_fc:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_fd:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_fe:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_ff:cnt2=cnt2+1
 z80rwmemflag=0:z80rwmemaddr=0:z80iochecklabel=*null:z80iochecklabel2=*null
 cpuamountmax=256
 dim z80scfccfflag,cpuamountmax
@@ -572,21 +590,11 @@ memcpy stack(1),stackformt(1,threadidforrunthez80),64,0,0
 wpoke stack(0),10,startaddr
 //opcode=z80readmem(wpeek(stack(0),10))
 //lpoke jumplabel,0,opcodeaddr(opcode)
-#ifdef __hsp64__
-opcode=(iomemoryidforz80 & 0xff)
-gosub *z80opcodeinterpretsw
-#else
-#ifdef  __hsp3dish__
-opcode=(iomemoryidforz80 & 0xff)
-gosub *z80opcodeinterpretsw
-#else
 #ifdef __useslowz80emulation_flag__
 opcode=(iomemoryidforz80 & 0xff)
 gosub *z80opcodeinterpretsw
 #else
 gosub opcodeaddr(iomemoryidforz80 & 0xff)//opcodeaddr(opcode)//jumplabel
-#endif
-#endif
 #endif
 lpoke startaddr,0,wpeek(stack(0),10)
 memcpy stackformt(0,threadidforrunthez80),stack(0),64,0,0
@@ -654,21 +662,11 @@ wpoke stack(0),10,startaddr
 //lpoke jumplabel,0,opcodeaddr(opcode)
 wpoke stack(0),10,wpeek(stack(0),10)+1
 if z80haltmodesw(threadidforrunthez80)=0{
-#ifdef __hsp64__
-opcode=z80readmem(startaddr)
-gosub *z80opcodeinterpretsw
-#else
-#ifdef  __hsp3dish__
-opcode=z80readmem(startaddr)
-gosub *z80opcodeinterpretsw
-#else
 #ifdef __useslowz80emulation_flag__
 opcode=z80readmem(startaddr)
 gosub *z80opcodeinterpretsw
 #else
 gosub opcodeaddr(z80readmem(startaddr))
-#endif
-#endif
 #endif
 }//opcodeaddr(opcode)//jumplabel
 lpoke startaddr,0,wpeek(stack(0),10)
@@ -5566,14 +5564,6 @@ swbreak
 default
 opcodeidforddopcodeaddcall=((opcodeidforddopcode-0x40)/8)
 opcodeidforddopcodeaddcall2=((opcodeidforddopcode-0x40)-(opcodeidforddopcodeaddcall*8))-4
-#ifdef __hsp64__
-opcode=z80readmem(startaddr)
-gosub *z80opcodeinterpretsw
-#else
-#ifdef  __hsp3dish__
-opcode=z80readmem(startaddr)
-gosub *z80opcodeinterpretsw
-#else
 #ifdef __useslowz80emulation_flag__
 opcode=z80readmem(startaddr)
 gosub *z80opcodeinterpretsw
@@ -5582,8 +5572,6 @@ opcode=z80readmem(wpeek(stack(0),10)-1)
 lpoke jumplabel,0,lpeek(opcodeaddr(opcode),0)
 //wpoke stack(0),10,wpeek(stack(0),10)+1
 gosub jumplabel
-#endif
-#endif
 #endif
 swbreak
 swend
@@ -6803,27 +6791,6 @@ if peek(stack(0),3)=0{}else{
 wpoke stack(0),10,wpeek(stack(0),10)-2
 }
 swbreak
-/*default
-#ifdef __hsp64__
-opcode=z80readmem(startaddr)
-gosub *z80opcodeinterpretsw
-#else
-#ifdef  __hsp3dish__
-opcode=z80readmem(startaddr)
-gosub *z80opcodeinterpretsw
-#else
-#ifdef __useslowz80emulation_flag__
-opcode=z80readmem(startaddr)
-gosub *z80opcodeinterpretsw
-#else
-opcode=z80readmem(wpeek(stack(0),10)-1)
-lpoke jumplabel,0,lpeek(opcodeaddr(opcode),0)
-//wpoke stack(0),10,wpeek(stack(0),10)+1
-gosub jumplabel
-#endif
-#endif
-#endif
-swbreak*/
 swend
 poke stack(0),14,peek(stack(0),14)+1
 return
@@ -8875,14 +8842,6 @@ swbreak
 default
 opcodeidforddopcodeaddcall=((opcodeidforddopcode-0x40)/8)
 opcodeidforddopcodeaddcall2=((opcodeidforddopcode-0x40)-(opcodeidforddopcodeaddcall*8))-4
-#ifdef __hsp64__
-opcode=z80readmem(startaddr)
-gosub *z80opcodeinterpretsw
-#else
-#ifdef  __hsp3dish__
-opcode=z80readmem(startaddr)
-gosub *z80opcodeinterpretsw
-#else
 #ifdef __useslowz80emulation_flag__
 opcode=z80readmem(startaddr)
 gosub *z80opcodeinterpretsw
@@ -8891,8 +8850,6 @@ opcode=z80readmem(wpeek(stack(0),10)-1)
 lpoke jumplabel,0,lpeek(opcodeaddr(opcode),0)
 //wpoke stack(0),10,wpeek(stack(0),10)+1
 gosub jumplabel
-#endif
-#endif
 #endif
 swbreak
 swend
@@ -9915,4 +9872,5 @@ swbreak
 swend
 return
 #global
+#endif
 gocaine_z80init
