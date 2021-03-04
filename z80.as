@@ -131,9 +131,11 @@ sdim stack,64,2
 //sdim memory,65540
 ldim opcodeaddr,256
 jumplabel=*null
-repeat 256
-lpoke opcodeaddr(cnt),0,lpeek(jumplabel,0)
-loop
+//repeat 256
+cntx=0
+/**z80jumplabelsetrpt
+lpoke opcodeaddr(cntx),0,lpeek(jumplabel,0)
+cntx+=1:if cntx<256{goto *z80jumplabelsetrpt}*/
 iomemorycalledid=0
 iomemorycalledid16=0
 iomemorycalled=0
