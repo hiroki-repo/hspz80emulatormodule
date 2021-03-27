@@ -6319,6 +6319,7 @@ cbopcodecallid=z80readmem(wpeek(stack(0),10)+1)
 cbopcodecallidforbit=(cbopcodecallid-0x40)/8
 opcodeforsubcall=z80readmem(wpeek(stack(0),10)+1)
 gosub opcodeaddr_dd_cb(opcodeforsubcall)
+wpoke stack(0),10,wpeek(stack(0),10)+2
 //poke stack(0),14,peek(stack(0),14)+1
 return
 //switch opcodeforsubcall
@@ -7471,7 +7472,7 @@ swend
 	//z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),regforbit) | (1<<(cbopcodecallidforbit-16))
 	}
 }
-wpoke stack(0),10,wpeek(stack(0),10)+2
+//wpoke stack(0),10,wpeek(stack(0),10)+2
 return
 
 *opcode_dd_E1
@@ -10143,6 +10144,7 @@ cbopcodecallid=z80readmem(wpeek(stack(0),10)+1)
 cbopcodecallidforbit=(cbopcodecallid-0x40)/8
 opcodeforsubcall=z80readmem(wpeek(stack(0),10)+1)
 gosub opcodeaddr_fd_cb(opcodeforsubcall)
+wpoke stack(0),10,wpeek(stack(0),10)+2
 //poke stack(0),14,peek(stack(0),14)+1
 return
 //switch opcodeforsubcall
@@ -11295,7 +11297,7 @@ swend
 	//z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),regforbit) | (1<<(cbopcodecallidforbit-16))
 	}
 }
-wpoke stack(0),10,wpeek(stack(0),10)+2
+//wpoke stack(0),10,wpeek(stack(0),10)+2
 return
 
 *opcode_fd_E1
@@ -12363,7 +12365,781 @@ case 202
 gosub *opcode_CA
 swbreak
 case 203
-gosub *opcode_CB
+cbopcodecallid=z80readmem(wpeek(stack(0),10))
+cbopcodecallidforbit=(cbopcodecallid-0x40)/8
+opcodeforsubcall=z80readmem(wpeek(stack(0),10))
+wpoke stack(0),10,wpeek(stack(0),10)+1
+switch opcodeforsubcall
+case 0
+gosub *opcode_cb_00
+swbreak
+case 1
+gosub *opcode_cb_01
+swbreak
+case 2
+gosub *opcode_cb_02
+swbreak
+case 3
+gosub *opcode_cb_03
+swbreak
+case 4
+gosub *opcode_cb_04
+swbreak
+case 5
+gosub *opcode_cb_05
+swbreak
+case 6
+gosub *opcode_cb_06
+swbreak
+case 7
+gosub *opcode_cb_07
+swbreak
+case 8
+gosub *opcode_cb_08
+swbreak
+case 9
+gosub *opcode_cb_09
+swbreak
+case 10
+gosub *opcode_cb_0A
+swbreak
+case 11
+gosub *opcode_cb_0B
+swbreak
+case 12
+gosub *opcode_cb_0C
+swbreak
+case 13
+gosub *opcode_cb_0D
+swbreak
+case 14
+gosub *opcode_cb_0E
+swbreak
+case 15
+gosub *opcode_cb_0F
+swbreak
+case 16
+gosub *opcode_cb_10
+swbreak
+case 17
+gosub *opcode_cb_11
+swbreak
+case 18
+gosub *opcode_cb_12
+swbreak
+case 19
+gosub *opcode_cb_13
+swbreak
+case 20
+gosub *opcode_cb_14
+swbreak
+case 21
+gosub *opcode_cb_15
+swbreak
+case 22
+gosub *opcode_cb_16
+swbreak
+case 23
+gosub *opcode_cb_17
+swbreak
+case 24
+gosub *opcode_cb_18
+swbreak
+case 25
+gosub *opcode_cb_19
+swbreak
+case 26
+gosub *opcode_cb_1A
+swbreak
+case 27
+gosub *opcode_cb_1B
+swbreak
+case 28
+gosub *opcode_cb_1C
+swbreak
+case 29
+gosub *opcode_cb_1D
+swbreak
+case 30
+gosub *opcode_cb_1E
+swbreak
+case 31
+gosub *opcode_cb_1F
+swbreak
+case 32
+gosub *opcode_cb_20
+swbreak
+case 33
+gosub *opcode_cb_21
+swbreak
+case 34
+gosub *opcode_cb_22
+swbreak
+case 35
+gosub *opcode_cb_23
+swbreak
+case 36
+gosub *opcode_cb_24
+swbreak
+case 37
+gosub *opcode_cb_25
+swbreak
+case 38
+gosub *opcode_cb_26
+swbreak
+case 39
+gosub *opcode_cb_27
+swbreak
+case 40
+gosub *opcode_cb_28
+swbreak
+case 41
+gosub *opcode_cb_29
+swbreak
+case 42
+gosub *opcode_cb_2A
+swbreak
+case 43
+gosub *opcode_cb_2B
+swbreak
+case 44
+gosub *opcode_cb_2C
+swbreak
+case 45
+gosub *opcode_cb_2D
+swbreak
+case 46
+gosub *opcode_cb_2E
+swbreak
+case 47
+gosub *opcode_cb_2F
+swbreak
+case 48
+gosub *opcode_cb_30
+swbreak
+case 49
+gosub *opcode_cb_31
+swbreak
+case 50
+gosub *opcode_cb_32
+swbreak
+case 51
+gosub *opcode_cb_33
+swbreak
+case 52
+gosub *opcode_cb_34
+swbreak
+case 53
+gosub *opcode_cb_35
+swbreak
+case 54
+gosub *opcode_cb_36
+swbreak
+case 55
+gosub *opcode_cb_37
+swbreak
+case 56
+gosub *opcode_cb_38
+swbreak
+case 57
+gosub *opcode_cb_39
+swbreak
+case 58
+gosub *opcode_cb_3A
+swbreak
+case 59
+gosub *opcode_cb_3B
+swbreak
+case 60
+gosub *opcode_cb_3C
+swbreak
+case 61
+gosub *opcode_cb_3D
+swbreak
+case 62
+gosub *opcode_cb_3E
+swbreak
+case 63
+gosub *opcode_cb_3F
+swbreak
+case 64
+gosub *opcode_cb_40
+swbreak
+case 65
+gosub *opcode_cb_41
+swbreak
+case 66
+gosub *opcode_cb_42
+swbreak
+case 67
+gosub *opcode_cb_43
+swbreak
+case 68
+gosub *opcode_cb_44
+swbreak
+case 69
+gosub *opcode_cb_45
+swbreak
+case 70
+gosub *opcode_cb_46
+swbreak
+case 71
+gosub *opcode_cb_47
+swbreak
+case 72
+gosub *opcode_cb_48
+swbreak
+case 73
+gosub *opcode_cb_49
+swbreak
+case 74
+gosub *opcode_cb_4A
+swbreak
+case 75
+gosub *opcode_cb_4B
+swbreak
+case 76
+gosub *opcode_cb_4C
+swbreak
+case 77
+gosub *opcode_cb_4D
+swbreak
+case 78
+gosub *opcode_cb_4E
+swbreak
+case 79
+gosub *opcode_cb_4F
+swbreak
+case 80
+gosub *opcode_cb_50
+swbreak
+case 81
+gosub *opcode_cb_51
+swbreak
+case 82
+gosub *opcode_cb_52
+swbreak
+case 83
+gosub *opcode_cb_53
+swbreak
+case 84
+gosub *opcode_cb_54
+swbreak
+case 85
+gosub *opcode_cb_55
+swbreak
+case 86
+gosub *opcode_cb_56
+swbreak
+case 87
+gosub *opcode_cb_57
+swbreak
+case 88
+gosub *opcode_cb_58
+swbreak
+case 89
+gosub *opcode_cb_59
+swbreak
+case 90
+gosub *opcode_cb_5A
+swbreak
+case 91
+gosub *opcode_cb_5B
+swbreak
+case 92
+gosub *opcode_cb_5C
+swbreak
+case 93
+gosub *opcode_cb_5D
+swbreak
+case 94
+gosub *opcode_cb_5E
+swbreak
+case 95
+gosub *opcode_cb_5F
+swbreak
+case 96
+gosub *opcode_cb_60
+swbreak
+case 97
+gosub *opcode_cb_61
+swbreak
+case 98
+gosub *opcode_cb_62
+swbreak
+case 99
+gosub *opcode_cb_63
+swbreak
+case 100
+gosub *opcode_cb_64
+swbreak
+case 101
+gosub *opcode_cb_65
+swbreak
+case 102
+gosub *opcode_cb_66
+swbreak
+case 103
+gosub *opcode_cb_67
+swbreak
+case 104
+gosub *opcode_cb_68
+swbreak
+case 105
+gosub *opcode_cb_69
+swbreak
+case 106
+gosub *opcode_cb_6A
+swbreak
+case 107
+gosub *opcode_cb_6B
+swbreak
+case 108
+gosub *opcode_cb_6C
+swbreak
+case 109
+gosub *opcode_cb_6D
+swbreak
+case 110
+gosub *opcode_cb_6E
+swbreak
+case 111
+gosub *opcode_cb_6F
+swbreak
+case 112
+gosub *opcode_cb_70
+swbreak
+case 113
+gosub *opcode_cb_71
+swbreak
+case 114
+gosub *opcode_cb_72
+swbreak
+case 115
+gosub *opcode_cb_73
+swbreak
+case 116
+gosub *opcode_cb_74
+swbreak
+case 117
+gosub *opcode_cb_75
+swbreak
+case 118
+gosub *opcode_cb_76
+swbreak
+case 119
+gosub *opcode_cb_77
+swbreak
+case 120
+gosub *opcode_cb_78
+swbreak
+case 121
+gosub *opcode_cb_79
+swbreak
+case 122
+gosub *opcode_cb_7A
+swbreak
+case 123
+gosub *opcode_cb_7B
+swbreak
+case 124
+gosub *opcode_cb_7C
+swbreak
+case 125
+gosub *opcode_cb_7D
+swbreak
+case 126
+gosub *opcode_cb_7E
+swbreak
+case 127
+gosub *opcode_cb_7F
+swbreak
+case 128
+gosub *opcode_cb_80
+swbreak
+case 129
+gosub *opcode_cb_81
+swbreak
+case 130
+gosub *opcode_cb_82
+swbreak
+case 131
+gosub *opcode_cb_83
+swbreak
+case 132
+gosub *opcode_cb_84
+swbreak
+case 133
+gosub *opcode_cb_85
+swbreak
+case 134
+gosub *opcode_cb_86
+swbreak
+case 135
+gosub *opcode_cb_87
+swbreak
+case 136
+gosub *opcode_cb_88
+swbreak
+case 137
+gosub *opcode_cb_89
+swbreak
+case 138
+gosub *opcode_cb_8A
+swbreak
+case 139
+gosub *opcode_cb_8B
+swbreak
+case 140
+gosub *opcode_cb_8C
+swbreak
+case 141
+gosub *opcode_cb_8D
+swbreak
+case 142
+gosub *opcode_cb_8E
+swbreak
+case 143
+gosub *opcode_cb_8F
+swbreak
+case 144
+gosub *opcode_cb_90
+swbreak
+case 145
+gosub *opcode_cb_91
+swbreak
+case 146
+gosub *opcode_cb_92
+swbreak
+case 147
+gosub *opcode_cb_93
+swbreak
+case 148
+gosub *opcode_cb_94
+swbreak
+case 149
+gosub *opcode_cb_95
+swbreak
+case 150
+gosub *opcode_cb_96
+swbreak
+case 151
+gosub *opcode_cb_97
+swbreak
+case 152
+gosub *opcode_cb_98
+swbreak
+case 153
+gosub *opcode_cb_99
+swbreak
+case 154
+gosub *opcode_cb_9A
+swbreak
+case 155
+gosub *opcode_cb_9B
+swbreak
+case 156
+gosub *opcode_cb_9C
+swbreak
+case 157
+gosub *opcode_cb_9D
+swbreak
+case 158
+gosub *opcode_cb_9E
+swbreak
+case 159
+gosub *opcode_cb_9F
+swbreak
+case 160
+gosub *opcode_cb_A0
+swbreak
+case 161
+gosub *opcode_cb_A1
+swbreak
+case 162
+gosub *opcode_cb_A2
+swbreak
+case 163
+gosub *opcode_cb_A3
+swbreak
+case 164
+gosub *opcode_cb_A4
+swbreak
+case 165
+gosub *opcode_cb_A5
+swbreak
+case 166
+gosub *opcode_cb_A6
+swbreak
+case 167
+gosub *opcode_cb_A7
+swbreak
+case 168
+gosub *opcode_cb_A8
+swbreak
+case 169
+gosub *opcode_cb_A9
+swbreak
+case 170
+gosub *opcode_cb_AA
+swbreak
+case 171
+gosub *opcode_cb_AB
+swbreak
+case 172
+gosub *opcode_cb_AC
+swbreak
+case 173
+gosub *opcode_cb_AD
+swbreak
+case 174
+gosub *opcode_cb_AE
+swbreak
+case 175
+gosub *opcode_cb_AF
+swbreak
+case 176
+gosub *opcode_cb_B0
+swbreak
+case 177
+gosub *opcode_cb_B1
+swbreak
+case 178
+gosub *opcode_cb_B2
+swbreak
+case 179
+gosub *opcode_cb_B3
+swbreak
+case 180
+gosub *opcode_cb_B4
+swbreak
+case 181
+gosub *opcode_cb_B5
+swbreak
+case 182
+gosub *opcode_cb_B6
+swbreak
+case 183
+gosub *opcode_cb_B7
+swbreak
+case 184
+gosub *opcode_cb_B8
+swbreak
+case 185
+gosub *opcode_cb_B9
+swbreak
+case 186
+gosub *opcode_cb_BA
+swbreak
+case 187
+gosub *opcode_cb_BB
+swbreak
+case 188
+gosub *opcode_cb_BC
+swbreak
+case 189
+gosub *opcode_cb_BD
+swbreak
+case 190
+gosub *opcode_cb_BE
+swbreak
+case 191
+gosub *opcode_cb_BF
+swbreak
+case 192
+gosub *opcode_cb_C0
+swbreak
+case 193
+gosub *opcode_cb_C1
+swbreak
+case 194
+gosub *opcode_cb_C2
+swbreak
+case 195
+gosub *opcode_cb_C3
+swbreak
+case 196
+gosub *opcode_cb_C4
+swbreak
+case 197
+gosub *opcode_cb_C5
+swbreak
+case 198
+gosub *opcode_cb_C6
+swbreak
+case 199
+gosub *opcode_cb_C7
+swbreak
+case 200
+gosub *opcode_cb_C8
+swbreak
+case 201
+gosub *opcode_cb_C9
+swbreak
+case 202
+gosub *opcode_cb_CA
+swbreak
+case 203
+gosub *opcode_cb_CB
+swbreak
+case 204
+gosub *opcode_cb_CC
+swbreak
+case 205
+gosub *opcode_cb_CD
+swbreak
+case 206
+gosub *opcode_cb_CE
+swbreak
+case 207
+gosub *opcode_cb_CF
+swbreak
+case 208
+gosub *opcode_cb_D0
+swbreak
+case 209
+gosub *opcode_cb_D1
+swbreak
+case 210
+gosub *opcode_cb_D2
+swbreak
+case 211
+gosub *opcode_cb_D3
+swbreak
+case 212
+gosub *opcode_cb_D4
+swbreak
+case 213
+gosub *opcode_cb_D5
+swbreak
+case 214
+gosub *opcode_cb_D6
+swbreak
+case 215
+gosub *opcode_cb_D7
+swbreak
+case 216
+gosub *opcode_cb_D8
+swbreak
+case 217
+gosub *opcode_cb_D9
+swbreak
+case 218
+gosub *opcode_cb_DA
+swbreak
+case 219
+gosub *opcode_cb_DB
+swbreak
+case 220
+gosub *opcode_cb_DC
+swbreak
+case 221
+gosub *opcode_cb_DD
+swbreak
+case 222
+gosub *opcode_cb_DE
+swbreak
+case 223
+gosub *opcode_cb_DF
+swbreak
+case 224
+gosub *opcode_cb_E0
+swbreak
+case 225
+gosub *opcode_cb_E1
+swbreak
+case 226
+gosub *opcode_cb_E2
+swbreak
+case 227
+gosub *opcode_cb_E3
+swbreak
+case 228
+gosub *opcode_cb_E4
+swbreak
+case 229
+gosub *opcode_cb_E5
+swbreak
+case 230
+gosub *opcode_cb_E6
+swbreak
+case 231
+gosub *opcode_cb_E7
+swbreak
+case 232
+gosub *opcode_cb_E8
+swbreak
+case 233
+gosub *opcode_cb_E9
+swbreak
+case 234
+gosub *opcode_cb_EA
+swbreak
+case 235
+gosub *opcode_cb_EB
+swbreak
+case 236
+gosub *opcode_cb_EC
+swbreak
+case 237
+gosub *opcode_cb_ED
+swbreak
+case 238
+gosub *opcode_cb_EE
+swbreak
+case 239
+gosub *opcode_cb_EF
+swbreak
+case 240
+gosub *opcode_cb_F0
+swbreak
+case 241
+gosub *opcode_cb_F1
+swbreak
+case 242
+gosub *opcode_cb_F2
+swbreak
+case 243
+gosub *opcode_cb_F3
+swbreak
+case 244
+gosub *opcode_cb_F4
+swbreak
+case 245
+gosub *opcode_cb_F5
+swbreak
+case 246
+gosub *opcode_cb_F6
+swbreak
+case 247
+gosub *opcode_cb_F7
+swbreak
+case 248
+gosub *opcode_cb_F8
+swbreak
+case 249
+gosub *opcode_cb_F9
+swbreak
+case 250
+gosub *opcode_cb_FA
+swbreak
+case 251
+gosub *opcode_cb_FB
+swbreak
+case 252
+gosub *opcode_cb_FC
+swbreak
+case 253
+gosub *opcode_cb_FD
+swbreak
+case 254
+gosub *opcode_cb_FE
+swbreak
+case 255
+gosub *opcode_cb_FF
+swbreak
+swend
+poke stack(0),14,peek(stack(0),14)+1
 swbreak
 case 204
 gosub *opcode_CC
@@ -12417,7 +13193,1553 @@ case 220
 gosub *opcode_DC
 swbreak
 case 221
-gosub *opcode_DD
+opcodeidforddopcode=z80readmem(wpeek(stack(0),10))
+opcodeforsubcall=z80readmem(wpeek(stack(0),10))
+wpoke stack(0),10,wpeek(stack(0),10)+1
+switch opcodeforsubcall
+case 0
+gosub *opcode_dd_00
+swbreak
+case 1
+gosub *opcode_dd_01
+swbreak
+case 2
+gosub *opcode_dd_02
+swbreak
+case 3
+gosub *opcode_dd_03
+swbreak
+case 4
+gosub *opcode_dd_04
+swbreak
+case 5
+gosub *opcode_dd_05
+swbreak
+case 6
+gosub *opcode_dd_06
+swbreak
+case 7
+gosub *opcode_dd_07
+swbreak
+case 8
+gosub *opcode_dd_08
+swbreak
+case 9
+gosub *opcode_dd_09
+swbreak
+case 10
+gosub *opcode_dd_0A
+swbreak
+case 11
+gosub *opcode_dd_0B
+swbreak
+case 12
+gosub *opcode_dd_0C
+swbreak
+case 13
+gosub *opcode_dd_0D
+swbreak
+case 14
+gosub *opcode_dd_0E
+swbreak
+case 15
+gosub *opcode_dd_0F
+swbreak
+case 16
+gosub *opcode_dd_10
+swbreak
+case 17
+gosub *opcode_dd_11
+swbreak
+case 18
+gosub *opcode_dd_12
+swbreak
+case 19
+gosub *opcode_dd_13
+swbreak
+case 20
+gosub *opcode_dd_14
+swbreak
+case 21
+gosub *opcode_dd_15
+swbreak
+case 22
+gosub *opcode_dd_16
+swbreak
+case 23
+gosub *opcode_dd_17
+swbreak
+case 24
+gosub *opcode_dd_18
+swbreak
+case 25
+gosub *opcode_dd_19
+swbreak
+case 26
+gosub *opcode_dd_1A
+swbreak
+case 27
+gosub *opcode_dd_1B
+swbreak
+case 28
+gosub *opcode_dd_1C
+swbreak
+case 29
+gosub *opcode_dd_1D
+swbreak
+case 30
+gosub *opcode_dd_1E
+swbreak
+case 31
+gosub *opcode_dd_1F
+swbreak
+case 32
+gosub *opcode_dd_20
+swbreak
+case 33
+gosub *opcode_dd_21
+swbreak
+case 34
+gosub *opcode_dd_22
+swbreak
+case 35
+gosub *opcode_dd_23
+swbreak
+case 36
+gosub *opcode_dd_24
+swbreak
+case 37
+gosub *opcode_dd_25
+swbreak
+case 38
+gosub *opcode_dd_26
+swbreak
+case 39
+gosub *opcode_dd_27
+swbreak
+case 40
+gosub *opcode_dd_28
+swbreak
+case 41
+gosub *opcode_dd_29
+swbreak
+case 42
+gosub *opcode_dd_2A
+swbreak
+case 43
+gosub *opcode_dd_2B
+swbreak
+case 44
+gosub *opcode_dd_2C
+swbreak
+case 45
+gosub *opcode_dd_2D
+swbreak
+case 46
+gosub *opcode_dd_2E
+swbreak
+case 47
+gosub *opcode_dd_2F
+swbreak
+case 48
+gosub *opcode_dd_30
+swbreak
+case 49
+gosub *opcode_dd_31
+swbreak
+case 50
+gosub *opcode_dd_32
+swbreak
+case 51
+gosub *opcode_dd_33
+swbreak
+case 52
+gosub *opcode_dd_34
+swbreak
+case 53
+gosub *opcode_dd_35
+swbreak
+case 54
+gosub *opcode_dd_36
+swbreak
+case 55
+gosub *opcode_dd_37
+swbreak
+case 56
+gosub *opcode_dd_38
+swbreak
+case 57
+gosub *opcode_dd_39
+swbreak
+case 58
+gosub *opcode_dd_3A
+swbreak
+case 59
+gosub *opcode_dd_3B
+swbreak
+case 60
+gosub *opcode_dd_3C
+swbreak
+case 61
+gosub *opcode_dd_3D
+swbreak
+case 62
+gosub *opcode_dd_3E
+swbreak
+case 63
+gosub *opcode_dd_3F
+swbreak
+case 64
+gosub *opcode_dd_40
+swbreak
+case 65
+gosub *opcode_dd_41
+swbreak
+case 66
+gosub *opcode_dd_42
+swbreak
+case 67
+gosub *opcode_dd_43
+swbreak
+case 68
+gosub *opcode_dd_44
+swbreak
+case 69
+gosub *opcode_dd_45
+swbreak
+case 70
+gosub *opcode_dd_46
+swbreak
+case 71
+gosub *opcode_dd_47
+swbreak
+case 72
+gosub *opcode_dd_48
+swbreak
+case 73
+gosub *opcode_dd_49
+swbreak
+case 74
+gosub *opcode_dd_4A
+swbreak
+case 75
+gosub *opcode_dd_4B
+swbreak
+case 76
+gosub *opcode_dd_4C
+swbreak
+case 77
+gosub *opcode_dd_4D
+swbreak
+case 78
+gosub *opcode_dd_4E
+swbreak
+case 79
+gosub *opcode_dd_4F
+swbreak
+case 80
+gosub *opcode_dd_50
+swbreak
+case 81
+gosub *opcode_dd_51
+swbreak
+case 82
+gosub *opcode_dd_52
+swbreak
+case 83
+gosub *opcode_dd_53
+swbreak
+case 84
+gosub *opcode_dd_54
+swbreak
+case 85
+gosub *opcode_dd_55
+swbreak
+case 86
+gosub *opcode_dd_56
+swbreak
+case 87
+gosub *opcode_dd_57
+swbreak
+case 88
+gosub *opcode_dd_58
+swbreak
+case 89
+gosub *opcode_dd_59
+swbreak
+case 90
+gosub *opcode_dd_5A
+swbreak
+case 91
+gosub *opcode_dd_5B
+swbreak
+case 92
+gosub *opcode_dd_5C
+swbreak
+case 93
+gosub *opcode_dd_5D
+swbreak
+case 94
+gosub *opcode_dd_5E
+swbreak
+case 95
+gosub *opcode_dd_5F
+swbreak
+case 96
+gosub *opcode_dd_60
+swbreak
+case 97
+gosub *opcode_dd_61
+swbreak
+case 98
+gosub *opcode_dd_62
+swbreak
+case 99
+gosub *opcode_dd_63
+swbreak
+case 100
+gosub *opcode_dd_64
+swbreak
+case 101
+gosub *opcode_dd_65
+swbreak
+case 102
+gosub *opcode_dd_66
+swbreak
+case 103
+gosub *opcode_dd_67
+swbreak
+case 104
+gosub *opcode_dd_68
+swbreak
+case 105
+gosub *opcode_dd_69
+swbreak
+case 106
+gosub *opcode_dd_6A
+swbreak
+case 107
+gosub *opcode_dd_6B
+swbreak
+case 108
+gosub *opcode_dd_6C
+swbreak
+case 109
+gosub *opcode_dd_6D
+swbreak
+case 110
+gosub *opcode_dd_6E
+swbreak
+case 111
+gosub *opcode_dd_6F
+swbreak
+case 112
+gosub *opcode_dd_70
+swbreak
+case 113
+gosub *opcode_dd_71
+swbreak
+case 114
+gosub *opcode_dd_72
+swbreak
+case 115
+gosub *opcode_dd_73
+swbreak
+case 116
+gosub *opcode_dd_74
+swbreak
+case 117
+gosub *opcode_dd_75
+swbreak
+case 118
+gosub *opcode_dd_76
+swbreak
+case 119
+gosub *opcode_dd_77
+swbreak
+case 120
+gosub *opcode_dd_78
+swbreak
+case 121
+gosub *opcode_dd_79
+swbreak
+case 122
+gosub *opcode_dd_7A
+swbreak
+case 123
+gosub *opcode_dd_7B
+swbreak
+case 124
+gosub *opcode_dd_7C
+swbreak
+case 125
+gosub *opcode_dd_7D
+swbreak
+case 126
+gosub *opcode_dd_7E
+swbreak
+case 127
+gosub *opcode_dd_7F
+swbreak
+case 128
+gosub *opcode_dd_80
+swbreak
+case 129
+gosub *opcode_dd_81
+swbreak
+case 130
+gosub *opcode_dd_82
+swbreak
+case 131
+gosub *opcode_dd_83
+swbreak
+case 132
+gosub *opcode_dd_84
+swbreak
+case 133
+gosub *opcode_dd_85
+swbreak
+case 134
+gosub *opcode_dd_86
+swbreak
+case 135
+gosub *opcode_dd_87
+swbreak
+case 136
+gosub *opcode_dd_88
+swbreak
+case 137
+gosub *opcode_dd_89
+swbreak
+case 138
+gosub *opcode_dd_8A
+swbreak
+case 139
+gosub *opcode_dd_8B
+swbreak
+case 140
+gosub *opcode_dd_8C
+swbreak
+case 141
+gosub *opcode_dd_8D
+swbreak
+case 142
+gosub *opcode_dd_8E
+swbreak
+case 143
+gosub *opcode_dd_8F
+swbreak
+case 144
+gosub *opcode_dd_90
+swbreak
+case 145
+gosub *opcode_dd_91
+swbreak
+case 146
+gosub *opcode_dd_92
+swbreak
+case 147
+gosub *opcode_dd_93
+swbreak
+case 148
+gosub *opcode_dd_94
+swbreak
+case 149
+gosub *opcode_dd_95
+swbreak
+case 150
+gosub *opcode_dd_96
+swbreak
+case 151
+gosub *opcode_dd_97
+swbreak
+case 152
+gosub *opcode_dd_98
+swbreak
+case 153
+gosub *opcode_dd_99
+swbreak
+case 154
+gosub *opcode_dd_9A
+swbreak
+case 155
+gosub *opcode_dd_9B
+swbreak
+case 156
+gosub *opcode_dd_9C
+swbreak
+case 157
+gosub *opcode_dd_9D
+swbreak
+case 158
+gosub *opcode_dd_9E
+swbreak
+case 159
+gosub *opcode_dd_9F
+swbreak
+case 160
+gosub *opcode_dd_A0
+swbreak
+case 161
+gosub *opcode_dd_A1
+swbreak
+case 162
+gosub *opcode_dd_A2
+swbreak
+case 163
+gosub *opcode_dd_A3
+swbreak
+case 164
+gosub *opcode_dd_A4
+swbreak
+case 165
+gosub *opcode_dd_A5
+swbreak
+case 166
+gosub *opcode_dd_A6
+swbreak
+case 167
+gosub *opcode_dd_A7
+swbreak
+case 168
+gosub *opcode_dd_A8
+swbreak
+case 169
+gosub *opcode_dd_A9
+swbreak
+case 170
+gosub *opcode_dd_AA
+swbreak
+case 171
+gosub *opcode_dd_AB
+swbreak
+case 172
+gosub *opcode_dd_AC
+swbreak
+case 173
+gosub *opcode_dd_AD
+swbreak
+case 174
+gosub *opcode_dd_AE
+swbreak
+case 175
+gosub *opcode_dd_AF
+swbreak
+case 176
+gosub *opcode_dd_B0
+swbreak
+case 177
+gosub *opcode_dd_B1
+swbreak
+case 178
+gosub *opcode_dd_B2
+swbreak
+case 179
+gosub *opcode_dd_B3
+swbreak
+case 180
+gosub *opcode_dd_B4
+swbreak
+case 181
+gosub *opcode_dd_B5
+swbreak
+case 182
+gosub *opcode_dd_B6
+swbreak
+case 183
+gosub *opcode_dd_B7
+swbreak
+case 184
+gosub *opcode_dd_B8
+swbreak
+case 185
+gosub *opcode_dd_B9
+swbreak
+case 186
+gosub *opcode_dd_BA
+swbreak
+case 187
+gosub *opcode_dd_BB
+swbreak
+case 188
+gosub *opcode_dd_BC
+swbreak
+case 189
+gosub *opcode_dd_BD
+swbreak
+case 190
+gosub *opcode_dd_BE
+swbreak
+case 191
+gosub *opcode_dd_BF
+swbreak
+case 192
+gosub *opcode_dd_C0
+swbreak
+case 193
+gosub *opcode_dd_C1
+swbreak
+case 194
+gosub *opcode_dd_C2
+swbreak
+case 195
+gosub *opcode_dd_C3
+swbreak
+case 196
+gosub *opcode_dd_C4
+swbreak
+case 197
+gosub *opcode_dd_C5
+swbreak
+case 198
+gosub *opcode_dd_C6
+swbreak
+case 199
+gosub *opcode_dd_C7
+swbreak
+case 200
+gosub *opcode_dd_C8
+swbreak
+case 201
+gosub *opcode_dd_C9
+swbreak
+case 202
+gosub *opcode_dd_CA
+swbreak
+case 203
+cbopcodecallid=z80readmem(wpeek(stack(0),10)+1)
+cbopcodecallidforbit=(cbopcodecallid-0x40)/8
+opcodeforsubcall=z80readmem(wpeek(stack(0),10)+1)
+switch opcodeforsubcall
+case 0
+gosub *opcode_dd_cb_00
+swbreak
+case 1
+gosub *opcode_dd_cb_01
+swbreak
+case 2
+gosub *opcode_dd_cb_02
+swbreak
+case 3
+gosub *opcode_dd_cb_03
+swbreak
+case 4
+gosub *opcode_dd_cb_04
+swbreak
+case 5
+gosub *opcode_dd_cb_05
+swbreak
+case 6
+gosub *opcode_dd_cb_06
+swbreak
+case 7
+gosub *opcode_dd_cb_07
+swbreak
+case 8
+gosub *opcode_dd_cb_08
+swbreak
+case 9
+gosub *opcode_dd_cb_09
+swbreak
+case 10
+gosub *opcode_dd_cb_0A
+swbreak
+case 11
+gosub *opcode_dd_cb_0B
+swbreak
+case 12
+gosub *opcode_dd_cb_0C
+swbreak
+case 13
+gosub *opcode_dd_cb_0D
+swbreak
+case 14
+gosub *opcode_dd_cb_0E
+swbreak
+case 15
+gosub *opcode_dd_cb_0F
+swbreak
+case 16
+gosub *opcode_dd_cb_10
+swbreak
+case 17
+gosub *opcode_dd_cb_11
+swbreak
+case 18
+gosub *opcode_dd_cb_12
+swbreak
+case 19
+gosub *opcode_dd_cb_13
+swbreak
+case 20
+gosub *opcode_dd_cb_14
+swbreak
+case 21
+gosub *opcode_dd_cb_15
+swbreak
+case 22
+gosub *opcode_dd_cb_16
+swbreak
+case 23
+gosub *opcode_dd_cb_17
+swbreak
+case 24
+gosub *opcode_dd_cb_18
+swbreak
+case 25
+gosub *opcode_dd_cb_19
+swbreak
+case 26
+gosub *opcode_dd_cb_1A
+swbreak
+case 27
+gosub *opcode_dd_cb_1B
+swbreak
+case 28
+gosub *opcode_dd_cb_1C
+swbreak
+case 29
+gosub *opcode_dd_cb_1D
+swbreak
+case 30
+gosub *opcode_dd_cb_1E
+swbreak
+case 31
+gosub *opcode_dd_cb_1F
+swbreak
+case 32
+gosub *opcode_dd_cb_20
+swbreak
+case 33
+gosub *opcode_dd_cb_21
+swbreak
+case 34
+gosub *opcode_dd_cb_22
+swbreak
+case 35
+gosub *opcode_dd_cb_23
+swbreak
+case 36
+gosub *opcode_dd_cb_24
+swbreak
+case 37
+gosub *opcode_dd_cb_25
+swbreak
+case 38
+gosub *opcode_dd_cb_26
+swbreak
+case 39
+gosub *opcode_dd_cb_27
+swbreak
+case 40
+gosub *opcode_dd_cb_28
+swbreak
+case 41
+gosub *opcode_dd_cb_29
+swbreak
+case 42
+gosub *opcode_dd_cb_2A
+swbreak
+case 43
+gosub *opcode_dd_cb_2B
+swbreak
+case 44
+gosub *opcode_dd_cb_2C
+swbreak
+case 45
+gosub *opcode_dd_cb_2D
+swbreak
+case 46
+gosub *opcode_dd_cb_2E
+swbreak
+case 47
+gosub *opcode_dd_cb_2F
+swbreak
+case 48
+gosub *opcode_dd_cb_30
+swbreak
+case 49
+gosub *opcode_dd_cb_31
+swbreak
+case 50
+gosub *opcode_dd_cb_32
+swbreak
+case 51
+gosub *opcode_dd_cb_33
+swbreak
+case 52
+gosub *opcode_dd_cb_34
+swbreak
+case 53
+gosub *opcode_dd_cb_35
+swbreak
+case 54
+gosub *opcode_dd_cb_36
+swbreak
+case 55
+gosub *opcode_dd_cb_37
+swbreak
+case 56
+gosub *opcode_dd_cb_38
+swbreak
+case 57
+gosub *opcode_dd_cb_39
+swbreak
+case 58
+gosub *opcode_dd_cb_3A
+swbreak
+case 59
+gosub *opcode_dd_cb_3B
+swbreak
+case 60
+gosub *opcode_dd_cb_3C
+swbreak
+case 61
+gosub *opcode_dd_cb_3D
+swbreak
+case 62
+gosub *opcode_dd_cb_3E
+swbreak
+case 63
+gosub *opcode_dd_cb_3F
+swbreak
+case 64
+gosub *opcode_dd_cb_40
+swbreak
+case 65
+gosub *opcode_dd_cb_41
+swbreak
+case 66
+gosub *opcode_dd_cb_42
+swbreak
+case 67
+gosub *opcode_dd_cb_43
+swbreak
+case 68
+gosub *opcode_dd_cb_44
+swbreak
+case 69
+gosub *opcode_dd_cb_45
+swbreak
+case 70
+gosub *opcode_dd_cb_46
+swbreak
+case 71
+gosub *opcode_dd_cb_47
+swbreak
+case 72
+gosub *opcode_dd_cb_48
+swbreak
+case 73
+gosub *opcode_dd_cb_49
+swbreak
+case 74
+gosub *opcode_dd_cb_4A
+swbreak
+case 75
+gosub *opcode_dd_cb_4B
+swbreak
+case 76
+gosub *opcode_dd_cb_4C
+swbreak
+case 77
+gosub *opcode_dd_cb_4D
+swbreak
+case 78
+gosub *opcode_dd_cb_4E
+swbreak
+case 79
+gosub *opcode_dd_cb_4F
+swbreak
+case 80
+gosub *opcode_dd_cb_50
+swbreak
+case 81
+gosub *opcode_dd_cb_51
+swbreak
+case 82
+gosub *opcode_dd_cb_52
+swbreak
+case 83
+gosub *opcode_dd_cb_53
+swbreak
+case 84
+gosub *opcode_dd_cb_54
+swbreak
+case 85
+gosub *opcode_dd_cb_55
+swbreak
+case 86
+gosub *opcode_dd_cb_56
+swbreak
+case 87
+gosub *opcode_dd_cb_57
+swbreak
+case 88
+gosub *opcode_dd_cb_58
+swbreak
+case 89
+gosub *opcode_dd_cb_59
+swbreak
+case 90
+gosub *opcode_dd_cb_5A
+swbreak
+case 91
+gosub *opcode_dd_cb_5B
+swbreak
+case 92
+gosub *opcode_dd_cb_5C
+swbreak
+case 93
+gosub *opcode_dd_cb_5D
+swbreak
+case 94
+gosub *opcode_dd_cb_5E
+swbreak
+case 95
+gosub *opcode_dd_cb_5F
+swbreak
+case 96
+gosub *opcode_dd_cb_60
+swbreak
+case 97
+gosub *opcode_dd_cb_61
+swbreak
+case 98
+gosub *opcode_dd_cb_62
+swbreak
+case 99
+gosub *opcode_dd_cb_63
+swbreak
+case 100
+gosub *opcode_dd_cb_64
+swbreak
+case 101
+gosub *opcode_dd_cb_65
+swbreak
+case 102
+gosub *opcode_dd_cb_66
+swbreak
+case 103
+gosub *opcode_dd_cb_67
+swbreak
+case 104
+gosub *opcode_dd_cb_68
+swbreak
+case 105
+gosub *opcode_dd_cb_69
+swbreak
+case 106
+gosub *opcode_dd_cb_6A
+swbreak
+case 107
+gosub *opcode_dd_cb_6B
+swbreak
+case 108
+gosub *opcode_dd_cb_6C
+swbreak
+case 109
+gosub *opcode_dd_cb_6D
+swbreak
+case 110
+gosub *opcode_dd_cb_6E
+swbreak
+case 111
+gosub *opcode_dd_cb_6F
+swbreak
+case 112
+gosub *opcode_dd_cb_70
+swbreak
+case 113
+gosub *opcode_dd_cb_71
+swbreak
+case 114
+gosub *opcode_dd_cb_72
+swbreak
+case 115
+gosub *opcode_dd_cb_73
+swbreak
+case 116
+gosub *opcode_dd_cb_74
+swbreak
+case 117
+gosub *opcode_dd_cb_75
+swbreak
+case 118
+gosub *opcode_dd_cb_76
+swbreak
+case 119
+gosub *opcode_dd_cb_77
+swbreak
+case 120
+gosub *opcode_dd_cb_78
+swbreak
+case 121
+gosub *opcode_dd_cb_79
+swbreak
+case 122
+gosub *opcode_dd_cb_7A
+swbreak
+case 123
+gosub *opcode_dd_cb_7B
+swbreak
+case 124
+gosub *opcode_dd_cb_7C
+swbreak
+case 125
+gosub *opcode_dd_cb_7D
+swbreak
+case 126
+gosub *opcode_dd_cb_7E
+swbreak
+case 127
+gosub *opcode_dd_cb_7F
+swbreak
+case 128
+gosub *opcode_dd_cb_80
+swbreak
+case 129
+gosub *opcode_dd_cb_81
+swbreak
+case 130
+gosub *opcode_dd_cb_82
+swbreak
+case 131
+gosub *opcode_dd_cb_83
+swbreak
+case 132
+gosub *opcode_dd_cb_84
+swbreak
+case 133
+gosub *opcode_dd_cb_85
+swbreak
+case 134
+gosub *opcode_dd_cb_86
+swbreak
+case 135
+gosub *opcode_dd_cb_87
+swbreak
+case 136
+gosub *opcode_dd_cb_88
+swbreak
+case 137
+gosub *opcode_dd_cb_89
+swbreak
+case 138
+gosub *opcode_dd_cb_8A
+swbreak
+case 139
+gosub *opcode_dd_cb_8B
+swbreak
+case 140
+gosub *opcode_dd_cb_8C
+swbreak
+case 141
+gosub *opcode_dd_cb_8D
+swbreak
+case 142
+gosub *opcode_dd_cb_8E
+swbreak
+case 143
+gosub *opcode_dd_cb_8F
+swbreak
+case 144
+gosub *opcode_dd_cb_90
+swbreak
+case 145
+gosub *opcode_dd_cb_91
+swbreak
+case 146
+gosub *opcode_dd_cb_92
+swbreak
+case 147
+gosub *opcode_dd_cb_93
+swbreak
+case 148
+gosub *opcode_dd_cb_94
+swbreak
+case 149
+gosub *opcode_dd_cb_95
+swbreak
+case 150
+gosub *opcode_dd_cb_96
+swbreak
+case 151
+gosub *opcode_dd_cb_97
+swbreak
+case 152
+gosub *opcode_dd_cb_98
+swbreak
+case 153
+gosub *opcode_dd_cb_99
+swbreak
+case 154
+gosub *opcode_dd_cb_9A
+swbreak
+case 155
+gosub *opcode_dd_cb_9B
+swbreak
+case 156
+gosub *opcode_dd_cb_9C
+swbreak
+case 157
+gosub *opcode_dd_cb_9D
+swbreak
+case 158
+gosub *opcode_dd_cb_9E
+swbreak
+case 159
+gosub *opcode_dd_cb_9F
+swbreak
+case 160
+gosub *opcode_dd_cb_A0
+swbreak
+case 161
+gosub *opcode_dd_cb_A1
+swbreak
+case 162
+gosub *opcode_dd_cb_A2
+swbreak
+case 163
+gosub *opcode_dd_cb_A3
+swbreak
+case 164
+gosub *opcode_dd_cb_A4
+swbreak
+case 165
+gosub *opcode_dd_cb_A5
+swbreak
+case 166
+gosub *opcode_dd_cb_A6
+swbreak
+case 167
+gosub *opcode_dd_cb_A7
+swbreak
+case 168
+gosub *opcode_dd_cb_A8
+swbreak
+case 169
+gosub *opcode_dd_cb_A9
+swbreak
+case 170
+gosub *opcode_dd_cb_AA
+swbreak
+case 171
+gosub *opcode_dd_cb_AB
+swbreak
+case 172
+gosub *opcode_dd_cb_AC
+swbreak
+case 173
+gosub *opcode_dd_cb_AD
+swbreak
+case 174
+gosub *opcode_dd_cb_AE
+swbreak
+case 175
+gosub *opcode_dd_cb_AF
+swbreak
+case 176
+gosub *opcode_dd_cb_B0
+swbreak
+case 177
+gosub *opcode_dd_cb_B1
+swbreak
+case 178
+gosub *opcode_dd_cb_B2
+swbreak
+case 179
+gosub *opcode_dd_cb_B3
+swbreak
+case 180
+gosub *opcode_dd_cb_B4
+swbreak
+case 181
+gosub *opcode_dd_cb_B5
+swbreak
+case 182
+gosub *opcode_dd_cb_B6
+swbreak
+case 183
+gosub *opcode_dd_cb_B7
+swbreak
+case 184
+gosub *opcode_dd_cb_B8
+swbreak
+case 185
+gosub *opcode_dd_cb_B9
+swbreak
+case 186
+gosub *opcode_dd_cb_BA
+swbreak
+case 187
+gosub *opcode_dd_cb_BB
+swbreak
+case 188
+gosub *opcode_dd_cb_BC
+swbreak
+case 189
+gosub *opcode_dd_cb_BD
+swbreak
+case 190
+gosub *opcode_dd_cb_BE
+swbreak
+case 191
+gosub *opcode_dd_cb_BF
+swbreak
+case 192
+gosub *opcode_dd_cb_C0
+swbreak
+case 193
+gosub *opcode_dd_cb_C1
+swbreak
+case 194
+gosub *opcode_dd_cb_C2
+swbreak
+case 195
+gosub *opcode_dd_cb_C3
+swbreak
+case 196
+gosub *opcode_dd_cb_C4
+swbreak
+case 197
+gosub *opcode_dd_cb_C5
+swbreak
+case 198
+gosub *opcode_dd_cb_C6
+swbreak
+case 199
+gosub *opcode_dd_cb_C7
+swbreak
+case 200
+gosub *opcode_dd_cb_C8
+swbreak
+case 201
+gosub *opcode_dd_cb_C9
+swbreak
+case 202
+gosub *opcode_dd_cb_CA
+swbreak
+case 203
+gosub *opcode_dd_cb_CB
+swbreak
+case 204
+gosub *opcode_dd_cb_CC
+swbreak
+case 205
+gosub *opcode_dd_cb_CD
+swbreak
+case 206
+gosub *opcode_dd_cb_CE
+swbreak
+case 207
+gosub *opcode_dd_cb_CF
+swbreak
+case 208
+gosub *opcode_dd_cb_D0
+swbreak
+case 209
+gosub *opcode_dd_cb_D1
+swbreak
+case 210
+gosub *opcode_dd_cb_D2
+swbreak
+case 211
+gosub *opcode_dd_cb_D3
+swbreak
+case 212
+gosub *opcode_dd_cb_D4
+swbreak
+case 213
+gosub *opcode_dd_cb_D5
+swbreak
+case 214
+gosub *opcode_dd_cb_D6
+swbreak
+case 215
+gosub *opcode_dd_cb_D7
+swbreak
+case 216
+gosub *opcode_dd_cb_D8
+swbreak
+case 217
+gosub *opcode_dd_cb_D9
+swbreak
+case 218
+gosub *opcode_dd_cb_DA
+swbreak
+case 219
+gosub *opcode_dd_cb_DB
+swbreak
+case 220
+gosub *opcode_dd_cb_DC
+swbreak
+case 221
+gosub *opcode_dd_cb_DD
+swbreak
+case 222
+gosub *opcode_dd_cb_DE
+swbreak
+case 223
+gosub *opcode_dd_cb_DF
+swbreak
+case 224
+gosub *opcode_dd_cb_E0
+swbreak
+case 225
+gosub *opcode_dd_cb_E1
+swbreak
+case 226
+gosub *opcode_dd_cb_E2
+swbreak
+case 227
+gosub *opcode_dd_cb_E3
+swbreak
+case 228
+gosub *opcode_dd_cb_E4
+swbreak
+case 229
+gosub *opcode_dd_cb_E5
+swbreak
+case 230
+gosub *opcode_dd_cb_E6
+swbreak
+case 231
+gosub *opcode_dd_cb_E7
+swbreak
+case 232
+gosub *opcode_dd_cb_E8
+swbreak
+case 233
+gosub *opcode_dd_cb_E9
+swbreak
+case 234
+gosub *opcode_dd_cb_EA
+swbreak
+case 235
+gosub *opcode_dd_cb_EB
+swbreak
+case 236
+gosub *opcode_dd_cb_EC
+swbreak
+case 237
+gosub *opcode_dd_cb_ED
+swbreak
+case 238
+gosub *opcode_dd_cb_EE
+swbreak
+case 239
+gosub *opcode_dd_cb_EF
+swbreak
+case 240
+gosub *opcode_dd_cb_F0
+swbreak
+case 241
+gosub *opcode_dd_cb_F1
+swbreak
+case 242
+gosub *opcode_dd_cb_F2
+swbreak
+case 243
+gosub *opcode_dd_cb_F3
+swbreak
+case 244
+gosub *opcode_dd_cb_F4
+swbreak
+case 245
+gosub *opcode_dd_cb_F5
+swbreak
+case 246
+gosub *opcode_dd_cb_F6
+swbreak
+case 247
+gosub *opcode_dd_cb_F7
+swbreak
+case 248
+gosub *opcode_dd_cb_F8
+swbreak
+case 249
+gosub *opcode_dd_cb_F9
+swbreak
+case 250
+gosub *opcode_dd_cb_FA
+swbreak
+case 251
+gosub *opcode_dd_cb_FB
+swbreak
+case 252
+gosub *opcode_dd_cb_FC
+swbreak
+case 253
+gosub *opcode_dd_cb_FD
+swbreak
+case 254
+gosub *opcode_dd_cb_FE
+swbreak
+case 255
+gosub *opcode_dd_cb_FF
+swbreak
+swend
+wpoke stack(0),10,wpeek(stack(0),10)+2
+swbreak
+case 204
+gosub *opcode_dd_CC
+swbreak
+case 205
+gosub *opcode_dd_CD
+swbreak
+case 206
+gosub *opcode_dd_CE
+swbreak
+case 207
+gosub *opcode_dd_CF
+swbreak
+case 208
+gosub *opcode_dd_D0
+swbreak
+case 209
+gosub *opcode_dd_D1
+swbreak
+case 210
+gosub *opcode_dd_D2
+swbreak
+case 211
+gosub *opcode_dd_D3
+swbreak
+case 212
+gosub *opcode_dd_D4
+swbreak
+case 213
+gosub *opcode_dd_D5
+swbreak
+case 214
+gosub *opcode_dd_D6
+swbreak
+case 215
+gosub *opcode_dd_D7
+swbreak
+case 216
+gosub *opcode_dd_D8
+swbreak
+case 217
+gosub *opcode_dd_D9
+swbreak
+case 218
+gosub *opcode_dd_DA
+swbreak
+case 219
+gosub *opcode_dd_DB
+swbreak
+case 220
+gosub *opcode_dd_DC
+swbreak
+case 221
+gosub *opcode_dd_DD
+swbreak
+case 222
+gosub *opcode_dd_DE
+swbreak
+case 223
+gosub *opcode_dd_DF
+swbreak
+case 224
+gosub *opcode_dd_E0
+swbreak
+case 225
+gosub *opcode_dd_E1
+swbreak
+case 226
+gosub *opcode_dd_E2
+swbreak
+case 227
+gosub *opcode_dd_E3
+swbreak
+case 228
+gosub *opcode_dd_E4
+swbreak
+case 229
+gosub *opcode_dd_E5
+swbreak
+case 230
+gosub *opcode_dd_E6
+swbreak
+case 231
+gosub *opcode_dd_E7
+swbreak
+case 232
+gosub *opcode_dd_E8
+swbreak
+case 233
+gosub *opcode_dd_E9
+swbreak
+case 234
+gosub *opcode_dd_EA
+swbreak
+case 235
+gosub *opcode_dd_EB
+swbreak
+case 236
+gosub *opcode_dd_EC
+swbreak
+case 237
+gosub *opcode_dd_ED
+swbreak
+case 238
+gosub *opcode_dd_EE
+swbreak
+case 239
+gosub *opcode_dd_EF
+swbreak
+case 240
+gosub *opcode_dd_F0
+swbreak
+case 241
+gosub *opcode_dd_F1
+swbreak
+case 242
+gosub *opcode_dd_F2
+swbreak
+case 243
+gosub *opcode_dd_F3
+swbreak
+case 244
+gosub *opcode_dd_F4
+swbreak
+case 245
+gosub *opcode_dd_F5
+swbreak
+case 246
+gosub *opcode_dd_F6
+swbreak
+case 247
+gosub *opcode_dd_F7
+swbreak
+case 248
+gosub *opcode_dd_F8
+swbreak
+case 249
+gosub *opcode_dd_F9
+swbreak
+case 250
+gosub *opcode_dd_FA
+swbreak
+case 251
+gosub *opcode_dd_FB
+swbreak
+case 252
+gosub *opcode_dd_FC
+swbreak
+case 253
+gosub *opcode_dd_FD
+swbreak
+case 254
+gosub *opcode_dd_FE
+swbreak
+case 255
+gosub *opcode_dd_FF
+swbreak
+swend
+poke stack(0),14,peek(stack(0),14)+1
 swbreak
 case 222
 gosub *opcode_DE
@@ -12465,7 +14787,779 @@ case 236
 gosub *opcode_EC
 swbreak
 case 237
-gosub *opcode_ED
+opcodeforsubcall=z80readmem(wpeek(stack(0),10))
+wpoke stack(0),10,wpeek(stack(0),10)+1
+switch opcodeforsubcall
+case 0
+gosub *opcode_ed_00
+swbreak
+case 1
+gosub *opcode_ed_01
+swbreak
+case 2
+gosub *opcode_ed_02
+swbreak
+case 3
+gosub *opcode_ed_03
+swbreak
+case 4
+gosub *opcode_ed_04
+swbreak
+case 5
+gosub *opcode_ed_05
+swbreak
+case 6
+gosub *opcode_ed_06
+swbreak
+case 7
+gosub *opcode_ed_07
+swbreak
+case 8
+gosub *opcode_ed_08
+swbreak
+case 9
+gosub *opcode_ed_09
+swbreak
+case 10
+gosub *opcode_ed_0A
+swbreak
+case 11
+gosub *opcode_ed_0B
+swbreak
+case 12
+gosub *opcode_ed_0C
+swbreak
+case 13
+gosub *opcode_ed_0D
+swbreak
+case 14
+gosub *opcode_ed_0E
+swbreak
+case 15
+gosub *opcode_ed_0F
+swbreak
+case 16
+gosub *opcode_ed_10
+swbreak
+case 17
+gosub *opcode_ed_11
+swbreak
+case 18
+gosub *opcode_ed_12
+swbreak
+case 19
+gosub *opcode_ed_13
+swbreak
+case 20
+gosub *opcode_ed_14
+swbreak
+case 21
+gosub *opcode_ed_15
+swbreak
+case 22
+gosub *opcode_ed_16
+swbreak
+case 23
+gosub *opcode_ed_17
+swbreak
+case 24
+gosub *opcode_ed_18
+swbreak
+case 25
+gosub *opcode_ed_19
+swbreak
+case 26
+gosub *opcode_ed_1A
+swbreak
+case 27
+gosub *opcode_ed_1B
+swbreak
+case 28
+gosub *opcode_ed_1C
+swbreak
+case 29
+gosub *opcode_ed_1D
+swbreak
+case 30
+gosub *opcode_ed_1E
+swbreak
+case 31
+gosub *opcode_ed_1F
+swbreak
+case 32
+gosub *opcode_ed_20
+swbreak
+case 33
+gosub *opcode_ed_21
+swbreak
+case 34
+gosub *opcode_ed_22
+swbreak
+case 35
+gosub *opcode_ed_23
+swbreak
+case 36
+gosub *opcode_ed_24
+swbreak
+case 37
+gosub *opcode_ed_25
+swbreak
+case 38
+gosub *opcode_ed_26
+swbreak
+case 39
+gosub *opcode_ed_27
+swbreak
+case 40
+gosub *opcode_ed_28
+swbreak
+case 41
+gosub *opcode_ed_29
+swbreak
+case 42
+gosub *opcode_ed_2A
+swbreak
+case 43
+gosub *opcode_ed_2B
+swbreak
+case 44
+gosub *opcode_ed_2C
+swbreak
+case 45
+gosub *opcode_ed_2D
+swbreak
+case 46
+gosub *opcode_ed_2E
+swbreak
+case 47
+gosub *opcode_ed_2F
+swbreak
+case 48
+gosub *opcode_ed_30
+swbreak
+case 49
+gosub *opcode_ed_31
+swbreak
+case 50
+gosub *opcode_ed_32
+swbreak
+case 51
+gosub *opcode_ed_33
+swbreak
+case 52
+gosub *opcode_ed_34
+swbreak
+case 53
+gosub *opcode_ed_35
+swbreak
+case 54
+gosub *opcode_ed_36
+swbreak
+case 55
+gosub *opcode_ed_37
+swbreak
+case 56
+gosub *opcode_ed_38
+swbreak
+case 57
+gosub *opcode_ed_39
+swbreak
+case 58
+gosub *opcode_ed_3A
+swbreak
+case 59
+gosub *opcode_ed_3B
+swbreak
+case 60
+gosub *opcode_ed_3C
+swbreak
+case 61
+gosub *opcode_ed_3D
+swbreak
+case 62
+gosub *opcode_ed_3E
+swbreak
+case 63
+gosub *opcode_ed_3F
+swbreak
+case 64
+gosub *opcode_ed_40
+swbreak
+case 65
+gosub *opcode_ed_41
+swbreak
+case 66
+gosub *opcode_ed_42
+swbreak
+case 67
+gosub *opcode_ed_43
+swbreak
+case 68
+gosub *opcode_ed_44
+swbreak
+case 69
+gosub *opcode_ed_45
+swbreak
+case 70
+gosub *opcode_ed_46
+swbreak
+case 71
+gosub *opcode_ed_47
+swbreak
+case 72
+gosub *opcode_ed_48
+swbreak
+case 73
+gosub *opcode_ed_49
+swbreak
+case 74
+gosub *opcode_ed_4A
+swbreak
+case 75
+gosub *opcode_ed_4B
+swbreak
+case 76
+gosub *opcode_ed_4C
+swbreak
+case 77
+gosub *opcode_ed_4D
+swbreak
+case 78
+gosub *opcode_ed_4E
+swbreak
+case 79
+gosub *opcode_ed_4F
+swbreak
+case 80
+gosub *opcode_ed_50
+swbreak
+case 81
+gosub *opcode_ed_51
+swbreak
+case 82
+gosub *opcode_ed_52
+swbreak
+case 83
+gosub *opcode_ed_53
+swbreak
+case 84
+gosub *opcode_ed_54
+swbreak
+case 85
+gosub *opcode_ed_55
+swbreak
+case 86
+gosub *opcode_ed_56
+swbreak
+case 87
+gosub *opcode_ed_57
+swbreak
+case 88
+gosub *opcode_ed_58
+swbreak
+case 89
+gosub *opcode_ed_59
+swbreak
+case 90
+gosub *opcode_ed_5A
+swbreak
+case 91
+gosub *opcode_ed_5B
+swbreak
+case 92
+gosub *opcode_ed_5C
+swbreak
+case 93
+gosub *opcode_ed_5D
+swbreak
+case 94
+gosub *opcode_ed_5E
+swbreak
+case 95
+gosub *opcode_ed_5F
+swbreak
+case 96
+gosub *opcode_ed_60
+swbreak
+case 97
+gosub *opcode_ed_61
+swbreak
+case 98
+gosub *opcode_ed_62
+swbreak
+case 99
+gosub *opcode_ed_63
+swbreak
+case 100
+gosub *opcode_ed_64
+swbreak
+case 101
+gosub *opcode_ed_65
+swbreak
+case 102
+gosub *opcode_ed_66
+swbreak
+case 103
+gosub *opcode_ed_67
+swbreak
+case 104
+gosub *opcode_ed_68
+swbreak
+case 105
+gosub *opcode_ed_69
+swbreak
+case 106
+gosub *opcode_ed_6A
+swbreak
+case 107
+gosub *opcode_ed_6B
+swbreak
+case 108
+gosub *opcode_ed_6C
+swbreak
+case 109
+gosub *opcode_ed_6D
+swbreak
+case 110
+gosub *opcode_ed_6E
+swbreak
+case 111
+gosub *opcode_ed_6F
+swbreak
+case 112
+gosub *opcode_ed_70
+swbreak
+case 113
+gosub *opcode_ed_71
+swbreak
+case 114
+gosub *opcode_ed_72
+swbreak
+case 115
+gosub *opcode_ed_73
+swbreak
+case 116
+gosub *opcode_ed_74
+swbreak
+case 117
+gosub *opcode_ed_75
+swbreak
+case 118
+gosub *opcode_ed_76
+swbreak
+case 119
+gosub *opcode_ed_77
+swbreak
+case 120
+gosub *opcode_ed_78
+swbreak
+case 121
+gosub *opcode_ed_79
+swbreak
+case 122
+gosub *opcode_ed_7A
+swbreak
+case 123
+gosub *opcode_ed_7B
+swbreak
+case 124
+gosub *opcode_ed_7C
+swbreak
+case 125
+gosub *opcode_ed_7D
+swbreak
+case 126
+gosub *opcode_ed_7E
+swbreak
+case 127
+gosub *opcode_ed_7F
+swbreak
+case 128
+gosub *opcode_ed_80
+swbreak
+case 129
+gosub *opcode_ed_81
+swbreak
+case 130
+gosub *opcode_ed_82
+swbreak
+case 131
+gosub *opcode_ed_83
+swbreak
+case 132
+gosub *opcode_ed_84
+swbreak
+case 133
+gosub *opcode_ed_85
+swbreak
+case 134
+gosub *opcode_ed_86
+swbreak
+case 135
+gosub *opcode_ed_87
+swbreak
+case 136
+gosub *opcode_ed_88
+swbreak
+case 137
+gosub *opcode_ed_89
+swbreak
+case 138
+gosub *opcode_ed_8A
+swbreak
+case 139
+gosub *opcode_ed_8B
+swbreak
+case 140
+gosub *opcode_ed_8C
+swbreak
+case 141
+gosub *opcode_ed_8D
+swbreak
+case 142
+gosub *opcode_ed_8E
+swbreak
+case 143
+gosub *opcode_ed_8F
+swbreak
+case 144
+gosub *opcode_ed_90
+swbreak
+case 145
+gosub *opcode_ed_91
+swbreak
+case 146
+gosub *opcode_ed_92
+swbreak
+case 147
+gosub *opcode_ed_93
+swbreak
+case 148
+gosub *opcode_ed_94
+swbreak
+case 149
+gosub *opcode_ed_95
+swbreak
+case 150
+gosub *opcode_ed_96
+swbreak
+case 151
+gosub *opcode_ed_97
+swbreak
+case 152
+gosub *opcode_ed_98
+swbreak
+case 153
+gosub *opcode_ed_99
+swbreak
+case 154
+gosub *opcode_ed_9A
+swbreak
+case 155
+gosub *opcode_ed_9B
+swbreak
+case 156
+gosub *opcode_ed_9C
+swbreak
+case 157
+gosub *opcode_ed_9D
+swbreak
+case 158
+gosub *opcode_ed_9E
+swbreak
+case 159
+gosub *opcode_ed_9F
+swbreak
+case 160
+gosub *opcode_ed_A0
+swbreak
+case 161
+gosub *opcode_ed_A1
+swbreak
+case 162
+gosub *opcode_ed_A2
+swbreak
+case 163
+gosub *opcode_ed_A3
+swbreak
+case 164
+gosub *opcode_ed_A4
+swbreak
+case 165
+gosub *opcode_ed_A5
+swbreak
+case 166
+gosub *opcode_ed_A6
+swbreak
+case 167
+gosub *opcode_ed_A7
+swbreak
+case 168
+gosub *opcode_ed_A8
+swbreak
+case 169
+gosub *opcode_ed_A9
+swbreak
+case 170
+gosub *opcode_ed_AA
+swbreak
+case 171
+gosub *opcode_ed_AB
+swbreak
+case 172
+gosub *opcode_ed_AC
+swbreak
+case 173
+gosub *opcode_ed_AD
+swbreak
+case 174
+gosub *opcode_ed_AE
+swbreak
+case 175
+gosub *opcode_ed_AF
+swbreak
+case 176
+gosub *opcode_ed_B0
+swbreak
+case 177
+gosub *opcode_ed_B1
+swbreak
+case 178
+gosub *opcode_ed_B2
+swbreak
+case 179
+gosub *opcode_ed_B3
+swbreak
+case 180
+gosub *opcode_ed_B4
+swbreak
+case 181
+gosub *opcode_ed_B5
+swbreak
+case 182
+gosub *opcode_ed_B6
+swbreak
+case 183
+gosub *opcode_ed_B7
+swbreak
+case 184
+gosub *opcode_ed_B8
+swbreak
+case 185
+gosub *opcode_ed_B9
+swbreak
+case 186
+gosub *opcode_ed_BA
+swbreak
+case 187
+gosub *opcode_ed_BB
+swbreak
+case 188
+gosub *opcode_ed_BC
+swbreak
+case 189
+gosub *opcode_ed_BD
+swbreak
+case 190
+gosub *opcode_ed_BE
+swbreak
+case 191
+gosub *opcode_ed_BF
+swbreak
+case 192
+gosub *opcode_ed_C0
+swbreak
+case 193
+gosub *opcode_ed_C1
+swbreak
+case 194
+gosub *opcode_ed_C2
+swbreak
+case 195
+gosub *opcode_ed_C3
+swbreak
+case 196
+gosub *opcode_ed_C4
+swbreak
+case 197
+gosub *opcode_ed_C5
+swbreak
+case 198
+gosub *opcode_ed_C6
+swbreak
+case 199
+gosub *opcode_ed_C7
+swbreak
+case 200
+gosub *opcode_ed_C8
+swbreak
+case 201
+gosub *opcode_ed_C9
+swbreak
+case 202
+gosub *opcode_ed_CA
+swbreak
+case 203
+gosub *opcode_ed_CB
+swbreak
+case 204
+gosub *opcode_ed_CC
+swbreak
+case 205
+gosub *opcode_ed_CD
+swbreak
+case 206
+gosub *opcode_ed_CE
+swbreak
+case 207
+gosub *opcode_ed_CF
+swbreak
+case 208
+gosub *opcode_ed_D0
+swbreak
+case 209
+gosub *opcode_ed_D1
+swbreak
+case 210
+gosub *opcode_ed_D2
+swbreak
+case 211
+gosub *opcode_ed_D3
+swbreak
+case 212
+gosub *opcode_ed_D4
+swbreak
+case 213
+gosub *opcode_ed_D5
+swbreak
+case 214
+gosub *opcode_ed_D6
+swbreak
+case 215
+gosub *opcode_ed_D7
+swbreak
+case 216
+gosub *opcode_ed_D8
+swbreak
+case 217
+gosub *opcode_ed_D9
+swbreak
+case 218
+gosub *opcode_ed_DA
+swbreak
+case 219
+gosub *opcode_ed_DB
+swbreak
+case 220
+gosub *opcode_ed_DC
+swbreak
+case 221
+gosub *opcode_ed_DD
+swbreak
+case 222
+gosub *opcode_ed_DE
+swbreak
+case 223
+gosub *opcode_ed_DF
+swbreak
+case 224
+gosub *opcode_ed_E0
+swbreak
+case 225
+gosub *opcode_ed_E1
+swbreak
+case 226
+gosub *opcode_ed_E2
+swbreak
+case 227
+gosub *opcode_ed_E3
+swbreak
+case 228
+gosub *opcode_ed_E4
+swbreak
+case 229
+gosub *opcode_ed_E5
+swbreak
+case 230
+gosub *opcode_ed_E6
+swbreak
+case 231
+gosub *opcode_ed_E7
+swbreak
+case 232
+gosub *opcode_ed_E8
+swbreak
+case 233
+gosub *opcode_ed_E9
+swbreak
+case 234
+gosub *opcode_ed_EA
+swbreak
+case 235
+gosub *opcode_ed_EB
+swbreak
+case 236
+gosub *opcode_ed_EC
+swbreak
+case 237
+gosub *opcode_ed_ED
+swbreak
+case 238
+gosub *opcode_ed_EE
+swbreak
+case 239
+gosub *opcode_ed_EF
+swbreak
+case 240
+gosub *opcode_ed_F0
+swbreak
+case 241
+gosub *opcode_ed_F1
+swbreak
+case 242
+gosub *opcode_ed_F2
+swbreak
+case 243
+gosub *opcode_ed_F3
+swbreak
+case 244
+gosub *opcode_ed_F4
+swbreak
+case 245
+gosub *opcode_ed_F5
+swbreak
+case 246
+gosub *opcode_ed_F6
+swbreak
+case 247
+gosub *opcode_ed_F7
+swbreak
+case 248
+gosub *opcode_ed_F8
+swbreak
+case 249
+gosub *opcode_ed_F9
+swbreak
+case 250
+gosub *opcode_ed_FA
+swbreak
+case 251
+gosub *opcode_ed_FB
+swbreak
+case 252
+gosub *opcode_ed_FC
+swbreak
+case 253
+gosub *opcode_ed_FD
+swbreak
+case 254
+gosub *opcode_ed_FE
+swbreak
+case 255
+gosub *opcode_ed_FF
+swbreak
+swend
+poke stack(0),14,peek(stack(0),14)+1
 swbreak
 case 238
 gosub *opcode_EE
@@ -12513,7 +15607,1553 @@ case 252
 gosub *opcode_FC
 swbreak
 case 253
-gosub *opcode_FD
+opcodeidforddopcode=z80readmem(wpeek(stack(0),10))
+opcodeforsubcall=z80readmem(wpeek(stack(0),10))
+wpoke stack(0),10,wpeek(stack(0),10)+1
+switch opcodeforsubcall
+case 0
+gosub *opcode_fd_00
+swbreak
+case 1
+gosub *opcode_fd_01
+swbreak
+case 2
+gosub *opcode_fd_02
+swbreak
+case 3
+gosub *opcode_fd_03
+swbreak
+case 4
+gosub *opcode_fd_04
+swbreak
+case 5
+gosub *opcode_fd_05
+swbreak
+case 6
+gosub *opcode_fd_06
+swbreak
+case 7
+gosub *opcode_fd_07
+swbreak
+case 8
+gosub *opcode_fd_08
+swbreak
+case 9
+gosub *opcode_fd_09
+swbreak
+case 10
+gosub *opcode_fd_0A
+swbreak
+case 11
+gosub *opcode_fd_0B
+swbreak
+case 12
+gosub *opcode_fd_0C
+swbreak
+case 13
+gosub *opcode_fd_0D
+swbreak
+case 14
+gosub *opcode_fd_0E
+swbreak
+case 15
+gosub *opcode_fd_0F
+swbreak
+case 16
+gosub *opcode_fd_10
+swbreak
+case 17
+gosub *opcode_fd_11
+swbreak
+case 18
+gosub *opcode_fd_12
+swbreak
+case 19
+gosub *opcode_fd_13
+swbreak
+case 20
+gosub *opcode_fd_14
+swbreak
+case 21
+gosub *opcode_fd_15
+swbreak
+case 22
+gosub *opcode_fd_16
+swbreak
+case 23
+gosub *opcode_fd_17
+swbreak
+case 24
+gosub *opcode_fd_18
+swbreak
+case 25
+gosub *opcode_fd_19
+swbreak
+case 26
+gosub *opcode_fd_1A
+swbreak
+case 27
+gosub *opcode_fd_1B
+swbreak
+case 28
+gosub *opcode_fd_1C
+swbreak
+case 29
+gosub *opcode_fd_1D
+swbreak
+case 30
+gosub *opcode_fd_1E
+swbreak
+case 31
+gosub *opcode_fd_1F
+swbreak
+case 32
+gosub *opcode_fd_20
+swbreak
+case 33
+gosub *opcode_fd_21
+swbreak
+case 34
+gosub *opcode_fd_22
+swbreak
+case 35
+gosub *opcode_fd_23
+swbreak
+case 36
+gosub *opcode_fd_24
+swbreak
+case 37
+gosub *opcode_fd_25
+swbreak
+case 38
+gosub *opcode_fd_26
+swbreak
+case 39
+gosub *opcode_fd_27
+swbreak
+case 40
+gosub *opcode_fd_28
+swbreak
+case 41
+gosub *opcode_fd_29
+swbreak
+case 42
+gosub *opcode_fd_2A
+swbreak
+case 43
+gosub *opcode_fd_2B
+swbreak
+case 44
+gosub *opcode_fd_2C
+swbreak
+case 45
+gosub *opcode_fd_2D
+swbreak
+case 46
+gosub *opcode_fd_2E
+swbreak
+case 47
+gosub *opcode_fd_2F
+swbreak
+case 48
+gosub *opcode_fd_30
+swbreak
+case 49
+gosub *opcode_fd_31
+swbreak
+case 50
+gosub *opcode_fd_32
+swbreak
+case 51
+gosub *opcode_fd_33
+swbreak
+case 52
+gosub *opcode_fd_34
+swbreak
+case 53
+gosub *opcode_fd_35
+swbreak
+case 54
+gosub *opcode_fd_36
+swbreak
+case 55
+gosub *opcode_fd_37
+swbreak
+case 56
+gosub *opcode_fd_38
+swbreak
+case 57
+gosub *opcode_fd_39
+swbreak
+case 58
+gosub *opcode_fd_3A
+swbreak
+case 59
+gosub *opcode_fd_3B
+swbreak
+case 60
+gosub *opcode_fd_3C
+swbreak
+case 61
+gosub *opcode_fd_3D
+swbreak
+case 62
+gosub *opcode_fd_3E
+swbreak
+case 63
+gosub *opcode_fd_3F
+swbreak
+case 64
+gosub *opcode_fd_40
+swbreak
+case 65
+gosub *opcode_fd_41
+swbreak
+case 66
+gosub *opcode_fd_42
+swbreak
+case 67
+gosub *opcode_fd_43
+swbreak
+case 68
+gosub *opcode_fd_44
+swbreak
+case 69
+gosub *opcode_fd_45
+swbreak
+case 70
+gosub *opcode_fd_46
+swbreak
+case 71
+gosub *opcode_fd_47
+swbreak
+case 72
+gosub *opcode_fd_48
+swbreak
+case 73
+gosub *opcode_fd_49
+swbreak
+case 74
+gosub *opcode_fd_4A
+swbreak
+case 75
+gosub *opcode_fd_4B
+swbreak
+case 76
+gosub *opcode_fd_4C
+swbreak
+case 77
+gosub *opcode_fd_4D
+swbreak
+case 78
+gosub *opcode_fd_4E
+swbreak
+case 79
+gosub *opcode_fd_4F
+swbreak
+case 80
+gosub *opcode_fd_50
+swbreak
+case 81
+gosub *opcode_fd_51
+swbreak
+case 82
+gosub *opcode_fd_52
+swbreak
+case 83
+gosub *opcode_fd_53
+swbreak
+case 84
+gosub *opcode_fd_54
+swbreak
+case 85
+gosub *opcode_fd_55
+swbreak
+case 86
+gosub *opcode_fd_56
+swbreak
+case 87
+gosub *opcode_fd_57
+swbreak
+case 88
+gosub *opcode_fd_58
+swbreak
+case 89
+gosub *opcode_fd_59
+swbreak
+case 90
+gosub *opcode_fd_5A
+swbreak
+case 91
+gosub *opcode_fd_5B
+swbreak
+case 92
+gosub *opcode_fd_5C
+swbreak
+case 93
+gosub *opcode_fd_5D
+swbreak
+case 94
+gosub *opcode_fd_5E
+swbreak
+case 95
+gosub *opcode_fd_5F
+swbreak
+case 96
+gosub *opcode_fd_60
+swbreak
+case 97
+gosub *opcode_fd_61
+swbreak
+case 98
+gosub *opcode_fd_62
+swbreak
+case 99
+gosub *opcode_fd_63
+swbreak
+case 100
+gosub *opcode_fd_64
+swbreak
+case 101
+gosub *opcode_fd_65
+swbreak
+case 102
+gosub *opcode_fd_66
+swbreak
+case 103
+gosub *opcode_fd_67
+swbreak
+case 104
+gosub *opcode_fd_68
+swbreak
+case 105
+gosub *opcode_fd_69
+swbreak
+case 106
+gosub *opcode_fd_6A
+swbreak
+case 107
+gosub *opcode_fd_6B
+swbreak
+case 108
+gosub *opcode_fd_6C
+swbreak
+case 109
+gosub *opcode_fd_6D
+swbreak
+case 110
+gosub *opcode_fd_6E
+swbreak
+case 111
+gosub *opcode_fd_6F
+swbreak
+case 112
+gosub *opcode_fd_70
+swbreak
+case 113
+gosub *opcode_fd_71
+swbreak
+case 114
+gosub *opcode_fd_72
+swbreak
+case 115
+gosub *opcode_fd_73
+swbreak
+case 116
+gosub *opcode_fd_74
+swbreak
+case 117
+gosub *opcode_fd_75
+swbreak
+case 118
+gosub *opcode_fd_76
+swbreak
+case 119
+gosub *opcode_fd_77
+swbreak
+case 120
+gosub *opcode_fd_78
+swbreak
+case 121
+gosub *opcode_fd_79
+swbreak
+case 122
+gosub *opcode_fd_7A
+swbreak
+case 123
+gosub *opcode_fd_7B
+swbreak
+case 124
+gosub *opcode_fd_7C
+swbreak
+case 125
+gosub *opcode_fd_7D
+swbreak
+case 126
+gosub *opcode_fd_7E
+swbreak
+case 127
+gosub *opcode_fd_7F
+swbreak
+case 128
+gosub *opcode_fd_80
+swbreak
+case 129
+gosub *opcode_fd_81
+swbreak
+case 130
+gosub *opcode_fd_82
+swbreak
+case 131
+gosub *opcode_fd_83
+swbreak
+case 132
+gosub *opcode_fd_84
+swbreak
+case 133
+gosub *opcode_fd_85
+swbreak
+case 134
+gosub *opcode_fd_86
+swbreak
+case 135
+gosub *opcode_fd_87
+swbreak
+case 136
+gosub *opcode_fd_88
+swbreak
+case 137
+gosub *opcode_fd_89
+swbreak
+case 138
+gosub *opcode_fd_8A
+swbreak
+case 139
+gosub *opcode_fd_8B
+swbreak
+case 140
+gosub *opcode_fd_8C
+swbreak
+case 141
+gosub *opcode_fd_8D
+swbreak
+case 142
+gosub *opcode_fd_8E
+swbreak
+case 143
+gosub *opcode_fd_8F
+swbreak
+case 144
+gosub *opcode_fd_90
+swbreak
+case 145
+gosub *opcode_fd_91
+swbreak
+case 146
+gosub *opcode_fd_92
+swbreak
+case 147
+gosub *opcode_fd_93
+swbreak
+case 148
+gosub *opcode_fd_94
+swbreak
+case 149
+gosub *opcode_fd_95
+swbreak
+case 150
+gosub *opcode_fd_96
+swbreak
+case 151
+gosub *opcode_fd_97
+swbreak
+case 152
+gosub *opcode_fd_98
+swbreak
+case 153
+gosub *opcode_fd_99
+swbreak
+case 154
+gosub *opcode_fd_9A
+swbreak
+case 155
+gosub *opcode_fd_9B
+swbreak
+case 156
+gosub *opcode_fd_9C
+swbreak
+case 157
+gosub *opcode_fd_9D
+swbreak
+case 158
+gosub *opcode_fd_9E
+swbreak
+case 159
+gosub *opcode_fd_9F
+swbreak
+case 160
+gosub *opcode_fd_A0
+swbreak
+case 161
+gosub *opcode_fd_A1
+swbreak
+case 162
+gosub *opcode_fd_A2
+swbreak
+case 163
+gosub *opcode_fd_A3
+swbreak
+case 164
+gosub *opcode_fd_A4
+swbreak
+case 165
+gosub *opcode_fd_A5
+swbreak
+case 166
+gosub *opcode_fd_A6
+swbreak
+case 167
+gosub *opcode_fd_A7
+swbreak
+case 168
+gosub *opcode_fd_A8
+swbreak
+case 169
+gosub *opcode_fd_A9
+swbreak
+case 170
+gosub *opcode_fd_AA
+swbreak
+case 171
+gosub *opcode_fd_AB
+swbreak
+case 172
+gosub *opcode_fd_AC
+swbreak
+case 173
+gosub *opcode_fd_AD
+swbreak
+case 174
+gosub *opcode_fd_AE
+swbreak
+case 175
+gosub *opcode_fd_AF
+swbreak
+case 176
+gosub *opcode_fd_B0
+swbreak
+case 177
+gosub *opcode_fd_B1
+swbreak
+case 178
+gosub *opcode_fd_B2
+swbreak
+case 179
+gosub *opcode_fd_B3
+swbreak
+case 180
+gosub *opcode_fd_B4
+swbreak
+case 181
+gosub *opcode_fd_B5
+swbreak
+case 182
+gosub *opcode_fd_B6
+swbreak
+case 183
+gosub *opcode_fd_B7
+swbreak
+case 184
+gosub *opcode_fd_B8
+swbreak
+case 185
+gosub *opcode_fd_B9
+swbreak
+case 186
+gosub *opcode_fd_BA
+swbreak
+case 187
+gosub *opcode_fd_BB
+swbreak
+case 188
+gosub *opcode_fd_BC
+swbreak
+case 189
+gosub *opcode_fd_BD
+swbreak
+case 190
+gosub *opcode_fd_BE
+swbreak
+case 191
+gosub *opcode_fd_BF
+swbreak
+case 192
+gosub *opcode_fd_C0
+swbreak
+case 193
+gosub *opcode_fd_C1
+swbreak
+case 194
+gosub *opcode_fd_C2
+swbreak
+case 195
+gosub *opcode_fd_C3
+swbreak
+case 196
+gosub *opcode_fd_C4
+swbreak
+case 197
+gosub *opcode_fd_C5
+swbreak
+case 198
+gosub *opcode_fd_C6
+swbreak
+case 199
+gosub *opcode_fd_C7
+swbreak
+case 200
+gosub *opcode_fd_C8
+swbreak
+case 201
+gosub *opcode_fd_C9
+swbreak
+case 202
+gosub *opcode_fd_CA
+swbreak
+case 203
+cbopcodecallid=z80readmem(wpeek(stack(0),10)+1)
+cbopcodecallidforbit=(cbopcodecallid-0x40)/8
+opcodeforsubcall=z80readmem(wpeek(stack(0),10)+1)
+switch opcodeforsubcall
+case 0
+gosub *opcode_fd_cb_00
+swbreak
+case 1
+gosub *opcode_fd_cb_01
+swbreak
+case 2
+gosub *opcode_fd_cb_02
+swbreak
+case 3
+gosub *opcode_fd_cb_03
+swbreak
+case 4
+gosub *opcode_fd_cb_04
+swbreak
+case 5
+gosub *opcode_fd_cb_05
+swbreak
+case 6
+gosub *opcode_fd_cb_06
+swbreak
+case 7
+gosub *opcode_fd_cb_07
+swbreak
+case 8
+gosub *opcode_fd_cb_08
+swbreak
+case 9
+gosub *opcode_fd_cb_09
+swbreak
+case 10
+gosub *opcode_fd_cb_0A
+swbreak
+case 11
+gosub *opcode_fd_cb_0B
+swbreak
+case 12
+gosub *opcode_fd_cb_0C
+swbreak
+case 13
+gosub *opcode_fd_cb_0D
+swbreak
+case 14
+gosub *opcode_fd_cb_0E
+swbreak
+case 15
+gosub *opcode_fd_cb_0F
+swbreak
+case 16
+gosub *opcode_fd_cb_10
+swbreak
+case 17
+gosub *opcode_fd_cb_11
+swbreak
+case 18
+gosub *opcode_fd_cb_12
+swbreak
+case 19
+gosub *opcode_fd_cb_13
+swbreak
+case 20
+gosub *opcode_fd_cb_14
+swbreak
+case 21
+gosub *opcode_fd_cb_15
+swbreak
+case 22
+gosub *opcode_fd_cb_16
+swbreak
+case 23
+gosub *opcode_fd_cb_17
+swbreak
+case 24
+gosub *opcode_fd_cb_18
+swbreak
+case 25
+gosub *opcode_fd_cb_19
+swbreak
+case 26
+gosub *opcode_fd_cb_1A
+swbreak
+case 27
+gosub *opcode_fd_cb_1B
+swbreak
+case 28
+gosub *opcode_fd_cb_1C
+swbreak
+case 29
+gosub *opcode_fd_cb_1D
+swbreak
+case 30
+gosub *opcode_fd_cb_1E
+swbreak
+case 31
+gosub *opcode_fd_cb_1F
+swbreak
+case 32
+gosub *opcode_fd_cb_20
+swbreak
+case 33
+gosub *opcode_fd_cb_21
+swbreak
+case 34
+gosub *opcode_fd_cb_22
+swbreak
+case 35
+gosub *opcode_fd_cb_23
+swbreak
+case 36
+gosub *opcode_fd_cb_24
+swbreak
+case 37
+gosub *opcode_fd_cb_25
+swbreak
+case 38
+gosub *opcode_fd_cb_26
+swbreak
+case 39
+gosub *opcode_fd_cb_27
+swbreak
+case 40
+gosub *opcode_fd_cb_28
+swbreak
+case 41
+gosub *opcode_fd_cb_29
+swbreak
+case 42
+gosub *opcode_fd_cb_2A
+swbreak
+case 43
+gosub *opcode_fd_cb_2B
+swbreak
+case 44
+gosub *opcode_fd_cb_2C
+swbreak
+case 45
+gosub *opcode_fd_cb_2D
+swbreak
+case 46
+gosub *opcode_fd_cb_2E
+swbreak
+case 47
+gosub *opcode_fd_cb_2F
+swbreak
+case 48
+gosub *opcode_fd_cb_30
+swbreak
+case 49
+gosub *opcode_fd_cb_31
+swbreak
+case 50
+gosub *opcode_fd_cb_32
+swbreak
+case 51
+gosub *opcode_fd_cb_33
+swbreak
+case 52
+gosub *opcode_fd_cb_34
+swbreak
+case 53
+gosub *opcode_fd_cb_35
+swbreak
+case 54
+gosub *opcode_fd_cb_36
+swbreak
+case 55
+gosub *opcode_fd_cb_37
+swbreak
+case 56
+gosub *opcode_fd_cb_38
+swbreak
+case 57
+gosub *opcode_fd_cb_39
+swbreak
+case 58
+gosub *opcode_fd_cb_3A
+swbreak
+case 59
+gosub *opcode_fd_cb_3B
+swbreak
+case 60
+gosub *opcode_fd_cb_3C
+swbreak
+case 61
+gosub *opcode_fd_cb_3D
+swbreak
+case 62
+gosub *opcode_fd_cb_3E
+swbreak
+case 63
+gosub *opcode_fd_cb_3F
+swbreak
+case 64
+gosub *opcode_fd_cb_40
+swbreak
+case 65
+gosub *opcode_fd_cb_41
+swbreak
+case 66
+gosub *opcode_fd_cb_42
+swbreak
+case 67
+gosub *opcode_fd_cb_43
+swbreak
+case 68
+gosub *opcode_fd_cb_44
+swbreak
+case 69
+gosub *opcode_fd_cb_45
+swbreak
+case 70
+gosub *opcode_fd_cb_46
+swbreak
+case 71
+gosub *opcode_fd_cb_47
+swbreak
+case 72
+gosub *opcode_fd_cb_48
+swbreak
+case 73
+gosub *opcode_fd_cb_49
+swbreak
+case 74
+gosub *opcode_fd_cb_4A
+swbreak
+case 75
+gosub *opcode_fd_cb_4B
+swbreak
+case 76
+gosub *opcode_fd_cb_4C
+swbreak
+case 77
+gosub *opcode_fd_cb_4D
+swbreak
+case 78
+gosub *opcode_fd_cb_4E
+swbreak
+case 79
+gosub *opcode_fd_cb_4F
+swbreak
+case 80
+gosub *opcode_fd_cb_50
+swbreak
+case 81
+gosub *opcode_fd_cb_51
+swbreak
+case 82
+gosub *opcode_fd_cb_52
+swbreak
+case 83
+gosub *opcode_fd_cb_53
+swbreak
+case 84
+gosub *opcode_fd_cb_54
+swbreak
+case 85
+gosub *opcode_fd_cb_55
+swbreak
+case 86
+gosub *opcode_fd_cb_56
+swbreak
+case 87
+gosub *opcode_fd_cb_57
+swbreak
+case 88
+gosub *opcode_fd_cb_58
+swbreak
+case 89
+gosub *opcode_fd_cb_59
+swbreak
+case 90
+gosub *opcode_fd_cb_5A
+swbreak
+case 91
+gosub *opcode_fd_cb_5B
+swbreak
+case 92
+gosub *opcode_fd_cb_5C
+swbreak
+case 93
+gosub *opcode_fd_cb_5D
+swbreak
+case 94
+gosub *opcode_fd_cb_5E
+swbreak
+case 95
+gosub *opcode_fd_cb_5F
+swbreak
+case 96
+gosub *opcode_fd_cb_60
+swbreak
+case 97
+gosub *opcode_fd_cb_61
+swbreak
+case 98
+gosub *opcode_fd_cb_62
+swbreak
+case 99
+gosub *opcode_fd_cb_63
+swbreak
+case 100
+gosub *opcode_fd_cb_64
+swbreak
+case 101
+gosub *opcode_fd_cb_65
+swbreak
+case 102
+gosub *opcode_fd_cb_66
+swbreak
+case 103
+gosub *opcode_fd_cb_67
+swbreak
+case 104
+gosub *opcode_fd_cb_68
+swbreak
+case 105
+gosub *opcode_fd_cb_69
+swbreak
+case 106
+gosub *opcode_fd_cb_6A
+swbreak
+case 107
+gosub *opcode_fd_cb_6B
+swbreak
+case 108
+gosub *opcode_fd_cb_6C
+swbreak
+case 109
+gosub *opcode_fd_cb_6D
+swbreak
+case 110
+gosub *opcode_fd_cb_6E
+swbreak
+case 111
+gosub *opcode_fd_cb_6F
+swbreak
+case 112
+gosub *opcode_fd_cb_70
+swbreak
+case 113
+gosub *opcode_fd_cb_71
+swbreak
+case 114
+gosub *opcode_fd_cb_72
+swbreak
+case 115
+gosub *opcode_fd_cb_73
+swbreak
+case 116
+gosub *opcode_fd_cb_74
+swbreak
+case 117
+gosub *opcode_fd_cb_75
+swbreak
+case 118
+gosub *opcode_fd_cb_76
+swbreak
+case 119
+gosub *opcode_fd_cb_77
+swbreak
+case 120
+gosub *opcode_fd_cb_78
+swbreak
+case 121
+gosub *opcode_fd_cb_79
+swbreak
+case 122
+gosub *opcode_fd_cb_7A
+swbreak
+case 123
+gosub *opcode_fd_cb_7B
+swbreak
+case 124
+gosub *opcode_fd_cb_7C
+swbreak
+case 125
+gosub *opcode_fd_cb_7D
+swbreak
+case 126
+gosub *opcode_fd_cb_7E
+swbreak
+case 127
+gosub *opcode_fd_cb_7F
+swbreak
+case 128
+gosub *opcode_fd_cb_80
+swbreak
+case 129
+gosub *opcode_fd_cb_81
+swbreak
+case 130
+gosub *opcode_fd_cb_82
+swbreak
+case 131
+gosub *opcode_fd_cb_83
+swbreak
+case 132
+gosub *opcode_fd_cb_84
+swbreak
+case 133
+gosub *opcode_fd_cb_85
+swbreak
+case 134
+gosub *opcode_fd_cb_86
+swbreak
+case 135
+gosub *opcode_fd_cb_87
+swbreak
+case 136
+gosub *opcode_fd_cb_88
+swbreak
+case 137
+gosub *opcode_fd_cb_89
+swbreak
+case 138
+gosub *opcode_fd_cb_8A
+swbreak
+case 139
+gosub *opcode_fd_cb_8B
+swbreak
+case 140
+gosub *opcode_fd_cb_8C
+swbreak
+case 141
+gosub *opcode_fd_cb_8D
+swbreak
+case 142
+gosub *opcode_fd_cb_8E
+swbreak
+case 143
+gosub *opcode_fd_cb_8F
+swbreak
+case 144
+gosub *opcode_fd_cb_90
+swbreak
+case 145
+gosub *opcode_fd_cb_91
+swbreak
+case 146
+gosub *opcode_fd_cb_92
+swbreak
+case 147
+gosub *opcode_fd_cb_93
+swbreak
+case 148
+gosub *opcode_fd_cb_94
+swbreak
+case 149
+gosub *opcode_fd_cb_95
+swbreak
+case 150
+gosub *opcode_fd_cb_96
+swbreak
+case 151
+gosub *opcode_fd_cb_97
+swbreak
+case 152
+gosub *opcode_fd_cb_98
+swbreak
+case 153
+gosub *opcode_fd_cb_99
+swbreak
+case 154
+gosub *opcode_fd_cb_9A
+swbreak
+case 155
+gosub *opcode_fd_cb_9B
+swbreak
+case 156
+gosub *opcode_fd_cb_9C
+swbreak
+case 157
+gosub *opcode_fd_cb_9D
+swbreak
+case 158
+gosub *opcode_fd_cb_9E
+swbreak
+case 159
+gosub *opcode_fd_cb_9F
+swbreak
+case 160
+gosub *opcode_fd_cb_A0
+swbreak
+case 161
+gosub *opcode_fd_cb_A1
+swbreak
+case 162
+gosub *opcode_fd_cb_A2
+swbreak
+case 163
+gosub *opcode_fd_cb_A3
+swbreak
+case 164
+gosub *opcode_fd_cb_A4
+swbreak
+case 165
+gosub *opcode_fd_cb_A5
+swbreak
+case 166
+gosub *opcode_fd_cb_A6
+swbreak
+case 167
+gosub *opcode_fd_cb_A7
+swbreak
+case 168
+gosub *opcode_fd_cb_A8
+swbreak
+case 169
+gosub *opcode_fd_cb_A9
+swbreak
+case 170
+gosub *opcode_fd_cb_AA
+swbreak
+case 171
+gosub *opcode_fd_cb_AB
+swbreak
+case 172
+gosub *opcode_fd_cb_AC
+swbreak
+case 173
+gosub *opcode_fd_cb_AD
+swbreak
+case 174
+gosub *opcode_fd_cb_AE
+swbreak
+case 175
+gosub *opcode_fd_cb_AF
+swbreak
+case 176
+gosub *opcode_fd_cb_B0
+swbreak
+case 177
+gosub *opcode_fd_cb_B1
+swbreak
+case 178
+gosub *opcode_fd_cb_B2
+swbreak
+case 179
+gosub *opcode_fd_cb_B3
+swbreak
+case 180
+gosub *opcode_fd_cb_B4
+swbreak
+case 181
+gosub *opcode_fd_cb_B5
+swbreak
+case 182
+gosub *opcode_fd_cb_B6
+swbreak
+case 183
+gosub *opcode_fd_cb_B7
+swbreak
+case 184
+gosub *opcode_fd_cb_B8
+swbreak
+case 185
+gosub *opcode_fd_cb_B9
+swbreak
+case 186
+gosub *opcode_fd_cb_BA
+swbreak
+case 187
+gosub *opcode_fd_cb_BB
+swbreak
+case 188
+gosub *opcode_fd_cb_BC
+swbreak
+case 189
+gosub *opcode_fd_cb_BD
+swbreak
+case 190
+gosub *opcode_fd_cb_BE
+swbreak
+case 191
+gosub *opcode_fd_cb_BF
+swbreak
+case 192
+gosub *opcode_fd_cb_C0
+swbreak
+case 193
+gosub *opcode_fd_cb_C1
+swbreak
+case 194
+gosub *opcode_fd_cb_C2
+swbreak
+case 195
+gosub *opcode_fd_cb_C3
+swbreak
+case 196
+gosub *opcode_fd_cb_C4
+swbreak
+case 197
+gosub *opcode_fd_cb_C5
+swbreak
+case 198
+gosub *opcode_fd_cb_C6
+swbreak
+case 199
+gosub *opcode_fd_cb_C7
+swbreak
+case 200
+gosub *opcode_fd_cb_C8
+swbreak
+case 201
+gosub *opcode_fd_cb_C9
+swbreak
+case 202
+gosub *opcode_fd_cb_CA
+swbreak
+case 203
+gosub *opcode_fd_cb_CB
+swbreak
+case 204
+gosub *opcode_fd_cb_CC
+swbreak
+case 205
+gosub *opcode_fd_cb_CD
+swbreak
+case 206
+gosub *opcode_fd_cb_CE
+swbreak
+case 207
+gosub *opcode_fd_cb_CF
+swbreak
+case 208
+gosub *opcode_fd_cb_D0
+swbreak
+case 209
+gosub *opcode_fd_cb_D1
+swbreak
+case 210
+gosub *opcode_fd_cb_D2
+swbreak
+case 211
+gosub *opcode_fd_cb_D3
+swbreak
+case 212
+gosub *opcode_fd_cb_D4
+swbreak
+case 213
+gosub *opcode_fd_cb_D5
+swbreak
+case 214
+gosub *opcode_fd_cb_D6
+swbreak
+case 215
+gosub *opcode_fd_cb_D7
+swbreak
+case 216
+gosub *opcode_fd_cb_D8
+swbreak
+case 217
+gosub *opcode_fd_cb_D9
+swbreak
+case 218
+gosub *opcode_fd_cb_DA
+swbreak
+case 219
+gosub *opcode_fd_cb_DB
+swbreak
+case 220
+gosub *opcode_fd_cb_DC
+swbreak
+case 221
+gosub *opcode_fd_cb_DD
+swbreak
+case 222
+gosub *opcode_fd_cb_DE
+swbreak
+case 223
+gosub *opcode_fd_cb_DF
+swbreak
+case 224
+gosub *opcode_fd_cb_E0
+swbreak
+case 225
+gosub *opcode_fd_cb_E1
+swbreak
+case 226
+gosub *opcode_fd_cb_E2
+swbreak
+case 227
+gosub *opcode_fd_cb_E3
+swbreak
+case 228
+gosub *opcode_fd_cb_E4
+swbreak
+case 229
+gosub *opcode_fd_cb_E5
+swbreak
+case 230
+gosub *opcode_fd_cb_E6
+swbreak
+case 231
+gosub *opcode_fd_cb_E7
+swbreak
+case 232
+gosub *opcode_fd_cb_E8
+swbreak
+case 233
+gosub *opcode_fd_cb_E9
+swbreak
+case 234
+gosub *opcode_fd_cb_EA
+swbreak
+case 235
+gosub *opcode_fd_cb_EB
+swbreak
+case 236
+gosub *opcode_fd_cb_EC
+swbreak
+case 237
+gosub *opcode_fd_cb_ED
+swbreak
+case 238
+gosub *opcode_fd_cb_EE
+swbreak
+case 239
+gosub *opcode_fd_cb_EF
+swbreak
+case 240
+gosub *opcode_fd_cb_F0
+swbreak
+case 241
+gosub *opcode_fd_cb_F1
+swbreak
+case 242
+gosub *opcode_fd_cb_F2
+swbreak
+case 243
+gosub *opcode_fd_cb_F3
+swbreak
+case 244
+gosub *opcode_fd_cb_F4
+swbreak
+case 245
+gosub *opcode_fd_cb_F5
+swbreak
+case 246
+gosub *opcode_fd_cb_F6
+swbreak
+case 247
+gosub *opcode_fd_cb_F7
+swbreak
+case 248
+gosub *opcode_fd_cb_F8
+swbreak
+case 249
+gosub *opcode_fd_cb_F9
+swbreak
+case 250
+gosub *opcode_fd_cb_FA
+swbreak
+case 251
+gosub *opcode_fd_cb_FB
+swbreak
+case 252
+gosub *opcode_fd_cb_FC
+swbreak
+case 253
+gosub *opcode_fd_cb_FD
+swbreak
+case 254
+gosub *opcode_fd_cb_FE
+swbreak
+case 255
+gosub *opcode_fd_cb_FF
+swbreak
+swend
+wpoke stack(0),10,wpeek(stack(0),10)+2
+swbreak
+case 204
+gosub *opcode_fd_CC
+swbreak
+case 205
+gosub *opcode_fd_CD
+swbreak
+case 206
+gosub *opcode_fd_CE
+swbreak
+case 207
+gosub *opcode_fd_CF
+swbreak
+case 208
+gosub *opcode_fd_D0
+swbreak
+case 209
+gosub *opcode_fd_D1
+swbreak
+case 210
+gosub *opcode_fd_D2
+swbreak
+case 211
+gosub *opcode_fd_D3
+swbreak
+case 212
+gosub *opcode_fd_D4
+swbreak
+case 213
+gosub *opcode_fd_D5
+swbreak
+case 214
+gosub *opcode_fd_D6
+swbreak
+case 215
+gosub *opcode_fd_D7
+swbreak
+case 216
+gosub *opcode_fd_D8
+swbreak
+case 217
+gosub *opcode_fd_D9
+swbreak
+case 218
+gosub *opcode_fd_DA
+swbreak
+case 219
+gosub *opcode_fd_DB
+swbreak
+case 220
+gosub *opcode_fd_DC
+swbreak
+case 221
+gosub *opcode_fd_DD
+swbreak
+case 222
+gosub *opcode_fd_DE
+swbreak
+case 223
+gosub *opcode_fd_DF
+swbreak
+case 224
+gosub *opcode_fd_E0
+swbreak
+case 225
+gosub *opcode_fd_E1
+swbreak
+case 226
+gosub *opcode_fd_E2
+swbreak
+case 227
+gosub *opcode_fd_E3
+swbreak
+case 228
+gosub *opcode_fd_E4
+swbreak
+case 229
+gosub *opcode_fd_E5
+swbreak
+case 230
+gosub *opcode_fd_E6
+swbreak
+case 231
+gosub *opcode_fd_E7
+swbreak
+case 232
+gosub *opcode_fd_E8
+swbreak
+case 233
+gosub *opcode_fd_E9
+swbreak
+case 234
+gosub *opcode_fd_EA
+swbreak
+case 235
+gosub *opcode_fd_EB
+swbreak
+case 236
+gosub *opcode_fd_EC
+swbreak
+case 237
+gosub *opcode_fd_ED
+swbreak
+case 238
+gosub *opcode_fd_EE
+swbreak
+case 239
+gosub *opcode_fd_EF
+swbreak
+case 240
+gosub *opcode_fd_F0
+swbreak
+case 241
+gosub *opcode_fd_F1
+swbreak
+case 242
+gosub *opcode_fd_F2
+swbreak
+case 243
+gosub *opcode_fd_F3
+swbreak
+case 244
+gosub *opcode_fd_F4
+swbreak
+case 245
+gosub *opcode_fd_F5
+swbreak
+case 246
+gosub *opcode_fd_F6
+swbreak
+case 247
+gosub *opcode_fd_F7
+swbreak
+case 248
+gosub *opcode_fd_F8
+swbreak
+case 249
+gosub *opcode_fd_F9
+swbreak
+case 250
+gosub *opcode_fd_FA
+swbreak
+case 251
+gosub *opcode_fd_FB
+swbreak
+case 252
+gosub *opcode_fd_FC
+swbreak
+case 253
+gosub *opcode_fd_FD
+swbreak
+case 254
+gosub *opcode_fd_FE
+swbreak
+case 255
+gosub *opcode_fd_FF
+swbreak
+swend
+poke stack(0),14,peek(stack(0),14)+1
 swbreak
 case 254
 gosub *opcode_FE
