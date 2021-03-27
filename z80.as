@@ -4204,7 +4204,7 @@ cbopcodecallid=z80readmem(wpeek(stack(0),10))
 cbopcodecallidforbit=(cbopcodecallid-0x40)/8
 opcodeforsubcall=z80readmem(wpeek(stack(0),10))
 wpoke stack(0),10,wpeek(stack(0),10)+1
-gosub opcodeaddr_dd(opcodeforsubcall)
+gosub opcodeaddr_cb(opcodeforsubcall)
 poke stack(0),14,peek(stack(0),14)+1
 return
 //switch opcodeforsubcall
