@@ -3,7 +3,7 @@
 ;So,You can use this software freely!
 #module
 #deffunc z80jit_init
-sdim jitcache,2048*1024*20
+sdim jitcache,2048*1024*200
 dim memorystocker,65536
 ldim z80jitcreamaddr,4
 z80jitcreamaddr(0)=*z80jitcream1,*z80jitcream2,*z80jitcream3,*z80jitjumpctrl
