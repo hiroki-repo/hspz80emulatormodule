@@ -3,6 +3,7 @@
 ;So,You can use this software freely!
 #module
 #deffunc z80jit_init
+z80jitinterval=65536
 sdim jitcache,2048*1024*200
 dim memorystocker,65536
 ldim z80jitcreamaddr,4
@@ -16,6 +17,9 @@ dupptr z80jitopcodeaddrgetteraddrdata,lpeek(z80jitopcodeaddr0ptr,0),256,2
 if wpeek(z80jitopcodeaddrgetteraddrdata,0)&0x8000{z80jitopcodeaddr0ptr=lpeek(z80jitopcodeaddrgetteraddrdata,2)}else{z80jitopcodeaddr0ptr=wpeek(z80jitopcodeaddrgetteraddrdata,2)}
 sdim jitstack,64
 ldim jitforjumpaddr,65536
+return
+#deffunc z80jitintervalset int prm_0
+z80jitinterval=prm_0
 return
 #deffunc z80jitrun var startaddr
 gosub *compiler
@@ -65,7 +69,7 @@ return
 z80jitcreamaddr=opcodeaddropa
 return
 *z80jitjumpctrl
-if z80freezeblocker=65536{await:z80freezeblocker=0}else{z80freezeblocker+=1}
+if z80freezeblocker=z80jitinterval{await:z80freezeblocker=0}else{z80freezeblocker+=1}
 if lpeek(jitforjumpaddr(wpeek(stack@z80moduleaccess(0),10)),0)!0{goto jitforjumpaddr(wpeek(stack@z80moduleaccess(0),10))}
 return
 *compiler
