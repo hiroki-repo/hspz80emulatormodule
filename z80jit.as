@@ -69,7 +69,7 @@ wpoke jitcache,jitcntaddr,0x0001:jitcntaddr+=2
 wpoke jitcache,jitcntaddr,0x0000:jitcntaddr+=2
 wpoke jitcache,jitcntaddr,0x0029:jitcntaddr+=2
 
-compiledaddrz80+=1
+if opcodex@z80moduleaccess(z80jitcreamaddrptr)=0{compiledaddrz80+=1}else{compiledaddrz80+=opcodex@z80moduleaccess(z80jitcreamaddrptr)}
 loop
 wpoke jitcache,jitcntaddr,0x200F|0x8000:jitcntaddr+=2
 lpoke jitcache,jitcntaddr,0:jitcntaddr+=4
