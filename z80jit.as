@@ -6,6 +6,7 @@
 sdim jitcache,2048*1024*200
 dim memorystocker,65536
 ldim z80jitcreamaddr,4
+dim jitforjumpaddrx,65536
 z80jitcreamaddr(0)=*z80jitcream1,*z80jitcream2,*z80jitcream3,*z80jitjumpctrl
 z80jitcreamaddrptr=*getz80jitcreamaddrptr
 dupptr z80jitcreamaddrgetteraddrdata,lpeek(z80jitcreamaddrptr,0),256,2
@@ -30,7 +31,7 @@ memcpy jitstack(0),stack@z80moduleaccess(0),64,0,0
 memcpy jitstack(1),stack@z80moduleaccess(1),64,0,0
 return
 *z80jitcream1
-if memorystocker(wpeek(stack@z80moduleaccess(0),10))!z80readmem(wpeek(stack@z80moduleaccess(0),10)){compiledaddrz80=wpeek(stack@z80moduleaccess(0),10):gosub *compilegen}
+if memorystocker(wpeek(stack@z80moduleaccess(0),10))!z80readmem(wpeek(stack@z80moduleaccess(0),10)){jitcntaddr=jitforjumpaddrx(wpeek(stack@z80moduleaccess(0),10)):compiledaddrz80=wpeek(stack@z80moduleaccess(0),10):gosub *compilegen}
 wpoke stack@z80moduleaccess(0),10,wpeek(stack@z80moduleaccess(0),10)+1
 return
 *z80jitcream2
@@ -91,6 +92,7 @@ return
 
 *compilegen
 lpoke jitforjumpaddr(compiledaddrz80),0,varptr(jitcache)+jitcntaddr
+lpoke jitforjumpaddrx(compiledaddrz80),0,jitcntaddr
 wpoke jitcache,jitcntaddr,0x200F|0x8000:jitcntaddr+=2
 lpoke jitcache,jitcntaddr,1:jitcntaddr+=4
 wpoke jitcache,jitcntaddr,0x0001|0x8000:jitcntaddr+=2
