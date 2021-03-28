@@ -168,6 +168,7 @@ wpoke jitcache,jitcntaddr,0x200F|0x8000:jitcntaddr+=2
 lpoke jitcache,jitcntaddr,1:jitcntaddr+=4
 wpoke jitcache,jitcntaddr,0x0001|0x8000:jitcntaddr+=2
 lpoke jitcache,jitcntaddr,opcodelistaddr(opcodelistaddrget(z80opcodexedchk)):jitcntaddr+=4
+z80opcodexedchk=z80readmem(compiledaddrz80+1)
 wpoke jitcache,jitcntaddr,0x0000:jitcntaddr+=2
 wpoke jitcache,jitcntaddr,0x0028:jitcntaddr+=2
 wpoke jitcache,jitcntaddr,0x0004:jitcntaddr+=2
