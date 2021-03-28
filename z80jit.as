@@ -4,6 +4,7 @@
 #module
 #deffunc z80jit_init
 z80jitinterval=65536
+ldim z80jitintervaljob,1
 sdim jitcache,2048*1024*200
 dim memorystocker,65536
 ldim z80jitcreamaddr,4
@@ -20,6 +21,9 @@ ldim jitforjumpaddr,65536
 return
 #deffunc z80jitintervalset int prm_0
 z80jitinterval=prm_0
+return
+#deffunc z80jitintervaljobset label prm_0
+z80jitintervaljob=prm_0
 return
 #deffunc z80jitrun var startaddr
 gosub *compiler
@@ -69,7 +73,7 @@ return
 z80jitcreamaddr=opcodeaddropa
 return
 *z80jitjumpctrl
-if z80freezeblocker=z80jitinterval{await:z80freezeblocker=0}else{z80freezeblocker+=1}
+if z80freezeblocker=z80jitinterval{await:z80freezeblocker=0:if lpeek(z80jitintervaljob,0)!0{gosub z80jitintervaljob}}else{z80freezeblocker+=1}
 if lpeek(jitforjumpaddr(wpeek(stack@z80moduleaccess(0),10)),0)!0{goto jitforjumpaddr(wpeek(stack@z80moduleaccess(0),10))}
 return
 *compiler
