@@ -7,6 +7,13 @@ z80jitinterval=65536
 ldim z80jitintervaljob,1
 sdim jitcache,2048*1024*200
 dim memorystocker,65536
+dim opcodelistaddr,12
+dim opcodelistaddrget,256
+repeat 256:opcodelistaddrget(cnt)=0:loop
+opcodelistaddrget(0xCB)=1
+opcodelistaddrget(0xDD)=2
+opcodelistaddrget(0xED)=4
+opcodelistaddrget(0xFD)=5
 ldim z80jitcreamaddr,4
 dim jitforjumpaddrx,65536
 z80jitcreamaddr(0)=*z80jitcream1,*z80jitcream2,*z80jitcream3,*z80jitjumpctrl
@@ -16,6 +23,31 @@ if wpeek(z80jitcreamaddrgetteraddrdata,0)&0x8000{z80jitcreamaddrptr=lpeek(z80jit
 z80jitopcodeaddr0ptr=*getjitopcodeaddr0
 dupptr z80jitopcodeaddrgetteraddrdata,lpeek(z80jitopcodeaddr0ptr,0),256,2
 if wpeek(z80jitopcodeaddrgetteraddrdata,0)&0x8000{z80jitopcodeaddr0ptr=lpeek(z80jitopcodeaddrgetteraddrdata,2)}else{z80jitopcodeaddr0ptr=wpeek(z80jitopcodeaddrgetteraddrdata,2)}
+opcodelistaddr(0)=z80jitopcodeaddr0ptr
+z80jitopcodeaddr0ptr=*getjitopcodeaddr1
+dupptr z80jitopcodeaddrgetteraddrdata,lpeek(z80jitopcodeaddr0ptr,0),256,2
+if wpeek(z80jitopcodeaddrgetteraddrdata,0)&0x8000{z80jitopcodeaddr0ptr=lpeek(z80jitopcodeaddrgetteraddrdata,2)}else{z80jitopcodeaddr0ptr=wpeek(z80jitopcodeaddrgetteraddrdata,2)}
+opcodelistaddr(1)=z80jitopcodeaddr0ptr
+z80jitopcodeaddr0ptr=*getjitopcodeaddr2
+dupptr z80jitopcodeaddrgetteraddrdata,lpeek(z80jitopcodeaddr0ptr,0),256,2
+if wpeek(z80jitopcodeaddrgetteraddrdata,0)&0x8000{z80jitopcodeaddr0ptr=lpeek(z80jitopcodeaddrgetteraddrdata,2)}else{z80jitopcodeaddr0ptr=wpeek(z80jitopcodeaddrgetteraddrdata,2)}
+opcodelistaddr(2)=z80jitopcodeaddr0ptr
+z80jitopcodeaddr0ptr=*getjitopcodeaddr3
+dupptr z80jitopcodeaddrgetteraddrdata,lpeek(z80jitopcodeaddr0ptr,0),256,2
+if wpeek(z80jitopcodeaddrgetteraddrdata,0)&0x8000{z80jitopcodeaddr0ptr=lpeek(z80jitopcodeaddrgetteraddrdata,2)}else{z80jitopcodeaddr0ptr=wpeek(z80jitopcodeaddrgetteraddrdata,2)}
+opcodelistaddr(3)=z80jitopcodeaddr0ptr
+z80jitopcodeaddr0ptr=*getjitopcodeaddr4
+dupptr z80jitopcodeaddrgetteraddrdata,lpeek(z80jitopcodeaddr0ptr,0),256,2
+if wpeek(z80jitopcodeaddrgetteraddrdata,0)&0x8000{z80jitopcodeaddr0ptr=lpeek(z80jitopcodeaddrgetteraddrdata,2)}else{z80jitopcodeaddr0ptr=wpeek(z80jitopcodeaddrgetteraddrdata,2)}
+opcodelistaddr(4)=z80jitopcodeaddr0ptr
+z80jitopcodeaddr0ptr=*getjitopcodeaddr5
+dupptr z80jitopcodeaddrgetteraddrdata,lpeek(z80jitopcodeaddr0ptr,0),256,2
+if wpeek(z80jitopcodeaddrgetteraddrdata,0)&0x8000{z80jitopcodeaddr0ptr=lpeek(z80jitopcodeaddrgetteraddrdata,2)}else{z80jitopcodeaddr0ptr=wpeek(z80jitopcodeaddrgetteraddrdata,2)}
+opcodelistaddr(5)=z80jitopcodeaddr0ptr
+z80jitopcodeaddr0ptr=*getjitopcodeaddr6
+dupptr z80jitopcodeaddrgetteraddrdata,lpeek(z80jitopcodeaddr0ptr,0),256,2
+if wpeek(z80jitopcodeaddrgetteraddrdata,0)&0x8000{z80jitopcodeaddr0ptr=lpeek(z80jitopcodeaddrgetteraddrdata,2)}else{z80jitopcodeaddr0ptr=wpeek(z80jitopcodeaddrgetteraddrdata,2)}
+opcodelistaddr(6)=z80jitopcodeaddr0ptr
 sdim jitstack,64
 ldim jitforjumpaddr,65536
 return
@@ -135,7 +167,7 @@ swend*/
 wpoke jitcache,jitcntaddr,0x200F|0x8000:jitcntaddr+=2
 lpoke jitcache,jitcntaddr,1:jitcntaddr+=4
 wpoke jitcache,jitcntaddr,0x0001|0x8000:jitcntaddr+=2
-lpoke jitcache,jitcntaddr,z80jitopcodeaddr0ptr:jitcntaddr+=4
+lpoke jitcache,jitcntaddr,opcodelistaddr(opcodelistaddrget(z80opcodexedchk)):jitcntaddr+=4
 wpoke jitcache,jitcntaddr,0x0000:jitcntaddr+=2
 wpoke jitcache,jitcntaddr,0x0028:jitcntaddr+=2
 wpoke jitcache,jitcntaddr,0x0004:jitcntaddr+=2
