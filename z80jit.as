@@ -1,3 +1,6 @@
+;Gocaine Z80 JIT Codename:Space-Lightning
+;This software is unlicenced.
+;So,You can use this software freely!
 #module
 #deffunc z80jit_init
 sdim jitcache,2048*1024*20
