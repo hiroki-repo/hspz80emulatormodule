@@ -5,7 +5,7 @@
 
 #ifndef z80moduledefined
 #define global z80moduledefined
-#module
+#module z80moduleaccess
 #deffunc gocaine_z80init 
 dim opcodecc_op,256
 dim opcodecc_cb,256
@@ -11753,8 +11753,8 @@ poke SZHVC_addvar_52,0,peek(stack(0),1)
 	}
 poke stack(0),1,SZHVC_addvar_52
 	return
-*z80opcodeinterpretsw
 #ifdef __useslowz80emulation_flag__
+*z80opcodeinterpretsw
 switch opcode
 case 0
 gosub *opcode_00
@@ -17163,8 +17163,8 @@ case 255
 gosub *opcode_FF
 swbreak
 swend
-#endif
 return
+#endif
 #global
 #endif
 gocaine_z80init
