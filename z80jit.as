@@ -19,6 +19,7 @@ ldim jitforjumpaddr,65536
 return
 #deffunc z80jitrun var startaddr
 gosub *compiler
+z80freezeblocker=0
 
 memcpy stack@z80moduleaccess(0),jitstack(0),64,0,0
 memcpy stack@z80moduleaccess(1),jitstack(1),64,0,0
@@ -64,6 +65,7 @@ return
 z80jitcreamaddr=opcodeaddropa
 return
 *z80jitjumpctrl
+if z80freezeblocker=65536{await:z80freezeblocker=0}else{z80freezeblocker+=1}
 if lpeek(jitforjumpaddr(wpeek(stack@z80moduleaccess(0),10)),0)!0{goto jitforjumpaddr(wpeek(stack@z80moduleaccess(0),10))}
 return
 *compiler
