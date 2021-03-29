@@ -110,7 +110,7 @@ return
 z80jitcreamaddr=opcodeaddropa
 return
 *z80jitjumpctrl
-if z80freezeblocker=z80jitinterval{await:z80freezeblocker=0:if lpeek(z80jitintervaljob,0)!0{if z80jitintervaljobgotoflag=0{gosub z80jitintervaljob}else{goto z80jitintervaljob}}}else{z80freezeblocker+=1}
+if z80freezeblocker=z80jitinterval{if ((z80jitintervaljobgotoflag>>1)&0x01)=0{await}:z80freezeblocker=0:if lpeek(z80jitintervaljob,0)!0{if (z80jitintervaljobgotoflag&0x01)=0{gosub z80jitintervaljob}else{goto z80jitintervaljob}}}else{z80freezeblocker+=1}
 if lpeek(jitforjumpaddr(wpeek(stack@z80moduleaccess(0),10)),0)!0{goto jitforjumpaddr(wpeek(stack@z80moduleaccess(0),10))}
 return
 *compiler
