@@ -5,7 +5,7 @@
 #deffunc z80jit_init
 z80jitinterval=65536
 ldim z80jitintervaljob,1
-sdim jitcache,2048*1024*200
+sdim jitcache,8192*1024
 dim memorystocker,65536
 dim opcodelistaddr,12
 dim opcodelistaddrget,256
