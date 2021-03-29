@@ -50,6 +50,7 @@ if wpeek(z80jitopcodeaddrgetteraddrdata,0)&0x8000{z80jitopcodeaddr0ptr=lpeek(z80
 opcodelistaddr(6)=z80jitopcodeaddr0ptr
 sdim jitstack,64
 ldim jitforjumpaddr,65536
+z80freezeblocker=0
 return
 #deffunc z80jitintervalset int prm_0
 z80jitinterval=prm_0
@@ -57,6 +58,8 @@ return
 #deffunc z80jitintervaljobset label prm_0
 z80jitintervaljob=prm_0
 return
+#defcfunc z80jitfreezeblockerget
+return z80freezeblocker
 #deffunc z80jitrun var startaddr
 gosub *compiler
 z80freezeblocker=0
