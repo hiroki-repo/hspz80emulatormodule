@@ -55,8 +55,9 @@ return
 #deffunc z80jitintervalset int prm_0
 z80jitinterval=prm_0
 return
-#deffunc z80jitintervaljobset label prm_0
+#deffunc z80jitintervaljobset label prm_0,int prm_1
 z80jitintervaljob=prm_0
+z80jitintervaljobgotoflag=prm_1
 return
 #defcfunc z80jitfreezeblockerget
 return z80freezeblocker
@@ -109,7 +110,7 @@ return
 z80jitcreamaddr=opcodeaddropa
 return
 *z80jitjumpctrl
-if z80freezeblocker=z80jitinterval{await:z80freezeblocker=0:if lpeek(z80jitintervaljob,0)!0{gosub z80jitintervaljob}}else{z80freezeblocker+=1}
+if z80freezeblocker=z80jitinterval{await:z80freezeblocker=0:if lpeek(z80jitintervaljob,0)!0{if z80jitintervaljobgotoflag=0{gosub z80jitintervaljob}else{goto z80jitintervaljob}}}else{z80freezeblocker+=1}
 if lpeek(jitforjumpaddr(wpeek(stack@z80moduleaccess(0),10)),0)!0{goto jitforjumpaddr(wpeek(stack@z80moduleaccess(0),10))}
 return
 *compiler
@@ -207,6 +208,54 @@ wpoke jitcache,jitcntaddr,0x0029:jitcntaddr+=2
 lpoke memorystocker(compiledaddrz80),0,z80opcodexedchk
 
 compiledaddrz80+=1//:if opcodex@z80moduleaccess(z80opcodexedchk)=0{compiledaddrz80+=1}else{compiledaddrz80+=opcodex@z80moduleaccess(z80opcodexedchk)}
+return
+
+#deffunc z80jitinterrupt var startaddr,int iomemoryidforz80, int threadidforrunthez80
+if z80haltmodesw@z80moduleaccess(threadidforrunthez80)=1{z80haltmodesw(threadidforrunthez80)=0:startaddr=startaddr+1}
+if (peek(jitstack(1),14) & 0x01){
+if z80runmode@z80moduleaccess(threadidforrunthez80)=0{
+memcpy stack@z80moduleaccess(0),jitstack(0),64,0,0
+memcpy stack@z80moduleaccess(1),jitstack(1),64,0,0
+wpoke stack@z80moduleaccess(0),10,startaddr
+//opcode=z80readmem(wpeek(stack(0),10))
+//lpoke jumplabel,0,opcodeaddr(opcode)
+#ifdef __useslowz80emulation_flag__
+opcode=(iomemoryidforz80 & 0xff)
+gosub *z80opcodeinterpretsw
+#else
+gosub opcodeaddr@z80moduleaccess(iomemoryidforz80 & 0xff)//opcodeaddr(opcode)//jumplabel
+#endif
+lpoke startaddr,0,wpeek(stack@z80moduleaccess(0),10)
+memcpy jitstack(0),stack@z80moduleaccess(0),64,0,0
+memcpy jitstack(1),stack@z80moduleaccess(1),64,0,0
+}
+if z80runmode@z80moduleaccess(threadidforrunthez80)=1{
+z80writemem wpeek(jitstack(0),12)-2,peek(jitstack(0),10)
+z80writemem wpeek(jitstack(0),12)-1,peek(jitstack(0),11)
+wpoke jitstack(0),12,wpeek(jitstack(0),12)-2
+wpoke jitstack(0),10,0x38
+startaddr=0x38
+}
+if z80runmode@z80moduleaccess(threadidforrunthez80)=2{
+z80writemem wpeek(jitstack(0),12)-2,peek(jitstack(0),10)
+z80writemem wpeek(jitstack(0),12)-1,peek(jitstack(0),11)
+wpoke jitstack(0),12,wpeek(jitstack(0),12)-2
+startaddr=z80readmem16((peek(jitstack(0),15)<<8)+(iomemoryidforz80 & 0xff))
+}
+poke jitstack(1),14,0
+poke jitstack(1),15,0
+}
+return
+
+
+#deffunc z80jitnminterrupt var startaddr, int threadidforrunthez80
+if z80haltmodesw(threadidforrunthez80)=1{z80haltmodesw(threadidforrunthez80)=0:startaddr=startaddr+1}
+z80writemem wpeek(jitstack(0),12)-2,peek(jitstack(0),10)
+z80writemem wpeek(jitstack(0),12)-1,peek(jitstack(0),11)
+wpoke jitstack(0),12,wpeek(jitstack(0),12)-2
+wpoke jitstack(0),10,0x66
+poke jitstack(1),14,0
+startaddr=0x66
 return
 
 #global
