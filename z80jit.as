@@ -185,7 +185,11 @@ wpoke jitcache,jitcntaddr,0x200F|0x8000:jitcntaddr+=2
 lpoke jitcache,jitcntaddr,1:jitcntaddr+=4
 wpoke jitcache,jitcntaddr,0x0001|0x8000:jitcntaddr+=2
 //lpoke jitcache,jitcntaddr,opcodelistaddr(opcodelistaddrget(z80opcodexedchk)):jitcntaddr+=4
+#ifdef __useslowz80jitemulation_flag__
+lpoke jitcache,jitcntaddr,opcodelistaddr(0):jitcntaddr+=4
+#else
 lpoke jitcache,jitcntaddr,opcodelistaddr(opcodelistaddrget(z80opcodexedchk)):jitcntaddr+=4
+#endif
 //lpoke jitcache,jitcntaddr,opcodelistaddr(0):jitcntaddr+=4
 //if opcodelistaddrget(z80opcodexedchk)!0{z80opcodexedchk=z80readmem(compiledaddrz80+1)}
 wpoke jitcache,jitcntaddr,0x0000:jitcntaddr+=2
