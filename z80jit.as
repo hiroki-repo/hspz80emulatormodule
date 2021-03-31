@@ -86,7 +86,7 @@ return
 *z80jitcream3
 return
 *z80jitcream4
-if memorystocker(wpeek(stack@z80moduleaccess(0),10)&0xFFFF)!z80readmem(wpeek(stack@z80moduleaccess(0),10))|(z80readmem(wpeek(stack@z80moduleaccess(0),10)+1)<<(8*1)){jitcntaddr=jitforjumpaddrx(wpeek(stack@z80moduleaccess(0),10)):compiledaddrz80=wpeek(stack@z80moduleaccess(0),10):gosub *compilegen}
+if memorystocker(wpeek(stack@z80moduleaccess(0),10)&0xFFFF)!z80readmem16(wpeek(stack@z80moduleaccess(0),10)){jitcntaddr=jitforjumpaddrx(wpeek(stack@z80moduleaccess(0),10)):compiledaddrz80=wpeek(stack@z80moduleaccess(0),10):gosub *compilegen}
 opcodeforsubcall@z80moduleaccess=z80readmem(wpeek(stack@z80moduleaccess(0),10)+1):wpoke stack@z80moduleaccess(0),10,wpeek(stack@z80moduleaccess(0),10)+2
 return
 *getjitopcodeaddr0
@@ -209,7 +209,7 @@ wpoke jitcache,jitcntaddr,0x0003:jitcntaddr+=2
 wpoke jitcache,jitcntaddr,0x0000:jitcntaddr+=2
 wpoke jitcache,jitcntaddr,0x0029:jitcntaddr+=2
 
-lpoke memorystocker(compiledaddrz80&0xFFFF),0,z80opcodexedchk|(z80readmem(compiledaddrz80+1)<<(8*1))
+if opcodelistaddrget(z80opcodexedchk)=0{lpoke memorystocker(compiledaddrz80&0xFFFF),0,z80opcodexedchk|(z80readmem(compiledaddrz80+1)<<(8*1))}else{lpoke memorystocker(compiledaddrz80&0xFFFF),0,(z80readmem(compiledaddrz80)<<(8*0))|(z80readmem(compiledaddrz80+1)<<(8*1))}
 
 compiledaddrz80+=1//:if opcodex@z80moduleaccess(z80opcodexedchk)=0{compiledaddrz80+=1}else{compiledaddrz80+=opcodex@z80moduleaccess(z80opcodexedchk)}
 return
