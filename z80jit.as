@@ -192,7 +192,7 @@ wpoke jitcache,jitcntaddr,0x0000:jitcntaddr+=2
 wpoke jitcache,jitcntaddr,0x0028:jitcntaddr+=2
 wpoke jitcache,jitcntaddr,0x0004:jitcntaddr+=2
 #ifdef __useslowz80jitemulation_flag__
-wpoke jitcache,jitcntaddr,z80opcodexedchk
+wpoke jitcache,jitcntaddr,z80opcodexedchk:jitcntaddr+=2
 #else
 if opcodelistaddrget(z80opcodexedchk){wpoke jitcache,jitcntaddr,opcodeforsubcall}else{wpoke jitcache,jitcntaddr,z80opcodexedchk}:jitcntaddr+=2
 #endif
