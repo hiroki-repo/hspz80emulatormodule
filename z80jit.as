@@ -1,6 +1,9 @@
 ;Gocaine Z80 JIT Codename:Space-Lightning
 ;This software is unlicenced.
 ;So,You can use this software freely!
+#ifdef z80moduledefined
+#ifndef z80jitmoduledefined
+#define global z80jitmoduledefined
 #module
 #deffunc z80jit_init
 z80jitinterval=65536
@@ -14,7 +17,7 @@ opcodelistaddrget(0xCB)=1
 opcodelistaddrget(0xDD)=2
 opcodelistaddrget(0xED)=4
 opcodelistaddrget(0xFD)=5
-ldim z80jitcreamaddr,4
+ldim z80jitcreamaddr,24
 dim jitforjumpaddrx,65536
 z80jitcreamaddr(0)=*z80jitcream1,*z80jitcream2,*z80jitcream3,*z80jitjumpctrl,*z80jitcream4
 z80jitcreamaddrptr=*getz80jitcreamaddrptr
@@ -118,7 +121,7 @@ if z80freezeblocker=z80jitinterval{if ((z80jitintervaljobgotoflag>>1)&0x01)=0{aw
 if lpeek(jitforjumpaddr(wpeek(stack@z80moduleaccess(0),10)),0)!0{goto jitforjumpaddr(wpeek(stack@z80moduleaccess(0),10))}
 return
 *compiler
-jitcntaddr=0
+jitcntaddr=0:compiledaddrz80=0
 repeat 65536
 compiledaddrz80=cnt:gosub *compilegen
 loop
@@ -143,6 +146,7 @@ return
 
 *compilegen
 z80opcodexedchk=z80readmem(compiledaddrz80)
+opcodeforsubcall=z80readmem(compiledaddrz80+1)
 lpoke jitforjumpaddr(compiledaddrz80),0,varptr(jitcache)+jitcntaddr
 lpoke jitforjumpaddrx(compiledaddrz80),0,jitcntaddr
 wpoke jitcache,jitcntaddr,0x200F|0x8000:jitcntaddr+=2
@@ -152,7 +156,7 @@ lpoke jitcache,jitcntaddr,z80jitcreamaddrptr:jitcntaddr+=4
 wpoke jitcache,jitcntaddr,0x0000:jitcntaddr+=2
 wpoke jitcache,jitcntaddr,0x0028:jitcntaddr+=2
 wpoke jitcache,jitcntaddr,0x0004:jitcntaddr+=2
-wpoke jitcache,jitcntaddr,((opcodelistaddrget(z80opcodexedchk)!0)*4):jitcntaddr+=2
+wpoke jitcache,jitcntaddr,((opcodelistaddrget(z80opcodexedchk)>0)*4):jitcntaddr+=2
 wpoke jitcache,jitcntaddr,0x0000:jitcntaddr+=2
 wpoke jitcache,jitcntaddr,0x0029:jitcntaddr+=2
 
@@ -183,7 +187,7 @@ lpoke jitcache,jitcntaddr,opcodelistaddr(opcodelistaddrget(z80opcodexedchk)):jit
 wpoke jitcache,jitcntaddr,0x0000:jitcntaddr+=2
 wpoke jitcache,jitcntaddr,0x0028:jitcntaddr+=2
 wpoke jitcache,jitcntaddr,0x0004:jitcntaddr+=2
-wpoke jitcache,jitcntaddr,z80readmem(compiledaddrz80+(opcodelistaddrget(z80opcodexedchk)!0)):jitcntaddr+=2
+if opcodelistaddrget(z80opcodexedchk){wpoke jitcache,jitcntaddr,opcodeforsubcall}else{wpoke jitcache,jitcntaddr,z80opcodexedchk}:jitcntaddr+=2
 wpoke jitcache,jitcntaddr,0x0000:jitcntaddr+=2
 wpoke jitcache,jitcntaddr,0x0029:jitcntaddr+=2
 
@@ -209,7 +213,7 @@ wpoke jitcache,jitcntaddr,0x0003:jitcntaddr+=2
 wpoke jitcache,jitcntaddr,0x0000:jitcntaddr+=2
 wpoke jitcache,jitcntaddr,0x0029:jitcntaddr+=2
 
-if opcodelistaddrget(z80opcodexedchk)=0{lpoke memorystocker(compiledaddrz80&0xFFFF),0,z80opcodexedchk|(z80readmem(compiledaddrz80+1)<<(8*1))}else{lpoke memorystocker(compiledaddrz80&0xFFFF),0,(z80readmem(compiledaddrz80)<<(8*0))|(z80readmem(compiledaddrz80+1)<<(8*1))}
+lpoke memorystocker(compiledaddrz80&0xFFFF),0,z80opcodexedchk|(z80readmem(compiledaddrz80+1)<<(8*1))
 
 compiledaddrz80+=1//:if opcodex@z80moduleaccess(z80opcodexedchk)=0{compiledaddrz80+=1}else{compiledaddrz80+=opcodex@z80moduleaccess(z80opcodexedchk)}
 return
@@ -263,4 +267,6 @@ startaddr=0x66
 return
 
 #global
+#endif
 z80jit_init
+#endif
