@@ -81,7 +81,7 @@ if (memorystocker(wpeek(stack@z80moduleaccess(0),10)&0xFFFF)&0xFF)!z80readmem(wp
 wpoke stack@z80moduleaccess(0),10,wpeek(stack@z80moduleaccess(0),10)+1
 return
 *z80jitcream2
-poke stack@z80moduleaccess(0),14,peek(stack@z80moduleaccess(0),14)+1
+poke stack@z80moduleaccess(0),14,peek(stack@z80moduleaccess(0),14)+1+(opcodelistaddrget(z80opcodexedchk)!0)
 return
 *z80jitcream3
 return
