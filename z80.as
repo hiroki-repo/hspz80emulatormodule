@@ -6318,7 +6318,7 @@ return
 opcodeforsubcall=z80readmem(wpeek(stack(0),10)+1)
 gosub opcodeaddr_dd_cb(opcodeforsubcall)
 wpoke stack(0),10,wpeek(stack(0),10)+2
-//poke stack(0),14,peek(stack(0),14)+1
+poke stack(0),14,peek(stack(0),14)+1
 return
 //switch opcodeforsubcall
 *opcode_dd_cb_00
@@ -10143,7 +10143,7 @@ return
 opcodeforsubcall=z80readmem(wpeek(stack(0),10)+1)
 gosub opcodeaddr_fd_cb(opcodeforsubcall)
 wpoke stack(0),10,wpeek(stack(0),10)+2
-//poke stack(0),14,peek(stack(0),14)+1
+poke stack(0),14,peek(stack(0),14)+1
 return
 //switch opcodeforsubcall
 *opcode_fd_cb_00
@@ -14582,6 +14582,7 @@ gosub *opcode_dd_cb_FF
 swbreak
 swend
 wpoke stack(0),10,wpeek(stack(0),10)+2
+poke stack(0),14,peek(stack(0),14)+1
 swbreak
 case 204
 gosub *opcode_dd_CC
@@ -16996,6 +16997,7 @@ gosub *opcode_fd_cb_FF
 swbreak
 swend
 wpoke stack(0),10,wpeek(stack(0),10)+2
+poke stack(0),14,peek(stack(0),14)+1
 swbreak
 case 204
 gosub *opcode_fd_CC
