@@ -47,6 +47,27 @@ dim DAATable,0x800
 dim breg_tmp,256
 dim irep_tmp,4,4
 dim drep_tmp,4,4
+
+/*sdim SZHVC_add,65536*2
+for oldval,0,256,1
+	for newval,0,256,1
+		val=newval-oldval
+		if newval{if (newval & 0x80){poke SZHVC_add,padds,0x80}else{poke SZHVC_add,padds,0}}else{poke SZHVC_add,padds,0x40}//ifforval(newval,ifforval((newval & 0x80),0x80,0),0x40)
+		poke SZHVC_add,padds,peek(SZHVC_add,padds)|(newval & (0x20 | 0x08))
+		if((newval & 0x0f) < (oldval & 0x0f)){poke SZHVC_add,padds,peek(SZHVC_add,padds)|0x10}
+		if(newval < oldval){poke SZHVC_add,padds,peek(SZHVC_add,padds)|0x01}
+		if((val ^ oldval ^ 0x80) & (val ^ newval) & 0x80){poke SZHVC_add,padds,peek(SZHVC_add,padds)|0x04}
+		padds+=1
+		val=newval-oldval-1
+		if newval{if (newval & 0x80){poke SZHVC_add,padcs+256*256,0x80}else{poke SZHVC_add,padcs+256*256,0}}else{poke SZHVC_add,padcs+256*256,0x40}//poke SZHVC_add,padcs+256*256,ifforval(newval,ifforval((newval & 0x80),0x80,0),0x40)
+		poke SZHVC_add,padcs+256*256,peek(SZHVC_add,padcs+256*256)|(newval & (0x20 | 0x08))
+		if((newval & 0x0f) <= (oldval & 0x0f)){poke SZHVC_add,padcs+256*256,peek(SZHVC_add,padcs+256*256)|0x10}
+		if(newval <= oldval){poke SZHVC_add,padcs+256*256,peek(SZHVC_add,padcs+256*256)|0x01}
+		if((val ^ oldval ^ 0x80) & (val ^ newval) & 0x80){poke SZHVC_add,padcs+256*256,peek(SZHVC_add,padcs+256*256)|0x04}
+		padcs+=1
+	next
+next*/
+
 /*	repeat 256
 	i=cnt
 		p = 0
@@ -2433,6 +2454,7 @@ poke stack(0),7,z80readmem(wpeek(stack(0),10))
 wpoke stack(0),10,wpeek(stack(0),10)+1
 return
 *opcode_27
+	#if 0
 		afordaa=0
 		afordaa = peek(stack(0),0)
 		if peek(stack(0),1) & 0x01 {afordaa |= 0x100}
@@ -2440,7 +2462,8 @@ return
 		if peek(stack(0),1) & 0x02 {afordaa |= 0x400}
 		poke stack(0),0,peek(DAATable(afordaa),1)
 		poke stack(0),1,peek(DAATable(afordaa),0)
-	/*afordaa=peek(stack(0),0)
+	#else
+	afordaa=peek(stack(0),0)
 	if(peek(stack(0),1) & 0x02) { 
 		if((peek(stack(0),1) & 0x10) | ((peek(stack(0),0) & 0xf) > 9)) {afordaa -= 6}
 		if((peek(stack(0),1) & 0x01) | (peek(stack(0),0) > 0x99)) {afordaa -= 0x60}
@@ -2449,7 +2472,8 @@ return
 		if((peek(stack(0),1) & 0x01) | (peek(stack(0),0) > 0x99)) {afordaa += 0x60}
 	} 
 	poke stack(0),1,(peek(stack(0),1) & (0x01 | 0x02)) | (peek(stack(0),0) > 0x99) | ((peek(stack(0),0) ^ afordaa) & 0x10) | SZP(peek(afordaa,0))
-	poke stack(0),0,afordaa*/
+	poke stack(0),0,afordaa
+	#endif
 return
 *opcode_28
 address=z80readmem(wpeek(stack(0),10))
