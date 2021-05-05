@@ -8487,7 +8487,9 @@ return
 *opcode_ed_76
 z80runmode(threadidforrunthez80)=1
 return
-
+*opcode_ed_77
+goto *opcode_00
+return
 *opcode_ed_78
 #ifdef z80memaccess
 addressforz80rwmads=wpeek(stack(0),2)
@@ -8577,6 +8579,9 @@ poke stack(1),14,peek(stack(1),15)
 return
 *opcode_ed_7E
 z80runmode(threadidforrunthez80)=2
+return
+*opcode_ed_7F
+poke stack(0),14,peek(stack(0),14)
 return
 
 *opcode_ed_A0
@@ -8989,8 +8994,6 @@ return
 *opcode_ed_3D
 *opcode_ed_3E
 *opcode_ed_3F
-*opcode_ed_77
-*opcode_ed_7F
 *opcode_ed_80
 *opcode_ed_81
 *opcode_ed_82
