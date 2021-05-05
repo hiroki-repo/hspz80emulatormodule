@@ -8420,9 +8420,17 @@ return
 *opcode_ed_71
 #ifdef z80memaccess
 addressforz80rwmads=wpeek(stack(0),2)
+#ifdef __GCNZ80ISCMOS__
+z80memaccess (addressforz80rwmads & 0xFFFF),0xFF,2
+#else
 z80memaccess (addressforz80rwmads & 0xFFFF),0,2
+#endif
+#else
+#ifdef __GCNZ80ISCMOS__
+poke iomemory,peek(stack(0),2),0xFF
 #else
 poke iomemory,peek(stack(0),2),0
+#endif
 iomemorycalled=1
 iomemorycalledid=peek(stack(0),2)
 iomemorycalledid16=wpeek(stack(0),2)
