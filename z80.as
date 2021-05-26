@@ -4994,6 +4994,50 @@ return
 *opcode_cb_7D
 *opcode_cb_7E
 *opcode_cb_7F
+cbopcodecallid=opcodeforsubcall
+cbopcodecallidforbit=(opcodeforsubcall-0x40)/8
+//if cbopcodecallid>=0x40 & cbopcodecallid<=127{
+regfromopcodeforbit=(cbopcodecallid-0x40)-(8*cbopcodecallidforbit)
+switch regfromopcodeforbit
+case 0
+regforbit=3
+swbreak
+case 1
+regforbit=2
+swbreak
+case 2
+regforbit=5
+swbreak
+case 3
+regforbit=4
+swbreak
+case 4
+regforbit=7
+swbreak
+case 5
+regforbit=6
+swbreak
+case 6
+regforbit=-1
+swbreak
+case 7
+regforbit=0
+swbreak
+swend
+/*if regforbit=-1{}else{}*/
+	//if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
+	/*if peek(stack(0),regforbit) & (1<<regfromopcodeforbit){
+	}
+	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
+	if (peek(stack(0),1) & 0x40){poke stack(0),1,peek(stack(0),1)^0x40}
+	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
+	if regforbit=-1{
+	poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((z80readmem(wpeek(stack(0),6)) & (1 << cbopcodecallidforbit))) & (0xFF - (0x20 | 0x08))) | ((wpeek(stack(0),6) >> 8) & (0x20 | 0x08))
+	}else{
+	poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((peek(stack(0),regforbit) & (1 << cbopcodecallidforbit))) & (0xFF - (0x20 | 0x08))) | ((peek(stack(0),regforbit)) & (0x20 | 0x08))
+	}
+//}
+return
 *opcode_cb_80
 *opcode_cb_81
 *opcode_cb_82
@@ -5058,6 +5102,50 @@ return
 *opcode_cb_BD
 *opcode_cb_BE
 *opcode_cb_BF
+cbopcodecallid=opcodeforsubcall
+cbopcodecallidforbit=(opcodeforsubcall-0x40)/8
+//if cbopcodecallid>=128 & cbopcodecallid<=0xBF{
+regfromopcodeforbit=(cbopcodecallid-0x40)-(8*cbopcodecallidforbit)
+switch regfromopcodeforbit
+case 0
+regforbit=3
+swbreak
+case 1
+regforbit=2
+swbreak
+case 2
+regforbit=5
+swbreak
+case 3
+regforbit=4
+swbreak
+case 4
+regforbit=7
+swbreak
+case 5
+regforbit=6
+swbreak
+case 6
+regforbit=-1
+swbreak
+case 7
+regforbit=0
+swbreak
+swend
+/*if regforbit=-1{}else{}*/
+	//if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
+	/*if peek(stack(0),regforbit) & (1<<regfromopcodeforbit){
+	}
+	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
+	if (peek(stack(0),1) & 0x40){poke stack(0),1,peek(stack(0),1)^0x40}
+	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
+	if regforbit=-1{
+	z80writemem wpeek(stack(0),6),z80readmem(wpeek(stack(0),6)) & 0xFF - (1<<(cbopcodecallidforbit-8))
+	}else{
+	poke stack(0),regforbit,peek(stack(0),regforbit) & 0xFF - (1<<(cbopcodecallidforbit-8))
+	}
+//}
+return
 *opcode_cb_C0
 *opcode_cb_C1
 *opcode_cb_C2
@@ -5124,89 +5212,7 @@ return
 *opcode_cb_FF
 cbopcodecallid=opcodeforsubcall
 cbopcodecallidforbit=(opcodeforsubcall-0x40)/8
-if cbopcodecallid>=0x40 & cbopcodecallid<=127{
-regfromopcodeforbit=(cbopcodecallid-0x40)-(8*cbopcodecallidforbit)
-switch regfromopcodeforbit
-case 0
-regforbit=3
-swbreak
-case 1
-regforbit=2
-swbreak
-case 2
-regforbit=5
-swbreak
-case 3
-regforbit=4
-swbreak
-case 4
-regforbit=7
-swbreak
-case 5
-regforbit=6
-swbreak
-case 6
-regforbit=-1
-swbreak
-case 7
-regforbit=0
-swbreak
-swend
-/*if regforbit=-1{}else{}*/
-	//if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
-	/*if peek(stack(0),regforbit) & (1<<regfromopcodeforbit){
-	}
-	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
-	if (peek(stack(0),1) & 0x40){poke stack(0),1,peek(stack(0),1)^0x40}
-	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
-	if regforbit=-1{
-	poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((z80readmem(wpeek(stack(0),6)) & (1 << cbopcodecallidforbit))) & (0xFF - (0x20 | 0x08))) | ((wpeek(stack(0),6) >> 8) & (0x20 | 0x08))
-	}else{
-	poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((peek(stack(0),regforbit) & (1 << cbopcodecallidforbit))) & (0xFF - (0x20 | 0x08))) | ((peek(stack(0),regforbit)) & (0x20 | 0x08))
-	}
-}
-if cbopcodecallid>=128 & cbopcodecallid<=0xBF{
-regfromopcodeforbit=(cbopcodecallid-0x40)-(8*cbopcodecallidforbit)
-switch regfromopcodeforbit
-case 0
-regforbit=3
-swbreak
-case 1
-regforbit=2
-swbreak
-case 2
-regforbit=5
-swbreak
-case 3
-regforbit=4
-swbreak
-case 4
-regforbit=7
-swbreak
-case 5
-regforbit=6
-swbreak
-case 6
-regforbit=-1
-swbreak
-case 7
-regforbit=0
-swbreak
-swend
-/*if regforbit=-1{}else{}*/
-	//if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
-	/*if peek(stack(0),regforbit) & (1<<regfromopcodeforbit){
-	}
-	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
-	if (peek(stack(0),1) & 0x40){poke stack(0),1,peek(stack(0),1)^0x40}
-	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
-	if regforbit=-1{
-	z80writemem wpeek(stack(0),6),z80readmem(wpeek(stack(0),6)) & 0xFF - (1<<(cbopcodecallidforbit-8))
-	}else{
-	poke stack(0),regforbit,peek(stack(0),regforbit) & 0xFF - (1<<(cbopcodecallidforbit-8))
-	}
-}
-if cbopcodecallid>=0xC0 & cbopcodecallid<=0xFF{
+//if cbopcodecallid>=0xC0 & cbopcodecallid<=0xFF{
 regfromopcodeforbit=(cbopcodecallid-0x40)-(8*cbopcodecallidforbit)
 switch regfromopcodeforbit
 case 0
@@ -5246,7 +5252,7 @@ swend
 	}else{
 	poke stack(0),regforbit,peek(stack(0),regforbit) | (1<<(cbopcodecallidforbit-16))
 	}
-}
+//}
 //poke stack(0),14,peek(stack(0),14)+1
 return
 *opcode_cc
@@ -7229,6 +7235,54 @@ return
 *opcode_dd_cb_7D
 *opcode_dd_cb_7E
 *opcode_dd_cb_7F
+cbopcodecallid=opcodeforsubcall
+cbopcodecallidforbit=(opcodeforsubcall-0x40)/8
+regforbit=z80readmem(wpeek(stack(1),10)+z80readmem(wpeek(stack(0),10)))
+//if cbopcodecallid>=0x40 & cbopcodecallid<=127{
+regfromopcodeforbit=(cbopcodecallid-0x40)-(8*cbopcodecallidforbit)
+regforbit=0
+/*switch regfromopcodeforbit
+case 6
+regforbit=-1
+swbreak
+case 0
+regforbit=3
+swbreak
+case 1
+regforbit=2
+swbreak
+case 2
+regforbit=5
+swbreak
+case 3
+regforbit=4
+swbreak
+case 4
+regforbit=7
+swbreak
+case 5
+regforbit=6
+swbreak
+case 7
+regforbit=0
+swbreak
+swend*/
+/*if regforbit=-1{}else{}*/
+	//if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
+	/*if peek(stack(0),regforbit) & (1<<regfromopcodeforbit){
+	}
+	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
+	if (peek(stack(0),1) & 0x40){poke stack(0),1,peek(stack(0),1)^0x40}
+	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
+	//if regforbit=-1{
+	z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+	poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << cbopcodecallidforbit)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+	/*}else{
+	z80eaddr=peek(stack(0),regforbit):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+	poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(peek(stack(0),regforbit) & (1 << cbopcodecallidforbit)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+	}*/
+//}
+return
 *opcode_dd_cb_80
 *opcode_dd_cb_81
 *opcode_dd_cb_82
@@ -7293,6 +7347,56 @@ return
 *opcode_dd_cb_BD
 *opcode_dd_cb_BE
 *opcode_dd_cb_BF
+cbopcodecallid=opcodeforsubcall
+cbopcodecallidforbit=(opcodeforsubcall-0x40)/8
+regforbit=z80readmem(wpeek(stack(1),10)+z80readmem(wpeek(stack(0),10)))
+//if cbopcodecallid>=128 & cbopcodecallid<=0xBF{
+regfromopcodeforbit=(cbopcodecallid-0x40)-(8*cbopcodecallidforbit)
+regforbit=0
+switch regfromopcodeforbit
+case 6
+regforbit=-1
+swbreak
+case 0
+regforbit=3
+swbreak
+case 1
+regforbit=2
+swbreak
+case 2
+regforbit=5
+swbreak
+case 3
+regforbit=4
+swbreak
+case 4
+regforbit=7
+swbreak
+case 5
+regforbit=6
+swbreak
+case 7
+regforbit=0
+swbreak
+swend
+/*if regforbit=-1{}else{}*/
+	//if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
+	/*if peek(stack(0),regforbit) & (1<<regfromopcodeforbit){
+	}
+	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
+	if (peek(stack(0),1) & 0x40){poke stack(0),1,peek(stack(0),1)^0x40}
+	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
+	if regforbit=-1{
+	z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+	z80writemem wpeek(stack(1),10)+z80eaddr,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(cbopcodecallidforbit-8))
+	}else{
+	z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+	poke stack(0),regforbit,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(cbopcodecallidforbit-8))
+	z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),regforbit)
+	//z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),regforbit) & 0xFF - (1<<(cbopcodecallidforbit-8))
+	}
+//}
+return
 *opcode_dd_cb_C0
 *opcode_dd_cb_C1
 *opcode_dd_cb_C2
@@ -7360,97 +7464,7 @@ return
 cbopcodecallid=opcodeforsubcall
 cbopcodecallidforbit=(opcodeforsubcall-0x40)/8
 regforbit=z80readmem(wpeek(stack(1),10)+z80readmem(wpeek(stack(0),10)))
-if cbopcodecallid>=0x40 & cbopcodecallid<=127{
-regfromopcodeforbit=(cbopcodecallid-0x40)-(8*cbopcodecallidforbit)
-regforbit=0
-/*switch regfromopcodeforbit
-case 6
-regforbit=-1
-swbreak
-case 0
-regforbit=3
-swbreak
-case 1
-regforbit=2
-swbreak
-case 2
-regforbit=5
-swbreak
-case 3
-regforbit=4
-swbreak
-case 4
-regforbit=7
-swbreak
-case 5
-regforbit=6
-swbreak
-case 7
-regforbit=0
-swbreak
-swend*/
-/*if regforbit=-1{}else{}*/
-	//if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
-	/*if peek(stack(0),regforbit) & (1<<regfromopcodeforbit){
-	}
-	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
-	if (peek(stack(0),1) & 0x40){poke stack(0),1,peek(stack(0),1)^0x40}
-	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
-	//if regforbit=-1{
-	z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
-	poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << cbopcodecallidforbit)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
-	/*}else{
-	z80eaddr=peek(stack(0),regforbit):if z80eaddr>=128{z80eaddr=z80eaddr-256}
-	poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(peek(stack(0),regforbit) & (1 << cbopcodecallidforbit)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
-	}*/
-}
-if cbopcodecallid>=128 & cbopcodecallid<=0xBF{
-regfromopcodeforbit=(cbopcodecallid-0x40)-(8*cbopcodecallidforbit)
-regforbit=0
-switch regfromopcodeforbit
-case 6
-regforbit=-1
-swbreak
-case 0
-regforbit=3
-swbreak
-case 1
-regforbit=2
-swbreak
-case 2
-regforbit=5
-swbreak
-case 3
-regforbit=4
-swbreak
-case 4
-regforbit=7
-swbreak
-case 5
-regforbit=6
-swbreak
-case 7
-regforbit=0
-swbreak
-swend
-/*if regforbit=-1{}else{}*/
-	//if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
-	/*if peek(stack(0),regforbit) & (1<<regfromopcodeforbit){
-	}
-	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
-	if (peek(stack(0),1) & 0x40){poke stack(0),1,peek(stack(0),1)^0x40}
-	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
-	if regforbit=-1{
-	z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
-	z80writemem wpeek(stack(1),10)+z80eaddr,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(cbopcodecallidforbit-8))
-	}else{
-	z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
-	poke stack(0),regforbit,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(cbopcodecallidforbit-8))
-	z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),regforbit)
-	//z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),regforbit) & 0xFF - (1<<(cbopcodecallidforbit-8))
-	}
-}
-if cbopcodecallid>=0xC0 & cbopcodecallid<=0xFF{
+//if cbopcodecallid>=0xC0 & cbopcodecallid<=0xFF{
 regfromopcodeforbit=(cbopcodecallid-0x40)-(8*cbopcodecallidforbit)
 regforbit=0
 switch regfromopcodeforbit
@@ -7495,7 +7509,7 @@ swend
 	z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),regforbit)
 	//z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),regforbit) | (1<<(cbopcodecallidforbit-16))
 	}
-}
+//}
 //wpoke stack(0),10,wpeek(stack(0),10)+2
 return
 
@@ -11065,6 +11079,54 @@ return
 *opcode_fd_cb_7D
 *opcode_fd_cb_7E
 *opcode_fd_cb_7F
+cbopcodecallid=opcodeforsubcall
+cbopcodecallidforbit=(opcodeforsubcall-0x40)/8
+regforbit=z80readmem(wpeek(stack(1),12)+z80readmem(wpeek(stack(0),10)))
+//if cbopcodecallid>=0x40 & cbopcodecallid<=127{
+regfromopcodeforbit=(cbopcodecallid-0x40)-(8*cbopcodecallidforbit)
+regforbit=0
+/*switch regfromopcodeforbit
+case 6
+regforbit=-1
+swbreak
+case 0
+regforbit=3
+swbreak
+case 1
+regforbit=2
+swbreak
+case 2
+regforbit=5
+swbreak
+case 3
+regforbit=4
+swbreak
+case 4
+regforbit=7
+swbreak
+case 5
+regforbit=6
+swbreak
+case 7
+regforbit=0
+swbreak
+swend*/
+/*if regforbit=-1{}else{}*/
+	//if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
+	/*if peek(stack(0),regforbit) & (1<<regfromopcodeforbit){
+	}
+	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
+	if (peek(stack(0),1) & 0x40){poke stack(0),1,peek(stack(0),1)^0x40}
+	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
+	//if regforbit=-1{
+	z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+	poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << cbopcodecallidforbit)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+	/*}else{
+	z80eaddr=peek(stack(0),regforbit):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+	poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(peek(stack(0),regforbit) & (1 << cbopcodecallidforbit)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+	}*/
+//}
+return
 *opcode_fd_cb_80
 *opcode_fd_cb_81
 *opcode_fd_cb_82
@@ -11129,6 +11191,56 @@ return
 *opcode_fd_cb_BD
 *opcode_fd_cb_BE
 *opcode_fd_cb_BF
+cbopcodecallid=opcodeforsubcall
+cbopcodecallidforbit=(opcodeforsubcall-0x40)/8
+regforbit=z80readmem(wpeek(stack(1),12)+z80readmem(wpeek(stack(0),10)))
+//if cbopcodecallid>=128 & cbopcodecallid<=0xBF{
+regfromopcodeforbit=(cbopcodecallid-0x40)-(8*cbopcodecallidforbit)
+regforbit=0
+switch regfromopcodeforbit
+case 6
+regforbit=-1
+swbreak
+case 0
+regforbit=3
+swbreak
+case 1
+regforbit=2
+swbreak
+case 2
+regforbit=5
+swbreak
+case 3
+regforbit=4
+swbreak
+case 4
+regforbit=7
+swbreak
+case 5
+regforbit=6
+swbreak
+case 7
+regforbit=0
+swbreak
+swend
+/*if regforbit=-1{}else{}*/
+	//if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
+	/*if peek(stack(0),regforbit) & (1<<regfromopcodeforbit){
+	}
+	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
+	if (peek(stack(0),1) & 0x40){poke stack(0),1,peek(stack(0),1)^0x40}
+	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
+	if regforbit=-1{
+	z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+	z80writemem wpeek(stack(1),12)+z80eaddr,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(cbopcodecallidforbit-8))
+	}else{
+	z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+	poke stack(0),regforbit,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(cbopcodecallidforbit-8))
+	z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),regforbit)
+	//z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),regforbit) & 0xFF - (1<<(cbopcodecallidforbit-8))
+	}
+//}
+return
 *opcode_fd_cb_C0
 *opcode_fd_cb_C1
 *opcode_fd_cb_C2
@@ -11196,97 +11308,7 @@ return
 cbopcodecallid=opcodeforsubcall
 cbopcodecallidforbit=(opcodeforsubcall-0x40)/8
 regforbit=z80readmem(wpeek(stack(1),12)+z80readmem(wpeek(stack(0),10)))
-if cbopcodecallid>=0x40 & cbopcodecallid<=127{
-regfromopcodeforbit=(cbopcodecallid-0x40)-(8*cbopcodecallidforbit)
-regforbit=0
-/*switch regfromopcodeforbit
-case 6
-regforbit=-1
-swbreak
-case 0
-regforbit=3
-swbreak
-case 1
-regforbit=2
-swbreak
-case 2
-regforbit=5
-swbreak
-case 3
-regforbit=4
-swbreak
-case 4
-regforbit=7
-swbreak
-case 5
-regforbit=6
-swbreak
-case 7
-regforbit=0
-swbreak
-swend*/
-/*if regforbit=-1{}else{}*/
-	//if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
-	/*if peek(stack(0),regforbit) & (1<<regfromopcodeforbit){
-	}
-	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
-	if (peek(stack(0),1) & 0x40){poke stack(0),1,peek(stack(0),1)^0x40}
-	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
-	//if regforbit=-1{
-	z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
-	poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << cbopcodecallidforbit)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
-	/*}else{
-	z80eaddr=peek(stack(0),regforbit):if z80eaddr>=128{z80eaddr=z80eaddr-256}
-	poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(peek(stack(0),regforbit) & (1 << cbopcodecallidforbit)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
-	}*/
-}
-if cbopcodecallid>=128 & cbopcodecallid<=0xBF{
-regfromopcodeforbit=(cbopcodecallid-0x40)-(8*cbopcodecallidforbit)
-regforbit=0
-switch regfromopcodeforbit
-case 6
-regforbit=-1
-swbreak
-case 0
-regforbit=3
-swbreak
-case 1
-regforbit=2
-swbreak
-case 2
-regforbit=5
-swbreak
-case 3
-regforbit=4
-swbreak
-case 4
-regforbit=7
-swbreak
-case 5
-regforbit=6
-swbreak
-case 7
-regforbit=0
-swbreak
-swend
-/*if regforbit=-1{}else{}*/
-	//if (peek(stack(0),1) & 0x01){}else{poke stack(0),1,peek(stack(0),1)^cforrlc}
-	/*if peek(stack(0),regforbit) & (1<<regfromopcodeforbit){
-	}
-	if (peek(stack(0),1) & 0x10){poke stack(0),1,peek(stack(0),1)^0x10}
-	if (peek(stack(0),1) & 0x40){poke stack(0),1,peek(stack(0),1)^0x40}
-	if (peek(stack(0),1) & 0x02){poke stack(0),1,peek(stack(0),1)^0x02}*/
-	if regforbit=-1{
-	z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
-	z80writemem wpeek(stack(1),12)+z80eaddr,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(cbopcodecallidforbit-8))
-	}else{
-	z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
-	poke stack(0),regforbit,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(cbopcodecallidforbit-8))
-	z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),regforbit)
-	//z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),regforbit) & 0xFF - (1<<(cbopcodecallidforbit-8))
-	}
-}
-if cbopcodecallid>=0xC0 & cbopcodecallid<=0xFF{
+//if cbopcodecallid>=0xC0 & cbopcodecallid<=0xFF{
 regfromopcodeforbit=(cbopcodecallid-0x40)-(8*cbopcodecallidforbit)
 regforbit=0
 switch regfromopcodeforbit
@@ -11331,7 +11353,7 @@ swend
 	z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),regforbit)
 	//z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),regforbit) | (1<<(cbopcodecallidforbit-16))
 	}
-}
+//}
 //wpoke stack(0),10,wpeek(stack(0),10)+2
 return
 
