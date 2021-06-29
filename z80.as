@@ -183,7 +183,7 @@ opcodeaddr(cnt2)=*opcode_0c:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_0d:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_0e:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_0f:cnt2=cnt2+1
-opcodeaddr(cnt2)=*opcode_10:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_10_lbl:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_11:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_12:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_13:cnt2=cnt2+1
@@ -199,7 +199,7 @@ opcodeaddr(cnt2)=*opcode_1c:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_1d:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_1e:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_1f:cnt2=cnt2+1
-opcodeaddr(cnt2)=*opcode_20:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_20_lbl:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_21:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_22:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_23:cnt2=cnt2+1
@@ -207,7 +207,7 @@ opcodeaddr(cnt2)=*opcode_24:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_25:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_26:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_27:cnt2=cnt2+1
-opcodeaddr(cnt2)=*opcode_28:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_28_lbl:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_29:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_2a:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_2b:cnt2=cnt2+1
@@ -215,7 +215,7 @@ opcodeaddr(cnt2)=*opcode_2c:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_2d:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_2e:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_2f:cnt2=cnt2+1
-opcodeaddr(cnt2)=*opcode_30:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_30_lbl:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_31:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_32:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_33:cnt2=cnt2+1
@@ -223,7 +223,7 @@ opcodeaddr(cnt2)=*opcode_34:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_35:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_36:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_37:cnt2=cnt2+1
-opcodeaddr(cnt2)=*opcode_38:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_38_lbl:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_39:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_3a:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_3b:cnt2=cnt2+1
@@ -359,67 +359,67 @@ opcodeaddr(cnt2)=*opcode_bc:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_bd:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_be:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_bf:cnt2=cnt2+1
-opcodeaddr(cnt2)=*opcode_c0:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_c0_lbl:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_c1:cnt2=cnt2+1
-opcodeaddr(cnt2)=*opcode_c2:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_c2_lbl:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_c3:cnt2=cnt2+1
-opcodeaddr(cnt2)=*opcode_c4:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_c4_lbl:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_c5:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_c6:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_c7:cnt2=cnt2+1
-opcodeaddr(cnt2)=*opcode_c8:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_c8_lbl:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_c9:cnt2=cnt2+1
-opcodeaddr(cnt2)=*opcode_ca:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_ca_lbl:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_cb:cnt2=cnt2+1
-opcodeaddr(cnt2)=*opcode_cc:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_cc_lbl:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_cd:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_ce:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_cf:cnt2=cnt2+1
-opcodeaddr(cnt2)=*opcode_d0:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_d0_lbl:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_d1:cnt2=cnt2+1
-opcodeaddr(cnt2)=*opcode_d2:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_d2_lbl:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_d3:cnt2=cnt2+1
-opcodeaddr(cnt2)=*opcode_d4:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_d4_lbl:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_d5:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_d6:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_d7:cnt2=cnt2+1
-opcodeaddr(cnt2)=*opcode_d8:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_d8_lbl:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_d9:cnt2=cnt2+1
-opcodeaddr(cnt2)=*opcode_da:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_da_lbl:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_db:cnt2=cnt2+1
-opcodeaddr(cnt2)=*opcode_dc:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_dc_lbl:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_dd:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_de:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_df:cnt2=cnt2+1
-opcodeaddr(cnt2)=*opcode_e0:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_e0_lbl:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_e1:cnt2=cnt2+1
-opcodeaddr(cnt2)=*opcode_e2:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_e2_lbl:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_e3:cnt2=cnt2+1
-opcodeaddr(cnt2)=*opcode_e4:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_e4_lbl:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_e5:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_e6:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_e7:cnt2=cnt2+1
-opcodeaddr(cnt2)=*opcode_e8:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_e8_lbl:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_e9:cnt2=cnt2+1
-opcodeaddr(cnt2)=*opcode_ea:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_ea_lbl:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_eb:cnt2=cnt2+1
-opcodeaddr(cnt2)=*opcode_ec:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_ec_lbl:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_ed:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_ee:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_ef:cnt2=cnt2+1
-opcodeaddr(cnt2)=*opcode_f0:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_f0_lbl:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_f1:cnt2=cnt2+1
-opcodeaddr(cnt2)=*opcode_f2:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_f2_lbl:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_f3:cnt2=cnt2+1
-opcodeaddr(cnt2)=*opcode_f4:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_f4_lbl:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_f5:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_f6:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_f7:cnt2=cnt2+1
-opcodeaddr(cnt2)=*opcode_f8:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_f8_lbl:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_f9:cnt2=cnt2+1
-opcodeaddr(cnt2)=*opcode_fa:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_fa_lbl:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_fb:cnt2=cnt2+1
-opcodeaddr(cnt2)=*opcode_fc:cnt2=cnt2+1
+opcodeaddr(cnt2)=*opcode_fc_lbl:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_fd:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_fe:cnt2=cnt2+1
 opcodeaddr(cnt2)=*opcode_ff:cnt2=cnt2+1
@@ -1966,6 +1966,15 @@ opcodeaddr_fd_cb(253)=*opcode_fd_cb_FD
 opcodeaddr_fd_cb(254)=*opcode_fd_cb_FE
 opcodeaddr_fd_cb(255)=*opcode_fd_cb_FF
 
+ldim jrlbldim,2
+ldim jplbldim,2
+ldim retlbldim,2
+ldim calllbldim,2
+jrlbldim(0)=*jrlblfalse,*opcode_18
+jplbldim(0)=*jplblfalse,*opcode_C3
+retlbldim(0)=*retlblfalse,*opcode_C9
+calllbldim(0)=*calllblfalse,*opcode_CD
+
 z80rwmemflag=0:z80rwmemaddr=0:z80iochecklabel=*null:z80iochecklabel2=*null
 cpuamountmax=256
 dim z80scfccfflag,cpuamountmax
@@ -2252,6 +2261,17 @@ return peek(stack(0),1)
 opcodewaiti=opcodewaiti+1
 if opcodewaiti=4001{opcodewaiti=0:await 1}
 //loop
+*jplblfalse
+wpoke stack(0),10,wpeek(stack(0),10)+2
+return
+*jrlblfalse
+wpoke stack(0),10,wpeek(stack(0),10)+1
+return
+*retlblfalse
+return
+*calllblfalse
+wpoke stack(0),10,wpeek(stack(0),10)+2
+return
 *null
 return
 
@@ -2342,6 +2362,10 @@ address=z80readmem(wpeek(stack(0),10))
 if address>=128{address=-(256-address)}
 if (peek(stack(0),3)) {wpoke stack(0),10,wpeek(stack(0),10)+address+1}else{wpoke stack(0),10,wpeek(stack(0),10)+1}
 return
+*opcode_10_lbl
+poke stack(0),3,peek(stack(0),3)-1
+goto jrlbldim((peek(stack(0),3)!0))
+return
 *opcode_11
 wpoke stack(0),4,z80readmem16(wpeek(stack(0),10))
 wpoke stack(0),10,wpeek(stack(0),10)+2
@@ -2426,6 +2450,9 @@ address=z80readmem(wpeek(stack(0),10))
 if address>=128{address=-(256-address)}
 if (peek(stack(0),1) & 0x40) {wpoke stack(0),10,wpeek(stack(0),10)+1}else{wpoke stack(0),10,wpeek(stack(0),10)+address+1}
 return
+*opcode_20_lbl
+goto jrlbldim(((peek(stack(0),1) & 0x40)!0)=0)
+return
 *opcode_21
 wpoke stack(0),6,z80readmem16(wpeek(stack(0),10))
 wpoke stack(0),10,wpeek(stack(0),10)+2
@@ -2480,6 +2507,9 @@ address=z80readmem(wpeek(stack(0),10))
 if address>=128{address=-(256-address)}
 if (peek(stack(0),1) & 0x40) {wpoke stack(0),10,wpeek(stack(0),10)+address+1}else{wpoke stack(0),10,wpeek(stack(0),10)+1}
 return
+*opcode_28_lbl
+goto jrlbldim(((peek(stack(0),1) & 0x40)!0))
+return
 *opcode_29
 addold=0
 calculated=0
@@ -2526,6 +2556,9 @@ address=z80readmem(wpeek(stack(0),10))
 if address>=128{address=-(256-address)}
 if (peek(stack(0),1) & 0x01) {wpoke stack(0),10,wpeek(stack(0),10)+1}else{wpoke stack(0),10,wpeek(stack(0),10)+address+1}
 return
+*opcode_30_lbl
+goto jrlbldim(((peek(stack(0),1) & 0x01)!0)=0)
+return
 *opcode_31
 wpoke stack(0),12,z80readmem16(wpeek(stack(0),10))
 wpoke stack(0),10,wpeek(stack(0),10)+2
@@ -2566,6 +2599,9 @@ return
 address=z80readmem(wpeek(stack(0),10))
 if address>=128{address=-(256-address)}
 if (peek(stack(0),1) & 0x01) {wpoke stack(0),10,wpeek(stack(0),10)+address+1}else{wpoke stack(0),10,wpeek(stack(0),10)+1}
+return
+*opcode_38_lbl
+goto jrlbldim(((peek(stack(0),1) & 0x01)!0))
 return
 *opcode_39
 addold=0
@@ -4156,6 +4192,9 @@ wpoke stack(0),10,z80readmem16(wpeek(stack(0),12))
 wpoke stack(0),12,wpeek(stack(0),12)+2
 }
 return
+*opcode_c0_lbl
+goto retlbldim(((peek(stack(0),1) & (0x40))!0)=0)
+return
 *opcode_c1
 wpoke stack(0),2,z80readmem16(wpeek(stack(0),12))
 wpoke stack(0),12,wpeek(stack(0),12)+2
@@ -4164,6 +4203,9 @@ return
 if peek(stack(0),1) & (0x40){wpoke stack(0),10,wpeek(stack(0),10)+2}else{
 wpoke stack(0),10,z80readmem16(wpeek(stack(0),10))
 }
+return
+*opcode_c2_lbl
+goto jplbldim(((peek(stack(0),1) & (0x40))!0)=0)
 return
 *opcode_c3
 wpoke stack(0),10,z80readmem16(wpeek(stack(0),10))
@@ -4174,6 +4216,9 @@ wpoke stack(0),12,wpeek(stack(0),12)-2
 z80writemem16 wpeek(stack(0),12),wpeek(stack(0),10)+2
 wpoke stack(0),10,z80readmem16(wpeek(stack(0),10))
 }
+return
+*opcode_c4_lbl
+goto calllbldim(((peek(stack(0),1) & (0x40))!0)=0)
 return
 *opcode_c5
 wpoke stack(0),12,wpeek(stack(0),12)-2
@@ -4214,6 +4259,9 @@ wpoke stack(0),10,z80readmem16(wpeek(stack(0),12))
 wpoke stack(0),12,wpeek(stack(0),12)+2
 }
 return
+*opcode_c8_lbl
+goto retlbldim(((peek(stack(0),1) & (0x40))!0))
+return
 *opcode_c9
 wpoke stack(0),10,z80readmem16(wpeek(stack(0),12))
 wpoke stack(0),12,wpeek(stack(0),12)+2
@@ -4222,6 +4270,9 @@ return
 if peek(stack(0),1) & (0x40){
 wpoke stack(0),10,z80readmem16(wpeek(stack(0),10))
 }else{wpoke stack(0),10,wpeek(stack(0),10)+2}
+return
+*opcode_ca_lbl
+goto jplbldim(((peek(stack(0),1) & (0x40))!0))
 return
 *opcode_cb
 opcodeforsubcall=z80readmem(wpeek(stack(0),10))
@@ -5262,6 +5313,9 @@ z80writemem16 wpeek(stack(0),12),wpeek(stack(0),10)+2
 wpoke stack(0),10,z80readmem16(wpeek(stack(0),10))
 }else{wpoke stack(0),10,wpeek(stack(0),10)+2}
 return
+*opcode_cc_lbl
+goto calllbldim(((peek(stack(0),1) & (0x40))!0))
+return
 *opcode_cd
 wpoke stack(0),12,wpeek(stack(0),12)-2
 z80writemem16 wpeek(stack(0),12),wpeek(stack(0),10)+2
@@ -5299,6 +5353,9 @@ wpoke stack(0),10,z80readmem16(wpeek(stack(0),12))
 wpoke stack(0),12,wpeek(stack(0),12)+2
 }
 return
+*opcode_d0_lbl
+goto retlbldim(((peek(stack(0),1) & (0x01))!0)=0)
+return
 *opcode_d1
 wpoke stack(0),4,z80readmem16(wpeek(stack(0),12))
 wpoke stack(0),12,wpeek(stack(0),12)+2
@@ -5307,6 +5364,9 @@ return
 if peek(stack(0),1) & (0x01){wpoke stack(0),10,wpeek(stack(0),10)+2}else{
 wpoke stack(0),10,z80readmem16(wpeek(stack(0),10))
 }
+return
+*opcode_d2_lbl
+goto jplbldim(((peek(stack(0),1) & (0x01))!0)=0)
 return
 *opcode_d3
 #ifdef z80memaccess
@@ -5330,6 +5390,9 @@ wpoke stack(0),12,wpeek(stack(0),12)-2
 z80writemem16 wpeek(stack(0),12),wpeek(stack(0),10)+2
 wpoke stack(0),10,z80readmem16(wpeek(stack(0),10))
 }
+return
+*opcode_d4_lbl
+goto calllbldim(((peek(stack(0),1) & (0x01))!0)=0)
 return
 *opcode_d5
 wpoke stack(0),12,wpeek(stack(0),12)-2
@@ -5367,6 +5430,9 @@ wpoke stack(0),10,z80readmem16(wpeek(stack(0),12))
 wpoke stack(0),12,wpeek(stack(0),12)+2
 }
 return
+*opcode_d8_lbl
+goto retlbldim(((peek(stack(0),1) & (0x01))!0))
+return
 *opcode_d9
 BC_bak1=0:BC_bak2=0:DE_bak1=0:DE_bak2=0:HL_bak1=0:HL_bak2=0
 BC_bak1=wpeek(stack(0),2)
@@ -5386,6 +5452,9 @@ return
 if peek(stack(0),1) & (0x01){
 wpoke stack(0),10,z80readmem16(wpeek(stack(0),10))
 }else{wpoke stack(0),10,wpeek(stack(0),10)+2}
+return
+*opcode_da_lbl
+goto jplbldim(((peek(stack(0),1) & (0x01))!0))
 return
 *opcode_db
 #ifdef z80memaccess
@@ -5411,6 +5480,9 @@ wpoke stack(0),12,wpeek(stack(0),12)-2
 z80writemem16 wpeek(stack(0),12),wpeek(stack(0),10)+2
 wpoke stack(0),10,z80readmem16(wpeek(stack(0),10))
 }else{wpoke stack(0),10,wpeek(stack(0),10)+2}
+return
+*opcode_dc_lbl
+goto calllbldim(((peek(stack(0),1) & (0x01))!0))
 return
 *opcode_dd
 opcodeforsubcall=z80readmem(wpeek(stack(0),10))
@@ -7755,6 +7827,9 @@ wpoke stack(0),10,z80readmem16(wpeek(stack(0),12))
 wpoke stack(0),12,wpeek(stack(0),12)+2
 }
 return
+*opcode_e0_lbl
+goto retlbldim(((peek(stack(0),1) & (0x04))!0)=0)
+return
 *opcode_e1
 wpoke stack(0),6,z80readmem16(wpeek(stack(0),12))
 wpoke stack(0),12,wpeek(stack(0),12)+2
@@ -7763,6 +7838,9 @@ return
 if (peek(stack(0),1) & (0x04)){wpoke stack(0),10,wpeek(stack(0),10)+2}else{
 wpoke stack(0),10,z80readmem16(wpeek(stack(0),10))
 }
+return
+*opcode_e2_lbl
+goto jplbldim(((peek(stack(0),1) & (0x04))!0)=0)
 return
 *opcode_e3
 bak_sphl1=wpeek(stack(0),6)
@@ -7776,6 +7854,9 @@ wpoke stack(0),12,wpeek(stack(0),12)-2
 z80writemem16 wpeek(stack(0),12),wpeek(stack(0),10)+2
 wpoke stack(0),10,z80readmem16(wpeek(stack(0),10))
 }
+return
+*opcode_e4_lbl
+goto calllbldim(((peek(stack(0),1) & (0x04))!0)=0)
 return
 *opcode_e5
 wpoke stack(0),12,wpeek(stack(0),12)-2
@@ -7820,6 +7901,9 @@ wpoke stack(0),10,z80readmem16(wpeek(stack(0),12))
 wpoke stack(0),12,wpeek(stack(0),12)+2
 }
 return
+*opcode_e8_lbl
+goto retlbldim(((peek(stack(0),1) & (0x04))!0))
+return
 *opcode_e9
 wpoke stack(0),10,wpeek(stack(0),6)
 return
@@ -7827,6 +7911,9 @@ return
 if (peek(stack(0),1) & (0x04)){
 wpoke stack(0),10,z80readmem16(wpeek(stack(0),10))
 }else{wpoke stack(0),10,wpeek(stack(0),10)+2}
+return
+*opcode_ea_lbl
+goto jplbldim(((peek(stack(0),1) & (0x04))!0))
 return
 *opcode_eb
 bak_sphl1=wpeek(stack(0),6)
@@ -7841,7 +7928,9 @@ z80writemem16 wpeek(stack(0),12),wpeek(stack(0),10)+2
 wpoke stack(0),10,z80readmem16(wpeek(stack(0),10))
 }else{wpoke stack(0),10,wpeek(stack(0),10)+2}
 return
-
+*opcode_ec_lbl
+goto calllbldim(((peek(stack(0),1) & (0x04))!0))
+return
 *opcode_ed
 opcodeforsubcall=z80readmem(wpeek(stack(0),10))
 wpoke stack(0),10,wpeek(stack(0),10)+1
@@ -9170,6 +9259,9 @@ wpoke stack(0),10,z80readmem16(wpeek(stack(0),12))
 wpoke stack(0),12,wpeek(stack(0),12)+2
 }
 return
+*opcode_f0_lbl
+goto retlbldim(((peek(stack(0),1) & (0x80))!0)=0)
+return
 *opcode_f1
 poke stack(0),0,z80readmem(wpeek(stack(0),12)+1)
 poke stack(0),1,z80readmem(wpeek(stack(0),12))
@@ -9179,6 +9271,9 @@ return
 if (peek(stack(0),1) & (0x80)){wpoke stack(0),10,wpeek(stack(0),10)+2}else{
 wpoke stack(0),10,z80readmem16(wpeek(stack(0),10))
 }
+return
+*opcode_f2_lbl
+goto jplbldim(((peek(stack(0),1) & (0x80))!0)=0)
 return
 *opcode_f3
 poke stack(1),14,0
@@ -9190,6 +9285,9 @@ wpoke stack(0),12,wpeek(stack(0),12)-2
 z80writemem16 wpeek(stack(0),12),wpeek(stack(0),10)+2
 wpoke stack(0),10,z80readmem16(wpeek(stack(0),10))
 }
+return
+*opcode_f4_lbl
+goto calllbldim(((peek(stack(0),1) & (0x80))!0)=0)
 return
 *opcode_f5
 wpoke stack(0),12,wpeek(stack(0),12)-2
@@ -9235,6 +9333,9 @@ wpoke stack(0),10,z80readmem16(wpeek(stack(0),12))
 wpoke stack(0),12,wpeek(stack(0),12)+2
 }
 return
+*opcode_f8_lbl
+goto retlbldim(((peek(stack(0),1) & (0x80))!0))
+return
 *opcode_f9
 wpoke stack(0),12,wpeek(stack(0),6)
 return
@@ -9242,6 +9343,9 @@ return
 if (peek(stack(0),1) & (0x80)){
 wpoke stack(0),10,z80readmem16(wpeek(stack(0),10))
 }else{wpoke stack(0),10,wpeek(stack(0),10)+2}
+return
+*opcode_fa_lbl
+goto jplbldim(((peek(stack(0),1) & (0x80))!0))
 return
 *opcode_fb
 poke stack(1),14,3
@@ -9254,6 +9358,9 @@ wpoke stack(0),12,wpeek(stack(0),12)-2
 z80writemem16 wpeek(stack(0),12),wpeek(stack(0),10)+2
 wpoke stack(0),10,z80readmem16(wpeek(stack(0),10))
 }else{wpoke stack(0),10,wpeek(stack(0),10)+2}
+return
+*opcode_fc_lbl
+goto calllbldim(((peek(stack(0),1) & (0x80))!0))
 return
 *opcode_fd
 opcodeforsubcall=z80readmem(wpeek(stack(0),10))
