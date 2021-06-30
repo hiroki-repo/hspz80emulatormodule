@@ -2481,7 +2481,7 @@ poke stack(0),7,z80readmem(wpeek(stack(0),10))
 wpoke stack(0),10,wpeek(stack(0),10)+1
 return
 *opcode_27
-	#if 0
+	/*#if 0
 		afordaa=0
 		afordaa = peek(stack(0),0)
 		if peek(stack(0),1) & 0x01 {afordaa |= 0x100}
@@ -2500,7 +2500,10 @@ return
 	} 
 	poke stack(0),1,(peek(stack(0),1) & (0x01 | 0x02)) | (peek(stack(0),0) > 0x99) | ((peek(stack(0),0) ^ afordaa) & 0x10) | SZP(peek(afordaa,0))
 	poke stack(0),0,afordaa
-	#endif
+	#endif*/
+		afordaa=0
+		afordaa = peek(stack(0),0)+(0x100*((peek(stack(0),1) & 0x01)!0))+(0x200*((peek(stack(0),1) & 0x10)!0))+(0x400*((peek(stack(0),1) & 0x02)!0))
+		poke stack(0),0,peek(DAATable(afordaa),1):poke stack(0),1,peek(DAATable(afordaa),0)
 return
 *opcode_28
 address=z80readmem(wpeek(stack(0),10))
