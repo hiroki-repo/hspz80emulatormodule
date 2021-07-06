@@ -6427,7 +6427,7 @@ return
 
 *opcode_dd_CB
 opcodeforsubcall=z80readmem(wpeek(stack(0),10)+1)
-clockcount=opcodecc_dd_cb(opcodeforsubcall)
+clockcount=opcodecc_ddcb(opcodeforsubcall)
 gosub opcodeaddr_dd_cb(opcodeforsubcall)
 wpoke stack(0),10,wpeek(stack(0),10)+2
 poke stack(0),14,peek(stack(0),14)+1
@@ -10309,7 +10309,7 @@ return
 
 *opcode_fd_CB
 opcodeforsubcall=z80readmem(wpeek(stack(0),10)+1)
-clockcount=opcodecc_fd_cb(opcodeforsubcall)
+clockcount=opcodecc_fdcb(opcodeforsubcall)
 gosub opcodeaddr_fd_cb(opcodeforsubcall)
 wpoke stack(0),10,wpeek(stack(0),10)+2
 poke stack(0),14,peek(stack(0),14)+1
@@ -13990,7 +13990,7 @@ case 203
 cbopcodecallid=z80readmem(wpeek(stack(0),10)+1)
 cbopcodecallidforbit=(opcodeforsubcall-0x40)/8
 opcodeforsubcall=z80readmem(wpeek(stack(0),10)+1)
-clockcount=opcodecc_dd_cb(opcodeforsubcall)
+clockcount=opcodecc_ddcb(opcodeforsubcall)
 switch opcodeforsubcall
 case 0
 gosub *opcode_dd_cb_00
@@ -16408,7 +16408,7 @@ case 203
 cbopcodecallid=z80readmem(wpeek(stack(0),10)+1)
 cbopcodecallidforbit=(opcodeforsubcall-0x40)/8
 opcodeforsubcall=z80readmem(wpeek(stack(0),10)+1)
-clockcount=opcodecc_fd_cb(opcodeforsubcall)
+clockcount=opcodecc_fdcb(opcodeforsubcall)
 switch opcodeforsubcall
 case 0
 gosub *opcode_fd_cb_00
