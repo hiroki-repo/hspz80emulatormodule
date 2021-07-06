@@ -4990,6 +4990,199 @@ poke stack(0),1,SZP(peek(slares,0)) | slac
 poke stack(0),regidforsla,slares
 return
 *opcode_cb_40
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((peek(stack(0),3) & (1 << 0))) & (0xFF - (0x20 | 0x08))) | ((peek(stack(0),3)) & (0x20 | 0x08))
+return
+*opcode_cb_41
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((peek(stack(0),2) & (1 << 0))) & (0xFF - (0x20 | 0x08))) | ((peek(stack(0),2)) & (0x20 | 0x08))
+return
+*opcode_cb_42
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((peek(stack(0),5) & (1 << 0))) & (0xFF - (0x20 | 0x08))) | ((peek(stack(0),5)) & (0x20 | 0x08))
+return
+*opcode_cb_43
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((peek(stack(0),4) & (1 << 0))) & (0xFF - (0x20 | 0x08))) | ((peek(stack(0),4)) & (0x20 | 0x08))
+return
+*opcode_cb_44
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((peek(stack(0),7) & (1 << 0))) & (0xFF - (0x20 | 0x08))) | ((peek(stack(0),7)) & (0x20 | 0x08))
+return
+*opcode_cb_45
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((peek(stack(0),6) & (1 << 0))) & (0xFF - (0x20 | 0x08))) | ((peek(stack(0),6)) & (0x20 | 0x08))
+return
+*opcode_cb_46
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((z80readmem(wpeek(stack(0),6)) & (1 << 0))) & (0xFF - (0x20 | 0x08))) | ((wpeek(stack(0),6) >> 8) & (0x20 | 0x08))
+return
+*opcode_cb_47
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((peek(stack(0),0) & (1 << 0))) & (0xFF - (0x20 | 0x08))) | ((peek(stack(0),0)) & (0x20 | 0x08))
+return
+*opcode_cb_48
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((peek(stack(0),3) & (1 << 1))) & (0xFF - (0x20 | 0x08))) | ((peek(stack(0),3)) & (0x20 | 0x08))
+return
+*opcode_cb_49
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((peek(stack(0),2) & (1 << 1))) & (0xFF - (0x20 | 0x08))) | ((peek(stack(0),2)) & (0x20 | 0x08))
+return
+*opcode_cb_4A
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((peek(stack(0),5) & (1 << 1))) & (0xFF - (0x20 | 0x08))) | ((peek(stack(0),5)) & (0x20 | 0x08))
+return
+*opcode_cb_4B
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((peek(stack(0),4) & (1 << 1))) & (0xFF - (0x20 | 0x08))) | ((peek(stack(0),4)) & (0x20 | 0x08))
+return
+*opcode_cb_4C
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((peek(stack(0),7) & (1 << 1))) & (0xFF - (0x20 | 0x08))) | ((peek(stack(0),7)) & (0x20 | 0x08))
+return
+*opcode_cb_4D
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((peek(stack(0),6) & (1 << 1))) & (0xFF - (0x20 | 0x08))) | ((peek(stack(0),6)) & (0x20 | 0x08))
+return
+*opcode_cb_4E
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((z80readmem(wpeek(stack(0),6)) & (1 << 1))) & (0xFF - (0x20 | 0x08))) | ((wpeek(stack(0),6) >> 8) & (0x20 | 0x08))
+return
+*opcode_cb_4F
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((peek(stack(0),0) & (1 << 1))) & (0xFF - (0x20 | 0x08))) | ((peek(stack(0),0)) & (0x20 | 0x08))
+return
+*opcode_cb_50
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((peek(stack(0),3) & (1 << 2))) & (0xFF - (0x20 | 0x08))) | ((peek(stack(0),3)) & (0x20 | 0x08))
+return
+*opcode_cb_51
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((peek(stack(0),2) & (1 << 2))) & (0xFF - (0x20 | 0x08))) | ((peek(stack(0),2)) & (0x20 | 0x08))
+return
+*opcode_cb_52
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((peek(stack(0),5) & (1 << 2))) & (0xFF - (0x20 | 0x08))) | ((peek(stack(0),5)) & (0x20 | 0x08))
+return
+*opcode_cb_53
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((peek(stack(0),4) & (1 << 2))) & (0xFF - (0x20 | 0x08))) | ((peek(stack(0),4)) & (0x20 | 0x08))
+return
+*opcode_cb_54
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((peek(stack(0),7) & (1 << 2))) & (0xFF - (0x20 | 0x08))) | ((peek(stack(0),7)) & (0x20 | 0x08))
+return
+*opcode_cb_55
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((peek(stack(0),6) & (1 << 2))) & (0xFF - (0x20 | 0x08))) | ((peek(stack(0),6)) & (0x20 | 0x08))
+return
+*opcode_cb_56
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((z80readmem(wpeek(stack(0),6)) & (1 << 2))) & (0xFF - (0x20 | 0x08))) | ((wpeek(stack(0),6) >> 8) & (0x20 | 0x08))
+return
+*opcode_cb_57
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((peek(stack(0),0) & (1 << 2))) & (0xFF - (0x20 | 0x08))) | ((peek(stack(0),0)) & (0x20 | 0x08))
+return
+*opcode_cb_58
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((peek(stack(0),3) & (1 << 3))) & (0xFF - (0x20 | 0x08))) | ((peek(stack(0),3)) & (0x20 | 0x08))
+return
+*opcode_cb_59
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((peek(stack(0),2) & (1 << 3))) & (0xFF - (0x20 | 0x08))) | ((peek(stack(0),2)) & (0x20 | 0x08))
+return
+*opcode_cb_5A
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((peek(stack(0),5) & (1 << 3))) & (0xFF - (0x20 | 0x08))) | ((peek(stack(0),5)) & (0x20 | 0x08))
+return
+*opcode_cb_5B
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((peek(stack(0),4) & (1 << 3))) & (0xFF - (0x20 | 0x08))) | ((peek(stack(0),4)) & (0x20 | 0x08))
+return
+*opcode_cb_5C
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((peek(stack(0),7) & (1 << 3))) & (0xFF - (0x20 | 0x08))) | ((peek(stack(0),7)) & (0x20 | 0x08))
+return
+*opcode_cb_5D
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((peek(stack(0),6) & (1 << 3))) & (0xFF - (0x20 | 0x08))) | ((peek(stack(0),6)) & (0x20 | 0x08))
+return
+*opcode_cb_5E
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((z80readmem(wpeek(stack(0),6)) & (1 << 3))) & (0xFF - (0x20 | 0x08))) | ((wpeek(stack(0),6) >> 8) & (0x20 | 0x08))
+return
+*opcode_cb_5F
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((peek(stack(0),0) & (1 << 3))) & (0xFF - (0x20 | 0x08))) | ((peek(stack(0),0)) & (0x20 | 0x08))
+return
+*opcode_cb_60
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((peek(stack(0),3) & (1 << 4))) & (0xFF - (0x20 | 0x08))) | ((peek(stack(0),3)) & (0x20 | 0x08))
+return
+*opcode_cb_61
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((peek(stack(0),2) & (1 << 4))) & (0xFF - (0x20 | 0x08))) | ((peek(stack(0),2)) & (0x20 | 0x08))
+return
+*opcode_cb_62
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((peek(stack(0),5) & (1 << 4))) & (0xFF - (0x20 | 0x08))) | ((peek(stack(0),5)) & (0x20 | 0x08))
+return
+*opcode_cb_63
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((peek(stack(0),4) & (1 << 4))) & (0xFF - (0x20 | 0x08))) | ((peek(stack(0),4)) & (0x20 | 0x08))
+return
+*opcode_cb_64
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((peek(stack(0),7) & (1 << 4))) & (0xFF - (0x20 | 0x08))) | ((peek(stack(0),7)) & (0x20 | 0x08))
+return
+*opcode_cb_65
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((peek(stack(0),6) & (1 << 4))) & (0xFF - (0x20 | 0x08))) | ((peek(stack(0),6)) & (0x20 | 0x08))
+return
+*opcode_cb_66
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((z80readmem(wpeek(stack(0),6)) & (1 << 4))) & (0xFF - (0x20 | 0x08))) | ((wpeek(stack(0),6) >> 8) & (0x20 | 0x08))
+return
+*opcode_cb_67
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((peek(stack(0),0) & (1 << 4))) & (0xFF - (0x20 | 0x08))) | ((peek(stack(0),0)) & (0x20 | 0x08))
+return
+*opcode_cb_68
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((peek(stack(0),3) & (1 << 5))) & (0xFF - (0x20 | 0x08))) | ((peek(stack(0),3)) & (0x20 | 0x08))
+return
+*opcode_cb_69
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((peek(stack(0),2) & (1 << 5))) & (0xFF - (0x20 | 0x08))) | ((peek(stack(0),2)) & (0x20 | 0x08))
+return
+*opcode_cb_6A
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((peek(stack(0),5) & (1 << 5))) & (0xFF - (0x20 | 0x08))) | ((peek(stack(0),5)) & (0x20 | 0x08))
+return
+*opcode_cb_6B
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((peek(stack(0),4) & (1 << 5))) & (0xFF - (0x20 | 0x08))) | ((peek(stack(0),4)) & (0x20 | 0x08))
+return
+*opcode_cb_6C
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((peek(stack(0),7) & (1 << 5))) & (0xFF - (0x20 | 0x08))) | ((peek(stack(0),7)) & (0x20 | 0x08))
+return
+*opcode_cb_6D
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((peek(stack(0),6) & (1 << 5))) & (0xFF - (0x20 | 0x08))) | ((peek(stack(0),6)) & (0x20 | 0x08))
+return
+*opcode_cb_6E
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((z80readmem(wpeek(stack(0),6)) & (1 << 5))) & (0xFF - (0x20 | 0x08))) | ((wpeek(stack(0),6) >> 8) & (0x20 | 0x08))
+return
+*opcode_cb_6F
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((peek(stack(0),0) & (1 << 5))) & (0xFF - (0x20 | 0x08))) | ((peek(stack(0),0)) & (0x20 | 0x08))
+return
+*opcode_cb_70
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((peek(stack(0),3) & (1 << 6))) & (0xFF - (0x20 | 0x08))) | ((peek(stack(0),3)) & (0x20 | 0x08))
+return
+*opcode_cb_71
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((peek(stack(0),2) & (1 << 6))) & (0xFF - (0x20 | 0x08))) | ((peek(stack(0),2)) & (0x20 | 0x08))
+return
+*opcode_cb_72
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((peek(stack(0),5) & (1 << 6))) & (0xFF - (0x20 | 0x08))) | ((peek(stack(0),5)) & (0x20 | 0x08))
+return
+*opcode_cb_73
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((peek(stack(0),4) & (1 << 6))) & (0xFF - (0x20 | 0x08))) | ((peek(stack(0),4)) & (0x20 | 0x08))
+return
+*opcode_cb_74
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((peek(stack(0),7) & (1 << 6))) & (0xFF - (0x20 | 0x08))) | ((peek(stack(0),7)) & (0x20 | 0x08))
+return
+*opcode_cb_75
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((peek(stack(0),6) & (1 << 6))) & (0xFF - (0x20 | 0x08))) | ((peek(stack(0),6)) & (0x20 | 0x08))
+return
+*opcode_cb_76
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((z80readmem(wpeek(stack(0),6)) & (1 << 6))) & (0xFF - (0x20 | 0x08))) | ((wpeek(stack(0),6) >> 8) & (0x20 | 0x08))
+return
+*opcode_cb_77
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((peek(stack(0),0) & (1 << 6))) & (0xFF - (0x20 | 0x08))) | ((peek(stack(0),0)) & (0x20 | 0x08))
+return
+*opcode_cb_78
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((peek(stack(0),3) & (1 << 7))) & (0xFF - (0x20 | 0x08))) | ((peek(stack(0),3)) & (0x20 | 0x08))
+return
+*opcode_cb_79
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((peek(stack(0),2) & (1 << 7))) & (0xFF - (0x20 | 0x08))) | ((peek(stack(0),2)) & (0x20 | 0x08))
+return
+*opcode_cb_7A
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((peek(stack(0),5) & (1 << 7))) & (0xFF - (0x20 | 0x08))) | ((peek(stack(0),5)) & (0x20 | 0x08))
+return
+*opcode_cb_7B
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((peek(stack(0),4) & (1 << 7))) & (0xFF - (0x20 | 0x08))) | ((peek(stack(0),4)) & (0x20 | 0x08))
+return
+*opcode_cb_7C
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((peek(stack(0),7) & (1 << 7))) & (0xFF - (0x20 | 0x08))) | ((peek(stack(0),7)) & (0x20 | 0x08))
+return
+*opcode_cb_7D
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((peek(stack(0),6) & (1 << 7))) & (0xFF - (0x20 | 0x08))) | ((peek(stack(0),6)) & (0x20 | 0x08))
+return
+*opcode_cb_7E
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((z80readmem(wpeek(stack(0),6)) & (1 << 7))) & (0xFF - (0x20 | 0x08))) | ((wpeek(stack(0),6) >> 8) & (0x20 | 0x08))
+return
+*opcode_cb_7F
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT((peek(stack(0),0) & (1 << 7))) & (0xFF - (0x20 | 0x08))) | ((peek(stack(0),0)) & (0x20 | 0x08))
+return
+#if 0
+*opcode_cb_40
 *opcode_cb_41
 *opcode_cb_42
 *opcode_cb_43
@@ -5097,6 +5290,200 @@ swend
 	}
 //}
 return
+#endif
+*opcode_cb_80
+poke stack(0),3,peek(stack(0),3) & 0xFF - (1<<(8-8))
+return
+*opcode_cb_81
+poke stack(0),2,peek(stack(0),2) & 0xFF - (1<<(8-8))
+return
+*opcode_cb_82
+poke stack(0),5,peek(stack(0),5) & 0xFF - (1<<(8-8))
+return
+*opcode_cb_83
+poke stack(0),4,peek(stack(0),4) & 0xFF - (1<<(8-8))
+return
+*opcode_cb_84
+poke stack(0),7,peek(stack(0),7) & 0xFF - (1<<(8-8))
+return
+*opcode_cb_85
+poke stack(0),6,peek(stack(0),6) & 0xFF - (1<<(8-8))
+return
+*opcode_cb_86
+z80writemem wpeek(stack(0),6),z80readmem(wpeek(stack(0),6)) & 0xFF - (1<<(8-8))
+return
+*opcode_cb_87
+poke stack(0),0,peek(stack(0),0) & 0xFF - (1<<(8-8))
+return
+*opcode_cb_88
+poke stack(0),3,peek(stack(0),3) & 0xFF - (1<<(9-8))
+return
+*opcode_cb_89
+poke stack(0),2,peek(stack(0),2) & 0xFF - (1<<(9-8))
+return
+*opcode_cb_8A
+poke stack(0),5,peek(stack(0),5) & 0xFF - (1<<(9-8))
+return
+*opcode_cb_8B
+poke stack(0),4,peek(stack(0),4) & 0xFF - (1<<(9-8))
+return
+*opcode_cb_8C
+poke stack(0),7,peek(stack(0),7) & 0xFF - (1<<(9-8))
+return
+*opcode_cb_8D
+poke stack(0),6,peek(stack(0),6) & 0xFF - (1<<(9-8))
+return
+*opcode_cb_8E
+z80writemem wpeek(stack(0),6),z80readmem(wpeek(stack(0),6)) & 0xFF - (1<<(9-8))
+return
+*opcode_cb_8F
+poke stack(0),0,peek(stack(0),0) & 0xFF - (1<<(9-8))
+return
+*opcode_cb_90
+poke stack(0),3,peek(stack(0),3) & 0xFF - (1<<(10-8))
+return
+*opcode_cb_91
+poke stack(0),2,peek(stack(0),2) & 0xFF - (1<<(10-8))
+return
+*opcode_cb_92
+poke stack(0),5,peek(stack(0),5) & 0xFF - (1<<(10-8))
+return
+*opcode_cb_93
+poke stack(0),4,peek(stack(0),4) & 0xFF - (1<<(10-8))
+return
+*opcode_cb_94
+poke stack(0),7,peek(stack(0),7) & 0xFF - (1<<(10-8))
+return
+*opcode_cb_95
+poke stack(0),6,peek(stack(0),6) & 0xFF - (1<<(10-8))
+return
+*opcode_cb_96
+z80writemem wpeek(stack(0),6),z80readmem(wpeek(stack(0),6)) & 0xFF - (1<<(10-8))
+return
+*opcode_cb_97
+poke stack(0),0,peek(stack(0),0) & 0xFF - (1<<(10-8))
+return
+*opcode_cb_98
+poke stack(0),3,peek(stack(0),3) & 0xFF - (1<<(11-8))
+return
+*opcode_cb_99
+poke stack(0),2,peek(stack(0),2) & 0xFF - (1<<(11-8))
+return
+*opcode_cb_9A
+poke stack(0),5,peek(stack(0),5) & 0xFF - (1<<(11-8))
+return
+*opcode_cb_9B
+poke stack(0),4,peek(stack(0),4) & 0xFF - (1<<(11-8))
+return
+*opcode_cb_9C
+poke stack(0),7,peek(stack(0),7) & 0xFF - (1<<(11-8))
+return
+*opcode_cb_9D
+poke stack(0),6,peek(stack(0),6) & 0xFF - (1<<(11-8))
+return
+*opcode_cb_9E
+z80writemem wpeek(stack(0),6),z80readmem(wpeek(stack(0),6)) & 0xFF - (1<<(11-8))
+return
+*opcode_cb_9F
+poke stack(0),0,peek(stack(0),0) & 0xFF - (1<<(11-8))
+return
+*opcode_cb_A0
+poke stack(0),3,peek(stack(0),3) & 0xFF - (1<<(12-8))
+return
+*opcode_cb_A1
+poke stack(0),2,peek(stack(0),2) & 0xFF - (1<<(12-8))
+return
+*opcode_cb_A2
+poke stack(0),5,peek(stack(0),5) & 0xFF - (1<<(12-8))
+return
+*opcode_cb_A3
+poke stack(0),4,peek(stack(0),4) & 0xFF - (1<<(12-8))
+return
+*opcode_cb_A4
+poke stack(0),7,peek(stack(0),7) & 0xFF - (1<<(12-8))
+return
+*opcode_cb_A5
+poke stack(0),6,peek(stack(0),6) & 0xFF - (1<<(12-8))
+return
+*opcode_cb_A6
+z80writemem wpeek(stack(0),6),z80readmem(wpeek(stack(0),6)) & 0xFF - (1<<(12-8))
+return
+*opcode_cb_A7
+poke stack(0),0,peek(stack(0),0) & 0xFF - (1<<(12-8))
+return
+*opcode_cb_A8
+poke stack(0),3,peek(stack(0),3) & 0xFF - (1<<(13-8))
+return
+*opcode_cb_A9
+poke stack(0),2,peek(stack(0),2) & 0xFF - (1<<(13-8))
+return
+*opcode_cb_AA
+poke stack(0),5,peek(stack(0),5) & 0xFF - (1<<(13-8))
+return
+*opcode_cb_AB
+poke stack(0),4,peek(stack(0),4) & 0xFF - (1<<(13-8))
+return
+*opcode_cb_AC
+poke stack(0),7,peek(stack(0),7) & 0xFF - (1<<(13-8))
+return
+*opcode_cb_AD
+poke stack(0),6,peek(stack(0),6) & 0xFF - (1<<(13-8))
+return
+*opcode_cb_AE
+z80writemem wpeek(stack(0),6),z80readmem(wpeek(stack(0),6)) & 0xFF - (1<<(13-8))
+return
+*opcode_cb_AF
+poke stack(0),0,peek(stack(0),0) & 0xFF - (1<<(13-8))
+return
+*opcode_cb_B0
+poke stack(0),3,peek(stack(0),3) & 0xFF - (1<<(14-8))
+return
+*opcode_cb_B1
+poke stack(0),2,peek(stack(0),2) & 0xFF - (1<<(14-8))
+return
+*opcode_cb_B2
+poke stack(0),5,peek(stack(0),5) & 0xFF - (1<<(14-8))
+return
+*opcode_cb_B3
+poke stack(0),4,peek(stack(0),4) & 0xFF - (1<<(14-8))
+return
+*opcode_cb_B4
+poke stack(0),7,peek(stack(0),7) & 0xFF - (1<<(14-8))
+return
+*opcode_cb_B5
+poke stack(0),6,peek(stack(0),6) & 0xFF - (1<<(14-8))
+return
+*opcode_cb_B6
+z80writemem wpeek(stack(0),6),z80readmem(wpeek(stack(0),6)) & 0xFF - (1<<(14-8))
+return
+*opcode_cb_B7
+poke stack(0),0,peek(stack(0),0) & 0xFF - (1<<(14-8))
+return
+*opcode_cb_B8
+poke stack(0),3,peek(stack(0),3) & 0xFF - (1<<(15-8))
+return
+*opcode_cb_B9
+poke stack(0),2,peek(stack(0),2) & 0xFF - (1<<(15-8))
+return
+*opcode_cb_BA
+poke stack(0),5,peek(stack(0),5) & 0xFF - (1<<(15-8))
+return
+*opcode_cb_BB
+poke stack(0),4,peek(stack(0),4) & 0xFF - (1<<(15-8))
+return
+*opcode_cb_BC
+poke stack(0),7,peek(stack(0),7) & 0xFF - (1<<(15-8))
+return
+*opcode_cb_BD
+poke stack(0),6,peek(stack(0),6) & 0xFF - (1<<(15-8))
+return
+*opcode_cb_BE
+z80writemem wpeek(stack(0),6),z80readmem(wpeek(stack(0),6)) & 0xFF - (1<<(15-8))
+return
+*opcode_cb_BF
+poke stack(0),0,peek(stack(0),0) & 0xFF - (1<<(15-8))
+return
+#if 0
 *opcode_cb_80
 *opcode_cb_81
 *opcode_cb_82
@@ -5205,6 +5592,200 @@ swend
 	}
 //}
 return
+#endif
+*opcode_cb_C0
+poke stack(0),3,peek(stack(0),3) | (1<<(16-16))
+return
+*opcode_cb_C1
+poke stack(0),2,peek(stack(0),2) | (1<<(16-16))
+return
+*opcode_cb_C2
+poke stack(0),5,peek(stack(0),5) | (1<<(16-16))
+return
+*opcode_cb_C3
+poke stack(0),4,peek(stack(0),4) | (1<<(16-16))
+return
+*opcode_cb_C4
+poke stack(0),7,peek(stack(0),7) | (1<<(16-16))
+return
+*opcode_cb_C5
+poke stack(0),6,peek(stack(0),6) | (1<<(16-16))
+return
+*opcode_cb_C6
+z80writemem wpeek(stack(0),6),z80readmem(wpeek(stack(0),6)) | (1<<(16-16))
+return
+*opcode_cb_C7
+poke stack(0),0,peek(stack(0),0) | (1<<(16-16))
+return
+*opcode_cb_C8
+poke stack(0),3,peek(stack(0),3) | (1<<(17-16))
+return
+*opcode_cb_C9
+poke stack(0),2,peek(stack(0),2) | (1<<(17-16))
+return
+*opcode_cb_CA
+poke stack(0),5,peek(stack(0),5) | (1<<(17-16))
+return
+*opcode_cb_CB
+poke stack(0),4,peek(stack(0),4) | (1<<(17-16))
+return
+*opcode_cb_CC
+poke stack(0),7,peek(stack(0),7) | (1<<(17-16))
+return
+*opcode_cb_CD
+poke stack(0),6,peek(stack(0),6) | (1<<(17-16))
+return
+*opcode_cb_CE
+z80writemem wpeek(stack(0),6),z80readmem(wpeek(stack(0),6)) | (1<<(17-16))
+return
+*opcode_cb_CF
+poke stack(0),0,peek(stack(0),0) | (1<<(17-16))
+return
+*opcode_cb_D0
+poke stack(0),3,peek(stack(0),3) | (1<<(18-16))
+return
+*opcode_cb_D1
+poke stack(0),2,peek(stack(0),2) | (1<<(18-16))
+return
+*opcode_cb_D2
+poke stack(0),5,peek(stack(0),5) | (1<<(18-16))
+return
+*opcode_cb_D3
+poke stack(0),4,peek(stack(0),4) | (1<<(18-16))
+return
+*opcode_cb_D4
+poke stack(0),7,peek(stack(0),7) | (1<<(18-16))
+return
+*opcode_cb_D5
+poke stack(0),6,peek(stack(0),6) | (1<<(18-16))
+return
+*opcode_cb_D6
+z80writemem wpeek(stack(0),6),z80readmem(wpeek(stack(0),6)) | (1<<(18-16))
+return
+*opcode_cb_D7
+poke stack(0),0,peek(stack(0),0) | (1<<(18-16))
+return
+*opcode_cb_D8
+poke stack(0),3,peek(stack(0),3) | (1<<(19-16))
+return
+*opcode_cb_D9
+poke stack(0),2,peek(stack(0),2) | (1<<(19-16))
+return
+*opcode_cb_DA
+poke stack(0),5,peek(stack(0),5) | (1<<(19-16))
+return
+*opcode_cb_DB
+poke stack(0),4,peek(stack(0),4) | (1<<(19-16))
+return
+*opcode_cb_DC
+poke stack(0),7,peek(stack(0),7) | (1<<(19-16))
+return
+*opcode_cb_DD
+poke stack(0),6,peek(stack(0),6) | (1<<(19-16))
+return
+*opcode_cb_DE
+z80writemem wpeek(stack(0),6),z80readmem(wpeek(stack(0),6)) | (1<<(19-16))
+return
+*opcode_cb_DF
+poke stack(0),0,peek(stack(0),0) | (1<<(19-16))
+return
+*opcode_cb_E0
+poke stack(0),3,peek(stack(0),3) | (1<<(20-16))
+return
+*opcode_cb_E1
+poke stack(0),2,peek(stack(0),2) | (1<<(20-16))
+return
+*opcode_cb_E2
+poke stack(0),5,peek(stack(0),5) | (1<<(20-16))
+return
+*opcode_cb_E3
+poke stack(0),4,peek(stack(0),4) | (1<<(20-16))
+return
+*opcode_cb_E4
+poke stack(0),7,peek(stack(0),7) | (1<<(20-16))
+return
+*opcode_cb_E5
+poke stack(0),6,peek(stack(0),6) | (1<<(20-16))
+return
+*opcode_cb_E6
+z80writemem wpeek(stack(0),6),z80readmem(wpeek(stack(0),6)) | (1<<(20-16))
+return
+*opcode_cb_E7
+poke stack(0),0,peek(stack(0),0) | (1<<(20-16))
+return
+*opcode_cb_E8
+poke stack(0),3,peek(stack(0),3) | (1<<(21-16))
+return
+*opcode_cb_E9
+poke stack(0),2,peek(stack(0),2) | (1<<(21-16))
+return
+*opcode_cb_EA
+poke stack(0),5,peek(stack(0),5) | (1<<(21-16))
+return
+*opcode_cb_EB
+poke stack(0),4,peek(stack(0),4) | (1<<(21-16))
+return
+*opcode_cb_EC
+poke stack(0),7,peek(stack(0),7) | (1<<(21-16))
+return
+*opcode_cb_ED
+poke stack(0),6,peek(stack(0),6) | (1<<(21-16))
+return
+*opcode_cb_EE
+z80writemem wpeek(stack(0),6),z80readmem(wpeek(stack(0),6)) | (1<<(21-16))
+return
+*opcode_cb_EF
+poke stack(0),0,peek(stack(0),0) | (1<<(21-16))
+return
+*opcode_cb_F0
+poke stack(0),3,peek(stack(0),3) | (1<<(22-16))
+return
+*opcode_cb_F1
+poke stack(0),2,peek(stack(0),2) | (1<<(22-16))
+return
+*opcode_cb_F2
+poke stack(0),5,peek(stack(0),5) | (1<<(22-16))
+return
+*opcode_cb_F3
+poke stack(0),4,peek(stack(0),4) | (1<<(22-16))
+return
+*opcode_cb_F4
+poke stack(0),7,peek(stack(0),7) | (1<<(22-16))
+return
+*opcode_cb_F5
+poke stack(0),6,peek(stack(0),6) | (1<<(22-16))
+return
+*opcode_cb_F6
+z80writemem wpeek(stack(0),6),z80readmem(wpeek(stack(0),6)) | (1<<(22-16))
+return
+*opcode_cb_F7
+poke stack(0),0,peek(stack(0),0) | (1<<(22-16))
+return
+*opcode_cb_F8
+poke stack(0),3,peek(stack(0),3) | (1<<(23-16))
+return
+*opcode_cb_F9
+poke stack(0),2,peek(stack(0),2) | (1<<(23-16))
+return
+*opcode_cb_FA
+poke stack(0),5,peek(stack(0),5) | (1<<(23-16))
+return
+*opcode_cb_FB
+poke stack(0),4,peek(stack(0),4) | (1<<(23-16))
+return
+*opcode_cb_FC
+poke stack(0),7,peek(stack(0),7) | (1<<(23-16))
+return
+*opcode_cb_FD
+poke stack(0),6,peek(stack(0),6) | (1<<(23-16))
+return
+*opcode_cb_FE
+z80writemem wpeek(stack(0),6),z80readmem(wpeek(stack(0),6)) | (1<<(23-16))
+return
+*opcode_cb_FF
+poke stack(0),0,peek(stack(0),0) | (1<<(23-16))
+return
+#if 0
 *opcode_cb_C0
 *opcode_cb_C1
 *opcode_cb_C2
@@ -5311,6 +5892,7 @@ swend
 	}else{
 	poke stack(0),regforbit,peek(stack(0),regforbit) | (1<<(cbopcodecallidforbit-16))
 	}
+#endif
 //}
 //poke stack(0),14,peek(stack(0),14)+1
 return
@@ -7254,6 +7836,263 @@ poke stack(0),regidforsla,slares
 z80writemem wpeek(stack(1),10)+z80eaddr,slares
 return
 *opcode_dd_cb_40
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << 0)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_dd_cb_41
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << 0)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_dd_cb_42
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << 0)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_dd_cb_43
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << 0)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_dd_cb_44
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << 0)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_dd_cb_45
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << 0)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_dd_cb_46
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << 0)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_dd_cb_47
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << 0)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_dd_cb_48
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << 1)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_dd_cb_49
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << 1)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_dd_cb_4A
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << 1)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_dd_cb_4B
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << 1)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_dd_cb_4C
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << 1)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_dd_cb_4D
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << 1)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_dd_cb_4E
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << 1)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_dd_cb_4F
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << 1)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_dd_cb_50
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << 2)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_dd_cb_51
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << 2)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_dd_cb_52
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << 2)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_dd_cb_53
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << 2)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_dd_cb_54
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << 2)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_dd_cb_55
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << 2)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_dd_cb_56
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << 2)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_dd_cb_57
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << 2)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_dd_cb_58
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << 3)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_dd_cb_59
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << 3)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_dd_cb_5A
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << 3)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_dd_cb_5B
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << 3)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_dd_cb_5C
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << 3)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_dd_cb_5D
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << 3)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_dd_cb_5E
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << 3)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_dd_cb_5F
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << 3)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_dd_cb_60
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << 4)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_dd_cb_61
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << 4)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_dd_cb_62
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << 4)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_dd_cb_63
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << 4)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_dd_cb_64
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << 4)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_dd_cb_65
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << 4)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_dd_cb_66
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << 4)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_dd_cb_67
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << 4)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_dd_cb_68
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << 5)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_dd_cb_69
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << 5)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_dd_cb_6A
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << 5)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_dd_cb_6B
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << 5)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_dd_cb_6C
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << 5)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_dd_cb_6D
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << 5)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_dd_cb_6E
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << 5)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_dd_cb_6F
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << 5)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_dd_cb_70
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << 6)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_dd_cb_71
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << 6)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_dd_cb_72
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << 6)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_dd_cb_73
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << 6)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_dd_cb_74
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << 6)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_dd_cb_75
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << 6)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_dd_cb_76
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << 6)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_dd_cb_77
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << 6)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_dd_cb_78
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << 7)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_dd_cb_79
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << 7)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_dd_cb_7A
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << 7)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_dd_cb_7B
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << 7)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_dd_cb_7C
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << 7)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_dd_cb_7D
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << 7)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_dd_cb_7E
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << 7)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_dd_cb_7F
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),10)+z80eaddr) & (1 << 7)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),10)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+#if 0
+*opcode_dd_cb_40
 *opcode_dd_cb_41
 *opcode_dd_cb_42
 *opcode_dd_cb_43
@@ -7365,6 +8204,320 @@ swend*/
 	}*/
 //}
 return
+#endif
+*opcode_dd_cb_80
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),3,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(8-8))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),3)
+return
+*opcode_dd_cb_81
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),2,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(8-8))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),2)
+return
+*opcode_dd_cb_82
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),5,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(8-8))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),5)
+return
+*opcode_dd_cb_83
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),4,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(8-8))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),4)
+return
+*opcode_dd_cb_84
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),7,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(8-8))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),7)
+return
+*opcode_dd_cb_85
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),6,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(8-8))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),6)
+return
+*opcode_dd_cb_86
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+z80writemem wpeek(stack(1),10)+z80eaddr,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(8-8))
+return
+*opcode_dd_cb_87
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),0,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(8-8))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),0)
+return
+*opcode_dd_cb_88
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),3,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(9-8))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),3)
+return
+*opcode_dd_cb_89
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),2,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(9-8))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),2)
+return
+*opcode_dd_cb_8A
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),5,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(9-8))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),5)
+return
+*opcode_dd_cb_8B
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),4,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(9-8))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),4)
+return
+*opcode_dd_cb_8C
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),7,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(9-8))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),7)
+return
+*opcode_dd_cb_8D
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),6,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(9-8))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),6)
+return
+*opcode_dd_cb_8E
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+z80writemem wpeek(stack(1),10)+z80eaddr,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(9-8))
+return
+*opcode_dd_cb_8F
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),0,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(9-8))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),0)
+return
+*opcode_dd_cb_90
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),3,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(10-8))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),3)
+return
+*opcode_dd_cb_91
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),2,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(10-8))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),2)
+return
+*opcode_dd_cb_92
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),5,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(10-8))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),5)
+return
+*opcode_dd_cb_93
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),4,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(10-8))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),4)
+return
+*opcode_dd_cb_94
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),7,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(10-8))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),7)
+return
+*opcode_dd_cb_95
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),6,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(10-8))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),6)
+return
+*opcode_dd_cb_96
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+z80writemem wpeek(stack(1),10)+z80eaddr,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(10-8))
+return
+*opcode_dd_cb_97
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),0,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(10-8))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),0)
+return
+*opcode_dd_cb_98
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),3,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(11-8))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),3)
+return
+*opcode_dd_cb_99
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),2,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(11-8))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),2)
+return
+*opcode_dd_cb_9A
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),5,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(11-8))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),5)
+return
+*opcode_dd_cb_9B
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),4,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(11-8))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),4)
+return
+*opcode_dd_cb_9C
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),7,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(11-8))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),7)
+return
+*opcode_dd_cb_9D
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),6,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(11-8))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),6)
+return
+*opcode_dd_cb_9E
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+z80writemem wpeek(stack(1),10)+z80eaddr,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(11-8))
+return
+*opcode_dd_cb_9F
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),0,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(11-8))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),0)
+return
+*opcode_dd_cb_A0
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),3,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(12-8))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),3)
+return
+*opcode_dd_cb_A1
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),2,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(12-8))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),2)
+return
+*opcode_dd_cb_A2
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),5,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(12-8))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),5)
+return
+*opcode_dd_cb_A3
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),4,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(12-8))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),4)
+return
+*opcode_dd_cb_A4
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),7,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(12-8))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),7)
+return
+*opcode_dd_cb_A5
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),6,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(12-8))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),6)
+return
+*opcode_dd_cb_A6
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+z80writemem wpeek(stack(1),10)+z80eaddr,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(12-8))
+return
+*opcode_dd_cb_A7
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),0,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(12-8))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),0)
+return
+*opcode_dd_cb_A8
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),3,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(13-8))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),3)
+return
+*opcode_dd_cb_A9
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),2,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(13-8))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),2)
+return
+*opcode_dd_cb_AA
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),5,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(13-8))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),5)
+return
+*opcode_dd_cb_AB
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),4,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(13-8))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),4)
+return
+*opcode_dd_cb_AC
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),7,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(13-8))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),7)
+return
+*opcode_dd_cb_AD
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),6,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(13-8))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),6)
+return
+*opcode_dd_cb_AE
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+z80writemem wpeek(stack(1),10)+z80eaddr,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(13-8))
+return
+*opcode_dd_cb_AF
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),0,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(13-8))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),0)
+return
+*opcode_dd_cb_B0
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),3,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(14-8))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),3)
+return
+*opcode_dd_cb_B1
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),2,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(14-8))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),2)
+return
+*opcode_dd_cb_B2
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),5,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(14-8))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),5)
+return
+*opcode_dd_cb_B3
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),4,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(14-8))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),4)
+return
+*opcode_dd_cb_B4
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),7,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(14-8))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),7)
+return
+*opcode_dd_cb_B5
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),6,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(14-8))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),6)
+return
+*opcode_dd_cb_B6
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+z80writemem wpeek(stack(1),10)+z80eaddr,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(14-8))
+return
+*opcode_dd_cb_B7
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),0,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(14-8))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),0)
+return
+*opcode_dd_cb_B8
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),3,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(15-8))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),3)
+return
+*opcode_dd_cb_B9
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),2,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(15-8))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),2)
+return
+*opcode_dd_cb_BA
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),5,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(15-8))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),5)
+return
+*opcode_dd_cb_BB
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),4,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(15-8))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),4)
+return
+*opcode_dd_cb_BC
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),7,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(15-8))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),7)
+return
+*opcode_dd_cb_BD
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),6,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(15-8))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),6)
+return
+*opcode_dd_cb_BE
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+z80writemem wpeek(stack(1),10)+z80eaddr,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(15-8))
+return
+*opcode_dd_cb_BF
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),0,z80readmem(wpeek(stack(1),10)+z80eaddr) & 0xFF - (1<<(15-8))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),0)
+return
+#if 0
 *opcode_dd_cb_80
 *opcode_dd_cb_81
 *opcode_dd_cb_82
@@ -7479,6 +8632,320 @@ swend
 	}
 //}
 return
+#endif
+*opcode_dd_cb_C0
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),3,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(16-16))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),3)
+return
+*opcode_dd_cb_C1
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),2,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(16-16))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),2)
+return
+*opcode_dd_cb_C2
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),5,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(16-16))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),5)
+return
+*opcode_dd_cb_C3
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),4,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(16-16))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),4)
+return
+*opcode_dd_cb_C4
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),7,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(16-16))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),7)
+return
+*opcode_dd_cb_C5
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),6,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(16-16))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),6)
+return
+*opcode_dd_cb_C6
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+z80writemem wpeek(stack(1),10)+z80eaddr,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(16-16))
+return
+*opcode_dd_cb_C7
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),0,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(16-16))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),0)
+return
+*opcode_dd_cb_C8
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),3,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(17-16))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),3)
+return
+*opcode_dd_cb_C9
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),2,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(17-16))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),2)
+return
+*opcode_dd_cb_CA
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),5,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(17-16))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),5)
+return
+*opcode_dd_cb_CB
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),4,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(17-16))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),4)
+return
+*opcode_dd_cb_CC
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),7,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(17-16))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),7)
+return
+*opcode_dd_cb_CD
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),6,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(17-16))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),6)
+return
+*opcode_dd_cb_CE
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+z80writemem wpeek(stack(1),10)+z80eaddr,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(17-16))
+return
+*opcode_dd_cb_CF
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),0,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(17-16))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),0)
+return
+*opcode_dd_cb_D0
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),3,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(18-16))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),3)
+return
+*opcode_dd_cb_D1
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),2,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(18-16))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),2)
+return
+*opcode_dd_cb_D2
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),5,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(18-16))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),5)
+return
+*opcode_dd_cb_D3
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),4,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(18-16))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),4)
+return
+*opcode_dd_cb_D4
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),7,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(18-16))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),7)
+return
+*opcode_dd_cb_D5
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),6,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(18-16))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),6)
+return
+*opcode_dd_cb_D6
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+z80writemem wpeek(stack(1),10)+z80eaddr,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(18-16))
+return
+*opcode_dd_cb_D7
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),0,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(18-16))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),0)
+return
+*opcode_dd_cb_D8
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),3,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(19-16))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),3)
+return
+*opcode_dd_cb_D9
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),2,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(19-16))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),2)
+return
+*opcode_dd_cb_DA
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),5,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(19-16))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),5)
+return
+*opcode_dd_cb_DB
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),4,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(19-16))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),4)
+return
+*opcode_dd_cb_DC
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),7,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(19-16))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),7)
+return
+*opcode_dd_cb_DD
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),6,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(19-16))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),6)
+return
+*opcode_dd_cb_DE
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+z80writemem wpeek(stack(1),10)+z80eaddr,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(19-16))
+return
+*opcode_dd_cb_DF
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),0,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(19-16))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),0)
+return
+*opcode_dd_cb_E0
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),3,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(20-16))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),3)
+return
+*opcode_dd_cb_E1
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),2,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(20-16))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),2)
+return
+*opcode_dd_cb_E2
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),5,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(20-16))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),5)
+return
+*opcode_dd_cb_E3
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),4,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(20-16))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),4)
+return
+*opcode_dd_cb_E4
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),7,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(20-16))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),7)
+return
+*opcode_dd_cb_E5
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),6,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(20-16))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),6)
+return
+*opcode_dd_cb_E6
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+z80writemem wpeek(stack(1),10)+z80eaddr,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(20-16))
+return
+*opcode_dd_cb_E7
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),0,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(20-16))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),0)
+return
+*opcode_dd_cb_E8
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),3,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(21-16))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),3)
+return
+*opcode_dd_cb_E9
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),2,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(21-16))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),2)
+return
+*opcode_dd_cb_EA
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),5,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(21-16))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),5)
+return
+*opcode_dd_cb_EB
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),4,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(21-16))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),4)
+return
+*opcode_dd_cb_EC
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),7,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(21-16))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),7)
+return
+*opcode_dd_cb_ED
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),6,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(21-16))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),6)
+return
+*opcode_dd_cb_EE
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+z80writemem wpeek(stack(1),10)+z80eaddr,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(21-16))
+return
+*opcode_dd_cb_EF
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),0,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(21-16))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),0)
+return
+*opcode_dd_cb_F0
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),3,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(22-16))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),3)
+return
+*opcode_dd_cb_F1
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),2,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(22-16))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),2)
+return
+*opcode_dd_cb_F2
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),5,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(22-16))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),5)
+return
+*opcode_dd_cb_F3
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),4,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(22-16))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),4)
+return
+*opcode_dd_cb_F4
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),7,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(22-16))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),7)
+return
+*opcode_dd_cb_F5
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),6,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(22-16))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),6)
+return
+*opcode_dd_cb_F6
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+z80writemem wpeek(stack(1),10)+z80eaddr,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(22-16))
+return
+*opcode_dd_cb_F7
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),0,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(22-16))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),0)
+return
+*opcode_dd_cb_F8
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),3,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(23-16))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),3)
+return
+*opcode_dd_cb_F9
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),2,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(23-16))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),2)
+return
+*opcode_dd_cb_FA
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),5,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(23-16))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),5)
+return
+*opcode_dd_cb_FB
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),4,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(23-16))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),4)
+return
+*opcode_dd_cb_FC
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),7,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(23-16))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),7)
+return
+*opcode_dd_cb_FD
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),6,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(23-16))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),6)
+return
+*opcode_dd_cb_FE
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+z80writemem wpeek(stack(1),10)+z80eaddr,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(23-16))
+return
+*opcode_dd_cb_FF
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),0,z80readmem(wpeek(stack(1),10)+z80eaddr) | (1<<(23-16))
+z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),0)
+return
+#if 0
 *opcode_dd_cb_C0
 *opcode_dd_cb_C1
 *opcode_dd_cb_C2
@@ -7591,6 +9058,7 @@ swend
 	z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),regforbit)
 	//z80writemem wpeek(stack(1),10)+z80eaddr,peek(stack(0),regforbit) | (1<<(cbopcodecallidforbit-16))
 	}
+#endif
 //}
 //wpoke stack(0),10,wpeek(stack(0),10)+2
 return
@@ -11136,6 +12604,263 @@ poke stack(0),regidforsla,slares
 z80writemem wpeek(stack(1),12)+z80eaddr,slares
 return
 *opcode_fd_cb_40
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << 0)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_fd_cb_41
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << 0)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_fd_cb_42
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << 0)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_fd_cb_43
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << 0)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_fd_cb_44
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << 0)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_fd_cb_45
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << 0)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_fd_cb_46
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << 0)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_fd_cb_47
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << 0)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_fd_cb_48
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << 1)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_fd_cb_49
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << 1)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_fd_cb_4A
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << 1)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_fd_cb_4B
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << 1)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_fd_cb_4C
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << 1)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_fd_cb_4D
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << 1)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_fd_cb_4E
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << 1)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_fd_cb_4F
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << 1)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_fd_cb_50
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << 2)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_fd_cb_51
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << 2)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_fd_cb_52
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << 2)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_fd_cb_53
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << 2)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_fd_cb_54
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << 2)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_fd_cb_55
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << 2)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_fd_cb_56
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << 2)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_fd_cb_57
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << 2)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_fd_cb_58
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << 3)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_fd_cb_59
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << 3)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_fd_cb_5A
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << 3)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_fd_cb_5B
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << 3)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_fd_cb_5C
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << 3)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_fd_cb_5D
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << 3)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_fd_cb_5E
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << 3)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_fd_cb_5F
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << 3)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_fd_cb_60
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << 4)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_fd_cb_61
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << 4)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_fd_cb_62
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << 4)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_fd_cb_63
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << 4)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_fd_cb_64
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << 4)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_fd_cb_65
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << 4)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_fd_cb_66
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << 4)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_fd_cb_67
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << 4)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_fd_cb_68
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << 5)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_fd_cb_69
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << 5)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_fd_cb_6A
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << 5)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_fd_cb_6B
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << 5)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_fd_cb_6C
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << 5)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_fd_cb_6D
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << 5)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_fd_cb_6E
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << 5)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_fd_cb_6F
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << 5)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_fd_cb_70
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << 6)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_fd_cb_71
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << 6)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_fd_cb_72
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << 6)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_fd_cb_73
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << 6)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_fd_cb_74
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << 6)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_fd_cb_75
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << 6)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_fd_cb_76
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << 6)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_fd_cb_77
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << 6)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_fd_cb_78
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << 7)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_fd_cb_79
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << 7)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_fd_cb_7A
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << 7)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_fd_cb_7B
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << 7)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_fd_cb_7C
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << 7)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_fd_cb_7D
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << 7)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_fd_cb_7E
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << 7)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+*opcode_fd_cb_7F
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),1,(peek(stack(0),1) & 0x01) | 0x10 | (SZ_BIT(z80readmem(wpeek(stack(1),12)+z80eaddr) & (1 << 7)) & (0xFF - (0x20 | 0x08))) | (((wpeek(stack(1),12)+z80eaddr) >> 8) & (0x20 | 0x08))
+return
+#if 0
+*opcode_fd_cb_40
 *opcode_fd_cb_41
 *opcode_fd_cb_42
 *opcode_fd_cb_43
@@ -11247,6 +12972,320 @@ swend*/
 	}*/
 //}
 return
+#endif
+*opcode_fd_cb_80
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),3,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(8-8))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),3)
+return
+*opcode_fd_cb_81
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),2,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(8-8))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),2)
+return
+*opcode_fd_cb_82
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),5,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(8-8))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),5)
+return
+*opcode_fd_cb_83
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),4,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(8-8))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),4)
+return
+*opcode_fd_cb_84
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),7,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(8-8))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),7)
+return
+*opcode_fd_cb_85
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),6,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(8-8))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),6)
+return
+*opcode_fd_cb_86
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+z80writemem wpeek(stack(1),12)+z80eaddr,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(8-8))
+return
+*opcode_fd_cb_87
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),0,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(8-8))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),0)
+return
+*opcode_fd_cb_88
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),3,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(9-8))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),3)
+return
+*opcode_fd_cb_89
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),2,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(9-8))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),2)
+return
+*opcode_fd_cb_8A
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),5,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(9-8))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),5)
+return
+*opcode_fd_cb_8B
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),4,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(9-8))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),4)
+return
+*opcode_fd_cb_8C
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),7,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(9-8))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),7)
+return
+*opcode_fd_cb_8D
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),6,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(9-8))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),6)
+return
+*opcode_fd_cb_8E
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+z80writemem wpeek(stack(1),12)+z80eaddr,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(9-8))
+return
+*opcode_fd_cb_8F
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),0,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(9-8))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),0)
+return
+*opcode_fd_cb_90
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),3,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(10-8))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),3)
+return
+*opcode_fd_cb_91
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),2,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(10-8))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),2)
+return
+*opcode_fd_cb_92
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),5,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(10-8))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),5)
+return
+*opcode_fd_cb_93
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),4,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(10-8))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),4)
+return
+*opcode_fd_cb_94
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),7,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(10-8))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),7)
+return
+*opcode_fd_cb_95
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),6,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(10-8))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),6)
+return
+*opcode_fd_cb_96
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+z80writemem wpeek(stack(1),12)+z80eaddr,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(10-8))
+return
+*opcode_fd_cb_97
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),0,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(10-8))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),0)
+return
+*opcode_fd_cb_98
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),3,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(11-8))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),3)
+return
+*opcode_fd_cb_99
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),2,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(11-8))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),2)
+return
+*opcode_fd_cb_9A
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),5,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(11-8))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),5)
+return
+*opcode_fd_cb_9B
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),4,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(11-8))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),4)
+return
+*opcode_fd_cb_9C
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),7,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(11-8))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),7)
+return
+*opcode_fd_cb_9D
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),6,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(11-8))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),6)
+return
+*opcode_fd_cb_9E
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+z80writemem wpeek(stack(1),12)+z80eaddr,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(11-8))
+return
+*opcode_fd_cb_9F
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),0,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(11-8))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),0)
+return
+*opcode_fd_cb_A0
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),3,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(12-8))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),3)
+return
+*opcode_fd_cb_A1
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),2,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(12-8))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),2)
+return
+*opcode_fd_cb_A2
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),5,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(12-8))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),5)
+return
+*opcode_fd_cb_A3
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),4,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(12-8))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),4)
+return
+*opcode_fd_cb_A4
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),7,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(12-8))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),7)
+return
+*opcode_fd_cb_A5
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),6,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(12-8))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),6)
+return
+*opcode_fd_cb_A6
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+z80writemem wpeek(stack(1),12)+z80eaddr,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(12-8))
+return
+*opcode_fd_cb_A7
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),0,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(12-8))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),0)
+return
+*opcode_fd_cb_A8
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),3,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(13-8))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),3)
+return
+*opcode_fd_cb_A9
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),2,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(13-8))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),2)
+return
+*opcode_fd_cb_AA
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),5,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(13-8))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),5)
+return
+*opcode_fd_cb_AB
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),4,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(13-8))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),4)
+return
+*opcode_fd_cb_AC
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),7,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(13-8))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),7)
+return
+*opcode_fd_cb_AD
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),6,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(13-8))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),6)
+return
+*opcode_fd_cb_AE
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+z80writemem wpeek(stack(1),12)+z80eaddr,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(13-8))
+return
+*opcode_fd_cb_AF
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),0,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(13-8))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),0)
+return
+*opcode_fd_cb_B0
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),3,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(14-8))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),3)
+return
+*opcode_fd_cb_B1
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),2,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(14-8))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),2)
+return
+*opcode_fd_cb_B2
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),5,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(14-8))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),5)
+return
+*opcode_fd_cb_B3
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),4,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(14-8))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),4)
+return
+*opcode_fd_cb_B4
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),7,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(14-8))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),7)
+return
+*opcode_fd_cb_B5
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),6,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(14-8))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),6)
+return
+*opcode_fd_cb_B6
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+z80writemem wpeek(stack(1),12)+z80eaddr,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(14-8))
+return
+*opcode_fd_cb_B7
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),0,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(14-8))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),0)
+return
+*opcode_fd_cb_B8
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),3,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(15-8))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),3)
+return
+*opcode_fd_cb_B9
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),2,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(15-8))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),2)
+return
+*opcode_fd_cb_BA
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),5,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(15-8))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),5)
+return
+*opcode_fd_cb_BB
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),4,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(15-8))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),4)
+return
+*opcode_fd_cb_BC
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),7,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(15-8))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),7)
+return
+*opcode_fd_cb_BD
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),6,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(15-8))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),6)
+return
+*opcode_fd_cb_BE
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+z80writemem wpeek(stack(1),12)+z80eaddr,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(15-8))
+return
+*opcode_fd_cb_BF
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),0,z80readmem(wpeek(stack(1),12)+z80eaddr) & 0xFF - (1<<(15-8))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),0)
+return
+#if 0
 *opcode_fd_cb_80
 *opcode_fd_cb_81
 *opcode_fd_cb_82
@@ -11361,6 +13400,320 @@ swend
 	}
 //}
 return
+#endif
+*opcode_fd_cb_C0
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),3,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(16-16))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),3)
+return
+*opcode_fd_cb_C1
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),2,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(16-16))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),2)
+return
+*opcode_fd_cb_C2
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),5,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(16-16))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),5)
+return
+*opcode_fd_cb_C3
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),4,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(16-16))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),4)
+return
+*opcode_fd_cb_C4
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),7,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(16-16))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),7)
+return
+*opcode_fd_cb_C5
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),6,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(16-16))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),6)
+return
+*opcode_fd_cb_C6
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+z80writemem wpeek(stack(1),12)+z80eaddr,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(16-16))
+return
+*opcode_fd_cb_C7
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),0,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(16-16))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),0)
+return
+*opcode_fd_cb_C8
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),3,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(17-16))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),3)
+return
+*opcode_fd_cb_C9
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),2,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(17-16))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),2)
+return
+*opcode_fd_cb_CA
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),5,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(17-16))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),5)
+return
+*opcode_fd_cb_CB
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),4,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(17-16))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),4)
+return
+*opcode_fd_cb_CC
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),7,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(17-16))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),7)
+return
+*opcode_fd_cb_CD
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),6,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(17-16))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),6)
+return
+*opcode_fd_cb_CE
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+z80writemem wpeek(stack(1),12)+z80eaddr,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(17-16))
+return
+*opcode_fd_cb_CF
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),0,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(17-16))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),0)
+return
+*opcode_fd_cb_D0
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),3,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(18-16))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),3)
+return
+*opcode_fd_cb_D1
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),2,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(18-16))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),2)
+return
+*opcode_fd_cb_D2
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),5,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(18-16))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),5)
+return
+*opcode_fd_cb_D3
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),4,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(18-16))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),4)
+return
+*opcode_fd_cb_D4
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),7,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(18-16))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),7)
+return
+*opcode_fd_cb_D5
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),6,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(18-16))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),6)
+return
+*opcode_fd_cb_D6
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+z80writemem wpeek(stack(1),12)+z80eaddr,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(18-16))
+return
+*opcode_fd_cb_D7
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),0,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(18-16))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),0)
+return
+*opcode_fd_cb_D8
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),3,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(19-16))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),3)
+return
+*opcode_fd_cb_D9
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),2,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(19-16))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),2)
+return
+*opcode_fd_cb_DA
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),5,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(19-16))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),5)
+return
+*opcode_fd_cb_DB
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),4,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(19-16))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),4)
+return
+*opcode_fd_cb_DC
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),7,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(19-16))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),7)
+return
+*opcode_fd_cb_DD
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),6,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(19-16))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),6)
+return
+*opcode_fd_cb_DE
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+z80writemem wpeek(stack(1),12)+z80eaddr,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(19-16))
+return
+*opcode_fd_cb_DF
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),0,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(19-16))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),0)
+return
+*opcode_fd_cb_E0
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),3,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(20-16))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),3)
+return
+*opcode_fd_cb_E1
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),2,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(20-16))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),2)
+return
+*opcode_fd_cb_E2
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),5,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(20-16))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),5)
+return
+*opcode_fd_cb_E3
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),4,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(20-16))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),4)
+return
+*opcode_fd_cb_E4
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),7,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(20-16))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),7)
+return
+*opcode_fd_cb_E5
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),6,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(20-16))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),6)
+return
+*opcode_fd_cb_E6
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+z80writemem wpeek(stack(1),12)+z80eaddr,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(20-16))
+return
+*opcode_fd_cb_E7
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),0,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(20-16))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),0)
+return
+*opcode_fd_cb_E8
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),3,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(21-16))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),3)
+return
+*opcode_fd_cb_E9
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),2,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(21-16))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),2)
+return
+*opcode_fd_cb_EA
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),5,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(21-16))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),5)
+return
+*opcode_fd_cb_EB
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),4,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(21-16))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),4)
+return
+*opcode_fd_cb_EC
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),7,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(21-16))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),7)
+return
+*opcode_fd_cb_ED
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),6,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(21-16))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),6)
+return
+*opcode_fd_cb_EE
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+z80writemem wpeek(stack(1),12)+z80eaddr,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(21-16))
+return
+*opcode_fd_cb_EF
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),0,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(21-16))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),0)
+return
+*opcode_fd_cb_F0
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),3,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(22-16))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),3)
+return
+*opcode_fd_cb_F1
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),2,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(22-16))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),2)
+return
+*opcode_fd_cb_F2
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),5,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(22-16))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),5)
+return
+*opcode_fd_cb_F3
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),4,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(22-16))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),4)
+return
+*opcode_fd_cb_F4
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),7,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(22-16))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),7)
+return
+*opcode_fd_cb_F5
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),6,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(22-16))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),6)
+return
+*opcode_fd_cb_F6
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+z80writemem wpeek(stack(1),12)+z80eaddr,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(22-16))
+return
+*opcode_fd_cb_F7
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),0,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(22-16))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),0)
+return
+*opcode_fd_cb_F8
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),3,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(23-16))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),3)
+return
+*opcode_fd_cb_F9
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),2,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(23-16))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),2)
+return
+*opcode_fd_cb_FA
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),5,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(23-16))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),5)
+return
+*opcode_fd_cb_FB
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),4,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(23-16))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),4)
+return
+*opcode_fd_cb_FC
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),7,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(23-16))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),7)
+return
+*opcode_fd_cb_FD
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),6,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(23-16))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),6)
+return
+*opcode_fd_cb_FE
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+z80writemem wpeek(stack(1),12)+z80eaddr,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(23-16))
+return
+*opcode_fd_cb_FF
+z80eaddr=z80readmem(wpeek(stack(0),10)):if z80eaddr>=128{z80eaddr=z80eaddr-256}
+poke stack(0),0,z80readmem(wpeek(stack(1),12)+z80eaddr) | (1<<(23-16))
+z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),0)
+return
+#if 0
 *opcode_fd_cb_C0
 *opcode_fd_cb_C1
 *opcode_fd_cb_C2
@@ -11473,6 +13826,7 @@ swend
 	z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),regforbit)
 	//z80writemem wpeek(stack(1),12)+z80eaddr,peek(stack(0),regforbit) | (1<<(cbopcodecallidforbit-16))
 	}
+#endif
 //}
 //wpoke stack(0),10,wpeek(stack(0),10)+2
 return
