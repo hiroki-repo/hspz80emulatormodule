@@ -9265,12 +9265,14 @@ opcodeforsubcalladdcall=((opcodeforsubcall-0x40)/8)
 opcodeforsubcalladdcall2=((opcodeforsubcall-0x40)-(opcodeforsubcalladdcall*8))-4
 #ifdef __useslowz80emulation_flag__
 opcode=z80readmem(startaddr)
+clockcount=opcodecc_op(opcode)
 gosub *z80opcodeinterpretsw
 #else
 opcode=z80readmem(wpeek(stack(0),10)-1)
-lpoke jumplabel,0,lpeek(opcodeaddr(opcode),0)
+clockcount=opcodecc_op(opcode)
+//lpoke jumplabel,0,lpeek(opcodeaddr(opcode),0)
 //wpoke stack(0),10,wpeek(stack(0),10)+1
-gosub jumplabel
+gosub opcodeaddr(opcode)
 #endif
 return
 *opcode_de
@@ -14030,12 +14032,14 @@ opcodeforsubcalladdcall=((opcodeforsubcall-0x40)/8)
 opcodeforsubcalladdcall2=((opcodeforsubcall-0x40)-(opcodeforsubcalladdcall*8))-4
 #ifdef __useslowz80emulation_flag__
 opcode=z80readmem(startaddr)
+clockcount=opcodecc_op(opcode)
 gosub *z80opcodeinterpretsw
 #else
 opcode=z80readmem(wpeek(stack(0),10)-1)
-lpoke jumplabel,0,lpeek(opcodeaddr(opcode),0)
+clockcount=opcodecc_op(opcode)
+//lpoke jumplabel,0,lpeek(opcodeaddr(opcode),0)
 //wpoke stack(0),10,wpeek(stack(0),10)+1
-gosub jumplabel
+gosub opcodeaddr(opcode)
 #endif
 return
 poke stack(0),14,peek(stack(0),14)+1
