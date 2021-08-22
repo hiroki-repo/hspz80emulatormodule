@@ -55,6 +55,8 @@ sdim jitstack,64,2
 ldim jitforjumpaddr,65536
 ldim jitrecchkptr,2
 jitrecchkptr(0)=*z80jitrecp0,*z80jitrecp
+ldim z80freezeblockerjc,2
+z80freezeblockerjc(0)=*z80freezeblockerjc_0,*z80freezeblockerjc_1
 z80freezeblocker=0
 return
 #deffunc z80jitintervalset int prm_0
@@ -131,8 +133,15 @@ return
 z80jitcreamaddr=opcodeaddropa
 return
 *z80jitjumpctrl
-if z80freezeblocker=z80jitinterval{if ((z80jitintervaljobgotoflag>>1)&0x01)=0{await}:z80freezeblocker=0:lpoke startaddr,0,wpeek(stack@z80moduleaccess(0),10):memcpy jitstack(0),stack@z80moduleaccess(0),64,0,0:memcpy jitstack(1),stack@z80moduleaccess(1),64,0,0:if lpeek(z80jitintervaljob,0)!0{if (z80jitintervaljobgotoflag&0x01)=0{gosub z80jitintervaljob}else{goto z80jitintervaljob}}:memcpy stack@z80moduleaccess(0),jitstack(0),64,0,0:memcpy stack@z80moduleaccess(1),jitstack(1),64,0,0:wpoke stack@z80moduleaccess(0),10,startaddr}else{z80freezeblocker+=1}
+gosub z80freezeblockerjc(z80freezeblocker=z80jitinterval)
+//if z80freezeblocker=z80jitinterval{if ((z80jitintervaljobgotoflag>>1)&0x01)=0{await}:z80freezeblocker=0:lpoke startaddr,0,wpeek(stack@z80moduleaccess(0),10):memcpy jitstack(0),stack@z80moduleaccess(0),64,0,0:memcpy jitstack(1),stack@z80moduleaccess(1),64,0,0:if lpeek(z80jitintervaljob,0)!0{if (z80jitintervaljobgotoflag&0x01)=0{gosub z80jitintervaljob}else{goto z80jitintervaljob}}:memcpy stack@z80moduleaccess(0),jitstack(0),64,0,0:memcpy stack@z80moduleaccess(1),jitstack(1),64,0,0:wpoke stack@z80moduleaccess(0),10,startaddr}else{z80freezeblocker+=1}
 if lpeek(jitforjumpaddr(wpeek(stack@z80moduleaccess(0),10)),0)!0{goto jitforjumpaddr(wpeek(stack@z80moduleaccess(0),10))}
+return
+*z80freezeblockerjc_0
+z80freezeblocker+=1
+return
+*z80freezeblockerjc_1
+if ((z80jitintervaljobgotoflag>>1)&0x01)=0{await}:z80freezeblocker=0:lpoke startaddr,0,wpeek(stack@z80moduleaccess(0),10):memcpy jitstack(0),stack@z80moduleaccess(0),64,0,0:memcpy jitstack(1),stack@z80moduleaccess(1),64,0,0:if lpeek(z80jitintervaljob,0)!0{if (z80jitintervaljobgotoflag&0x01)=0{gosub z80jitintervaljob}else{goto z80jitintervaljob}}:memcpy stack@z80moduleaccess(0),jitstack(0),64,0,0:memcpy stack@z80moduleaccess(1),jitstack(1),64,0,0:wpoke stack@z80moduleaccess(0),10,startaddr
 return
 *compiler
 jitcntaddr=0:compiledaddrz80=0
