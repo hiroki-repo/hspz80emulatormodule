@@ -53,6 +53,8 @@ if wpeek(z80jitopcodeaddrgetteraddrdata,0)&0x8000{z80jitopcodeaddr0ptr=lpeek(z80
 opcodelistaddr(6)=z80jitopcodeaddr0ptr
 sdim jitstack,64,2
 ldim jitforjumpaddr,65536
+ldim jitrecchkptr,2
+jitrecchkptr(0)=*z80jitrecp0,*z80jitrecp
 z80freezeblocker=0
 return
 #deffunc z80jitintervalset int prm_0
@@ -79,7 +81,7 @@ memcpy jitstack(0),stack@z80moduleaccess(0),64,0,0
 memcpy jitstack(1),stack@z80moduleaccess(1),64,0,0
 return
 *z80jitcream1
-if (memorystocker(wpeek(stack@z80moduleaccess(0),10)&0xFFFF)&0xFF)!z80readmem(wpeek(stack@z80moduleaccess(0),10)){jitcntaddr=jitforjumpaddrx(wpeek(stack@z80moduleaccess(0),10)):compiledaddrz80=wpeek(stack@z80moduleaccess(0),10):gosub *compilegen}
+gosub jitrecchkptr((memorystocker(wpeek(stack@z80moduleaccess(0),10)&0xFFFF)&0xFF)!z80readmem(wpeek(stack@z80moduleaccess(0),10)))
 //if opcodelistaddrget(wpeek(stack@z80moduleaccess(0),10))!0{wpoke stack@z80moduleaccess(0),10,wpeek(stack@z80moduleaccess(0),10)+1}
 wpoke stack@z80moduleaccess(0),10,wpeek(stack@z80moduleaccess(0),10)+1
 return
@@ -93,8 +95,12 @@ return
 *z80jitcream3
 return
 *z80jitcream4
-if memorystocker(wpeek(stack@z80moduleaccess(0),10)&0xFFFF)!z80readmem16(wpeek(stack@z80moduleaccess(0),10)){jitcntaddr=jitforjumpaddrx(wpeek(stack@z80moduleaccess(0),10)):compiledaddrz80=wpeek(stack@z80moduleaccess(0),10):gosub *compilegen}
+gosub jitrecchkptr(memorystocker(wpeek(stack@z80moduleaccess(0),10)&0xFFFF)!z80readmem16(wpeek(stack@z80moduleaccess(0),10)))//if memorystocker(wpeek(stack@z80moduleaccess(0),10)&0xFFFF)!z80readmem16(wpeek(stack@z80moduleaccess(0),10)){jitcntaddr=jitforjumpaddrx(wpeek(stack@z80moduleaccess(0),10)):compiledaddrz80=wpeek(stack@z80moduleaccess(0),10):gosub *compilegen}
 opcodeforsubcall@z80moduleaccess=z80readmem(wpeek(stack@z80moduleaccess(0),10)+1):wpoke stack@z80moduleaccess(0),10,wpeek(stack@z80moduleaccess(0),10)+2
+return
+*z80jitrecp
+jitcntaddr=jitforjumpaddrx(wpeek(stack@z80moduleaccess(0),10)):compiledaddrz80=wpeek(stack@z80moduleaccess(0),10):gosub *compilegen
+*z80jitrecp0
 return
 *getjitopcodeaddr0
 opcodeaddr@z80moduleaccess=opcodeaddropa
