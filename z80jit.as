@@ -57,6 +57,8 @@ ldim jitrecchkptr,2
 jitrecchkptr(0)=*z80jitrecp0,*z80jitrecp
 ldim z80freezeblockerjc,2
 z80freezeblockerjc(0)=*z80freezeblockerjc_0,*z80freezeblockerjc_1
+ldim jitintrectptr,2
+jitintrectptr(0)=*jitintrectnone
 z80freezeblocker=0
 return
 #deffunc z80jitintervalset int prm_0
@@ -83,6 +85,7 @@ memcpy jitstack(0),stack@z80moduleaccess(0),64,0,0
 memcpy jitstack(1),stack@z80moduleaccess(1),64,0,0
 return
 *z80jitcream1
+wpoke stack@z80moduleaccess(0),10,startaddr
 memcpy stack@z80moduleaccess(0),jitstack(0),64,0,0
 memcpy stack@z80moduleaccess(1),jitstack(1),64,0,0
 gosub jitrecchkptr((memorystocker(wpeek(stack@z80moduleaccess(0),10)&0xFFFF)&0xFF)!z80readmem(wpeek(stack@z80moduleaccess(0),10)))
@@ -97,6 +100,10 @@ poke stack@z80moduleaccess(0),14,peek(stack@z80moduleaccess(0),14)+1+(opcodelist
 #endif
 memcpy jitstack(0),stack@z80moduleaccess(0),64,0,0
 memcpy jitstack(1),stack@z80moduleaccess(1),64,0,0
+startaddr=wpeek(stack@z80moduleaccess(0),10)|(startaddr&0xFFFF0000)
+gosub jitintrectptr(lpeek(jitintrectptr(1),0)!0)
+return
+*jitintrectnone
 return
 *z80jitcream3
 return
@@ -299,6 +306,10 @@ wpoke jitstack(0),12,wpeek(jitstack(0),12)-2
 wpoke jitstack(0),10,0x66
 poke jitstack(1),14,0
 startaddr=0x66
+return
+
+#deffunc z80jitrectset label prm_0
+jitintrectptr(1)=prm_0
 return
 
 #global
