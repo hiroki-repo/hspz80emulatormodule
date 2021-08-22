@@ -1,0 +1,1842 @@
+;Gocaine-N80(PC-8001 Emulator) by Gocaine project
+;codename:Kiskan-lexiconbricks
+;This software is unlicensed!
+;so,you can use this software freely!
+
+#packopt name "GOCAINEN80"
+#runtime "hsp3hg"
+#packopt icon "gn80.ico"
+#include "migs.as"
+#include "arduino.as"
+#include "hspext.as"
+#include "mod_joystick.as"
+#include "user32.as"
+;#include "kernel32.as"
+#include "hgimg3.as"
+#module
+#deffunc z80memaccess int prm_0,int prm_1,int prm_2
+_z80_addr@=prm_0
+_z80_data@=prm_1
+_z80_accesstype@=prm_2
+goto *memoryaccesshnd@
+#global
+#include "z80.as"
+#include "z80jit.as"
+z80jitintervalset 65536
+z80jitintervaljobset *vblupdatejob
+dim palhg,3,256
+#module
+#deffunc fontrend int prm_0
+repeat 8:y=cnt
+repeat 8:x=cnt
+if (peek(fontrom@,prm_0*8+y)<<x)&128{pset ginfo(22)+x,ginfo(23)+y}
+loop
+loop
+pos ginfo(22)+8,ginfo(23)
+return
+#deffunc fontrend_hg int prm_0
+repeat 8:y=cnt
+repeat 8:x=cnt
+if (peek(fontrom@,prm_0*8+y)<<x)&128{hgrect ginfo(22)+(x*2),ginfo(23)+(y*2)+2,0,2,2}
+loop
+loop
+pos ginfo(22)+16,ginfo(23)
+return
+#deffunc palette_hg int prm_0,int prm_1,int prm_2,int prm_3
+prm_0x=prm_0&0xFF
+palhg@(0,prm_0x)=prm_1
+palhg@(1,prm_0x)=prm_2
+palhg@(2,prm_0x)=prm_3
+return
+#deffunc palcolor_hg int prm_0
+prm_0x=prm_0&0xFF
+color palhg@(0,prm_0x),palhg@(1,prm_0x),palhg@(2,prm_0x)
+return
+#global
+repeat 256:prm_0x=cnt
+if prm_0x<8{
+palette_hg cnt,((prm_0x>>1)&0x01)*255,((prm_0x>>2)&0x01)*255,((prm_0x>>0)&0x01)*255
+}
+if prm_0x=8{
+palette_hg cnt,0,0,0
+}
+if prm_0x=9{
+palette_hg cnt,255,255,255
+}
+if prm_0x<24 and prm_0x>15{
+prm_0x-=16
+palette_hg cnt,((prm_0x>>1)&0x01)*230,((prm_0x>>2)&0x01)*230,((prm_0x>>0)&0x01)*230
+}
+if prm_0x=24{
+palette_hg cnt,0,0,0
+}
+if prm_0x=25{
+palette_hg cnt,230,230,230
+}
+/*if prm_0x<40 and prm_0x>31{
+if cnt=3 or cnt=7{palette cnt,0,0,0,(cnt=7)}else{palette cnt,((cnt>>0)&0x01)*255,((cnt>>1)&0x01)*255,((cnt>>2)&0x01)*255,(cnt=7)}
+}
+if prm_0x<56 and prm_0x>47{
+if cnt=3 or cnt=7{palette cnt+0x10,0,0,0,(cnt=7)}else{palette cnt+0x10,((cnt>>0)&0x01)*230,((cnt>>1)&0x01)*230,((cnt>>2)&0x01)*230,(cnt=7)}
+}*/
+loop
+
+#include "ipmpackb.hsp"
+bgscr 0,ginfo(20),ginfo(21),0,0,0
+//hgini
+title "Gocaine N80"
+mwxs=ginfo(26)
+mwys=ginfo(27)
+cls 4
+z80hltendset 0,2
+dim rtctimetmp,6
+dim rtctime,6
+dim keyio,16
+dim keymap,256
+repeat 256:keymap(cnt)=0xFF:loop
+keymap(96)=0x00
+keymap(97)=0x01
+keymap(98)=0x02
+keymap(99)=0x03
+keymap(100)=0x04
+keymap(101)=0x05
+keymap(102)=0x06
+keymap(103)=0x07
+
+keymap(104)=0x10
+keymap(105)=0x11
+keymap(106)=0x12
+keymap(107)=0x13
+keymap(108)=0x14
+keymap(109)=0x15
+keymap(46)=0x16
+keymap(13)=0x17
+
+keymap(192)=0x20
+keymap(65)=0x21
+keymap(66)=0x22
+keymap(67)=0x23
+keymap(68)=0x24
+keymap(69)=0x25
+keymap(70)=0x26
+keymap(71)=0x27
+
+keymap(72)=0x30
+keymap(73)=0x31
+keymap(74)=0x32
+keymap(75)=0x33
+keymap(76)=0x34
+keymap(77)=0x35
+keymap(78)=0x36
+keymap(79)=0x37
+
+keymap(80)=0x40
+keymap(81)=0x41
+keymap(82)=0x42
+keymap(83)=0x43
+keymap(84)=0x44
+keymap(85)=0x45
+keymap(86)=0x46
+keymap(87)=0x47
+
+keymap(88)=0x50
+keymap(89)=0x51
+keymap(90)=0x52
+keymap(219)=0x53
+keymap(220)=0x54
+keymap(221)=0x55
+keymap(222)=0x56
+keymap(189)=0x57
+
+keymap(48)=0x60
+keymap(49)=0x61
+keymap(50)=0x62
+keymap(51)=0x63
+keymap(52)=0x64
+keymap(53)=0x65
+keymap(54)=0x66
+keymap(55)=0x67
+
+keymap(56)=0x70
+keymap(57)=0x71
+keymap(186)=0x72
+keymap(187)=0x73
+keymap(188)=0x74
+keymap(190)=0x75
+keymap(191)=0x76
+keymap(226)=0x77
+
+keymap(36)=0x80
+keymap(38)=0x81
+keymap(39)=0x82
+keymap(8)=0x83
+keymap(18)=0x84
+keymap(229)=0x85
+keymap(16)=0x86
+keymap(17)=0x87
+
+keymap(93)=0x84
+keymap(29)=0x85
+
+keymap(35)=0x90
+keymap(112)=0x91
+keymap(113)=0x92
+keymap(114)=0x93
+keymap(115)=0x94
+keymap(116)=0x95
+keymap(32)=0x96
+keymap(27)=0x97
+
+/*keymap(40)=0xb2
+keymap(37)=0xb3*/
+keymap(40)=0x81
+keymap(37)=0x82
+
+rxdatareadey=0
+upd8251config=0
+cmtdatard=0
+cmtdatawr=0
+cassettemtstate=0
+cmtbinsnd=0
+fddconnected=0
+uipin=0
+uopout=0
+pch=0
+grpbfsetting=0
+crtc2=0
+crtc3=0
+rommode=0
+graphicdraw=0
+romtype=0
+grpmode=0
+colorgraphicmode=0
+bgcolor=0
+bankid=0
+prtenable=0
+vramaddr=0
+othercrtcio=0
+scanlinetype=0
+useoldrender=0
+exsbaddr=0
+exsbaddr2=0
+unusedaddr=0
+vramaddrtc=0
+exsbaddrtc=0
+exsbaddr2tc=0
+unusedaddrtc=0
+upd31speclzsig=0
+litepeninp=0
+upd3301stat=224
+sdim memory,65536
+sdim fontrom,0x800
+sdim rom,65536,16
+sdim exrom,65536,2
+upd8251configate=0
+
+dim cassettestateptr,256
+cassettestateptr(0)=varptr(cmtdatard),varptr(cmtdatawr),varptr(cassettemtstate),varptr(cmtbinsnd),varptr(fddconnected),varptr(prtready),varptr(uipin),varptr(uopout),varptr(pch),varptr(grpbfsetting),varptr(crtc2),varptr(crtc3),varptr(rommode),varptr(graphicdraw),varptr(romtype),varptr(grpmode),varptr(colorgraphicmode),varptr(bgcolor),varptr(bankid),varptr(memory),varptr(fontrom),varptr(rom),varptr(exrom(0)),varptr(exrom(1)),varptr(upd8251config),varptr(rxdatareadey),varptr(prtenable),varptr(vramaddr),varptr(othercrtcio),varptr(upd3301cmd),varptr(upd3301prm),varptr(scanlinetype),varptr(useoldrender),varptr(exsbaddr),varptr(exsbaddr2),varptr(vramaddr),varptr(unusedaddr),varptr(exsbaddrtc),varptr(exsbaddr2tc),varptr(vramaddrtc),varptr(unusedaddrtc),varptr(upd31speclzsig),varptr(litepeninp),varptr(upd3301stat)
+
+volhz=2400
+sdim wavdata,(volhz)*100+4*11//0x0158AC*2+8
+lpoke wavdata,4*0,0x46464952
+lpoke wavdata,4*1,varsize(wavdata)-8
+lpoke wavdata,4*2,0x45564157
+lpoke wavdata,4*3,0x20746D66
+lpoke wavdata,4*4,16
+wpoke wavdata,4*5+2*0,1
+wpoke wavdata,4*5+2*1,1
+lpoke wavdata,4*6,(volhz)//0xAC44
+wpoke wavdata,4*8+2*1,8
+lpoke wavdata,4*9,0x61746164
+lpoke wavdata,4*10,varsize(wavdata)-44
+lpoke wavdata,4*7,lpeek(wavdata,4*6)*(wpeek(wavdata,4*8+2*1)/8)*wpeek(wavdata,4*5+2*1)
+mes lpeek(wavdata,4*6)*(wpeek(wavdata,4*8+2*1)/8)*wpeek(wavdata,4*5+2*1)
+wpoke wavdata,4*8+2*0,(wpeek(wavdata,4*8+2*1)/8)*wpeek(wavdata,4*5+2*1)
+wavs=0
+repeat ((varsize(wavdata)-4*11)/4)
+wavs+=50:if wavs>=100{wavs=30}
+wpoke wavdata,4*11+cnt*2,0x6000//|rnd(45)//0x7fff
+loop
+memfile wavdata,0,varsize(wavdata)
+mmload "MEM:a.wav",0,1
+
+oncmd gosub *keydown,$100
+oncmd gosub *keyup,$101
+oncmd gosub *clkdownmvup,0x200
+oncmd gosub *clkdownmvup,0x201
+oncmd gosub *clkdownmvup,0x202
+onclick gosub *clkdownmvup
+oncmd gosub *interruptlbl,$113
+buffer 1,640,200,1
+palcolor 0:boxf
+repeat 8
+palette cnt,((cnt>>1)&0x01)*255,((cnt>>2)&0x01)*255,((cnt>>0)&0x01)*255,(cnt=7)
+loop
+repeat 8
+palette cnt+0x10,((cnt>>1)&0x01)*230,((cnt>>2)&0x01)*230,((cnt>>0)&0x01)*230,(cnt=7)
+loop
+repeat 8
+palette cnt+0x20,((cnt>>1)&0x01)*255,((cnt>>2)&0x01)*255,((cnt>>0)&0x01)*255,(cnt=7)
+loop
+repeat 8
+palette cnt+0x30,((cnt>>1)&0x01)*230,((cnt>>2)&0x01)*230,((cnt>>0)&0x01)*230,(cnt=7)
+loop
+palette 8,0,0,0,0
+palette 9,255,255,255,0
+palette 8+0x10,0,0,0,0
+palette 9+0x10,230,230,230,0
+palette 10,0,0,0,1
+mref vram600,66
+dupptr vram600lst,varptr(vram600)+varsize(vram600)-0x800,0x800,2
+buffer 2,320,200,1
+gsel 2,0
+repeat 8
+if cnt=3 or cnt=7{palette cnt,0,0,0,(cnt=7)}else{palette cnt,((cnt>>0)&0x01)*255,((cnt>>1)&0x01)*255,((cnt>>2)&0x01)*255,(cnt=7)}
+loop
+repeat 8
+if cnt=3 or cnt=7{palette cnt+0x10,0,0,0,(cnt=7)}else{palette cnt+0x10,((cnt>>0)&0x01)*230,((cnt>>1)&0x01)*230,((cnt>>2)&0x01)*230,(cnt=7)}
+loop
+repeat 8
+palette cnt+0x20,((cnt>>1)&0x01)*255,((cnt>>2)&0x01)*255,((cnt>>0)&0x01)*255,(cnt=7)
+loop
+repeat 8
+palette cnt+0x30,((cnt>>1)&0x01)*230,((cnt>>2)&0x01)*230,((cnt>>0)&0x01)*230,(cnt=7)
+loop
+palette 8,0,0,0,0
+palette 9,255,255,255,0
+palette 8+0x10,0,0,0,0
+palette 9+0x10,230,230,230,0
+palette 10,0,0,0,1
+buffer 3,640,480
+bgscr 5,1280,768,0,0,0
+gsel 5,0
+hgini
+settingwindowhwnd2=hwnd
+gsel 5,-1
+buffer 3,640,480
+buffer 6,640,400
+bgscr 4,mwxs,mwys,0,0,0
+gsel 4,0
+settingwindowhwnd=hwnd
+enckey(0)=759386183,825241656
+
+readmemesint(0)=5041,8880,6633,4365
+readmemesint(4)=5880,5280,4848,1568
+readmemesint(8)=5538,4480,3216,1440
+readmemesint(12)=2240,3216,5328,4900
+readmemesint(16)=7171,8800,6499,4905
+readmemesint(20)=5656,2784,3600,5145
+readmemesint(24)=8165,8560,6499,4950
+readmemesint(28)=2520,3648,4848,5880
+readmemesint(32)=7455,7920,7437,4950
+readmemesint(36)=3696,5472,5040,4851
+readmemesint(40)=7597,9200,2747,585
+readmemesint(44)=560,4032,4992,5145
+readmemesint(48)=8165,2560,7705,4995
+readmemesint(52)=5712,5568,5712,4753
+readmemesint(56)=8094,8080,2144,4725
+readmemesint(60)=6440,1536,5616,5390
+readmemesint(64)=7668,8400,6633,4545
+readmemesint(68)=6160,5520,4848,4900
+readmemesint(72)=3124,7840,7839,5220
+readmemesint(76)=1792,5808,5328,5733
+readmemesint(80)=2272,8320,6499,5310
+readmemesint(84)=5656,1536,5568,5439
+readmemesint(88)=2272,8960,7638,4545
+readmemesint(92)=6272,4656,5472,4949
+readmemesint(96)=2272,9280,6968,4545
+readmemesint(100)=1792,4704,5040,5439
+readmemesint(104)=8165,2560,6499,4950
+readmemesint(108)=5600,1536,4896,5439
+readmemesint(112)=7810,9280,7705,1485
+readmemesint(116)=728,480,5568,5096
+readmemesint(120)=7171,2560,6566,4725
+readmemesint(124)=6216,5520,1536,4998
+readmemesint(128)=7455,8640,6767,4950
+readmemesint(132)=5432,5232,4848,1568
+readmemesint(136)=7739,9360,7705,5220
+readmemesint(140)=1792,4704,4848,1568
+readmemesint(144)=2414,8800,3752,2160
+readmemesint(148)=5488,4656,5520,5145
+readmemesint(152)=7029,3680,7638,4995
+readmemesint(156)=6104,1632,624,490
+readmemesint(160)=8236,8320,6767,1440
+readmemesint(164)=5712,5328,5280,5684
+readmemesint(168)=2272,8160,7035,4860
+readmemesint(172)=5656,5280,4656,5341
+readmemesint(176)=7171,2560,7303,5265
+readmemesint(180)=6440,5568,1536,4802
+readmemesint(184)=7171,2560,2278,4590
+readmemesint(188)=6216,5280,5568,2254
+readmemesint(192)=8094,8880,7303,1530
+readmemesint(196)=728,480,4176,5096
+readmemesint(200)=8591,2560,7772,4680
+readmemesint(204)=5656,1536,5520,5439
+readmemesint(208)=7242,9280,7973,4365
+readmemesint(212)=6384,4848,1536,5145
+readmemesint(216)=8165,2560,7504,5130
+readmemesint(220)=6216,5664,5040,4900
+readmemesint(224)=7171,8000,2144,5265
+readmemesint(228)=6160,4800,4848,5586
+readmemesint(232)=2272,9360,7370,4860
+readmemesint(236)=5880,4752,4848,5390
+readmemesint(240)=8165,8080,6700,1485
+readmemesint(244)=728,480,3168,4949
+readmemesint(248)=7029,7760,7839,5175
+readmemesint(252)=5656,1536,5040,5390
+readmemesint(256)=7455,9280,7035,4365
+readmemesint(260)=6048,1536,3504,2254
+readmemesint(264)=5893,3680,2144,4500
+readmemesint(268)=6216,1536,5232,4949
+readmemesint(272)=2272,7760,2144,4680
+readmemesint(276)=5432,5472,5232,1568
+readmemesint(280)=8236,8880,2144,4725
+readmemesint(284)=6272,1536,4704,5733
+readmemesint(288)=8165,9680,7370,4545
+readmemesint(292)=6440,5520,5040,5390
+readmemesint(296)=7313,2640,871,450
+readmemesint(300)=4648,5328,1536,3577
+readmemesint(304)=2272,8320,6499,5310
+readmemesint(308)=5656,1536,5664,4949
+readmemesint(312)=8094,9680,2144,4905
+readmemesint(316)=6552,4752,4992,1568
+readmemesint(320)=8236,9120,6499,5265
+readmemesint(324)=6104,4656,5568,5145
+readmemesint(328)=7029,2560,6767,5400
+readmemesint(332)=6272,4848,5472,5145
+readmemesint(336)=7171,8800,6633,4545
+readmemesint(340)=1792,5040,5280,1568
+readmemesint(344)=8236,8320,6767,1440
+readmemesint(348)=5488,5616,5520,5929
+readmemesint(352)=7810,8080,7705,5175
+readmemesint(356)=5880,5280,4944,1617
+readmemesint(360)=923,800,4891,5220
+readmemesint(364)=1792,5232,4848,4753
+readmemesint(368)=7810,8400,7370,4635
+readmemesint(372)=1792,5568,4992,4753
+readmemesint(376)=8236,2560,4891,1440
+readmemesint(380)=5544,4656,5280,5390
+readmemesint(384)=7881,9280,2144,4410
+readmemesint(388)=6552,5520,5808,5390
+readmemesint(392)=7171,9200,7705,4725
+readmemesint(396)=6160,4944,1536,5831
+readmemesint(400)=7455,9280,6968,1440
+readmemesint(404)=6048,5040,5136,4949
+readmemesint(408)=2272,8960,6499,5220
+readmemesint(412)=5656,5280,5568,5635
+readmemesint(416)=3124,2560,7772,5130
+readmemesint(420)=5432,4800,4848,5341
+readmemesint(424)=6887,9120,7169,5175
+readmemesint(428)=1792,4656,5280,4900
+readmemesint(432)=2272,7760,7370,5445
+readmemesint(436)=1792,5040,5376,1568
+readmemesint(440)=8094,8400,6901,4680
+readmemesint(444)=6496,5520,1584,0
+
+/*dim originesenc,varsize(origines)
+repeat varsize(origines)
+readmemesint(cnt)=peek(origines,cnt)*peek(enckey,cnt\8)
+loop*/
+
+sdim originesmessages,length(readmemesint)
+repeat length(readmemesint)
+poke originesmessages,cnt,readmemesint(cnt)/peek(enckey,cnt\8)
+loop
+
+mes originesmessages
+
+gsel 4,-1
+gsel 5,-1
+gsel 0,0
+setparent settingwindowhwnd,hwnd
+setparent settingwindowhwnd2,hwnd
+dim dispysize,2
+dim dispysize2,4
+dim displaydispc,4
+dim displaydispc2,4
+dim displaydispc3,4
+dim crtmodectrls,4
+dispysize(0)=20
+dispysize(1)=25
+dispysize2(0)=40
+dispysize2(1)=80
+dispysize2(2)=40
+dispysize2(3)=80
+displaydispc(0)=1
+displaydispc(1)=0
+displaydispc(2)=1
+displaydispc(3)=0
+displaydispc2(0)=0
+displaydispc2(1)=0
+displaydispc2(2)=1
+displaydispc2(3)=1
+displaydispc3(0)=0
+displaydispc3(1)=1
+displaydispc3(2)=1
+displaydispc3(3)=0
+crtmodectrls(0)=0
+crtmodectrls(1)=1
+crtmodectrls(2)=0
+crtmodectrls(3)=1
+bload "N80BASIC.ROM",rom(0)
+notesel pluginlist
+dirlist pluginlist,"plugins/*.ax",1
+#ifdef formadgeinitfunc
+plaginmax=notemax
+#endif
+dim plaginconf,128,plaginmax+50
+repeat plaginmax+50:cntforcnfsetting=cnt:repeat 5:plaginconf(cnt+1,cntforcnfsetting)=-1:loop:loop
+ldim plaginptr,plaginmax+50
+ldim sysfunclbl,8192
+sysfunclbl(0)=*z80interruptioncall
+sysfunclbl(1)=*z80nminterruptioncall
+sysfunclbl(2)=*z80memoryget
+sysfunclbl(3)=*z80memoryput
+sysfunclbl(4)=*controllercall
+sysfunclbl(5)=*pluginload
+sysfunclbl(6)=*controllercall2
+sysfunclbl(7)=*sysfunc_arduino_init
+sysfunclbl(8)=*sysfunc_arduino_bye
+sysfunclbl(9)=*sysfunc_arduino_query
+sysfunclbl(10)=*sysfunc_delay
+sysfunclbl(11)=*sysfunc_pinmode
+sysfunclbl(12)=*sysfunc_digitalWrite
+sysfunclbl(13)=*sysfunc_analogWrite
+sysfunclbl(14)=*sysfunc_digitalRead
+sysfunclbl(15)=*sysfunc_analogRead
+sysfunclbl(16)=*sysfunc_analogReport
+sysfunclbl(17)=*sysfunc_digitalReport
+sysfunclbl(18)=*sysfunc_analogInterval
+sysfunclbl(19)=*sysfunc_arduino_exec
+sysfunclbl(20)=*sysfunc_arduino_error
+sysfunclbl(21)=*sysfunc_arduino_stat
+sysfunclbl(22)=*sysfunc_arduino_ready
+sysfunclbl(23)=*sysfunc_arduino_rx
+sysfunclbl(24)=*z80ioget
+sysfunclbl(25)=*z80ioput
+sysfunclbl(26)=*sysfunc_arduino_firm_ver
+sysfunclbl(27)=*sysfunc_hspext
+sysfunclbl(28)=*sysfunc_z80stackpeek
+sysfunclbl(29)=*sysfunc_z80stackpoke
+sysfunctyper=varptr(sysfunclbl)
+sdim plaginconfptr,256
+#ifdef formadgeinitfunc
+interruptformt=1:functyper=0|(0xF<<4):repeat plaginmax:notesel pluginlist:noteget pluginliste,cnt:lpoke plaginptr(cnt),0,_faddproc("plugins/"+pluginliste):if lpeek(plaginptr(cnt),0)!0{memfile plaginconfptr:lpoke plaginconfptr,4*0,varptr(plaginconfptr):lpoke plaginconfptr,4*1,functyper:lpoke plaginconfptr,4*2,varptr(exrom(0)):lpoke plaginconfptr,4*3,varptr(rom):lpoke plaginconfptr,4*4,varptr(fontrom):lpoke plaginconfptr,4*5,varptr(cassettestateptr):lpoke plaginconfptr,4*6,varptr(plaginconf(0,cnt)):lpoke plaginconfptr,4*7,sysfunctyper:pluginid=cnt:gosub plaginptr(cnt)}:loop:interruptformt=0
+#endif
+dim vramattribute,40,3,25
+dim vramattributes,80,25
+dim vramattributem,80,25,4
+dim vramattributent,25
+bload "FONT.ROM",fontrom
+bankmax=4
+dim bankstat,bankmax
+dim bankwriteable,256,bankmax
+dim bank,bankmax
+graphicdraw=1
+cursx=-1
+cursy=-1
+ldim memoryioportlbl,2,50
+ldim memoryioportlblbase,5
+memoryioportlblbase(0)=*memacc_memwr,*memacc_memrd,*memacc_iowr,*memacc_iord,*memacc_none
+memoryioportlbl(0,0)=*memory_wr_ram
+memoryioportlbl(1,0)=*memory_wr_rom
+memoryioportlbl(0,1)=*memory_rd_ram
+memoryioportlbl(1,1)=*memory_rd_rom
+//vramaddr=0xF300
+//grpmode=1
+//vramaddr=0x6780
+//crtmodectrl=1
+repeat 3:bankstat(cnt)=0xFF:loop
+dim cntxp,2
+dim cputimeforz80,2
+cputimeforz80(0)=5750
+cputimeforz80(1)=7000
+//sdim vrambuffer,120*25
+/*poke memory,0xF300,65
+poke memory,0xF301,66
+poke memory,0xF300+80,00
+poke memory,0xF300+81,8|128|64|32//|16
+poke memory,0xF300+82,00
+//poke memory,0xF300+83,128*/
+onexit goto *appexitforemuendproc
+gettmex=gettime(7)
+gettmex2=gettime(6)
+ddim sgatt,2400
+gsel 4,0
+oncmd gosub *keydown,$100
+oncmd gosub *keyup,$101
+gsel 5,0
+oncmd gosub *keydown,$100
+oncmd gosub *keyup,$101
+gsel 0,0
+//oncmd gosub *interruptlbl,$113
+settimer hwnd,1,333,0
+//settimer hwnd,2,13,0
+settimer hwnd,3,10,0
+blinktimest(0)=16,32,48,64
+//settimer hwnd,2,25,0
+/*repeat
+z80jitrun address
+loop
+end*/
+repeat//cnt*((((blinktimest(blinkingtime)/3)*3)-1)+16)*/:cntmaincs=0
+cntmain=0
+repeat 1000*1000*4:cntmain++//=cnt
+//cntmaincs=cnt\((blinktimest(blinkingtime)))
+//if cnt\18000=0{await}
+//gettme=gettime(7)-gettmex:if gettme<0{gettme+=1000}
+interruptformt=1
+vbismacs=1
+emulatorexeci=0
+z80run address,0:statx=stat
+if cntmain\32>24{
+vbi=1
+}else{
+vbi=0
+}
+emulatorexeci=1
+vbismacs=0
+//interruptformt=0
+if cntmain\21000*2=0 and cntmain!0{
+gosub *drawbackground
+gosub *drawforeground
+gosub *bpsoundctlr
+interruptformt=1:functyper=2|(0<<4):repeat plaginmax:gosub *bpsoundctlr:if plaginconf(0,cnt)=1{if plaginconf(1,cnt)=functyper or plaginconf(2,cnt)=functyper or plaginconf(3,cnt)=functyper or plaginconf(4,cnt)=functyper or plaginconf(5,cnt)=functyper{}else{continue cnt+1}}else{continue cnt+1}:if lpeek(plaginptr(cnt),0)!0{memfile plaginconfptr:lpoke plaginconfptr,4*0,varptr(plaginconfptr):lpoke plaginconfptr,4*1,functyper:lpoke plaginconfptr,4*2,sysfunctyper:lpoke plaginconfptr,4*6,varptr(plaginconf(0,cnt)):pluginid=cnt:gosub plaginptr(cnt)}:loop:interruptformt=0
+await
+vbis=0
+}
+interruptformt=1:functyper=0|(0<<4):repeat plaginmax:if plaginconf(0,cnt)=1{if plaginconf(1,cnt)=functyper or plaginconf(2,cnt)=functyper or plaginconf(3,cnt)=functyper or plaginconf(4,cnt)=functyper or plaginconf(5,cnt)=functyper{}else{continue cnt+1}}else{continue cnt+1}:if lpeek(plaginptr(cnt),0)!0{memfile plaginconfptr:lpoke plaginconfptr,4*0,varptr(plaginconfptr):lpoke plaginconfptr,4*1,functyper:lpoke plaginconfptr,4*2,sysfunctyper:lpoke plaginconfptr,4*6,varptr(plaginconf(0,cnt)):pluginid=cnt:gosub plaginptr(cnt)}:loop:interruptformt=0
+continue cnt+statx+1
+loop
+await
+interruptformt=0
+gosub *drawbackground
+gosub *drawforeground
+interruptformt=1:functyper=2|(0<<4):repeat plaginmax:if plaginconf(0,cnt)=1{if plaginconf(1,cnt)=functyper or plaginconf(2,cnt)=functyper or plaginconf(3,cnt)=functyper or plaginconf(4,cnt)=functyper or plaginconf(5,cnt)=functyper{}else{continue cnt+1}}else{continue cnt+1}:if lpeek(plaginptr(cnt),0)!0{memfile plaginconfptr:lpoke plaginconfptr,4*0,varptr(plaginconfptr):lpoke plaginconfptr,4*1,functyper:lpoke plaginconfptr,4*2,sysfunctyper:lpoke plaginconfptr,4*6,varptr(plaginconf(0,cnt)):pluginid=cnt:gosub plaginptr(cnt)}:loop:interruptformt=0
+emulatorexeci=1
+//dialog gettme
+//await
+loop
+
+*drawforeground
+interruptformtbaks=interruptformt:interruptformt=1
+//redraw 1
+gsel 0,0
+redraw 0
+pos 0,0
+gzoom ginfo(26),ginfo(27),3,0,0,640,480,(grpbfsetting!0)
+if scanlinetype=1 or grpbfsetting>=43{color 0,0,0:repeat ginfo(27)/2:line -1,cnt*2,ginfo(26),cnt*2:loop}
+redraw 1
+//if grpbfsetting=2{ipmb_smoothinggauss 0,0,ginfo(26),ginfo(27),3,4.0}
+//gzoom ginfo(26),ginfo(27),1+displaydispc(pc8001widthflag|(colorgraphicmode<<1)),0,0,8*dispysize2(pc8001widthflag|(colorgraphicmode<<1)),8*dispysize(grpheight25),grpbfsetting=1
+interruptformt=interruptformtbaks
+return
+*memoryaccesshnd
+interruptformtmacbak=interruptformt:interruptformt=1
+//if z80jitfreezeblockerget()\16=0 or cntmain\16=0{
+/*if cntmain\16=0{
+vbi=1
+}else{
+vbi=0
+}*/
+/*switch _z80_accesstype
+case 0*/
+gosub memoryioportlblbase(_z80_accesstype)
+statue=stat:interruptformt=interruptformtmacbak
+return statue
+*memacc_memwr
+//if _z80_addr<0x8000{
+goto memoryioportlbl((_z80_addr<0x8000),0)
+*memory_wr_rom
+if rommode=0 and bankwriteable(bankid,2)=0{
+return
+}
+if bankid=0{
+poke memory,_z80_addr,_z80_data
+}else{
+if bankwriteable(bankid,2)=1{
+poke bnkmemory(bankid-1),_z80_addr,_z80_data
+}
+}
+return
+//}
+*memory_wr_ram
+poke memory,_z80_addr,_z80_data
+return
+/*swbreak
+case 1*/
+*memacc_memrd
+goto memoryioportlbl((_z80_addr<0x8000),1)
+/*if interruptformt=0{
+if coutepx=32{
+if cntmain\2=0{
+vbi=1
+}else{
+vbi=0
+}
+coutepx=0
+}else{coutepx+=1}
+}*/
+//if _z80_addr<0x8000 {
+*memory_rd_rom
+if rommode=0{
+if _z80_addr<0x6000 {
+return peek(rom(rombank),_z80_addr&0x7FFF)
+}
+if _z80_addr<0x8000 {
+return peek(exrom(romtype),_z80_addr&0x1FFF)
+}
+}
+if bankid=0{
+return peek(memory,_z80_addr)
+}else{
+return peek(bnkmemory(bankid-1),_z80_addr)
+}
+//}
+*memory_rd_ram
+return peek(memory,_z80_addr)
+/*swbreak
+case 2*/
+*memacc_iowr
+	logmes "I/O Written:"+str(strf("%02X",_z80_addr&0xFF))
+	functyper=2|(1<<4):repeat plaginmax:if plaginconf(0,cnt)=1{if plaginconf(1,cnt)=functyper or plaginconf(2,cnt)=functyper or plaginconf(3,cnt)=functyper or plaginconf(4,cnt)=functyper or plaginconf(5,cnt)=functyper{}else{continue cnt+1}}else{continue cnt+1}:if lpeek(plaginptr(cnt),0)!0{memfile plaginconfptr:lpoke plaginconfptr,4*0,varptr(plaginconfptr):lpoke plaginconfptr,4*1,functyper:lpoke plaginconfptr,4*2,sysfunctyper:lpoke plaginconfptr,4*3,_z80_addr:lpoke plaginconfptr,4*4,_z80_data:lpoke plaginconfptr,4*6,varptr(plaginconf(0,cnt)):pluginid=cnt:gosub plaginptr(cnt)}:loop
+	switch _z80_addr&0xFF
+	case 0x10
+	case 0x11
+	case 0x12
+	case 0x13
+	case 0x14
+	case 0x15
+	case 0x16
+	case 0x17
+	case 0x18
+	case 0x19
+	case 0x1A
+	case 0x1B
+	case 0x1C
+	case 0x1D
+	case 0x1E
+	case 0x1F
+		pch=_z80_data
+	swbreak
+	case 0x20
+	case 0x22
+	case 0x24
+	case 0x26
+	case 0x28
+	case 0x2A
+	case 0x2C
+	case 0x2E
+		/*if peek(upd8251config,3)&1{*/functyper=4|(1<<4):repeat plaginmax:if plaginconf(0,cnt)=1{if plaginconf(1,cnt)=functyper or plaginconf(2,cnt)=functyper or plaginconf(3,cnt)=functyper or plaginconf(4,cnt)=functyper or plaginconf(5,cnt)=functyper{}else{continue cnt+1}}else{continue cnt+1}:if lpeek(plaginptr(cnt),0)!0{memfile plaginconfptr:lpoke plaginconfptr,4*0,varptr(plaginconfptr):lpoke plaginconfptr,4*1,functyper:lpoke plaginconfptr,4*2,sysfunctyper:lpoke plaginconfptr,4*3,_z80_addr:lpoke plaginconfptr,4*4,_z80_data:lpoke plaginconfptr,4*6,varptr(plaginconf(0,cnt)):pluginid=cnt:gosub plaginptr(cnt)}:loop//}
+	swbreak
+	case 0x21
+	case 0x23
+	case 0x25
+	case 0x27
+	case 0x29
+	case 0x2B
+	case 0x2D
+	case 0x2F
+		if upd8251configate=1{poke upd8251config,3,(_z80_data&0xFF)/*=(upd8251config&0x00FFFFFF)|((_z80_data&0xFF)<<24)*/:if peek(upd8251config,3)&64{upd8251config=0}:if peek(upd8251config,3)&16{overrunerror=0:rxdatareadey=0}}else{poke upd8251config,0,(_z80_data&0xFF)/*upd8251config=(upd8251config&0xFFFFFF00)|((_z80_data&0xFF)<<0)*/}
+		upd8251configate++:if upd8251configate>=2{upd8251configate=0}
+	swbreak
+	case 0x30
+	case 0x32
+	case 0x34
+	case 0x36
+	case 0x38
+	case 0x3A
+	case 0x3C
+	case 0x3E
+	//dialog _z80_addr&0xF
+		cmtbinsnd=(_z80_data>>4)&0x3
+		cassettemtstate=(_z80_data>>3)&0x1
+		cmtdatawr=(_z80_data>>2)&0x1
+		crtmodectrl=(_z80_data>>1)&0x1
+		pc8001widthflag=(_z80_data>>0)&0x1
+	swbreak
+	case 0x31
+	case 0x33
+	case 0x35
+	case 0x37
+	case 0x39
+	case 0x3B
+	case 0x3D
+	case 0x3F
+		crtc3=_z80_addr
+		bgcolor=(_z80_data>>5)&0x7
+		colorgraphicmode=(_z80_data>>4)&0x1
+		graphicdraw=(_z80_data>>3)&0x1
+		grpmode=(_z80_data>>2)&0x1
+		rommode=(_z80_data>>1)&0x1
+		romtype=(_z80_data>>0)&0x1
+	swbreak
+	/*case 0x31
+		romtype=(_z80_data>>0)&0x1
+		rommode=(_z80_data>>1)&0x1
+		grpmode=(_z80_data>>2)&0x1
+		//crtmodectrl=(_z80_data>>2)&0x1
+		graphicdraw=(_z80_data>>3)&0x1
+		colorgraphicmode=(_z80_data>>4)&0x1
+		bgcolor=(_z80_data>>5)&0x7
+	swbreak
+	case 0x32
+		crtc2=_z80_data
+		rombank=_z80_data&0x3
+		outputmode=(_z80_data>>2)&0x3
+		vrammode=(_z80_data>>4)&0x01
+		colourmode=(_z80_data>>5)&0x01
+		vramaccessmode=(_z80_data>>6)&0x01
+		soundintmaskmode=(_z80_data>>7)&0x01
+	swbreak*/
+	case 0x40
+	case 0x41
+	case 0x42
+	case 0x43
+	case 0x44
+	case 0x45
+	case 0x46
+	case 0x47
+	case 0x48
+	case 0x49
+	case 0x4A
+	case 0x4B
+	case 0x4C
+	case 0x4D
+	case 0x4E
+	case 0x4F
+	//dialog strf("%04X",address)
+		uopout=(_z80_data>>6)&0x03
+		beepenable=(_z80_data>>5)&0x01
+		crtcldsclkenable=(_z80_data>>3)&0x01
+		rtcclkenable=(_z80_data>>2)&0x01
+		rtcstbenable=(_z80_data>>1)&0x01
+		if rtcstbenable=1{gosub *rtcstrobe}else{if rtcclkenable=1{gosub *rtcshift}}
+		prtenable=(_z80_data>>0)&0x01:gosub *prtstrobe
+		;gosub *bpsoundctlr
+	swbreak
+	case 0x50
+	case 0x52
+	case 0x54
+	case 0x56
+	case 0x58
+	case 0x5A
+	case 0x5C
+	case 0x5E
+	upd3301prm=_z80_data
+	if othercrtcio=0{
+		if seq{
+			seq-=1
+			switch seq+1
+				case 1
+					colorgraphicmode=(_z80_data>>4)&0x1
+					crtcactive=0
+				swbreak
+				case 3
+					grpheight25=(_z80_data & 0x1f) < 9
+					blinkingtime=((_z80_data>>6) & 3)
+				swbreak
+				case 6
+					cursx=cursxtmp
+					cursy=_z80_data
+					seq=0
+				swbreak
+				case 7
+					cursxtmp=_z80_data
+				swbreak
+			swend
+		}
+	}else{interruptformt=1:functyper=6|(1<<4):repeat plaginmax:if plaginconf(0,cnt)=1{if plaginconf(1,cnt)=functyper or plaginconf(2,cnt)=functyper or plaginconf(3,cnt)=functyper or plaginconf(4,cnt)=functyper or plaginconf(5,cnt)=functyper{}else{continue cnt+1}}else{continue cnt+1}:if lpeek(plaginptr(cnt),0)!0{memfile plaginconfptr:lpoke plaginconfptr,4*0,varptr(plaginconfptr):lpoke plaginconfptr,4*1,functyper:lpoke plaginconfptr,4*2,sysfunctyper:lpoke plaginconfptr,4*3,_z80_addr:lpoke plaginconfptr,4*4,_z80_data:lpoke plaginconfptr,4*6,varptr(plaginconf(0,cnt)):pluginid=cnt:gosub plaginptr(cnt)}:loop:interruptformt=0}
+	swbreak
+	case 0x51
+	case 0x53
+	case 0x55
+	case 0x57
+	case 0x59
+	case 0x5B
+	case 0x5D
+	case 0x5F
+	upd3301cmd=_z80_data
+	functyper=8|(1<<4):repeat plaginmax:if plaginconf(0,cnt)=1{if plaginconf(1,cnt)=functyper or plaginconf(2,cnt)=functyper or plaginconf(3,cnt)=functyper or plaginconf(4,cnt)=functyper or plaginconf(5,cnt)=functyper{}else{continue cnt+1}}else{continue cnt+1}:if lpeek(plaginptr(cnt),0)!0{memfile plaginconfptr:lpoke plaginconfptr,4*0,varptr(plaginconfptr):lpoke plaginconfptr,4*1,functyper:lpoke plaginconfptr,4*2,sysfunctyper:lpoke plaginconfptr,4*3,_z80_addr:lpoke plaginconfptr,4*4,_z80_data:lpoke plaginconfptr,4*6,varptr(plaginconf(0,cnt)):pluginid=cnt:gosub plaginptr(cnt)}:loop
+		switch _z80_data & 0xF0
+		case 0x00
+			seq=5
+			crtcactive=0
+		swbreak
+		case 0x60
+			if ((_z80_data&0xF))=0{poke upd3301stat,0,peek(upd3301stat,0)&(0xFF-1):upd31speclzsig=1}
+		swbreak
+		case 0x80
+			if ((_z80_data&0xF)&0x01)=0{
+				cursx=-1
+				cursy=-1
+				gettmex2=gettime(6)
+			}
+			if ((_z80_data&0xF)&0x01)=1{
+				seq=7
+			}
+		swbreak
+		swend
+	swbreak
+	/*case 0x52
+		bgcolor=(_z80_data>>3)&0x7
+	swbreak*/
+	case 0x60
+		poke exsbaddr,dma2stackcountes,_z80_data
+		dma2stackcountes=dma2stackcountes+1
+		if dma2stackcountes=2{dma2stackcountes=0}
+	swbreak
+	case 0x61
+		poke exsbaddrtc,dma2stackcountestc,_z80_data
+		dma2stackcountestc=dma2stackcountestc+1
+		if dma2stackcountestc=2{dma2stackcountestc=0}
+	swbreak
+	case 0x62
+		poke exsbaddr2,dma2stackcountes2,_z80_data
+		dma2stackcountes2=dma2stackcountes2+1
+		if dma2stackcountes2=2{dma2stackcountes2=0}
+	swbreak
+	case 0x63
+		poke exsbaddr2tc,dma2stackcountes2tc,_z80_data
+		dma2stackcountes2tc=dma2stackcountes2tc+1
+		if dma2stackcountes2tc=2{dma2stackcountes2tc=0}
+	swbreak
+	case 0x64
+		poke vramaddr,dma2stackcount,_z80_data
+		dma2stackcount=dma2stackcount+1
+		if dma2stackcount=2{dma2stackcount=0}
+	swbreak
+	case 0x65
+		poke vramaddrtc,dma2stackcounttc,_z80_data
+		dma2stackcounttc=dma2stackcounttc+1
+		if dma2stackcounttc=2{dma2stackcounttc=0}
+	swbreak
+	case 0x66
+		poke unusedaddr,dma2stackcountuu,_z80_data
+		dma2stackcountuu=dma2stackcountuu+1
+		if dma2stackcountuu=2{dma2stackcountuu=0}
+	swbreak
+	case 0x67
+		poke unusedaddrtc,dma2stackcountuutc,_z80_data
+		dma2stackcountuutc=dma2stackcountuutc+1
+		if dma2stackcountuutc=2{dma2stackcountuutc=0}
+	swbreak
+	case 0x68
+		dmamodestat=_z80_data
+		dmaseq=2
+	swbreak
+	case 0x90
+	case 0x91
+	case 0x92
+	case 0x93
+	case 0x94
+	case 0x95
+	case 0x96
+	case 0x97
+	case 0x98
+	case 0x99
+	case 0x9A
+	case 0x9B
+	case 0x9C
+	case 0x9D
+	case 0x9E
+	case 0x9F
+		sgtbl=0.250000f, 0.198582f, 0.157739f, 0.125297f, 0.099527f, 0.079057f, 0.062797f, 0.049882f, 0.039622f, 0.031473f, 0.025000f, 0.019858f, 0.015774f, 0.012530f, 0.009953f, 0.000000f
+		if _z80_data&0x80{
+			sgregnum = _z80_data >> 4 & 7
+			sgosc=sgregnum>>1
+			switch sgregnum
+			case 0
+			case 2
+			case 4
+				sgtmp=_z80_data&0x0F
+			swbreak
+			case 1
+			case 3
+			case 5
+			case 7
+				sgatt(sgosc)=sgtbl(_z80_data&0x0F)
+			swbreak
+			case 6
+				sgnf = (_z80_data & 3) == 3
+				if sgnf{sgfreq(3) = sgfreq(2) << 1}else{sgfreq(3) = 0x20 << (_z80_data & 3)}
+				sgwhite = (_z80_data & 4) != 0
+			swbreak
+			swend
+		}else{if sgosc!=3{
+							sgfreq(sgosc) = (_z80_data & 0x3f) << 4 | sgtmp
+							if (sgfreq(sgosc)=0){sgfreq(sgosc) = 1024}
+							if (sgnf && sgosc == 2){sgfreq(3) = sgfreq(2) << 1}
+						}
+		}
+	swbreak
+	case 0xE0
+	case 0xE1
+	case 0xE2
+		bankstat(_switch_val-0xE0)=_z80_data^0xFF:repeat 4:bankwriteable(cnt,_switch_val-0xE0)=0:if (_z80_data>>(cnt+4))&0x01 {bankwriteable(cnt,_switch_val-0xE0)=1}:loop:repeat 4:if (_z80_data>>cnt)&0x01 {bank(_switch_val-0xE0)=cnt:break}:loop
+	swbreak
+	case 0xE3
+		bankid=_z80_data
+	swbreak
+	case 0xE4
+		interruptlevel=_z80_data&0xF
+	swbreak
+	case 0xE6
+		interruptphb=_z80_data&0x7
+	swbreak
+	swend
+	functyper=0|(1<<4):repeat plaginmax:if plaginconf(0,cnt)=1{if plaginconf(1,cnt)=functyper or plaginconf(2,cnt)=functyper or plaginconf(3,cnt)=functyper or plaginconf(4,cnt)=functyper or plaginconf(5,cnt)=functyper{}else{continue cnt+1}}else{continue cnt+1}:if lpeek(plaginptr(cnt),0)!0{memfile plaginconfptr:lpoke plaginconfptr,4*0,varptr(plaginconfptr):lpoke plaginconfptr,4*1,functyper:lpoke plaginconfptr,4*2,sysfunctyper:lpoke plaginconfptr,4*3,_z80_addr:lpoke plaginconfptr,4*4,_z80_data:lpoke plaginconfptr,4*6,varptr(plaginconf(0,cnt)):pluginid=cnt:gosub plaginptr(cnt)}:loop
+return
+/*swbreak
+case 3*/
+*memacc_iord
+	logmes "I/O Read:"+str(strf("%02X",_z80_addr&0xFF))
+	lpoke plaginconfptr,4*5,0
+	functyper=3|(1<<4):repeat plaginmax:if plaginconf(0,cnt)=1{if plaginconf(1,cnt)=functyper or plaginconf(2,cnt)=functyper or plaginconf(3,cnt)=functyper or plaginconf(4,cnt)=functyper or plaginconf(5,cnt)=functyper{}else{continue cnt+1}}else{continue cnt+1}:if lpeek(plaginptr(cnt),0)!0{memfile plaginconfptr:lpoke plaginconfptr,4*0,varptr(plaginconfptr):lpoke plaginconfptr,4*1,functyper:lpoke plaginconfptr,4*2,sysfunctyper:lpoke plaginconfptr,4*3,_z80_addr:lpoke plaginconfptr,4*6,varptr(plaginconf(0,cnt)):pluginid=cnt:gosub plaginptr(cnt):if lpeek(plaginconf,4*5)=1{break}}:loop
+	if lpeek(plaginconfptr,4*5)=1{lpoke plaginconfptr,4*5,0:return lpeek(plaginconfptr,4*4)}
+	switch _z80_addr&0xFF
+	case 0x00
+	case 0x01
+	case 0x02
+	case 0x03
+	case 0x04
+	case 0x05
+	case 0x06
+	case 0x07
+	case 0x08
+	case 0x09
+	case 0x0A
+	case 0x0B
+	case 0x0C
+	case 0x0D
+	case 0x0E
+	case 0x0F
+		return 0xFF^keyio(_z80_addr&0xF)
+	swbreak
+	case 0x20
+	case 0x22
+	case 0x24
+	case 0x26
+	case 0x28
+	case 0x2A
+	case 0x2C
+	case 0x2E
+		if peek(upd8251config,3)&4{
+		lpoke plaginconfptr,4*5,0
+		functyper=5|(1<<4):repeat plaginmax:if plaginconf(0,cnt)=1{if plaginconf(1,cnt)=functyper or plaginconf(2,cnt)=functyper or plaginconf(3,cnt)=functyper or plaginconf(4,cnt)=functyper or plaginconf(5,cnt)=functyper{}else{continue cnt+1}}else{continue cnt+1}:if lpeek(plaginptr(cnt),0)!0{memfile plaginconfptr:lpoke plaginconfptr,4*0,varptr(plaginconfptr):lpoke plaginconfptr,4*1,functyper:lpoke plaginconfptr,4*2,sysfunctyper:lpoke plaginconfptr,4*3,_z80_addr:lpoke plaginconfptr,4*6,varptr(plaginconf(0,cnt)):pluginid=cnt:gosub plaginptr(cnt):if lpeek(plaginconf,4*5)=1{break}}:loop
+		if lpeek(plaginconfptr,4*5)=1{lpoke plaginconfptr,4*5,0:overrunerror=0:/*if rxdatareadey=1{overrunerror=1}else{*/poke upd8251config,2,lpeek(plaginconfptr,4*4):if peek(upd8251config,3)&32{pvpvbtbt=0}else{pvpvbtbt=1}:repeat 8:if (peek(upd8251config,2)>>cnt)&1{pvpvbtbt++}:loop:if peek(upd8251config,3)&16{pvpvbtbt=0}:rxdatareadey=1/*}*/:poke upd8251config,1,(((pvpvbtbt\2)!0)<<3)|((overrunerror!0)<<4)}
+		}
+		return peek(upd8251config,2)
+	swbreak
+	case 0x21
+	case 0x23
+	case 0x25
+	case 0x27
+	case 0x29
+	case 0x2B
+	case 0x2D
+	case 0x2F
+		/*rxdatareadeybak=rxdatareadey:rxdatareadey=0*/:return (((upd8251config>>8)&0xFF)|((rxdatareadey!0)<<1))|((peek(upd8251config,3)&1)<<0)//(_switch_val&0x01)*0xE1
+	swbreak
+	case 0x30
+	case 0x32
+	case 0x34
+	case 0x36
+	case 0x38
+	case 0x3A
+	case 0x3C
+	case 0x3E
+		return crtc2
+	swbreak
+	case 0x31
+	case 0x33
+	case 0x35
+	case 0x37
+	case 0x39
+	case 0x3B
+	case 0x3D
+	case 0x3F
+		return ((bgcolor&0x7)<<5)|((colorgraphicmode&0x01)<<4)|((graphicdraw&0x01)<<3)|((grpmode&0x01)<<2)|((rommode&0x01)<<1)|((romtype&0x01)<<0)
+	swbreak
+	case 0x40
+	case 0x41
+	case 0x42
+	case 0x43
+	case 0x44
+	case 0x45
+	case 0x46
+	case 0x47
+	case 0x48
+	case 0x49
+	case 0x4A
+	case 0x4B
+	case 0x4C
+	case 0x4D
+	case 0x4E
+	case 0x4F
+	logmes "0x40 i/o access:"+strf("%04X",address)
+		return ((uipin&3)<<6)|(vbi<<5)|((rtcdata&1)<<4)|(((fddconnected&1)!1)<<3)|((cmtdatard&1)<<2)|((prtready&1)<<0)//0x0a//0x5//|0x0a
+	swbreak
+	case 0x50
+	case 0x52
+	case 0x54
+	case 0x56
+	case 0x58
+	case 0x5A
+	case 0x5C
+	case 0x5E
+		if othercrtcio=1{
+			lpoke plaginconfptr,4*5,0
+			functyper=7|(1<<4):repeat plaginmax:if plaginconf(0,cnt)=1{if plaginconf(1,cnt)=functyper or plaginconf(2,cnt)=functyper or plaginconf(3,cnt)=functyper or plaginconf(4,cnt)=functyper or plaginconf(5,cnt)=functyper{}else{continue cnt+1}}else{continue cnt+1}:if lpeek(plaginptr(cnt),0)!0{memfile plaginconfptr:lpoke plaginconfptr,4*0,varptr(plaginconfptr):lpoke plaginconfptr,4*1,functyper:lpoke plaginconfptr,4*2,sysfunctyper:lpoke plaginconfptr,4*3,_z80_addr:lpoke plaginconfptr,4*6,varptr(plaginconf(0,cnt)):pluginid=cnt:gosub plaginptr(cnt):if lpeek(plaginconf,4*5)=1{break}}:loop
+			if lpeek(plaginconfptr,4*5)=1{lpoke plaginconfptr,4*5,0:return lpeek(plaginconfptr,4*4)}else{othercrtcio=0}
+		}
+		if upd31speclzsig=0{return upd3301prm}else{
+			switch peek(upd31speclzsig,0)
+			case 1
+				ret=peek(litepeninp,peek(upd31speclzsig,1))
+			swbreak
+			swend
+		poke upd31speclzsig,1,peek(upd31speclzsig,1)+1
+		if peek(upd31speclzsig,1)>=2{upd31speclzsig=0:litepeninp=0}
+		return ret
+		}
+	swbreak
+	case 0x51
+	case 0x53
+	case 0x55
+	case 0x57
+	case 0x59
+	case 0x5B
+	case 0x5D
+	case 0x5F
+		if othercrtcio=1{
+			lpoke plaginconfptr,4*5,0
+			functyper=9|(1<<4):repeat plaginmax:if plaginconf(0,cnt)=1{if plaginconf(1,cnt)=functyper or plaginconf(2,cnt)=functyper or plaginconf(3,cnt)=functyper or plaginconf(4,cnt)=functyper or plaginconf(5,cnt)=functyper{}else{continue cnt+1}}else{continue cnt+1}:if lpeek(plaginptr(cnt),0)!0{memfile plaginconfptr:lpoke plaginconfptr,4*0,varptr(plaginconfptr):lpoke plaginconfptr,4*1,functyper:lpoke plaginconfptr,4*2,sysfunctyper:lpoke plaginconfptr,4*3,_z80_addr:lpoke plaginconfptr,4*6,varptr(plaginconf(0,cnt)):pluginid=cnt:gosub plaginptr(cnt):if lpeek(plaginconf,4*5)=1{break}}:loop
+			if lpeek(plaginconfptr,4*5)=1{lpoke plaginconfptr,4*5,0:upd3301stat=lpeek(plaginconfptr,4*4)}else{othercrtcio=0}
+		}
+		//upd3301statbak=upd3301stat:upd3301stat=0xFF-0x1F
+		if upd3301stat&8{return upd3301stat&(0xFF-0x10)}else{return upd3301stat}
+	swbreak
+	case 0x60
+		ret6466x=peek(exsbaddr,dma2stackcountes)
+		dma2stackcountes=dma2stackcountes+1
+		if dma2stackcountes=2{dma2stackcountes=0}
+		return ret6466x
+	swbreak
+	case 0x61
+		ret6466x=peek(exsbaddrtc,dma2stackcountestc)
+		dma2stackcountestc=dma2stackcountestc+1
+		if dma2stackcountestc=2{dma2stackcountestc=0}
+		return ret6466x
+	swbreak
+	case 0x62
+		ret6466x=peek(exsbaddr2,dma2stackcountes2)
+		dma2stackcountes2=dma2stackcountes2+1
+		if dma2stackcountes2=2{dma2stackcountes2=0}
+		return ret6466x
+	swbreak
+	case 0x63
+		ret6466x=peek(exsbaddr2tc,dma2stackcountes2tc)
+		dma2stackcountes2tc=dma2stackcountes2tc+1
+		if dma2stackcountes2tc=2{dma2stackcountes2tc=0}
+		return ret6466x
+	swbreak
+	case 0x64
+		ret6466x=peek(vramaddr,dma2stackcount)
+		dma2stackcount=dma2stackcount+1
+		if dma2stackcount=2{dma2stackcount=0}
+		return ret6466x
+	swbreak
+	case 0x65
+		ret6466x=peek(vramaddrtc,dma2stackcounttc)
+		dma2stackcounttc=dma2stackcounttc+1
+		if dma2stackcounttc=2{dma2stackcounttc=0}
+		return ret6466x
+	swbreak
+	case 0x66
+		ret6466x=peek(unusedaddr,dma2stackcountuu)
+		dma2stackcountuu=dma2stackcountuu+1
+		if dma2stackcountuu=2{dma2stackcountuu=0}
+		return ret6466x
+	swbreak
+	case 0x67
+		ret6466x=peek(unusedaddrtc,dma2stackcountuutc)
+		dma2stackcountuutc=dma2stackcountuutc+1
+		if dma2stackcountuutc=2{dma2stackcountuutc=0}
+		return ret6466x
+	swbreak
+	case 0x68
+		return dmamodestat|((1<<4)*((cntmain\19)>9))
+	swbreak
+	case 0xE0
+	case 0xE1
+	case 0xE2
+		return bankstat(_switch_val-0xE0)
+	swbreak
+	case 0xE3
+		return bankid
+	swbreak
+	case 0xE4
+		return interruptlevel
+	swbreak
+	case 0xFE
+		logmes "0xFE i/o access:"+strf("%04X",address)
+		return 0
+	swbreak
+	swend
+	lpoke plaginconfptr,4*5,0
+	functyper=1|(1<<4):repeat plaginmax:if plaginconf(0,cnt)=1{if plaginconf(1,cnt)=functyper or plaginconf(2,cnt)=functyper or plaginconf(3,cnt)=functyper or plaginconf(4,cnt)=functyper or plaginconf(5,cnt)=functyper{}else{continue cnt+1}}else{continue cnt+1}:if lpeek(plaginptr(cnt),0)!0{memfile plaginconfptr:lpoke plaginconfptr,4*0,varptr(plaginconfptr):lpoke plaginconfptr,4*1,functyper:lpoke plaginconfptr,4*2,sysfunctyper:lpoke plaginconfptr,4*3,_z80_addr:lpoke plaginconfptr,4*6,varptr(plaginconf(0,cnt)):pluginid=cnt:gosub plaginptr(cnt):if lpeek(plaginconf,4*5)=1{break}}:loop
+	if lpeek(plaginconfptr,4*5)=1{lpoke plaginconfptr,4*5,0:return lpeek(plaginconfptr,4*4)}else{return 0xFF}
+return
+/*swbreak
+swend*/
+*memacc_none
+return
+
+*rtcstrobe
+switch pch & 0xF
+case 1
+rtcpos=0
+dim rtctimetmp,5
+rtctime(4)=gettime(1)<<4
+rtctime(3)=((gettime(3)/10)<<4)+gettime(3)\10
+rtctime(2)=((gettime(4)/10)<<4)+gettime(4)\10
+rtctime(1)=((gettime(5)/10)<<4)+gettime(5)\10
+rtctime(0)=((gettime(6)/10)<<4)+gettime(6)\10
+rtcdata=rtctime(0)&0x01
+swbreak
+case 2
+repeat 5:rtctime(cnt)=rtctimetmp(cnt):loop
+swbreak
+swend
+return
+*rtcshift
+if rtcpos<40{
+rtctimetmp(rtcpos>>3)|= (pch >> 3 & 1) << (rtcpos & 7)
+rtcpos+=1
+rtcdata=rtctime(rtcpos >> 3) >> (rtcpos & 7) & 1
+}
+return
+
+*prtstrobe
+	if prtenable & prtenable0!=0 & pch!='\r'{}
+	prtenable0=prtenable
+return
+
+*drawbackground
+interruptformtbakfordw=interruptformt
+interruptformt=1:functyper=1|(0<<4):repeat plaginmax:if plaginconf(0,cnt)=1{if plaginconf(1,cnt)=functyper or plaginconf(2,cnt)=functyper or plaginconf(3,cnt)=functyper or plaginconf(4,cnt)=functyper or plaginconf(5,cnt)=functyper{}else{continue cnt+1}}else{continue cnt+1}:if lpeek(plaginptr(cnt),0)!0{memfile plaginconfptr:lpoke plaginconfptr,4*0,varptr(plaginconfptr):lpoke plaginconfptr,4*1,functyper:lpoke plaginconfptr,4*2,sysfunctyper:lpoke plaginconfptr,4*6,varptr(plaginconf(0,cnt)):pluginid=cnt:gosub plaginptr(cnt)}:loop:interruptformt=1
+emulatorexeci=0
+colourchanged=0
+palletedcolorchkold=256
+cntmaincs+=((blinktimest(blinkingtime))-1)
+vbis=1
+if (interruptix\2)=0 and (((((interruptlevel>>3)&1)=1) or (interruptlevel&0x7)>0)){z80interrupt address,0,2*1}
+if useoldrender=1{
+if graphicdraw=1{
+gsel 1+displaydispc(pc8001widthflag|(colorgraphicmode<<1)),0
+redraw 0
+//repeat 120*25:poke vrambuffer,cnt,z80readmem(vramaddr+cnt):loop
+//vbi=1
+switch videomode
+case 0
+if crtmodectrl=0{palcolor bgcolor:boxf}else{palcolor 8:boxf}
+/*palcolor 7+(0x10*(((vramattributent(cnt/80)>>3)&0x1)=0)):*///if cursx!-1 and cursy!-1{if (cntmain\blinktimest(blinkingtime))<(blinktimest(blinkingtime)/2){boxf ((cursx/((pc8001widthflag=0)+1))*8),(cursy*8),((cursx/((pc8001widthflag=0)+1))*8)+7,(cursy*8)+7}}
+repeat 20*25:vramattribute((cnt\20),0,(cnt/20))=0:vramattribute((cnt\20),1,(cnt/20))=0:vramattribute((cnt\20),2,(cnt/20))=0:loop:cc128ccbak2=0:cc128ccbak=0:attributeolder=-1:repeat 40:vramattributent(cnt)=0:loop:cc128cc=0:cc128ccc=0:repeat 20*25:if (cnt\20)=0{cc128cc=0}:vramattribute(((cnt\20)*2),2,(cnt/20))=z80readmem(vramaddr+80+((cnt\20)*2)+((cnt/20)*120)+0):if vramattribute(((cnt\20)*2),2,(cnt/20))&128{cc128cc+=1:if (vramattribute(((cnt\20)*2),2,(cnt/20))&128)!0 /*and attributeolder!(cnt/20)*/{vramattributent(cnt/20)=vramattribute(((cnt\20)*2),2,(cnt/20))&127:attributeolder=(cnt/20)}}:if (vramattribute(((cnt\20)*2),2,(cnt/20))&128)=0{vramattribute((cnt\20)-cc128cc,0,(cnt/20))=vramattribute(((cnt\20)*2),2,(cnt/20))&127}:vramattribute(((cnt\20)*2)+1,2,(cnt/20))=z80readmem(vramaddr+80+((cnt\20)*2)+((cnt/20)*120)+1):if (vramattribute(((cnt\20)*2),2,(cnt/20))&128)=0{vramattribute((cnt\20)-cc128cc,1,(cnt/20))=vramattribute(((cnt\20)*2)+1,2,(cnt/20))}:loop
+executext=0:cntx=0:repeat 80*25:cntap=cnt:repeat 20:if vramattribute((cnt\20),0,(cntap/80))<=(cntap\80) /*and ((vramattribute((cntx\20),1,(cnt/80))&8)!0)=0*/{cntx=cnt}:loop:if vramattribute((cntx\20),0,(cnt/80))<=(cnt\80){vramattributem((cnt\80),(cnt/80),3)=vramattribute((cntx\20),1,(cnt/80))}:/*loop:executext=0:cntx=0:repeat 80*25:*/cntap=cnt:repeat 20:if vramattribute((cnt\20),0,(cntap/80))<=(cntap\80) and ((vramattribute((cnt\20),1,(cntap/80))&8)!0)=0 /*and ((vramattribute((cntx\20),1,(cnt/80))&8)!0)=0*/{cntx=cnt}:loop:if vramattribute((cntx\20),0,(cnt/80))<=(cnt\80) and ((vramattribute((cntx\20),1,(cnt/80))&8)!0)=0{vramattributem((cnt\80),(cnt/80),0)=vramattribute((cntx\20),1,(cnt/80))}:if crtmodectrl=0{cntap=cnt:repeat 20:if vramattribute((cnt\20),0,(cntap/80))<=(cntap\80) and ((vramattribute((cnt\20),1,(cntap/80))&8)!0)=1/* and ((vramattribute((cnt\20),1,(cntap/80))&16)!0)=0*/{cntx=cnt}:loop:if vramattribute((cntx\20),0,(cnt/80))<=(cnt\80) and ((vramattribute((cntx\20),1,(cnt/80))&8)!0)=1 /*and ((vramattribute((cnt\20),1,(cntap/80))&16)!0)=0*/{vramattributem((cnt\80),(cnt/80),1)=vramattribute((cntx\20),1,(cnt/80))}/*:cntap=cnt:repeat 20:if vramattribute((cnt\20),0,(cntap/80))<=(cntap\80) and ((vramattribute((cnt\20),1,(cntap/80))&8)!0)=1 and ((vramattribute((cnt\20),1,(cntap/80))&16)!0)=1{cntx=cnt}:loop:if vramattribute((cntx\20),0,(cnt/80))<=(cnt\80) and ((vramattribute((cntx\20),1,(cnt/80))&8)!0)=1 and ((vramattribute((cntx\20),1,(cnt/80))&16)!0)=1{vramattributem((cnt\80),(cnt/80),2)=vramattribute((cntx\20),1,(cnt/80))}*/}:grpccnt=cnt
+fontid=z80readmem(vramaddr+(120*(grpccnt/80))+((grpccnt\80)*((displaydispc2(pc8001widthflag|(colorgraphicmode<<1))=0)+1)))
+attributedata=vramattributem((cnt\80),(cnt/80),0) | (vramattributent(cnt/80)&119)
+attributedata2=vramattributem((cnt\80),(cnt/80),3)
+if colourchanged=1 or colorgraphicmode=1{
+switch crtmodectrl
+case 0
+if colorgraphicmode=0 and grpmode=1{palcolor 9+(0x10*(((vramattributent(cnt/80)>>3)&0x1)=0)):palletedcolorchkold=256}else{palletedcolorchk=(vramattributem((cnt\80),(cnt/80),/*1+((((attributedata2>>7)and(attributedata2>>3))|((attributedata2>>4)&(vramattributem((cnt\80),(cnt/80),0)>>3)))&0x1)*/1)>>5)+(0x10*(((vramattributent(cnt/80)>>3)&0x1)=0))+(0x20*((grpmode=0))):if palletedcolorchkold!palletedcolorchk{palcolor palletedcolorchk}:palletedcolorchkold=palletedcolorchk}
+swbreak
+case 1
+palcolor 9+(0x10*(((vramattributent(cnt/80)>>3)&0x1)=0)):palletedcolorchkold=256
+swbreak
+swend
+colourchanged=0
+}
+//if cursx!-1 and cursy!-1{if (cntmain\blinktimest(blinkingtime))<(blinktimest(blinkingtime)/2){if cursx=(grpccnt\80) and cursy=(grpccnt/80){boxf ((cursx/((pc8001widthflag=0)+1))*8),(cursy*8),((cursx/((pc8001widthflag=0)+1))*8)+7,(cursy*8)+7}}}
+//if grpmode=0{attributedata=vramattributem((cnt\80),(cnt/80),0):palcolor (vramattributem((cnt\80),(cnt/80),1+((attributedata>>7)&0x1))>>5)}
+//dialog attributedata
+//stop
+if attributedata&0x1{}else{
+if (displaydispc3(pc8001widthflag|(colorgraphicmode<<1))=0)=0 and grpccnt\2=1{}else{
+if (((attributedata2&128)!0) and ((attributedata2&8)=0)) or (((attributedata2&16)!0) and ((attributedata2&8)=8)) {
+repeat 8
+if (fontid>>cnt) & 0x01{boxf (((grpccnt\80)/(displaydispc3(pc8001widthflag|(colorgraphicmode<<1))+1))*8)+4*(cnt/4),((grpccnt/80)*8)+2*(cnt\4),(((grpccnt\80)/(displaydispc3(pc8001widthflag|(colorgraphicmode<<1))+1))*8)+4*((cnt/4)+1)-1,((grpccnt/80)*8)+2*((cnt\4)+1)-1}
+loop
+if cursx!-1 and cursy!-1{if (cntmain\blinktimest(blinkingtime))<(blinktimest(blinkingtime)/2){if cursx=(grpccnt\80) and cursy=(grpccnt/80){palcolor 0+(0x10*(((vramattributent(cnt/80)>>3)&0x1)=0)):boxf ((cursx/((pc8001widthflag=0)+1))*8),(cursy*8),((cursx/((pc8001widthflag=0)+1))*8)+7,(cursy*8)+7:palletedcolorchkold=256}}}
+}else{
+if cursx!-1 and cursy!-1{if (cntmain\blinktimest(blinkingtime))<(blinktimest(blinkingtime)/2){if cursx=(grpccnt\80) and cursy=(grpccnt/80){boxf ((cursx/((pc8001widthflag=0)+1))*8),(cursy*8),((cursx/((pc8001widthflag=0)+1))*8)+7,(cursy*8)+7}}}
+/*fontidx="":lpoke fontidx,0,fontid
+dialog fontidx*/
+if attributedata&0x4{boxf ((int(double(0.5*((pc8001widthflag!0)+1))*(grpccnt\80)))*8),((grpccnt/80)*8),((int(double(0.5*((pc8001widthflag!0)+1))*(grpccnt\80)))*8)+7,(((grpccnt/80)*8)+7):colourchanged=1:if crtmodectrl=0{palcolor bgcolor}else{palcolor 8}:palletedcolorchkold=256}
+if cursx!-1 and cursy!-1{if (cntmain\blinktimest(blinkingtime))<(blinktimest(blinkingtime)/2){if cursx=(grpccnt\80) and cursy=(grpccnt/80){colourchanged=1:if crtmodectrl=0{palcolor bgcolor}else{palcolor 8}:palletedcolorchkold=256}}}
+if (attributedata&0x1)=0 and (attributedata&0x2)=2 and (cntmain\(blinktimest(blinkingtime)*2))>((blinktimest(blinkingtime)*2)/4){boxf ((int(double(0.5*((pc8001widthflag!0)+1))*(grpccnt\80)))*8),((grpccnt/80)*8),((int(double(0.5*((pc8001widthflag!0)+1))*(grpccnt\80)))*8)+7,(((grpccnt/80)*8)+7):colourchanged=1:if crtmodectrl=0{palcolor bgcolor}else{palcolor 8}:palletedcolorchkold=256}
+pos ((grpccnt\80)/(displaydispc3(pc8001widthflag|(colorgraphicmode<<1))+1))*8,(grpccnt/80)*8
+fontrend fontid
+}
+if attributedata&16{boxf (((grpccnt\80)/(displaydispc3(pc8001widthflag|(colorgraphicmode<<1))+1))*8),((grpccnt/80)*8),(((grpccnt\80)/(displaydispc3(pc8001widthflag|(colorgraphicmode<<1))+1))*8)+7,((grpccnt/80)*8)+1}
+if attributedata&32{boxf (((grpccnt\80)/(displaydispc3(pc8001widthflag|(colorgraphicmode<<1))+1))*8),((grpccnt/80)*8)+6,(((grpccnt\80)/(displaydispc3(pc8001widthflag|(colorgraphicmode<<1))+1))*8)+7,((grpccnt/80)*8)+7}
+if attributedata&64{boxf (((grpccnt\80)/(displaydispc3(pc8001widthflag|(colorgraphicmode<<1))+1))*8)+4,((grpccnt/80)*8),(((grpccnt\80)/(displaydispc3(pc8001widthflag|(colorgraphicmode<<1))+1))*8)+5,((grpccnt/80)*8)+7}
+}
+}
+loop
+swbreak
+swend
+/*else{
+switch crtmodectrl
+case 0
+if colorgraphicmode=0 and grpmode=1{palcolor 9+(0x10*(((attributedata>>1)&0x1)=0))}else{palletedcolorchk=(vramattributem((cnt\80),(cnt/80),/*1+((((attributedata2>>7)and(attributedata2>>3))|((attributedata2>>4)&(vramattributem((cnt\80),(cnt/80),0)>>3)))&0x1)*//*1)>>5)+(0x10*(((attributedata>>1)&0x1)=0))+(0x20*((grpmode=0))):palcolor palletedcolorchk}
+swbreak
+case 1
+palcolor 9+(0x10*(((attributedata>>1)&0x1)=0))
+swbreak
+swend
+}*/
+//gettme2=gettime(6)-gettmex2:if gettme2<0{gettme2+=1000}
+//if crtmodectrl=0{}
+gsel 3,0
+pos 0,0
+gzoom 640,480,1+displaydispc(pc8001widthflag|(colorgraphicmode<<1)),0,0,8*dispysize2(pc8001widthflag|(colorgraphicmode<<1)),8*dispysize(grpheight25),(grpbfsetting!0):if grpbfsetting<=1{}else{if grpbfsetting=2{ipmb_smoothingtype1 0,0,ginfo(26),ginfo(27)}else{if grpbfsetting>=3 and grpbfsetting<=12{ipmb_smoothingtype2 0,0,ginfo(26),ginfo(27),(grpbfsetting-1)}else{if grpbfsetting>=13 and grpbfsetting<=22{ipmb_unsharpmasking 0,0,ginfo(26),ginfo(27),1,double(grpbfsetting-12)}else{if grpbfsetting>=23 and grpbfsetting<=32{ipmb_smoothinggauss 0,0,ginfo(26),ginfo(27),1,double(grpbfsetting-22)}else{if grpbfsetting>=33 and grpbfsetting<=42{ipmb_sharp 0,0,ginfo(26),ginfo(27),double(grpbfsetting-32)}else{if grpbfsetting>=43{ipmb_smoothingtype1 0,0,ginfo(26),ginfo(27)}}}}}}}
+redraw 1
+statx+=24000
+}else{gsel 3,0:color 0,0,0:boxf:redraw 1}
+}else{
+hgdraw 0
+if graphicdraw=1{
+gsel 5,0
+//gsel 1+displaydispc(pc8001widthflag|(colorgraphicmode<<1)),0
+redraw 0
+//repeat 120*25:poke vrambuffer,cnt,z80readmem(vramaddr+cnt):loop
+//vbi=1
+switch videomode
+case 0
+if crtmodectrl=0{palcolor_hg bgcolor:hgrect 0,0,0,mwxs,mwys}else{palcolor_hg 8:hgrect 0,0,0,mwxs,mwys}
+/*palcolor_hg 7+(0x10*(((vramattributent(cnt/80)>>3)&0x1)=0)):*///if cursx!-1 and cursy!-1{if (cntmain\blinktimest(blinkingtime))<(blinktimest(blinkingtime)/2){boxf ((cursx/((pc8001widthflag=0)+1))*8),(cursy*8),((cursx/((pc8001widthflag=0)+1))*8)+7,(cursy*8)+7}}
+repeat 20*25:vramattribute((cnt\20),0,(cnt/20))=0:vramattribute((cnt\20),1,(cnt/20))=0:vramattribute((cnt\20),2,(cnt/20))=0:loop:cc128ccbak2=0:cc128ccbak=0:attributeolder=-1:repeat 40:vramattributent(cnt)=0:loop:cc128cc=0:cc128ccc=0:repeat 20*25:if (cnt\20)=0{cc128cc=0}:vramattribute(((cnt\20)*2),2,(cnt/20))=z80readmem(vramaddr+80+((cnt\20)*2)+((cnt/20)*120)+0):if vramattribute(((cnt\20)*2),2,(cnt/20))&128{cc128cc+=1:if (vramattribute(((cnt\20)*2),2,(cnt/20))&128)!0 /*and attributeolder!(cnt/20)*/{vramattributent(cnt/20)=vramattribute(((cnt\20)*2),2,(cnt/20))&127:attributeolder=(cnt/20)}}:if (vramattribute(((cnt\20)*2),2,(cnt/20))&128)=0{vramattribute((cnt\20)-cc128cc,0,(cnt/20))=vramattribute(((cnt\20)*2),2,(cnt/20))&127}:vramattribute(((cnt\20)*2)+1,2,(cnt/20))=z80readmem(vramaddr+80+((cnt\20)*2)+((cnt/20)*120)+1):if (vramattribute(((cnt\20)*2),2,(cnt/20))&128)=0{vramattribute((cnt\20)-cc128cc,1,(cnt/20))=vramattribute(((cnt\20)*2)+1,2,(cnt/20))}:loop
+executext=0:cntx=0:repeat 80*25:cntap=cnt:repeat 20:if vramattribute((cnt\20),0,(cntap/80))<=(cntap\80) /*and ((vramattribute((cntx\20),1,(cnt/80))&8)!0)=0*/{cntx=cnt}:loop:if vramattribute((cntx\20),0,(cnt/80))<=(cnt\80){vramattributem((cnt\80),(cnt/80),3)=vramattribute((cntx\20),1,(cnt/80))}:/*loop:executext=0:cntx=0:repeat 80*25:*/cntap=cnt:repeat 20:if vramattribute((cnt\20),0,(cntap/80))<=(cntap\80) and ((vramattribute((cnt\20),1,(cntap/80))&8)!0)=0 /*and ((vramattribute((cntx\20),1,(cnt/80))&8)!0)=0*/{cntx=cnt}:loop:if vramattribute((cntx\20),0,(cnt/80))<=(cnt\80) and ((vramattribute((cntx\20),1,(cnt/80))&8)!0)=0{vramattributem((cnt\80),(cnt/80),0)=vramattribute((cntx\20),1,(cnt/80))}:if crtmodectrl=0{cntap=cnt:repeat 20:if vramattribute((cnt\20),0,(cntap/80))<=(cntap\80) and ((vramattribute((cnt\20),1,(cntap/80))&8)!0)=1/* and ((vramattribute((cnt\20),1,(cntap/80))&16)!0)=0*/{cntx=cnt}:loop:if vramattribute((cntx\20),0,(cnt/80))<=(cnt\80) and ((vramattribute((cntx\20),1,(cnt/80))&8)!0)=1 /*and ((vramattribute((cnt\20),1,(cntap/80))&16)!0)=0*/{vramattributem((cnt\80),(cnt/80),1)=vramattribute((cntx\20),1,(cnt/80))}/*:cntap=cnt:repeat 20:if vramattribute((cnt\20),0,(cntap/80))<=(cntap\80) and ((vramattribute((cnt\20),1,(cntap/80))&8)!0)=1 and ((vramattribute((cnt\20),1,(cntap/80))&16)!0)=1{cntx=cnt}:loop:if vramattribute((cntx\20),0,(cnt/80))<=(cnt\80) and ((vramattribute((cntx\20),1,(cnt/80))&8)!0)=1 and ((vramattribute((cntx\20),1,(cnt/80))&16)!0)=1{vramattributem((cnt\80),(cnt/80),2)=vramattribute((cntx\20),1,(cnt/80))}*/}:grpccnt=cnt
+fontid=z80readmem(vramaddr+(120*(grpccnt/80))+((grpccnt\80)*((displaydispc2(pc8001widthflag|(colorgraphicmode<<1))=0)+1)))
+attributedata=vramattributem((cnt\80),(cnt/80),0) | (vramattributent(cnt/80)&119)
+attributedata2=vramattributem((cnt\80),(cnt/80),3)
+if colourchanged=1 or colorgraphicmode=1{
+switch crtmodectrl
+case 0
+//if colorgraphicmode=0 and grpmode=1{palcolor_hg 9+(0x10*(((vramattributent(cnt/80)>>3)&0x1)=0)):palletedcolorchkold=256}else{palletedcolorchk=(vramattributem((cnt\80),(cnt/80),/*1+((((attributedata2>>7)and(attributedata2>>3))|((attributedata2>>4)&(vramattributem((cnt\80),(cnt/80),0)>>3)))&0x1)*/1)>>5)+(0x10*(((vramattributent(cnt/80)>>3)&0x1)=0))+(0x20*((grpmode=0))):if palletedcolorchkold!palletedcolorchk{palcolor_hg palletedcolorchk}:palletedcolorchkold=palletedcolorchk}
+if colorgraphicmode=0 and grpmode=1{palcolor_hg 9+(0x10*(((vramattributent(cnt/80)>>3)&0x1)=0)):palletedcolorchkold=256}else{palletedcolorchk=(vramattributem((cnt\80),(cnt/80),/*1+((((attributedata2>>7)and(attributedata2>>3))|((attributedata2>>4)&(vramattributem((cnt\80),(cnt/80),0)>>3)))&0x1)*/1)>>5)+(0x10*(((vramattributent(cnt/80)>>3)&0x1)=0))/*+(0x20*((grpmode=0)))*/:if palletedcolorchkold!palletedcolorchk{palcolor_hg palletedcolorchk}:palletedcolorchkold=palletedcolorchk}
+swbreak
+case 1
+palcolor_hg 9+(0x10*(((vramattributent(cnt/80)>>3)&0x1)=0)):palletedcolorchkold=256
+swbreak
+swend
+colourchanged=0
+}
+//if cursx!-1 and cursy!-1{if (cntmain\blinktimest(blinkingtime))<(blinktimest(blinkingtime)/2){if cursx=(grpccnt\80) and cursy=(grpccnt/80){boxf ((cursx/((pc8001widthflag=0)+1))*8),(cursy*8),((cursx/((pc8001widthflag=0)+1))*8)+7,(cursy*8)+7}}}
+//if grpmode=0{attributedata=vramattributem((cnt\80),(cnt/80),0):palcolor_hg (vramattributem((cnt\80),(cnt/80),1+((attributedata>>7)&0x1))>>5)}
+//dialog attributedata
+//stop
+if attributedata&0x1{}else{
+if (displaydispc3(pc8001widthflag|(colorgraphicmode<<1))=0)=0 and grpccnt\2=1{}else{
+if (((attributedata2&128)!0) and ((attributedata2&8)=0)) or (((attributedata2&16)!0) and ((attributedata2&8)=8)) {
+repeat 8
+if (fontid>>cnt) & 0x01{hgrect (((grpccnt\80)/(displaydispc3(pc8001widthflag|(colorgraphicmode<<1))+1))*16)+8*(cnt/4)+4,((grpccnt/80)*16)+4*(cnt\4)+2,0,8,4}
+loop
+if cursx!-1 and cursy!-1{if (cntmain\blinktimest(blinkingtime))<(blinktimest(blinkingtime)/2){if cursx=(grpccnt\80) and cursy=(grpccnt/80){palcolor_hg 0+(0x10*(((vramattributent(cnt/80)>>3)&0x1)=0)):hgrect ((cursx/((pc8001widthflag=0)+1))*16)+7,int(16*cursy)+8,0,16,16:palletedcolorchkold=256}}}
+}else{
+if cursx!-1 and cursy!-1{if (cntmain\blinktimest(blinkingtime))<(blinktimest(blinkingtime)/2){if cursx=(grpccnt\80) and cursy=(grpccnt/80){hgrect ((cursx/((pc8001widthflag=0)+1))*16)+7,int(16*cursy)+8,0,16,16}}}
+/*fontidx="":lpoke fontidx,0,fontid
+dialog fontidx*/
+if attributedata&0x4{hgrect ((int(double(0.5*((pc8001widthflag!0)+1))*(grpccnt\80)))*16)+7,int(16*(grpccnt/80))+8,0,16,16:colourchanged=1:if crtmodectrl=0{palcolor_hg bgcolor}else{palcolor_hg 8}:palletedcolorchkold=256}
+if cursx!-1 and cursy!-1{if (cntmain\blinktimest(blinkingtime))<(blinktimest(blinkingtime)/2){if cursx=(grpccnt\80) and cursy=(grpccnt/80){colourchanged=1:if crtmodectrl=0{palcolor_hg bgcolor}else{palcolor_hg 8}:palletedcolorchkold=256}}}
+if (attributedata&0x1)=0 and (attributedata&0x2)=2 and (cntmain\(blinktimest(blinkingtime)*2))>((blinktimest(blinkingtime)*2)/4){hgrect ((int(double(0.5*((pc8001widthflag!0)+1))*(grpccnt\80)))*16)+7,((grpccnt/80)*16)+8,0,16,16:colourchanged=1:if crtmodectrl=0{palcolor_hg bgcolor}else{palcolor_hg 8}:palletedcolorchkold=256}
+pos ((grpccnt\80)/(displaydispc3(pc8001widthflag|(colorgraphicmode<<1))+1))*16,int(16*(grpccnt/80))-1
+fontrend_hg fontid
+}
+if attributedata&16{hgrect (((grpccnt\80)/(displaydispc3(pc8001widthflag|(colorgraphicmode<<1))+1))*16)+8,int(16*(grpccnt/80))+2,0,18,4}
+if attributedata&32{hgrect (((grpccnt\80)/(displaydispc3(pc8001widthflag|(colorgraphicmode<<1))+1))*16)+8,int(16*(grpccnt/80))+14,0,18,5}
+if attributedata&64{hgrect (((grpccnt\80)/(displaydispc3(pc8001widthflag|(colorgraphicmode<<1))+1))*16)+8,int(16*(grpccnt/80))+8,0,6,16}
+}
+}
+loop
+swbreak
+swend
+/*else{
+switch crtmodectrl
+case 0
+if colorgraphicmode=0 and grpmode=1{palcolor_hg 9+(0x10*(((attributedata>>1)&0x1)=0))}else{palletedcolorchk=(vramattributem((cnt\80),(cnt/80),/*1+((((attributedata2>>7)and(attributedata2>>3))|((attributedata2>>4)&(vramattributem((cnt\80),(cnt/80),0)>>3)))&0x1)*//*1)>>5)+(0x10*(((attributedata>>1)&0x1)=0))+(0x20*((grpmode=0))):palcolor_hg palletedcolorchk}
+swbreak
+case 1
+palcolor_hg 9+(0x10*(((attributedata>>1)&0x1)=0))
+swbreak
+swend
+}*/
+//gettme2=gettime(6)-gettmex2:if gettme2<0{gettme2+=1000}
+//if crtmodectrl=0{}
+hgdraw 4
+pos 0,0
+hgcapture
+gsel 6,0:pos 0,0:gzoom 8*dispysize2(pc8001widthflag|(colorgraphicmode<<1)),int(8*dispysize(grpheight25)),5,0,0,int(15.999999*dispysize2(pc8001widthflag|(colorgraphicmode<<1))),int(16*dispysize(grpheight25))
+gsel 3,0
+pos 0,0
+gzoom 640,480,6,0,0,8*dispysize2(pc8001widthflag|(colorgraphicmode<<1)),int(8*dispysize(grpheight25)),(grpbfsetting!0):if grpbfsetting<=1{}else{if grpbfsetting=2{ipmb_smoothingtype1 0,0,ginfo(26),ginfo(27)}else{if grpbfsetting>=3 and grpbfsetting<=12{ipmb_smoothingtype2 0,0,ginfo(26),ginfo(27),(grpbfsetting-1)}else{if grpbfsetting>=13 and grpbfsetting<=22{ipmb_unsharpmasking 0,0,ginfo(26),ginfo(27),1,double(grpbfsetting-12)}else{if grpbfsetting>=23 and grpbfsetting<=32{ipmb_smoothinggauss 0,0,ginfo(26),ginfo(27),1,double(grpbfsetting-22)}else{if grpbfsetting>=33 and grpbfsetting<=42{ipmb_sharp 0,0,ginfo(26),ginfo(27),double(grpbfsetting-32)}else{if grpbfsetting>=43{ipmb_smoothingtype1 0,0,ginfo(26),ginfo(27)}}}}}}}
+redraw 1
+statx+=24000
+}else{gsel 3,0:color 0,0,0:boxf:redraw 1}
+}
+await
+interruptformt=1:functyper=3|(0<<4):repeat plaginmax:if plaginconf(0,cnt)=1{if plaginconf(1,cnt)=functyper or plaginconf(2,cnt)=functyper or plaginconf(3,cnt)=functyper or plaginconf(4,cnt)=functyper or plaginconf(5,cnt)=functyper{}else{continue cnt+1}}else{continue cnt+1}:if lpeek(plaginptr(cnt),0)!0{memfile plaginconfptr:lpoke plaginconfptr,4*0,varptr(plaginconfptr):lpoke plaginconfptr,4*1,functyper:lpoke plaginconfptr,4*2,sysfunctyper:lpoke plaginconfptr,4*6,varptr(plaginconf(0,cnt)):pluginid=cnt:gosub plaginptr(cnt)}:loop:interruptformt=1
+interruptformt=interruptformtbakfordw
+return
+
+*appexitforemuendproc
+#ifdef formadgeinitfunc
+interruptformt=1:functyper=1|(0xF<<4):repeat plaginmax:if lpeek(plaginptr(cnt),0)!0{memfile plaginconfptr:lpoke plaginconfptr,4*0,varptr(plaginconfptr):lpoke plaginconfptr,4*1,functyper:lpoke plaginconfptr,4*2,varptr(exrom(0)):lpoke plaginconfptr,4*3,varptr(rom):lpoke plaginconfptr,4*4,varptr(fontrom):lpoke plaginconfptr,4*5,varptr(cassettestateptr):lpoke plaginconfptr,4*6,varptr(plaginconf(0,cnt)):lpoke plaginconfptr,4*7,sysfunctyper:pluginid=cnt:gosub plaginptr(cnt)}:loop:interruptformt=0
+#endif
+hgbye
+end
+
+*keydown
+if interruptformt=0{interruptformt=1:interruptformtk=1}
+wparam2kdku=wparam
+functyper=0|(2<<4):repeat plaginmax:if plaginconf(0,cnt)=1{if plaginconf(1,cnt)=functyper or plaginconf(2,cnt)=functyper or plaginconf(3,cnt)=functyper or plaginconf(4,cnt)=functyper or plaginconf(5,cnt)=functyper{}else{continue cnt+1}}else{continue cnt+1}:if lpeek(plaginptr(cnt),0)!0{memfile plaginconfptr:lpoke plaginconfptr,4*0,varptr(plaginconfptr):lpoke plaginconfptr,4*1,functyper:lpoke plaginconfptr,4*2,sysfunctyper:lpoke plaginconfptr,4*3,wparam2kdku:lpoke plaginconfptr,4*4,varptr(wparam2kdku):lpoke plaginconfptr,4*6,varptr(plaginconf(0,cnt)):pluginid=cnt:gosub plaginptr(cnt)}:loop
+vbismacs=0
+keytemp=keymap(wparam2kdku)
+if keytemp=0xFF{if interruptformtk=1{interruptformt=0:interruptformtk=0}:return}
+keyio((keytemp>>4)&0xF)|=1<<(keytemp&0xF)
+if wparam2kdku=37 or wparam2kdku=40{keytemp=0x86:keyio((keytemp>>4)&0xF)|=1<<(keytemp&0xF)}
+if interruptformtk=1{interruptformt=0:interruptformtk=0}
+return
+*keyup
+if interruptformt=0{interruptformt=1:interruptformtk=1}
+wparam2kdku=wparam
+functyper=1|(2<<4):repeat plaginmax:if plaginconf(0,cnt)=1{if plaginconf(1,cnt)=functyper or plaginconf(2,cnt)=functyper or plaginconf(3,cnt)=functyper or plaginconf(4,cnt)=functyper or plaginconf(5,cnt)=functyper{}else{continue cnt+1}}else{continue cnt+1}:if lpeek(plaginptr(cnt),0)!0{memfile plaginconfptr:lpoke plaginconfptr,4*0,varptr(plaginconfptr):lpoke plaginconfptr,4*1,functyper:lpoke plaginconfptr,4*2,sysfunctyper:lpoke plaginconfptr,4*3,wparam2kdku:lpoke plaginconfptr,4*4,varptr(wparam2kdku):lpoke plaginconfptr,4*6,varptr(plaginconf(0,cnt)):pluginid=cnt:gosub plaginptr(cnt)}:loop
+keytemp=keymap(wparam2kdku)
+if keytemp=0xFF{if interruptformtk=1{interruptformt=0:interruptformtk=0}:return}
+keyio((keytemp>>4)&0xF)^=1<<(keytemp&0xF)
+if wparam2kdku=37 or wparam2kdku=40{keytemp=0x86:keyio((keytemp>>4)&0xF)^=1<<(keytemp&0xF)}
+if interruptformtk=1{interruptformt=0:interruptformtk=0}
+return
+
+*z80interruptioncall
+z80interrupt address,0,plaginconf(120,pluginid)
+return
+*z80nminterruptioncall
+z80nminterrupt address,0
+return
+*z80memoryget
+z80memaccess plaginconf(120,pluginid),0,1
+statue=stat
+return statue
+*z80memoryput
+z80memaccess plaginconf(120,pluginid),plaginconf(121,pluginid),0
+return
+*controllercall
+dupptr controllerlblx,plaginconf(121,pluginid),4*16,4
+joyGetPosEx controllerlblx, plaginconf(120,pluginid)
+return
+*pluginload
+#ifdef formadgeinitfunc
+interruptformt=1:functyper=0|(0xF<<4):dupptr pluginliste,plaginconf(120,pluginid),1024,2:exist pluginliste
+if strsize!-1{lpoke plaginptr(plaginmax),0,_faddproc("plugins/"+pluginliste):if lpeek(plaginptr(plaginmax),0)!0{memfile plaginconfptr:lpoke plaginconfptr,4*0,varptr(plaginconfptr):lpoke plaginconfptr,4*1,functyper:lpoke plaginconfptr,4*2,varptr(exrom(0)):lpoke plaginconfptr,4*3,varptr(rom):lpoke plaginconfptr,4*4,varptr(fontrom):lpoke plaginconfptr,4*5,varptr(cassettestateptr):lpoke plaginconfptr,4*6,varptr(plaginconf(0,plaginmax)):lpoke plaginconfptr,4*7,sysfunctyper:pluginid=plaginmax:gosub plaginptr(plaginmax)}
+plaginmax+=1}:interruptformt=0
+#endif
+return
+*controllercall2
+controllerlblx2=0
+jstick controllerlblx2, plaginconf(120,pluginid)
+return controllerlblx2
+*sysfunc_arduino_init
+arduino_init plaginconf(120,pluginid),plaginconf(121,pluginid)
+statue=stat
+return statue
+*sysfunc_arduino_bye
+arduino_bye
+return
+*sysfunc_arduino_query
+arduino_query
+return
+*sysfunc_delay
+delay plaginconf(120,pluginid)
+return
+*sysfunc_pinmode
+pinmode plaginconf(120,pluginid),plaginconf(121,pluginid)
+return
+*sysfunc_digitalWrite
+digitalWrite plaginconf(120,pluginid),plaginconf(121,pluginid)
+return
+*sysfunc_analogWrite
+analogWrite plaginconf(120,pluginid),plaginconf(121,pluginid)
+return
+*sysfunc_digitalRead
+return digitalRead(plaginconf(120,pluginid))
+*sysfunc_analogRead
+return analogRead(plaginconf(120,pluginid))
+*sysfunc_analogReport
+analogReport plaginconf(120,pluginid),plaginconf(121,pluginid)
+return
+*sysfunc_digitalReport
+digitalReport plaginconf(120,pluginid),plaginconf(121,pluginid)
+return
+*sysfunc_analogInterval
+analogInterval plaginconf(120,pluginid),plaginconf(121,pluginid)
+return
+*sysfunc_arduino_exec
+arduino_exec
+statue=stat
+return statue
+*sysfunc_arduino_error
+return arduino_error
+*sysfunc_arduino_stat
+return arduino_stat
+*sysfunc_arduino_ready
+return arduino_ready
+*sysfunc_arduino_rx
+return arduino_rx
+*z80ioget
+z80memaccess plaginconf(120,pluginid),0,3
+statue=stat
+return statue
+*z80ioput
+z80memaccess plaginconf(120,pluginid),plaginconf(121,pluginid),2
+return
+*sysfunc_arduino_firm_ver
+return arduino_firm_ver
+*sysfunc_hspext
+switch plaginconf(120,pluginid)
+case 0
+gfdec plaginconf(121,pluginid),plaginconf(122,pluginid),plaginconf(123,pluginid)
+statue=stat
+return statue
+swbreak
+case 1
+gfinc plaginconf(121,pluginid),plaginconf(122,pluginid),plaginconf(123,pluginid)
+statue=stat
+return statue
+swbreak
+case 2
+gfcopy plaginconf(121,pluginid)
+statue=stat
+return statue
+swbreak
+case 3
+emath plaginconf(121,pluginid)
+statue=stat
+return statue
+swbreak
+case 4
+dupptr stringforemstr,plaginconf(121,pluginid),plaginconf(123,pluginid)+1,2
+emstr stringforemstr,plaginconf(122,pluginid),plaginconf(123,pluginid)
+statue=stat
+return statue
+swbreak
+case 5
+dupptr stringforemstr,plaginconf(121,pluginid),65536,4
+dupptr stringforemstr2,plaginconf(122,pluginid),65536,2
+emcnv stringforemstr,stringforemstr2
+statue=stat
+return statue
+swbreak
+case 6
+dupptr stringforemstr,plaginconf(121,pluginid),65536,4
+emint stringforemstr,plaginconf(122,pluginid)
+statue=stat
+return statue
+swbreak
+case 7
+dupptr stringforemstr,plaginconf(121,pluginid),65536,4
+emsin stringforemstr,plaginconf(122,pluginid)
+statue=stat
+return statue
+swbreak
+case 8
+dupptr stringforemstr,plaginconf(121,pluginid),65536,4
+emcos stringforemstr,plaginconf(122,pluginid)
+statue=stat
+return statue
+swbreak
+case 9
+dupptr stringforemstr,plaginconf(121,pluginid),65536,4
+ematan stringforemstr,plaginconf(122,pluginid),plaginconf(123,pluginid)
+statue=stat
+return statue
+swbreak
+case 10
+dupptr stringforemstr,plaginconf(121,pluginid),65536,4
+emsqr stringforemstr,plaginconf(122,pluginid)
+statue=stat
+return statue
+swbreak
+case 11
+sysexit plaginconf(121,pluginid)
+statue=stat
+return statue
+swbreak
+case 12
+dupptr stringforemstr,plaginconf(121,pluginid),65536,2
+dupptr stringforemstr2,plaginconf(122,pluginid),65536,2
+fxcopy stringforemstr,stringforemstr2,plaginconf(123,pluginid)
+statue=stat
+return statue
+swbreak
+case 13
+dupptr stringforemstr,plaginconf(121,pluginid),65536,2
+dupptr stringforemstr2,plaginconf(122,pluginid),65536,2
+fxren stringforemstr,stringforemstr2
+statue=stat
+return statue
+swbreak
+case 14
+dupptr stringforemstr,plaginconf(121,pluginid),65536,2
+fxinfo stringforemstr,plaginconf(122,pluginid),plaginconf(123,pluginid)
+statue=stat
+return statue
+swbreak
+case 15
+dupptr stringforemstr,plaginconf(121,pluginid),65536,2
+fxaset stringforemstr,plaginconf(122,pluginid)
+statue=stat
+return statue
+swbreak
+case 16
+dupptr stringforemstr,plaginconf(121,pluginid),65536,4
+dupptr stringforemstr2,plaginconf(122,pluginid),65536,2
+fxaget stringforemstr,stringforemstr2
+statue=stat
+return statue
+swbreak
+case 17
+dupptr stringforemstr,plaginconf(121,pluginid),65536,4
+dupptr stringforemstr2,plaginconf(122,pluginid),65536,2
+fxtget stringforemstr,stringforemstr2
+statue=stat
+return statue
+swbreak
+case 18
+dupptr stringforemstr,plaginconf(121,pluginid),65536,4
+dupptr stringforemstr2,plaginconf(122,pluginid),65536,2
+fxtset stringforemstr,stringforemstr2
+statue=stat
+return statue
+swbreak
+case 19
+dupptr stringforemstr,plaginconf(121,pluginid),65536,2
+dupptr stringforemstr2,plaginconf(122,pluginid),65536,2
+fxshort stringforemstr,stringforemstr2
+statue=stat
+return statue
+swbreak
+case 20
+dupptr stringforemstr,plaginconf(121,pluginid),65536,2
+dupptr stringforemstr2,plaginconf(122,pluginid),65536,2
+fxlink stringforemstr,stringforemstr2
+statue=stat
+return statue
+swbreak
+case 21
+dupptr stringforemstr,plaginconf(121,pluginid),65536,2
+fxdir stringforemstr,plaginconf(122,pluginid)
+statue=stat
+return statue
+swbreak
+case 22
+dupptr stringforemstr,plaginconf(121,pluginid),65536,2
+clipset stringforemstr
+statue=stat
+return statue
+swbreak
+case 23
+dupptr stringforemstr,plaginconf(121,pluginid),plaginconf(122,pluginid)+1,2
+clipget stringforemstr,plaginconf(122,pluginid)
+statue=stat
+return statue
+swbreak
+case 24
+clipsetg
+statue=stat
+return statue
+swbreak
+case 25
+dupptr stringforemstr,plaginconf(121,pluginid),65536,2
+aplsel stringforemstr,plaginconf(122,pluginid)
+statue=stat
+return statue
+swbreak
+case 26
+dupptr stringforemstr,plaginconf(121,pluginid),65536,2
+aplobj stringforemstr,plaginconf(122,pluginid)
+statue=stat
+return statue
+swbreak
+case 27
+aplact
+statue=stat
+return statue
+swbreak
+case 28
+dupptr stringforemstr,plaginconf(121,pluginid),65536,2
+aplstr stringforemstr
+statue=stat
+return statue
+swbreak
+case 29
+aplkey plaginconf(121,pluginid),plaginconf(122,pluginid)
+statue=stat
+return statue
+swbreak
+case 30
+aplkeyu plaginconf(121,pluginid),plaginconf(122,pluginid)
+statue=stat
+return statue
+swbreak
+case 31
+aplkeyd plaginconf(121,pluginid),plaginconf(122,pluginid)
+statue=stat
+return statue
+swbreak
+case 32
+aplfocus
+statue=stat
+return statue
+swbreak
+case 33
+dupptr stringforemstr,plaginconf(121,pluginid),plaginconf(122,pluginid)+1,2
+aplget stringforemstr,plaginconf(122,pluginid)
+statue=stat
+return statue
+swbreak
+case 34
+dupptr stringforemstr,plaginconf(121,pluginid),65536,4
+apledit stringforemstr,plaginconf(122,pluginid),plaginconf(123,pluginid)
+statue=stat
+return statue
+swbreak
+case 35
+dupptr stringforemstr,plaginconf(121,pluginid),65536,2
+dupptr stringforemstr2,plaginconf(122,pluginid),65536,2
+selfolder stringforemstr,stringforemstr2
+statue=stat
+return statue
+swbreak
+case 36
+dupptr stringforemstr,plaginconf(121,pluginid),65536,2
+lzcopy stringforemstr
+statue=stat
+return statue
+swbreak
+case 37
+dupptr stringforemstr,plaginconf(121,pluginid),65536,2
+lzdist stringforemstr
+statue=stat
+return statue
+swbreak
+case 38
+dupptr stringforemstr,plaginconf(121,pluginid),65536,2
+dupptr stringforemstr2,plaginconf(122,pluginid),65536,2
+pipeexec stringforemstr,stringforemstr2,plaginconf(123,pluginid)
+statue=stat
+return statue
+swbreak
+case 39
+pipeput plaginconf(121,pluginid)
+statue=stat
+return statue
+swbreak
+case 40
+dupptr stringforemstr,plaginconf(121,pluginid),65536,2
+pipeget stringforemstr
+statue=stat
+return statue
+swbreak
+case 41
+dupptr stringforemstr,plaginconf(121,pluginid),65536,4
+dupptr stringforemstr2,plaginconf(122,pluginid),65536,2
+dirlist2 stringforemstr,stringforemstr2,plaginconf(123,pluginid),plaginconf(124,pluginid)
+statue=stat
+return statue
+swbreak
+case 42
+dupptr stringforemstr,plaginconf(121,pluginid),655360,2
+dirlist2r stringforemstr
+statue=stat
+return statue
+swbreak
+case 43
+dirlist2h plaginconf(121,pluginid),plaginconf(122,pluginid)
+statue=stat
+return statue
+swbreak
+swend
+return
+*sysfunc_z80stackpeek
+return stackpeek(0,plaginconf(120,pluginid),plaginconf(121,pluginid))
+*sysfunc_z80stackpoke
+stackpoke 0,plaginconf(120,pluginid),plaginconf(121,pluginid),plaginconf(122,pluginid)
+return
+
+*interruptlbl
+wparam2=wparam
+if interruptformt=1{return}
+if wparam2=3 and interruptformt=0{// and emulatorexeci=1{
+interruptformtbak=interruptformt
+interruptformt=1
+//if (interruptix\2)=0 and (vbis=1) and (((((interruptlevel>>3)&1)=1) or (interruptlevel&0x7)>0)){if vbismacs=1{z80interrupt address,0,2*1}:vbis=0}
+if (interruptix\100)=0 and (((((interruptlevel>>3)&1)=1) or (interruptlevel&0x7)>1)){z80interrupt address,0,2*2}
+if (interruptix\3)=0 and ((((interruptlevel>>3)&1)=1) or (interruptlevel&0x7)>2){z80interrupt address,0,2*3}
+if (interruptix\5)=0 and ((((interruptlevel>>3)&1)=1) or (interruptlevel&0x7)>4){z80interrupt address,0,2*5}
+if vbis=1{vbis=0}
+emulatorexeci=0
+interruptix+=1:if interruptix>=100{interruptix=0}
+interruptformt=interruptformtbak
+return
+}
+/*if wparam2=2{
+cntmain+=1
+}*/
+if wparam2=1 and interruptformt=0{
+interruptformtbak=interruptformt
+interruptformt=1
+gosub *drawbackground
+gosub *drawforeground
+interruptformt=1:functyper=2|(0<<4):repeat plaginmax:if plaginconf(0,cnt)=1{if plaginconf(1,cnt)=functyper or plaginconf(2,cnt)=functyper or plaginconf(3,cnt)=functyper or plaginconf(4,cnt)=functyper or plaginconf(5,cnt)=functyper{}else{continue cnt+1}}else{continue cnt+1}:if lpeek(plaginptr(cnt),0)!0{memfile plaginconfptr:lpoke plaginconfptr,4*0,varptr(plaginconfptr):lpoke plaginconfptr,4*1,functyper:lpoke plaginconfptr,4*2,sysfunctyper:lpoke plaginconfptr,4*6,varptr(plaginconf(0,cnt)):pluginid=cnt:gosub plaginptr(cnt)}:loop:interruptformt=0
+//if funcptruster(8)!0{ldim funcptrusterlbl,1:lpoke funcptrusterlbl,0,funcptruster(8):gosub funcptrusterlbl}else{z80interrupt var_27,var_29,0,0xE0}
+interruptformt=interruptformtbak
+return
+}
+if wparam2=2 and interruptformt=0{
+interruptformtbak=interruptformt
+interruptformt=1
+gosub *bpsoundctlr
+interruptformt=interruptformtbak
+return
+}
+return
+
+*vblupdatejob
+cntmain+=1
+return
+
+*bpsoundctlr
+if playingbeep=0{
+if beepenable=1{
+playingbeep=1
+mmplay 0
+}else{mmstop 0}}else{if beepenable=0{mmstop 0:playingbeep=0}}
+return
+
+*clkdownmvup
+if interruptformt=0{interruptformt=1:interruptformtk=1}
+gselnowjckd=ginfo(3)
+gsel 0,0
+dim lp_ggxy,2
+if wparam=1{
+lparam2=lparam
+lp_ggxy=((wpeek(lparam2,0)*dispysize2(pc8001widthflag|(colorgraphicmode<<1)))/ginfo(12))+6,(wpeek(lparam2,2)*dispysize(grpheight25))/ginfo(13)
+litepeninp=(((vbi<<7)|(lp_ggxy(0)&127))<<0)|((lp_ggxy(1)&63)<<8)
+poke upd3301stat,0,peek(upd3301stat,0)|1
+}
+gsel gselnowjckd,0
+if interruptformtk=1{interruptformt=0:interruptformtk=0}
+return
