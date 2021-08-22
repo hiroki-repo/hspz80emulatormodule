@@ -81,6 +81,8 @@ memcpy jitstack(0),stack@z80moduleaccess(0),64,0,0
 memcpy jitstack(1),stack@z80moduleaccess(1),64,0,0
 return
 *z80jitcream1
+memcpy stack@z80moduleaccess(0),jitstack(0),64,0,0
+memcpy stack@z80moduleaccess(1),jitstack(1),64,0,0
 gosub jitrecchkptr((memorystocker(wpeek(stack@z80moduleaccess(0),10)&0xFFFF)&0xFF)!z80readmem(wpeek(stack@z80moduleaccess(0),10)))
 //if opcodelistaddrget(wpeek(stack@z80moduleaccess(0),10))!0{wpoke stack@z80moduleaccess(0),10,wpeek(stack@z80moduleaccess(0),10)+1}
 wpoke stack@z80moduleaccess(0),10,wpeek(stack@z80moduleaccess(0),10)+1
@@ -91,6 +93,8 @@ poke stack@z80moduleaccess(0),14,peek(stack@z80moduleaccess(0),14)+1
 #else
 poke stack@z80moduleaccess(0),14,peek(stack@z80moduleaccess(0),14)+1+(opcodelistaddrget(z80opcodexedchk)!0)
 #endif
+memcpy jitstack(0),stack@z80moduleaccess(0),64,0,0
+memcpy jitstack(1),stack@z80moduleaccess(1),64,0,0
 return
 *z80jitcream3
 return
