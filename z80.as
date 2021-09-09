@@ -681,102 +681,102 @@ opcodeaddr_cb(253)=*opcode_cb_FD
 opcodeaddr_cb(254)=*opcode_cb_FE
 opcodeaddr_cb(255)=*opcode_cb_FF
 
-opcodeaddr_dd(0)=*opcode_dd_00
-opcodeaddr_dd(1)=*opcode_dd_01
-opcodeaddr_dd(2)=*opcode_dd_02
-opcodeaddr_dd(3)=*opcode_dd_03
-opcodeaddr_dd(4)=*opcode_dd_04
-opcodeaddr_dd(5)=*opcode_dd_05
-opcodeaddr_dd(6)=*opcode_dd_06
-opcodeaddr_dd(7)=*opcode_dd_07
-opcodeaddr_dd(8)=*opcode_dd_08
+opcodeaddr_dd(0)=*opcode_00
+opcodeaddr_dd(1)=*opcode_01
+opcodeaddr_dd(2)=*opcode_02
+opcodeaddr_dd(3)=*opcode_03
+opcodeaddr_dd(4)=*opcode_04
+opcodeaddr_dd(5)=*opcode_05
+opcodeaddr_dd(6)=*opcode_06
+opcodeaddr_dd(7)=*opcode_07
+opcodeaddr_dd(8)=*opcode_08
 opcodeaddr_dd(9)=*opcode_dd_09
-opcodeaddr_dd(10)=*opcode_dd_0A
-opcodeaddr_dd(11)=*opcode_dd_0B
-opcodeaddr_dd(12)=*opcode_dd_0C
-opcodeaddr_dd(13)=*opcode_dd_0D
-opcodeaddr_dd(14)=*opcode_dd_0E
-opcodeaddr_dd(15)=*opcode_dd_0F
-opcodeaddr_dd(16)=*opcode_dd_10
-opcodeaddr_dd(17)=*opcode_dd_11
-opcodeaddr_dd(18)=*opcode_dd_12
-opcodeaddr_dd(19)=*opcode_dd_13
-opcodeaddr_dd(20)=*opcode_dd_14
-opcodeaddr_dd(21)=*opcode_dd_15
-opcodeaddr_dd(22)=*opcode_dd_16
-opcodeaddr_dd(23)=*opcode_dd_17
-opcodeaddr_dd(24)=*opcode_dd_18
+opcodeaddr_dd(10)=*opcode_0A
+opcodeaddr_dd(11)=*opcode_0B
+opcodeaddr_dd(12)=*opcode_0C
+opcodeaddr_dd(13)=*opcode_0D
+opcodeaddr_dd(14)=*opcode_0E
+opcodeaddr_dd(15)=*opcode_0F
+opcodeaddr_dd(16)=*opcode_10
+opcodeaddr_dd(17)=*opcode_11
+opcodeaddr_dd(18)=*opcode_12
+opcodeaddr_dd(19)=*opcode_13
+opcodeaddr_dd(20)=*opcode_14
+opcodeaddr_dd(21)=*opcode_15
+opcodeaddr_dd(22)=*opcode_16
+opcodeaddr_dd(23)=*opcode_17
+opcodeaddr_dd(24)=*opcode_18
 opcodeaddr_dd(25)=*opcode_dd_19
-opcodeaddr_dd(26)=*opcode_dd_1A
-opcodeaddr_dd(27)=*opcode_dd_1B
-opcodeaddr_dd(28)=*opcode_dd_1C
-opcodeaddr_dd(29)=*opcode_dd_1D
-opcodeaddr_dd(30)=*opcode_dd_1E
-opcodeaddr_dd(31)=*opcode_dd_1F
-opcodeaddr_dd(32)=*opcode_dd_20
+opcodeaddr_dd(26)=*opcode_1A
+opcodeaddr_dd(27)=*opcode_1B
+opcodeaddr_dd(28)=*opcode_1C
+opcodeaddr_dd(29)=*opcode_1D
+opcodeaddr_dd(30)=*opcode_1E
+opcodeaddr_dd(31)=*opcode_1F
+opcodeaddr_dd(32)=*opcode_20
 opcodeaddr_dd(33)=*opcode_dd_21
 opcodeaddr_dd(34)=*opcode_dd_22
 opcodeaddr_dd(35)=*opcode_dd_23
 opcodeaddr_dd(36)=*opcode_dd_24
 opcodeaddr_dd(37)=*opcode_dd_25
 opcodeaddr_dd(38)=*opcode_dd_26
-opcodeaddr_dd(39)=*opcode_dd_27
-opcodeaddr_dd(40)=*opcode_dd_28
+opcodeaddr_dd(39)=*opcode_27
+opcodeaddr_dd(40)=*opcode_28
 opcodeaddr_dd(41)=*opcode_dd_29
 opcodeaddr_dd(42)=*opcode_dd_2A
 opcodeaddr_dd(43)=*opcode_dd_2B
 opcodeaddr_dd(44)=*opcode_dd_2C
 opcodeaddr_dd(45)=*opcode_dd_2D
 opcodeaddr_dd(46)=*opcode_dd_2E
-opcodeaddr_dd(47)=*opcode_dd_2F
-opcodeaddr_dd(48)=*opcode_dd_30
-opcodeaddr_dd(49)=*opcode_dd_31
-opcodeaddr_dd(50)=*opcode_dd_32
-opcodeaddr_dd(51)=*opcode_dd_33
+opcodeaddr_dd(47)=*opcode_2F
+opcodeaddr_dd(48)=*opcode_30
+opcodeaddr_dd(49)=*opcode_31
+opcodeaddr_dd(50)=*opcode_32
+opcodeaddr_dd(51)=*opcode_33
 opcodeaddr_dd(52)=*opcode_dd_34
 opcodeaddr_dd(53)=*opcode_dd_35
 opcodeaddr_dd(54)=*opcode_dd_36
-opcodeaddr_dd(55)=*opcode_dd_37
-opcodeaddr_dd(56)=*opcode_dd_38
+opcodeaddr_dd(55)=*opcode_37
+opcodeaddr_dd(56)=*opcode_38
 opcodeaddr_dd(57)=*opcode_dd_39
-opcodeaddr_dd(58)=*opcode_dd_3A
-opcodeaddr_dd(59)=*opcode_dd_3B
-opcodeaddr_dd(60)=*opcode_dd_3C
-opcodeaddr_dd(61)=*opcode_dd_3D
-opcodeaddr_dd(62)=*opcode_dd_3E
-opcodeaddr_dd(63)=*opcode_dd_3F
-opcodeaddr_dd(64)=*opcode_dd_40
-opcodeaddr_dd(65)=*opcode_dd_41
-opcodeaddr_dd(66)=*opcode_dd_42
-opcodeaddr_dd(67)=*opcode_dd_43
+opcodeaddr_dd(58)=*opcode_3A
+opcodeaddr_dd(59)=*opcode_3B
+opcodeaddr_dd(60)=*opcode_3C
+opcodeaddr_dd(61)=*opcode_3D
+opcodeaddr_dd(62)=*opcode_3E
+opcodeaddr_dd(63)=*opcode_3F
+opcodeaddr_dd(64)=*opcode_40
+opcodeaddr_dd(65)=*opcode_41
+opcodeaddr_dd(66)=*opcode_42
+opcodeaddr_dd(67)=*opcode_43
 opcodeaddr_dd(68)=*opcode_dd_44
 opcodeaddr_dd(69)=*opcode_dd_45
 opcodeaddr_dd(70)=*opcode_dd_46
-opcodeaddr_dd(71)=*opcode_dd_47
-opcodeaddr_dd(72)=*opcode_dd_48
-opcodeaddr_dd(73)=*opcode_dd_49
-opcodeaddr_dd(74)=*opcode_dd_4A
-opcodeaddr_dd(75)=*opcode_dd_4B
+opcodeaddr_dd(71)=*opcode_47
+opcodeaddr_dd(72)=*opcode_48
+opcodeaddr_dd(73)=*opcode_49
+opcodeaddr_dd(74)=*opcode_4A
+opcodeaddr_dd(75)=*opcode_4B
 opcodeaddr_dd(76)=*opcode_dd_4C
 opcodeaddr_dd(77)=*opcode_dd_4D
 opcodeaddr_dd(78)=*opcode_dd_4E
-opcodeaddr_dd(79)=*opcode_dd_4F
-opcodeaddr_dd(80)=*opcode_dd_50
-opcodeaddr_dd(81)=*opcode_dd_51
-opcodeaddr_dd(82)=*opcode_dd_52
-opcodeaddr_dd(83)=*opcode_dd_53
+opcodeaddr_dd(79)=*opcode_4F
+opcodeaddr_dd(80)=*opcode_50
+opcodeaddr_dd(81)=*opcode_51
+opcodeaddr_dd(82)=*opcode_52
+opcodeaddr_dd(83)=*opcode_53
 opcodeaddr_dd(84)=*opcode_dd_54
 opcodeaddr_dd(85)=*opcode_dd_55
 opcodeaddr_dd(86)=*opcode_dd_56
-opcodeaddr_dd(87)=*opcode_dd_57
-opcodeaddr_dd(88)=*opcode_dd_58
-opcodeaddr_dd(89)=*opcode_dd_59
-opcodeaddr_dd(90)=*opcode_dd_5A
-opcodeaddr_dd(91)=*opcode_dd_5B
+opcodeaddr_dd(87)=*opcode_57
+opcodeaddr_dd(88)=*opcode_58
+opcodeaddr_dd(89)=*opcode_59
+opcodeaddr_dd(90)=*opcode_5A
+opcodeaddr_dd(91)=*opcode_5B
 opcodeaddr_dd(92)=*opcode_dd_5C
 opcodeaddr_dd(93)=*opcode_dd_5D
 opcodeaddr_dd(94)=*opcode_dd_5E
-opcodeaddr_dd(95)=*opcode_dd_5F
+opcodeaddr_dd(95)=*opcode_5F
 opcodeaddr_dd(96)=*opcode_dd_60
 opcodeaddr_dd(97)=*opcode_dd_61
 opcodeaddr_dd(98)=*opcode_dd_62
@@ -799,144 +799,144 @@ opcodeaddr_dd(114)=*opcode_dd_72
 opcodeaddr_dd(115)=*opcode_dd_73
 opcodeaddr_dd(116)=*opcode_dd_74
 opcodeaddr_dd(117)=*opcode_dd_75
-opcodeaddr_dd(118)=*opcode_dd_76
+opcodeaddr_dd(118)=*opcode_76
 opcodeaddr_dd(119)=*opcode_dd_77
-opcodeaddr_dd(120)=*opcode_dd_78
-opcodeaddr_dd(121)=*opcode_dd_79
-opcodeaddr_dd(122)=*opcode_dd_7A
-opcodeaddr_dd(123)=*opcode_dd_7B
+opcodeaddr_dd(120)=*opcode_78
+opcodeaddr_dd(121)=*opcode_79
+opcodeaddr_dd(122)=*opcode_7A
+opcodeaddr_dd(123)=*opcode_7B
 opcodeaddr_dd(124)=*opcode_dd_7C
 opcodeaddr_dd(125)=*opcode_dd_7D
 opcodeaddr_dd(126)=*opcode_dd_7E
-opcodeaddr_dd(127)=*opcode_dd_7F
-opcodeaddr_dd(128)=*opcode_dd_80
-opcodeaddr_dd(129)=*opcode_dd_81
-opcodeaddr_dd(130)=*opcode_dd_82
-opcodeaddr_dd(131)=*opcode_dd_83
+opcodeaddr_dd(127)=*opcode_7F
+opcodeaddr_dd(128)=*opcode_80
+opcodeaddr_dd(129)=*opcode_81
+opcodeaddr_dd(130)=*opcode_82
+opcodeaddr_dd(131)=*opcode_83
 opcodeaddr_dd(132)=*opcode_dd_84
 opcodeaddr_dd(133)=*opcode_dd_85
 opcodeaddr_dd(134)=*opcode_dd_86
-opcodeaddr_dd(135)=*opcode_dd_87
-opcodeaddr_dd(136)=*opcode_dd_88
-opcodeaddr_dd(137)=*opcode_dd_89
-opcodeaddr_dd(138)=*opcode_dd_8A
-opcodeaddr_dd(139)=*opcode_dd_8B
+opcodeaddr_dd(135)=*opcode_87
+opcodeaddr_dd(136)=*opcode_88
+opcodeaddr_dd(137)=*opcode_89
+opcodeaddr_dd(138)=*opcode_8A
+opcodeaddr_dd(139)=*opcode_8B
 opcodeaddr_dd(140)=*opcode_dd_8C
 opcodeaddr_dd(141)=*opcode_dd_8D
 opcodeaddr_dd(142)=*opcode_dd_8E
-opcodeaddr_dd(143)=*opcode_dd_8F
-opcodeaddr_dd(144)=*opcode_dd_90
-opcodeaddr_dd(145)=*opcode_dd_91
-opcodeaddr_dd(146)=*opcode_dd_92
-opcodeaddr_dd(147)=*opcode_dd_93
+opcodeaddr_dd(143)=*opcode_8F
+opcodeaddr_dd(144)=*opcode_90
+opcodeaddr_dd(145)=*opcode_91
+opcodeaddr_dd(146)=*opcode_92
+opcodeaddr_dd(147)=*opcode_93
 opcodeaddr_dd(148)=*opcode_dd_94
 opcodeaddr_dd(149)=*opcode_dd_95
 opcodeaddr_dd(150)=*opcode_dd_96
-opcodeaddr_dd(151)=*opcode_dd_97
-opcodeaddr_dd(152)=*opcode_dd_98
-opcodeaddr_dd(153)=*opcode_dd_99
-opcodeaddr_dd(154)=*opcode_dd_9A
-opcodeaddr_dd(155)=*opcode_dd_9B
+opcodeaddr_dd(151)=*opcode_97
+opcodeaddr_dd(152)=*opcode_98
+opcodeaddr_dd(153)=*opcode_99
+opcodeaddr_dd(154)=*opcode_9A
+opcodeaddr_dd(155)=*opcode_9B
 opcodeaddr_dd(156)=*opcode_dd_9C
 opcodeaddr_dd(157)=*opcode_dd_9D
 opcodeaddr_dd(158)=*opcode_dd_9E
-opcodeaddr_dd(159)=*opcode_dd_9F
-opcodeaddr_dd(160)=*opcode_dd_A0
-opcodeaddr_dd(161)=*opcode_dd_A1
-opcodeaddr_dd(162)=*opcode_dd_A2
-opcodeaddr_dd(163)=*opcode_dd_A3
+opcodeaddr_dd(159)=*opcode_9F
+opcodeaddr_dd(160)=*opcode_A0
+opcodeaddr_dd(161)=*opcode_A1
+opcodeaddr_dd(162)=*opcode_A2
+opcodeaddr_dd(163)=*opcode_A3
 opcodeaddr_dd(164)=*opcode_dd_A4
 opcodeaddr_dd(165)=*opcode_dd_A5
 opcodeaddr_dd(166)=*opcode_dd_A6
-opcodeaddr_dd(167)=*opcode_dd_A7
-opcodeaddr_dd(168)=*opcode_dd_A8
-opcodeaddr_dd(169)=*opcode_dd_A9
-opcodeaddr_dd(170)=*opcode_dd_AA
-opcodeaddr_dd(171)=*opcode_dd_AB
+opcodeaddr_dd(167)=*opcode_A7
+opcodeaddr_dd(168)=*opcode_A8
+opcodeaddr_dd(169)=*opcode_A9
+opcodeaddr_dd(170)=*opcode_AA
+opcodeaddr_dd(171)=*opcode_AB
 opcodeaddr_dd(172)=*opcode_dd_AC
 opcodeaddr_dd(173)=*opcode_dd_AD
 opcodeaddr_dd(174)=*opcode_dd_AE
-opcodeaddr_dd(175)=*opcode_dd_AF
-opcodeaddr_dd(176)=*opcode_dd_B0
-opcodeaddr_dd(177)=*opcode_dd_B1
-opcodeaddr_dd(178)=*opcode_dd_B2
-opcodeaddr_dd(179)=*opcode_dd_B3
+opcodeaddr_dd(175)=*opcode_AF
+opcodeaddr_dd(176)=*opcode_B0
+opcodeaddr_dd(177)=*opcode_B1
+opcodeaddr_dd(178)=*opcode_B2
+opcodeaddr_dd(179)=*opcode_B3
 opcodeaddr_dd(180)=*opcode_dd_B4
 opcodeaddr_dd(181)=*opcode_dd_B5
 opcodeaddr_dd(182)=*opcode_dd_B6
-opcodeaddr_dd(183)=*opcode_dd_B7
-opcodeaddr_dd(184)=*opcode_dd_B8
-opcodeaddr_dd(185)=*opcode_dd_B9
-opcodeaddr_dd(186)=*opcode_dd_BA
-opcodeaddr_dd(187)=*opcode_dd_BB
+opcodeaddr_dd(183)=*opcode_B7
+opcodeaddr_dd(184)=*opcode_B8
+opcodeaddr_dd(185)=*opcode_B9
+opcodeaddr_dd(186)=*opcode_BA
+opcodeaddr_dd(187)=*opcode_BB
 opcodeaddr_dd(188)=*opcode_dd_BC
 opcodeaddr_dd(189)=*opcode_dd_BD
 opcodeaddr_dd(190)=*opcode_dd_BE
-opcodeaddr_dd(191)=*opcode_dd_BF
-opcodeaddr_dd(192)=*opcode_dd_C0
-opcodeaddr_dd(193)=*opcode_dd_C1
-opcodeaddr_dd(194)=*opcode_dd_C2
-opcodeaddr_dd(195)=*opcode_dd_C3
-opcodeaddr_dd(196)=*opcode_dd_C4
-opcodeaddr_dd(197)=*opcode_dd_C5
-opcodeaddr_dd(198)=*opcode_dd_C6
-opcodeaddr_dd(199)=*opcode_dd_C7
-opcodeaddr_dd(200)=*opcode_dd_C8
-opcodeaddr_dd(201)=*opcode_dd_C9
-opcodeaddr_dd(202)=*opcode_dd_CA
+opcodeaddr_dd(191)=*opcode_BF
+opcodeaddr_dd(192)=*opcode_C0
+opcodeaddr_dd(193)=*opcode_C1
+opcodeaddr_dd(194)=*opcode_C2
+opcodeaddr_dd(195)=*opcode_C3
+opcodeaddr_dd(196)=*opcode_C4
+opcodeaddr_dd(197)=*opcode_C5
+opcodeaddr_dd(198)=*opcode_C6
+opcodeaddr_dd(199)=*opcode_C7
+opcodeaddr_dd(200)=*opcode_C8
+opcodeaddr_dd(201)=*opcode_C9
+opcodeaddr_dd(202)=*opcode_CA
 opcodeaddr_dd(203)=*opcode_dd_CB
-opcodeaddr_dd(204)=*opcode_dd_CC
-opcodeaddr_dd(205)=*opcode_dd_CD
-opcodeaddr_dd(206)=*opcode_dd_CE
-opcodeaddr_dd(207)=*opcode_dd_CF
-opcodeaddr_dd(208)=*opcode_dd_D0
-opcodeaddr_dd(209)=*opcode_dd_D1
-opcodeaddr_dd(210)=*opcode_dd_D2
-opcodeaddr_dd(211)=*opcode_dd_D3
-opcodeaddr_dd(212)=*opcode_dd_D4
-opcodeaddr_dd(213)=*opcode_dd_D5
-opcodeaddr_dd(214)=*opcode_dd_D6
-opcodeaddr_dd(215)=*opcode_dd_D7
-opcodeaddr_dd(216)=*opcode_dd_D8
-opcodeaddr_dd(217)=*opcode_dd_D9
-opcodeaddr_dd(218)=*opcode_dd_DA
-opcodeaddr_dd(219)=*opcode_dd_DB
-opcodeaddr_dd(220)=*opcode_dd_DC
-opcodeaddr_dd(221)=*opcode_dd_DD
-opcodeaddr_dd(222)=*opcode_dd_DE
-opcodeaddr_dd(223)=*opcode_dd_DF
-opcodeaddr_dd(224)=*opcode_dd_E0
+opcodeaddr_dd(204)=*opcode_CC
+opcodeaddr_dd(205)=*opcode_CD
+opcodeaddr_dd(206)=*opcode_CE
+opcodeaddr_dd(207)=*opcode_CF
+opcodeaddr_dd(208)=*opcode_D0
+opcodeaddr_dd(209)=*opcode_D1
+opcodeaddr_dd(210)=*opcode_D2
+opcodeaddr_dd(211)=*opcode_D3
+opcodeaddr_dd(212)=*opcode_D4
+opcodeaddr_dd(213)=*opcode_D5
+opcodeaddr_dd(214)=*opcode_D6
+opcodeaddr_dd(215)=*opcode_D7
+opcodeaddr_dd(216)=*opcode_D8
+opcodeaddr_dd(217)=*opcode_D9
+opcodeaddr_dd(218)=*opcode_DA
+opcodeaddr_dd(219)=*opcode_DB
+opcodeaddr_dd(220)=*opcode_DC
+opcodeaddr_dd(221)=*opcode_DD
+opcodeaddr_dd(222)=*opcode_DE
+opcodeaddr_dd(223)=*opcode_DF
+opcodeaddr_dd(224)=*opcode_E0
 opcodeaddr_dd(225)=*opcode_dd_E1
-opcodeaddr_dd(226)=*opcode_dd_E2
+opcodeaddr_dd(226)=*opcode_E2
 opcodeaddr_dd(227)=*opcode_dd_E3
-opcodeaddr_dd(228)=*opcode_dd_E4
+opcodeaddr_dd(228)=*opcode_E4
 opcodeaddr_dd(229)=*opcode_dd_E5
-opcodeaddr_dd(230)=*opcode_dd_E6
-opcodeaddr_dd(231)=*opcode_dd_E7
-opcodeaddr_dd(232)=*opcode_dd_E8
+opcodeaddr_dd(230)=*opcode_E6
+opcodeaddr_dd(231)=*opcode_E7
+opcodeaddr_dd(232)=*opcode_E8
 opcodeaddr_dd(233)=*opcode_dd_E9
-opcodeaddr_dd(234)=*opcode_dd_EA
-opcodeaddr_dd(235)=*opcode_dd_EB
-opcodeaddr_dd(236)=*opcode_dd_EC
-opcodeaddr_dd(237)=*opcode_dd_ED
-opcodeaddr_dd(238)=*opcode_dd_EE
-opcodeaddr_dd(239)=*opcode_dd_EF
-opcodeaddr_dd(240)=*opcode_dd_F0
-opcodeaddr_dd(241)=*opcode_dd_F1
-opcodeaddr_dd(242)=*opcode_dd_F2
-opcodeaddr_dd(243)=*opcode_dd_F3
-opcodeaddr_dd(244)=*opcode_dd_F4
-opcodeaddr_dd(245)=*opcode_dd_F5
-opcodeaddr_dd(246)=*opcode_dd_F6
-opcodeaddr_dd(247)=*opcode_dd_F7
-opcodeaddr_dd(248)=*opcode_dd_F8
+opcodeaddr_dd(234)=*opcode_EA
+opcodeaddr_dd(235)=*opcode_EB
+opcodeaddr_dd(236)=*opcode_EC
+opcodeaddr_dd(237)=*opcode_ED
+opcodeaddr_dd(238)=*opcode_EE
+opcodeaddr_dd(239)=*opcode_EF
+opcodeaddr_dd(240)=*opcode_F0
+opcodeaddr_dd(241)=*opcode_F1
+opcodeaddr_dd(242)=*opcode_F2
+opcodeaddr_dd(243)=*opcode_F3
+opcodeaddr_dd(244)=*opcode_F4
+opcodeaddr_dd(245)=*opcode_F5
+opcodeaddr_dd(246)=*opcode_F6
+opcodeaddr_dd(247)=*opcode_F7
+opcodeaddr_dd(248)=*opcode_F8
 opcodeaddr_dd(249)=*opcode_dd_F9
-opcodeaddr_dd(250)=*opcode_dd_FA
-opcodeaddr_dd(251)=*opcode_dd_FB
-opcodeaddr_dd(252)=*opcode_dd_FC
-opcodeaddr_dd(253)=*opcode_dd_FD
-opcodeaddr_dd(254)=*opcode_dd_FE
-opcodeaddr_dd(255)=*opcode_dd_FF
+opcodeaddr_dd(250)=*opcode_FA
+opcodeaddr_dd(251)=*opcode_FB
+opcodeaddr_dd(252)=*opcode_FC
+opcodeaddr_dd(253)=*opcode_FD
+opcodeaddr_dd(254)=*opcode_FE
+opcodeaddr_dd(255)=*opcode_FF
 
 opcodeaddr_dd_cb(0)=*opcode_dd_cb_00
 opcodeaddr_dd_cb(1)=*opcode_dd_cb_01
@@ -1452,102 +1452,102 @@ opcodeaddr_ed(253)=*opcode_ed_FD
 opcodeaddr_ed(254)=*opcode_ed_FE
 opcodeaddr_ed(255)=*opcode_ed_FF
 
-opcodeaddr_fd(0)=*opcode_fd_00
-opcodeaddr_fd(1)=*opcode_fd_01
-opcodeaddr_fd(2)=*opcode_fd_02
-opcodeaddr_fd(3)=*opcode_fd_03
-opcodeaddr_fd(4)=*opcode_fd_04
-opcodeaddr_fd(5)=*opcode_fd_05
-opcodeaddr_fd(6)=*opcode_fd_06
-opcodeaddr_fd(7)=*opcode_fd_07
-opcodeaddr_fd(8)=*opcode_fd_08
+opcodeaddr_fd(0)=*opcode_00
+opcodeaddr_fd(1)=*opcode_01
+opcodeaddr_fd(2)=*opcode_02
+opcodeaddr_fd(3)=*opcode_03
+opcodeaddr_fd(4)=*opcode_04
+opcodeaddr_fd(5)=*opcode_05
+opcodeaddr_fd(6)=*opcode_06
+opcodeaddr_fd(7)=*opcode_07
+opcodeaddr_fd(8)=*opcode_08
 opcodeaddr_fd(9)=*opcode_fd_09
-opcodeaddr_fd(10)=*opcode_fd_0A
-opcodeaddr_fd(11)=*opcode_fd_0B
-opcodeaddr_fd(12)=*opcode_fd_0C
-opcodeaddr_fd(13)=*opcode_fd_0D
-opcodeaddr_fd(14)=*opcode_fd_0E
-opcodeaddr_fd(15)=*opcode_fd_0F
-opcodeaddr_fd(16)=*opcode_fd_10
-opcodeaddr_fd(17)=*opcode_fd_11
-opcodeaddr_fd(18)=*opcode_fd_12
-opcodeaddr_fd(19)=*opcode_fd_13
-opcodeaddr_fd(20)=*opcode_fd_14
-opcodeaddr_fd(21)=*opcode_fd_15
-opcodeaddr_fd(22)=*opcode_fd_16
-opcodeaddr_fd(23)=*opcode_fd_17
-opcodeaddr_fd(24)=*opcode_fd_18
+opcodeaddr_fd(10)=*opcode_0A
+opcodeaddr_fd(11)=*opcode_0B
+opcodeaddr_fd(12)=*opcode_0C
+opcodeaddr_fd(13)=*opcode_0D
+opcodeaddr_fd(14)=*opcode_0E
+opcodeaddr_fd(15)=*opcode_0F
+opcodeaddr_fd(16)=*opcode_10
+opcodeaddr_fd(17)=*opcode_11
+opcodeaddr_fd(18)=*opcode_12
+opcodeaddr_fd(19)=*opcode_13
+opcodeaddr_fd(20)=*opcode_14
+opcodeaddr_fd(21)=*opcode_15
+opcodeaddr_fd(22)=*opcode_16
+opcodeaddr_fd(23)=*opcode_17
+opcodeaddr_fd(24)=*opcode_18
 opcodeaddr_fd(25)=*opcode_fd_19
-opcodeaddr_fd(26)=*opcode_fd_1A
-opcodeaddr_fd(27)=*opcode_fd_1B
-opcodeaddr_fd(28)=*opcode_fd_1C
-opcodeaddr_fd(29)=*opcode_fd_1D
-opcodeaddr_fd(30)=*opcode_fd_1E
-opcodeaddr_fd(31)=*opcode_fd_1F
-opcodeaddr_fd(32)=*opcode_fd_20
+opcodeaddr_fd(26)=*opcode_1A
+opcodeaddr_fd(27)=*opcode_1B
+opcodeaddr_fd(28)=*opcode_1C
+opcodeaddr_fd(29)=*opcode_1D
+opcodeaddr_fd(30)=*opcode_1E
+opcodeaddr_fd(31)=*opcode_1F
+opcodeaddr_fd(32)=*opcode_20
 opcodeaddr_fd(33)=*opcode_fd_21
 opcodeaddr_fd(34)=*opcode_fd_22
 opcodeaddr_fd(35)=*opcode_fd_23
 opcodeaddr_fd(36)=*opcode_fd_24
 opcodeaddr_fd(37)=*opcode_fd_25
 opcodeaddr_fd(38)=*opcode_fd_26
-opcodeaddr_fd(39)=*opcode_fd_27
-opcodeaddr_fd(40)=*opcode_fd_28
+opcodeaddr_fd(39)=*opcode_27
+opcodeaddr_fd(40)=*opcode_28
 opcodeaddr_fd(41)=*opcode_fd_29
 opcodeaddr_fd(42)=*opcode_fd_2A
 opcodeaddr_fd(43)=*opcode_fd_2B
 opcodeaddr_fd(44)=*opcode_fd_2C
 opcodeaddr_fd(45)=*opcode_fd_2D
 opcodeaddr_fd(46)=*opcode_fd_2E
-opcodeaddr_fd(47)=*opcode_fd_2F
-opcodeaddr_fd(48)=*opcode_fd_30
-opcodeaddr_fd(49)=*opcode_fd_31
-opcodeaddr_fd(50)=*opcode_fd_32
-opcodeaddr_fd(51)=*opcode_fd_33
+opcodeaddr_fd(47)=*opcode_2F
+opcodeaddr_fd(48)=*opcode_30
+opcodeaddr_fd(49)=*opcode_31
+opcodeaddr_fd(50)=*opcode_32
+opcodeaddr_fd(51)=*opcode_33
 opcodeaddr_fd(52)=*opcode_fd_34
 opcodeaddr_fd(53)=*opcode_fd_35
 opcodeaddr_fd(54)=*opcode_fd_36
-opcodeaddr_fd(55)=*opcode_fd_37
-opcodeaddr_fd(56)=*opcode_fd_38
+opcodeaddr_fd(55)=*opcode_37
+opcodeaddr_fd(56)=*opcode_38
 opcodeaddr_fd(57)=*opcode_fd_39
-opcodeaddr_fd(58)=*opcode_fd_3A
-opcodeaddr_fd(59)=*opcode_fd_3B
-opcodeaddr_fd(60)=*opcode_fd_3C
-opcodeaddr_fd(61)=*opcode_fd_3D
-opcodeaddr_fd(62)=*opcode_fd_3E
-opcodeaddr_fd(63)=*opcode_fd_3F
-opcodeaddr_fd(64)=*opcode_fd_40
-opcodeaddr_fd(65)=*opcode_fd_41
-opcodeaddr_fd(66)=*opcode_fd_42
-opcodeaddr_fd(67)=*opcode_fd_43
+opcodeaddr_fd(58)=*opcode_3A
+opcodeaddr_fd(59)=*opcode_3B
+opcodeaddr_fd(60)=*opcode_3C
+opcodeaddr_fd(61)=*opcode_3D
+opcodeaddr_fd(62)=*opcode_3E
+opcodeaddr_fd(63)=*opcode_3F
+opcodeaddr_fd(64)=*opcode_40
+opcodeaddr_fd(65)=*opcode_41
+opcodeaddr_fd(66)=*opcode_42
+opcodeaddr_fd(67)=*opcode_43
 opcodeaddr_fd(68)=*opcode_fd_44
 opcodeaddr_fd(69)=*opcode_fd_45
 opcodeaddr_fd(70)=*opcode_fd_46
-opcodeaddr_fd(71)=*opcode_fd_47
-opcodeaddr_fd(72)=*opcode_fd_48
-opcodeaddr_fd(73)=*opcode_fd_49
-opcodeaddr_fd(74)=*opcode_fd_4A
-opcodeaddr_fd(75)=*opcode_fd_4B
+opcodeaddr_fd(71)=*opcode_47
+opcodeaddr_fd(72)=*opcode_48
+opcodeaddr_fd(73)=*opcode_49
+opcodeaddr_fd(74)=*opcode_4A
+opcodeaddr_fd(75)=*opcode_4B
 opcodeaddr_fd(76)=*opcode_fd_4C
 opcodeaddr_fd(77)=*opcode_fd_4D
 opcodeaddr_fd(78)=*opcode_fd_4E
-opcodeaddr_fd(79)=*opcode_fd_4F
-opcodeaddr_fd(80)=*opcode_fd_50
-opcodeaddr_fd(81)=*opcode_fd_51
-opcodeaddr_fd(82)=*opcode_fd_52
-opcodeaddr_fd(83)=*opcode_fd_53
+opcodeaddr_fd(79)=*opcode_4F
+opcodeaddr_fd(80)=*opcode_50
+opcodeaddr_fd(81)=*opcode_51
+opcodeaddr_fd(82)=*opcode_52
+opcodeaddr_fd(83)=*opcode_53
 opcodeaddr_fd(84)=*opcode_fd_54
 opcodeaddr_fd(85)=*opcode_fd_55
 opcodeaddr_fd(86)=*opcode_fd_56
-opcodeaddr_fd(87)=*opcode_fd_57
-opcodeaddr_fd(88)=*opcode_fd_58
-opcodeaddr_fd(89)=*opcode_fd_59
-opcodeaddr_fd(90)=*opcode_fd_5A
-opcodeaddr_fd(91)=*opcode_fd_5B
+opcodeaddr_fd(87)=*opcode_57
+opcodeaddr_fd(88)=*opcode_58
+opcodeaddr_fd(89)=*opcode_59
+opcodeaddr_fd(90)=*opcode_5A
+opcodeaddr_fd(91)=*opcode_5B
 opcodeaddr_fd(92)=*opcode_fd_5C
 opcodeaddr_fd(93)=*opcode_fd_5D
 opcodeaddr_fd(94)=*opcode_fd_5E
-opcodeaddr_fd(95)=*opcode_fd_5F
+opcodeaddr_fd(95)=*opcode_5F
 opcodeaddr_fd(96)=*opcode_fd_60
 opcodeaddr_fd(97)=*opcode_fd_61
 opcodeaddr_fd(98)=*opcode_fd_62
@@ -1570,144 +1570,144 @@ opcodeaddr_fd(114)=*opcode_fd_72
 opcodeaddr_fd(115)=*opcode_fd_73
 opcodeaddr_fd(116)=*opcode_fd_74
 opcodeaddr_fd(117)=*opcode_fd_75
-opcodeaddr_fd(118)=*opcode_fd_76
+opcodeaddr_fd(118)=*opcode_76
 opcodeaddr_fd(119)=*opcode_fd_77
-opcodeaddr_fd(120)=*opcode_fd_78
-opcodeaddr_fd(121)=*opcode_fd_79
-opcodeaddr_fd(122)=*opcode_fd_7A
-opcodeaddr_fd(123)=*opcode_fd_7B
+opcodeaddr_fd(120)=*opcode_78
+opcodeaddr_fd(121)=*opcode_79
+opcodeaddr_fd(122)=*opcode_7A
+opcodeaddr_fd(123)=*opcode_7B
 opcodeaddr_fd(124)=*opcode_fd_7C
 opcodeaddr_fd(125)=*opcode_fd_7D
 opcodeaddr_fd(126)=*opcode_fd_7E
-opcodeaddr_fd(127)=*opcode_fd_7F
-opcodeaddr_fd(128)=*opcode_fd_80
-opcodeaddr_fd(129)=*opcode_fd_81
-opcodeaddr_fd(130)=*opcode_fd_82
-opcodeaddr_fd(131)=*opcode_fd_83
+opcodeaddr_fd(127)=*opcode_7F
+opcodeaddr_fd(128)=*opcode_80
+opcodeaddr_fd(129)=*opcode_81
+opcodeaddr_fd(130)=*opcode_82
+opcodeaddr_fd(131)=*opcode_83
 opcodeaddr_fd(132)=*opcode_fd_84
 opcodeaddr_fd(133)=*opcode_fd_85
 opcodeaddr_fd(134)=*opcode_fd_86
-opcodeaddr_fd(135)=*opcode_fd_87
-opcodeaddr_fd(136)=*opcode_fd_88
-opcodeaddr_fd(137)=*opcode_fd_89
-opcodeaddr_fd(138)=*opcode_fd_8A
-opcodeaddr_fd(139)=*opcode_fd_8B
+opcodeaddr_fd(135)=*opcode_87
+opcodeaddr_fd(136)=*opcode_88
+opcodeaddr_fd(137)=*opcode_89
+opcodeaddr_fd(138)=*opcode_8A
+opcodeaddr_fd(139)=*opcode_8B
 opcodeaddr_fd(140)=*opcode_fd_8C
 opcodeaddr_fd(141)=*opcode_fd_8D
 opcodeaddr_fd(142)=*opcode_fd_8E
-opcodeaddr_fd(143)=*opcode_fd_8F
-opcodeaddr_fd(144)=*opcode_fd_90
-opcodeaddr_fd(145)=*opcode_fd_91
-opcodeaddr_fd(146)=*opcode_fd_92
-opcodeaddr_fd(147)=*opcode_fd_93
+opcodeaddr_fd(143)=*opcode_8F
+opcodeaddr_fd(144)=*opcode_90
+opcodeaddr_fd(145)=*opcode_91
+opcodeaddr_fd(146)=*opcode_92
+opcodeaddr_fd(147)=*opcode_93
 opcodeaddr_fd(148)=*opcode_fd_94
 opcodeaddr_fd(149)=*opcode_fd_95
 opcodeaddr_fd(150)=*opcode_fd_96
-opcodeaddr_fd(151)=*opcode_fd_97
-opcodeaddr_fd(152)=*opcode_fd_98
-opcodeaddr_fd(153)=*opcode_fd_99
-opcodeaddr_fd(154)=*opcode_fd_9A
-opcodeaddr_fd(155)=*opcode_fd_9B
+opcodeaddr_fd(151)=*opcode_97
+opcodeaddr_fd(152)=*opcode_98
+opcodeaddr_fd(153)=*opcode_99
+opcodeaddr_fd(154)=*opcode_9A
+opcodeaddr_fd(155)=*opcode_9B
 opcodeaddr_fd(156)=*opcode_fd_9C
 opcodeaddr_fd(157)=*opcode_fd_9D
 opcodeaddr_fd(158)=*opcode_fd_9E
-opcodeaddr_fd(159)=*opcode_fd_9F
-opcodeaddr_fd(160)=*opcode_fd_A0
-opcodeaddr_fd(161)=*opcode_fd_A1
-opcodeaddr_fd(162)=*opcode_fd_A2
-opcodeaddr_fd(163)=*opcode_fd_A3
+opcodeaddr_fd(159)=*opcode_9F
+opcodeaddr_fd(160)=*opcode_A0
+opcodeaddr_fd(161)=*opcode_A1
+opcodeaddr_fd(162)=*opcode_A2
+opcodeaddr_fd(163)=*opcode_A3
 opcodeaddr_fd(164)=*opcode_fd_A4
 opcodeaddr_fd(165)=*opcode_fd_A5
 opcodeaddr_fd(166)=*opcode_fd_A6
-opcodeaddr_fd(167)=*opcode_fd_A7
-opcodeaddr_fd(168)=*opcode_fd_A8
-opcodeaddr_fd(169)=*opcode_fd_A9
-opcodeaddr_fd(170)=*opcode_fd_AA
-opcodeaddr_fd(171)=*opcode_fd_AB
+opcodeaddr_fd(167)=*opcode_A7
+opcodeaddr_fd(168)=*opcode_A8
+opcodeaddr_fd(169)=*opcode_A9
+opcodeaddr_fd(170)=*opcode_AA
+opcodeaddr_fd(171)=*opcode_AB
 opcodeaddr_fd(172)=*opcode_fd_AC
 opcodeaddr_fd(173)=*opcode_fd_AD
 opcodeaddr_fd(174)=*opcode_fd_AE
-opcodeaddr_fd(175)=*opcode_fd_AF
-opcodeaddr_fd(176)=*opcode_fd_B0
-opcodeaddr_fd(177)=*opcode_fd_B1
-opcodeaddr_fd(178)=*opcode_fd_B2
-opcodeaddr_fd(179)=*opcode_fd_B3
+opcodeaddr_fd(175)=*opcode_AF
+opcodeaddr_fd(176)=*opcode_B0
+opcodeaddr_fd(177)=*opcode_B1
+opcodeaddr_fd(178)=*opcode_B2
+opcodeaddr_fd(179)=*opcode_B3
 opcodeaddr_fd(180)=*opcode_fd_B4
 opcodeaddr_fd(181)=*opcode_fd_B5
 opcodeaddr_fd(182)=*opcode_fd_B6
-opcodeaddr_fd(183)=*opcode_fd_B7
-opcodeaddr_fd(184)=*opcode_fd_B8
-opcodeaddr_fd(185)=*opcode_fd_B9
-opcodeaddr_fd(186)=*opcode_fd_BA
-opcodeaddr_fd(187)=*opcode_fd_BB
+opcodeaddr_fd(183)=*opcode_B7
+opcodeaddr_fd(184)=*opcode_B8
+opcodeaddr_fd(185)=*opcode_B9
+opcodeaddr_fd(186)=*opcode_BA
+opcodeaddr_fd(187)=*opcode_BB
 opcodeaddr_fd(188)=*opcode_fd_BC
 opcodeaddr_fd(189)=*opcode_fd_BD
 opcodeaddr_fd(190)=*opcode_fd_BE
-opcodeaddr_fd(191)=*opcode_fd_BF
-opcodeaddr_fd(192)=*opcode_fd_C0
-opcodeaddr_fd(193)=*opcode_fd_C1
-opcodeaddr_fd(194)=*opcode_fd_C2
-opcodeaddr_fd(195)=*opcode_fd_C3
-opcodeaddr_fd(196)=*opcode_fd_C4
-opcodeaddr_fd(197)=*opcode_fd_C5
-opcodeaddr_fd(198)=*opcode_fd_C6
-opcodeaddr_fd(199)=*opcode_fd_C7
-opcodeaddr_fd(200)=*opcode_fd_C8
-opcodeaddr_fd(201)=*opcode_fd_C9
-opcodeaddr_fd(202)=*opcode_fd_CA
+opcodeaddr_fd(191)=*opcode_BF
+opcodeaddr_fd(192)=*opcode_C0
+opcodeaddr_fd(193)=*opcode_C1
+opcodeaddr_fd(194)=*opcode_C2
+opcodeaddr_fd(195)=*opcode_C3
+opcodeaddr_fd(196)=*opcode_C4
+opcodeaddr_fd(197)=*opcode_C5
+opcodeaddr_fd(198)=*opcode_C6
+opcodeaddr_fd(199)=*opcode_C7
+opcodeaddr_fd(200)=*opcode_C8
+opcodeaddr_fd(201)=*opcode_C9
+opcodeaddr_fd(202)=*opcode_CA
 opcodeaddr_fd(203)=*opcode_fd_CB
-opcodeaddr_fd(204)=*opcode_fd_CC
-opcodeaddr_fd(205)=*opcode_fd_CD
-opcodeaddr_fd(206)=*opcode_fd_CE
-opcodeaddr_fd(207)=*opcode_fd_CF
-opcodeaddr_fd(208)=*opcode_fd_D0
-opcodeaddr_fd(209)=*opcode_fd_D1
-opcodeaddr_fd(210)=*opcode_fd_D2
-opcodeaddr_fd(211)=*opcode_fd_D3
-opcodeaddr_fd(212)=*opcode_fd_D4
-opcodeaddr_fd(213)=*opcode_fd_D5
-opcodeaddr_fd(214)=*opcode_fd_D6
-opcodeaddr_fd(215)=*opcode_fd_D7
-opcodeaddr_fd(216)=*opcode_fd_D8
-opcodeaddr_fd(217)=*opcode_fd_D9
-opcodeaddr_fd(218)=*opcode_fd_DA
-opcodeaddr_fd(219)=*opcode_fd_DB
-opcodeaddr_fd(220)=*opcode_fd_DC
-opcodeaddr_fd(221)=*opcode_fd_DD
-opcodeaddr_fd(222)=*opcode_fd_DE
-opcodeaddr_fd(223)=*opcode_fd_DF
-opcodeaddr_fd(224)=*opcode_fd_E0
+opcodeaddr_fd(204)=*opcode_CC
+opcodeaddr_fd(205)=*opcode_CD
+opcodeaddr_fd(206)=*opcode_CE
+opcodeaddr_fd(207)=*opcode_CF
+opcodeaddr_fd(208)=*opcode_D0
+opcodeaddr_fd(209)=*opcode_D1
+opcodeaddr_fd(210)=*opcode_D2
+opcodeaddr_fd(211)=*opcode_D3
+opcodeaddr_fd(212)=*opcode_D4
+opcodeaddr_fd(213)=*opcode_D5
+opcodeaddr_fd(214)=*opcode_D6
+opcodeaddr_fd(215)=*opcode_D7
+opcodeaddr_fd(216)=*opcode_D8
+opcodeaddr_fd(217)=*opcode_D9
+opcodeaddr_fd(218)=*opcode_DA
+opcodeaddr_fd(219)=*opcode_DB
+opcodeaddr_fd(220)=*opcode_DC
+opcodeaddr_fd(221)=*opcode_fd
+opcodeaddr_fd(222)=*opcode_DE
+opcodeaddr_fd(223)=*opcode_DF
+opcodeaddr_fd(224)=*opcode_E0
 opcodeaddr_fd(225)=*opcode_fd_E1
-opcodeaddr_fd(226)=*opcode_fd_E2
+opcodeaddr_fd(226)=*opcode_E2
 opcodeaddr_fd(227)=*opcode_fd_E3
-opcodeaddr_fd(228)=*opcode_fd_E4
+opcodeaddr_fd(228)=*opcode_E4
 opcodeaddr_fd(229)=*opcode_fd_E5
-opcodeaddr_fd(230)=*opcode_fd_E6
-opcodeaddr_fd(231)=*opcode_fd_E7
-opcodeaddr_fd(232)=*opcode_fd_E8
+opcodeaddr_fd(230)=*opcode_E6
+opcodeaddr_fd(231)=*opcode_E7
+opcodeaddr_fd(232)=*opcode_E8
 opcodeaddr_fd(233)=*opcode_fd_E9
-opcodeaddr_fd(234)=*opcode_fd_EA
-opcodeaddr_fd(235)=*opcode_fd_EB
-opcodeaddr_fd(236)=*opcode_fd_EC
-opcodeaddr_fd(237)=*opcode_fd_ED
-opcodeaddr_fd(238)=*opcode_fd_EE
-opcodeaddr_fd(239)=*opcode_fd_EF
-opcodeaddr_fd(240)=*opcode_fd_F0
-opcodeaddr_fd(241)=*opcode_fd_F1
-opcodeaddr_fd(242)=*opcode_fd_F2
-opcodeaddr_fd(243)=*opcode_fd_F3
-opcodeaddr_fd(244)=*opcode_fd_F4
-opcodeaddr_fd(245)=*opcode_fd_F5
-opcodeaddr_fd(246)=*opcode_fd_F6
-opcodeaddr_fd(247)=*opcode_fd_F7
-opcodeaddr_fd(248)=*opcode_fd_F8
+opcodeaddr_fd(234)=*opcode_EA
+opcodeaddr_fd(235)=*opcode_EB
+opcodeaddr_fd(236)=*opcode_EC
+opcodeaddr_fd(237)=*opcode_ED
+opcodeaddr_fd(238)=*opcode_EE
+opcodeaddr_fd(239)=*opcode_EF
+opcodeaddr_fd(240)=*opcode_F0
+opcodeaddr_fd(241)=*opcode_F1
+opcodeaddr_fd(242)=*opcode_F2
+opcodeaddr_fd(243)=*opcode_F3
+opcodeaddr_fd(244)=*opcode_F4
+opcodeaddr_fd(245)=*opcode_F5
+opcodeaddr_fd(246)=*opcode_F6
+opcodeaddr_fd(247)=*opcode_F7
+opcodeaddr_fd(248)=*opcode_F8
 opcodeaddr_fd(249)=*opcode_fd_F9
-opcodeaddr_fd(250)=*opcode_fd_FA
-opcodeaddr_fd(251)=*opcode_fd_FB
-opcodeaddr_fd(252)=*opcode_fd_FC
-opcodeaddr_fd(253)=*opcode_fd_FD
-opcodeaddr_fd(254)=*opcode_fd_FE
-opcodeaddr_fd(255)=*opcode_fd_FF
+opcodeaddr_fd(250)=*opcode_FA
+opcodeaddr_fd(251)=*opcode_FB
+opcodeaddr_fd(252)=*opcode_FC
+opcodeaddr_fd(253)=*opcode_FD
+opcodeaddr_fd(254)=*opcode_FE
+opcodeaddr_fd(255)=*opcode_FF
 
 opcodeaddr_fd_cb(0)=*opcode_fd_cb_00
 opcodeaddr_fd_cb(1)=*opcode_fd_cb_01
@@ -9091,190 +9091,7 @@ return
 *opcode_dd_FF
 z80class@=0
 return
-*opcode_dd_00
-*opcode_dd_01
-*opcode_dd_02
-*opcode_dd_03
-*opcode_dd_04
-*opcode_dd_05
-*opcode_dd_06
-*opcode_dd_07
-*opcode_dd_08
-*opcode_dd_0A
-*opcode_dd_0B
-*opcode_dd_0C
-*opcode_dd_0D
-*opcode_dd_0E
-*opcode_dd_0F
-*opcode_dd_10
-*opcode_dd_11
-*opcode_dd_12
-*opcode_dd_13
-*opcode_dd_14
-*opcode_dd_15
-*opcode_dd_16
-*opcode_dd_17
-*opcode_dd_18
-*opcode_dd_1A
-*opcode_dd_1B
-*opcode_dd_1C
-*opcode_dd_1D
-*opcode_dd_1E
-*opcode_dd_1F
-*opcode_dd_20
-*opcode_dd_27
-*opcode_dd_28
-*opcode_dd_2F
-*opcode_dd_30
-*opcode_dd_31
-*opcode_dd_32
-*opcode_dd_33
-*opcode_dd_37
-*opcode_dd_38
-*opcode_dd_3A
-*opcode_dd_3B
-*opcode_dd_3C
-*opcode_dd_3D
-*opcode_dd_3E
-*opcode_dd_3F
-*opcode_dd_40
-*opcode_dd_41
-*opcode_dd_42
-*opcode_dd_43
-*opcode_dd_47
-*opcode_dd_48
-*opcode_dd_49
-*opcode_dd_4A
-*opcode_dd_4B
-*opcode_dd_4F
-*opcode_dd_50
-*opcode_dd_51
-*opcode_dd_52
-*opcode_dd_53
-*opcode_dd_57
-*opcode_dd_58
-*opcode_dd_59
-*opcode_dd_5A
-*opcode_dd_5B
-*opcode_dd_5F
-*opcode_dd_76
-*opcode_dd_78
-*opcode_dd_79
-*opcode_dd_7A
-*opcode_dd_7B
-*opcode_dd_7F
-*opcode_dd_80
-*opcode_dd_81
-*opcode_dd_82
-*opcode_dd_83
-*opcode_dd_87
-*opcode_dd_88
-*opcode_dd_89
-*opcode_dd_8A
-*opcode_dd_8B
-*opcode_dd_8F
-*opcode_dd_90
-*opcode_dd_91
-*opcode_dd_92
-*opcode_dd_93
-*opcode_dd_97
-*opcode_dd_98
-*opcode_dd_99
-*opcode_dd_9A
-*opcode_dd_9B
-*opcode_dd_9F
-*opcode_dd_A0
-*opcode_dd_A1
-*opcode_dd_A2
-*opcode_dd_A3
-*opcode_dd_A7
-*opcode_dd_A8
-*opcode_dd_A9
-*opcode_dd_AA
-*opcode_dd_AB
-*opcode_dd_AF
-*opcode_dd_B0
-*opcode_dd_B1
-*opcode_dd_B2
-*opcode_dd_B3
-*opcode_dd_B7
-*opcode_dd_B8
-*opcode_dd_B9
-*opcode_dd_BA
-*opcode_dd_BB
-*opcode_dd_BF
-*opcode_dd_C0
-*opcode_dd_C1
-*opcode_dd_C2
-*opcode_dd_C3
-*opcode_dd_C4
-*opcode_dd_C5
-*opcode_dd_C6
-*opcode_dd_C7
-*opcode_dd_C8
-*opcode_dd_C9
-*opcode_dd_CA
-*opcode_dd_CC
-*opcode_dd_CD
-*opcode_dd_CE
-*opcode_dd_CF
-*opcode_dd_D0
-*opcode_dd_D1
-*opcode_dd_D2
-*opcode_dd_D3
-*opcode_dd_D4
-*opcode_dd_D5
-*opcode_dd_D6
-*opcode_dd_D7
-*opcode_dd_D8
-*opcode_dd_D9
-*opcode_dd_DA
-*opcode_dd_DB
-*opcode_dd_DC
-*opcode_dd_DD
-*opcode_dd_DE
-*opcode_dd_DF
-*opcode_dd_E0
-*opcode_dd_E2
-*opcode_dd_E4
-*opcode_dd_E6
-*opcode_dd_E7
-*opcode_dd_E8
-*opcode_dd_EA
-*opcode_dd_EB
-*opcode_dd_EC
-*opcode_dd_ED
-*opcode_dd_EE
-*opcode_dd_EF
-*opcode_dd_F0
-*opcode_dd_F1
-*opcode_dd_F2
-*opcode_dd_F3
-*opcode_dd_F4
-*opcode_dd_F5
-*opcode_dd_F6
-*opcode_dd_F7
-*opcode_dd_F8
-*opcode_dd_FA
-*opcode_dd_FB
-*opcode_dd_FC
-*opcode_dd_FD
-*opcode_dd_FE
-//*opcode_dd_FF
-opcodeforsubcalladdcall=((opcodeforsubcall-0x40)/8)
-opcodeforsubcalladdcall2=((opcodeforsubcall-0x40)-(opcodeforsubcalladdcall*8))-4
-#ifdef __useslowz80emulation_flag__
-opcode=z80readmem(startaddr)
-clockcount=opcodecc_op(opcode)
-gosub *z80opcodeinterpretsw
-#else
-opcode=z80readmem(wpeek(stack(0),10)-1)
-clockcount=opcodecc_op(opcode)
-//lpoke jumplabel,0,lpeek(opcodeaddr(opcode),0)
-//wpoke stack(0),10,wpeek(stack(0),10)+1
-gosub opcodeaddr(opcode)
-#endif
-return
+
 *opcode_de
 //if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
 addold=0
@@ -13858,192 +13675,6 @@ return
 wpoke stack(0),12,wpeek(stack(1),12)
 return
 
-*opcode_fd_00
-*opcode_fd_01
-*opcode_fd_02
-*opcode_fd_03
-*opcode_fd_04
-*opcode_fd_05
-*opcode_fd_06
-*opcode_fd_07
-*opcode_fd_08
-*opcode_fd_0A
-*opcode_fd_0B
-*opcode_fd_0C
-*opcode_fd_0D
-*opcode_fd_0E
-*opcode_fd_0F
-*opcode_fd_10
-*opcode_fd_11
-*opcode_fd_12
-*opcode_fd_13
-*opcode_fd_14
-*opcode_fd_15
-*opcode_fd_16
-*opcode_fd_17
-*opcode_fd_18
-*opcode_fd_1A
-*opcode_fd_1B
-*opcode_fd_1C
-*opcode_fd_1D
-*opcode_fd_1E
-*opcode_fd_1F
-*opcode_fd_20
-*opcode_fd_27
-*opcode_fd_28
-*opcode_fd_2F
-*opcode_fd_30
-*opcode_fd_31
-*opcode_fd_32
-*opcode_fd_33
-*opcode_fd_37
-*opcode_fd_38
-*opcode_fd_3A
-*opcode_fd_3B
-*opcode_fd_3C
-*opcode_fd_3D
-*opcode_fd_3E
-*opcode_fd_3F
-*opcode_fd_40
-*opcode_fd_41
-*opcode_fd_42
-*opcode_fd_43
-*opcode_fd_47
-*opcode_fd_48
-*opcode_fd_49
-*opcode_fd_4A
-*opcode_fd_4B
-*opcode_fd_4F
-*opcode_fd_50
-*opcode_fd_51
-*opcode_fd_52
-*opcode_fd_53
-*opcode_fd_57
-*opcode_fd_58
-*opcode_fd_59
-*opcode_fd_5A
-*opcode_fd_5B
-*opcode_fd_5F
-*opcode_fd_76
-*opcode_fd_78
-*opcode_fd_79
-*opcode_fd_7A
-*opcode_fd_7B
-*opcode_fd_7F
-*opcode_fd_80
-*opcode_fd_81
-*opcode_fd_82
-*opcode_fd_83
-*opcode_fd_87
-*opcode_fd_88
-*opcode_fd_89
-*opcode_fd_8A
-*opcode_fd_8B
-*opcode_fd_8F
-*opcode_fd_90
-*opcode_fd_91
-*opcode_fd_92
-*opcode_fd_93
-*opcode_fd_97
-*opcode_fd_98
-*opcode_fd_99
-*opcode_fd_9A
-*opcode_fd_9B
-*opcode_fd_9F
-*opcode_fd_A0
-*opcode_fd_A1
-*opcode_fd_A2
-*opcode_fd_A3
-*opcode_fd_A7
-*opcode_fd_A8
-*opcode_fd_A9
-*opcode_fd_AA
-*opcode_fd_AB
-*opcode_fd_AF
-*opcode_fd_B0
-*opcode_fd_B1
-*opcode_fd_B2
-*opcode_fd_B3
-*opcode_fd_B7
-*opcode_fd_B8
-*opcode_fd_B9
-*opcode_fd_BA
-*opcode_fd_BB
-*opcode_fd_BF
-*opcode_fd_C0
-*opcode_fd_C1
-*opcode_fd_C2
-*opcode_fd_C3
-*opcode_fd_C4
-*opcode_fd_C5
-*opcode_fd_C6
-*opcode_fd_C7
-*opcode_fd_C8
-*opcode_fd_C9
-*opcode_fd_CA
-*opcode_fd_CC
-*opcode_fd_CD
-*opcode_fd_CE
-*opcode_fd_CF
-*opcode_fd_D0
-*opcode_fd_D1
-*opcode_fd_D2
-*opcode_fd_D3
-*opcode_fd_D4
-*opcode_fd_D5
-*opcode_fd_D6
-*opcode_fd_D7
-*opcode_fd_D8
-*opcode_fd_D9
-*opcode_fd_DA
-*opcode_fd_DB
-*opcode_fd_DC
-*opcode_fd_DD
-*opcode_fd_DE
-*opcode_fd_DF
-*opcode_fd_E0
-*opcode_fd_E2
-*opcode_fd_E4
-*opcode_fd_E6
-*opcode_fd_E7
-*opcode_fd_E8
-*opcode_fd_EA
-*opcode_fd_EB
-*opcode_fd_EC
-*opcode_fd_ED
-*opcode_fd_EE
-*opcode_fd_EF
-*opcode_fd_F0
-*opcode_fd_F1
-*opcode_fd_F2
-*opcode_fd_F3
-*opcode_fd_F4
-*opcode_fd_F5
-*opcode_fd_F6
-*opcode_fd_F7
-*opcode_fd_F8
-*opcode_fd_FA
-*opcode_fd_FB
-*opcode_fd_FC
-*opcode_fd_FD
-*opcode_fd_FE
-*opcode_fd_FF
-opcodeforsubcalladdcall=((opcodeforsubcall-0x40)/8)
-opcodeforsubcalladdcall2=((opcodeforsubcall-0x40)-(opcodeforsubcalladdcall*8))-4
-#ifdef __useslowz80emulation_flag__
-opcode=z80readmem(startaddr)
-clockcount=opcodecc_op(opcode)
-gosub *z80opcodeinterpretsw
-#else
-opcode=z80readmem(wpeek(stack(0),10)-1)
-clockcount=opcodecc_op(opcode)
-//lpoke jumplabel,0,lpeek(opcodeaddr(opcode),0)
-//wpoke stack(0),10,wpeek(stack(0),10)+1
-gosub opcodeaddr(opcode)
-#endif
-return
-poke stack(0),14,peek(stack(0),14)+1
-return
 *opcode_fe
 //if (peek(stack(0),1) & (0x02)){poke stack(0),1,peek(stack(0),1) ^ (0x02)}
 addold=0
@@ -15736,103 +15367,103 @@ clockcount=opcodecc_dd(opcodeforsubcall)
 wpoke stack(0),10,wpeek(stack(0),10)+1
 switch opcodeforsubcall
 case 0
-gosub *opcode_dd_00
+gosub *opcode_00
 swbreak
 case 1
-gosub *opcode_dd_01
+gosub *opcode_01
 swbreak
 case 2
-gosub *opcode_dd_02
+gosub *opcode_02
 swbreak
 case 3
-gosub *opcode_dd_03
+gosub *opcode_03
 swbreak
 case 4
-gosub *opcode_dd_04
+gosub *opcode_04
 swbreak
 case 5
-gosub *opcode_dd_05
+gosub *opcode_05
 swbreak
 case 6
-gosub *opcode_dd_06
+gosub *opcode_06
 swbreak
 case 7
-gosub *opcode_dd_07
+gosub *opcode_07
 swbreak
 case 8
-gosub *opcode_dd_08
+gosub *opcode_08
 swbreak
 case 9
 gosub *opcode_dd_09
 swbreak
 case 10
-gosub *opcode_dd_0A
+gosub *opcode_0A
 swbreak
 case 11
-gosub *opcode_dd_0B
+gosub *opcode_0B
 swbreak
 case 12
-gosub *opcode_dd_0C
+gosub *opcode_0C
 swbreak
 case 13
-gosub *opcode_dd_0D
+gosub *opcode_0D
 swbreak
 case 14
-gosub *opcode_dd_0E
+gosub *opcode_0E
 swbreak
 case 15
-gosub *opcode_dd_0F
+gosub *opcode_0F
 swbreak
 case 16
-gosub *opcode_dd_10
+gosub *opcode_10
 swbreak
 case 17
-gosub *opcode_dd_11
+gosub *opcode_11
 swbreak
 case 18
-gosub *opcode_dd_12
+gosub *opcode_12
 swbreak
 case 19
-gosub *opcode_dd_13
+gosub *opcode_13
 swbreak
 case 20
-gosub *opcode_dd_14
+gosub *opcode_14
 swbreak
 case 21
-gosub *opcode_dd_15
+gosub *opcode_15
 swbreak
 case 22
-gosub *opcode_dd_16
+gosub *opcode_16
 swbreak
 case 23
-gosub *opcode_dd_17
+gosub *opcode_17
 swbreak
 case 24
-gosub *opcode_dd_18
+gosub *opcode_18
 swbreak
 case 25
 gosub *opcode_dd_19
 swbreak
 case 26
-gosub *opcode_dd_1A
+gosub *opcode_1A
 swbreak
 case 27
-gosub *opcode_dd_1B
+gosub *opcode_1B
 swbreak
 case 28
-gosub *opcode_dd_1C
+gosub *opcode_1C
 swbreak
 case 29
-gosub *opcode_dd_1D
+gosub *opcode_1D
 swbreak
 case 30
-gosub *opcode_dd_1E
+gosub *opcode_1E
 swbreak
 case 31
-gosub *opcode_dd_1F
+gosub *opcode_1F
 swbreak
 case 32
-gosub *opcode_dd_20
+gosub *opcode_20
 swbreak
 case 33
 gosub *opcode_dd_21
@@ -15853,10 +15484,10 @@ case 38
 gosub *opcode_dd_26
 swbreak
 case 39
-gosub *opcode_dd_27
+gosub *opcode_27
 swbreak
 case 40
-gosub *opcode_dd_28
+gosub *opcode_28
 swbreak
 case 41
 gosub *opcode_dd_29
@@ -15877,19 +15508,19 @@ case 46
 gosub *opcode_dd_2E
 swbreak
 case 47
-gosub *opcode_dd_2F
+gosub *opcode_2F
 swbreak
 case 48
-gosub *opcode_dd_30
+gosub *opcode_30
 swbreak
 case 49
-gosub *opcode_dd_31
+gosub *opcode_31
 swbreak
 case 50
-gosub *opcode_dd_32
+gosub *opcode_32
 swbreak
 case 51
-gosub *opcode_dd_33
+gosub *opcode_33
 swbreak
 case 52
 gosub *opcode_dd_34
@@ -15901,43 +15532,43 @@ case 54
 gosub *opcode_dd_36
 swbreak
 case 55
-gosub *opcode_dd_37
+gosub *opcode_37
 swbreak
 case 56
-gosub *opcode_dd_38
+gosub *opcode_38
 swbreak
 case 57
 gosub *opcode_dd_39
 swbreak
 case 58
-gosub *opcode_dd_3A
+gosub *opcode_3A
 swbreak
 case 59
-gosub *opcode_dd_3B
+gosub *opcode_3B
 swbreak
 case 60
-gosub *opcode_dd_3C
+gosub *opcode_3C
 swbreak
 case 61
-gosub *opcode_dd_3D
+gosub *opcode_3D
 swbreak
 case 62
-gosub *opcode_dd_3E
+gosub *opcode_3E
 swbreak
 case 63
-gosub *opcode_dd_3F
+gosub *opcode_3F
 swbreak
 case 64
-gosub *opcode_dd_40
+gosub *opcode_40
 swbreak
 case 65
-gosub *opcode_dd_41
+gosub *opcode_41
 swbreak
 case 66
-gosub *opcode_dd_42
+gosub *opcode_42
 swbreak
 case 67
-gosub *opcode_dd_43
+gosub *opcode_43
 swbreak
 case 68
 gosub *opcode_dd_44
@@ -15949,19 +15580,19 @@ case 70
 gosub *opcode_dd_46
 swbreak
 case 71
-gosub *opcode_dd_47
+gosub *opcode_47
 swbreak
 case 72
-gosub *opcode_dd_48
+gosub *opcode_48
 swbreak
 case 73
-gosub *opcode_dd_49
+gosub *opcode_49
 swbreak
 case 74
-gosub *opcode_dd_4A
+gosub *opcode_4A
 swbreak
 case 75
-gosub *opcode_dd_4B
+gosub *opcode_4B
 swbreak
 case 76
 gosub *opcode_dd_4C
@@ -15973,19 +15604,19 @@ case 78
 gosub *opcode_dd_4E
 swbreak
 case 79
-gosub *opcode_dd_4F
+gosub *opcode_4F
 swbreak
 case 80
-gosub *opcode_dd_50
+gosub *opcode_50
 swbreak
 case 81
-gosub *opcode_dd_51
+gosub *opcode_51
 swbreak
 case 82
-gosub *opcode_dd_52
+gosub *opcode_52
 swbreak
 case 83
-gosub *opcode_dd_53
+gosub *opcode_53
 swbreak
 case 84
 gosub *opcode_dd_54
@@ -15997,19 +15628,19 @@ case 86
 gosub *opcode_dd_56
 swbreak
 case 87
-gosub *opcode_dd_57
+gosub *opcode_57
 swbreak
 case 88
-gosub *opcode_dd_58
+gosub *opcode_58
 swbreak
 case 89
-gosub *opcode_dd_59
+gosub *opcode_59
 swbreak
 case 90
-gosub *opcode_dd_5A
+gosub *opcode_5A
 swbreak
 case 91
-gosub *opcode_dd_5B
+gosub *opcode_5B
 swbreak
 case 92
 gosub *opcode_dd_5C
@@ -16021,7 +15652,7 @@ case 94
 gosub *opcode_dd_5E
 swbreak
 case 95
-gosub *opcode_dd_5F
+gosub *opcode_5F
 swbreak
 case 96
 gosub *opcode_dd_60
@@ -16090,22 +15721,22 @@ case 117
 gosub *opcode_dd_75
 swbreak
 case 118
-gosub *opcode_dd_76
+gosub *opcode_76
 swbreak
 case 119
 gosub *opcode_dd_77
 swbreak
 case 120
-gosub *opcode_dd_78
+gosub *opcode_78
 swbreak
 case 121
-gosub *opcode_dd_79
+gosub *opcode_79
 swbreak
 case 122
-gosub *opcode_dd_7A
+gosub *opcode_7A
 swbreak
 case 123
-gosub *opcode_dd_7B
+gosub *opcode_7B
 swbreak
 case 124
 gosub *opcode_dd_7C
@@ -16117,19 +15748,19 @@ case 126
 gosub *opcode_dd_7E
 swbreak
 case 127
-gosub *opcode_dd_7F
+gosub *opcode_7F
 swbreak
 case 128
-gosub *opcode_dd_80
+gosub *opcode_80
 swbreak
 case 129
-gosub *opcode_dd_81
+gosub *opcode_81
 swbreak
 case 130
-gosub *opcode_dd_82
+gosub *opcode_82
 swbreak
 case 131
-gosub *opcode_dd_83
+gosub *opcode_83
 swbreak
 case 132
 gosub *opcode_dd_84
@@ -16141,19 +15772,19 @@ case 134
 gosub *opcode_dd_86
 swbreak
 case 135
-gosub *opcode_dd_87
+gosub *opcode_87
 swbreak
 case 136
-gosub *opcode_dd_88
+gosub *opcode_88
 swbreak
 case 137
-gosub *opcode_dd_89
+gosub *opcode_89
 swbreak
 case 138
-gosub *opcode_dd_8A
+gosub *opcode_8A
 swbreak
 case 139
-gosub *opcode_dd_8B
+gosub *opcode_8B
 swbreak
 case 140
 gosub *opcode_dd_8C
@@ -16165,19 +15796,19 @@ case 142
 gosub *opcode_dd_8E
 swbreak
 case 143
-gosub *opcode_dd_8F
+gosub *opcode_8F
 swbreak
 case 144
-gosub *opcode_dd_90
+gosub *opcode_90
 swbreak
 case 145
-gosub *opcode_dd_91
+gosub *opcode_91
 swbreak
 case 146
-gosub *opcode_dd_92
+gosub *opcode_92
 swbreak
 case 147
-gosub *opcode_dd_93
+gosub *opcode_93
 swbreak
 case 148
 gosub *opcode_dd_94
@@ -16189,19 +15820,19 @@ case 150
 gosub *opcode_dd_96
 swbreak
 case 151
-gosub *opcode_dd_97
+gosub *opcode_97
 swbreak
 case 152
-gosub *opcode_dd_98
+gosub *opcode_98
 swbreak
 case 153
-gosub *opcode_dd_99
+gosub *opcode_99
 swbreak
 case 154
-gosub *opcode_dd_9A
+gosub *opcode_9A
 swbreak
 case 155
-gosub *opcode_dd_9B
+gosub *opcode_9B
 swbreak
 case 156
 gosub *opcode_dd_9C
@@ -16213,19 +15844,19 @@ case 158
 gosub *opcode_dd_9E
 swbreak
 case 159
-gosub *opcode_dd_9F
+gosub *opcode_9F
 swbreak
 case 160
-gosub *opcode_dd_A0
+gosub *opcode_A0
 swbreak
 case 161
-gosub *opcode_dd_A1
+gosub *opcode_A1
 swbreak
 case 162
-gosub *opcode_dd_A2
+gosub *opcode_A2
 swbreak
 case 163
-gosub *opcode_dd_A3
+gosub *opcode_A3
 swbreak
 case 164
 gosub *opcode_dd_A4
@@ -16237,19 +15868,19 @@ case 166
 gosub *opcode_dd_A6
 swbreak
 case 167
-gosub *opcode_dd_A7
+gosub *opcode_A7
 swbreak
 case 168
-gosub *opcode_dd_A8
+gosub *opcode_A8
 swbreak
 case 169
-gosub *opcode_dd_A9
+gosub *opcode_A9
 swbreak
 case 170
-gosub *opcode_dd_AA
+gosub *opcode_AA
 swbreak
 case 171
-gosub *opcode_dd_AB
+gosub *opcode_AB
 swbreak
 case 172
 gosub *opcode_dd_AC
@@ -16261,19 +15892,19 @@ case 174
 gosub *opcode_dd_AE
 swbreak
 case 175
-gosub *opcode_dd_AF
+gosub *opcode_AF
 swbreak
 case 176
-gosub *opcode_dd_B0
+gosub *opcode_B0
 swbreak
 case 177
-gosub *opcode_dd_B1
+gosub *opcode_B1
 swbreak
 case 178
-gosub *opcode_dd_B2
+gosub *opcode_B2
 swbreak
 case 179
-gosub *opcode_dd_B3
+gosub *opcode_B3
 swbreak
 case 180
 gosub *opcode_dd_B4
@@ -16285,19 +15916,19 @@ case 182
 gosub *opcode_dd_B6
 swbreak
 case 183
-gosub *opcode_dd_B7
+gosub *opcode_B7
 swbreak
 case 184
-gosub *opcode_dd_B8
+gosub *opcode_B8
 swbreak
 case 185
-gosub *opcode_dd_B9
+gosub *opcode_B9
 swbreak
 case 186
-gosub *opcode_dd_BA
+gosub *opcode_BA
 swbreak
 case 187
-gosub *opcode_dd_BB
+gosub *opcode_BB
 swbreak
 case 188
 gosub *opcode_dd_BC
@@ -16309,40 +15940,40 @@ case 190
 gosub *opcode_dd_BE
 swbreak
 case 191
-gosub *opcode_dd_BF
+gosub *opcode_BF
 swbreak
 case 192
-gosub *opcode_dd_C0
+gosub *opcode_C0
 swbreak
 case 193
-gosub *opcode_dd_C1
+gosub *opcode_C1
 swbreak
 case 194
-gosub *opcode_dd_C2
+gosub *opcode_C2
 swbreak
 case 195
-gosub *opcode_dd_C3
+gosub *opcode_C3
 swbreak
 case 196
-gosub *opcode_dd_C4
+gosub *opcode_C4
 swbreak
 case 197
-gosub *opcode_dd_C5
+gosub *opcode_C5
 swbreak
 case 198
-gosub *opcode_dd_C6
+gosub *opcode_C6
 swbreak
 case 199
-gosub *opcode_dd_C7
+gosub *opcode_C7
 swbreak
 case 200
-gosub *opcode_dd_C8
+gosub *opcode_C8
 swbreak
 case 201
-gosub *opcode_dd_C9
+gosub *opcode_C9
 swbreak
 case 202
-gosub *opcode_dd_CA
+gosub *opcode_CA
 swbreak
 case 203
 cbopcodecallid=z80readmem(wpeek(stack(0),10)+1)
@@ -17123,160 +16754,160 @@ wpoke stack(0),10,wpeek(stack(0),10)+2
 poke stack(0),14,peek(stack(0),14)+1
 swbreak
 case 204
-gosub *opcode_dd_CC
+gosub *opcode_CC
 swbreak
 case 205
-gosub *opcode_dd_CD
+gosub *opcode_CD
 swbreak
 case 206
-gosub *opcode_dd_CE
+gosub *opcode_CE
 swbreak
 case 207
-gosub *opcode_dd_CF
+gosub *opcode_CF
 swbreak
 case 208
-gosub *opcode_dd_D0
+gosub *opcode_D0
 swbreak
 case 209
-gosub *opcode_dd_D1
+gosub *opcode_D1
 swbreak
 case 210
-gosub *opcode_dd_D2
+gosub *opcode_D2
 swbreak
 case 211
-gosub *opcode_dd_D3
+gosub *opcode_D3
 swbreak
 case 212
-gosub *opcode_dd_D4
+gosub *opcode_D4
 swbreak
 case 213
-gosub *opcode_dd_D5
+gosub *opcode_D5
 swbreak
 case 214
-gosub *opcode_dd_D6
+gosub *opcode_D6
 swbreak
 case 215
-gosub *opcode_dd_D7
+gosub *opcode_D7
 swbreak
 case 216
-gosub *opcode_dd_D8
+gosub *opcode_D8
 swbreak
 case 217
-gosub *opcode_dd_D9
+gosub *opcode_D9
 swbreak
 case 218
-gosub *opcode_dd_DA
+gosub *opcode_DA
 swbreak
 case 219
-gosub *opcode_dd_DB
+gosub *opcode_DB
 swbreak
 case 220
-gosub *opcode_dd_DC
+gosub *opcode_DC
 swbreak
 case 221
-gosub *opcode_dd_DD
+;gosub *opcode_DD
 swbreak
 case 222
-gosub *opcode_dd_DE
+gosub *opcode_DE
 swbreak
 case 223
-gosub *opcode_dd_DF
+gosub *opcode_DF
 swbreak
 case 224
-gosub *opcode_dd_E0
+gosub *opcode_E0
 swbreak
 case 225
 gosub *opcode_dd_E1
 swbreak
 case 226
-gosub *opcode_dd_E2
+gosub *opcode_E2
 swbreak
 case 227
 gosub *opcode_dd_E3
 swbreak
 case 228
-gosub *opcode_dd_E4
+gosub *opcode_E4
 swbreak
 case 229
 gosub *opcode_dd_E5
 swbreak
 case 230
-gosub *opcode_dd_E6
+gosub *opcode_E6
 swbreak
 case 231
-gosub *opcode_dd_E7
+gosub *opcode_E7
 swbreak
 case 232
-gosub *opcode_dd_E8
+gosub *opcode_E8
 swbreak
 case 233
 gosub *opcode_dd_E9
 swbreak
 case 234
-gosub *opcode_dd_EA
+gosub *opcode_EA
 swbreak
 case 235
-gosub *opcode_dd_EB
+gosub *opcode_EB
 swbreak
 case 236
-gosub *opcode_dd_EC
+gosub *opcode_EC
 swbreak
 case 237
-gosub *opcode_dd_ED
+gosub *opcode_ED
 swbreak
 case 238
-gosub *opcode_dd_EE
+gosub *opcode_EE
 swbreak
 case 239
-gosub *opcode_dd_EF
+gosub *opcode_EF
 swbreak
 case 240
-gosub *opcode_dd_F0
+gosub *opcode_F0
 swbreak
 case 241
-gosub *opcode_dd_F1
+gosub *opcode_F1
 swbreak
 case 242
-gosub *opcode_dd_F2
+gosub *opcode_F2
 swbreak
 case 243
-gosub *opcode_dd_F3
+gosub *opcode_F3
 swbreak
 case 244
-gosub *opcode_dd_F4
+gosub *opcode_F4
 swbreak
 case 245
-gosub *opcode_dd_F5
+gosub *opcode_F5
 swbreak
 case 246
-gosub *opcode_dd_F6
+gosub *opcode_F6
 swbreak
 case 247
-gosub *opcode_dd_F7
+gosub *opcode_F7
 swbreak
 case 248
-gosub *opcode_dd_F8
+gosub *opcode_F8
 swbreak
 case 249
 gosub *opcode_dd_F9
 swbreak
 case 250
-gosub *opcode_dd_FA
+gosub *opcode_FA
 swbreak
 case 251
-gosub *opcode_dd_FB
+gosub *opcode_FB
 swbreak
 case 252
-gosub *opcode_dd_FC
+gosub *opcode_FC
 swbreak
 case 253
-gosub *opcode_dd_FD
+;gosub *opcode_FD
 swbreak
 case 254
-gosub *opcode_dd_FE
+gosub *opcode_FE
 swbreak
 case 255
-gosub *opcode_dd_FF
+gosub *opcode_FF
 swbreak
 swend
 poke stack(0),14,peek(stack(0),14)+1
@@ -18154,103 +17785,103 @@ clockcount=opcodecc_fd(opcodeforsubcall)
 wpoke stack(0),10,wpeek(stack(0),10)+1
 switch opcodeforsubcall
 case 0
-gosub *opcode_fd_00
+gosub *opcode_00
 swbreak
 case 1
-gosub *opcode_fd_01
+gosub *opcode_01
 swbreak
 case 2
-gosub *opcode_fd_02
+gosub *opcode_02
 swbreak
 case 3
-gosub *opcode_fd_03
+gosub *opcode_03
 swbreak
 case 4
-gosub *opcode_fd_04
+gosub *opcode_04
 swbreak
 case 5
-gosub *opcode_fd_05
+gosub *opcode_05
 swbreak
 case 6
-gosub *opcode_fd_06
+gosub *opcode_06
 swbreak
 case 7
-gosub *opcode_fd_07
+gosub *opcode_07
 swbreak
 case 8
-gosub *opcode_fd_08
+gosub *opcode_08
 swbreak
 case 9
 gosub *opcode_fd_09
 swbreak
 case 10
-gosub *opcode_fd_0A
+gosub *opcode_0A
 swbreak
 case 11
-gosub *opcode_fd_0B
+gosub *opcode_0B
 swbreak
 case 12
-gosub *opcode_fd_0C
+gosub *opcode_0C
 swbreak
 case 13
-gosub *opcode_fd_0D
+gosub *opcode_0D
 swbreak
 case 14
-gosub *opcode_fd_0E
+gosub *opcode_0E
 swbreak
 case 15
-gosub *opcode_fd_0F
+gosub *opcode_0F
 swbreak
 case 16
-gosub *opcode_fd_10
+gosub *opcode_10
 swbreak
 case 17
-gosub *opcode_fd_11
+gosub *opcode_11
 swbreak
 case 18
-gosub *opcode_fd_12
+gosub *opcode_12
 swbreak
 case 19
-gosub *opcode_fd_13
+gosub *opcode_13
 swbreak
 case 20
-gosub *opcode_fd_14
+gosub *opcode_14
 swbreak
 case 21
-gosub *opcode_fd_15
+gosub *opcode_15
 swbreak
 case 22
-gosub *opcode_fd_16
+gosub *opcode_16
 swbreak
 case 23
-gosub *opcode_fd_17
+gosub *opcode_17
 swbreak
 case 24
-gosub *opcode_fd_18
+gosub *opcode_18
 swbreak
 case 25
 gosub *opcode_fd_19
 swbreak
 case 26
-gosub *opcode_fd_1A
+gosub *opcode_1A
 swbreak
 case 27
-gosub *opcode_fd_1B
+gosub *opcode_1B
 swbreak
 case 28
-gosub *opcode_fd_1C
+gosub *opcode_1C
 swbreak
 case 29
-gosub *opcode_fd_1D
+gosub *opcode_1D
 swbreak
 case 30
-gosub *opcode_fd_1E
+gosub *opcode_1E
 swbreak
 case 31
-gosub *opcode_fd_1F
+gosub *opcode_1F
 swbreak
 case 32
-gosub *opcode_fd_20
+gosub *opcode_20
 swbreak
 case 33
 gosub *opcode_fd_21
@@ -18271,10 +17902,10 @@ case 38
 gosub *opcode_fd_26
 swbreak
 case 39
-gosub *opcode_fd_27
+gosub *opcode_27
 swbreak
 case 40
-gosub *opcode_fd_28
+gosub *opcode_28
 swbreak
 case 41
 gosub *opcode_fd_29
@@ -18295,19 +17926,19 @@ case 46
 gosub *opcode_fd_2E
 swbreak
 case 47
-gosub *opcode_fd_2F
+gosub *opcode_2F
 swbreak
 case 48
-gosub *opcode_fd_30
+gosub *opcode_30
 swbreak
 case 49
-gosub *opcode_fd_31
+gosub *opcode_31
 swbreak
 case 50
-gosub *opcode_fd_32
+gosub *opcode_32
 swbreak
 case 51
-gosub *opcode_fd_33
+gosub *opcode_33
 swbreak
 case 52
 gosub *opcode_fd_34
@@ -18319,43 +17950,43 @@ case 54
 gosub *opcode_fd_36
 swbreak
 case 55
-gosub *opcode_fd_37
+gosub *opcode_37
 swbreak
 case 56
-gosub *opcode_fd_38
+gosub *opcode_38
 swbreak
 case 57
 gosub *opcode_fd_39
 swbreak
 case 58
-gosub *opcode_fd_3A
+gosub *opcode_3A
 swbreak
 case 59
-gosub *opcode_fd_3B
+gosub *opcode_3B
 swbreak
 case 60
-gosub *opcode_fd_3C
+gosub *opcode_3C
 swbreak
 case 61
-gosub *opcode_fd_3D
+gosub *opcode_3D
 swbreak
 case 62
-gosub *opcode_fd_3E
+gosub *opcode_3E
 swbreak
 case 63
-gosub *opcode_fd_3F
+gosub *opcode_3F
 swbreak
 case 64
-gosub *opcode_fd_40
+gosub *opcode_40
 swbreak
 case 65
-gosub *opcode_fd_41
+gosub *opcode_41
 swbreak
 case 66
-gosub *opcode_fd_42
+gosub *opcode_42
 swbreak
 case 67
-gosub *opcode_fd_43
+gosub *opcode_43
 swbreak
 case 68
 gosub *opcode_fd_44
@@ -18367,19 +17998,19 @@ case 70
 gosub *opcode_fd_46
 swbreak
 case 71
-gosub *opcode_fd_47
+gosub *opcode_47
 swbreak
 case 72
-gosub *opcode_fd_48
+gosub *opcode_48
 swbreak
 case 73
-gosub *opcode_fd_49
+gosub *opcode_49
 swbreak
 case 74
-gosub *opcode_fd_4A
+gosub *opcode_4A
 swbreak
 case 75
-gosub *opcode_fd_4B
+gosub *opcode_4B
 swbreak
 case 76
 gosub *opcode_fd_4C
@@ -18391,19 +18022,19 @@ case 78
 gosub *opcode_fd_4E
 swbreak
 case 79
-gosub *opcode_fd_4F
+gosub *opcode_4F
 swbreak
 case 80
-gosub *opcode_fd_50
+gosub *opcode_50
 swbreak
 case 81
-gosub *opcode_fd_51
+gosub *opcode_51
 swbreak
 case 82
-gosub *opcode_fd_52
+gosub *opcode_52
 swbreak
 case 83
-gosub *opcode_fd_53
+gosub *opcode_53
 swbreak
 case 84
 gosub *opcode_fd_54
@@ -18415,19 +18046,19 @@ case 86
 gosub *opcode_fd_56
 swbreak
 case 87
-gosub *opcode_fd_57
+gosub *opcode_57
 swbreak
 case 88
-gosub *opcode_fd_58
+gosub *opcode_58
 swbreak
 case 89
-gosub *opcode_fd_59
+gosub *opcode_59
 swbreak
 case 90
-gosub *opcode_fd_5A
+gosub *opcode_5A
 swbreak
 case 91
-gosub *opcode_fd_5B
+gosub *opcode_5B
 swbreak
 case 92
 gosub *opcode_fd_5C
@@ -18439,7 +18070,7 @@ case 94
 gosub *opcode_fd_5E
 swbreak
 case 95
-gosub *opcode_fd_5F
+gosub *opcode_5F
 swbreak
 case 96
 gosub *opcode_fd_60
@@ -18508,22 +18139,22 @@ case 117
 gosub *opcode_fd_75
 swbreak
 case 118
-gosub *opcode_fd_76
+gosub *opcode_76
 swbreak
 case 119
 gosub *opcode_fd_77
 swbreak
 case 120
-gosub *opcode_fd_78
+gosub *opcode_78
 swbreak
 case 121
-gosub *opcode_fd_79
+gosub *opcode_79
 swbreak
 case 122
-gosub *opcode_fd_7A
+gosub *opcode_7A
 swbreak
 case 123
-gosub *opcode_fd_7B
+gosub *opcode_7B
 swbreak
 case 124
 gosub *opcode_fd_7C
@@ -18535,19 +18166,19 @@ case 126
 gosub *opcode_fd_7E
 swbreak
 case 127
-gosub *opcode_fd_7F
+gosub *opcode_7F
 swbreak
 case 128
-gosub *opcode_fd_80
+gosub *opcode_80
 swbreak
 case 129
-gosub *opcode_fd_81
+gosub *opcode_81
 swbreak
 case 130
-gosub *opcode_fd_82
+gosub *opcode_82
 swbreak
 case 131
-gosub *opcode_fd_83
+gosub *opcode_83
 swbreak
 case 132
 gosub *opcode_fd_84
@@ -18559,19 +18190,19 @@ case 134
 gosub *opcode_fd_86
 swbreak
 case 135
-gosub *opcode_fd_87
+gosub *opcode_87
 swbreak
 case 136
-gosub *opcode_fd_88
+gosub *opcode_88
 swbreak
 case 137
-gosub *opcode_fd_89
+gosub *opcode_89
 swbreak
 case 138
-gosub *opcode_fd_8A
+gosub *opcode_8A
 swbreak
 case 139
-gosub *opcode_fd_8B
+gosub *opcode_8B
 swbreak
 case 140
 gosub *opcode_fd_8C
@@ -18583,19 +18214,19 @@ case 142
 gosub *opcode_fd_8E
 swbreak
 case 143
-gosub *opcode_fd_8F
+gosub *opcode_8F
 swbreak
 case 144
-gosub *opcode_fd_90
+gosub *opcode_90
 swbreak
 case 145
-gosub *opcode_fd_91
+gosub *opcode_91
 swbreak
 case 146
-gosub *opcode_fd_92
+gosub *opcode_92
 swbreak
 case 147
-gosub *opcode_fd_93
+gosub *opcode_93
 swbreak
 case 148
 gosub *opcode_fd_94
@@ -18607,19 +18238,19 @@ case 150
 gosub *opcode_fd_96
 swbreak
 case 151
-gosub *opcode_fd_97
+gosub *opcode_97
 swbreak
 case 152
-gosub *opcode_fd_98
+gosub *opcode_98
 swbreak
 case 153
-gosub *opcode_fd_99
+gosub *opcode_99
 swbreak
 case 154
-gosub *opcode_fd_9A
+gosub *opcode_9A
 swbreak
 case 155
-gosub *opcode_fd_9B
+gosub *opcode_9B
 swbreak
 case 156
 gosub *opcode_fd_9C
@@ -18631,19 +18262,19 @@ case 158
 gosub *opcode_fd_9E
 swbreak
 case 159
-gosub *opcode_fd_9F
+gosub *opcode_9F
 swbreak
 case 160
-gosub *opcode_fd_A0
+gosub *opcode_A0
 swbreak
 case 161
-gosub *opcode_fd_A1
+gosub *opcode_A1
 swbreak
 case 162
-gosub *opcode_fd_A2
+gosub *opcode_A2
 swbreak
 case 163
-gosub *opcode_fd_A3
+gosub *opcode_A3
 swbreak
 case 164
 gosub *opcode_fd_A4
@@ -18655,19 +18286,19 @@ case 166
 gosub *opcode_fd_A6
 swbreak
 case 167
-gosub *opcode_fd_A7
+gosub *opcode_A7
 swbreak
 case 168
-gosub *opcode_fd_A8
+gosub *opcode_A8
 swbreak
 case 169
-gosub *opcode_fd_A9
+gosub *opcode_A9
 swbreak
 case 170
-gosub *opcode_fd_AA
+gosub *opcode_AA
 swbreak
 case 171
-gosub *opcode_fd_AB
+gosub *opcode_AB
 swbreak
 case 172
 gosub *opcode_fd_AC
@@ -18679,19 +18310,19 @@ case 174
 gosub *opcode_fd_AE
 swbreak
 case 175
-gosub *opcode_fd_AF
+gosub *opcode_AF
 swbreak
 case 176
-gosub *opcode_fd_B0
+gosub *opcode_B0
 swbreak
 case 177
-gosub *opcode_fd_B1
+gosub *opcode_B1
 swbreak
 case 178
-gosub *opcode_fd_B2
+gosub *opcode_B2
 swbreak
 case 179
-gosub *opcode_fd_B3
+gosub *opcode_B3
 swbreak
 case 180
 gosub *opcode_fd_B4
@@ -18703,19 +18334,19 @@ case 182
 gosub *opcode_fd_B6
 swbreak
 case 183
-gosub *opcode_fd_B7
+gosub *opcode_B7
 swbreak
 case 184
-gosub *opcode_fd_B8
+gosub *opcode_B8
 swbreak
 case 185
-gosub *opcode_fd_B9
+gosub *opcode_B9
 swbreak
 case 186
-gosub *opcode_fd_BA
+gosub *opcode_BA
 swbreak
 case 187
-gosub *opcode_fd_BB
+gosub *opcode_BB
 swbreak
 case 188
 gosub *opcode_fd_BC
@@ -18727,40 +18358,40 @@ case 190
 gosub *opcode_fd_BE
 swbreak
 case 191
-gosub *opcode_fd_BF
+gosub *opcode_BF
 swbreak
 case 192
-gosub *opcode_fd_C0
+gosub *opcode_C0
 swbreak
 case 193
-gosub *opcode_fd_C1
+gosub *opcode_C1
 swbreak
 case 194
-gosub *opcode_fd_C2
+gosub *opcode_C2
 swbreak
 case 195
-gosub *opcode_fd_C3
+gosub *opcode_C3
 swbreak
 case 196
-gosub *opcode_fd_C4
+gosub *opcode_C4
 swbreak
 case 197
-gosub *opcode_fd_C5
+gosub *opcode_C5
 swbreak
 case 198
-gosub *opcode_fd_C6
+gosub *opcode_C6
 swbreak
 case 199
-gosub *opcode_fd_C7
+gosub *opcode_C7
 swbreak
 case 200
-gosub *opcode_fd_C8
+gosub *opcode_C8
 swbreak
 case 201
-gosub *opcode_fd_C9
+gosub *opcode_C9
 swbreak
 case 202
-gosub *opcode_fd_CA
+gosub *opcode_CA
 swbreak
 case 203
 cbopcodecallid=z80readmem(wpeek(stack(0),10)+1)
@@ -19541,160 +19172,160 @@ wpoke stack(0),10,wpeek(stack(0),10)+2
 poke stack(0),14,peek(stack(0),14)+1
 swbreak
 case 204
-gosub *opcode_fd_CC
+gosub *opcode_CC
 swbreak
 case 205
-gosub *opcode_fd_CD
+gosub *opcode_CD
 swbreak
 case 206
-gosub *opcode_fd_CE
+gosub *opcode_CE
 swbreak
 case 207
-gosub *opcode_fd_CF
+gosub *opcode_CF
 swbreak
 case 208
-gosub *opcode_fd_D0
+gosub *opcode_D0
 swbreak
 case 209
-gosub *opcode_fd_D1
+gosub *opcode_D1
 swbreak
 case 210
-gosub *opcode_fd_D2
+gosub *opcode_D2
 swbreak
 case 211
-gosub *opcode_fd_D3
+gosub *opcode_D3
 swbreak
 case 212
-gosub *opcode_fd_D4
+gosub *opcode_D4
 swbreak
 case 213
-gosub *opcode_fd_D5
+gosub *opcode_D5
 swbreak
 case 214
-gosub *opcode_fd_D6
+gosub *opcode_D6
 swbreak
 case 215
-gosub *opcode_fd_D7
+gosub *opcode_D7
 swbreak
 case 216
-gosub *opcode_fd_D8
+gosub *opcode_D8
 swbreak
 case 217
-gosub *opcode_fd_D9
+gosub *opcode_D9
 swbreak
 case 218
-gosub *opcode_fd_DA
+gosub *opcode_DA
 swbreak
 case 219
-gosub *opcode_fd_DB
+gosub *opcode_DB
 swbreak
 case 220
-gosub *opcode_fd_DC
+gosub *opcode_DC
 swbreak
 case 221
-gosub *opcode_fd_DD
+;gosub *opcode_DD
 swbreak
 case 222
-gosub *opcode_fd_DE
+gosub *opcode_DE
 swbreak
 case 223
-gosub *opcode_fd_DF
+gosub *opcode_DF
 swbreak
 case 224
-gosub *opcode_fd_E0
+gosub *opcode_E0
 swbreak
 case 225
 gosub *opcode_fd_E1
 swbreak
 case 226
-gosub *opcode_fd_E2
+gosub *opcode_E2
 swbreak
 case 227
 gosub *opcode_fd_E3
 swbreak
 case 228
-gosub *opcode_fd_E4
+gosub *opcode_E4
 swbreak
 case 229
 gosub *opcode_fd_E5
 swbreak
 case 230
-gosub *opcode_fd_E6
+gosub *opcode_E6
 swbreak
 case 231
-gosub *opcode_fd_E7
+gosub *opcode_E7
 swbreak
 case 232
-gosub *opcode_fd_E8
+gosub *opcode_E8
 swbreak
 case 233
 gosub *opcode_fd_E9
 swbreak
 case 234
-gosub *opcode_fd_EA
+gosub *opcode_EA
 swbreak
 case 235
-gosub *opcode_fd_EB
+gosub *opcode_EB
 swbreak
 case 236
-gosub *opcode_fd_EC
+gosub *opcode_EC
 swbreak
 case 237
-gosub *opcode_fd_ED
+gosub *opcode_ED
 swbreak
 case 238
-gosub *opcode_fd_EE
+gosub *opcode_EE
 swbreak
 case 239
-gosub *opcode_fd_EF
+gosub *opcode_EF
 swbreak
 case 240
-gosub *opcode_fd_F0
+gosub *opcode_F0
 swbreak
 case 241
-gosub *opcode_fd_F1
+gosub *opcode_F1
 swbreak
 case 242
-gosub *opcode_fd_F2
+gosub *opcode_F2
 swbreak
 case 243
-gosub *opcode_fd_F3
+gosub *opcode_F3
 swbreak
 case 244
-gosub *opcode_fd_F4
+gosub *opcode_F4
 swbreak
 case 245
-gosub *opcode_fd_F5
+gosub *opcode_F5
 swbreak
 case 246
-gosub *opcode_fd_F6
+gosub *opcode_F6
 swbreak
 case 247
-gosub *opcode_fd_F7
+gosub *opcode_F7
 swbreak
 case 248
-gosub *opcode_fd_F8
+gosub *opcode_F8
 swbreak
 case 249
 gosub *opcode_fd_F9
 swbreak
 case 250
-gosub *opcode_fd_FA
+gosub *opcode_FA
 swbreak
 case 251
-gosub *opcode_fd_FB
+gosub *opcode_FB
 swbreak
 case 252
-gosub *opcode_fd_FC
+gosub *opcode_FC
 swbreak
 case 253
-gosub *opcode_fd_FD
+;gosub *opcode_FD
 swbreak
 case 254
-gosub *opcode_fd_FE
+gosub *opcode_FE
 swbreak
 case 255
-gosub *opcode_fd_FF
+gosub *opcode_FF
 swbreak
 swend
 poke stack(0),14,peek(stack(0),14)+1
