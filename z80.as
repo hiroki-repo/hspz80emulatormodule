@@ -16806,6 +16806,7 @@ gosub *opcode_DC
 swbreak
 case 221
 ;gosub *opcode_DD
+wpoke stack(0),10,wpeek(stack(0),10)-1
 swbreak
 case 222
 gosub *opcode_DE
@@ -16902,6 +16903,7 @@ gosub *opcode_FC
 swbreak
 case 253
 ;gosub *opcode_FD
+wpoke stack(0),10,wpeek(stack(0),10)-1
 swbreak
 case 254
 gosub *opcode_FE
@@ -19224,6 +19226,7 @@ gosub *opcode_DC
 swbreak
 case 221
 ;gosub *opcode_DD
+wpoke stack(0),10,wpeek(stack(0),10)-1
 swbreak
 case 222
 gosub *opcode_DE
@@ -19320,6 +19323,7 @@ gosub *opcode_FC
 swbreak
 case 253
 ;gosub *opcode_FD
+wpoke stack(0),10,wpeek(stack(0),10)-1
 swbreak
 case 254
 gosub *opcode_FE
