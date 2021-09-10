@@ -10033,7 +10033,7 @@ dataofiomemory=peek(iomemory,peek(stack(0),2))
 poke stack(0),3,peek(stack(0),3)-1
 z80writemem wpeek(stack(0),6),dataofiomemory
 wpoke stack(0),6,wpeek(stack(0),6)+1
-poke stack(0),1,SZ(peek(stack(0),3))
+poke stack(0),1,SZHV_dec(peek(stack(0),3))|2|(peek(stack(0),1)&0x29)
 /*tforz80outi=((peek(stack(0),2)+1)&0xFF)+dataofiomemory
 if (dataofiomemory & 0x80){poke stack(0),1,peek(stack(0),1)|0x02}
 	if(tforz80outi & 0x100) {poke stack(0),1,peek(stack(0),1)| (0x10 | 0x01)}
@@ -10058,7 +10058,7 @@ poke iomemory,peek(stack(0),2),dataofiomemory
 _z80iomemorycalledid@=iomemorycalledid16:_z80iomemorycalled@=iomemorycalled:gosub z80iochecklabel2
 #endif
 wpoke stack(0),6,wpeek(stack(0),6)+1
-poke stack(0),1,SZ(peek(stack(0),3))
+poke stack(0),1,SZHV_dec(peek(stack(0),3))|2|(peek(stack(0),1)&0x29)
 /*tforz80outi=peek(stack(0),6)+dataofiomemory
 if (dataofiomemory & 0x80){poke stack(0),1,peek(stack(0),1)|0x02}
 	if(tforz80outi & 0x100) {poke stack(0),1,peek(stack(0),1)| (0x10 | 0x01)}
@@ -10117,7 +10117,7 @@ dataofiomemory=peek(iomemory,peek(stack(0),2))
 z80writemem wpeek(stack(0),6),dataofiomemory
 poke stack(0),3,peek(stack(0),3)-1
 wpoke stack(0),6,wpeek(stack(0),6)-1
-poke stack(0),1,SZ(peek(stack(0),3))
+poke stack(0),1,SZHV_dec(peek(stack(0),3))|2|(peek(stack(0),1)&0x29)
 /*tforz80outi=((peek(stack(0),2)-1)&0xFF)+dataofiomemory
 if (dataofiomemory & 0x80){poke stack(0),1,peek(stack(0),1)|0x02}
 	if(tforz80outi & 0x100) {poke stack(0),1,peek(stack(0),1)| (0x10 | 0x01)}
@@ -10141,7 +10141,7 @@ _z80iomemorycalledid@=iomemorycalledid16:_z80iomemorycalled@=iomemorycalled:gosu
 #endif
 //peek iomemorycalledid16,1,iomemorycalledid
 wpoke stack(0),6,wpeek(stack(0),6)-1
-poke stack(0),1,SZ(peek(stack(0),3))
+poke stack(0),1,SZHV_dec(peek(stack(0),3))|2|(peek(stack(0),1)&0x29)
 /*tforz80outi=peek(stack(0),6)+dataofiomemory
 if (dataofiomemory & 0x80){poke stack(0),1,peek(stack(0),1)|0x02}
 	if(tforz80outi & 0x100) {poke stack(0),1,peek(stack(0),1)| (0x10 | 0x01)}
@@ -10200,7 +10200,7 @@ dataofiomemory=peek(iomemory,peek(stack(0),2))
 poke stack(0),3,peek(stack(0),3)-1
 z80writemem wpeek(stack(0),6),dataofiomemory
 wpoke stack(0),6,wpeek(stack(0),6)+1
-poke stack(0),1,SZ(peek(stack(0),3))
+poke stack(0),1,SZHV_dec(peek(stack(0),3))|2|(peek(stack(0),1)&0x29)
 /*tforz80outi=((peek(stack(0),2)+1)&0xFF)+dataofiomemory
 if (dataofiomemory & 0x80){poke stack(0),1,peek(stack(0),1)|0x02}
 	if(tforz80outi & 0x100) {poke stack(0),1,peek(stack(0),1)| (0x10 | 0x01)}
@@ -10228,7 +10228,7 @@ poke iomemory,peek(stack(0),2),dataofiomemory
 _z80iomemorycalledid@=iomemorycalledid16:_z80iomemorycalled@=iomemorycalled:gosub z80iochecklabel2
 #endif
 wpoke stack(0),6,wpeek(stack(0),6)+1
-poke stack(0),1,SZ(peek(stack(0),3))
+poke stack(0),1,SZHV_dec(peek(stack(0),3))|2|(peek(stack(0),1)&0x29)
 /*tforz80outi=peek(stack(0),6)+dataofiomemory
 if (dataofiomemory & 0x80){poke stack(0),1,peek(stack(0),1)|0x02}
 	if(tforz80outi & 0x100) {poke stack(0),1,peek(stack(0),1)| (0x10 | 0x01)}
@@ -10299,7 +10299,7 @@ dataofiomemory=peek(iomemory,peek(stack(0),2))
 z80writemem wpeek(stack(0),6),dataofiomemory
 poke stack(0),3,peek(stack(0),3)-1
 wpoke stack(0),6,wpeek(stack(0),6)-1
-poke stack(0),1,SZ(peek(stack(0),3))
+poke stack(0),1,SZHV_dec(peek(stack(0),3))|2|(peek(stack(0),1)&0x29)
 /*tforz80outi=((peek(stack(0),2)-1)&0xFF)+dataofiomemory
 if (dataofiomemory & 0x80){poke stack(0),1,peek(stack(0),1)|0x02}
 	if(tforz80outi & 0x100) {poke stack(0),1,peek(stack(0),1)| (0x10 | 0x01)}
@@ -10327,7 +10327,7 @@ _z80iomemorycalledid@=iomemorycalledid16:_z80iomemorycalled@=iomemorycalled:gosu
 #endif
 //peek iomemorycalledid16,1,iomemorycalledid
 wpoke stack(0),6,wpeek(stack(0),6)-1
-poke stack(0),1,SZ(peek(stack(0),3))
+poke stack(0),1,SZHV_dec(peek(stack(0),3))|2|(peek(stack(0),1)&0x29)
 /*tforz80outi=peek(stack(0),6)+dataofiomemory
 if (dataofiomemory & 0x80){poke stack(0),1,peek(stack(0),1)|0x02}
 	if(tforz80outi & 0x100) {poke stack(0),1,peek(stack(0),1)| (0x10 | 0x01)}
@@ -16854,7 +16854,8 @@ case 236
 gosub *opcode_EC
 swbreak
 case 237
-gosub *opcode_ED
+;gosub *opcode_ED
+wpoke stack(0),10,wpeek(stack(0),10)-1
 swbreak
 case 238
 gosub *opcode_EE
@@ -19274,7 +19275,8 @@ case 236
 gosub *opcode_EC
 swbreak
 case 237
-gosub *opcode_ED
+;gosub *opcode_ED
+wpoke stack(0),10,wpeek(stack(0),10)-1
 swbreak
 case 238
 gosub *opcode_EE
