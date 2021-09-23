@@ -7,6 +7,8 @@
 #define global z80moduledefined
 #module z80moduleaccess
 #deffunc gocaine_z80init 
+ldim z80runcontext,2
+z80runcontext(0)=*null,*z80runcontext_1
 dim opcodecc_op,256
 dim opcodecc_cb,256
 dim opcodecc_dd,256
@@ -2246,14 +2248,14 @@ wpoke stack(0),10,startaddr
 //opcode=z80readmem(wpeek(stack(0),10))
 //lpoke jumplabel,0,opcodeaddr(opcode)
 wpoke stack(0),10,wpeek(stack(0),10)+1
+#ifdef __useslowz80emulation_flag__
 if z80haltmodesw(threadidforrunthez80)=0{
 opcode=z80readmem(startaddr):clockcount=opcodecc_op(opcode)
-#ifdef __useslowz80emulation_flag__
 gosub *z80opcodeinterpretsw
-#else
-gosub opcodeaddr(opcode)
-#endif
 }//opcodeaddr(opcode)//jumplabel
+#else
+gosub z80runcontext(z80haltmodesw(threadidforrunthez80)=0)
+#endif
 lpoke startaddr,0,wpeek(stack(0),10)
 poke stack(0),14,peek(stack(0),14)+1
 #ifdef z80memaccess
@@ -2264,6 +2266,14 @@ memcpy stackformt(1,threadidforrunthez80),stack(1),64,0,0
 return clockcount//peek(stack(0),1)
 opcodewaiti=opcodewaiti+1
 if opcodewaiti=4001{opcodewaiti=0:await 1}
+*z80runcontext_1
+opcode=z80readmem(startaddr):clockcount=opcodecc_op(opcode)
+#ifdef __useslowz80emulation_flag__
+gosub *z80opcodeinterpretsw
+#else
+gosub opcodeaddr(opcode)
+#endif
+return
 //loop
 *jplblfalse
 wpoke stack(0),10,wpeek(stack(0),10)+2
