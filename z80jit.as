@@ -88,12 +88,12 @@ return
 
 #defcfunc getjitedptr var startaddrfrommp
 dupptr startaddr,varptr(startaddrfrommp),4,4
+gosub *compiler
+z80freezeblocker=0
 jitedprogrammptr=*jitedprogramm
 return lpeek(jitedprogrammptr,0)
 
 *jitedprogramm
-gosub *compiler
-z80freezeblocker=0
 
 memcpy stack@z80moduleaccess(0),jitstack(0),64,0,0
 memcpy stack@z80moduleaccess(1),jitstack(1),64,0,0
