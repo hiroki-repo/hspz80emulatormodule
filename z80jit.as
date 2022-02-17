@@ -70,7 +70,8 @@ z80jitintervaljobgotoflag=prm_1
 return
 #defcfunc z80jitfreezeblockerget
 return z80freezeblocker
-#deffunc z80jitrun var startaddr
+#deffunc z80jitrun var startaddrfrommp
+dupptr startaddr,varptr(startaddrfrommp),4,4
 gosub *compiler
 z80freezeblocker=0
 
@@ -84,6 +85,27 @@ lpoke startaddr,0,wpeek(stack@z80moduleaccess(0),10)
 memcpy jitstack(0),stack@z80moduleaccess(0),64,0,0
 memcpy jitstack(1),stack@z80moduleaccess(1),64,0,0
 return
+
+#defcfunc getjitedptr var startaddrfrommp
+dupptr startaddr,varptr(startaddrfrommp),4,4
+jitedprogrammptr=*jitedprogramm
+return lpeek(jitedprogrammptr,0)
+
+*jitedprogramm
+gosub *compiler
+z80freezeblocker=0
+
+memcpy stack@z80moduleaccess(0),jitstack(0),64,0,0
+memcpy stack@z80moduleaccess(1),jitstack(1),64,0,0
+wpoke stack@z80moduleaccess(0),10,startaddr
+ldim jitrundbtedaddress,1
+lpoke jitrundbtedaddress,0,varptr(jitcache)
+gosub jitforjumpaddr(startaddr)
+lpoke startaddr,0,wpeek(stack@z80moduleaccess(0),10)
+memcpy jitstack(0),stack@z80moduleaccess(0),64,0,0
+memcpy jitstack(1),stack@z80moduleaccess(1),64,0,0
+return
+
 *z80jitcream1
 wpoke stack@z80moduleaccess(0),10,startaddr
 memcpy stack@z80moduleaccess(0),jitstack(0),64,0,0
@@ -260,7 +282,8 @@ lpoke memorystocker(compiledaddrz80&0xFFFF),0,z80opcodexedchk|(z80readmem(compil
 compiledaddrz80+=1//:if opcodex@z80moduleaccess(z80opcodexedchk)=0{compiledaddrz80+=1}else{compiledaddrz80+=opcodex@z80moduleaccess(z80opcodexedchk)}
 return
 
-#deffunc z80jitinterrupt var startaddr,int iomemoryidforz80, int threadidforrunthez80
+#deffunc z80jitinterrupt var startaddrfrommp,int iomemoryidforz80, int threadidforrunthez80
+dupptr startaddr,varptr(startaddrfrommp),4,4
 if z80haltmodesw@z80moduleaccess(threadidforrunthez80)=1{z80haltmodesw(threadidforrunthez80)=0:startaddr=startaddr+1}
 if (peek(jitstack(1),14) & 0x01){
 if z80runmode@z80moduleaccess(threadidforrunthez80)=0{
@@ -298,7 +321,8 @@ poke jitstack(1),15,0
 return
 
 
-#deffunc z80jitnminterrupt var startaddr, int threadidforrunthez80
+#deffunc z80jitnminterrupt var startaddrfrommp, int threadidforrunthez80
+dupptr startaddr,varptr(startaddrfrommp),4,4
 if z80haltmodesw(threadidforrunthez80)=1{z80haltmodesw(threadidforrunthez80)=0:startaddr=startaddr+1}
 z80writemem wpeek(jitstack(0),12)-2,peek(jitstack(0),10)
 z80writemem wpeek(jitstack(0),12)-1,peek(jitstack(0),11)
