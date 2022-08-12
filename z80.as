@@ -2226,8 +2226,8 @@ return
 #deffunc z80stackreset int threadidforrunthez80
 z80scfccfflag(threadidforrunthez80)=0
 z80haltmodesw(threadidforrunthez80)=0
-/*memset stackformt(0,threadidforrunthez80),255,64,0
-memset stackformt(1,threadidforrunthez80),255,64,0*/
+memset stackformt(0,threadidforrunthez80),0,64,0
+memset stackformt(1,threadidforrunthez80),0,64,0
 return
 
 #deffunc z80hltendset int threadidforrunthez80,int threadidforrunthez80ptrid

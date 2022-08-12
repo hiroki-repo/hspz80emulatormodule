@@ -790,7 +790,7 @@ poke code,indirectaddr,0xC6
 indirectaddr++
 poke code,indirectaddr,((args4asm1)&0xFF)
 labelsetx(indirectaddr,0)=argsstr4array(1)
-labelsetx(indirectaddr,1)="1e"
+labelsetx(indirectaddr,1)="1"
 indirectaddr++
 }
 
@@ -826,7 +826,7 @@ poke code,indirectaddr,0xCE
 indirectaddr++
 poke code,indirectaddr,((args4asm1)&0xFF)
 labelsetx(indirectaddr,0)=argsstr4array(1)
-labelsetx(indirectaddr,1)="1e"
+labelsetx(indirectaddr,1)="1"
 indirectaddr++
 }
 
@@ -862,7 +862,7 @@ poke code,indirectaddr,0xD6
 indirectaddr++
 poke code,indirectaddr,((args4asm0)&0xFF)
 labelsetx(indirectaddr,0)=argsstr4array(0)
-labelsetx(indirectaddr,1)="1e"
+labelsetx(indirectaddr,1)="1"
 indirectaddr++
 }
 
@@ -890,7 +890,7 @@ poke code,indirectaddr,0xDE
 indirectaddr++
 poke code,indirectaddr,((args4asm1)&0xFF)
 labelsetx(indirectaddr,0)=argsstr4array(1)
-labelsetx(indirectaddr,1)="1e"
+labelsetx(indirectaddr,1)="1"
 indirectaddr++
 }
 
@@ -926,7 +926,7 @@ poke code,indirectaddr,0xE6
 indirectaddr++
 poke code,indirectaddr,((args4asm0)&0xFF)
 labelsetx(indirectaddr,0)=argsstr4array(0)
-labelsetx(indirectaddr,1)="1e"
+labelsetx(indirectaddr,1)="1"
 indirectaddr++
 }
 
@@ -952,7 +952,7 @@ poke code,indirectaddr,0xEE
 indirectaddr++
 poke code,indirectaddr,((args4asm0)&0xFF)
 labelsetx(indirectaddr,0)=argsstr4array(0)
-labelsetx(indirectaddr,1)="1e"
+labelsetx(indirectaddr,1)="1"
 indirectaddr++
 }
 
@@ -978,7 +978,7 @@ poke code,indirectaddr,0xF6
 indirectaddr++
 poke code,indirectaddr,((args4asm0)&0xFF)
 labelsetx(indirectaddr,0)=argsstr4array(0)
-labelsetx(indirectaddr,1)="1e"
+labelsetx(indirectaddr,1)="1"
 indirectaddr++
 }
 
@@ -1004,7 +1004,7 @@ poke code,indirectaddr,0xFE
 indirectaddr++
 poke code,indirectaddr,((args4asm0)&0xFF)
 labelsetx(indirectaddr,0)=argsstr4array(0)
-labelsetx(indirectaddr,1)="1e"
+labelsetx(indirectaddr,1)="1"
 indirectaddr++
 }
 
