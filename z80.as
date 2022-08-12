@@ -1982,10 +1982,10 @@ cpuamountmax=256
 dim z80scfccfflag,cpuamountmax
 dim r2forcalc,cpuamountmax
 sdim stackformt,64,2,cpuamountmax
-for cnt2,0,cpuamountmax,1
+/*for cnt2,0,cpuamountmax,1
 memset stackformt(0,cnt2),255,64,0
 memset stackformt(1,cnt2),255,64,0
-next
+next*/
 sdim iomemory,cpuamountmax
 dim z80runmode,cpuamountmax
 dim z80haltmodesw,cpuamountmax
@@ -2226,8 +2226,8 @@ return
 #deffunc z80stackreset int threadidforrunthez80
 z80scfccfflag(threadidforrunthez80)=0
 z80haltmodesw(threadidforrunthez80)=0
-memset stackformt(0,threadidforrunthez80),255,64,0
-memset stackformt(1,threadidforrunthez80),255,64,0
+/*memset stackformt(0,threadidforrunthez80),255,64,0
+memset stackformt(1,threadidforrunthez80),255,64,0*/
 return
 
 #deffunc z80hltendset int threadidforrunthez80,int threadidforrunthez80ptrid

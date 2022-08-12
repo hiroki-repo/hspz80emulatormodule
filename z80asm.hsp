@@ -1,0 +1,1341 @@
+#include "hsp3cl.as"
+#packopt name "z80asm"
+#packopt orgpath 1
+#module
+#defcfunc getintoropr str prm_0
+switch prm_0
+case "$"
+if asmafter=0{return indirectaddr|0x80000000}else{return cnt4afterseq|0x80000000}
+swbreak
+
+case "NZ"
+return 1
+swbreak
+case "Z"
+return 2
+swbreak
+case "NC"
+return 3
+swbreak
+case "C"
+return 4
+swbreak
+case "PO"
+return 5
+swbreak
+case "PE"
+return 6
+swbreak
+case "P"
+return 7
+swbreak
+case "M"
+return 8
+swbreak
+swend
+return 0
+#defcfunc getcodelabelptr str prm_0
+switch prm_0
+case "(BC)"
+return 0
+swbreak
+case "(DE)"
+return 1
+swbreak
+case "(SP)"
+return 3
+swbreak
+
+case "BC"
+return 0|0x20000000
+swbreak
+case "DE"
+return 1|0x20000000
+swbreak
+case "HL"
+return 2|0x20000000
+swbreak
+case "IX"
+return 2|0x21000000
+swbreak
+case "IY"
+return 2|0x22000000
+swbreak
+case "SP"
+return 3|0x20000000
+swbreak
+case "AF"
+return 3|0x20000000
+swbreak
+
+case "B"
+return 0|0x40000000
+swbreak
+case "C"
+return 1|0x40000000
+swbreak
+case "D"
+return 2|0x40000000
+swbreak
+case "E"
+return 3|0x40000000
+swbreak
+case "H"
+return 4|0x40000000
+swbreak
+case "L"
+return 5|0x40000000
+swbreak
+case "F"
+return 6|0x40000000
+swbreak
+case "(HL)"
+return 6|0x40000000
+swbreak
+case "IXH"
+return 4|0x41000000
+swbreak
+case "IXL"
+return 5|0x41000000
+swbreak
+case "(IX)"
+return 6|0x41000000
+swbreak
+case "IYH"
+return 4|0x42000000
+swbreak
+case "IYL"
+return 5|0x42000000
+swbreak
+case "(IY)"
+return 6|0x42000000
+swbreak
+case "A"
+return 7|0x40000000
+swbreak
+
+default
+prm_0x="":prm_0x=prm_0:addroutput=0:iiptx=0
+if strmid(prm_0x,0,3)="(IX" or strmid(prm_0x,0,3)="(IY" {
+switch strmid(prm_0x,1,2)
+case "IX"
+iiptx=0x01000000
+swbreak
+case "IY"
+iiptx=0x02000000
+swbreak
+swend
+prm_0x4chm=""
+prm_0x4chm=strmid(prm_0x,3,strlen(prm_0x)-4)
+if strmid(prm_0x4chm,0,1)="+"{prm_0x4chm=strmid(prm_0x4chm,1,strlen(prm_0x4chm))}
+addroutput=1
+return 6|((4|8)<<28)|iiptx|((getcodelabelptr(prm_0x4chm)&0xFF)<<16)
+}
+if (strmid(prm_0x,0,1)="\"" and strmid(prm_0x,-1,1)="\"") or (strmid(prm_0x,0,1)="\'" and strmid(prm_0x,-1,1)="\'"){prm_0x=strmid(prm_0x,1,strlen(prm_0x)-2):if strmid(prm_0x,0,1)="\\"{return (wpeek(prm_0x,1)|(peek(prm_0x,3)<<24))|0x10000000}else{return lpeek(prm_0x,0)|0x10000000}}else{
+if strmid(prm_0x,0,1)="(" and strmid(prm_0x,-1,1)=")"{addroutput=1:prm_0x=strmid(prm_0x,1,strlen(prm_0x)-2)}
+switch strmid(prm_0x,-1,1)
+case "H"
+if addroutput=0{
+return int("$"+strmid(prm_0x,0,strlen(prm_0x)-1))|0x10000000|iiptx
+}else{
+return int("$"+strmid(prm_0x,0,strlen(prm_0x)-1))|0x80000000|iiptx
+}
+swbreak
+case "B"
+inttmp=0
+repeat strlen(prm_0x)-1:if strmid(prm_0x,strlen(prm_0x)-cnt,1){inttmp|=(1<<cnt)}:loop
+if addroutput=0{
+return inttmp|0x10000000|iiptx
+}else{
+return inttmp|0x80000000|iiptx
+}
+swbreak
+default
+if (peek(prm_0x,0)>='0' and peek(prm_0x,0)<='9') or peek(prm_0x,0)='-'{
+
+if addroutput=0{
+return int(prm_0x)|0x10000000|iiptx
+}else{
+return int(prm_0x)|0x80000000|iiptx
+}
+
+}else{
+labelid=0
+repeat labelmax@:if labelname@(cnt)=prm_0x{labelid=cnt:break}:loop
+if addroutput=0{
+return labelptr@(labelid)|0x10000000|iiptx
+}else{
+return labelptr@(labelid)|0x80000000|iiptx
+}
+}
+swbreak
+swend
+}
+
+swbreak
+swend
+return 0
+#global
+
+asmafter=0
+dircmdline=""+dir_cmdline
+repeat:if strmid(dircmdline,0,1)=" "{dircmdline=strmid(dircmdline,1,strlen(dircmdline)-1)}else{break}:loop
+dircmdline_fni=instr(dircmdline,0," ")
+dircmdline_fn=""+dircmdline
+if dircmdline=""{mes "Usage: z80asm [Z80 assembly source code's filename]\nEx:z80asm hello.asm":end -1}
+sdim code,65536
+baseaddr=0:indirectaddr=0
+exist dircmdline_fn
+strsize2=strsize
+if strsize2=-1{mes "File not found":end -1}
+notesel asmsource
+noteload dircmdline_fn
+bool4qot=0:repeat strlen(asmsource):if peek(asmsource,cnt)=34{bool4qot^=1}:if peek(asmsource,cnt)=39{bool4qot^=2}:if peek(asmsource,cnt)=0x09{poke asmsource,cnt,32}else{if peek(asmsource,cnt)>='a' and peek(asmsource,cnt)<='z' and bool4qot=0{poke asmsource,cnt,peek(asmsource,cnt)-32}}:loop
+
+asmsourceslc4show=""
+inststr="":argsstr="":labelmaxxed=0
+labelmax=1024
+sdim labelsetx,128,65536,3
+sdim labelname,4096,labelmax
+dim labelptr,labelmax
+repeat notemax
+noteget asmsourceslc,cnt
+repeat:if strmid(asmsourceslc,0,1)=" "{asmsourceslc=strmid(asmsourceslc,1,strlen(asmsourceslc)-1)}else{break}:loop
+crnfromlbltst1=instr(asmsourceslc,0,"\"")
+crnfromlbltst2=instr(asmsourceslc,0,"\'")
+crnfromlbltst3=instr(asmsourceslc,0,";")
+crnfromlbltst=crnfromlbltst1:if crnfromlbltst=-1{crnfromlbltst=crnfromlbltst2}
+crnfromlbl=instr(asmsourceslc,0,":")
+if crnfromlbltst+1=crnfromlbl or crnfromlbl=crnfromlbltst+2 or crnfromlbltst3<=crnfromlbl and crnfromlbl=-1{}else{
+labelname(labelmaxxed)=strmid(asmsourceslc,0,crnfromlbl)
+labelptr(labelmaxxed)=baseaddr+indirectaddr
+}
+spcfrominst=instr(asmsourceslc,0," ")
+if spcfrominst=-1{
+inststr=asmsourceslc
+argsstr=""
+}else{
+inststr=strmid(asmsourceslc,0,spcfrominst)
+argsstr=strmid(asmsourceslc,spcfrominst+1,strlen(asmsourceslc))
+}
+if strmid(inststr,0,1)=";"{inststr="":argsstr=""}
+bool4qot=0:argsstr4arrayid=0:sdim argsstr4array,4096,256
+repeat strlen(argsstr):datanumber=cnt:argsstrslc=strmid(argsstr,cnt,1):if peek(argsstrslc,0)=34 and ((bool4qot&4)=0){bool4qot^=1}:if peek(argsstrslc,0)=39 and ((bool4qot&4)=0){bool4qot^=2}:if argsstrslc=";" and bool4qot=0{break}:if argsstrslc=","{argsstr4arrayid+=1}else{if argsstrslc!" " or ((bool4qot&3)!0){argsstr4array(argsstr4arrayid)+=argsstrslc}}:if (peek(argsstrslc,0)=34 or peek(argsstrslc,0)=39) and ((bool4qot&3)!0){bool4qot^=4}:loop
+/*
+mes inststr
+mes argsstr4array(0)
+mes argsstr4array(1)
+mes argsstr4array(2)*/
+args4asm0=getcodelabelptr(argsstr4array(0))
+args4asm1=getcodelabelptr(argsstr4array(1))
+args4asm2=getcodelabelptr(argsstr4array(2))
+if ((args4asm0&0x43000000)!0){
+switch ((args4asm0&0x3000000)>>24)
+case 1
+poke code,indirectaddr,0xdd
+indirectaddr++
+swbreak
+case 2
+poke code,indirectaddr,0xfd
+indirectaddr++
+swbreak
+swend
+}else{
+if ((args4asm1&0x43000000)!0){
+switch ((args4asm1&0x3000000)>>24)
+case 1
+poke code,indirectaddr,0xdd
+indirectaddr++
+swbreak
+case 2
+poke code,indirectaddr,0xfd
+indirectaddr++
+swbreak
+swend
+}
+}
+switch inststr
+case "ORG"
+baseaddr=args4asm0&0xFFFF
+swbreak
+case "NOP"
+poke code,indirectaddr,0
+indirectaddr++
+swbreak
+
+case "DI"
+poke code,indirectaddr,0xF3
+indirectaddr++
+swbreak
+case "EI"
+poke code,indirectaddr,0xFB
+indirectaddr++
+swbreak
+case "EXX"
+poke code,indirectaddr,0xD9
+indirectaddr++
+swbreak
+
+case "NEG"
+poke code,indirectaddr,0xED
+indirectaddr++
+poke code,indirectaddr,0x44
+indirectaddr++
+swbreak
+case "RETN"
+poke code,indirectaddr,0xED
+indirectaddr++
+poke code,indirectaddr,0x45
+indirectaddr++
+swbreak
+case "RETI"
+poke code,indirectaddr,0xED
+indirectaddr++
+poke code,indirectaddr,0x4D
+indirectaddr++
+swbreak
+case "RLD"
+poke code,indirectaddr,0xED
+indirectaddr++
+poke code,indirectaddr,0x6F
+indirectaddr++
+swbreak
+case "RRD"
+poke code,indirectaddr,0xED
+indirectaddr++
+poke code,indirectaddr,0x67
+indirectaddr++
+swbreak
+case "IM"
+if (args4asm1&0x10000000){
+poke code,indirectaddr,0xED
+indirectaddr++
+poke code,indirectaddr,0x46
+switch (args4asm1&0xFF)
+case 0
+poke code,indirectaddr,0x46
+swbreak
+case 1
+poke code,indirectaddr,0x56
+swbreak
+case 2
+poke code,indirectaddr,0x5E
+swbreak
+swend
+indirectaddr++
+}
+swbreak
+
+case "LDI"
+poke code,indirectaddr,0xED
+indirectaddr++
+poke code,indirectaddr,0xA0
+indirectaddr++
+swbreak
+case "CPI"
+poke code,indirectaddr,0xED
+indirectaddr++
+poke code,indirectaddr,0xA1
+indirectaddr++
+swbreak
+case "INI"
+poke code,indirectaddr,0xED
+indirectaddr++
+poke code,indirectaddr,0xA2
+indirectaddr++
+swbreak
+case "OUTI"
+poke code,indirectaddr,0xED
+indirectaddr++
+poke code,indirectaddr,0xA3
+indirectaddr++
+swbreak
+
+case "LDD"
+poke code,indirectaddr,0xED
+indirectaddr++
+poke code,indirectaddr,0xA8
+indirectaddr++
+swbreak
+case "CPD"
+poke code,indirectaddr,0xED
+indirectaddr++
+poke code,indirectaddr,0xA9
+indirectaddr++
+swbreak
+case "IND"
+poke code,indirectaddr,0xED
+indirectaddr++
+poke code,indirectaddr,0xAA
+indirectaddr++
+swbreak
+case "OUTD"
+poke code,indirectaddr,0xED
+indirectaddr++
+poke code,indirectaddr,0xAB
+indirectaddr++
+swbreak
+
+case "LDIR"
+poke code,indirectaddr,0xED
+indirectaddr++
+poke code,indirectaddr,0xB0
+indirectaddr++
+swbreak
+case "CPIR"
+poke code,indirectaddr,0xED
+indirectaddr++
+poke code,indirectaddr,0xB1
+indirectaddr++
+swbreak
+case "INIR"
+poke code,indirectaddr,0xED
+indirectaddr++
+poke code,indirectaddr,0xB2
+indirectaddr++
+swbreak
+case "OTIR"
+poke code,indirectaddr,0xED
+indirectaddr++
+poke code,indirectaddr,0xB3
+indirectaddr++
+swbreak
+
+case "LDDR"
+poke code,indirectaddr,0xED
+indirectaddr++
+poke code,indirectaddr,0xB8
+indirectaddr++
+swbreak
+case "CPDR"
+poke code,indirectaddr,0xED
+indirectaddr++
+poke code,indirectaddr,0xB9
+indirectaddr++
+swbreak
+case "INDR"
+poke code,indirectaddr,0xED
+indirectaddr++
+poke code,indirectaddr,0xBA
+indirectaddr++
+swbreak
+case "OTDR"
+poke code,indirectaddr,0xED
+indirectaddr++
+poke code,indirectaddr,0xBB
+indirectaddr++
+swbreak
+
+case "RLCA"
+poke code,indirectaddr,0x07
+indirectaddr++
+swbreak
+case "RRCA"
+poke code,indirectaddr,0x0F
+indirectaddr++
+swbreak
+
+case "RLA"
+poke code,indirectaddr,0x17
+indirectaddr++
+swbreak
+case "RRA"
+poke code,indirectaddr,0x1F
+indirectaddr++
+swbreak
+
+case "DAA"
+poke code,indirectaddr,0x27
+indirectaddr++
+swbreak
+case "CPL"
+poke code,indirectaddr,0x2F
+indirectaddr++
+swbreak
+
+case "SCF"
+poke code,indirectaddr,0x37
+indirectaddr++
+swbreak
+case "CCF"
+poke code,indirectaddr,0x3F
+indirectaddr++
+swbreak
+
+case "HALT"
+poke code,indirectaddr,0x76
+indirectaddr++
+swbreak
+
+
+case "RST"
+if (args4asm0&7)=0{
+poke code,indirectaddr,0xC7|(args4asm0&0x38)
+indirectaddr++
+}
+swbreak
+
+case "INC"
+if ((args4asm0&0x20000000)!0){
+poke code,indirectaddr,0x3|(args4asm0<<4)
+indirectaddr++
+}else{
+
+if ((args4asm0&0x40000000)!0){
+poke code,indirectaddr,0x4|(args4asm0<<3)
+indirectaddr++
+}
+
+}
+swbreak
+case "DEC"
+if ((args4asm0&0x20000000)!0){
+poke code,indirectaddr,0xb|(args4asm0<<4)
+indirectaddr++
+}else{
+
+if ((args4asm0&0x40000000)!0){
+poke code,indirectaddr,0x5|(args4asm0<<3)
+indirectaddr++
+}
+
+}
+swbreak
+
+case "OUT"
+
+if (args4asm0&0x80000000){
+if argsstr4array(1)="A"{
+poke code,indirectaddr,((args4asm0>>0)&0xFF)
+labelsetx(indirectaddr,0)=argsstr4array(0)
+labelsetx(indirectaddr,1)="1"
+indirectaddr++
+poke code,indirectaddr,0xD3
+indirectaddr++
+}
+}else{
+if argsstr4array(0)="(C)"{
+if argsstr4array(1)="0"{args4asm1=6|0x40000000}
+poke code,indirectaddr,0xED
+indirectaddr++
+poke code,indirectaddr,0x41|(args4asm1<<3)
+indirectaddr++
+}
+}
+
+swbreak
+
+case "IN"
+
+if (args4asm0&0x80000000){
+if argsstr4array(0)="A"{
+poke code,indirectaddr,((args4asm1>>0)&0xFF)
+labelsetx(indirectaddr,0)=argsstr4array(1)
+labelsetx(indirectaddr,1)="1"
+indirectaddr++
+poke code,indirectaddr,0xDB
+indirectaddr++
+}
+}else{
+if argsstr4array(0)="(C)" or argsstr4array(1)="(C)"{
+if argsstr4array(0)="(C)"{args4asm0=6|0x40000000}
+poke code,indirectaddr,0xED
+indirectaddr++
+poke code,indirectaddr,0x40|(args4asm0<<3)
+indirectaddr++
+}
+}
+
+swbreak
+
+case "RLC"
+if (args4asm0&0x40000000){
+poke code,indirectaddr,0xCB
+indirectaddr++
+if (args4asm0&0x80000000){
+poke code,indirectaddr,((args4asm0>>16)&0xFF)
+labelsetx(indirectaddr,0)=argsstr4array(0)
+labelsetx(indirectaddr,1)="1e"
+indirectaddr++
+}
+if (args4asm1&0x43000000)=0x40000000{
+poke code,indirectaddr,0x00|(args4asm1<<0)
+indirectaddr++
+}else{
+poke code,indirectaddr,0x00|(args4asm0<<0)
+indirectaddr++
+}
+}
+swbreak
+
+case "RRC"
+if (args4asm0&0x40000000){
+poke code,indirectaddr,0xCB
+indirectaddr++
+if (args4asm0&0x80000000){
+poke code,indirectaddr,((args4asm0>>16)&0xFF)
+labelsetx(indirectaddr,0)=argsstr4array(0)
+labelsetx(indirectaddr,1)="1e"
+indirectaddr++
+}
+if (args4asm1&0x43000000)=0x40000000{
+poke code,indirectaddr,0x08|(args4asm1<<0)
+indirectaddr++
+}else{
+poke code,indirectaddr,0x08|(args4asm0<<0)
+indirectaddr++
+}
+}
+swbreak
+
+case "RL"
+if (args4asm0&0x40000000){
+poke code,indirectaddr,0xCB
+indirectaddr++
+if (args4asm0&0x80000000){
+poke code,indirectaddr,((args4asm0>>16)&0xFF)
+labelsetx(indirectaddr,0)=argsstr4array(0)
+labelsetx(indirectaddr,1)="1e"
+indirectaddr++
+}
+if (args4asm1&0x43000000)=0x40000000{
+poke code,indirectaddr,0x10|(args4asm1<<0)
+indirectaddr++
+}else{
+poke code,indirectaddr,0x10|(args4asm0<<0)
+indirectaddr++
+}
+}
+swbreak
+
+case "RR"
+if (args4asm0&0x40000000){
+poke code,indirectaddr,0xCB
+indirectaddr++
+if (args4asm0&0x80000000){
+poke code,indirectaddr,((args4asm0>>16)&0xFF)
+labelsetx(indirectaddr,0)=argsstr4array(0)
+labelsetx(indirectaddr,1)="1e"
+indirectaddr++
+}
+if (args4asm1&0x43000000)=0x40000000{
+poke code,indirectaddr,0x18|(args4asm1<<0)
+indirectaddr++
+}else{
+poke code,indirectaddr,0x18|(args4asm0<<0)
+indirectaddr++
+}
+}
+swbreak
+
+case "SLA"
+if (args4asm0&0x40000000){
+poke code,indirectaddr,0xCB
+indirectaddr++
+if (args4asm0&0x80000000){
+poke code,indirectaddr,((args4asm0>>16)&0xFF)
+labelsetx(indirectaddr,0)=argsstr4array(0)
+labelsetx(indirectaddr,1)="1e"
+indirectaddr++
+}
+if (args4asm1&0x43000000)=0x40000000{
+poke code,indirectaddr,0x20|(args4asm1<<0)
+indirectaddr++
+}else{
+poke code,indirectaddr,0x20|(args4asm0<<0)
+indirectaddr++
+}
+}
+swbreak
+
+case "SRA"
+if (args4asm0&0x40000000){
+poke code,indirectaddr,0xCB
+indirectaddr++
+if (args4asm0&0x80000000){
+poke code,indirectaddr,((args4asm0>>16)&0xFF)
+labelsetx(indirectaddr,0)=argsstr4array(0)
+labelsetx(indirectaddr,1)="1e"
+indirectaddr++
+}
+if (args4asm1&0x43000000)=0x40000000{
+poke code,indirectaddr,0x28|(args4asm1<<0)
+indirectaddr++
+}else{
+poke code,indirectaddr,0x28|(args4asm0<<0)
+indirectaddr++
+}
+}
+swbreak
+
+case "SLL"
+case "SLIA"
+if (args4asm0&0x40000000){
+poke code,indirectaddr,0xCB
+indirectaddr++
+if (args4asm0&0x80000000){
+poke code,indirectaddr,((args4asm0>>16)&0xFF)
+labelsetx(indirectaddr,0)=argsstr4array(0)
+labelsetx(indirectaddr,1)="1e"
+indirectaddr++
+}
+if (args4asm1&0x43000000)=0x40000000{
+poke code,indirectaddr,0x30|(args4asm1<<0)
+indirectaddr++
+}else{
+poke code,indirectaddr,0x30|(args4asm0<<0)
+indirectaddr++
+}
+}
+swbreak
+
+case "SRL"
+if (args4asm0&0x40000000){
+poke code,indirectaddr,0xCB
+indirectaddr++
+if (args4asm0&0x80000000){
+poke code,indirectaddr,((args4asm0>>16)&0xFF)
+labelsetx(indirectaddr,0)=argsstr4array(0)
+labelsetx(indirectaddr,1)="1e"
+indirectaddr++
+}
+if (args4asm1&0x43000000)=0x40000000{
+poke code,indirectaddr,0x38|(args4asm1<<0)
+indirectaddr++
+}else{
+poke code,indirectaddr,0x38|(args4asm0<<0)
+indirectaddr++
+}
+}
+swbreak
+
+case "BIT"
+if (args4asm0&0x40000000){
+poke code,indirectaddr,0xCB
+indirectaddr++
+if (args4asm0&0x80000000){
+poke code,indirectaddr,((args4asm1>>16)&0xFF)
+labelsetx(indirectaddr,0)=argsstr4array(1)
+labelsetx(indirectaddr,1)="1e"
+indirectaddr++
+}
+if (args4asm2&0x43000000)=0x40000000{
+poke code,indirectaddr,0x40|(args4asm2<<0)|(args4asm0<<3)
+indirectaddr++
+}else{
+poke code,indirectaddr,0x40|(args4asm1<<0)|(args4asm0<<3)
+indirectaddr++
+}
+}
+swbreak
+
+case "RES"
+if (args4asm0&0x40000000){
+poke code,indirectaddr,0xCB
+indirectaddr++
+if (args4asm0&0x80000000){
+poke code,indirectaddr,((args4asm1>>16)&0xFF)
+labelsetx(indirectaddr,0)=argsstr4array(1)
+labelsetx(indirectaddr,1)="1e"
+indirectaddr++
+}
+if (args4asm2&0x43000000)=0x40000000{
+poke code,indirectaddr,0x80|(args4asm2<<0)|(args4asm0<<3)
+indirectaddr++
+}else{
+poke code,indirectaddr,0x80|(args4asm1<<0)|(args4asm0<<3)
+indirectaddr++
+}
+}
+swbreak
+
+case "SET"
+if (args4asm0&0x40000000){
+poke code,indirectaddr,0xCB
+indirectaddr++
+if (args4asm0&0x80000000){
+poke code,indirectaddr,((args4asm1>>16)&0xFF)
+labelsetx(indirectaddr,0)=argsstr4array(1)
+labelsetx(indirectaddr,1)="1e"
+indirectaddr++
+}
+if (args4asm2&0x43000000)=0x40000000{
+poke code,indirectaddr,0xC0|(args4asm2<<0)|(args4asm0<<3)
+indirectaddr++
+}else{
+poke code,indirectaddr,0xC0|(args4asm1<<0)|(args4asm0<<3)
+indirectaddr++
+}
+}
+swbreak
+
+case "ADD"
+if ((args4asm0&0x40000000)!0){
+
+if ((args4asm1&0x40000000)!0){
+if argsstr4array(0)="A"{
+poke code,indirectaddr,0x80|(args4asm1<<0)
+indirectaddr++
+
+if (args4asm0&0x80000000){
+poke code,indirectaddr,((args4asm1>>16)&0xFF)
+labelsetx(indirectaddr,0)=argsstr4array(1)
+labelsetx(indirectaddr,1)="1e"
+indirectaddr++
+}
+
+}
+}else{
+poke code,indirectaddr,0xC6
+indirectaddr++
+poke code,indirectaddr,((args4asm1)&0xFF)
+labelsetx(indirectaddr,0)=argsstr4array(1)
+labelsetx(indirectaddr,1)="1e"
+indirectaddr++
+}
+
+}else{
+if ((args4asm0&0x20000000)!0) and ((args4asm1&0x20000000)!0){
+if args4asm0&0x6{
+poke code,indirectaddr,0x9|(args4asm1<<4)
+indirectaddr++
+}
+}
+
+}
+swbreak
+
+case "ADC"
+if ((args4asm0&0x40000000)!0){
+
+if ((args4asm1&0x40000000)!0){
+if argsstr4array(0)="A"{
+poke code,indirectaddr,0x88|(args4asm1<<0)
+indirectaddr++
+
+if (args4asm0&0x80000000){
+poke code,indirectaddr,((args4asm1>>16)&0xFF)
+labelsetx(indirectaddr,0)=argsstr4array(1)
+labelsetx(indirectaddr,1)="1e"
+indirectaddr++
+}
+
+}
+}else{
+poke code,indirectaddr,0xCE
+indirectaddr++
+poke code,indirectaddr,((args4asm1)&0xFF)
+labelsetx(indirectaddr,0)=argsstr4array(1)
+labelsetx(indirectaddr,1)="1e"
+indirectaddr++
+}
+
+}else{
+if ((args4asm0&0x20000000)!0) and ((args4asm1&0x20000000)!0){
+if args4asm0&0x6{
+poke code,indirectaddr,0xed
+indirectaddr++
+poke code,indirectaddr,0x4A|(args4asm1<<4)
+indirectaddr++
+}
+}
+
+}
+swbreak
+
+case "SUB"
+if ((args4asm0&0x40000000)!0){
+
+if ((args4asm0&0x40000000)!0){
+poke code,indirectaddr,0x90|(args4asm0<<0)
+indirectaddr++
+
+if (args4asm0&0x80000000){
+poke code,indirectaddr,((args4asm0>>16)&0xFF)
+labelsetx(indirectaddr,0)=argsstr4array(0)
+labelsetx(indirectaddr,1)="1e"
+indirectaddr++
+}
+
+}else{
+poke code,indirectaddr,0xD6
+indirectaddr++
+poke code,indirectaddr,((args4asm0)&0xFF)
+labelsetx(indirectaddr,0)=argsstr4array(0)
+labelsetx(indirectaddr,1)="1e"
+indirectaddr++
+}
+
+}
+swbreak
+
+case "SBC"
+if ((args4asm0&0x40000000)!0){
+
+if ((args4asm1&0x40000000)!0){
+if argsstr4array(0)="A"{
+poke code,indirectaddr,0x98|(args4asm1<<0)
+indirectaddr++
+
+if (args4asm0&0x80000000){
+poke code,indirectaddr,((args4asm1>>16)&0xFF)
+labelsetx(indirectaddr,0)=argsstr4array(1)
+labelsetx(indirectaddr,1)="1e"
+indirectaddr++
+}
+
+}
+}else{
+poke code,indirectaddr,0xDE
+indirectaddr++
+poke code,indirectaddr,((args4asm1)&0xFF)
+labelsetx(indirectaddr,0)=argsstr4array(1)
+labelsetx(indirectaddr,1)="1e"
+indirectaddr++
+}
+
+}else{
+if ((args4asm0&0x20000000)!0) and ((args4asm1&0x20000000)!0){
+if args4asm0&0x6{
+poke code,indirectaddr,0xed
+indirectaddr++
+poke code,indirectaddr,0x42|(args4asm1<<4)
+indirectaddr++
+}
+}
+
+}
+swbreak
+
+case "AND"
+if ((args4asm0&0x40000000)!0){
+
+if ((args4asm0&0x40000000)!0){
+poke code,indirectaddr,0xA0|(args4asm0<<0)
+indirectaddr++
+
+if (args4asm0&0x80000000){
+poke code,indirectaddr,((args4asm0>>16)&0xFF)
+labelsetx(indirectaddr,0)=argsstr4array(0)
+labelsetx(indirectaddr,1)="1e"
+indirectaddr++
+}
+
+}else{
+poke code,indirectaddr,0xE6
+indirectaddr++
+poke code,indirectaddr,((args4asm0)&0xFF)
+labelsetx(indirectaddr,0)=argsstr4array(0)
+labelsetx(indirectaddr,1)="1e"
+indirectaddr++
+}
+
+}
+swbreak
+
+case "XOR"
+if ((args4asm0&0x40000000)!0){
+
+if ((args4asm0&0x40000000)!0){
+poke code,indirectaddr,0xA8|(args4asm0<<0)
+indirectaddr++
+
+if (args4asm0&0x80000000){
+poke code,indirectaddr,((args4asm0>>16)&0xFF)
+labelsetx(indirectaddr,0)=argsstr4array(0)
+labelsetx(indirectaddr,1)="1e"
+indirectaddr++
+}
+
+}else{
+poke code,indirectaddr,0xEE
+indirectaddr++
+poke code,indirectaddr,((args4asm0)&0xFF)
+labelsetx(indirectaddr,0)=argsstr4array(0)
+labelsetx(indirectaddr,1)="1e"
+indirectaddr++
+}
+
+}
+swbreak
+
+case "OR"
+if ((args4asm0&0x40000000)!0){
+
+if ((args4asm0&0x40000000)!0){
+poke code,indirectaddr,0xB0|(args4asm0<<0)
+indirectaddr++
+
+if (args4asm0&0x80000000){
+poke code,indirectaddr,((args4asm0>>16)&0xFF)
+labelsetx(indirectaddr,0)=argsstr4array(0)
+labelsetx(indirectaddr,1)="1e"
+indirectaddr++
+}
+
+}else{
+poke code,indirectaddr,0xF6
+indirectaddr++
+poke code,indirectaddr,((args4asm0)&0xFF)
+labelsetx(indirectaddr,0)=argsstr4array(0)
+labelsetx(indirectaddr,1)="1e"
+indirectaddr++
+}
+
+}
+swbreak
+
+case "CP"
+if ((args4asm0&0x40000000)!0){
+
+if ((args4asm0&0x40000000)!0){
+poke code,indirectaddr,0xB8|(args4asm0<<0)
+indirectaddr++
+
+if (args4asm0&0x80000000){
+poke code,indirectaddr,((args4asm0>>16)&0xFF)
+labelsetx(indirectaddr,0)=argsstr4array(0)
+labelsetx(indirectaddr,1)="1e"
+indirectaddr++
+}
+
+}else{
+poke code,indirectaddr,0xFE
+indirectaddr++
+poke code,indirectaddr,((args4asm0)&0xFF)
+labelsetx(indirectaddr,0)=argsstr4array(0)
+labelsetx(indirectaddr,1)="1e"
+indirectaddr++
+}
+
+}
+swbreak
+
+case "DJNZ"
+poke code,indirectaddr,0x10
+indirectaddr++
+poke code,indirectaddr,((args4asm0)&0xFF)
+labelsetx(indirectaddr,0)=argsstr4array(0)
+labelsetx(indirectaddr,1)="1e"
+indirectaddr++
+swbreak
+case "JR"
+condition=getintoropr(argsstr4array(0))
+poke code,indirectaddr,0x18+(condition*8)
+indirectaddr++
+if condition=0{
+poke code,indirectaddr,((args4asm0)&0xFF)
+labelsetx(indirectaddr,0)=argsstr4array(0)
+labelsetx(indirectaddr,1)="1e"
+indirectaddr++
+}else{
+poke code,indirectaddr,((args4asm1)&0xFF)
+labelsetx(indirectaddr,0)=argsstr4array(1)
+labelsetx(indirectaddr,1)="1e"
+indirectaddr++
+}
+swbreak
+
+case "EX"
+if argsstr4array(0)="AF" and argsstr4array(0)="AF\'"{
+poke code,indirectaddr,0x08
+indirectaddr++
+}else{
+
+if argsstr4array(0)="(SP)"{
+poke code,indirectaddr,0xE3
+indirectaddr++
+}else{
+
+if argsstr4array(0)="DE"{
+poke code,indirectaddr,0xEB
+indirectaddr++
+}
+
+}
+
+}
+swbreak
+
+case "JP"
+if (args4asm0&0x40000006)=0x40000006{
+poke code,indirectaddr,0xE9
+indirectaddr++
+}else{
+condition=getintoropr(argsstr4array(0))
+if condition=0{
+poke code,indirectaddr,0xC3
+indirectaddr++
+wpoke code,indirectaddr,((args4asm0)&0xFF)
+labelsetx(indirectaddr,0)=argsstr4array(0)
+labelsetx(indirectaddr,1)="2"
+indirectaddr++
+indirectaddr++
+}else{
+poke code,indirectaddr,0xC2+((condition-1)*8)
+indirectaddr++
+wpoke code,indirectaddr,((args4asm1)&0xFF)
+labelsetx(indirectaddr,0)=argsstr4array(1)
+labelsetx(indirectaddr,1)="2"
+indirectaddr++
+indirectaddr++
+}
+}
+swbreak
+case "CALL"
+condition=getintoropr(argsstr4array(0))
+if condition=0{
+poke code,indirectaddr,0xCD
+indirectaddr++
+wpoke code,indirectaddr,((args4asm0)&0xFF)
+labelsetx(indirectaddr,0)=argsstr4array(0)
+labelsetx(indirectaddr,1)="2"
+indirectaddr++
+indirectaddr++
+}else{
+poke code,indirectaddr,0xC4+((condition-1)*8)
+indirectaddr++
+wpoke code,indirectaddr,((args4asm1)&0xFF)
+labelsetx(indirectaddr,0)=argsstr4array(1)
+labelsetx(indirectaddr,1)="2"
+indirectaddr++
+indirectaddr++
+}
+swbreak
+case "RET"
+condition=getintoropr(argsstr4array(0))
+if condition=0{
+poke code,indirectaddr,0xC9
+indirectaddr++
+}else{
+poke code,indirectaddr,0xC0+((condition-1)*8)
+indirectaddr++
+}
+swbreak
+
+case "POP"
+if (args4asm0&0x20000000){
+poke code,indirectaddr,0xC1|(args4asm0<<4)
+indirectaddr++
+}
+swbreak
+case "PUSH"
+if (args4asm0&0x20000000){
+poke code,indirectaddr,0xC5|(args4asm0<<4)
+indirectaddr++
+}
+swbreak
+
+case "LD"
+if argsstr4array(0)="R" or argsstr4array(1)="R"{
+if argsstr4array(0)="A" or argsstr4array(1)="A"{
+poke code,indirectaddr,0xED
+indirectaddr++
+if argsstr4array(0)="R"{
+poke code,indirectaddr,0x4F
+indirectaddr++
+}else{
+poke code,indirectaddr,0x5F
+indirectaddr++
+}
+}
+}else{
+if argsstr4array(0)="I" or argsstr4array(1)="I"{
+if argsstr4array(0)="A" or argsstr4array(1)="A"{
+poke code,indirectaddr,0xED
+indirectaddr++
+if argsstr4array(0)="I"{
+poke code,indirectaddr,0x47
+indirectaddr++
+}else{
+poke code,indirectaddr,0x57
+indirectaddr++
+}
+}
+}else{
+if argsstr4array(0)="SP"{
+
+poke code,indirectaddr,0xF9
+indirectaddr++
+
+}else{
+if ((args4asm0&0x40000000)!0) and ((args4asm1&0x40000000)!0){
+poke code,indirectaddr,0x40|(args4asm0<<3)|(args4asm1<<0)
+indirectaddr++
+if (args4asm0&0x80000000){
+poke code,indirectaddr,((args4asm0>>16)&0xFF)
+labelsetx(indirectaddr,0)=argsstr4array(0)
+labelsetx(indirectaddr,1)="1e"
+indirectaddr++
+}
+
+if (args4asm1&0x80000000){
+poke code,indirectaddr,((args4asm1>>16)&0xFF)
+labelsetx(indirectaddr,0)=argsstr4array(1)
+labelsetx(indirectaddr,1)="1e"
+indirectaddr++
+}
+
+}else{
+if ((args4asm0&0x40000000)!0) and ((args4asm1&0x10000000)!0){
+poke code,indirectaddr,0x6|(args4asm0<<3)
+indirectaddr++
+if (args4asm0&0x80000000){
+poke code,indirectaddr,((args4asm0>>16)&0xFF)
+labelsetx(indirectaddr,0)=argsstr4array(0)
+labelsetx(indirectaddr,1)="1e"
+indirectaddr++
+}
+poke code,indirectaddr,args4asm1
+labelsetx(indirectaddr,0)=argsstr4array(1)
+labelsetx(indirectaddr,1)="1"
+indirectaddr++
+}else{
+if ((args4asm0&0x20000000)!0) and ((args4asm1&0x10000000)!0){
+poke code,indirectaddr,0x1|(args4asm0<<4)
+indirectaddr++
+wpoke code,indirectaddr,args4asm1
+labelsetx(indirectaddr,0)=argsstr4array(1)
+labelsetx(indirectaddr,1)="2"
+indirectaddr++
+indirectaddr++
+}else{
+
+if ((args4asm0&0xC0000000)=0x80000000) and ((args4asm1&0x40000000)!0){
+if (args4asm0>>28)=0{
+poke code,indirectaddr,0x2|(args4asm0<<3)
+indirectaddr++
+}else{
+poke code,indirectaddr,0x32
+indirectaddr++
+wpoke code,indirectaddr,args4asm0
+labelsetx(indirectaddr,0)=argsstr4array(0)
+labelsetx(indirectaddr,1)="2"
+indirectaddr++
+indirectaddr++
+}
+}else{
+
+if ((args4asm0&0xC0000000)=0x80000000) and ((args4asm1&0x20000000)!0){
+if (args4asm1&0xF)=2{
+poke code,indirectaddr,0x22
+indirectaddr++
+wpoke code,indirectaddr,args4asm0
+labelsetx(indirectaddr,0)=argsstr4array(0)
+labelsetx(indirectaddr,1)="2"
+indirectaddr++
+indirectaddr++
+}else{
+poke code,indirectaddr,0xed
+indirectaddr++
+poke code,indirectaddr,0x43|(args4asm0<<4)
+indirectaddr++
+wpoke code,indirectaddr,args4asm0
+labelsetx(indirectaddr,0)=argsstr4array(0)
+labelsetx(indirectaddr,1)="2"
+indirectaddr++
+indirectaddr++
+
+}
+}else{
+if ((args4asm0&0x20000000)!0) and ((args4asm1&0xC0000000)=0x80000000){
+if (args4asm0&0xF)=2{
+poke code,indirectaddr,0x2A
+indirectaddr++
+wpoke code,indirectaddr,args4asm1
+labelsetx(indirectaddr,0)=argsstr4array(1)
+labelsetx(indirectaddr,1)="2"
+indirectaddr++
+indirectaddr++
+}else{
+poke code,indirectaddr,0xed
+indirectaddr++
+poke code,indirectaddr,0x4B|(args4asm1<<4)
+indirectaddr++
+wpoke code,indirectaddr,args4asm1
+labelsetx(indirectaddr,0)=argsstr4array(1)
+labelsetx(indirectaddr,1)="2"
+indirectaddr++
+indirectaddr++
+
+}
+}
+
+}
+}
+}
+}
+}
+
+}
+}
+}
+swbreak
+case "DB"
+repeat datanumber+1
+if strmid(argsstr4array(cnt),0,1)="\'" or strmid(argsstr4array(cnt),0,1)="\""{
+datatmp="":datatmpslc=""
+datatmp=strmid(argsstr4array(cnt),1,strlen(argsstr4array(cnt))-2)
+repeat strlen(datatmp):datatmpslc=strmid(datatmp,cnt,1):if datatmpslc="\\"{datatmpslc=strmid(datatmp,cnt+1,1):poke code,indirectaddr,peek(datatmpslc,0):indirectaddr++:continue cnt+2}:poke code,indirectaddr,peek(datatmpslc,0):indirectaddr++:loop
+}else{
+poke code,indirectaddr,getcodelabelptr(argsstr4array(cnt))
+labelsetx(indirectaddr,0)=argsstr4array(cnt)
+labelsetx(indirectaddr,1)="1"
+indirectaddr++
+}
+loop
+swbreak
+case "DS"
+stacksiz=(args4asm1&0xFFFFFF)
+if stacksiz=0{
+indirectaddr+=(args4asm0&0xFFFFFF)
+}else{
+indirectaddr+=((args4asm0&0xFFFFFF)*stacksiz)
+}
+swbreak
+case "DW"
+repeat datanumber+1
+if strmid(argsstr4array(cnt),0,1)="\'" or strmid(argsstr4array(cnt),0,1)="\""{
+datatmp="":datatmpslc=""
+datatmp=strmid(argsstr4array(cnt),1,strlen(argsstr4array(cnt))-2)
+repeat strlen(datatmp):datatmpslc=strmid(datatmp,cnt,1):if datatmpslc="\\"{datatmpslc=strmid(datatmp,cnt+1,1):wpoke code,indirectaddr,peek(datatmpslc,0):indirectaddr++:indirectaddr++:continue cnt+2}:wpoke code,indirectaddr,peek(datatmpslc,0):indirectaddr++:indirectaddr++:loop
+}else{
+wpoke code,indirectaddr,getcodelabelptr(argsstr4array(cnt))
+labelsetx(indirectaddr,0)=argsstr4array(cnt)
+labelsetx(indirectaddr,1)="2"
+indirectaddr++
+indirectaddr++
+}
+loop
+swbreak
+swend
+
+noteget asmsourceslc4show,cnt
+loop
+
+asmafter=1
+
+repeat 65536
+cnt4afterseq=cnt
+switch labelsetx(cnt,1)
+case "1"
+poke code,cnt,getcodelabelptr(labelsetx(cnt,0))
+swbreak
+case "2"
+wpoke code,cnt,getcodelabelptr(labelsetx(cnt,0))
+swbreak
+case "3"
+inttmp=(getcodelabelptr(labelsetx(cnt,0))&0xFFFFFF)
+wpoke code,cnt,inttmp
+wpoke code,cnt+2,(inttmp>>24)
+swbreak
+case "1e"
+poke code,cnt,((getcodelabelptr(labelsetx(cnt,0))&0xFFFF)-(cnt+1))
+swbreak
+swend
+loop
+sdim code2,indirectaddr
+memcpy code2,code,indirectaddr,0,0
+bsave getpath(dircmdline_fn,1)+".code",code2
+mes "Assembled your assembly code!"
+end 0
